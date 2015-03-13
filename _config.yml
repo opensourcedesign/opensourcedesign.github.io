@@ -1,0 +1,18 @@
+# Site settings
+title: Open Source Design
+email: freedom@opensourcedesign.net
+description: > # this means to ignore newlines until "baseurl:"
+  OSD is bringing great design to Free and open source software
+  by creating tools, projects, and processes that are sustainable
+  and imptactful. OSD is creating both new models for organizations
+  as well as funding for Free & open projects
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+
+url: "http://opensourcedesign.net" # the base hostname & protocol for your site
+
+twitter_username: opensrcdesign
+github_username:  opensourcedesign
+
+# Build settings
+markdown: kramdown
