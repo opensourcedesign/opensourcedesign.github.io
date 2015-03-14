@@ -22,3 +22,8 @@ This is being published as a work-in-progress so as to sollicite feedback, ideas
 - [ ] Slide 20 is a repetition of 18 –> replace 18 with the with-arrows version and get rid of 20.
 - [ ] there are 2 different »Issue Wrangling« slides
 - [ ] Slide 25 - is that actually a scale with x and y axis? Might be better as a list
+
+### Notes from @gusandrews
+
+- [ ] Get feedback from FOSS community how they relate to funding & scaling
+- [ ] Better explain difference between "crowdfunding" and "end users" the later meaning "selling" software
