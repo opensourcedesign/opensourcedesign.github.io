@@ -208,6 +208,35 @@
     font-size: 24px;
 }
 
+.job-list {
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+        width: 45%;
+        margin-right: 5%;
+        height: 85px;
+        list-style: none;
+        margin-bottom: 20px;
+        float: left;
+
+        > h2,
+        > p {
+            margin-bottom: 0;
+        }
+
+        > h2 a,
+        > .organization,
+        > .rate {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+                display: block;
+        }
+    }
+}
+
 
 
 /**
