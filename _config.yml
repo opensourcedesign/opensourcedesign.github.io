@@ -1,10 +1,8 @@
 # Site settings
 title: Open Source Design
-email: freedom@opensourcedesign.net
+email:
 description: > # this means to ignore newlines until "baseurl:"
-  Open Source Design brings great design to free and open source software
-  by creating tools, projects, and processes that are sustainable
-  and imptactful.
+  We are a community of designers and developers aiming to push more open design processes and improve the design of open source apps
 
 baseurl: "" # the subpath of your site, e.g. /blog/
 
