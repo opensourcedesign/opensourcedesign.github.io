@@ -6,7 +6,7 @@
 
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: 'Open Sans', Frutiger, Calibri, 'Myriad Pro', Myriad, sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -50,3 +50,25 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sans'), local('OpenSans'), url(/fonts/OpenSans-Regular.ttf) format('ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 100;
+	src: local('Open Sans Light'), local('OpenSans-Light'), url(/fonts/OpenSans-Light.ttf) format('ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/OpenSans-Bold.ttf) format('ttf');
+}

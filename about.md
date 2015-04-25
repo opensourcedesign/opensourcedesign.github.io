@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-![Open Source Design Icon](/images/design-open-icon-512.png)
-
 # What we want to achieve
 
 ## 1. Open up the design process
@@ -43,4 +41,3 @@ permalink: /about/
   * UX reviews
   * consulting
   * mockups
-

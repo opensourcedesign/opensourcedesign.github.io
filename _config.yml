@@ -2,10 +2,9 @@
 title: Open Source Design
 email: freedom@opensourcedesign.net
 description: > # this means to ignore newlines until "baseurl:"
-  OSD is bringing great design to Free and open source software
+  Open Source Design brings great design to free and open source software
   by creating tools, projects, and processes that are sustainable
-  and imptactful. OSD is creating both new models for organizations
-  as well as funding for Free & open projects
+  and imptactful.
 
 baseurl: "" # the subpath of your site, e.g. /blog/
 
