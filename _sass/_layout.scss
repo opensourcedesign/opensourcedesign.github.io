@@ -237,6 +237,11 @@
     }
 }
 
+@media screen and (max-width: $on-palm) {
+    .job-list > li {
+        width: 95%;
+    }
+}
 
 
 /**
