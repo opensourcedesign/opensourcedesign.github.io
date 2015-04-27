@@ -214,11 +214,11 @@
 
     > li {
         width: 45%;
-        margin-right: 5%;
-        height: 85px;
+        margin-right: 4%;
         list-style: none;
         margin-bottom: 20px;
-        float: left;
+        display: inline-block;
+        vertical-align: top;
 
         > h2,
         > p {
@@ -237,6 +237,11 @@
     }
 }
 
+@media screen and (max-width: $on-palm) {
+    .job-list > li {
+        width: 95%;
+    }
+}
 
 
 /**
