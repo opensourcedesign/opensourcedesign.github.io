@@ -211,11 +211,11 @@
 .job-list {
     margin-left: 0;
     list-style: none;
+    overflow: hidden;
 
     > li {
-        width: 45%;
+        width: 47.5%;
         margin-right: 5%;
-        height: 85px;
         list-style: none;
         margin-bottom: 20px;
         float: left;
@@ -234,6 +234,12 @@
                 max-width: 100%;
                 display: block;
         }
+    }
+    > li:nth-child(odd) {
+        clear: left;
+    }
+    > li:nth-child(even) {
+        margin-right: 0;
     }
 }
 
