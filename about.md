@@ -41,3 +41,8 @@ permalink: /about/
   * UX reviews
   * consulting
   * mockups
+
+---------------------------------------
+
+
+*You might also want to checkout the fine folks over at [Design Open](http://designopen.org) as they're also doing awesome things relating to many of these same goals.*
