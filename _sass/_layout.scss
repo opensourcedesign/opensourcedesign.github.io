@@ -288,3 +288,43 @@
         }
     }
 }
+
+
+/*** Activity Feed ***/
+.activity li {
+  list-style-type: none;
+  font-size: 16px;
+  line-height: 16px;
+  clear: both;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.activity .item a.avatar {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 4px;
+  vertical-align: top;
+}
+
+.activity .item a.avatar img {
+  width: 24px;
+  display: inline;
+}
+
+.activity .item .content {
+  position: absolute;
+  top: 0px;
+  left: 35px;
+  vertical-align: top;
+  display: inline-block;
+
+}
+
+.activity .item .date {
+  display: inline-block;
+  font-size: .75em;
+  color: #999;
+}
