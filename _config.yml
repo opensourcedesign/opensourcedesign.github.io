@@ -8,6 +8,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 
 url: "http://opensourcedesign.net" # the base hostname & protocol for your site
 
+exclude: ["bower_components", "node_modules", "grunt", "sass", "bower.json", "package.json", "README.md"]
+
+
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
 

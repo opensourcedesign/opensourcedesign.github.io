@@ -24,3 +24,11 @@ An awesome image by @GarthDB does a good job of explaining it:
 We've talked a lot of the benefits of each chat tool out there. Ultimately it comes down to a split in "open" versus "practical". We're still trying to figure out what the best tool is for our community, but we're [working on it](https://github.com/opensourcedesign/chat/issues/1).
 
 See this issue [here](https://github.com/DesignOpen/designopen.github.io/issues/195).
+
+## Developing
+
+To our develop / build site on your local machine do the following:
+
+- Install Jekyll using `gem install jekyll`
+- Build the static site & watch for files `jekyll serve --watch --config _config.yml,_config-dev.yml`
+
