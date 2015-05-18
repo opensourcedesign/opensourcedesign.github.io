@@ -30,6 +30,6 @@ We talked about:
 
 * We now have an [events page](http://opensourcedesign.net/events/)
 * We attended and presented at OpenTechSummit in Berlin [[irc](https://botbot.me/freenode/opensourcedesign/msg/37270321/)]. Jan Dittri presented on the difficulties present when designing for open source projects. We also had a nice little meetup at OTS with some   contributors on the project.
-* We were at the Libre Graphics Meeting in Toronto [[irc](http://libregraphicsmeeting.org/)].  Jan-Christoph Borchardt presented on Open Source Design and his experiences working on ownCloud. There was also a small workshop on design-reviews of each other’s projects.
-* We had one online/in-person meet-up where we finally launched our site [[irc](https://github.com/opensourcedesign/events/blob/master/2015-04-25-designs-and-hacks.md)].
+* We were at the Libre Graphics Meeting in Toronto [[link](http://libregraphicsmeeting.org/)].  Jan-Christoph Borchardt presented on Open Source Design and his experiences working on ownCloud. There was also a small workshop on design-reviews of each other’s projects.
+* We had one online/in-person meet-up where we finally launched our site [[link](https://github.com/opensourcedesign/events/blob/master/2015-04-25-designs-and-hacks.md)].
 
