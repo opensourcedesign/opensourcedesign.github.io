@@ -49,3 +49,17 @@
   </div>
 
 </footer>
+
+<script id="template-activity-item" type="text/template">
+<li class="item">
+  <a href="https://github.com/<%= actor.login %>" class="avatar"><img src="<%= actor.avatar_url %>"></a>
+  <div class="content">
+    <a href="https://github.com/<%= actor.login %>" class="name"> @<%= actor.login %></a> <%= event_type %>
+    <span class="date"><%= created_at %></span>
+  </div>
+</li>
+</script>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/underscore-min.js"></script>
+<script src="/js/site.js"></script>
