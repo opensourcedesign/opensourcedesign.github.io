@@ -37,5 +37,6 @@ To enable designers to contribute to open projects it is not enough that they le
 -------------------
 
 **Sources:*
-[1] Designing as reflective conversation with the materials of a design situation, Donald Schön, 1992
-[2] »sketching provides a temporary, external store for tentative ideas, and supports the ‘dialogue’ that the designer has between problem and solution.« (Chapter 1, ›Design Ability‹) »…Drawing…gives the flex­i­bil­ity to shift lev­els of de­tail in­stan­ta­neously; al­lows par­tial, dif­fer­ent views at dif­fer­ent lev­els of de­tail to be de­vel­oped side by side« (Chapter 4, ›How Designers Think‹) in Design Thinking – Understanding how designers think and work. Nigel Cross, 2011
+
+* **[1]** Designing as reflective conversation with the materials of a design situation, Donald Schön, 1992
+* **[2]** »sketching provides a temporary, external store for tentative ideas, and supports the ‘dialogue’ that the designer has between problem and solution.« (Chapter 1, ›Design Ability‹) »…Drawing…gives the flex­i­bil­ity to shift lev­els of de­tail in­stan­ta­neously; al­lows par­tial, dif­fer­ent views at dif­fer­ent lev­els of de­tail to be de­vel­oped side by side« (Chapter 4, ›How Designers Think‹) in Design Thinking – Understanding how designers think and work. Nigel Cross, 2011
