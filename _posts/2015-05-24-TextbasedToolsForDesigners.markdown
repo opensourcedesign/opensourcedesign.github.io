@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2015-05-23
-title: "Why open source designer need tools beyond text and code"
+title: "Why open source designers need tools beyond text and code"
 category: 
 ---
 
