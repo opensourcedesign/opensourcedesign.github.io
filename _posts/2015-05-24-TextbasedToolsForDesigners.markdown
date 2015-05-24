@@ -34,7 +34,9 @@ Communicating about layouts, icons or workflows is possible, but tedious. Images
 
 To enable designers to contribute to open projects it is not enough that they learn about code and technology: they need tools that match their workflow and enable them to collaborate with programmers. Just telling them to adapt is not a viable, design-thinking, solution.
 
--------------------
+*If you like to support the creation of libre tools for (open source) designers, have a look at [some of our ideas](https://github.com/opensourcedesign/resources/issues/16).*
+
+
 
 **Sources:**
 
