@@ -18,7 +18,7 @@ To use code as a tool for design, ideation, communication, and adjustments is a 
 
 Empirical research shows that feedback loops play a crucial role in creative tasks [1]. For designers this involves evaluating how a preliminary design looks, is structured, or behaves and then apply changes and see if the result is satisfying [2]. Look at sketching: You can quickly draw what a product or a website may look like. You evaluate what is good or bad about the drawing, think it through and iteratively make changes The feedback is instant: if you slip and the crooked line messes up the design you see it right away. If the slip actually adds something good, you see it too.
 
-This instant feedback is what's to loose if we always design in code.
+This instant feedback is what's to lose if we always design in code.
 
 But should designer ditch the resolution to learn to code? Not always. There are things that are best expressed in code: maybe a gesture or a new kind of menu. It will enable communicating your ideas to programmers and estimate the technical difficulties involved in implementation. But while design-in-code is touted to be *the* skill-to-learn for (web) designers it shouldn't come with the loss of core thinking models and processes for many designers.
 
