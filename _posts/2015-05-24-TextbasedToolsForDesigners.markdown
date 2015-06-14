@@ -7,7 +7,7 @@ category:
 
 Text is the predominant means of creating and collaborating on software. Design is a visual and spacial activity. For those who design software and websites there is a non-visual world that needs to be navigated and taken into account: text in the form of program code and comments.
 
-This has historical and technical reasons, beyond that computer programs are essentially created in code. But the text based tools and culture of creation and collaboration have severe drawbacks for designers who are part, or are striving to be part, of the creation of software. This is particulary relevant in the open source community, where many collaboborators (among them potentially designers) work jointly to create and improve software.
+This has historical and technical reasons, beyond that computer programs are essentially created in code. But the text based tools and culture of creation and collaboration have severe drawbacks for designers who are part, or are striving to be part, of the creation of software. This is particulary relevant in the open source community, where many collaborators (among them potentially designers) work jointly to create and improve software.
 
 
 ## The case against designing in code
