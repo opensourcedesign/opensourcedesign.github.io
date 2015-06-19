@@ -5,15 +5,15 @@ Main website for hosting on Github pages
 
 *What's the mission of Open Source Design?*
 
-*What's the difference between Design Open and Open Source Design?*
+*What's the difference between [Open Design](http://opendesign.foundation) and Open Source Design?*
 
 From [the conversation here](https://github.com/opensourcedesign/resources/issues/14)
 
 > One group is building a community of designers working on open source, while the other is focusing on building open workflows for designers.
 
-> Design Open is not building tools for the sake of building tools, but to build a community of designers working towards more open practices. The difference between Design Open and Open Source Design's community is that we have found open source to be too exclusive.
+> Open Design* is not building tools for the sake of building tools, but to build a community of designers working towards more open practices. The difference between Open Design* and Open Source Design's community is that we have found open source to be too exclusive.
 
-Design Open targets the wider design community, while Open Source Design targets getting more people (including designers) involved in designing for Open Source.
+Open Design targets the wider design community, while Open Source Design targets getting more people (including designers) involved in designing for Open Source Software.
 
 An awesome image by @GarthDB does a good job of explaining it:
 
