@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2015-05-18-15-37
+date: 2015-07-10-15-37
 title: "This Month in Open Source Design - June (and some bits of July and May)"
 category: monthly-update
 ---
