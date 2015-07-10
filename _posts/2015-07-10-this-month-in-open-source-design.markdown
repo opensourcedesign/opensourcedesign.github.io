@@ -1,0 +1,37 @@
+---
+layout: post
+date: 2015-05-18-15-37
+title: "This Month in Open Source Design - June (and some bits of July and May)"
+category: monthly-update
+---
+
+# In IRC
+
+We talked about (or what some members of our community have been up to):
+
+* Merging some repos together. Ultimately that didn't get very far, but people have been more careful with creating new repos. [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-18/?msg=39486383&page=2)]
+* Design of the main website for wireframews [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-18/?msg=39486383&page=2)].
+* The woes of doing design for open source developers [[irc](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)]
+* The woes of job titles and unicorns [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-23/?msg=39967391&page=1)]
+* Onboarding in Slick [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-23/?msg=39984519&page=2)], and general conversations about Slick. There's a lot of enthusiasm around it.
+* Offline-first apps and hoodie [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-25/?msg=40069142&page=1)]
+* Talky [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-02/?msg=40760040&page=1)]
+* Kosmos [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-08/?msg=41247099&page=1)]
+* The state of tutorials for design [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-08/?msg=41268491&page=2)]
+* We talked a whole lot about how democracy is hard [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-10/?msg=41469276&page=1)]
+* Some more thoughts on IRC and chat programs [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
+* Etherpad [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
+* A code of conduct [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
+* Funding open source [[irc](https://botbot.me/freenode/opensourcedesign/2015-07-03/?msg=43599602&page=1)]
+* P2P file back up systems[[irc](http://opensourcedesign.net/events/design/hack/meeting/2015/01/30/fosdem.html)]
+
+# On Github
+
+* Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/TextbasedToolsForDesigners.html).
+* We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/17) with some concepts.
+* This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)!
+* Our [code of conduct](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/bnvk/code-of-conduct/code-of-conduct.md) is up for discussion.
+
+# Events
+
+* We're planning for [FOSDEM 2016](http://opensourcedesign.net/events/design/hack/meeting/2015/01/30/fosdem.html)
