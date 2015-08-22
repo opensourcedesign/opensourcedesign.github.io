@@ -11,12 +11,12 @@ end_scripts: |
 
           comments = comments.concat(responseComments);
           if (nextCommentsURL) {
-            getComments(nextCommentsURL, comments)
+            getComments(nextCommentsURL, comments);
           } else {
             buildIssues(comments);
           }
         });
-      }
+      };
 
       var buildIssues = function(allComments){
         console.log("done fetching, building", allComments);
@@ -36,7 +36,6 @@ end_scripts: |
                 comment_url: comment.html_url,
                 image_url: result[2]
               });
-              console.log(comment.body);
               index_counter += 1;
             }
           }
@@ -44,15 +43,16 @@ end_scripts: |
 
         $('#logos').html('<ul>' + images_html + '</ul>');
 
-      }
+      };
 
       var issueUrl = 'https://api.github.com/repos/opensourcedesign/' +
                      'opensourcedesign.github.io/issues/18';
 
       $.get(issueUrl, function(issue, status, jqxhr) {
+        console.log(issue);
           var created = issue.created_at;
           var baseCommentsURL = issueUrl + '/comments';
-          var comments = [];
+          var comments = [{body: issue.body, html_url: issue.html_url}];
 
           getComments(baseCommentsURL, comments);
 
