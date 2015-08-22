@@ -19,7 +19,6 @@ end_scripts: |
       };
 
       var buildIssues = function(allComments){
-        console.log("done fetching, building", allComments);
         var images_html = '';
         var template_item = _.template($('#logo-list-item').html());
 
@@ -49,7 +48,6 @@ end_scripts: |
                      'opensourcedesign.github.io/issues/18';
 
       $.get(issueUrl, function(issue, status, jqxhr) {
-        console.log(issue);
           var created = issue.created_at;
           var baseCommentsURL = issueUrl + '/comments';
           var comments = [{body: issue.body, html_url: issue.html_url}];
