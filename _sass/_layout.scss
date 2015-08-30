@@ -254,7 +254,7 @@
 .post-title {
     font-size: 42px;
     letter-spacing: -1px;
-    line-height: 50px;
+    line-height: 1.2;
 
     @include media-query($on-laptop) {
         font-size: 36px;
