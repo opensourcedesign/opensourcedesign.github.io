@@ -1,5 +1,5 @@
 # opensourcedesign.github.io
-Main website for hosting on Github pages
+Main website of the Open Source Design community, hosted on Github pages
 
 ## FAQ
 
