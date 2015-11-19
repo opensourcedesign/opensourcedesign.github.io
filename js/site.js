@@ -40,7 +40,14 @@ function foo(response) {
 
     if (count <= 8) {
       count++;
+
       item['event_type'] = events[item.type]
+      item['link'] = 'https://github.com/' + item.actor.login;
+      if (item.type == 'IssueCommentEvent') {
+        item['link'] = item.payload.comment.html_url;
+        item['event_type'] = excerpt_text(item.payload.comment.body, 20);
+      };
+
       items_html += template_item(item);
     }
   });
@@ -81,4 +88,17 @@ function parse_link_header(header) {
   });
 
   return links;
+}
+
+/**
+ * I take a string and create an excerpt from it
+ * 
+ * @param string str - the string to shorten
+ * @param int limit - the limit of characters
+ */
+function excerpt_text( str, limit ) {
+  if (limit == null) {
+    limit = 20
+  };
+  return str.substring(0, limit) + ' ...';
 }
