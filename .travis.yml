@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+- 2.1
+script: bundle exec rake test
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+notifications:
+  slack:
+    secure: cqK+fRPWFZ6iGHmhZlt2QcKSPDOhEnyhp7ctTmco+TbEQfhvMdxV0EXrikfqR6qcrMh6wU3/J6qnT86GUHx2qbaJk4IgqtTDlw9PvnBhate9V7vSUXpblrlszjQ3nwGxhIUn7pI7G0sb6MYF9QVrBA9XgvuJLlgsjbLVoSnNb/8=
