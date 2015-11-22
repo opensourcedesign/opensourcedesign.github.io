@@ -6,7 +6,7 @@ permalink: /code-of-conduct/
 
 # Code of Conduct
 
-We at Open Source Design strive to make our community a warm, welcoming, and diverse place that is bringing great design to open source software. We ask that you adhere to this code of conduct.
+In order to keep the Open Source Design community warm, welcoming, and safe place we ask that all participates read and adhere to the following code of conduct.
 
 ## Be excellent to each other
 
@@ -18,10 +18,9 @@ Please treat each other, as well as the public, in an excellent way. What it mea
 - **Educate and illuminate** others with something you  know more about
 - **Be open to feedback** from others in the community, be it technical skill or interpersonally
 
-
 These traits exemplify the type of community we strive for with Open Source Design. We want a diverse community where members treat each other excellently, at all times.
 
-Most technology communities consist overwhelmingly of straight, white, CIS males. We want Open Source Design to be a much more diverse than that because we believe diversity leads to healthier culture, which outputs better creativity.
+We want Open Source Design to be diverse because we A) believe in equality and B) know that diversity leads to healthier culture, which outputs better creativity.
 
 ## Don't be a mean or a not nice person
 
@@ -33,15 +32,15 @@ If you think you are offending someone for whatever reason, STOP immediately. If
 
 **Don't discriminate against anyone**
 
-Please be especially sensitive and aware of others who are different from you. Don't make jokes, offhand comments, or name your projects in ways that can be offensive or relating to the following topics:
+Please be especially sensitive and aware of others who are different from you. Don't make jokes, offhand comments, or name your projects in ways that can be offensive relating to, but not limited to, the following topics
 
 - Age
 - Culture
 - Ethnicity
 - Gender identity & expression
 - Nationality
-- Physical differences
-- Mental differences
+- Physical disabilities or differences
+- Mental disabilities or differences
 - Politics
 - Race
 - Religion
@@ -50,11 +49,11 @@ Please be especially sensitive and aware of others who are different from you. D
 - Socio-economic status
 - Subcultural affiliation
 
-Discriminatory comments or naming of projects that relate to any of the above topics are the most severe violation of this code of conduct.
+Discriminatory comments or naming of projects that relate to any of the above topics are the most common forms of abuse. Thus we consider violations relating to these topics to be severe violations of our code of conduct.
 
 **Don't sexualize your work**
 
-This is another tricky point as some people see no harm in naming a JavaScript library `bikini.js` or `crotchlessChaps.js` or leaving comments in their code like `A sexy ass variadic function`. This may seem harmless, but can make others of different orientations or ideologies feel very uncomfortable. It is best to avoid such things:
+This is another tricky point as some people see no harm in naming a code libraries things like `bikini.js` or `crotchlessChaps.js` or `fat-man.rb` or leaving comments in their code like `A sexy ass variadic function`. These little things may seem harmless, but can make others of different orientations, ideologies, or life experiences feel very uncomfortable. It is best to avoid such things as:
 
 - Don't use overtly sexual usernames, or project names
 - Don't refer to others in a sexualized way
@@ -64,11 +63,11 @@ This is another tricky point as some people see no harm in naming a JavaScript l
 
 Most of our community are adults and should know when it's ok to flirt with other adults. However, we're also an online community whereby many people don't know each other in real life. Many of us come from different cultures. What might be seen as lighthearted flirting in one culture, might be extremely offensive to another culture. This discomfort causes people to not participate in communities. Therefore it's best to not do it. Open Source Design is a community about bringing great design to open source software, let's keep it focused on that.
 
-## Where this pertains
+## Where this CoC is upheld
 
-This code of conduct pertains to our community platforms (IRC: #opensourcedesign, Github: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign)) but this also pertains to your personal public communications.
+This code of conduct especially pertains to our community platforms (IRC: [#opensourcedesign](http://chat.opensourcedesign.net), GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign)), Facebook: [@opensrcdesign](https://www.facebook.com/opensrcdesign/) but this also pertains to your personal public communications and views.
 
-Being a respectful contributor to Open Source Design by day and ragging (or even mild) neo-nazi by night is still grounds for expulsion. Some people see this as impinging on personal freedoms, we disagree, sorry.
+Being a respectful contributor to Open Source Design by day and a ragging (or even mild) neo-nazi by night is still grounds for expulsion. Some people see this as impinging on personal freedoms, we disagree, sorry.
 
 ## Consequences for violations
 
@@ -76,7 +75,7 @@ If a participant engages in behavior violating this code of conduct, the core me
 
 ## Reporting violations
 
-If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as [Jan](mailto:hey@jancborchardt.net), [Brennan](mailto:hi@brennannovak.com), [Simon](mailto:svansintjan@gmail.com), or [Danilla](mailto:needs@email.com) and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
+If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: [Kriesse](kristina@cssconf.eu),  [Jan](mailto:hey@jancborchardt.net), [Danilla](mailto:needs@email.com), [Brennan](mailto:hi@brennannovak.com), [Simon](mailto:svansintjan@gmail.com), or [Gilli](gilli@axe.is) and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
 
 ## Decisions about consequences
 
