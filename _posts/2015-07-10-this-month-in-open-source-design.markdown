@@ -23,7 +23,7 @@ We talked about (or what some members of our community have been up to):
 * Etherpad [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
 * A code of conduct [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
 * Funding open source [[irc](https://botbot.me/freenode/opensourcedesign/2015-07-03/?msg=43599602&page=1)]
-* P2P file back up systems[[irc](http://opensourcedesign.net/events/design/hack/meeting/2015/01/30/fosdem.html)]
+* P2P file back up systems[[irc](http://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)]
 
 # On Github
 
@@ -34,4 +34,4 @@ We talked about (or what some members of our community have been up to):
 
 # Events
 
-* We're planning for [FOSDEM 2016](http://opensourcedesign.net/events/design/hack/meeting/2015/01/30/fosdem.html)
+* We're planning for [FOSDEM 2016](http://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)
