@@ -75,7 +75,7 @@ If a participant engages in behavior violating this code of conduct, the core me
 
 ## Reporting violations
 
-If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: [Kriesse](kristina@cssconf.eu),  [Jan](mailto:hey@jancborchardt.net), [Danilla](mailto:needs@email.com), [Brennan](mailto:hi@brennannovak.com), [Simon](mailto:svansintjan@gmail.com), or [Gilli](gilli@axe.is) and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
+If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: [Kriesse](mailto:kristina@cssconf.eu),  [Jan](mailto:hey@jancborchardt.net), [Danilla](mailto:needs@email.com), [Brennan](mailto:hi@brennannovak.com), [Simon](mailto:svansintjan@gmail.com), or [Gilli](mailto:gilli@axe.is) and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
 
 ## Decisions about consequences
 
