@@ -1,5 +1,5 @@
-# opensourcedesign.github.io
-Main website for hosting on Github pages
+# opensourcedesign.github.io [![Travis Badge](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io.svg)](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io)
+Main website of the Open Source Design community, hosted on Github pages
 
 ## FAQ
 
@@ -31,4 +31,3 @@ To our develop / build site on your local machine do the following:
 
 - Install Jekyll using `gem install jekyll`
 - Build the static site & watch for files `jekyll serve --watch --config _config.yml,_config-dev.yml`
-
