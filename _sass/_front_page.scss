@@ -14,8 +14,14 @@
   background-size: cover;
   -o-background-size: cover;
 
-  .brand-heading img {
-    width: 240px;
+  .brand-heading {
+    img, svg {
+      width: 240px;
+    }
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
   }
 
   .intro-body {
