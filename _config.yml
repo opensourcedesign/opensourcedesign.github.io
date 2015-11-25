@@ -16,3 +16,6 @@ github_username:  opensourcedesign
 
 # Build settings
 markdown: kramdown
+
+sass:
+    style: compressed
