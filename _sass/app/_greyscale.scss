@@ -123,7 +123,7 @@ a {
 @media(min-width:$screen-xs-max) {
 
   .navbar {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: none;
     letter-spacing: 1px;
     background: $grayscale-light;
@@ -149,6 +149,7 @@ a {
 .intro {
   display: table;
   width: 100%;
+  margin-top: -40px;
   height: auto;
   padding: 50px 0;
   text-align: center;
@@ -219,10 +220,6 @@ a {
 }
 
 
-.content-section {
-  padding-top: 100px;
-}
-
 .download-section {
   width: 100%;
   padding: 50px 0;
@@ -234,22 +231,6 @@ a {
   -o-background-size: cover;
 }
 
-
-@media(min-width:$screen-xs-max) {
-
-  .content-section {
-    padding-top: 250px;
-  }
-
-  .download-section {
-    padding: 100px 0;
-  }
-
-  #map {
-    height: 400px;
-    margin-top: 250px;
-  }
-}
 
 .btn {
   text-transform: uppercase;
