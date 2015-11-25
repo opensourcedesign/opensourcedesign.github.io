@@ -1,0 +1,323 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: $grayscale-body-font-family;
+  color: $grayscale-dark;
+  background-color: $grayscale-light;
+  -webkit-tap-highlight-color: transparentize($grayscale-dark, 0.8);
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin: 0 0 35px;
+  text-transform: uppercase;
+  font-family: $grayscale-headline-font-family;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+p {
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media(min-width:$screen-xs-max) {
+
+  p {
+    margin: 0 0 35px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+}
+
+a {
+  color: $grayscale-primary;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: darken($grayscale-primary,0.2);
+  }
+}
+
+.light {
+  font-weight: 400;
+}
+
+.heavy {
+  font-weight: bold;
+}
+
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
+  text-transform: uppercase;
+  font-family: $montserrat;
+  background-color: $grayscale-dark;
+
+  .navbar-brand {
+    font-weight: 700;
+    height: auto;
+    padding: 15px 15px 8px;
+    line-height: inherit;
+
+    &:focus {
+      outline: none;
+    }
+
+    .navbar-toggle {
+      padding: 4px 6px;
+      font-size: 16px;
+      color: $grayscale-dark;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  a {
+    color: $grayscale-dark;
+  }
+
+  .nav {
+
+    li {
+
+      &.active {
+        outline: none;
+        background-color: transparentize($grayscale-dark, 0.7);
+      }
+
+      a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+
+        &:hover,
+        &:focus,
+        &.active {
+          outline: none;
+          background-color: transparentize($grayscale-dark, 0.7);
+        }
+      }
+    }
+  }
+}
+
+@media(min-width:$screen-xs-max) {
+
+  .navbar {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: $grayscale-light;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
+
+  .top-nav-collapse {
+    padding: 0;
+    background-color: $grayscale-dark;
+
+    a {
+      color: $grayscale-light;
+    }
+  }
+
+  .navbar-custom.top-nav-collapse {
+    border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
+  }
+}
+
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 50px 0;
+  text-align: center;
+  color: $grayscale-dark;
+  /*background: $grayscale-dark url(../images/intro-bg.jpg) no-repeat scroll bottom center;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+  .brand-heading img {
+    width: 240px;
+  }
+
+  .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+
+    .brand-heading {
+      font-size: 40px;
+    }
+
+    .intro-text {
+      font-size: 18px;
+      font-family: $montserrat;
+    }
+  }
+}
+
+@media(min-width:$screen-xs-max) {
+  .intro {
+    height: 100%;
+    padding: 0;
+
+    .intro-body {
+
+      .brand-heading {
+        font-size: 100px;
+      }
+
+      .intro-text {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid $grayscale-dark;
+  border-radius: 35px;
+  font-size: 40px;
+  color: $grayscale-dark;
+  background: transparent;
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: $grayscale-dark;
+    background: transparentize($grayscale-dark, 0.9);
+  }
+}
+
+
+.content-section {
+  padding-top: 100px;
+}
+
+.download-section {
+  width: 100%;
+  padding: 50px 0;
+  color: $grayscale-dark;
+  background: $grayscale-dark url(../images/downloads-bg.jpg) no-repeat scroll center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+
+@media(min-width:$screen-xs-max) {
+
+  .content-section {
+    padding-top: 250px;
+  }
+
+  .download-section {
+    padding: 100px 0;
+  }
+
+  #map {
+    height: 400px;
+    margin-top: 250px;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  font-family: $montserrat;
+  font-weight: 400;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.btn-default {
+  @include button-variant($grayscale-primary, transparentize(white, 1), $grayscale-primary);
+
+  &:hover,
+  &:focus {
+    border: 1px solid $grayscale-primary;
+    outline: none;
+    color: $grayscale-light;
+    background-color: $grayscale-primary;
+  }
+}
+
+ul.banner-social-buttons {
+  margin-top: 0;
+}
+
+@media(max-width:$screen-md-max) {
+
+  ul.banner-social-buttons {
+    margin-top: 15px;
+  }
+}
+
+@media(max-width:$screen-xs-max) {
+
+  ul.banner-social-buttons {
+
+    li {
+      display: block;
+      margin-bottom: 20px;
+      padding: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+footer {
+  padding: 50px 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+::-moz-selection, ::selection  {
+  text-shadow: none;
+  background: #fcfcfc;
+  background: transparentize($grayscale-dark, 0.8);
+}
+
+img {
+  &::selection {
+    background: transparent;
+  }
+
+  &::-moz-selection {
+    background: transparent;
+  }
+}

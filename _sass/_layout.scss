@@ -12,20 +12,8 @@ h4 {
     text-align: center;
 }
 
-.frontpage {
-    margin: 50px 0 70px;
-
-    h2 {
-        text-align: center;
-    }
-
-    .join-us {
-        text-align: center;
-    }
-}
-
 .page-content {
-    padding: $spacing-unit 0;
+    padding: 140px 0;
 }
 
 .page-heading {
@@ -34,6 +22,7 @@ h4 {
 
 .post-list {
     margin-left: 0;
+    margin-right: 0;
     list-style: none;
 
     > li {
@@ -84,90 +73,4 @@ h4 {
     .job-list > li {
         width: 95%;
     }
-}
-
-
-/**
- * Posts
- */
-.post-header {
-    margin-bottom: $spacing-unit;
-}
-
-.post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1.2;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
-}
-
-.post-content {
-    margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
-
-    h3 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-    h4 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
-    }
-}
-
-
-/*** Activity Feed ***/
-.activity li {
-  list-style-type: none;
-  font-size: 16px;
-  line-height: 16px;
-  clear: both;
-  position: relative;
-  margin-bottom: 25px;
-}
-
-.activity .item a.avatar {
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 4px;
-  vertical-align: top;
-}
-
-.activity .item a.avatar img {
-  width: 24px;
-  display: inline;
-}
-
-.activity .item .content {
-  position: absolute;
-  top: 0px;
-  left: 35px;
-  vertical-align: top;
-  display: inline-block;
-
-}
-
-.activity .item .date {
-  display: inline-block;
-  font-size: .75em;
-  color: #999;
 }

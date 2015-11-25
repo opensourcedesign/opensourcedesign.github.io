@@ -28,21 +28,23 @@ $on-palm:          600px;
 $on-laptop:        800px;
 
 
+/* Vendor imports */
+@import "vendor/_bootstrap.variables";
+@import "vendor/_bootstrap.mixins";
+@import "vendor/_bootstrap";
+@import "vendor/_font-awesome";
+/*@import "vendor/hover";*/
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
+/* App imports */
+@import "app/_variables";
+@import "app/_greyscale";
+
+
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
-
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
@@ -51,10 +53,10 @@ $on-laptop:        800px;
         "layout",
         "footer",
         "logos",
-        "syntax-highlighting"
-
-;
-
+        "syntax-highlighting",
+        "front_page",
+        "post";
+/*
 
 @font-face {
 	font-family: 'Open Sans';
@@ -76,3 +78,4 @@ $on-laptop:        800px;
 	font-weight: bold;
 	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/OpenSans-Bold.ttf) format('ttf');
 }
+*/

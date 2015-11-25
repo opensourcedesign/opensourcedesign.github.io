@@ -93,14 +93,14 @@ a {
     text-decoration: none;
     border-bottom: 1px solid transparent;
 
-    &:visited {
+    /*&:visited {
         color: darken($brand-color, 15%);
-    }
+    }*/
 
-    &:hover {
+    /*&:hover {
         color: $text-color;
         border-bottom: 1px solid $text-color;
-    }
+    }*/
 }
 
 
@@ -154,7 +154,7 @@ pre {
 /**
  * Wrapper
  */
-.wrapper {
+/*.wrapper {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
@@ -169,7 +169,7 @@ pre {
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
-}
+}*/
 
 
 
