@@ -2,7 +2,7 @@
 layout: post
 title:  "5 Steps to Design a UX that People Love"
 date:   2015-11-21
-categories: design, open source, ux, user-experience
+categories: design open-source ux user-experience
 ---
 
 ## Research, prototyping, and testing. The easy way.
