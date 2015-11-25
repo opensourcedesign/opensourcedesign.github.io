@@ -65,10 +65,8 @@
   color: $grayscale-light;
 }
 
-@media(max-width:$screen-xs-max) {
-  .navbar-custom .navbar-brand {
-    font-size: 16px;
-  }
+.navbar-custom .navbar-brand {
+  font-size: 16px;
 }
 
 @media(min-width:$screen-xs-max) {
@@ -77,13 +75,17 @@
     padding: 10px 0;
     border-bottom: none;
     letter-spacing: 1px;
-    background: $grayscale-light;
+    background: $background-color;
     -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
     -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
   }
 
-  .top-nav-collapse {
+  .navbar-custom .navbar-collapse a {
+    color: $grayscale-dark;
+  }
+
+  .navbar-custom.top-nav-collapse {
     padding: 0;
     background-color: $grayscale-dark;
 
@@ -96,6 +98,10 @@
     .top-nav-collapse {
       border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
     }
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 18px;
   }
 }
 
