@@ -85,4 +85,4 @@ It is foreseeable that this code of conduct will need to additions and to be imp
 
 #### Credits
 
-This Code of Conduct was based on the Ada Initiative's [HOWTO design a code of conduct](https://adainitiative.org/2014/02/howto-design-a-code-of-conduct-for-your-community/) for your community, as well as CoCs from the [Hoodie](http://hood.ie/code-of-conduct/) and [Django](https://www.djangoproject.com/conduct/) projects.
+This Code of Conduct was based on the Ada Initiative's [HOWTO design a code of conduct](//adainitiative.org/2014/02/howto-design-a-code-of-conduct-for-your-community/) for your community, as well as CoCs from the [Hoodie](http://hood.ie/code-of-conduct/) and [Django](https://www.djangoproject.com/conduct/) projects.

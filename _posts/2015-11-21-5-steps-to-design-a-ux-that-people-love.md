@@ -39,7 +39,7 @@ So for the Loomio Search example, Matt made [this video demonstrating](https://y
 
 Video is a good a way of sharing a workflow, but quick animated gifs are even better! With a tool like [RecordIt](http://recordit.co/) you can record an interaction, and upload and share it in a few seconds, which makes it effortless to get feedback:
 
-![](http://opensourcedesign.net/images/search-demo.gif)
+![A Demo of Search](http://opensourcedesign.net/images/search-demo.gif)
 
 This gif took me about 20 seconds to record and share. Gifs are also awesome for help documentation, developer QA, and marketing, but that’s a whole other blog post :P
 

@@ -30,7 +30,7 @@ We talked about (or what some members of our community have been up to):
 * Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/TextbasedToolsForDesigners.html).
 * We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/17) with some concepts.
 * This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)!
-* Our [code of conduct](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/bnvk/code-of-conduct/code-of-conduct.md) is up for discussion.
+* Our [code of conduct](//opensourcedesign.net/code-of-conduct/) is up for discussion.
 
 # Events
 
