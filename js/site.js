@@ -92,7 +92,7 @@ function parse_link_header(header) {
 
 /**
  * I take a string and create an excerpt from it
- * 
+ *
  * @param string str - the string to shorten
  * @param int limit - the limit of characters
  */
@@ -102,3 +102,77 @@ function excerpt_text( str, limit ) {
   };
   return str.substring(0, limit) + ' ...';
 }
+
+/*!
+ * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+// jQuery to collapse the navbar on scroll
+$(window).scroll(function() {
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
+});
+
+// jQuery for page scrolling feature - requires jQuery Easing plugin
+$(function() {
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+    });
+});
+
+// Closes the Responsive Menu on Menu Item Click
+$('.navbar-collapse ul li a').click(function() {
+    $('.navbar-toggle:visible').click();
+});
+
+
+// Fetch Events
+
+$(document).ready(function() {
+  var template_item = _.template($('#template-events-item').html());
+  var url = 'http://opensourcedesign.net/events/feed.xml';
+
+  var items_html = '';
+  $.ajax(url, function(d){
+    $(d).find('item').each(function() {
+      var $ev = $(this);
+      var item = {
+        title: $ev.find('title').text(),
+        link: $ev.find('link').text()
+      };
+      items_html = template_item(item);
+    });
+    $('#events-snapshot').html(items_html);
+  });
+});
+
+
+// Fetch Jobs
+
+$(document).ready(function() {
+  var template_item = _.template($('#template-events-item').html());
+  var url = 'http://opensourcedesign.net/jobs/feed.xml';
+
+  var items_html = '';
+  $.ajax(url, function(d){
+
+    $(d).find('item').each(function() {
+      var $ev = $(this);
+      var item = {
+        title: $ev.find('title').text(),
+        link: $ev.find('link').text()
+      };
+      items_html = template_item(item);
+    });
+    $('#jobs-snapshot').html(items_html);
+  });
+});

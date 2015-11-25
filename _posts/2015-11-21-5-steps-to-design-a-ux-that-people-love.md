@@ -2,10 +2,11 @@
 layout: post
 title:  "5 Steps to Design a UX that People Love"
 date:   2015-11-21
-categories: design, open source, ux, user-experience
+categories: design open-source ux user-experience
 ---
 
-## Research, prototyping, and testing. The easy way. Presented to you by the co-founder of Loomio.
+## Research, prototyping, and testing. The easy way.
+*Presented to you by the co-founder of Loomio.*
 
 My brother [Matthew Bartlett](https://medium.com/u/521536fcadc7) and I have been contributing design to the open source project [Loomio](http://loomio.org/) for a while now.
 
@@ -13,18 +14,18 @@ In the past couple of weeks we’ve stumbled on a design process that is working
 
 ## 1. Find a problem worth solving.
 
-Thinking in terms of problems people have or jobs people want to do is a great way to stay focussed on creating a useful user experience, rather than a whizz-bang cool feature that nobody wants.
+Thinking in terms of *problems people have* or *jobs people want to do* is a great way to stay focussed on creating a useful user experience, rather than a whizz-bang cool feature that nobody wants.
 
 For this example, we’re looking at redesigning the search experience for Loomio. The first step is to talk to people and ask what are you searching for?
 
-![Matt uses Loomio to ask the community about search](https://cdn-images-1.medium.com/max/800/1*ogNVtg5KqTApyO2qDTpcow.png)
+![Matt uses Loomio to ask the community about search](http://opensourcedesign.net/images/asking-loomio-community-about-search.png)
 
 ## 2. Research how other people solve it.
 
 In some respects, all UX design is ‘open source’, even if the underlying code is hidden: if you can play with the software, you can learn how it works.
 
 Here’s the result of a couple hours of research into how other popular apps handle search:
-![L-R: Loomio, Facebook, Gmail, Inbox, Google, Trello](https://cdn-images-1.medium.com/max/1200/1*Es5xyIgwDaZkygSiQofimg.png)
+![L-R: Loomio, Facebook, Gmail, Inbox, Google, Trello](http://opensourcedesign.net/images/researching-how-apps-do-search.png)
 
 In this case, Matt created [a little video](https://youtu.be/LtT0_zjNyAk) to distill what he learnt from the research, and share it with the rest of the team.
 
@@ -36,7 +37,10 @@ We use Sketch for drawing mockups and InVision to stitch them together into inte
 
 So for the Loomio Search example, Matt made [this video demonstrating](https://youtu.be/4xhG_9BnNZQ) how the parts fit together.
 
-Video is good a way of sharing a workflow, but quick animated gifs are even better! With a tool like [RecordIt](http://recordit.co/) you can record an interaction, and upload and share it in a few seconds, which makes it effortless to get feedback:
+Video is a good a way of sharing a workflow, but quick animated gifs are even better! With a tool like [RecordIt](http://recordit.co/) you can record an interaction, and upload and share it in a few seconds, which makes it effortless to get feedback:
+
+![A Demo of Search](http://opensourcedesign.net/images/search-demo.gif)
+
 This gif took me about 20 seconds to record and share. Gifs are also awesome for help documentation, developer QA, and marketing, but that’s a whole other blog post :P
 
 ## 4. Test, learn, iterate, deploy, repeat.
@@ -55,4 +59,4 @@ It also helps if you can occasionally blow their minds with something they never
 
 Originally written by [Richard D. Barlett](https://medium.com/@richdecibels) on [Medium](https://medium.com/open-source-design/open-source-design-just-steal-everything-5c44ca793721#.dwn7xt73a)
 
-*~ I write about working together. Loomio cofounder (http://loomio.org). Enspiral member (http://enspiral.com).*
+*I write about working together. Loomio cofounder (http://loomio.org). Enspiral member (http://enspiral.com).*

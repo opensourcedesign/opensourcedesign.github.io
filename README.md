@@ -29,5 +29,5 @@ See this issue [here](https://github.com/DesignOpen/designopen.github.io/issues/
 
 To our develop / build site on your local machine do the following:
 
-- Install Jekyll using `gem install jekyll`
+- Install Jekyll using `gem install jekyll github-pages html-proofer`
 - Build the static site & watch for files `jekyll serve --watch --config _config.yml,_config-dev.yml`

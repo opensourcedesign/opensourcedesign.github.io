@@ -27,22 +27,30 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+$montserrat: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+$lora: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+/* We need to slowly remove these colors:  */
+$grayscale-primary: $brand-color !default;
+$grayscale-dark: #444 !default;
+$grayscale-light: #fff !default;
+
+$grayscale-body-font-family: $lora;
+$grayscale-headline-font-family: $montserrat;
 
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
+
+/* Vendor imports */
+@import "vendor/_bootstrap.variables",
+        "vendor/_bootstrap.mixins",
+        "vendor/_bootstrap",
+        "vendor/_font-awesome";
+
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
-
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
@@ -51,10 +59,10 @@ $on-laptop:        800px;
         "layout",
         "footer",
         "logos",
-        "syntax-highlighting"
-
-;
-
+        "syntax-highlighting",
+        "front_page",
+        "post";
+/*
 
 @font-face {
 	font-family: 'Open Sans';
@@ -76,3 +84,4 @@ $on-laptop:        800px;
 	font-weight: bold;
 	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/OpenSans-Bold.ttf) format('ttf');
 }
+*/

@@ -1,13 +1,139 @@
+/*
+* Greyscale overwrites.
+*/
+
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
+  text-transform: uppercase;
+  font-family: $montserrat;
+  background-color: $grayscale-dark;
+
+  .navbar-brand {
+    font-weight: 700;
+    height: auto;
+    padding: 15px 15px 8px;
+    color: $background-color;
+    line-height: inherit;
+
+    &:focus {
+      outline: none;
+    }
+
+    .navbar-toggle {
+      padding: 4px 6px;
+      font-size: 16px;
+      color: $grayscale-dark;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  a {
+    color: $grayscale-dark;
+  }
+
+  .nav {
+
+    li {
+
+      &.active {
+        outline: none;
+        background-color: transparentize($grayscale-dark, 0.7);
+      }
+
+      a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+
+        &:hover,
+        &:focus,
+        &.active {
+          outline: none;
+          background-color: transparentize($grayscale-dark, 0.7);
+        }
+      }
+    }
+  }
+}
+
+.navbar-custom .navbar-collapse a {
+  color: $grayscale-light;
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 16px;
+}
+
+@media(min-width:$screen-xs-max) {
+
+  .navbar {
+    padding: 10px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: $background-color;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
+
+  .navbar-custom .navbar-collapse a {
+    color: $grayscale-dark;
+  }
+
+  .navbar-custom.top-nav-collapse {
+    padding: 0;
+    background-color: $grayscale-dark;
+
+    a {
+      color: $grayscale-light;
+    }
+  }
+
+  .navbar-custom {
+    .top-nav-collapse {
+      border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
+    }
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 18px;
+  }
+}
+
 /**
  * Site header
  */
 .site-header {
-    // border-top: 5px solid $grey-color-dark;
-    // border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
     position: relative;
+}
+
+.navbar-brand .logo {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-top: -4px;
+    display: inline-block;
+
+    path {
+        color: #000;
+        fill: #fff;
+    }
+}
+
+.top-nav-collapse {
+    .logo path {
+        color: #fff;
+        fill: #fff;
+    }
 }
 
 .site-title {
@@ -89,4 +215,8 @@
             padding: 5px 10px;
         }
     }
+}
+
+.navbar-nav > li > a {
+  padding-top: 20px;
 }

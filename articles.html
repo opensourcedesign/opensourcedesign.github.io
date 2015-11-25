@@ -1,0 +1,26 @@
+---
+layout: default
+title: Articles
+permalink: /articles/
+---
+
+<div class="container">
+<ul class="post-list row">
+  {% for post in site.posts %}
+    <li class="col-md-8 col-md-offset-2">
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h2>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  </div>
+</div>
+
+</div>
