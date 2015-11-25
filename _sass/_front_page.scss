@@ -55,6 +55,13 @@
   }
 }
 
+@media(max-width:$screen-xs-max) {
+  .intro {
+    margin-bottom: 0;
+  }
+}
+
+
 
 h2 {
   font-size: 24px;
@@ -98,6 +105,16 @@ h2 {
     margin-top: $spacing-unit;
   }
 }
+
+@media(max-width:$screen-xs-max) {
+  .about {
+    p {
+      width: 100%;
+      text-align: left;
+    }
+  }
+}
+
 
 /*** Activity Feed ***/
 
@@ -147,4 +164,10 @@ h2 {
   display: block;
   font-size: .75em;
   color: #999;
+}
+
+@media(max-width:$screen-xs-max) {
+  .activity {
+    text-align: left;
+  }
 }
