@@ -27,18 +27,24 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+$montserrat: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+$lora: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+/* We need to slowly remove these colors:  */
+$grayscale-primary: $brand-color !default;
+$grayscale-dark: #444 !default;
+$grayscale-light: #fff !default;
+
+$grayscale-body-font-family: $lora;
+$grayscale-headline-font-family: $montserrat;
+
+
 
 /* Vendor imports */
-@import "vendor/_bootstrap.variables";
-@import "vendor/_bootstrap.mixins";
-@import "vendor/_bootstrap";
-@import "vendor/_font-awesome";
-/*@import "vendor/hover";*/
-
-/* App imports */
-@import "app/_variables";
-@import "app/_greyscale";
-
+@import "vendor/_bootstrap.variables",
+        "vendor/_bootstrap.mixins",
+        "vendor/_bootstrap",
+        "vendor/_font-awesome";
 
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
