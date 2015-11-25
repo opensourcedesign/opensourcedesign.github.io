@@ -73,6 +73,7 @@ a {
     font-weight: 700;
     height: auto;
     padding: 15px 15px 8px;
+    color: $background-color;
     line-height: inherit;
 
     &:focus {
@@ -146,56 +147,6 @@ a {
   }
 }
 
-.intro {
-  display: table;
-  width: 100%;
-  margin-top: -40px;
-  height: auto;
-  padding: 50px 0;
-  text-align: center;
-  color: $grayscale-dark;
-  /*background: $grayscale-dark url(../images/intro-bg.jpg) no-repeat scroll bottom center;*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-
-  .brand-heading img {
-    width: 240px;
-  }
-
-  .intro-body {
-    display: table-cell;
-    vertical-align: middle;
-
-    .brand-heading {
-      font-size: 40px;
-    }
-
-    .intro-text {
-      font-size: 18px;
-      font-family: $montserrat;
-    }
-  }
-}
-
-@media(min-width:$screen-xs-max) {
-  .intro {
-    height: 100%;
-    padding: 0;
-
-    .intro-body {
-
-      .brand-heading {
-        font-size: 100px;
-      }
-
-      .intro-text {
-        font-size: 25px;
-      }
-    }
-  }
-}
 
 .btn-circle {
   width: 70px;
