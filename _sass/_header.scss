@@ -15,6 +15,7 @@
     padding: 15px 15px 8px;
     color: $background-color;
     line-height: inherit;
+    opacity: 0;
 
     &:focus {
       outline: none;
@@ -31,6 +32,10 @@
       }
     }
   }
+  
+.navbar.navbar-custom.navbar-fixed-top.top-nav-collapse a.navbar-brand.page-scroll {
+  opacity: 100 !important;
+}
 
   a {
     color: $grayscale-dark;
