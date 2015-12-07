@@ -32,10 +32,10 @@
       }
     }
   }
-  
-.navbar.navbar-custom.navbar-fixed-top.top-nav-collapse a.navbar-brand.page-scroll {
-  opacity: 100 !important;
-}
+
+  .navbar-brand.page-scroll {
+    opacity: 100;
+  }
 
   a {
     color: $grayscale-dark;
