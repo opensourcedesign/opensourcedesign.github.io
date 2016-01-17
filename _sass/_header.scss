@@ -66,6 +66,15 @@
   }
 }
 
+.navbar-brand--invert {
+    visibility: hidden;
+    
+    .top-nav-collapse &{
+        visibility: visible;
+    }
+}
+
+
 .navbar-custom .navbar-collapse a {
   color: $grayscale-light;
 }
