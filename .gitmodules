@@ -1,0 +1,6 @@
+[submodule "resources"]
+	path = resources
+	url = https://github.com/opensourcedesign/resources
+[submodule "organization"]
+  path = organization
+  url = https://github.com/opensourcedesign/organization
