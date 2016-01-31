@@ -140,18 +140,27 @@ $('.navbar-collapse ul li a').click(function() {
 $(document).ready(function() {
   var template_item = _.template($('#template-events-item').html());
   var url = 'http://opensourcedesign.net/events/feed.xml';
-
+  
   var items_html = '';
-  $.ajax(url, function(d){
-    $(d).find('item').each(function() {
-      var $ev = $(this);
-      var item = {
-        title: $ev.find('title').text(),
-        link: $ev.find('link').text()
-      };
-      items_html = template_item(item);
-    });
-    $('#events-snapshot').html(items_html);
+  $.ajax({
+    url: url, 
+    success: function(d){
+      $('#events-snapshot').html('');
+      $(d).find('item').each(function(idx) {
+        if (idx <= 5) {
+          var $ev = $(this);
+          var item = {
+            title: $ev.find('title').text(),
+            link: $ev.find('link').text()
+          };
+          items_html = template_item(item);
+          $('#events-snapshot').append(items_html);
+        }
+      });
+    },
+    error: function() {
+      $('#events-snapshot').text('Sorry, but we couldn\'t load the events...');
+    }
   });
 });
 
@@ -163,16 +172,24 @@ $(document).ready(function() {
   var url = 'http://opensourcedesign.net/jobs/feed.xml';
 
   var items_html = '';
-  $.ajax(url, function(d){
-
-    $(d).find('item').each(function() {
-      var $ev = $(this);
-      var item = {
-        title: $ev.find('title').text(),
-        link: $ev.find('link').text()
-      };
-      items_html = template_item(item);
-    });
-    $('#jobs-snapshot').html(items_html);
+  $.ajax({
+    url: url, 
+    success: function(d){
+      $('#jobs-snapshot').html('');
+      $(d).find('item').each(function(idx) {
+        if (idx <= 5) {
+          var $ev = $(this);
+          var item = {
+            title: $ev.find('title').text(),
+            link: $ev.find('link').text()
+          };
+          items_html = template_item(item);
+          $('#jobs-snapshot').append(items_html);
+        }
+      });
+    },
+    error: function() {
+      $('#jobs-snapshot').text('Sorry, but we couldn\'t load the jobs...');
+    }
   });
 });
