@@ -3,6 +3,8 @@ layout: post
 date: 2015-05-23
 title: "Why open source designers need tools beyond text and code"
 category: 
+redirect_from: /2015/05/23/TextbasedToolsForDesigners.html
+permalink: /2015/05/23/text-based-tools-for-designers
 ---
 
 Text is the predominant means of creating and collaborating on software. Design is a visual and spacial activity. For those who design software and websites there is a non-visual world that needs to be navigated and taken into account: text in the form of program code and comments.
