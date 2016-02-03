@@ -3,6 +3,8 @@ layout: post
 date: 2015-07-10-20-00
 title: "This Month in Open Source Design - June (and some bits of July and May)"
 category: monthly-update
+redirect_from: /monthly-update/2015/07/10/this-month-in-open-source-design.html
+permalink: /2015/07/10/this-month-in-open-source-design
 ---
 
 # In IRC
