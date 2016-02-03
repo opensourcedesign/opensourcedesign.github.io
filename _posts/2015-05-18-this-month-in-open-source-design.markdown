@@ -1,8 +1,10 @@
 ---
 layout: post
-date: 2015-05-18-15-37
+date: 2015-05-18
 title: "This Month in Open Source Design"
 category: monthly-update
+redirect_from: /monthly-update/2015/05/18/this-month-in-open-source-design.html
+permalink: /2015/05/18/this-month-in-open-source-design
 ---
 
 # In IRC
