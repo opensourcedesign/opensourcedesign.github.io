@@ -19,3 +19,7 @@ markdown: kramdown
 
 sass:
     style: compressed
+
+# Enable the redirect_from plugin
+gems:
+  - jekyll-redirect-from
