@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Code of Conduct
 permalink: /code-of-conduct/
 ---
