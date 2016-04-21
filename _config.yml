@@ -2,24 +2,38 @@
 title: Open Source Design
 email:
 description: > # this means to ignore newlines until "baseurl:"
-  We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software.
+  We are a community of designers and developers aiming to push more
+  open design processes and improve the user experience and interface
+  design of open source software.
 
-baseurl: "" # the subpath of your site, e.g. /blog/
-
+#baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://opensourcedesign.net" # the base hostname & protocol for your site
 
-exclude: ["bower_components", "node_modules", "grunt", "sass", "bower.json", "package.json", "README.md"]
-
+exclude: ["bower_components", "node_modules", "grunt", "sass", "bower.json", 
+"package.json", "README.md"]
 
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+
+
+collections:
+  funding:
+    output: true
+    permalink: /funding/:path/
+  organization:
+    output: true
+    permalink: /organization/:path/
+  resources:
+    output: true
+    permalink: /resources/:path/
 
 sass:
     style: compressed
 
 # Enable the redirect_from plugin
-gems:
-  - jekyll-redirect-from
+#gems:
+#  - jekyll-redirect-from
