@@ -18,7 +18,7 @@ I've been making some crop icons for [openfarm](https://openfarm.cc/en), helping
 
 ![screencat](/images/interviews/julia/screencat.png)
 
-Why do you work on open source projects?
+## Why do you work on open source projects?
 
 I believe if people work together they can come up with valuable ideas that will help people solve problems or accomplish many different things.
 I think diversity is very important and I appreciate learning from other backgrounds.
