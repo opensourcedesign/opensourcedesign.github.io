@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "baseurl:"
 #baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://opensourcedesign.net" # the base hostname & protocol for your site
 
-include: ["_talks"]
+include: ["talks"]
 
 exclude: ["bower_components", "node_modules", "grunt", "sass", "bower.json", 
 "package.json", "README.md"]
