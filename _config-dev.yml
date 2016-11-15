@@ -1,3 +1,7 @@
+# Local Server
 local: true
 port: 4000
 url: "http://127.0.0.1:4000/"
+
+# Sub-Repos
+include: ["_events", "_jobs", "_organization", "_patterns", "_talks"]

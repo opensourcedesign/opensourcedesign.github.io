@@ -1,9 +1,0 @@
-[submodule "_funding"]
-	path = _funding
-	url = https://github.com/opensourcedesign/funding
-[submodule "_organization"]
-	path = _organization
-	url = https://github.com/opensourcedesign/organization
-[submodule "_resources"]
-	path = _resources
-	url = https://github.com/opensourcedesign/resources
