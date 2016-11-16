@@ -56,7 +56,7 @@ printf "\n"
 sleep 1
 echo -e "\e[34m                                 OPEN SOURCE DESIGN                    "
 printf "\n"
-echo -e "\e[34m           Bringing great design to free software one pixle at a time."
+echo -e "\e[34m           Bringing great design to free software one pixel at a time."
 sleep 3
 printf "\n"
 echo -e "\e[34m                  Now, let's get started cloning some repos!"
