@@ -1,0 +1,26 @@
+#! /bin/bash
+#
+# Prints outnice ASCII block letters of Open Source Design
+
+printf "\n"
+echo -e "\e[36m             ________                                          " 
+echo -e "\e[36m             \_____  \ ______   ____   ____                    "
+echo -e "\e[36m              /   |   \\____ \_/ __ \ /    \                   "
+echo -e "\e[36m             /  __|    |  |_> \  ___/|   |  \                  "
+echo -e "\e[36m             \_______  |   __/ \___  |___|  /                  "
+echo -e "\e[36m                     \/|__|        \/     \/                   "
+echo -e "\e[36m               _________                                       " 
+echo -e "\e[94m              /   _____/ ____  __ _________  ____  ____        "
+echo -e "\e[94m              \_____  \ /  _ \|  |  \_  __ _/ ____/ __ \       "
+echo -e "\e[94m              /        (  <_> |  |  /|  | \\  \__\  ___/       "
+echo -e "\e[94m             /_______  /\____/|____/ |__|   \___  \___  >      "
+echo -e "\e[94m                     \/                         \/    \/       "
+echo -e "\e[34m            ________                .__                        "
+echo -e "\e[34m            \______ \   ____   _____|__| ____   ____           "
+echo -e "\e[34m             |    |  \_/ __ \ /  ___|  |/ ___\ /    \          "
+echo -e "\e[34m             | ___|   \  ___/ \___ \|  / /_/  |   |  \         "
+echo -e "\e[34m            /_______  /\___  /____  |__\___  /|___|  /         "
+echo -e "\e[34m                    \/     \/     \/  /_____/      \/          "
+printf "\n"
+echo -e "\e[34m    Bringing great design to free software one pixle at a time!"
+printf "\n"
