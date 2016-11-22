@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Designers in Open Source: julia"
-date:   2016-04-04
+date:   2016-11-22
 categories: design open-source designer interview
 ---
 
