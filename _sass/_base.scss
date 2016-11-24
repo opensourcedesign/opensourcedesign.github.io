@@ -136,7 +136,7 @@ a {
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    text-decoration: underline;
     color: darken($grayscale-primary,0.2);
   }
 }
