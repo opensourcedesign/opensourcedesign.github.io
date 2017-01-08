@@ -15,6 +15,7 @@
     padding: 15px 15px 8px;
     color: $background-color;
     line-height: inherit;
+    opacity: 0;
 
     &:focus {
       outline: none;
@@ -30,6 +31,10 @@
         outline: none;
       }
     }
+  }
+
+  .navbar-brand.page-scroll {
+    opacity: 100;
   }
 
   a {
@@ -132,7 +137,7 @@
 .top-nav-collapse {
     .logo path {
         color: #fff;
-        fill: #fff;
+        fill: #FDFDFD;
     }
 }
 
