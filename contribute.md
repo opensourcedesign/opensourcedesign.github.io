@@ -4,13 +4,15 @@ title: Contribute
 permalink: /contribute/
 ---
 
-Hey, thanks for your interest in contributing to Open Source Design, we're
-excited you stopped by :)
+We're always excited to have new contributors. Our community is diverse in 
+ages, cultures, and interests so we like to operate under the motto:
 
-## Repositories
+> If you have a creative idea or something you want bring to the table just 
+> do it!
 
-Please make sure you glance at how we are currently our respositories and
-organization so that your contribution makes it in the right place.
+However, it can also be good to check-in if you're new and unsure about things. 
+Please read our [code of conduct](/code-of-conduct/) and take a moment to 
+consider how you can best contribute to Open Source Design.
 
 **Website** 
 
@@ -42,8 +44,8 @@ within the OSD community.
 
 ---
 
-All the other repositories are experimental and undecided exactly what to best
-do. Among those are:
+All the other Github repositories are experimental and undecided exactly what 
+to best do. Among those are:
 
 - [logos](https://github.com/opensourcedesign/logos) - 
 - [fonts](https://github.com/opensourcedesign/fonts)
