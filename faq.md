@@ -5,19 +5,38 @@ permalink: /faq/
 ---
 
 If you have questions relating to Open Source Design that **are not mentioned 
-below** please [open an issue](https://github.com/opensourcedesign/organization/issues).
+below** please [open an issue][issues-org].
+
+### What Does Involvement In OSD Mean
+
+It means whatever you want it to mean. You can design, code, blog, give design 
+feedback, help fundraise, you name it- we would love your contributions. Check
+out our [contribute page](/contribute/)
+
+### What Does Being a Member Mean
+
+Open Source Design offers a "choose-your-own" style of membership, it means you
+are welcome to chill in our [chat room][chat], [browse](/jobs/) or submit
+[design jobs][issues-jobs] for open source projects, help shape our
+[organization][repo-organization], and [attend](/events/) or [add your
+own][issues-events] design events.
+
+### Who Can Join
+
+Anyone can join. Ideally, we want people who contribute something, even if that
+means just leaving comments on various issues, as long as they're helpful and
+nice, we welcome you :)
 
 ### Do You Care About Free Software
 
-Absolutely. Free software is incredibly important to many of founders and core 
+Absolutely. Free software is incredibly important to many of founders and core
 contributors and founders of OSD and many of us use only free software daily.
 Many of us have dedicated our lives to working exclusively on free software.
 While we are aware of the definitions of ["open source" and "free
-software"](https://www.gnu.org/philosophy/open-source-misses-the-point.html),
-Open Source Design as a community, is not assigning a political stance to our 
-word choice and it's inherant semantic debate as per the Free Software Foundation
-asks people to "choose a side". That said, many of us agree with the FSF's 
-principles.
+software"][gnu-fs-os], Open Source Design as a community, is not assigning a
+political stance to our word choice and it's inherant semantic debate as per the
+Free Software Foundation asks people to "choose a side". That said, many of us
+agree with the FSF's principles.
 
 ### Why "Open Source" not "Free Software"
 
@@ -30,5 +49,13 @@ it stuck. The reasons we feel good about this choice are:
 3. Open source is a newer term and (can) have broader goals
 4. Acronyms (FOSS, FLOSS) are not user friendly
 5. Spelling out said acronyms is also not designer / user friendly
-6. Open source has done a better job at outreach and has broader public understanding
+6. Open source has done a better job at outreach and has broader public
+   understanding
 7. Open source as a concept extends beyond software yet can overlap with design
+
+[gnu-fs-os]: https://www.gnu.org/philosophy/open-source-misses-the-point.html ""
+[chat]: http://chat.opensourcedesign.net "Open Source Design Chat"
+[repo-org]: https://github.com/opensourcedesign/organization "Organization Repo"
+[issues-website]: https://github.com/opensourcedesign/opensourcedesign.github.io/issues "Website Issue Tracker"
+[issues-jobs]: https://github.com/opensourcedesign/jobs/issues "Jobs Issue Tracker"
+[issues-events]: https://github.com/opensourcedesign/events/issues "Events Issue Tracker"
