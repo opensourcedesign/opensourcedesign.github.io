@@ -29,6 +29,20 @@ collections:
 sass:
     style: compressed
 
+# Prose Config - what is seen at https://edit.opensourcedesign.net
+# Docs: https://github.com/prose/prose/wiki/Prose-Configuration
+prose:
+  rooturl: 
+  ignore: 
+    - 'CNAME'
+    - 'feed.xml'
+    - 'Gemfile'
+    - 'index.html'
+    - 'LICENSE'
+    - 'Rakefile'
+  siteurl: "http://opensourcedesign.net"
+  media: 'media' 
+
 # Enable the redirect_from plugin
 #gems:
 #  - jekyll-redirect-from
