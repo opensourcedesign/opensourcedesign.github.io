@@ -34,18 +34,18 @@ sass:
 prose:
   rooturl: 
   ignore:
-    - '_includes',
-    - '_layouts',
-    - '_sass',
-    - '_css',
-    - 'fonts',
-    - 'images',
-    - 'js',
-    - 'scripts',
-    - '.gitignore',
-    - '.travis.yml',
-    - '_config-dev.yml',
-    - '_config.yml',
+    - '_includes'
+    - '_layouts'
+    - '_sass'
+    - '_css'
+    - 'fonts'
+    - 'images'
+    - 'js'
+    - 'scripts'
+    - '.gitignore'
+    - '.travis.yml'
+    - '_config-dev.yml'
+    - '_config.yml'
     - 'CNAME'
     - 'feed.xml'
     - 'Gemfile'
