@@ -33,7 +33,19 @@ sass:
 # Docs: https://github.com/prose/prose/wiki/Prose-Configuration
 prose:
   rooturl: 
-  ignore: 
+  ignore:
+    - '_includes',
+    - '_layouts',
+    - '_sass',
+    - '_css',
+    - 'fonts',
+    - 'images',
+    - 'js',
+    - 'scripts',
+    - '.gitignore',
+    - '.travis.yml',
+    - '_config-dev.yml',
+    - '_config.yml',
     - 'CNAME'
     - 'feed.xml'
     - 'Gemfile'
