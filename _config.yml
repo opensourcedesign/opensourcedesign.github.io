@@ -37,7 +37,7 @@ prose:
     - '_includes'
     - '_layouts'
     - '_sass'
-    - '_css'
+    - 'css'
     - 'fonts'
     - 'images'
     - 'js'
@@ -52,9 +52,44 @@ prose:
     - 'index.html'
     - 'LICENSE'
     - 'Rakefile'
-  siteurl: "http://opensourcedesign.net"
-  media: 'media' 
-
-# Enable the redirect_from plugin
-#gems:
-#  - jekyll-redirect-from
+  metadata:
+    _posts:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
+      - name: "categories"
+        field:
+          element: "text"
+          label: "Categories"
+          placeholder: "Categories"
+          value: ""
+    _pages:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "layout"
+        field:
+          element: "select"
+          label: "Layout"
+          placeholder: "Layout"
+          options:
+            - name: "Default"
+              value: "default"
+            - name: "Page"
+              value: "page"
+            - name: "Post"
+              value: "post"
+      - name: "categories"
+        field:
+          element: "text"
+          label: "Categories"
+          placeholder: "Categories"
+          value: ""
