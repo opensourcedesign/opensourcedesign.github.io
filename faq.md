@@ -51,7 +51,32 @@ it stuck. The reasons we feel good about this choice are:
 5. Spelling out said acronyms is also not designer / user friendly
 6. Open source has done a better job at outreach and has broader public
    understanding
-7. Open source as a concept extends beyond software yet can overlap with design
+7. Open source as a concept extends beyond software
+
+### How are you different from Open Design
+
+There is a community called [Open Design](http://opendesign.foundation) that
+sometimes gets confused as us. From [this conversation](https://github.com/opensourcedesign/resources/issues/14) our
+differences are:
+
+> Open Source Design is building a community of designers working on open
+> source, while Open Design is focusing on building open workflows for
+> designers.  Open Design is not building tools for the sake of building tools,
+> but to build a community of designers working towards more open practices. 
+
+Open Design targets the wider design community, while Open Source Design targets
+getting more people (including designers) involved in designing for Open Source
+Software. This image by [GarthDB](http://garthdb.com) does a good job of
+explaining:
+
+![differences](/images/osd-vs-od.png)
+
+###  Why are you using IRC
+
+We've talked a lot of the benefits of each chat tool out there. Ultimately it
+comes down to a split in "open" versus "practical". We're still trying to figure
+out what the best tool is for our community, but we're [working on
+it](https://github.com/opensourcedesign/slick) and also see [this conversation](https://github.com/DesignOpen/designopen.github.io/issues/195).
 
 [gnu-fs-os]: https://www.gnu.org/philosophy/open-source-misses-the-point.html ""
 [chat]: http://chat.opensourcedesign.net "Open Source Design Chat"
