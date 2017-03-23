@@ -21,7 +21,7 @@ use a terminal. Some web development knowledge is also helpful.
 1. Install Jekyll using and other ruby gems
 
 ```
-gem install jekyll github-pages html-proofer
+gem install bundler jekyll github-pages html-proofer
 ```
 
 2. Fork and clone the main website repository
