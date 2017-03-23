@@ -2,11 +2,7 @@
 
 Website of the Open Source Design community, hosted on Github pages.
 
-## Contributing
-
-Great. We love people contributing :)
-
-### Content
+## Contribute Content
 
 Editing content on [opensourcedesign.net][osd-net] can be done in two relatively 
 simple ways, both of which, require a GitHub account.
@@ -17,13 +13,12 @@ simple ways, both of which, require a GitHub account.
 
 2. Using the [Prose Editor](http://edit.opensourcedesign.net) 
 
-### Design, Code, Etc...
+## Contribte Code & Design
 
-This step requires you having `ruby`  and `git` installed, some basic ability to
-use a terminal, as well as web-development knowledge of templates. In your
-terminal 
+This step requires having `ruby` and `git` installed and some basic ability to
+use a terminal. Some web development knowledge is also helpful.
 
-1. Install Jekyll using and other ruby gems
+1. In your terminal to istall Jekyll using and other ruby gems
 
 ```
 gem install jekyll github-pages html-proofer
@@ -37,7 +32,7 @@ git clone git@github.com:opensourcedesign/opensourcedesign.github.io
 
 3. Run our installer script
 
-*This will pull down all of the repositories that consitute our website. Note:
+*This will pull down all of the repositories to build our website. Note:
 you need to be a member of our GitHub organization for this to work.*
 
 ```
