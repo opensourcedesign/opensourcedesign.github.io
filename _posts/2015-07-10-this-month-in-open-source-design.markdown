@@ -29,7 +29,7 @@ We talked about (or what some members of our community have been up to):
 
 # On Github
 
-* Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/TextbasedToolsForDesigners.html).
+* Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/text-based-tools-for-designers).
 * We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/17) with some concepts.
 * This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)!
 * Our [code of conduct](//opensourcedesign.net/code-of-conduct/) is up for discussion.
@@ -37,3 +37,8 @@ We talked about (or what some members of our community have been up to):
 # Events
 
 * We're planning for [FOSDEM 2016](http://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)
+
+<br>
+<br>
+
+NOTE: *26.3.2017*: Updated link to [post on tools for designers](http://opensourcedesign.net/2015/05/23/text-based-tools-for-designers)
