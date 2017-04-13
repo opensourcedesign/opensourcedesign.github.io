@@ -36,7 +36,7 @@ Before taking initiative, here's a useful checklist:
 3. Have you asked on IRC or on GitHub whether it's been discussed before?
 4. Can you personally see this through to the end?
 5. Can you find people who could offer opinions or feedback on your
-  initiative? A good place to start is the people listed on the core
+  initiative? A good place to start is the people listed on the [core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577)
 6. Do you think this is a major enough initiative that it would require
   community feedback?
  
