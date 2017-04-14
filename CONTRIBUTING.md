@@ -35,7 +35,7 @@ Post something to our [job board](opensourcedesign.net/jobs/job-form/).
 
 ## Want to talk about design? 
 
-Join us on our forum and jump right in :)
+Join us on our forum and [tell us about yourself](https://discourse.opensourcedesign.net/t/introductions-come-in-say-hi/41).
 
 ## Want to organize a local or international event?
 
