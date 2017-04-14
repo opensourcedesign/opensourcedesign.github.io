@@ -63,7 +63,7 @@ Most of our community are adults and should know when it's ok to flirt with othe
 
 ## Where this CoC is upheld
 
-This code of conduct especially pertains to our community platforms (IRC: [#opensourcedesign](http://chat.opensourcedesign.net), GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign)), Facebook: [@opensrcdesign](https://www.facebook.com/opensrcdesign/) but this also pertains to your personal public communications and views.
+This code of conduct especially pertains to our community platforms (IRC: [#opensourcedesign](http://chat.opensourcedesign.net), GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Facebook: [@opensrcdesign](https://www.facebook.com/opensrcdesign/), Discourse: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) but this also pertains to your personal public communications and views.
 
 Being a respectful contributor to Open Source Design by day and a ragging (or even mild) neo-nazi by night is still grounds for expulsion. Some people see this as impinging on personal freedoms, we disagree, sorry.
 
@@ -73,7 +73,17 @@ If a participant engages in behavior violating this code of conduct, the core me
 
 ## Reporting violations
 
-If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: [Kriesse](mailto:kristina@cssconf.eu),  [Jan](mailto:hey@jancborchardt.net), [Danilla](mailto:needs@email.com), [Brennan](mailto:hi@brennannovak.com), [Simon](mailto:contact@vansintjan.net), or [Gilli](mailto:gilli@axe.is) and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
+If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: 
+* [Kriesse](mailto:kristina@cssconf.eu),  
+* [Jan](mailto:hey@jancborchardt.net), 
+* [Danilla](mailto:needs@email.com), 
+* [Brennan](mailto:hi@brennannovak.com), 
+* [Simon](mailto:contact@vansintjan.net), or 
+* [Gilli](mailto:gilli@axe.is) 
+
+and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
+
+You can also reach out to our core contributors by e-mailing [core@opensourcedesign.net](mailto:core@opensourcedesign.net). For the full list of who will receive that e-mail, check in [this issue discussing the core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577).
 
 ## Decisions about consequences
 
