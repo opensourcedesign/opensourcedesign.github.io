@@ -31,16 +31,18 @@ by FOSS projects.
  
 Before taking initiative, here's a useful checklist:
 
-* [ ] Can you name the problem?
-* [ ] Have you seen other people discuss it?
-* [ ] Have you asked on IRC or on GitHub whether it's been discussed before?
-* [ ] Can you personally see this through to the end?
-* [ ] Can you find people who could offer opinions or feedback on your
-  initiative?
-* [ ] Do you think this is a major enough initiative that it would require
+1. Can you name the problem?
+2. Have you seen other people discuss it?
+3. Have you asked on IRC or on GitHub whether it's been discussed before?
+4. Can you personally see this through to the end?
+5. Can you find people who could offer opinions or feedback on your
+  initiative? A good place to start is the people listed on the [core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577)
+6. Do you think this is a major enough initiative that it would require
   community feedback?
  
-1. Name the problem.
+Then, once you've identified the problem:
+ 
+1. Name the problem to the community.
 2. If the problem needs a approval from the wider community (eg, accept a
 project as an umbrella project) then we will put it to a vote after a certain
 amount (TODO: how long?) of discussion on it has happened.  The vote will be
@@ -61,17 +63,17 @@ decision makers.  Final decisions should still lay with the community
  
 **Things that need community approval**
 
-Generally these are
-things that you feel uncomfortable deciding for the rest of the community. For
-example: Drastic design changes for the website Community logo What projects to
+Generally these are things that you feel uncomfortable deciding for the rest of the community. 
+For example: Drastic design changes for the website Community logo What projects to
 have underneath the open source design umbrella of projects (front page
 projects) …
  
 **Things that don't need community approval**
 
-Adding content to the existing
-structures: Adding people to the organization Adding projects to the job board
-Adding resources to the resources repository etc
+Adding content to the existing structures: 
+* Adding people to the organization 
+* Adding projects to the job board
+* Adding resources to the resources repository etc
   
 We want to encourage people to take initiative. If someone thinks they can
 lead the charge on something they should do  so after asking whether anyone else
