@@ -74,16 +74,16 @@ If a participant engages in behavior violating this code of conduct, the core me
 ## Reporting violations
 
 If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: 
-* [Kriesse](mailto:kristina@cssconf.eu),  
-* [Jan](mailto:hey@jancborchardt.net), 
-* [Danilla](mailto:needs@email.com), 
-* [Brennan](mailto:hi@brennannovak.com), 
-* [Simon](mailto:contact@vansintjan.net), or 
-* [Gilli](mailto:gilli@axe.is) 
+* Kriesse (`kristina at cssconf.eu`),  
+* Jan (`hey at jancborchardt.net`), 
+* Danilla,
+* Brennan (`hi at brennannovak.com`), 
+* Simon (`contact at vansintjan.net`), or 
+* Gilli (`gilli at axe.is`) 
 
 and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
 
-You can also reach out to our core contributors by e-mailing [core@opensourcedesign.net](mailto:core@opensourcedesign.net). For the full list of who will receive that e-mail, check in [this issue discussing the core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577).
+You can also reach out to our core contributors by e-mailing `core at opensourcedesign.net`. For the full list of who will receive that e-mail, check in [this issue discussing the core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577).
 
 ## Decisions about consequences
 
