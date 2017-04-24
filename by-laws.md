@@ -11,9 +11,21 @@ permalink: /by-laws/
 
 You can read more [here](/about/)
 
+## Open
+
+We are an open community. 
+Any conversation or decisions that impact the future of our community need to be available to as large a part of our community and the general public as possible.
+
+What does that mean?
+
+1. Conversations that impact the community should not happen in invite-only spaces.
+2. content should be accessible (Preferably ADA accessible. ie. text to speech software should be able to parse it)
+3. As best as we can we should use software that follows Free, Libre, and Open definitions and standards.
+4. This doesn't apply to conversations that require a high level of trust and confidentiality. An example of this is breaches to our [Code of Conduct](http://opensourcedesign.net/code-of-conduct/). See how to do that in [Reporting Violations](http://opensourcedesign.net/code-of-conduct/#reporting-violations).
+
 ## Reaching Consensus
  
-* We're an organization of volunteers spread around the globe with no hierarchy. 
+* We're an organization of volunteers spread around the globe with as little hierarchy as possible. 
 * We still want to be able to make decisions.
 * We want to encourage people to take initiative. This is hard if we don't have
   set rules for doing so.
