@@ -7,7 +7,7 @@ permalink: /by-laws/
 ## Mission
  
 > We are a community of designers and developers pushing more open design
-> processes and improving the design of open source apps.
+> processes and improving the design of open source and free software.
 
 You can read more [here](/about/)
 
