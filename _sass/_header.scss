@@ -4,16 +4,12 @@
 
 .navbar-custom {
   margin-bottom: 0;
-  border-bottom: 1px solid transparentize($grayscale-dark, 0.7);
-  text-transform: uppercase;
   font-family: $montserrat;
-  background-color: $grayscale-dark;
 
   .navbar-brand {
     font-weight: 700;
     height: auto;
     padding: 15px 15px 8px;
-    color: $background-color;
     line-height: inherit;
     opacity: 0;
 
@@ -92,11 +88,7 @@
 
   .navbar-custom.top-nav-collapse {
     padding: 0;
-    background-color: $grayscale-dark;
-
-    a {
-      color: $grayscale-light;
-    }
+    border-bottom: 1px solid transparentize($grayscale-dark, 0.7) !important;
   }
 
   .navbar-custom {
@@ -129,15 +121,8 @@
     display: inline-block;
 
     path {
-        color: #000;
-        fill: #fff;
-    }
-}
-
-.top-nav-collapse {
-    .logo path {
         color: #fff;
-        fill: #FDFDFD;
+        fill: #000;
     }
 }
 
