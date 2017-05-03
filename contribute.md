@@ -47,7 +47,7 @@ within the OSD community.
 All the other Github repositories are experimental and undecided exactly what 
 to best do. Among those are:
 
-- [logos](https://github.com/opensourcedesign/logos) - 
+- [logos](https://github.com/opensourcedesign/logos) 
 - [fonts](https://github.com/opensourcedesign/fonts)
 - [icons](https://github.com/opensourcedesign/icons)
 - [patterns](https://github.com/opensourcedesign/patterns)
