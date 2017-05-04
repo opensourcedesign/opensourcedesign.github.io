@@ -8,7 +8,6 @@ description: > # this means to ignore newlines until "baseurl:"
 
 #baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://opensourcedesign.net" # the base hostname & protocol for your site
-
 exclude: ["bower_components", "node_modules", "grunt", "sass", "scripts", "bower.json", "package.json", "README.md"]
 
 twitter_username: opensrcdesign
@@ -31,6 +30,9 @@ sass:
 
 # Prose Config - what is seen at https://edit.opensourcedesign.net
 # Docs: https://github.com/prose/prose/wiki/Prose-Configuration
+
+edit_url: "https://edit.opensourcedesign.net/#opensourcedesign/opensourcedesign.github.io/edit/master/"
+
 prose:
   rooturl: 
   ignore:
