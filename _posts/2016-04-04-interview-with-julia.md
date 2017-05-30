@@ -86,4 +86,4 @@ Of course the git integration is a great bonus.
 Gimp is really great.
 I believe it still needs a lot more design love in the terms of usability and experience but it's very advanced and you can accomplish a lot with it.
 
-Julia is on [Twitter](https://twitter.com/jlsmp) and [GitHub](github.com/jsimplicio).
+Julia is on [Twitter](https://twitter.com/JulesSimplicio) and [GitHub](https://github.com/jsimplicio).
