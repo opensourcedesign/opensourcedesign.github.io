@@ -13,10 +13,10 @@
     font-weight: 700;
     height: auto;
     padding: 15px 15px 8px;
-    color: $background-color;
+    color: $grayscale-dark;
     line-height: inherit;
     opacity: 0;
-
+    
     &:focus {
       outline: none;
     }
@@ -34,7 +34,7 @@
   }
 
   .navbar-brand.page-scroll {
-    opacity: 100;
+    opacity: 1;
   }
 
   a {
@@ -65,6 +65,15 @@
     }
   }
 }
+
+.navbar-brand--invert {
+    visibility: hidden;
+    
+    .top-nav-collapse &{
+        visibility: visible;
+    }
+}
+
 
 .navbar-custom .navbar-collapse a {
   color: $grayscale-light;
@@ -130,7 +139,7 @@
 
     path {
         color: #000;
-        fill: #fff;
+        fill: $grayscale-dark;
     }
 }
 
