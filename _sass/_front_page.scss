@@ -16,7 +16,8 @@
 
   .brand-heading {
     img, svg {
-      width: 240px;
+      width: 120px;
+      padding-top: 20px
     }
     svg {
       display: block;
@@ -57,6 +58,7 @@
 
       .intro-text {
         font-size: 36px;
+        font-weight: bold;
       }
     }
   }
