@@ -51,6 +51,10 @@
         -moz-transition: background .3s ease-in-out;
         transition: background .3s ease-in-out;
 
+        &.active {
+          font-weight: bold;
+        }
+
         &:hover,
         &:focus,
         &.active {
