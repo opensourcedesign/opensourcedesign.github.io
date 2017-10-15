@@ -62,8 +62,12 @@
   }
 }
 
+.navbar-collapse {
+    background: #fff;
+}
+
 .navbar-custom .navbar-collapse a {
-  color: $grayscale-light;
+  color: #000;
 }
 
 .navbar-custom .navbar-brand {
@@ -83,7 +87,7 @@
   }
 
   .navbar-custom .navbar-collapse a {
-    color: $grayscale-dark;
+    color: #000;
   }
 
   .navbar-custom.top-nav-collapse {
@@ -185,7 +189,7 @@
                 height: 15px;
 
                 path {
-                    fill: $grey-color-dark;
+                    fill: #000;
                 }
             }
         }
