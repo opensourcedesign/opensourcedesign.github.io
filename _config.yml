@@ -25,6 +25,9 @@ collections:
   resources:
     output: true
     permalink: /resources/:path/
+  people:
+    output: true
+    permalink: /people/:path/
 
 sass:
     style: compressed
@@ -32,7 +35,7 @@ sass:
 # Prose Config - what is seen at https://edit.opensourcedesign.net
 # Docs: https://github.com/prose/prose/wiki/Prose-Configuration
 prose:
-  rooturl: 
+  rooturl:
   ignore:
     - '_includes'
     - '_layouts'

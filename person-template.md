@@ -5,7 +5,7 @@ name: Your Name/
 github: github-username (don't add an '@')
 url: http://your-website.com
 tags: designer, javascript, iconographer, typesetter, badger collector
-status: booked / available
+availability: booked / available
 rate: gratis / $60 hour / flexible / etc...
 projects: opensourcedesigners/job-board, opensourcedesigners/resources, github-user/repo-name
 ---

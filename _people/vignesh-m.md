@@ -5,7 +5,7 @@ name: Vignesh M
 github: vigzmv
 url: https://vigneshm.com
 tags: javascript, python, django, react, fullstack
-status: available
+availability: available
 rate: flexible
 projects: https://github.com/vigzmv
 ---
