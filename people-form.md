@@ -11,8 +11,8 @@ permalink: /people-form/
   <div class="row">
   <div class="col-md-10 col-md-offset-1">
   <h1>List Yourself on Our Site</h1>
-  <p class="lead">If you work on a free / open source project and you want to be listed on our site. You'll join our listing.<a
-href="/jobs/">jobs page</a>.</p>
+  <p class="lead">If you work on a free / open source project and you want to be listed on our site. You'll join our listing on <a
+href="/people/">the people page</a>.</p>
   <p class="lead"><a href="http://opensourcedesign.net/code-of-conduct/">We have a code of conduct</a>. Please read it before submitting your profile.</p>
   <form method="POST" action="https://api.staticman.net/v2/entry/opensourcedesign/opensourcedesign.github.io/master">
     <!-- <input name="options[redirect]" type="hidden" value="http://opensourcedesign.net/jobs/thank-you/"> -->
