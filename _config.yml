@@ -24,6 +24,9 @@ collections:
   resources:
     output: true
     permalink: /resources/:path/
+  people:
+    output: true
+    permalink: /people/:path/
 
 sass:
     style: compressed

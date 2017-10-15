@@ -8,8 +8,8 @@ layout: default
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <h1 class="brand-heading">{% include img/opensourcedesign-logo.svg %}</h1>
-                    <p class="intro-text">Open Source Design</p>
+                    <div class="brand-heading">{% include img/opensourcedesign-logo.svg %}</div>
+                    <h1 class="intro-text">Open Source Design</h1>
                     <p class="tagline">Bringing great design to Open Source Software
                     </p>
                 </div>
@@ -40,7 +40,6 @@ layout: default
             {% for post in site.posts limit:3 %}
                 <div class="post">
                     <h3><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title }}</a></h3>
-                    <div class="excerpt">{{ post.excerpt }}</div>
                 </div>
             {% endfor %}
         </div>
@@ -76,7 +75,7 @@ layout: default
                     <a href="https://github.com/{{ site.github_username }}" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                 </li>
                 <li>
-                    <a href="http://chat.opensourcedesign.net/" class="btn btn-default btn-lg"><i class="fa fa-comment fa-fw"></i> <span class="network-name">Chat</span></a>
+                    <a href="https://webchat.freenode.net/?channels=opensourcedesign" class="btn btn-default btn-lg"><i class="fa fa-comment fa-fw"></i> <span class="network-name">Chat</span></a>
                 </li>
                 <li>
                     <a href="https://orgmanager.miguelpiedrafita.com/o/opensourcedesign" class="btn btn-default btn-lg"><i class="fa fa-users fa-fw"></i> <span class="network-name">Join us!</span></a>

@@ -4,7 +4,7 @@
   height: auto;
   margin-top: -50px;
   margin-bottom: $spacing-unit * 2;
-  margin-bottom: 5em;
+  margin-bottom: 2em;
   padding: 50px 0;
   text-align: center;
   color: $grayscale-dark;
@@ -16,7 +16,8 @@
 
   .brand-heading {
     img, svg {
-      width: 240px;
+      width: 120px;
+      padding-top: 20px
     }
     svg {
       display: block;
@@ -26,20 +27,28 @@
 
   .intro-body {
     display: table-cell;
+    padding: 3em 0;
     vertical-align: middle;
+    background-image: url('../images/2017-fosdem-picture-compressed-blur30px.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    color: #fff;
 
     .brand-heading {
       font-size: 40px;
+      margin-bottom: .2em;
+
+      path {
+        color: #000;
+        fill: #fff;
+      }
     }
 
     .intro-text {
       font-size: 18px;
       margin-bottom: .5em;
       font-family: $montserrat;
-    }
-
-    .tagline {
-      color: $grey-color;
     }
   }
 }
@@ -57,6 +66,7 @@
 
       .intro-text {
         font-size: 36px;
+        font-weight: bold;
       }
     }
   }
