@@ -1,0 +1,24 @@
+small {
+  color: #737373;
+  font-weight: normal;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.help-block {
+  width: 70%;
+}
+
+legend {
+  font-size: 25px;
+}
+
+.form-control {
+  width: 70%;
+}
+
+a.btn.disabled {
+  pointer-events: auto;
+}
