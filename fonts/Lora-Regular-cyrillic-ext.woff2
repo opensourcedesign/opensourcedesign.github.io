@@ -1,0 +1,11 @@
+--2017-07-03 14:37:11--  http://fonts.gstatic.com/s/lora/v10/Ukd0sOIY4JZgcODPuj2G3Q.woff2
+Resolving fonts.gstatic.com (fonts.gstatic.com)... 172.217.19.195, 2a00:1450:400e:808::2003
+Connecting to fonts.gstatic.com (fonts.gstatic.com)|172.217.19.195|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20792 (20K) [font/woff2]
+Saving to: ‘Ukd0sOIY4JZgcODPuj2G3Q.woff2’
+
+     0K .......... ..........                                 100%  145K=0.1s
+
+2017-07-03 14:37:11 (145 KB/s) - ‘Ukd0sOIY4JZgcODPuj2G3Q.woff2’ saved [20792/20792]
+
