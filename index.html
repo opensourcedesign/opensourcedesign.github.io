@@ -40,7 +40,6 @@ layout: default
             {% for post in site.posts limit:3 %}
                 <div class="post">
                     <h3><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title }}</a></h3>
-                    <div class="excerpt">{{ post.excerpt }}</div>
                 </div>
             {% endfor %}
         </div>
