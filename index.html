@@ -19,22 +19,23 @@ layout: default
 </header>
 
 <!-- About Section -->
-<section id="about" class="container content-section text-center">
+<section id="about" class="container content-section">
     <div class="row">
-        <div class="col-md-5"> <p>We are a community of designers and developers pushing more open design processes and improving the user experience and interface design of open source software.</p>
+        <div class="col-md-4">
+            <p><strong>We are a community of designers and developers pushing more open design processes and improving the user experience and interface design of open source software.</strong></p>
         </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-5"> <p>We write <a href="/articles">articles</a>, run a <a href="//opensourcedesign.net/jobs/">job board</a>, put on <a href="//opensourcedesign.net/events/">events</a>, provide <a href="//github.com/opensourcedesign/resources/">resources</a>, and present talks targeted at <strong>developers and designers</strong> interested in working and designing in Open Source.</p></div>
-        <p class="goals">Read more about <a href="/about/">our goals</a>.</p>
-        <p class="contributing">Interested in contributing? Check out the <a href="http://opensourcedesign.net/contribute/" title="contribute">section on our site</a> for that.</p>
-        <p class="group">And join our <a href="https://github.com/opensourcedesign/organization/issues/29">Group on GitHub</a>.</p>
-
+        <div class="col-md-4">
+            <p>We write <a href="/articles">articles</a>, run a <a href="/jobs">job board</a>, put on <a href="/events">events</a>, provide <a href="/resources">resources</a>, and present talks targeted at <strong>developers and designers</strong> interested in working and designing in Open Source.</p>
+        </div>
+        <div class="col-md-4">
+            <p class="goals">Read more about <a href="/about/">our goals</a>. If you are interested in contributing, check out the <a href="http://opensourcedesign.net/contribute/" title="contribute">section on our site</a> for that. Also join our <a href="https://orgmanager.miguelpiedrafita.com/o/opensourcedesign" target="_blank">organization on GitHub</a> and <a href="https://discourse.opensourcedesign.net" target="_blank">our forum</a>.</p>
+        </div>
     </div>
 
 </section>
 
-<section id="overview" class="content-section overview">
-    <div class="container">
+<section id="overview" class="container content-section overview">
+    <div class="row">
         <div class="col-md-4">
             <h2>Articles</h2>
             {% for post in site.posts limit:3 %}
@@ -53,7 +54,9 @@ layout: default
             <div id="jobs-snapshot">Automatically generate jobs...</div>
             <a href="/jobs">See all jobs</a>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-sm-12 activity">
             <h2>Activity</h2>
             <ul id="activity-feed" class="activity"></ul>
