@@ -1,6 +1,8 @@
 status:
-  - name: "Open"
-    value: "open"
+  - name: "Searching"
+    value: "search"
+  - name: "Negotiating"
+    value: "negotiating"
   - name: "Started"
     value: "started"
   - name: "Completed"
