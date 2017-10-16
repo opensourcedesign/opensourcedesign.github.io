@@ -7,7 +7,7 @@
 #
 # To add/remove repos simply edit the "repos" array that starts on line 16
 #
-# :authors: Brennan Novak, 01AEEADB9EED1B5B4280E5B6C4CAA23B0F8C68B2
+# :authors: Brennan Novak, AA0B28294A637731AD529F34E3E838B0D4EBE62A
 # :license: BSD license
 # :date 16 November 2016
 # :version: 0.0.1
@@ -18,7 +18,6 @@ declare -a repos=(
 	"jobs"
 	"organization"
 	"patterns"
-	"resources"
 	"talks"
 )
 line="--------------------------------------------------------------------------------"
