@@ -3,6 +3,8 @@ layout: post
 date: 2015-05-23
 title: "Why open source designers need tools beyond text and code"
 category: 
+authors:
+  - jdittrich 
 redirect_from: /2015/05/23/TextbasedToolsForDesigners.html
 permalink: /2015/05/23/text-based-tools-for-designers
 ---

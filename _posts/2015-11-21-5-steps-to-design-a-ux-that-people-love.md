@@ -3,6 +3,8 @@ layout: post
 title:  "5 Steps to Design a UX that People Love"
 date:   2015-11-21
 categories: design open-source ux user-experience
+authors: 
+  - rdbartlett 
 redirect_from: /design/open-source/ux/user-experience/2015/11/21/5-steps-to-design-a-ux-that-people-love.html
 permalink: /2015/11/21/5-steps-to-design-a-ux-that-people-love
 ---
