@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Simon Vansintjan, slow source
-name: Simon/
+name: Simon
 github: simonv3
 url: http://piranhabay.co.uk
 tags: designer, javascript, user experience, user research, slow web
