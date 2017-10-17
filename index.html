@@ -39,8 +39,8 @@ layout: default
         </p>
     </div>
 </section>
-<section id="overview" class="content-section overview">
-    <div class="container">
+<section id="overview" class="container content-section overview">
+    <div class="row">
         <div class="col-md-4">
             <h2>Articles</h2>
             {% for post in site.posts limit:3 %}
@@ -59,6 +59,8 @@ layout: default
             <div id="jobs-snapshot">Automatically generate jobs...</div>
             <a href="/jobs">See all jobs</a>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12 activity">
             <h2>Activity</h2>
             <ul id="activity-feed" class="activity"></ul>
