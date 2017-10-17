@@ -13,6 +13,9 @@ exclude: ["bower_components", "node_modules", "grunt", "sass", "scripts", "bower
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
 
+#Not check data in vendor
+exclude: [vendor]
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
