@@ -8,6 +8,8 @@ categories:
   - collaboration
   - tools
   - design
+authors:
+  - studiospring
 ---
 
 Despite the rising awareness and acceptance of UX design, in particular on the web, it has failed to gain much traction in open source software. If for argument's sake, we take UX design to have started in 1995 when [Don Norman started work for Apple as a "user experience architect"](http://blog.invisionapp.com/a-brief-history-of-user-experience/), even though it has a longer history, then the fact that design has failed to make much impact in the open source world for over 20 years suggests that there are structural and systemic barriers that make design and open source development as compatible to each other as oil and water.

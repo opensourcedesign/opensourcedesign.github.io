@@ -1,0 +1,9 @@
+status: &status
+  - name: "Upcoming"
+    value: "upcoming"
+  - name: "Started"
+    value: "started"
+  - name: "Past"
+    value: "Past"
+  - name: "Cancelled"
+    value: "cancelled"

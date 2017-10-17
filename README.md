@@ -11,33 +11,50 @@ simple ways, both of which, require a GitHub account.
 
 ![Github file tools](images/github-file-tools.png)
 
-2. Using the [Prose Editor](http://edit.opensourcedesign.net) 
+2. Using the [Prose Editor][osd-prose]
+3. Modifying source code (technical)
 
 ## Code & Design The Website
 
-This step requires having `ruby` and `git` installed and some basic ability to
-use a terminal. Some web development knowledge is also helpful.
+You need some basic ability to use a terminal as well as some knowledge of web 
+development like HTML, CSS, and JavaScript. The site is built with the following
+programming tools:
+
+- [Jekyll][jekyll]
+- [Bootstrap][bootstrap]
+
+### Installing
+
+This step requires having a `ruby` development environment and `git` installed 
+and configured to connect to Github with SSH. 
+
+- [Installing Ruby][installing-ruby]
+- [Using Github with SSH][github-ssh]
 
 1. Install Jekyll using and other ruby gems
 
 ```
-gem install bundler jekyll github-pages html-proofer
+sudo gem install bundler 
 ```
 
 2. Fork and clone the main website repository
 
 ```
 git clone git@github.com:opensourcedesign/opensourcedesign.github.io
+cd opensourcedesign.github.io/
+bundle install
 ```
 
 3. Run our installer script
 
-*This will pull down all of the repositories to build our website. Note:
-you need to be a member of our GitHub organization for this to work.*
+This will pull down all of the repositories (jobs, events, etc...) and put them
+in there proper place to build our website locally.
 
 ```
 ./scripts/install.sh 
 ```
+
+*Note: you need to be a member of our [GitHub organization][osd-org].*
 
 4. Build the static site & watch for files 
 
@@ -45,4 +62,18 @@ you need to be a member of our GitHub organization for this to work.*
 jekyll serve --watch --config _config.yml,_config-dev.yml
 ```
 
-[osd-net]: http://opensourcedesign.net "Open Source Design"
+### Updating
+
+Updating the various repos can be done with running the this script
+
+```
+./scripts/update.sh
+```
+
+[osd-net]: http://opensourcedesign.net
+[osd-prose]: http://edit.opensourcedesign.net
+[osd-org]: https://github.com/opensourcedesign/
+[jekyll]: https://jekyllrb.com
+[bootstrap]: https://getbootstrap.com
+[installing-ruby]: https://www.ruby-lang.org/en/documentation/installation/
+[github-ssh]: https://help.github.com/articles/connecting-to-github-with-ssh/

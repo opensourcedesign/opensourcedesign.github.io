@@ -23,7 +23,6 @@ declare -a repos=(
 	"_jobs"
 	"_organization"
 	"_patterns"
-	"_resources"
 	"_talks"
 )
 line="--------------------------------------------------------------------------------"

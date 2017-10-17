@@ -1,0 +1,15 @@
+header_links:
+  - name: Goals
+    url: /goals/
+  - name: Articles
+    url: /articles/
+  - name: Resources
+    url: /resources/
+  - name: Projects
+    url: /projects/
+  - name: Jobs
+    url: /jobs/
+  - name: Events
+    url: /events/
+  - name: Forum
+    url: https://discourse.opensourcedesign.net/

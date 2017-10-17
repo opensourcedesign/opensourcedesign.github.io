@@ -1,7 +1,7 @@
 ---
 layout: post
-title: About
-permalink: /about/
+title: Goals
+permalink: /goals/
 ---
 
 # What We Want to Achieve
