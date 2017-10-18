@@ -1,3 +1,11 @@
+span.compensation.gratis {
+    color: #ea1616;
+}
+
+span.compensation.paid {
+    color: #1a980e;
+}
+
 small {
   color: #737373;
   font-weight: normal;
