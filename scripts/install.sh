@@ -13,14 +13,23 @@
 # :version: 0.0.1
 # -----------------------------------------------------------------------------
 
-declare -a repos=(
-	"events"
-	"jobs"
+MSG_START="\e[36m 1. Getting code now\e[0m"
+MSG_DONE="\e[34m 2. Done installing repo\e[0m"
+MSG_EXISTS="\e[34m That repo is already installed\e[0m"
+
+declare -a REPOS=(
 	"organization"
 	"patterns"
 	"talks"
 )
-line="--------------------------------------------------------------------------------"
+LINE="--------------------------------------------------------------------------------"
+
+# GH username
+if [[ $1 == "osd" ]]; then
+    USERNAME="opensourcedesign"
+else
+    USERNAME=$1
+fi
 
 # Start It Up
 printf "\n"
@@ -53,35 +62,52 @@ echo -e "\e[34m                             0x@@@@              x@@@@x0         
 echo -e "\e[34m                               0x0                x0                   "
 printf "\n"
 sleep 1
-echo -e "\e[34m                                 OPEN SOURCE DESIGN                    "
+echo -e "\e[34m                                 OPEN SOURCE DESIGN\e[0m"
 printf "\n"
-echo -e "\e[34m           Bringing great design to free software one pixel at a time."
-sleep 3
-printf "\n"
-echo -e "\e[34m                  Now, let's get started cloning some repos!"
-printf "\n"
+echo -e "\e[34m           Bringing great design to free software one pixel at a time.\e[0m"
 sleep 1
-echo -e "\e[94m$line"
+printf "\n"
+echo -e "\e[34m                  Now, let's get started cloning some repos!\e[0m"
+printf "\n"
+echo -e "\e[94m$LINE\e[0m"
+sleep 1
+echo -e "\e[34m Using username: ${USERNAME}\e[0m"
+echo -e "\e[94m$LINE\e[0m"
 sleep 1
 
-# Actually Clone Things
-for repo in "${repos[@]}"
-do 
+# Special paths
+if [[ ! -d "_posts/events" ]]; then
+	echo -e $MSG_START
+    git clone git@github.com:${USERNAME}/events.git _posts/events
+    echo -e $MSG_DONE
+else
+    echo -e $MSG_EXISTS
+fi
+
+if [[ ! -d "_posts/jobs" ]]; then
+	echo -e $MSG_START
+    git clone git@github.com:${USERNAME}/jobs.git _posts/jobs
+    echo -e $MSG_DONE
+else
+    echo -e $MSG_EXISTS
+fi
+
+# Normal paths
+for REPO in "${REPOS[@]}"
+do
 	if [[ ! -d "_${repo}" ]]; then
-		repo_url="git@github.com:opensourcedesign/${repo}.git"
-		echo -e "\e[36m 1. Getting code at $repo_url"
-		git clone $repo_url
-		echo -e "\e[94m 2. Moving to \"_${repo}\""
-		mv $repo "_${repo}"
-		echo -e "\e[34m 3. Done installing \"$repo\" repo"
+		repo_url="git@github.com:${USERNAME}/${REPO}.git"
+		echo -e $MSG_START
+		git clone $repo_url "_${REPO}"
+		echo -e $MSG_DONE
 	else
-		echo -e "\e[34m The \"$repo\" repo already installed"
+		echo -e $MSG_EXISTS
 	fi
-	echo -e "\e[94m$line"
+	echo -e "\e[94m$line\e[0m"
 	sleep 1
 done
 
 # Print output
 printf "\n"
-echo -e "\e[34m       Hooray, you have all OSD website repos- time to get coding ;-)"
+echo -e "\e[34mHooray, you now have all OSD repos, now get coding ;-)\e[0m"
 printf "\n"

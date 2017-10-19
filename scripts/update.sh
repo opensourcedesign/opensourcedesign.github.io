@@ -12,57 +12,85 @@
 # :dependencies:
 #  * git-core
 #
-# :authors: Brennan Novak, 01AEEADB9EED1B5B4280E5B6C4CAA23B0F8C68B2
+# :authors: Brennan Novak, AA0B28294A637731AD529F34E3E838B0D4EBE62A
 # :license: BSD license
 # :date 16 November 2016
 # :version: 0.0.1
 # -----------------------------------------------------------------------------
 
-declare -a repos=(
-	"_events"
-	"_jobs"
-	"_organization"
-	"_patterns"
-	"_talks"
+MSG_START="\e[36m 1. Fetching and rebasing code\e[0m"
+MSG_DONE="\e[34m 2. Done updating repo\e[0m"
+MSG_EXISTS="\e[34m That repo is already installed\e[0m"
+
+declare -a REPOS=(
+	"organization"
+	"patterns"
+	"talks"
 )
-line="--------------------------------------------------------------------------------"
+LINE="--------------------------------------------------------------------------------"
+
+# GH username
+if [[ $1 == "" ]]; then
+    USERNAME="opensourcedesign"
+else
+    USERNAME=$1
+fi
 
 # Start It Up
 printf "\n"
-echo -e "\e[34m                                 OPEN SOURCE DESIGN                    "
+echo -e "\e[34m                                 OPEN SOURCE DESIGN\e[0m"
 printf "\n"
-echo -e "\e[34m           Bringing great design to free software one pixel at a time."
+echo -e "\e[34m           Bringing great design to free software one pixel at a time.\e[0m"
+printf "\n"
+echo -e "\e[34m                         Wewbsite Repo Updater - v0.0.1\e[0m"
+printf "\n"
+echo -e "\e[94m$LINE\e[0m"
 sleep 1
-printf "\n"
-echo -e "\e[34m                         Wewbsite Repo Updater - v0.0.1"
-printf "\n"
-sleep 1
-echo -e "\e[94m$line"
+echo -e "\e[34m Using username: ${USERNAME}\e[0m"
+echo -e "\e[94m$LINE\e[0m"
 sleep 1
 
-echo -e "\e[36m Updating opensourcedesign.github.io now"
+echo -e "\e[36m Updating opensourcedesign.github.io now\e[0m"
 git fetch
 git rebase
+echo -e $MSG_DONE
+echo -e $LINE
+
+# Special paths
+cd _posts/events
+echo -e $MSG_START
+git fetch
+git rebase
+echo -e $MSG_DONE
+echo -e $LINE
+cd ../
+
+cd _posts/jobs
+echo -e $MSG_START
+git fetch
+git rebase
+echo -e $MSG_DONE
+echo -e $LINE
+cd ../
 
 # Actually Clone Things
-for repo in "${repos[@]}"
-do 
-	if [[ ! -d $repo ]]; then
-		echo -e "\e[34m The \"$repo\" repo is not installed"
+for REPO in "${REPOS[@]}"
+do
+	if [[ ! -d "_$REPO" ]]; then
+		echo -e "\e[34m The _\"$REPO\" repo is not installed\e[0m"
 	else
-		echo -e "\e[36m 1. Changing to \"$repo\" directory"
-		cd $repo
-		echo -e "\e[94m 2. Now fetching and rebasing"
-		git fetch
+		cd "_$REPO"
+		echo -e $MSG_START
+        git fetch
 		git rebase
-		echo -e "\e[34m 3. Done updating \"$repo\", now leaving"
-		cd ../
+        echo -e $MSG_DONE
+        cd ../
 	fi
-	echo -e "\e[94m$line"
+	echo -e "\e[94m$LINE\e[0m"
 	sleep 1
 done
 
 # Print output
 printf "\n"
-echo -e "\e[34m  All OSD website repos updated, now get back to coding ;-)"
+echo -e "\e[34m  All OSD website repos updated, now get back to coding ;-)\e[0m"
 printf "\n"
