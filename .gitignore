@@ -1,6 +1,7 @@
 _site
 .sass-cache
 .editorconfig
+.jekyll-metadata
 Gemfile.lock
 _posts/events/
 _posts/jobs/
