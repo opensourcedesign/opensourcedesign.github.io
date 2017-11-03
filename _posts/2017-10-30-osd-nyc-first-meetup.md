@@ -6,9 +6,8 @@ categories:
   - open-source
   - communities
   - collaboration
-  - tools
-  - design
   - meetups
+  - mind-mapping
 authors:
   - dinamichl
   - jessklein
