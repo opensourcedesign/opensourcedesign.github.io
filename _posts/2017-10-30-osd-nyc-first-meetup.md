@@ -40,8 +40,7 @@ Sticky clustering happened!!
 
 ![cardsorting](/images/cardsorting3.jpg)
 
-
-Through the [affinity diagramming] (http://opendesignkit.org/methods/affinity-diagram/) activity, we determined that there are about nine core themes that the group was interested in supporting through the meetup. These themes are:  
+Through the [affinity diagramming](http://opendesignkit.org/methods/affinity-diagram/) activity, we determined that there are about nine core themes that the group was interested in supporting through the meetup. These themes are:  
 - Sharing
 - Education
 - Community
@@ -66,7 +65,7 @@ As a result, we decided that the meetups will have two core elements to them:
 
 
 **Share-out and Next Steps** (identify guest speakers, etc)
-Our upcoming meetup will take place place in [ThoughtWorks offices] (https://www.google.com/maps/place/ThoughtWorks,+Inc./@40.7446828,-73.9870632,17z/data=!4m5!3m4!1s0x89c259a7c4fab243:0x7a7b1b141a048edf!8m2!3d40.7446828!4d-73.9848745), 99 Madison Avenue on **Thursday the 9th of November, from 6.30pm to 8.30pm.**
+Our upcoming meetup will take place place in [ThoughtWorks offices](https://www.google.com/maps/place/ThoughtWorks,+Inc./@40.7446828,-73.9870632,17z/data=!4m5!3m4!1s0x89c259a7c4fab243:0x7a7b1b141a048edf!8m2!3d40.7446828!4d-73.9848745), 99 Madison Avenue on **Thursday the 9th of November, from 6.30pm to 8.30pm.**
 
 **Date & Location**
 - **Date:** Thurs, 09 Nov 2017
@@ -76,4 +75,4 @@ Our upcoming meetup will take place place in [ThoughtWorks offices] (https://www
 
 We will start to put some of this theory into action by attempting to run the meetup and iterate from there. Thank you for your interest and please stop by and say hello!
 
-You can RSVP for the meetup at [eventbrite] (https://www.eventbrite.com/e/open-source-design-meetup-tickets-39225344060?utm_source=eb_email&utm_medium=email&utm_campaign=new_event_email&utm_term=viewmyevent_button)
+You can RSVP for the meetup at [eventbrite](https://www.eventbrite.com/e/open-source-design-meetup-tickets-39225344060?utm_source=eb_email&utm_medium=email&utm_campaign=new_event_email&utm_term=viewmyevent_button)
