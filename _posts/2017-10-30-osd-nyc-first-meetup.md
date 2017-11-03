@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Open source design first NYC meetup
-date:   2017-10-31
+title: "Open source design first NYC meetup"
+date: 2017-10-31
 categories:
   - open-source
   - communities
@@ -10,10 +10,9 @@ categories:
   - design
   -meetups
 authors:
-  - Dinamichl
-  - Jessklein
+  - dinamichl
+  - jessklein
 ---
-
 
 **The Big Idea - designing in open source**
 Open source communities pushed collaboration, sharing and transparency (in regards to licensing and copyright) throughout various industries. While design and creativity have never been more important, we often wonder where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community? Enter the [Open Source Design NYC Collective](http://opensourcedesign.net/events/2017/09/open-source-design-nyc).
