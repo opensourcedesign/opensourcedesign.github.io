@@ -105,14 +105,12 @@ h5, .h5,
 h6, .h6 {
   margin: 0 0 35px;
   font-family: $grayscale-headline-font-family;
-  letter-spacing: 1px;
   font-weight: bold;
 }
 
 h3, .h3 {
   margin: 0 0 35px;
   font-family: $grayscale-headline-font-family;
-  letter-spacing: 1px;
   font-weight: bold;
 }
 
@@ -214,7 +212,6 @@ blockquote {
     border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
     font-size: 18px;
-    letter-spacing: -1px;
     font-style: italic;
 
     > :last-child {
