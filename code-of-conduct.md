@@ -76,7 +76,6 @@ If a participant engages in behavior violating this code of conduct, the core me
 If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: 
 * Kriesse (`kristina at cssconf.eu`),  
 * Jan (`hey at jancborchardt.net`),
-* Brennan (`hi at brennannovak.com`), 
 * Simon (`contact at vansintjan.net`), or 
 * Gilli (`gilli at axe.is`) 
 
