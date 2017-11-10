@@ -57,3 +57,7 @@ legend {
 a.btn.disabled {
   pointer-events: auto;
 }
+
+#floss {
+    margin-top: 3rem;
+}
