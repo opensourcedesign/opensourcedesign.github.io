@@ -32,7 +32,7 @@ Not pictured: Stephanie Weber, Shandy Tsai, Tess (Thematizer)
 
 Jess Klein presented [Open Design Kit](http://opendesignkit.org/) at our meetup this November.
 
-Teaching people how to integrate design into their workflows has been a secondary focus of [Jess Klein’s] (http://jessklein.is/) career. Her experience while working in the design community is nothing but interesting and diverse. Having led and contributed to many open source education and civic projects, she’s had to learn to work with her teams all over the world.
+Teaching people how to integrate design into their workflows has been a secondary focus of [Jess Klein’s](http://jessklein.is/) career. Her experience while working in the design community is nothing but interesting and diverse. Having led and contributed to many open source education and civic projects, she’s had to learn to work with her teams all over the world.
 
 As any designer knows, beginning a new project often requires establishing a process and collaboration tools to ensure that development is a success for every member of the product team.  Klein says that “understanding why we are doing a design phase on a project, what’s the value of design?” is often a central question to open projects.
 
@@ -93,7 +93,7 @@ Our upcoming meetup will take place place in [ThoughtWorks offices](https://www.
 - **What:** Intersection between accessibility, inclusive design, and open source presented by **Atul Varma**
 
 
-## A little bit about [Atul Varma] (https://twitter.com/toolness):
+## A little bit about [Atul Varma](https://twitter.com/toolness):
 Atul enjoys building bridges of understanding between humans and machines. He has written illuminating software that's been used as the centerpiece of TED Talks, in maker events around the world, and by individuals who are just trying to have a less frustrating time using their computer. But his favorite moments are very personal: understanding where another person is coming from, constructing a metaphor they can relate to, and using it to explain technology in a way that liberates, excites, and empowers.
 
-Please **RSVP** for the meetup at [eventbrite] (https://www.eventbrite.com/e/open-source-design-nyc-tickets-39204607035)
+Please **RSVP** for the meetup at [eventbrite](https://www.eventbrite.com/e/open-source-design-nyc-tickets-39204607035)
