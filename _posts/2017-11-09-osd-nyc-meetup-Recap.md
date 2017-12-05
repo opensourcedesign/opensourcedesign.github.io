@@ -41,10 +41,10 @@ Jess and team came up with several strategies to help people understand how to c
 The project was incubated with the design team at [Bocoup](https://bocoup.com/) (where she was the Principal Designer), and since this Summer has been a completely community managed initiative.  There are many active contributors (all who are mentioned by name in the [Github README file](https://github.com/open-design-kit/opendesignkit)) to the project and she is inviting more community participation to generate a more accessible and inclusive resource.
 
 ![nycgroup](/images/nyc_image4.png)
-So, why is another kit needed? Jess was quick to point out that there are many great and useful toolkits out in the ecosystem already. The reasons another kit is needed is that existing kits are: specific to studios and organizations, focus on co-located teams, challenging for clients and stakeholders to see themselves doing the method without buying into the whole philosophy and don’t office embrace the fact that there are many different ways to approach a problem space.
+So, why is another kit needed? Jess was quick to point out that there are many great and useful toolkits out in the ecosystem already. The reasons another kit is needed is that existing kits are: specific to studios and organizations, focus on co-located teams, challenging for clients and stakeholders to see themselves doing the method without buying into the whole philosophy and don’t often embrace the fact that there are many different ways to approach a problem space.
 
 
-Several toolkits  inspired the project including:  designkit.org (IDEO field guid) Gov.uk - (design principles manual), 18F Method Cards. But none of the kits out there addressed her remote reality. Opendesignkit.org was written for different types of users, this allowed for a specific focus on the type of language used. It is currently being used by large and small sized organizations and many freelancers.
+Several toolkits  inspired the project including:  designkit.org (IDEO field guide) Gov.uk - (design principles manual), 18F Method Cards. But none of the kits out there addressed her remote reality. Opendesignkit.org was written for different types of users, this allowed for a specific focus on the type of language used. It is currently being used by large and small sized organizations and many freelancers.
 
 “It’s unique because it’s not associated with a specific organization, so teams can use the kit freely on projects and take ownership of the content and interpretation.”
 
