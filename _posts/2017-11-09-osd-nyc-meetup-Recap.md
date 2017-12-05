@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Open source design first NYC meetup
+title:  Open Source Design NYC meetup Recap
 date:   2017-11-09
 categories:
   - open-source
