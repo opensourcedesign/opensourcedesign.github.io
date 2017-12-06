@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  Open source design first NYC meetup
-date:   2017-11-09
+title:  "Open source design first NYC meetup Recap"
+date: 2017-11-09
 categories:
   - open-source
   - communities
   - collaboration
   - tools
   - design
-  -meetups
+  - meetups
 authors:
   - Dinamichl
   - Jessklein
