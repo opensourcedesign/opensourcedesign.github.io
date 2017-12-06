@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  Open Source Design NYC meetup Recap
-date:   2017-11-09
+title: "Open Source Design first NYC meetup Recap"
+date: 2017-11-09
 categories:
   - open-source
   - communities
   - collaboration
   - tools
   - design
-  -meetups
+  - meetups
 authors:
   - Dinamichl
   - Jessklein
@@ -40,20 +40,20 @@ Jess and team came up with several strategies to help people understand how to c
 
 The project was incubated with the design team at [Bocoup](https://bocoup.com/) (where she was the Principal Designer), and since this Summer has been a completely community managed initiative.  There are many active contributors (all who are mentioned by name in the [Github README file](https://github.com/open-design-kit/opendesignkit)) to the project and she is inviting more community participation to generate a more accessible and inclusive resource.
 
-![nycgroup](/images/nyc_image4.jpg)
-So, why is another kit needed? Jess was quick to point out that there are many great and useful toolkits out in the ecosystem already. The reasons another kit is needed is that existing kits are: specific to studios and organizations, focus on co-located teams, challenging for clients and stakeholders to see themselves doing the method without buying into the whole philosophy and don’t office embrace the fact that there are many different ways to approach a problem space.
+![nycgroup](/images/nyc_image4.png)
+So, why is another kit needed? Jess was quick to point out that there are many great and useful toolkits out in the ecosystem already. The reasons another kit is needed is that existing kits are: specific to studios and organizations, focus on co-located teams, challenging for clients and stakeholders to see themselves doing the method without buying into the whole philosophy and don’t often embrace the fact that there are many different ways to approach a problem space.
 
 
-Several toolkits  inspired the project including:  designkit.org (IDEO field guid) Gov.uk - (design principles manual), 18F Method Cards. But none of the kits out there addressed her remote reality. Opendesignkit.org was written for different types of users, this allowed for a specific focus on the type of language used. It is currently being used by large and small sized organizations and many freelancers.
+Several toolkits  inspired the project including:  designkit.org (IDEO field guide) Gov.uk - (design principles manual), 18F Method Cards. But none of the kits out there addressed her remote reality. Opendesignkit.org was written for different types of users, this allowed for a specific focus on the type of language used. It is currently being used by large and small sized organizations and many freelancers.
 
 “It’s unique because it’s not associated with a specific organization, so teams can use the kit freely on projects and take ownership of the content and interpretation.”
 
-![nycgroup](/images/nyc_image2.jpg)
+![nycgroup](/images/nyc_image2.png)
 The minimum loveable product was defined as a combination of creating a few methods and a process and then testing those on a few different projects.
 
 The initial release of the Kit has focused on highlighting “remote - first” methods for collaboration. As can be seen in the Affinity Diagram method, the Kit is not prescriptive but shows how you might approach problem solving.
 
-![nycgroup](/images/nyc_image5.jpg)
+![nycgroup](/images/nyc_image5.png)
 Synthesize information with the remote team friendly sorting exercise of Affinity Diagramming.
 
 ## Usability Testing Takeaways
