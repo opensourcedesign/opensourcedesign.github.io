@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Open Source Design first NYC meetup Recap"
+title: "Open Source Design NYC 11-09 meetup Recap"
 date: 2017-11-09
 categories:
   - open-source
