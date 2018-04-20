@@ -53,7 +53,7 @@ it stuck. The reasons we feel good about this choice are:
 ### Do You Care About Free Software
 
 Absolutely. Free software is incredibly important to many of our founders and core
-members. Most of us use and rely on free software daily and wouldn't be here without it. While we are aware of the definitions of "open source" vs. "free software" and the inherent debate, depsite Free Software Foundation's ask to "[choose a side](https://www.gnu.org/philosophy/open-source-misses-the-point.html)", OSD as a community has picked a name, but is absolutely not choosing a political side with our choice. However, many of us agree with the FSF's principles in full and have dedicated our lives to working exclusively on free software or open source technologies.
+members. Most of us use and rely on free software daily and wouldn't be here without it. While we are aware of the definitions of "open source" vs. "free software" and the inherent debate, despite Free Software Foundation's ask to "[choose a side](https://www.gnu.org/philosophy/open-source-misses-the-point.html)", OSD as a community has picked a name, but is absolutely not choosing a political side with our choice. However, many of us agree with the FSF's principles in full and have dedicated our lives to working exclusively on free software or open source technologies.
 
 ### How are you different from Open Design
 
