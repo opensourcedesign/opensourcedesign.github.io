@@ -139,7 +139,7 @@ $('.navbar-collapse ul li a').click(function() {
 
 $(document).ready(function() {
   var template_item = _.template($('#template-events-item').html());
-  var url = 'http://opensourcedesign.net/events/feed.xml';
+  var url = 'https://opensourcedesign.net/events/feed.xml';
   
   var items_html = '';
   $.ajax({
@@ -169,7 +169,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   var template_item = _.template($('#template-events-item').html());
-  var url = 'http://opensourcedesign.net/jobs/feed.xml';
+  var url = 'https://opensourcedesign.net/jobs/feed.xml';
 
   var items_html = '';
   $.ajax({
