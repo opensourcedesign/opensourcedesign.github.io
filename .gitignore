@@ -2,9 +2,11 @@ _site
 .sass-cache
 .editorconfig
 .jekyll-metadata
+.bundle
 Gemfile.lock
 _posts/events/
 _posts/jobs/
 _organization/
 _patterns/
 _talks/
+vendor

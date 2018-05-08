@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # install.sh
 # -----------------------------------------------------------------------------
-# Clones all Open Source Design repositories used for the website and renames 
+# Clones all Open Source Design repositories used for the website and renames
 # the repos as per what _config-dev.yml wants them to be named.
 #
 # To add/remove repos simply edit the "repos" array that starts on line 16
