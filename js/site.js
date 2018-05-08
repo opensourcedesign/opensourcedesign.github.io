@@ -159,7 +159,7 @@ $(document).ready(function() {
       });
     },
     error: function() {
-      $('#events-snapshot').text('Sorry, but we couldn\'t load the events...');
+      $('#events-snapshot').text('We attend and organize open source & design events! :)');
     }
   });
 });
@@ -189,7 +189,7 @@ $(document).ready(function() {
       });
     },
     error: function() {
-      $('#jobs-snapshot').text('Sorry, but we couldn\'t load the jobs...');
+      $('#jobs-snapshot').text('On the job board you can post and find open source design jobs!');
     }
   });
 });
