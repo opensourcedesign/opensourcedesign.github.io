@@ -4,11 +4,11 @@
 # -----------------------------------------------------------------------------
 # Updates all Open Source Design repositories used for the website.
 #
-# NOTE: Make sure you have nothing stagged in any of the repos or things might 
+# NOTE: Make sure you have nothing stagged in any of the repos or things might
 # now work out so well for you... hope to better handle this :/
 #
 # To add/remove repos simply edit the "repos" array that starts on line 16
-# 
+#
 # :dependencies:
 #  * git-core
 #
@@ -50,7 +50,7 @@ echo -e "\e[34m Using username: ${USERNAME}\e[0m"
 echo -e "\e[94m$LINE\e[0m"
 sleep 1
 
-echo -e "\e[36m Updating opensourcedesign.github.io now\e[0m"
+echo -e "\e[36m Updating opensourcedesign.net now\e[0m"
 git fetch
 git rebase
 echo -e $MSG_DONE

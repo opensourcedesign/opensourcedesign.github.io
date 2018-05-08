@@ -19,7 +19,7 @@ most of differences and benefit the greater good of the community and its goals.
 Ideally consensus can usually be reached by discussing and listenting to one
 another. A good example of this was:
 
-- [Proposed front page layouts](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/17)
+- [Proposed front page layouts](https://github.com/opensourcedesign/opensourcedesign.net/issues/17)
 
 However, just discussing things is not always enough, or an issue is too
 long, sprawling, or many options to simply make a decision. Voting often helps
@@ -31,14 +31,14 @@ When multiple people are contributing to solving one issue and there is no clear
 best option, as was the case of creating the OSD logo, it is best to draw things
 to a vote. For reference, see:
 
-- [Logo Design Process](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)
-- [Logo Survey Roundup](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/28)
+- [Logo Design Process](https://github.com/opensourcedesign/opensourcedesign.net/issues/18)
+- [Logo Survey Roundup](https://github.com/opensourcedesign/opensourcedesign.net/issues/28)
 
 ## Stagnant Tasks
 
 Often times very needed (and promising) ideas or projects get started but then
 stagnate and slump into non completion. If you come across something that seems
-stagnant and it's of interest to you, please feel free to proceed working on it 
+stagnant and it's of interest to you, please feel free to proceed working on it
 with the following tips:
 
 **Dos**

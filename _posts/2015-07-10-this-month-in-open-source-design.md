@@ -5,7 +5,7 @@ title: "This Month in Open Source Design - June (and some bits of July and May)"
 category: monthly-update
 authors:
   - simonv3
-  - gillisig 
+  - gillisig
   - garthdb
 redirect_from: /monthly-update/2015/07/10/this-month-in-open-source-design.html
 permalink: /2015/07/10/this-month-in-open-source-design
@@ -17,7 +17,7 @@ We talked about (or what some members of our community have been up to):
 
 * Merging some repos together. Ultimately that didn't get very far, but people have been more careful with creating new repos. [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-18/?msg=39486383&page=2)]
 * Design of the main website for wireframews [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-18/?msg=39486383&page=2)].
-* The woes of doing design for open source developers [[irc](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)]
+* The woes of doing design for open source developers [[irc](https://github.com/opensourcedesign/opensourcedesign.net/issues/18)]
 * The woes of job titles and unicorns [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-23/?msg=39967391&page=1)]
 * Onboarding in Slick [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-23/?msg=39984519&page=2)], and general conversations about Slick. There's a lot of enthusiasm around it.
 * Offline-first apps and hoodie [[irc](https://botbot.me/freenode/opensourcedesign/2015-05-25/?msg=40069142&page=1)]
@@ -34,8 +34,8 @@ We talked about (or what some members of our community have been up to):
 # On Github
 
 * Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/text-based-tools-for-designers).
-* We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/17) with some concepts.
-* This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/18)!
+* We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.net/issues/17) with some concepts.
+* This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.net/issues/18)!
 * Our [code of conduct](//opensourcedesign.net/code-of-conduct/) is up for discussion.
 
 # Events

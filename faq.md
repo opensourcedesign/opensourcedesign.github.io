@@ -5,12 +5,12 @@ permalink: /faq/
 published: true
 ---
 
-If you have questions relating to Open Source Design that **are not mentioned 
+If you have questions relating to Open Source Design that **are not mentioned
 below** please [open an issue](https://github.com/opensourcedesign/organization).
 
 ### What Does Involvement In OSD Mean
 
-It means whatever you want it to mean. You can design, code, blog, give design 
+It means whatever you want it to mean. You can design, code, blog, give design
 feedback, help fundraise, you name it- we would love your contributions. Check
 out how to [best contribute](/contribute/).
 
@@ -23,7 +23,7 @@ nice, we welcome you :)
 ### What Does Being a Member Mean
 
 Open Source Design offers a "choose-your-own" style of membership, it means you
-are welcome to active engage [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) or [attend and organize events](/events/). Also you can just chill in our [chat room](http://chat.opensourcedesign.net) and provide help to newcommers to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
+are welcome to active engage [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.net/issues) or [attend and organize events](/events/). Also you can just chill in our [chat room](http://chat.opensourcedesign.net) and provide help to newcommers to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
 
 ### What Does Being a Core Member Mean
 
@@ -63,7 +63,7 @@ sometimes gets confused as us. From [this conversation](https://github.com/opens
 > Open Source Design is building a community of designers working on open
 > source, while Open Design is focusing on building open workflows for
 > designers.  Open Design is not building tools for the sake of building tools,
-> but to build a community of designers working towards more open practices. 
+> but to build a community of designers working towards more open practices.
 
 Open Design targets the wider design community, while Open Source Design targets
 getting more people (including designers) involved in designing for Open Source

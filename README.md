@@ -1,10 +1,10 @@
-# opensourcedesign.github.io [![Travis Badge](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io.svg)](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io)
+# opensourcedesign.net [![Travis Badge](https://travis-ci.org/opensourcedesign/opensourcedesign.net.svg)](https://travis-ci.org/opensourcedesign/opensourcedesign.net)
 
 Website of the Open Source Design community, hosted on Github pages.
 
 ## Edit Website
 
-Editing content on [opensourcedesign.net][osd-net] can be done in two relatively 
+Editing content on [opensourcedesign.net][osd-net] can be done in two relatively
 simple ways, both of which, require a GitHub account.
 
 1. Using GitHub's nifty file editor
@@ -16,7 +16,7 @@ simple ways, both of which, require a GitHub account.
 
 ## Code & Design The Website
 
-You need some basic ability to use a terminal as well as some knowledge of web 
+You need some basic ability to use a terminal as well as some knowledge of web
 development like HTML, CSS, and JavaScript. The site is built with the following
 programming tools:
 
@@ -25,8 +25,8 @@ programming tools:
 
 ### Installing
 
-This step requires having a `ruby` development environment and `git` installed 
-and configured to connect to Github with SSH. 
+This step requires having a `ruby` development environment and `git` installed
+and configured to connect to Github with SSH.
 
 - [Installing Ruby][installing-ruby]
 - [Using Github with SSH][github-ssh]
@@ -34,14 +34,14 @@ and configured to connect to Github with SSH.
 1. Install Jekyll using and other ruby gems
 
 ```
-sudo gem install bundler 
+sudo gem install bundler
 ```
 
 2. Fork and clone the main website repository
 
 ```
-git clone git@github.com:opensourcedesign/opensourcedesign.github.io
-cd opensourcedesign.github.io/
+git clone git@github.com:opensourcedesign/opensourcedesign.net
+cd opensourcedesign.net/
 bundle install
 ```
 
@@ -51,12 +51,12 @@ This will pull down all of the repositories (jobs, events, etc...) and put them
 in there proper place to build our website locally.
 
 ```
-./scripts/install.sh 
+./scripts/install.sh
 ```
 
 *Note: you need to be a member of our [GitHub organization][osd-org].*
 
-4. Build the static site & watch for files 
+4. Build the static site & watch for files
 
 ```
 jekyll serve --watch --config _config.yml,_config-dev.yml

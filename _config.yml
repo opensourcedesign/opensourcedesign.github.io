@@ -34,8 +34,8 @@ collections:
 sass:
     style: compressed
 
-source_url: "https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/"
-edit_url: "https://edit.opensourcedesign.net/#opensourcedesign/opensourcedesign.github.io/edit/master/"
+source_url: "https://github.com/opensourcedesign/opensourcedesign.net/blob/master/"
+edit_url: "https://edit.opensourcedesign.net/#opensourcedesign/opensourcedesign.net/edit/master/"
 
 # Prose Config - what is seen at https://edit.opensourcedesign.net
 # Docs: https://github.com/prose/prose/wiki/Prose-Configuration

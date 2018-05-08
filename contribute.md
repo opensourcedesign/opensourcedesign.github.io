@@ -5,28 +5,28 @@ permalink: /contribute/
 published: true
 ---
 
-We're always excited to have new contributors. Our community is diverse in 
+We're always excited to have new contributors. Our community is diverse in
 ages, cultures, and interests so we like to operate under the motto:
 
-> If you have a creative idea or something you want bring to the table, 
+> If you have a creative idea or something you want bring to the table,
 > just do it ;)
 
-However, it can also be good to check-in if you're new and unsure about things. 
-Please read our [code of conduct](/code-of-conduct/) and take a moment to 
+However, it can also be good to check-in if you're new and unsure about things.
+Please read our [code of conduct](/code-of-conduct/) and take a moment to
 consider how you can best contribute to Open Source Design.
 
-### Website 
+### Website
 
 Website and all public facing web content that does have it's own repository
 
 - [Edit Content](https://edit.opensourcedesign.net) on this website
-- [Website Development](https://github.com/opensourcedesign/opensourcedesign.github.io) if you're handy with HTML, CSS, JS, and Jekyll
+- [Website Development](https://github.com/opensourcedesign/opensourcedesign.net) if you're handy with HTML, CSS, JS, and Jekyll
 
 ### Jobs
 
 Jobs submitted to Open Source Design which end up on the public job board
 
-- [Browse Design Jobs](http://opensourcedesign.net/jobs) if have some free cycles for paid or gratis work 
+- [Browse Design Jobs](http://opensourcedesign.net/jobs) if have some free cycles for paid or gratis work
 - [Submit a Job](http://opensourcedesign.net/opensrcdesignjobs/) if you need a designer for your project
 
 ### Events
@@ -45,7 +45,7 @@ within the OSD community.
 
 ### Experimental
 
-Our other Github repositories are experimental and undecided exactly what 
+Our other Github repositories are experimental and undecided exactly what
 to best do. Among those are:
 
 - [Logos](https://github.com/opensourcedesign/logos) - a collection remixes?

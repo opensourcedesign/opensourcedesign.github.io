@@ -73,11 +73,11 @@ If a participant engages in behavior violating this code of conduct, the core me
 
 ## Reporting violations
 
-If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as: 
+If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as:
 * Kriesse (`kristina at cssconf.eu`),  
 * Jan (`hey at jancborchardt.net`),
-* Simon (`contact at vansintjan.net`), or 
-* Gilli (`gilli at axe.is`) 
+* Simon (`contact at vansintjan.net`), or
+* Gilli (`gilli at axe.is`)
 
 and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
 
@@ -89,7 +89,7 @@ Decisions about consequences of violating this code of conduct are made by the c
 
 ## Additions, amendments, and feedback
 
-It is foreseeable that this code of conduct will need additions and to be improved upon. Online culture changes, new views and sensitivities emerge which need to be taken into account. In order to add or modify our Code of Conduct, please [fork and send a pull request](https://github.com/opensourcedesign/opensourcedesign.github.io) or [open an issue](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) with your proposed changes. Our community will happily review it for inclusion.
+It is foreseeable that this code of conduct will need additions and to be improved upon. Online culture changes, new views and sensitivities emerge which need to be taken into account. In order to add or modify our Code of Conduct, please [fork and send a pull request](https://github.com/opensourcedesign/opensourcedesign.net) or [open an issue](https://github.com/opensourcedesign/opensourcedesign.net/issues) with your proposed changes. Our community will happily review it for inclusion.
 
 #### Credits
 

@@ -57,7 +57,7 @@ function foo(response) {
 }
 
 var script = document.createElement('script');
-script.src = 'https://api.github.com/repos/opensourcedesign/opensourcedesign.github.io/events?callback=foo';
+script.src = 'https://api.github.com/repos/opensourcedesign/opensourcedesign.net/events?callback=foo';
 
 document.getElementsByTagName('head')[0].appendChild(script);
 
@@ -140,10 +140,10 @@ $('.navbar-collapse ul li a').click(function() {
 $(document).ready(function() {
   var template_item = _.template($('#template-events-item').html());
   var url = 'https://opensourcedesign.net/events/feed.xml';
-  
+
   var items_html = '';
   $.ajax({
-    url: url, 
+    url: url,
     success: function(d){
       $('#events-snapshot').html('');
       $(d).find('item').each(function(idx) {
@@ -173,7 +173,7 @@ $(document).ready(function() {
 
   var items_html = '';
   $.ajax({
-    url: url, 
+    url: url,
     success: function(d){
       $('#jobs-snapshot').html('');
       $(d).find('item').each(function(idx) {
