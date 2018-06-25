@@ -14,8 +14,8 @@
    viewBox="0 0 97.244563 63.013408"
    version="1.1"
    id="svg4744"
-   inkscape:version="0.92.1 r"
-   sodipodi:docname="vertical black.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo.svg"
    inkscape:export-filename="/home/anxhelo/Documents/ura works folder/OSD Summit/horizontal white.png"
    inkscape:export-xdpi="141.06"
    inkscape:export-ydpi="141.06">
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="52.619294"
-     inkscape:cy="202.60677"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="37.718464"
+     inkscape:cy="186.15062"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -39,7 +39,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1366"
-     inkscape:window-height="740"
+     inkscape:window-height="715"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
@@ -191,11 +191,6 @@
        id="path4728"
        inkscape:connector-curvature="0" />
     <path
-       d="m 138.12499,117.86463 v 0.58921 l -2.83768,5.766 h -0.77091 l 2.81996,-5.68442 h -3.24601 v 0.93409 h -0.65266 v -1.60488 z"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.41203398"
-       id="path4732"
-       inkscape:connector-curvature="0" />
-    <path
        d="M 74.878309,121.5918 H 59.358636 v -0.82406 h 15.519673 z"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.41203398"
        id="path4734"
@@ -205,5 +200,15 @@
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.41203398"
        id="path4736"
        inkscape:connector-curvature="0" />
+    <g
+       aria-label="8"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.95456028px;line-height:1.25;font-family:'San Francisco Display';-inkscape-font-specification:'San Francisco Display Bold';text-align:start;text-anchor:start;opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.73349714;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.96396401;paint-order:stroke fill markers"
+       id="text871">
+      <path
+         d="m 136.40819,120.88844 c 0.64473,-0.25072 1.00291,-0.72532 1.00291,-1.379 0,-1.02082 -0.8865,-1.65659 -2.21177,-1.65659 -1.32528,0 -2.19387,0.63577 -2.19387,1.65659 0,0.65368 0.34923,1.12828 0.985,1.379 -0.77905,0.25969 -1.20886,0.788 -1.20886,1.54019 0,1.11036 0.91336,1.79986 2.41773,1.79986 1.49541,0 2.43564,-0.6895 2.43564,-1.79986 0,-0.74323 -0.43878,-1.2805 -1.22678,-1.54019 z m -2.758,-1.36109 c 0,-0.69846 0.59995,-1.12827 1.54914,-1.12827 0.94023,0 1.55809,0.42981 1.55809,1.13722 0,0.68055 -0.58205,1.11932 -1.55809,1.11932 -0.97605,0 -1.54914,-0.43877 -1.54914,-1.12827 z m 1.54914,4.15492 c -1.11037,0 -1.76405,-0.48355 -1.76405,-1.2626 0,-0.77009 0.65368,-1.25364 1.76405,-1.25364 1.11036,0 1.773,0.48355 1.773,1.25364 0,0.77905 -0.66264,1.2626 -1.773,1.2626 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:Montserrat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.73349714"
+         id="path843"
+         inkscape:connector-curvature="0" />
+    </g>
   </g>
 </svg>
