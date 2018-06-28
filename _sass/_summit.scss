@@ -1,26 +1,158 @@
 
-.summit {
+.summit-2018 {
   .intro {
-    height: 600px;
-    background-image: url(/images/summit/background.jpg);
+    height: 650px;
+    background-image: url(/images/summit/FOSDEM_18_photo.jpg);
+    background-position: 50%;
+    background-size: fill;
+    margin-bottom: 0;
+    margin-top: -60px;
   }
 
   .intro .brand-heading {
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
+  }
+
+  .intro .headline {
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .intro .location {
+    font-weight: bold;
+    color: #1AA5BB;
+  }
+
+  .intro span {
+    font-weight: 200;
+    color: #000;
+    font-size: 24px;
+  }
+
+  .intro .button {
+    color: #fff;
+    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+    font-weight: 600;
+    background-color: #1AA5BB;
+    padding: 10px 20px;
+    border: 1px solid #1AA5BB;
+    border-radius: 50px;
+    text-decoration: none;
+  }
+
+  .intro .button:hover {
+    color: #fff;
+    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+    font-weight: 600;
+    background-color: #1a7ebb;
+    padding: 10px 20px;
+    border: 1px solid #1a7ebb;
+    border-radius: 50px;
+    text-decoration: none;
   }
 
   .intro .brand-heading img {
-    width: 440px;
+    width: 250px;
   }
 
-  .intro .intro-body .tagline {
-    color: $grey-color-dark;
-
-    &:nth-child(2) {
-      margin-bottom: 0;
-      font-weight: 100;
-      font-size: 4rem;
-    }
+  .intro .tagline {
+    color: #000;
+    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5rem;
   }
 }
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.intro-body-summit {
+  padding: 2em 0;
+  vertical-align: middle;
+}
+
+#support-us {
+  height: 350px;
+  background-color: #1AA5BB;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#support-us .star {
+  margin: 4rem 4rem 3rem 4rem;
+}
+
+#support-us .help {
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+
+#support-us .button {
+  color: #1AA5BB;
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: 600;
+  background-color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+#support-us .button:hover {
+  color: #fff;
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: 600;
+  background-color: #000;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+#location {
+  height: 200px;
+  color: #1AA5BB;
+}
+
+#location .location {
+  color: #000;
+}
+
+#location .marker {
+  margin: 4rem 4rem 3rem 4rem;
+}
+
+#location .data {
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: 400;
+}
+
+#location .map {
+  padding: 0px 0px;
+  border-radius: 20px;
+}
+
+#coc {
+  height: 150px;
+  color: #fff;
+  background-color: #000;
+}
+
+#coc .coc {
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: bold;
+  margin: 3rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+#coc .license {
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: bolder;
+}

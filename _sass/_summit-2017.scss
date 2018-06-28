@@ -1,0 +1,24 @@
+.summit-2017 {
+  .intro {
+    height: 600px;
+    background-image: url(/images/summit/background.jpg);
+  }
+
+  .intro .brand-heading {
+    margin-bottom: 5rem;
+  }
+
+  .intro .brand-heading img {
+    width: 440px;
+  }
+
+  .intro .intro-body .tagline {
+    color: $grey-color-dark;
+
+    &:nth-child(2) {
+      margin-bottom: 0;
+      font-weight: 100;
+      font-size: 4rem;
+    }
+  }
+}
