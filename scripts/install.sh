@@ -25,7 +25,7 @@ declare -a REPOS=(
 LINE="--------------------------------------------------------------------------------"
 
 # GH username
-if [[ $1 == "osd" ]]; then
+if [[ $1 == "" ]]; then
     USERNAME="opensourcedesign"
 else
     USERNAME=$1
