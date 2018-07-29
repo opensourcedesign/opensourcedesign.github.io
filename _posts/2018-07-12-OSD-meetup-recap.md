@@ -22,18 +22,18 @@ Open source communities push collaboration, sharing and transparency throughout 
 Eli is a libre graphics focused designer and software developer who has worked with clients such as Jacobin Magazine, EA Games, and Ruffeo Hearts Lil' Snotty. His blog and links to social media profiles can be found at: [Eli.blog](https://elih.blog)
 
 
-![Eliheuer](/images/nyc_IMG_2470.jpg)
+![Eliheuer](/images/articles/nyc_IMG_2470.jpg)
 Eli Heuer about to dive into the world of font editors.
 
 ##  A little bit about Eli
 Eli became interested in Fonts due to a teaching opportunity in Bushwick NY in 2013. Working with local kids that did not have access to expensive computers helped spark his determination to teach them about the world of  free software.  Among other projects he worked with local artists that had either little or no budget for their art shows and provided them with design work or tool kits to help them create events posters and collateral.
 
-!["thaw" spelled in melting ice](/images/nyc_thaw.png)
+!["thaw" spelled in melting ice](/images/articles/nyc_thaw.png)
 Example of some of his past work
 
 Eli’s love of fonts and type only grew as began to dig deeper into the world of software development. Here is his presentation on the history and future of free software font editors:
 
-[![Youtube presentation on history of font editors](/images/nyc_youtube.png)](https://www.youtube.com/watch?v=5GrlPIHN57Y)
+[![Youtube presentation on history of font editors](/images/articles/nyc_youtube.png)](https://www.youtube.com/watch?v=5GrlPIHN57Y)
 
 ##  Highlights from the presentation include:
 
@@ -44,7 +44,7 @@ Eli’s love of fonts and type only grew as began to dig deeper into the world o
  After the 80s - bitmap fonts came into the digital scene.
  There is a podcast interview  with Zusanna Lithgow of EMIGRE Magazine (1984-1994)  where she talks about how she pioneered the whole concept of selling digital fonts. She Started by sending fonts typeset on paper and mailed to people that requested/paid for them. Eventually they were sold on on floppy disks.
 
-![EMIGRE magazine cover](/images/nyc_Emigre1Cover.png)
+![EMIGRE magazine cover](/images/articles/nyc_Emigre1Cover.png)
  The Magazine That Ignores Boundaries (1984)
 
 
@@ -56,10 +56,10 @@ Eli’s love of fonts and type only grew as began to dig deeper into the world o
 
  He covered FontForge which he ported over onto the PocketChip  he brought with him to the presentation.
 
-![FontForge running on a PocketChip](/images/nyc_fontforge_chip.jpg)
+![FontForge running on a PocketChip](/images/articles/nyc_fontforge_chip.jpg)
 Eli’s PocketChip that runs Linux and FontForge and let’s you use a pen!
 
-![PocketChip pen demo](/images/nyc_IMG_2479.jpg)
+![PocketChip pen demo](/images/articles/nyc_IMG_2479.jpg)
  Dave Crossland playing with the PocketChip
 
 
