@@ -23,4 +23,4 @@ permalink: /projects/
 * [Libre Office](https://www.libreoffice.org/), [Design Community](https://www.libreoffice.org/community/design/)
 * [Patternfly](https://www.patternfly.org/) A UI framework for enterprise web applications
 * [Trustroots](https://www.trustroots.org/) hospitality platform
-* [Automattic](https://automattic.design/) the company behind WordPress.com, WooCommerce.com, Jetpack.com and more.
+* [Automattic](https://automattic.design/) the company behind WordPress.com, WooCommerce.com, Jetpack.com
