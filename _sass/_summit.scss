@@ -116,7 +116,6 @@
 }
 
 #location {
-  height: 200px;
   color: #1AA5BB;
 }
 
@@ -136,6 +135,7 @@
 #location .map {
   padding: 0px 0px;
   border-radius: 20px;
+  height: auto !important;
 }
 
 #coc {

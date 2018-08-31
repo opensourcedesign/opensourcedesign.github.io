@@ -8,7 +8,7 @@ categories:
   - collaboration
   - tools
   - design
-  -meetups
+  - meetups
 authors:
   - Dinamichl
   - Atulvarma
