@@ -1,4 +1,4 @@
-# opensourcedesign.net [![Travis Badge](https://travis-ci.org/opensourcedesign/opensourcedesign.net.svg)](https://travis-ci.org/opensourcedesign/opensourcedesign.net)
+# opensourcedesign.net [![Travis Badge](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io.svg)](https://travis-ci.org/opensourcedesign/opensourcedesign.github.io)
 
 Website of the Open Source Design community, hosted on Github pages.
 
