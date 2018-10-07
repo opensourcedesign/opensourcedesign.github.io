@@ -13,3 +13,5 @@ header_links:
     url: /events/
   - name: Forum
     url: https://discourse.opensourcedesign.net/
+  - name: Summit
+    url: /summit
