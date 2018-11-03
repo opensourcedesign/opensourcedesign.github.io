@@ -76,17 +76,17 @@ echo -e "\e[94m$LINE\e[0m"
 sleep 1
 
 # Special paths
-if [[ ! -d "_posts/events" ]]; then
+if [[ ! -d "events" ]]; then
 	echo -e $MSG_START
-    git clone git@github.com:${USERNAME}/events.git _posts/events
+    git clone git@github.com:${USERNAME}/events.git events
     echo -e $MSG_DONE
 else
     echo -e $MSG_EXISTS
 fi
 
-if [[ ! -d "_posts/jobs" ]]; then
+if [[ ! -d "jobs" ]]; then
 	echo -e $MSG_START
-    git clone git@github.com:${USERNAME}/jobs.git _posts/jobs
+    git clone git@github.com:${USERNAME}/jobs.git jobs
     echo -e $MSG_DONE
 else
     echo -e $MSG_EXISTS
