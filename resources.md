@@ -35,7 +35,6 @@ German artist. Free to use without attribution and free to modify.
 * [Pexels](http://www.pexels.com/)
 * [Flickr Creative Commons](https://flickr.com/creativecommons/)
 * [Gratisography](http://www.gratisography.com/)
-* [Tinyography](http://www.tinyography.com/)
 * [The Stocks](http://thestocks.im/)
 * [FreeImages](http://www.freeimages.com/)
 * [StockSnap](https://stocksnap.io/)
