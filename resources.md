@@ -178,7 +178,7 @@ animations.
 * [Egghead](http://egghead.io/) to learn the AngularJS framework.
 * [Tota11y](https://github.com/Khan/tota11y) a bookmarklet to check that your
 website is a11y compliant.
-
+* [W3Schools](https://www.w3schools.com/) Also has examples. CSS, HTML, and Javascript.
 
 ## Learn to Design
 
