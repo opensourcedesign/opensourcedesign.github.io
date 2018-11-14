@@ -31,15 +31,13 @@ German artist. Free to use without attribution and free to modify.
 
 ## Images
 
-* [Unsplash](https://unsplash.com/)
-* [Pexels](http://www.pexels.com/)
+* [Pixabay](http://pixabay.com/)
 * [Flickr Creative Commons](https://flickr.com/creativecommons/)
 * [Gratisography](http://www.gratisography.com/)
 * [The Stocks](http://thestocks.im/)
 * [FreeImages](http://www.freeimages.com/)
 * [StockSnap](https://stocksnap.io/)
 * [FindA.Photo](http://finda.photo/)
-* [Pixabay](http://pixabay.com/)
 * [New York Public Library Public Domain
 Images](http://www.nypl.org/research/collections/digital-collections/public-domain?hspace=331354)
 
