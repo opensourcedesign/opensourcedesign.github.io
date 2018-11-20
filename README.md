@@ -64,7 +64,7 @@ jekyll serve --watch --config _config.yml,_config-dev.yml
 
 ### Updating
 
-Updating the various repositories can be done with running the this script
+Updating the various repositories can be done by running this script
 
 ```
 ./scripts/update.sh
