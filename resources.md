@@ -63,7 +63,9 @@ work needed.
 * [Pencil](http://pencil.evolus.vn/) (mockups)
 * [Krita](https://krita.org/en/) (art, digital painting)
 * [Blender](https://www.blender.org/) (3d rendering, animation, textures)
-* [Darktable](https://www.darktable.org/) (photo workflow)
+* [darktable](https://www.darktable.org/) (photo workflow)
+* [RawTherapee](https://www.rawtherapee.com) (photo workflow)
+* [digiKam](https://www.digikam.org/) (photo management)
 * [GIMP](https://www.gimp.org/) (image manipulation, compositing)
 * [Inkscape](https://inkscape.org/en/) (vector elements, print export)
 * [Synfig](http://synfig.org/) for animation
@@ -157,6 +159,7 @@ projects.
 * [Open Design and Hardware Group](http://design.okfn.org/). OKFN open design
 and hardware group.
 * [PIXLS.US](https://pixls.us) Free/Open Source Photography.
+    * [List of Free Software Photography Projects](https://pixls.us/software/)
 * [Photos of Design Research](https://commons.wikimedia.org/wiki/Category:Designethnography) on Wikimedia Commons
 
 
