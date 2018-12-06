@@ -185,6 +185,8 @@ animations.
 * [Egghead](http://egghead.io/) to learn the AngularJS framework.
 * [Tota11y](https://github.com/Khan/tota11y) a bookmarklet to check that your
 website is a11y compliant.
+- [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
+* [Course: How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 
 ## Learn to Design
