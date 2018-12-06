@@ -20,6 +20,7 @@ source icon sets to use as Inkscape symbols.
 * [IconMonstr](http://iconmonstr.com/) A large collection of glyph icons from a
 German artist. Free to use without attribution and free to modify.
 * [FontAwesome](http://fontawesome.io/icons/) The iconic font and CSS toolkit. Free to use. [CDN](https://www.bootstrapcdn.com/fontawesome/). [GitHub](https://github.com/FortAwesome/Font-Awesome).
+* [Font Fabulous](https://manageiq.github.io/font-fabulous/) A fabulous iconset packaged as a font. Free to use. [GitHub](https://github.com/ManageIQ/font-fabulous).
 
 
 ## Fonts
@@ -93,6 +94,7 @@ framework for creating scalable, responsive sites.
 framework.
 * [Rebar](http://github.com/brennannovak/rebar) Simple lightweight HTML, CSS
 (LESS)
+* [PatternFly](http://patternfly.org) A community of designers and developers collaborating to build a UI framework for enterprise web applications.
 
 
 ## General Design Reads
