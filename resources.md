@@ -69,6 +69,10 @@ work needed.
 * [GIMP](https://www.gimp.org/) (image manipulation, compositing)
 * [Inkscape](https://inkscape.org/en/) (vector elements, print export)
 * [Synfig](http://synfig.org/) for animation
+* [Natron](https://natrongithub.github.io/) (compositing, VFX, motion graphics)
+* [Scribus](https://www.scribus.net/) (page layout, desktop publishing)
+* [DisplayCAL](https://displaycal.net/) (color calibration)
+* [Kdenlive](https://kdenlive.org) (video editing)
 * Design discussion on the issue tracker of the project. For example at
 [GitHub](http://github.com) – get an account, identify design issues,
 participate, and open new issues. Establish a »Design« tag on the tracker to
