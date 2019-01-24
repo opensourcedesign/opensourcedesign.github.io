@@ -60,6 +60,7 @@ prose:
     - 'index.html'
     - 'LICENSE'
     - 'Rakefile'
+    - '404.html'
   metadata:
     _posts:
       - name: "title"
