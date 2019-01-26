@@ -71,10 +71,3 @@ Software. This image by [GarthDB](http://garthdb.com) does a good job of
 explaining:
 
 ![differences](/images/osd-vs-od.png)
-
-###  Why are you using IRC
-
-We've talked a lot of the benefits of each chat tool out there. Ultimately it
-comes down to a split in "open" versus "practical". We're still trying to figure
-out what the best tool is for our community, but we're [working on
-it](https://github.com/opensourcedesign/slick) and also see [this conversation](https://github.com/DesignOpen/designopen.github.io/issues/195).
