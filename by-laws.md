@@ -45,7 +45,7 @@ Before taking initiative, here's a useful checklist:
 
 1. Can you name the problem?
 2. Have you seen other people discuss it?
-3. Have you asked on IRC or on GitHub whether it's been discussed before?
+3. Have you asked on our Discourse forum or on GitHub whether it's been discussed before?
 4. Can you personally see this through to the end?
 5. Can you find people who could offer opinions or feedback on your
   initiative? A good place to start is the people listed on the [core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577)
