@@ -43,7 +43,7 @@ with the following tips:
 
 **Dos**
 
-- Do check on IRC if anyone can give you advice or backstory on the issue
+- Do check on the forum if anyone can give you advice or backstory on the issue
 - Do leave a comment on the issue expressing your interest
 - Do @mention the creator of the issue and / or last person working on it
 - Do reach out to creator / last person working on it via email

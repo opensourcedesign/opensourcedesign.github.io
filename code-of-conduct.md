@@ -63,7 +63,7 @@ Most of our community are adults and should know when it's ok to flirt with othe
 
 ## Where this CoC is upheld
 
-This code of conduct especially pertains to our online community platforms (IRC: [#opensourcedesign](http://chat.opensourcedesign.net), GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Discourse: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
+This code of conduct especially pertains to our online community platforms (GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Discourse Forum: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
 
 Being a respectful contributor to Open Source Design by day and a ragging (or even mild) neo-nazi by night is still grounds for expulsion. Some people see this as impinging on personal freedoms, we disagree, sorry.
 

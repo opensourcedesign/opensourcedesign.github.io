@@ -18,7 +18,6 @@ permalink: /goals/
   * Think about how to make OS contributions more rewarding and attractive for designers
 
 ## 3. Communication between designers and developers
-  * Easier way to use IRC
   * An open job board for designers to find open source projects
   * Develop guidelines on how to write documentation, issues, comments that designers (or non-technical contributors in general) can work with
   * Create guidelines on how to present a design to a community with reasoning. And how the community can review the design in a constructive way
