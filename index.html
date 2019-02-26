@@ -37,11 +37,12 @@ published: true
     <div class="row">
         <div class="col-md-4">
             <h2>Articles</h2>
-            {% for post in site.posts limit:3 %}
+            {% for post in site.posts limit:4 %}
                 <div class="post">
                     <h3><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title }}</a></h3>
                 </div>
             {% endfor %}
+            <a href="/articles">See all articles</a>
         </div>
         <div class="col-md-4">
             <h2>Events</h2>
