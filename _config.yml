@@ -14,7 +14,7 @@ twitter_username: opensrcdesign
 github_username:  opensourcedesign
 
 #Not check data in vendor
-exclude: [vendor]
+exclude: [vendor, Rakefile]
 
 # Build settings
 markdown: kramdown
