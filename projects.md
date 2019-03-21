@@ -24,3 +24,4 @@ permalink: /projects/
 * [Patternfly](https://www.patternfly.org/) A UI framework for enterprise web applications
 * [Trustroots](https://www.trustroots.org/) hospitality platform
 * [Automattic](https://automattic.com/) the company behind WordPress.com, WooCommerce.com, Jetpack.com. [Design blog](https://automattic.design/)
+* [XWiki](https://www.xwiki.org) development platform. [Design wiki](https://design.xwiki.org)
