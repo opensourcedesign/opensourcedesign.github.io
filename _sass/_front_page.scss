@@ -212,26 +212,26 @@ h2 {
 
 ul.banner-social-buttons {
   margin-top: 0;
-}
-
-@media(max-width:$screen-md-max) {
-
-  ul.banner-social-buttons {
-    margin-top: 15px;
-  }
+    li {
+      margin-top: 15px;
+    }
 }
 
 @media(max-width:$screen-xs-max) {
 
   ul.banner-social-buttons {
-
     li {
       display: block;
+      margin-top: 0;
       margin-bottom: 20px;
       padding: 0;
       &:last-child {
         margin-bottom: 0;
       }
+      &:first-child {
+        margin-top: 15px;
+      }
+
     }
   }
 }
