@@ -41,5 +41,16 @@ collections:
 sass:
     style: compressed
 
+# for events
+status: &status
+  - name: "Upcoming"
+    value: "upcoming"
+  - name: "Started"
+    value: "started"
+  - name: "Past"
+    value: "Past"
+  - name: "Cancelled"
+    value: "cancelled"
+
 source_url: "https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/"
 edit_url: "https://github.com/opensourcedesign/opensourcedesign.github.io/edit/master/"
