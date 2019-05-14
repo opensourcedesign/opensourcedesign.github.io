@@ -16,6 +16,13 @@ github_username:  opensourcedesign
 #Not check data in vendor
 exclude: [vendor, Rakefile]
 
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+# future events
+future: true
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
