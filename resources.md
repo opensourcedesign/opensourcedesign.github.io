@@ -28,6 +28,18 @@ German artist. Free to use without attribution and free to modify.
 * [The League of Movable Type](https://www.theleagueofmoveabletype.com/)
 * [Open Font Library](http://openfontlibrary.org)
 * [Google Web Fonts](http://google.com/fonts)
+* [Libre Fonts by Womxn](http://design-research.be/by-womxn/)
+* [Open Foundry](https://open-foundry.com)
+* [Open Source Publishing Foundry](http://osp.kitchen/foundry/)
+* [Velvetyne](https://www.velvetyne.fr)
+* [Use & Modify](https://usemodify.com)
+* [FontForge](https://fontforge.github.io) font editor
+* [Metaflop](https://www.metaflop.com) parametric font editor
+* [Prototypo](https://www.prototypo.io) parametric font editor ([source code](https://github.com/byte-foundry/prototypo))
+* [Metapolator](http://metapolator.com/home/) font editor
+* [Type:Bits](http://manufacturaindependente.org/typebits/) collaborative type design workshop
+
+Some of these platforms also take submissions, so if you designed a font with an open license, submit it there!
 
 
 ## Images
