@@ -1,3 +1,9 @@
+---
+permalink: /events
+redirect_from: /events/future
+title: Events
+---
+
 # [Events](http://opensourcedesign.net/events/)
 
 A collection of upcoming events and past events pertaining to open source design. Meetups, planning sessions and more, oh my!
