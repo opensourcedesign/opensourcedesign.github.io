@@ -235,3 +235,14 @@ ul.banner-social-buttons {
     }
   }
 }
+
+/*** Supporters Section ***/
+
+.supporters, .affiliates {
+  text-align: center;
+  padding: 40px 0;
+
+  & img {
+    margin: 25px;
+  }
+}
