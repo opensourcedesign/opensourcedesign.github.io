@@ -2,7 +2,8 @@
 layout: post
 title: Code of Conduct
 permalink: /code-of-conduct/
----
+---Shago7932/Máster
+  Code of conduct
 
 In order to keep the Open Source Design community warm, welcoming, and safe place we ask that all participates read and adhere to the following code of conduct.
 
