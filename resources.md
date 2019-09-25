@@ -21,6 +21,7 @@ source icon sets to use as Inkscape symbols.
 German artist. Free to use without attribution and free to modify.
 * [FontAwesome](http://fontawesome.io/icons/) The iconic font and CSS toolkit. Free to use. [CDN](https://www.bootstrapcdn.com/fontawesome/). [GitHub](https://github.com/FortAwesome/Font-Awesome).
 * [Font Fabulous](https://manageiq.github.io/font-fabulous/) A fabulous iconset packaged as a font. Free to use. [GitHub](https://github.com/ManageIQ/font-fabulous).
+* [Remix Icons](https://remixicon.com/) Huge repo of consistent neutrally styled icons. [GitHub](https://github.com/Remix-Design/remixicon)
 
 
 ## Fonts
