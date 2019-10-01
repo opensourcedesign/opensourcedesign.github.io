@@ -9,7 +9,7 @@ We're always excited to have new contributors. Our community is diverse in
 ages, cultures, and interests so we like to operate under the motto:
 
 > If you have a creative idea or something you want bring to the table,
-> just do it :wink:
+> just do it ;-)
 
 However, it can also be good to check-in if you're new and unsure about things.
 Please read our [code of conduct](/code-of-conduct/) and take a moment to
