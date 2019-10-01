@@ -9,7 +9,7 @@ We're always excited to have new contributors. Our community is diverse in
 ages, cultures, and interests so we like to operate under the motto:
 
 > If you have a creative idea or something you want bring to the table,
-> just do it ;)
+> just do it ;-)
 
 However, it can also be good to check-in if you're new and unsure about things.
 Please read our [code of conduct](/code-of-conduct/) and take a moment to
@@ -48,7 +48,7 @@ within the OSD community.
 Our other Github repositories are experimental and undecided exactly what
 to best do. Among those are:
 
-- [Logos](https://github.com/opensourcedesign/logos) - a collection remixes?
-- [Fonts](https://github.com/opensourcedesign/fonts) - some highlights of nice FOSS licensed friendly fonts
-- [Icons](https://github.com/opensourcedesign/icons) - original creations and works-in-progress
-- [Patterns](https://github.com/opensourcedesign/patterns) - of common UX patterns in open and proprietary software
+- [Logos](https://github.com/opensourcedesign/logos) - a collection of remixes.
+- [Fonts](https://github.com/opensourcedesign/fonts) - some highlights of nice FOSS licensed friendly fonts.
+- [Icons](https://github.com/opensourcedesign/icons) - original creations and works-in-progress.
+- [Patterns](https://github.com/opensourcedesign/patterns) - of common UX patterns in open and proprietary software.
