@@ -94,7 +94,7 @@ issues](https://github.com/nextcloud/core/issues?labels=Design).
 ## Inspiration
 
 * [UI Interaction Library](http://useyourinterface.com/)
-* [Pattern Tap](http://patterntap.com/)
+* [Pattern Tap](https://patterntap.com/patterntap)
 * [Codrops](http://tympanus.net/codrops/)
 
 
