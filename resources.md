@@ -192,6 +192,7 @@ documentation.
 * [Transitional Interfaces,
 Coded](http://css-tricks.com/transitional-interfaces-coded/) for good
 animations.
+* [Coding Bootcamps](https://coding-bootcamps.com/)
 * [Codecademy](http://www.codecademy.com/) with interactive tutorials.
 * [Try Git](http://try.github.io/) also with interactive tutorials.
 * [code.org](http://code.org/)
@@ -201,6 +202,7 @@ animations.
 website is a11y compliant.
 - [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 * [Course: How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+* [High School Technology Services](https://myhsts.org/)
 
 
 ## Learn to Design
