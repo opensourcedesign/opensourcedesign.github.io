@@ -110,4 +110,7 @@ Please note that Open Source Design has a [Contributor Code of Conduct](https://
 
 [![GitHub license](https://img.shields.io/github/license/opensourcedesign/opensourcedesign.github.io?logo=apache)](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/LICENSE)
 
-- **🔀 You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.** [Code license is AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) and content is [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/).
+**🔀 You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.** [Code license is AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) and content is [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/).
+
+![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)
+
