@@ -2,7 +2,7 @@
 
 Website of the Open Source Design community, hosted on Github pages.
 
-[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors)
+[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![GitHub issues](https://img.shields.io/github/issues/opensourcedesign/opensourcedesign.github.io?logo=github)](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) [![GitHub forks](https://img.shields.io/github/forks/opensourcedesign/opensourcedesign.github.io?logo=github)](https://github.com/opensourcedesign/opensourcedesign.github.io/network) [![GitHub stars](https://img.shields.io/github/stars/opensourcedesign/opensourcedesign.github.io?logo=github)](https://github.com/opensourcedesign/opensourcedesign.github.io/stargazers)
 
 ## Edit Website
 
@@ -107,5 +107,7 @@ Please note that Open Source Design has a [Contributor Code of Conduct](https://
 
 
 ## 📜 License
+
+[![GitHub license](https://img.shields.io/github/license/opensourcedesign/opensourcedesign.github.io?logo=apache)](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/LICENSE)
 
 - **🔀 You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.** [Code license is AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) and content is [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/).
