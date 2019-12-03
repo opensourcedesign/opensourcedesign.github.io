@@ -1,10 +1,8 @@
 # [opensourcedesign.net](https://opensourcedesign.net)
 
-(https://github.com/opensourcedesign/opensourcedesign.github.io/stargazers) [![GitHub license](https://img.shields.io/github/license/opensourcedesign/opensourcedesign.github.io?logo=apache)](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/LICENSE) ![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)
-
 Website of the Open Source Design community, hosted on Github pages.
 
-[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors)
+[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)](https://twitter.com/opensrcdesign)
 
 ## Edit Website
 
@@ -31,7 +29,7 @@ This step requires having a `ruby` development environment and `git` installed
 and configured to connect to Github with SSH.
 
 - [Installing Ruby][installing-ruby]
-- [Using Github with SSH][github-ssh]
+- [Using GitHub with SSH][github-ssh]
 
 1. Install Jekyll using and other ruby gems
 
