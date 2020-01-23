@@ -1,6 +1,6 @@
 # [opensourcedesign.net](https://opensourcedesign.net)
 
-Website of the Open Source Design community, hosted on Github pages.
+Website of the Open Source Design community, hosted on GitHub Pages.
 
 [![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)](https://twitter.com/opensrcdesign)
 
@@ -10,7 +10,7 @@ Editing content on [opensourcedesign.net][osd-net] can be done in two ways, both
 
 1. Using GitHub's nifty file editor
 
-![Github file tools](images/github-file-tools.png)
+![GitHub file tools](images/github-file-tools.png)
 
 2. Modifying source code (technical)
 
@@ -26,20 +26,20 @@ programming tools:
 ### Installing
 
 This step requires having a `ruby` development environment and `git` installed
-and configured to connect to Github with SSH.
+and configured to connect to GitHub with SSH.
 
 - [Installing Ruby][installing-ruby]
 - [Using GitHub with SSH][github-ssh]
 
-1. Install Jekyll using and other ruby gems
+1. Install Jekyll using and other Ruby gems
 
-```
+```sh
 sudo gem install bundler
 ```
 
 2. Fork and clone the main website repository
 
-```
+```sh
 git clone git@github.com:opensourcedesign/opensourcedesign.net
 cd opensourcedesign.net/
 bundle install
@@ -50,7 +50,7 @@ bundle install
 This will pull down all of the repositories (jobs, events, etc...) and put them
 in there proper place to build our website locally.
 
-```
+```sh
 ./scripts/install.sh
 ```
 
@@ -58,15 +58,15 @@ in there proper place to build our website locally.
 
 4. Build the static site & watch for files
 
-```
-jekyll serve --watch --config _config.yml,_config-dev.yml
+```sh
+bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
 ```
 
 ### Updating
 
 Updating the various repositories can be done by running this script
 
-```
+```sh
 ./scripts/update.sh
 ```
 
