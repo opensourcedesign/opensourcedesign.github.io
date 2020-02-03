@@ -9,13 +9,13 @@ permalink: /articles/
         <div class="col-md-8 col-md-offset-2">
             <h1>Articles</h1>
             <ul class="post-list row">
-              {% for post in site.posts %}
-              {% if post.layout == "post" %}
-              <li>
-                  <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-                  <h2>
-                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                  </h2>
+                {% for post in site.posts %}
+                {% if post.layout == "post" %}
+                <li>
+                    <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    <h2>
+                        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    </h2>
                 </li>
               {% endif %}
               {% endfor %}
