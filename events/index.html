@@ -15,7 +15,7 @@ layout: default
         can find more information on <a href="/events/open-source-design-monthly-online-meeting/">our Event listing</a>.
     </p>
 
-    {% assign posts = site.posts | where: "status", "upcoming" %}
+    {% assign posts = site.events | where: "status", "upcoming" %}
     {% if posts != empty %}
         <h3>Upcoming events</h3>
         <ul class="post-list">
@@ -51,7 +51,7 @@ layout: default
         <p>To add an event <a href="https://github.com/opensourcedesign/events" target="_blank">fork and send a pull request</a></p>
     {% endif %}
 
-    {% assign pastEvents = site.posts | where: "status", "past" %}
+    {% assign pastEvents = site.events | where: "status", "past" %}
     {% if pastEvents %}
     <h3 id="past-events" class="past-events">Past events</h3>
     <ul class="post-list">
@@ -65,7 +65,6 @@ layout: default
         {% endfor %}
     </ul>
     {% endif %}
-
 
 
     <p>To add an event <a href="https://github.com/opensourcedesign/events" target="_blank">fork and send a pull request</a></p>
