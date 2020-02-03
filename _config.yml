@@ -8,13 +8,16 @@ description: > # this means to ignore newlines until "baseurl:"
 
 #baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://opensourcedesign.net" # the base hostname & protocol for your site
-exclude: ["bower_components", "node_modules", "grunt", "sass", "scripts", "bower.json", "package.json", "README.md"]
+exclude: 
+  - scripts
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - person-template.md
 
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
-
-# Not check data in vendor
-exclude: [vendor, Rakefile]
 
 plugins:
   - jekyll-redirect-from
