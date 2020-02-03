@@ -37,6 +37,9 @@ collections:
   people:
     output: true
     permalink: /people/:path/
+  events:
+    output: true
+    permalink: /events/:path/
 
 sass:
     style: compressed
