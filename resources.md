@@ -181,7 +181,7 @@ and hardware group.
 
 ## Learn to Code
 
-Focused on HTML, CSS, Javascript.) Ideally, to be able to implement your own
+Focused on HTML, CSS, Javascript. Ideally, to be able to implement your own
 suggestions. But also to better discuss with developers and be understand why
 and how certain things work and don’t work.
 
