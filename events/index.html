@@ -48,7 +48,7 @@ layout: default
         </ul>
     {% else %}
         <h3>There are no upcoming events</h3>
-        <p>To add an event <a href="https://github.com/opensourcedesign/events" target="_blank">fork and send a pull request</a></p>
+        <p>To add an event, <a href="https://github.com/opensourcedesign/opensourcedesign.github.io" target="_blank">fork our repository and send a pull request!</a></p>
     {% endif %}
 
     {% assign pastEvents = site.events | where: "status", "past" %}
@@ -67,7 +67,7 @@ layout: default
     {% endif %}
 
 
-    <p>To add an event <a href="https://github.com/opensourcedesign/events" target="_blank">fork and send a pull request</a></p>
+    <p>To add an event, <a href="https://github.com/opensourcedesign/opensourcedesign.github.io" target="_blank">fork us and send a pull request!</a></p>
 
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 </div>

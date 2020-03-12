@@ -1,5 +1,4 @@
 function foo(response) {
-  var meta = response.meta;
   var data = response.data;
 
   var items_html = '';

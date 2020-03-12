@@ -23,9 +23,6 @@ plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
 
-# future events
-future: true
-
 # Build settings
 markdown: kramdown
 highlighter: rouge
@@ -45,7 +42,7 @@ collections:
     permalink: /events/:path/
 
 sass:
-    style: compressed
+  style: compressed
 
 # for events
 status: &status
