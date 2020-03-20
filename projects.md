@@ -7,7 +7,7 @@ permalink: /projects/
 **Open Source projects and organisations with good design, a design team, and with a nice guide on how to get involved with the design!** Designers of lots of these projects are active in our community and hang out in our [forum](https://discourse.opensourcedesign.net/) too! :)
 
 * [Mozilla](https://mozilla.org), makers of the Firefox browser. Have a [UX blog](https://blog.mozilla.org/ux)
-* [GNOME](https://www.gnome.org/) desktop environment. [Design blogs](http://planet.gnome.org/ux/), [Design wiki](https://wiki.gnome.org/Design)
+* [GNOME](https://www.gnome.org/) desktop environment. [Design blogs](https://blogs.gnome.org/aday/category/gnome-ux), [Design wiki](https://wiki.gnome.org/Design)
 * [GitLab](https://about.gitlab.com/) Git hosting and code collaboration. [UX Team](https://about.gitlab.com/handbook/engineering/ux/)
 * [Nextcloud](https://nextcloud.com) data sync & sharing, have a [Design page](https://nextcloud.com/design)
 * [Fedora](https://getfedora.org/), [Design blogs](http://fedoraplanet.org/design/), [Design Team wiki](http://fedoraproject.org/wiki/Design)
