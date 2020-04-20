@@ -26,3 +26,6 @@ We design with respect and ethics in mind. People’s privacy and time is honore
 
 ## 7. Open Source Design is educational
 We share knowledge and teach skills. We help designers get involved in open source, and help open source developers make their products better through good design.
+
+## 8. Open Source is respectful.
+We encourage creators respecting others and their own work. We believe respectful citations and references are cornerstone for any kind of collaborative work.
