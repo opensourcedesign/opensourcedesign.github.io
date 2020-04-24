@@ -37,7 +37,7 @@ published: true
     <div class="row">
         <div class="col-md-4">
             <h2>Articles</h2>
-            {% for post in site.posts limit:3 %}
+            {% for post in site.posts limit:7 %}
                 <div class="post">
                     <h3><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title }}</a></h3>
                 </div>
@@ -46,12 +46,12 @@ published: true
         </div>
         <div class="col-md-4">
             <h2>Events</h2>
-            <div id="events-snapshot">Automatically generate events...</div>
+            <div id="events-snapshot">Loading...</div>
             <a href="/events">See all events</a>
         </div>
         <div class="col-md-4">
             <h2>Jobs & Projects</h2>
-            <div id="jobs-snapshot">Automatically generate jobs...</div>
+            <div id="jobs-snapshot">Loading...</div>
             <a href="/jobs">See all jobs</a>
         </div>
     </div>
