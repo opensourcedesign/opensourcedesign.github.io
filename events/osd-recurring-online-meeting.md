@@ -1,13 +1,13 @@
 ---
 layout: event
-title:  "Open Source Design monthly call"
-date:   2018-08-01
+title: "Open Source Design monthly call"
+date: 2018-08-01
 categories: online meet-up
 eventDate: Every First Wednesday
 location: Online
-time:  19:00-20:00 (Berlin Time)
+time: 19:00-20:00 (Berlin Time)
 status: upcoming
-permalink: /open-source-design-monthly-online-meeting/
+permalink: /events/monthly-online-meeting/
 ---
 
 Join us for our monthly get together where we talk about all things Open Source Design. Everyone is welcome.

@@ -10,7 +10,7 @@ status: past
 permalink: /2017/02/04/foss-north-2017
 ---
 
-[Foss North](http://foss-north.se) is an free / open source conference covering both software 
+[Foss North](https://foss-north.se) is an free / open source conference covering both software 
 and hardware from the technical perspective. Hosted in Gothenburg between Copenhagen, Oslo and 
 Stockholm with an international airport, we provide a meeting place for the Nordic foss communities 
 and will bring together great speakers with a great audience.
