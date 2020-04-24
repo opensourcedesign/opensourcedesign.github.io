@@ -1,7 +1,7 @@
 ---
 layout: event
-title:  "Open Source Design Summit 2018: Tirana, Nov 02-04"
-date:   2018-11-02
+title: "Open Source Design Summit 2018: Tirana, Nov 02-04"
+date: 2018-11-02
 categories: design meetup community
 eventDate: Fri, 02 Nov 2018 - Sun, 04 Nov 2018
 location: Tirana, Albania

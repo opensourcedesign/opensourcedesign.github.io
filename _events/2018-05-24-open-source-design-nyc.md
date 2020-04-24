@@ -1,7 +1,7 @@
 ---
 layout: event
-title:  "Open Source Design NYC: May 24 2018"
-date:   2018-05-24
+title: "Open Source Design NYC: May 24 2018"
+date: 2018-05-24
 categories: design meetup community
 eventDate: Thu, 24 May 2018
 location: New York

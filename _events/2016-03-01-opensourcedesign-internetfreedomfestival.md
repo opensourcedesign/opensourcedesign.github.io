@@ -7,9 +7,6 @@ eventDate: 2016-03-01
 location: Calle de Juan Verdeguer 16, 46024 – Valencia, Spain
 time: 
 status: past
-redirect_from:
-  - /design/internet-freedom/activism/2016/03/01/opensourcedesign-internetfreedomfestival.html
-  - /2016/03/01/open-source-design-internet-freedom-festival
 permalink: /2016/03/open-source-design-internet-freedom-festival
 ---
 

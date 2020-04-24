@@ -1,13 +1,12 @@
 ---
 layout: event
-title:  "Berlin Open Source Design meetup, Mar 15, 2015"
-date:   2015-03-15 19:37:47
+title: "Berlin Open Source Design meetup, Mar 15, 2015"
+date: 2015-03-15 19:37:47
 categories: berlin meeting
 eventDate: Sun, 15 March 2015
 location: bnvk Haus/online
 time: 13:00–18:00 CET (UTC +1:00)
 status: past
-redirect_from: /berlin/meeting/2015/03/15/berlin-open-source-design-meetup.html
 permalink: /2015/03/15/berlin-open-source-design-meetup
 ---
 Let’s meet and work on driving the Open Soure Design movement forward! Everyone who wants to contribute is welcome.

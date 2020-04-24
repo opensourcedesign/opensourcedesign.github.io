@@ -1,13 +1,12 @@
 ---
 layout: event
-title:  "Open Source Design track at FOSDEM 2017"
-date:   2017-02-05
+title: "Open Source Design track at FOSDEM 2017"
+date: 2017-02-05
 categories: design hack meeting
 eventDate: Sun, 5 Feb 2017
 location: Université Libre Brussels (Solbosch campus), Belgium
 time: pending
 status: past
-redirect_from: /design/hack/meeting/2017/02/05/opensourcedesign-fosdem.html
 permalink: /2017/02/05/opensourcedesign-fosdem-2017
 ---
 
