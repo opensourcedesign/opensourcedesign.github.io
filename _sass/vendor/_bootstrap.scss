@@ -4614,7 +4614,7 @@ tbody.collapse.in {
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
-    max-height: 200px;
+    min-height: 200px;
   }
 }
 
