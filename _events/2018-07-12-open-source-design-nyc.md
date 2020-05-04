@@ -1,7 +1,7 @@
 ---
 layout: event
-title:  "Open Source Design NYC: July 12 2018"
-date:   2018-07-12
+title: "Open Source Design NYC: July 12 2018"
+date: 2018-07-12
 categories: design meetup community
 eventDate: Thu, 12 July 2018
 location: New York

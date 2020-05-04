@@ -11,7 +11,7 @@ layout: null
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for event in site.events limit:10 %}
+    {% for event in site.events %}
       <item>
         <title>{{ event.title | xml_escape }}</title>
         <description>{{ event.content | xml_escape }}</description>

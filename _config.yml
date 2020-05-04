@@ -6,7 +6,6 @@ description: > # this means to ignore newlines until "baseurl:"
   open design processes and improve the user experience and interface
   design of open source software.
 
-#baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://opensourcedesign.net" # the base hostname & protocol for your site
 exclude: 
   - scripts

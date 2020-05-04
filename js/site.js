@@ -36,7 +36,6 @@ function foo(response) {
   var count = 0;
 
   _.each(data, function(item, key) {
-
     if (count <= 8) {
       count++;
 
@@ -52,20 +51,20 @@ function foo(response) {
   });
 
   $('#activity-feed').html(items_html);
-
 }
 
-var script = document.createElement('script');
-script.src = 'https://api.github.com/repos/opensourcedesign/opensourcedesign.net/events?callback=foo';
-
-document.getElementsByTagName('head')[0].appendChild(script);
-
+$(document).ready(function() {
+  $.ajax({
+    url: 'https://api.github.com/repos/opensourcedesign/opensourcedesign.github.io/events',
+    success: foo
+  })
+})
 
 /*
  * parse_link_header()
  *
- * Parse the Github Link HTTP header used for pageination
- * http://developer.github.com/v3/#pagination
+ * Parse the GitHub Link HTTP header used for pagination
+ * https://developer.github.com/v3/#pagination
  */
 function parse_link_header(header) {
   if (header.length == 0) {
@@ -92,7 +91,6 @@ function parse_link_header(header) {
 /**
  * I take a string and create an excerpt from it
  *
- * @param string str - the string to shorten
  * @param int limit - the limit of characters
  */
 function excerpt_text( str, limit ) {
@@ -103,66 +101,35 @@ function excerpt_text( str, limit ) {
 }
 
 /*!
- * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
+ * Start Bootstrap - Grayscale Bootstrap Theme (https://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ * For details, see https://www.apache.org/licenses/LICENSE-2.0.
  */
 
 // jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
-    if ($(".navbar").offset().top > 50) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
-    } else {
-        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-    }
+  if ($(".navbar").offset().top > 50) {
+    $(".navbar-fixed-top").addClass("top-nav-collapse");
+  } else {
+    $(".navbar-fixed-top").removeClass("top-nav-collapse");
+  }
 });
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
-        }, 1500, 'easeInOutExpo');
-        event.preventDefault();
-    });
+  $('a.page-scroll').bind('click', function(event) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: $($anchor.attr('href')).offset().top
+    }, 1500, 'easeInOutExpo');
+    event.preventDefault();
+  });
 });
 
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
+  $('.navbar-toggle:visible').click();
 });
-
-
-// Fetch Events
-
-$(document).ready(function() {
-  var template_item = _.template($('#template-events-item').html());
-  var url = 'https://opensourcedesign.net/events/feed.xml';
-
-  var items_html = '';
-  $.ajax({
-    url: url,
-    success: function(d){
-      $('#events-snapshot').html('');
-      $(d).find('item').each(function(idx) {
-        if (idx <= 5) {
-          var $ev = $(this);
-          var item = {
-            title: $ev.find('title').text(),
-            link: $ev.find('link').text()
-          };
-          items_html = template_item(item);
-          $('#events-snapshot').append(items_html);
-        }
-      });
-    },
-    error: function() {
-      $('#events-snapshot').text('We attend and organize open source & design events! :)');
-    }
-  });
-});
-
 
 // Fetch Jobs
 

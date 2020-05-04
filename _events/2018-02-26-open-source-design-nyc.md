@@ -1,7 +1,7 @@
 ---
 layout: event
-title:  "Open Source Design NYC: Feb 26 2018"
-date:   2018-02-26
+title: "Open Source Design NYC: Feb 26 2018"
+date: 2018-02-26
 categories: design meetup community
 eventDate: Mon, 26 Feb 2018
 location: New York

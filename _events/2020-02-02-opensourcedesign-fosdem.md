@@ -1,13 +1,12 @@
 ---
 layout: event
-title:  "Call for Participation: Open Source Design Devroom at FOSDEM 2020"
-date:   2020-02-02
+title: "Call for Participation: Open Source Design Devroom at FOSDEM 2020"
+date: 2020-02-02
 categories: design hack meeting
 eventDate: Sun, 2 Feb 2019
 location: Room not yet confirmed, Solbosch campus - Université Libre Brussels, Brussels, Belgium
 time: full days
-status: upcoming
-redirect_from: /design/hack/meeting/2020/02/02/opensourcedesign-fosdem.html
+status: past
 permalink: /2020/02/02/opensourcedesign-fosdem-2020
 ---
 

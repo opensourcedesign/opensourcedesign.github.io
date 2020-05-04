@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Open Source Design track at OpenTechSummit 2017"
-date:   2017-05-25
+title: "Open Source Design track at OpenTechSummit 2017"
+date: 2017-05-25
 categories: design conference track
 eventDate: Sun, 4 Feb 2018
 location: freiLand, Berlin-Potsdam

@@ -1,13 +1,12 @@
 ---
 layout: event
-title:  "Open Source Design track at FOSDEM 2016"
-date:   2016-01-30
+title: "Open Source Design track at FOSDEM 2016"
+date: 2016-01-30
 categories: design hack meeting
 eventDate: Sat, 30 Jan 2016
 location: Université Libre Brussels (Solbosch campus), Belgium
 time: 10:30 am – 7:00 pm
 status: past
-redirect_from: /design/hack/meeting/2016/01/30/opensourcedesign-fosdem.html
 permalink: /2016/01/30/opensourcedesign-fosdem-2016
 ---
 

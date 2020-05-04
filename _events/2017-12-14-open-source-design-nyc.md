@@ -1,7 +1,7 @@
 ---
 layout: event
-title:  "Open Source Design NYC: Dec 14 2017"
-date:   2017-12-14
+title: "Open Source Design NYC: Dec 14 2017"
+date: 2017-12-14
 categories: design meetup community
 eventDate: Thurs, 14 Dec 2017
 location: New York

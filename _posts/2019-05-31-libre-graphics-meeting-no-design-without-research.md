@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Open Source Design speak at Libre Graphics Meeting 2019
-date:   2018-12-25
+title: Open Source Design speak at Libre Graphics Meeting 2019
+date: 2018-12-25
 categories:
   - open-source
   - communities

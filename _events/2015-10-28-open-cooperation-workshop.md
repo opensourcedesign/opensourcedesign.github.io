@@ -1,13 +1,12 @@
 ---
 layout: event
-title:  "Future of Web Design Workshop – Open Cooperation: Working Together 2015"
-date:   2015-10-28
+title: "Future of Web Design Workshop – Open Cooperation: Working Together 2015"
+date: 2015-10-28
 categories: design workshop conference
 eventDate: Wed, 28 Oct 2015
 location: Mission Bay Conference Center at UCSF, San Francisco
 time: 9:00 am – 5:00 pm
 status: past
-redirect_from: /design/workshop/conference/2015/10/28/open-cooperation-workshop.html
 permalink: /2015/10/28/open-cooperation-workshop
 ---
 
