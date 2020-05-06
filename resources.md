@@ -92,23 +92,11 @@ participate, and open new issues. Establish a »Design« tag on the tracker to
 group these issues, for example like in the [Nextcloud
 issues](https://github.com/nextcloud/core/issues?labels=Design).
 
-
-## Inspiration
-
-* [Pattern Tap](https://patterntap.com/patterntap)
-* [Codrops](http://tympanus.net/codrops/)
-* [h69.design](https://www.h69.design/): Landing page gallery & free resources.
-* [Microcopyinspirations](https://www.microcopyinspirations.com/): Get layout & direction inspo on general UI design.
-
-
 ## Color Choices
 
-* [Adobe Color](https://color.adobe.com/create/color-wheel): Pick contrasting color patterns, free from Adobe.
-* [Brand Colors](https://brandcolors.net/): List of all brand color palettes.
 * [Blend](http://www.colinkeany.com/blend/): CSS gradient generator.
-* [Coolors](https://coolors.co/): Color scheme generator.
-* [Color Wise](https://colorwise.io/): Color palettes of the most voted products on Product Hunt.
-* [Material Palettes](https://materialpalettes.com/): Material colors generator.
+* [Leonardo.io by Adobe](https://leonardocolor.io/): Color contrast generator.
+* [Tanaguru](https://contrast-finder.tanaguru.com/): For finding complementary colors.
 
 ## CSS Frameworks
 
