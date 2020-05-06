@@ -57,13 +57,6 @@ echo -e $MSG_DONE
 echo -e $LINE
 
 # Special paths
-cd events
-echo -e $MSG_START
-git fetch
-git rebase
-echo -e $MSG_DONE
-echo -e $LINE
-cd ../
 
 cd jobs
 echo -e $MSG_START

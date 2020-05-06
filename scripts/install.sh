@@ -76,14 +76,6 @@ echo -e "\e[94m$LINE\e[0m"
 sleep 1
 
 # Special paths
-if [[ ! -d "events" ]]; then
-	echo -e $MSG_START
-    git clone git@github.com:${USERNAME}/events.git events
-    echo -e $MSG_DONE
-else
-    echo -e $MSG_EXISTS
-fi
-
 if [[ ! -d "jobs" ]]; then
 	echo -e $MSG_START
     git clone git@github.com:${USERNAME}/jobs.git jobs
