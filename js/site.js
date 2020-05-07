@@ -165,10 +165,10 @@ function screenChange(screenW) {
   if (screenW.matches) { // If media query matches
     $("#lastOne").attr("data","https://opencollective.com/opensourcedesign/tiers/backer.svg?avatarHeight=50&width=320"); 
   } else {
-     $("#lastOne").attr("data","https://opencollective.com/opensourcedesign/tiers/backer.svg?avatarHeight=50&width=400");
+    $("#lastOne").attr("data","https://opencollective.com/opensourcedesign/tiers/backer.svg?avatarHeight=50&width=400");
   }
 }
 
-var screenW = window.matchMedia("(max-width: 400px)")
-screenChange(screenW) // Call listener function at run time
-screenW.addListener(screenChange)
+var screenW = window.matchMedia("(max-width: 400px)");
+screenChange(screenW); // Call listener function at run time
+screenW.addListener(screenChange);
