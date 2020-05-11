@@ -1,14 +1,8 @@
----
-permalink: /events
-redirect_from: /events/future
-title: Events
----
-
-# [Events](http://opensourcedesign.net/events/)
+# [Events](https://opensourcedesign.net/events/)
 
 A collection of upcoming events and past events pertaining to open source design. Meetups, planning sessions and more, oh my!
 
-Check out http://opensourcedesign.net/events/ for past, present, and future events.
+Check out https://opensourcedesign.net/events/ for past, present, and future events.
 
 ### Host Your Own Event
 
