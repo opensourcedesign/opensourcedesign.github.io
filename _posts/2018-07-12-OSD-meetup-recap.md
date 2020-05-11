@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Open source design NYC meetup recap
-date:   2018-07-12
+title: Open source design NYC meetup recap
+date: 2018-07-12
 categories:
   - open-source
   - communities
@@ -14,18 +14,20 @@ authors:
   - Eliheuer
 ---
 
-## The Big Idea -
+## The Big Idea
+
 Open source communities push collaboration, sharing and transparency throughout various industries. While design and creativity have never been more important, we often wonder, “where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community?” Come to our meetup to learn more. This month's nyc meetup covered the history and future of free software font editors.
 
+## The history and future of free software font editors
 
-##  The history and future of free software font editors
 Eli is a libre graphics focused designer and software developer who has worked with clients such as Jacobin Magazine, EA Games, and Ruffeo Hearts Lil' Snotty. His blog and links to social media profiles can be found at: [Eli.blog](https://elih.blog)
 
 
 ![Eliheuer](/images/articles/nyc_IMG_2470.jpg)
 Eli Heuer about to dive into the world of font editors.
 
-##  A little bit about Eli
+## A little bit about Eli
+
 Eli became interested in Fonts due to a teaching opportunity in Bushwick NY in 2013. Working with local kids that did not have access to expensive computers helped spark his determination to teach them about the world of  free software.  Among other projects he worked with local artists that had either little or no budget for their art shows and provided them with design work or tool kits to help them create events posters and collateral.
 
 !["thaw" spelled in melting ice](/images/articles/nyc_thaw.png)
@@ -68,6 +70,6 @@ Eli’s PocketChip that runs Linux and FontForge and let’s you use a pen!
 
  [Slides were created in drawbot](https://github.com/eliheuer/osd-nyc-talk)
 
-
 ## Next meetup
+
 Please follow [our twitter](https://twitter.com/opensrcdesign) for our next meetup announcement. Be seeing you!

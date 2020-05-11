@@ -1,13 +1,11 @@
 ---
 layout: post
-title:  "Welcome to Open Source Design"
-date:   2015-04-25
+title: "Welcome to Open Source Design"
+date: 2015-04-25
 categories: design open source launching
 author: bnvk
 redirect_from: 
-  - /design
-  - /open/source
-  - /launching/2015/04/25/welcome-to-open-source-design.html
+  - /launching
 permalink: /2015/04/25/welcome-to-open-source-design
 ---
 

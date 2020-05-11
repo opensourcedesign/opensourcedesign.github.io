@@ -67,7 +67,7 @@ sometimes gets confused as us. From [this conversation](https://github.com/opens
 
 Open Design targets the wider design community, while Open Source Design targets
 getting more people (including designers) involved in designing for Open Source
-Software. This image by [GarthDB](http://garthdb.com) does a good job of
+Software. This image by [GarthDB](https://garthdb.com) does a good job of
 explaining:
 
 ![differences](/images/osd-vs-od.png)

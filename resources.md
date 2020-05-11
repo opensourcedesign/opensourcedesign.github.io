@@ -55,6 +55,7 @@ Some of these platforms also take submissions, so if you designed a font with an
 * [New York Public Library Public Domain
 Images](http://www.nypl.org/research/collections/digital-collections/public-domain?hspace=331354)
 * [unDraw](https://undraw.co/)
+* [Interfacer](https://interfacer.xyz/)
 
 
 ## Media from big platforms under Creative Commons licenses
@@ -91,12 +92,11 @@ participate, and open new issues. Establish a »Design« tag on the tracker to
 group these issues, for example like in the [Nextcloud
 issues](https://github.com/nextcloud/core/issues?labels=Design).
 
-## Inspiration
+## Color Choices
 
-* [UI Interaction Library](http://useyourinterface.com/)
-* [Pattern Tap](https://patterntap.com/patterntap)
-* [Codrops](http://tympanus.net/codrops/)
-
+* [Blend](http://www.colinkeany.com/blend/): CSS gradient generator.
+* [Leonardo.io by Adobe](https://leonardocolor.io/): Color contrast generator.
+* [Tanaguru](https://contrast-finder.tanaguru.com/): For finding complementary colors.
 
 ## CSS Frameworks
 
@@ -181,7 +181,7 @@ and hardware group.
 
 ## Learn to Code
 
-Focused on HTML, CSS, Javascript.) Ideally, to be able to implement your own
+Focused on HTML, CSS, Javascript. Ideally, to be able to implement your own
 suggestions. But also to better discuss with developers and be understand why
 and how certain things work and don’t work.
 

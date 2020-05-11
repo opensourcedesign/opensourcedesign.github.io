@@ -6,15 +6,21 @@ description: > # this means to ignore newlines until "baseurl:"
   open design processes and improve the user experience and interface
   design of open source software.
 
-#baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://opensourcedesign.net" # the base hostname & protocol for your site
-exclude: ["bower_components", "node_modules", "grunt", "sass", "scripts", "bower.json", "package.json", "README.md"]
+exclude: 
+  - scripts
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - person-template.md
 
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
 
-#Not check data in vendor
-exclude: [vendor, Rakefile]
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
 
 # Build settings
 markdown: kramdown
@@ -30,9 +36,23 @@ collections:
   people:
     output: true
     permalink: /people/:path/
+  events:
+    output: true
+    permalink: /events/:path/
 
 sass:
-    style: compressed
+  style: compressed
+
+# for events
+status: &status
+  - name: "Upcoming"
+    value: "upcoming"
+  - name: "Started"
+    value: "started"
+  - name: "Past"
+    value: "past"
+  - name: "Cancelled"
+    value: "cancelled"
 
 source_url: "https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/"
 edit_url: "https://github.com/opensourcedesign/opensourcedesign.github.io/edit/master/"

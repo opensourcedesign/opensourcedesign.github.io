@@ -29,7 +29,7 @@ published: true
             <p>We write <a href="/articles">articles</a>, run a <a href="/jobs">job board</a>, put on <a href="/events">events</a>, provide <a href="/resources">resources</a>, and present talks targeted at <strong>developers and designers</strong> interested in working and designing in Open Source.</p>
         </div>
         <div class="col-md-4">
-            <p class="goals">Read more about <a href="/goals">our goals</a> and <a href="/faq">frequently asked questions</a>. If you are interested in contributing, check out the <a href="{{ site.url }}/contribute/" title="contribute">section on our site</a> for that. Also join our <a href="https://orgmanager.miguelpiedrafita.com/o/opensourcedesign" target="_blank">organization on GitHub</a> and <a href="https://discourse.opensourcedesign.net" target="_blank">our forum</a>.</p>
+            <p class="goals">Read more about our <a href="/manifesto">manifesto</a> and <a href="/goals">goals</a>. If you are interested in contributing, check out the <a href="/faq">frequently asked questions</a> and find how you can <a href="{{ site.url }}/contribute/" title="contribute">contribute</a>. Also join our <a href="https://discourse.opensourcedesign.net" target="_blank">forum</a>.</p>
         </div>
     </div>
 </section>
@@ -37,7 +37,7 @@ published: true
     <div class="row">
         <div class="col-md-4">
             <h2>Articles</h2>
-            {% for post in site.posts limit:3 %}
+            {% for post in site.posts limit:7 %}
                 <div class="post">
                     <h3><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title }}</a></h3>
                 </div>
@@ -46,12 +46,12 @@ published: true
         </div>
         <div class="col-md-4">
             <h2>Events</h2>
-            <div id="events-snapshot">Automatically generate events...</div>
+            <p>We run events around the world related to open source, design, and more!</p>
             <a href="/events">See all events</a>
         </div>
         <div class="col-md-4">
             <h2>Jobs & Projects</h2>
-            <div id="jobs-snapshot">Automatically generate jobs...</div>
+            <div id="jobs-snapshot">Loading...</div>
             <a href="/jobs">See all jobs</a>
         </div>
     </div>
@@ -71,12 +71,21 @@ published: true
               <img src="images/supporters/opentechfund.svg" height="40px" width="auto" alt="OpenTechFund Logo"/>
               <img src="images/supporters/phplist.svg" height="50px" width="auto" alt="PhpList Logo"/>
               <img src="images/supporters/redhat.svg" height="50px" width="auto" alt="RedHat Logo"/>
-              <a title="Stickermule" href="http://stickermule.com/supports/opensourcedesign19-sponsorship" target="_blank" rel="noopener"><img src="images/supporters/stickermule.svg" height="40px" width="auto" alt="Stickermule Logo"/></a>
+              <a title="Stickermule" href="httsp://stickermule.com/supports/opensourcedesign19-sponsorship" target="_blank" rel="noopener"><img src="images/supporters/stickermule.svg" height="40px" width="auto" alt="Stickermule Logo"/></a>
               <img src="images/supporters/wikimedia-germany.svg" height="50px" width="auto" alt="Wikimedia Germany Logo"/>
+              <br>
+              <object type="image/svg+xml" data="https://opencollective.com/opensourcedesign/tiers/sponsor.svg?avatarHeight=70&width=150"></object>
         </div>
         <div class="col-sm-12 supporters">
-              <object type="image/svg+xml" data="https://opencollective.com/opensourcedesign/tiers/sponsor.svg?avatarHeight=50&width=400"></object>
-              <object type="image/svg+xml" data="https://opencollective.com/opensourcedesign/tiers/backer.svg?avatarHeight=50&width=400"></object>
+              <object type="image/svg+xml" id="lastOne" data="https://opencollective.com/opensourcedesign/tiers/backer.svg?avatarHeight=50&width=400"></object>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 supporters">
+            <h2>Conferences</h2>
+              <img src="images/events/fosdem.svg" height="40px" width="auto" alt="FOSDEM"/>
+              <img src="images/events/fossasia.svg" height="50px" width="auto" alt="FOSSASIA"/>
+              <img src="images/events/apachecon.svg" style="margin-left:0;margin-right:0" height="50px" width="auto" alt="Apachecon Europe"/>
         </div>
     </div>
     <div class="row">

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Open source design needs better collaboration tools
-date:   2017-03-27
+title: Open source design needs better collaboration tools
+date: 2017-03-27
 categories:
   - open-source
   - communities

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Open source design NYC meetup recap
-date:   2017-12-14
+title: Open source design NYC meetup recap
+date: 2017-12-14
 categories:
   - open-source
   - communities
@@ -14,7 +14,7 @@ authors:
   - Atulvarma
 ---
 
-## The Big Idea -
+## The Big Idea
 Open source communities push collaboration, sharing and transparency throughout various industries. While design and creativity have never been more important, we often wonder, “where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community?” Come to our meetup to learn more.
 
 ![nycgroup](/images/IMG_20171214_205528.jpg)
@@ -22,13 +22,13 @@ Top row: Julien Deswaef, Aaron Hymoff, Dina Michl, Atul Varma, Stephanie Daher, 
 Bottom row: Erika Enlund
 Not pictured: Jess Klein
 
-##  Accessibility and Open Source
+## Accessibility and Open Source
 This talk was given by Atul Varma, who is known for building bridges of understanding between humans and machines. He has written illuminating software that’s been used as the centerpiece of TED Talks, in maker events around the world, and by individuals who are just trying to have a less frustrating time using their computer. But his favorite moments are very personal: understanding where another person is coming from, constructing a metaphor they can relate to, and using it to explain technology in a way that liberates, excites, and empowers.
 
 ![nycgroup](/images/IMG_0298.jpg)
 Atul Varma presented at our meetup this month.
 
-##  Accessibility
+## Accessibility
 As designers/developers, we all understand the importance of inclusivity and web accessibility. We know that it means people with impairments, disabilities or aging can use, perceive, navigate, interact and understand the internet. Web accessibility encompasses all disabilities which include visual, auditory, physical, speech, cognitive, and neurological disabilities. This is all well understood by our community of designer/developers but sometimes, it’s not always known how it works or how one is supposed to design with accessibility in mind. Currently most Web sites and Web software have barriers that make it difficult or impossible for many people with disabilities to use the Web. Raising awareness is just one step in helping lower these barriers.
 
 Why Web Accessibility is Important

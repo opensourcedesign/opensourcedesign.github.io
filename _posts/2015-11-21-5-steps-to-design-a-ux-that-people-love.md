@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "5 Steps to Design a UX that People Love"
-date:   2015-11-21
+title: "5 Steps to Design a UX that People Love"
+date: 2015-11-21
 categories: design open-source ux user-experience
 authors: 
-  - rdbartlett 
-redirect_from: /design/open-source/ux/user-experience/2015/11/21/5-steps-to-design-a-ux-that-people-love.html
+  - rdbartlett
 permalink: /2015/11/21/5-steps-to-design-a-ux-that-people-love
 ---
 
 ## Research, prototyping, and testing. The easy way.
+
 *Presented to you by the co-founder of Loomio.*
 
 My brother [Matthew Bartlett](https://medium.com/u/521536fcadc7) and I have been contributing design to the open source project [Loomio](http://loomio.org/) for a while now.
