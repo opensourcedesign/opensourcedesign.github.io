@@ -22,6 +22,9 @@ German artist. Free to use without attribution and free to modify.
 * [FontAwesome](http://fontawesome.io/icons/) The iconic font and CSS toolkit. Free to use. [CDN](https://www.bootstrapcdn.com/fontawesome/). [GitHub](https://github.com/FortAwesome/Font-Awesome).
 * [Font Fabulous](https://manageiq.github.io/font-fabulous/) A fabulous iconset packaged as a font. Free to use. [GitHub](https://github.com/ManageIQ/font-fabulous).
 * [Remix Icons](https://remixicon.com/) Huge repo of consistent neutrally styled icons. [GitHub](https://github.com/Remix-Design/remixicon)
+* [React Icons](https://react-icons.github.io/react-icons/) SVG react icons of popular icon packs. [GitHub](https://github.com/react-icons/react-icons)
+* [Styled Icons](https://styled-icons.js.org/) Icon packs like Font Awesome, Material Design, and Octicons, available as React Styled Components. [GitHub](https://github.com/jacobwgillespie/styled-icons)
+* [React Feather Icons](https://www.npmjs.com/package/react-feather) collection of simply beautiful open source icons for React.js. [GitHub](React component for Feather icons)
 
 
 ## Fonts
