@@ -217,8 +217,7 @@ ul.banner-social-buttons {
     }
 }
 
-@media(max-width:$screen-xs-max) {
-
+@media(max-width: $screen-xs-max) {
   ul.banner-social-buttons {
     li {
       display: block;
@@ -247,13 +246,12 @@ ul.banner-social-buttons {
   }
 }
 
-@media(max-width:$screen-xs-max){
-.supporters{
-  margin-bottom:20px;
-
-}
-#lastOne{
-  text-align:center;
-  margin-top:15px;
-}
+@media(max-width: $screen-xs-max) {
+  .supporters {
+    margin-bottom: 20px;
+  }
+  #lastOne {
+    text-align: center;
+    margin-top: 15px;
+  }
 }
