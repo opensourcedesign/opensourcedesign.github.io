@@ -13,8 +13,6 @@ authors:
   - ei8fdb
 ---
 
-
-
 During the first weekend of November we had the annual [Open Source Design Summit](https://opensourcedesign.net/summit) in the capital of Albania, Tirana.
 
 [Open Source Design](https://opensourcedesign.net/) (short OSD) is a community of designers and developers pushing more open design processes and improving the user experience and interface design of open source software. The community writes articles, runs a [job board](https://opensourcedesign.net/jobs), puts on events, provides resources, and presents talks targeted at developers and designers interested in working and designing in Open Source.
@@ -30,7 +28,7 @@ In the following months, we coordinated our efforts through monthly calls and [D
 
 #### November 2nd (Reception)
 
-We started on the Friday afternoon with a reception gathering at [Ofiçina](http://oficina.al), the venue where many other past events have been organized by local communities, including [LibreOffice Conference](https://libocon.org/2018). The OSD Summit is not close to any big [conference](https://en.wikipedia.org/wiki/Conference) (yet at least)  but more of a small [unconference](https://en.wikipedia.org/wiki/Unconference).
+We started on the Friday afternoon with a reception gathering at [Ofiçina](http://oficina.al), the venue where many other past events have been organized by local communities, including [LibreOffice Conference](https://libocon.org/2018). The OSD Summit is not close to any big [conference](https://en.wikipedia.org/wiki/Conference) (yet at least) but more of a small [unconference](https://en.wikipedia.org/wiki/Unconference).
 
 There were participants from countries as far as [New Zealand](https://en.wikipedia.org/wiki/New_Zealand), [Czech Republic](https://en.wikipedia.org/wiki/Czech_Republic), [Germany](https://en.wikipedia.org/wiki/Germany), [Kosovo](https://en.wikipedia.org/wiki/Kosovo).
 

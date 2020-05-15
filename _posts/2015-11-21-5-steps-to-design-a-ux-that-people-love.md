@@ -3,14 +3,14 @@ layout: post
 title: "5 Steps to Design a UX that People Love"
 date: 2015-11-21
 categories: design open-source ux user-experience
-authors: 
+authors:
   - rdbartlett
 permalink: /2015/11/21/5-steps-to-design-a-ux-that-people-love
 ---
 
 ## Research, prototyping, and testing. The easy way.
 
-*Presented to you by the co-founder of Loomio.*
+_Presented to you by the co-founder of Loomio._
 
 My brother [Matthew Bartlett](https://medium.com/u/521536fcadc7) and I have been contributing design to the open source project [Loomio](http://loomio.org/) for a while now.
 
@@ -18,7 +18,7 @@ In the past couple of weeks we’ve stumbled on a design process that is working
 
 ## 1. Find a problem worth solving.
 
-Thinking in terms of *problems people have* or *jobs people want to do* is a great way to stay focussed on creating a useful user experience, rather than a whizz-bang cool feature that nobody wants.
+Thinking in terms of _problems people have_ or _jobs people want to do_ is a great way to stay focussed on creating a useful user experience, rather than a whizz-bang cool feature that nobody wants.
 
 For this example, we’re looking at redesigning the search experience for Loomio. The first step is to talk to people and ask what are you searching for?
 
@@ -51,7 +51,7 @@ This gif took me about 20 seconds to record and share. Gifs are also awesome for
 
 The next step is to test these prototypes with real humans. Testing can be super lightweight: you will learn a lot just by watching a friend or colleague try to interact with your prototype for a few seconds.
 
-As soon as we’re confident we’ve got a design that is an incremental improvement on the existing UX, we get it built and into people’s hands as soon as possible: *You learn so much more from **use** than you do from **opinions**!*
+As soon as we’re confident we’ve got a design that is an incremental improvement on the existing UX, we get it built and into people’s hands as soon as possible: _You learn so much more from **use** than you do from **opinions**!_
 
 ## 5. It’s all about love!
 
@@ -63,4 +63,4 @@ It also helps if you can occasionally blow their minds with something they never
 
 Originally written by [Richard D. Barlett](https://medium.com/@richdecibels) on [Medium](https://medium.com/open-source-design/open-source-design-just-steal-everything-5c44ca793721#.dwn7xt73a)
 
-*I write about working together. Loomio cofounder (http://loomio.org). Enspiral member (http://enspiral.com).*
+_I write about working together. Loomio cofounder (http://loomio.org). Enspiral member (http://enspiral.com)._

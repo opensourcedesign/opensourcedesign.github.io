@@ -20,7 +20,7 @@ This will be a full day of talks about design work on free, libre and open sourc
 
 **We invite you to send in your submissions about design work on free, libre and open source projects.**
 
-We mean ‘design’ in the broadest sense: user research, interface and interaction design, information architecture, visual design, typography, illustration, iconography, spatial, accessibility  (and anything you can think of) – all in the context of open source projects, which we believe introduces unique challenges.
+We mean ‘design’ in the broadest sense: user research, interface and interaction design, information architecture, visual design, typography, illustration, iconography, spatial, accessibility (and anything you can think of) – all in the context of open source projects, which we believe introduces unique challenges.
 
 Designers and developers working with designers (or on a design-minded project) are welcome to submit proposals.
 

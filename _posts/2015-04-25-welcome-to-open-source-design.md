@@ -4,7 +4,7 @@ title: "Welcome to Open Source Design"
 date: 2015-04-25
 categories: design open source launching
 author: bnvk
-redirect_from: 
+redirect_from:
   - /launching
 permalink: /2015/04/25/welcome-to-open-source-design
 ---

@@ -21,7 +21,6 @@ Using the term Open Source Design gets interesting reactions from different peop
 
 The workshop can be purchased on its own or as part of the 3-day conference pass.
 
-
 ## Date & Location
 
 - **Date:** Wed, 28 Oct 2015
