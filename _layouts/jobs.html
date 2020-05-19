@@ -9,9 +9,10 @@ layout: default
         <h1 class="post-title">{{ page.title }}</h1>
         <div>
           <label for="organization">Organization:</label>
-          <a id="organization" class="organization" href="{{ page.org_url }}"
-            >{{ page.organization }}</a
-          ><br />
+          <a id="organization" class="organization" href="{{ page.org_url }}">
+            {{ page.organization }}
+          </a>
+          <br />
           <label for="status">Status:</label>
           <span id="status" class="status">{{ page.status }}</span><br />
           {% if page.rate == empty %}
