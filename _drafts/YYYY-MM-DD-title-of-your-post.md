@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Title of Your Post
-date:   2017-03-08
+title: Title of Your Post
+date: 2017-03-08
 categories:
   - open-source
   - communities

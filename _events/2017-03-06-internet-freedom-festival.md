@@ -19,7 +19,7 @@ Sessions can take the format of: workshops, trainings, hackathons, presentations
 
 The call for session proposals is for designers, user researchers (and everyone working in user experience) who want to contribute their knowledge, experience or time to projects working on Internet freedom, anti-censorship and surveillance.
 
-[Closing date for submitting a session proposal is the 2nd of October] (https://internetfreedomfestival.org/host-a-session/)
+[Closing date for submitting a session proposal is the 2nd of October](https://internetfreedomfestival.org/host-a-session/)
 
 ## Date & Location
 

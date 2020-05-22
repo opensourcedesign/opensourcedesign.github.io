@@ -16,5 +16,3 @@ I am also active with the javascript community here in RTP.
 
 When I'm not working on the web or exploring mobile apps, I enjoy hiking, biking, and camping. I also have a strong
 passion for IoT gadgets like the Raspberry Pi and configuring the Pi to run my home electronics.
-
-

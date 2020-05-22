@@ -1,11 +1,24 @@
 /**
  * Reset some basic elements
  */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
 }
 
 /**
@@ -29,39 +42,44 @@ body {
   -webkit-tap-highlight-color: transparentize($grayscale-dark, 0.8);
 }
 
-
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
-h1, h2, h3, h4, h5, h6,
-hr, p, blockquote, pre,
-ul, ol, dl, figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
 %vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+  margin-bottom: $spacing-unit / 2;
 }
-
-
 
 /**
  * Images
  */
 img {
-    max-width: 100%;
-    vertical-align: middle;
+  max-width: 100%;
+  vertical-align: middle;
 }
-
-
 
 /**
  * Figures
  */
 figure > img {
-    display: block;
+  display: block;
 }
 
 figcaption {
-    font-size: $small-font-size;
+  font-size: $small-font-size;
 }
 
 img {
@@ -74,81 +92,88 @@ img {
   }
 }
 
-
 /**
  * Lists
  */
-ul, ol {
-    margin-left: $spacing-unit;
+ul,
+ol {
+  margin-left: $spacing-unit;
 }
 
 li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
 }
-
-
 
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
 }
 
-h1, .h1,
-h2, .h2,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   margin: 0 0 35px;
   font-family: $grayscale-headline-font-family;
   font-weight: bold;
 }
 
-h3, .h3 {
+h3,
+.h3 {
   margin: 0 0 35px;
   font-family: $grayscale-headline-font-family;
   font-weight: bold;
 }
-
 
 /**
  * Links
  */
 a {
-    color: $brand-color;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
+  color: $brand-color;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
 
-    /*&:visited {
+  /*&:visited {
         color: darken($brand-color, 15%);
     }*/
 
-    /*&:hover {
+  /*&:hover {
         color: $text-color;
         border-bottom: 1px solid $text-color;
     }*/
 }
 
 a {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover,
   &:focus {
     text-decoration: underline;
-    color: darken($grayscale-primary,0.2);
+    color: darken($grayscale-primary, 0.2);
   }
 }
 
 /**
  * Buttons
  */
-
 
 .btn-circle {
   width: 70px;
@@ -160,9 +185,9 @@ a {
   font-size: 40px;
   color: $grayscale-dark;
   background: transparent;
-  -webkit-transition: background .3s ease-in-out;
-  -moz-transition: background .3s ease-in-out;
-  transition: background .3s ease-in-out;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 
   &:hover,
   &:focus {
@@ -176,13 +201,17 @@ a {
   text-transform: uppercase;
   font-family: $montserrat;
   font-weight: 400;
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-default {
-  @include button-variant($grayscale-primary, transparentize(white, 1), $grayscale-primary);
+  @include button-variant(
+    $grayscale-primary,
+    transparentize(white, 1),
+    $grayscale-primary
+  );
 
   &:hover,
   &:focus {
@@ -203,51 +232,46 @@ p {
   line-height: 1.4;
 }
 
-
 /**
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    font-style: italic;
+  color: $grey-color;
+  border-left: 4px solid $grey-color-light;
+  padding-left: $spacing-unit / 2;
+  font-size: 18px;
+  font-style: italic;
 
-    > :last-child {
-        margin-bottom: 0;
-    }
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
-
-
 
 /**
  * Code formatting
  */
 pre,
 code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
+  font-size: 15px;
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  background-color: #eef;
 }
 
 code {
-    padding: 1px 5px;
+  padding: 1px 5px;
 }
 
 pre {
-    padding: 8px 12px;
-    overflow-x: scroll;
+  padding: 8px 12px;
+  overflow-x: scroll;
 
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
-
-
 
 /**
  * Wrapper
@@ -269,40 +293,33 @@ pre {
     }
 }*/
 
-
-
 /**
  * Clearfix
  */
 %clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
-
-
 
 /**
  * Icons
  */
 .icon {
+  > svg {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
 
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
+    path {
+      fill: $grey-color;
     }
-    color: #828282;
+  }
+  color: #828282;
 }
-
 
 .light {
   font-weight: 400;
@@ -312,7 +329,8 @@ pre {
   font-weight: bold;
 }
 
-::-moz-selection, ::selection  {
+::-moz-selection,
+::selection {
   text-shadow: none;
   background: #fcfcfc;
   background: transparentize($grayscale-dark, 0.8);

@@ -13,7 +13,7 @@ Calling Open Source Design enthusiasts living in NYC and around to join us for o
 
 The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://www.google.com/maps/place/ThoughtWorks,+Inc./@40.7446828,-73.9870632,17z/data=!4m5!3m4!1s0x89c259a7c4fab243:0x7a7b1b141a048edf!8m2!3d40.7446828!4d-73.9848745) on **Thursday 09th of November, from 6.00pm to 8.00pm**.
 
-Registration is open at [Eventbrite] (https://www.eventbrite.com/e/open-source-design-meetup-tickets-39225344060)
+Registration is open at [Eventbrite](https://www.eventbrite.com/e/open-source-design-meetup-tickets-39225344060)
 
 See you there.
 

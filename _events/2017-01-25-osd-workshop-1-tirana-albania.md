@@ -10,7 +10,7 @@ status: past
 permalink: /2017/01/17/osd1tirana
 ---
 
-At the first Open Source Design Workshop in Tirana, Albania we will showcase the basics of GIMP and Inkscape 
+At the first Open Source Design Workshop in Tirana, Albania we will showcase the basics of GIMP and Inkscape
 so people can find their way around basics in Graphic Design, breaking the stereotypes that they need Adobe software for that.
 
 ## Date & Location

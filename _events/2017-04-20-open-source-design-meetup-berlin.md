@@ -22,7 +22,7 @@ FAQ:
 **Q:** Is this constrained to Mozilla products and services?
 **A:** No. Mozilla is involved (and donated the space!) but there are other projects on board, too. Everyone and everything is welcome!
 
-**Q:** What do you mean by design? 
+**Q:** What do you mean by design?
 **A:** We mean it broadly, encompassing activities like need research, interaction design, graphic design and usability testing.
 
 Looking forward to seeing you soon!
