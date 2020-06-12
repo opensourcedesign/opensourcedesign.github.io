@@ -56,6 +56,7 @@ Some of these platforms also take submissions, so if you designed a font with an
 Images](http://www.nypl.org/research/collections/digital-collections/public-domain?hspace=331354)
 * [unDraw](https://undraw.co/)
 * [Interfacer](https://interfacer.xyz/)
+* [Open Doodles](https://www.opendoodles.com/)
 
 
 ## Media from big platforms under Creative Commons licenses
@@ -97,6 +98,7 @@ issues](https://github.com/nextcloud/core/issues?labels=Design).
 * [Blend](http://www.colinkeany.com/blend/): CSS gradient generator.
 * [Leonardo.io by Adobe](https://leonardocolor.io/): Color contrast generator.
 * [Tanaguru](https://contrast-finder.tanaguru.com/): For finding complementary colors.
+* [colors.lol](https://colors.lol/): Overly descriptive color palettes.
 
 ## CSS Frameworks
 
@@ -177,6 +179,8 @@ and hardware group.
 * [PIXLS.US](https://pixls.us) Free/Open Source Photography.
     * [List of Free Software Photography Projects](https://pixls.us/software/)
 * [Photos of Design Research](https://commons.wikimedia.org/wiki/Category:Designethnography) on Wikimedia Commons
+* [Checklist Design](https://www.checklist.design/) A collection of the some UX and UI practices.
+* [Untools](https://untools.co/) Tools for better thinking.
 
 
 ## Learn to Code
