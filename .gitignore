@@ -4,8 +4,7 @@ _site
 .jekyll-metadata
 .bundle
 Gemfile.lock
-_posts/events/
-_posts/jobs/
+jobs/
 _organization/
 _patterns/
 _talks/
