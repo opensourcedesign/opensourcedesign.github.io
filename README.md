@@ -40,8 +40,8 @@ sudo gem install bundler
 2. Fork and clone the main website repository
 
 ```sh
-git clone git@github.com:opensourcedesign/opensourcedesign.net
-cd opensourcedesign.net/
+git clone --single-branch --branch master https://github.com/opensourcedesign/opensourcedesign.github.io.git
+cd opensourcedesign.github.io/
 bundle install
 ```
 
