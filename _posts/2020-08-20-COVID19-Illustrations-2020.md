@@ -25,6 +25,7 @@ Use them however you can in your signage, reports, sites, apps and projects. And
 
 
 ##WHO guidelines against COVID-19 :)
+
 *To protect yourself and others against COVID-19, clean your hands frequently and thoroughly. 
 
 *Use alcohol-based hand sanitizer or wash your hands with soap and water.
