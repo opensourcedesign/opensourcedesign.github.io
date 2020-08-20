@@ -13,8 +13,7 @@ authors:
   - hqrshguptq
 ---
 
-<img src="https://user-images.githubusercontent.com/54597242/90833125-faab8180-e364-11ea-9371-8f8bd07dbd3a.png" width="100" height="100">
-<img src="https://user-images.githubusercontent.com/54597242/90833212-2e86a700-e365-11ea-9bae-a9a22df9ee37.png" width="100" height="100">
+<img src="https://user-images.githubusercontent.com/54597242/90833125-faab8180-e364-11ea-9371-8f8bd07dbd3a.png" width="300" height="300"><img src="https://user-images.githubusercontent.com/54597242/90833212-2e86a700-e365-11ea-9bae-a9a22df9ee37.png" width="300" height="300">
 
 Based on [recommendations from The World Health Organization](https://www.who.int/emergencies/diseases/novel-coronavirus-2019)  and others, you’ll find symbols to communicate good hygiene and social distancing. While we can’t be like front line brave medical professionals across the globe, we hope these icons/illustrations aid in communicating some of the most important things people can do to protect themselves and their communities.
 
