@@ -21,6 +21,8 @@ Based on [recommendations from The World Health Organization](https://www.who.in
 
 All solid COVID-19 illustrations are available [Open Source](https://app.biorender.com/). A trial for some period to incorporate these can be availed at [bioRENDER](https://app.biorender.com/).
 Use them however you can in your signage, reports, sites, apps and projects. And please share any of your efforts – we’d love to see them and help boost awareness and helpful information.
+<img src="https://user-images.githubusercontent.com/54597242/90834044-f3857300-e366-11ea-9863-7c0392f04dbb.png">
+<img src="https://user-images.githubusercontent.com/54597242/90834072-05671600-e367-11ea-8fc8-edea9c3e69a9.png">
 
 ## About BioRender
 [BioRender](https://app.biorender.com/) envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
