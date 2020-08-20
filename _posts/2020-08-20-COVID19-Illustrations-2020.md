@@ -26,7 +26,7 @@ Use them however you can in your signage, reports, sites, apps and projects. And
 <img src="https://user-images.githubusercontent.com/54597242/90834072-05671600-e367-11ea-8fc8-edea9c3e69a9.png">
 
 ## About BioRender
-<img src="https://user-images.githubusercontent.com/54597242/90834223-570fa080-e367-11ea-97a9-4a75fc7e0018.png width="125px" height="125px">[BioRender](https://app.biorender.com/) envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
+<img src="https://user-images.githubusercontent.com/54597242/90834223-570fa080-e367-11ea-97a9-4a75fc7e0018.png" aligh='left' width="125px" height="125px">[BioRender](https://app.biorender.com/) envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
 
 
 ## WHO guidelines against COVID-19 :)
