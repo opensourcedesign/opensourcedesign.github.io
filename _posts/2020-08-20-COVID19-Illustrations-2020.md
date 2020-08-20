@@ -27,11 +27,8 @@ Use them however you can in your signage, reports, sites, apps and projects. And
 ## WHO guidelines against COVID-19 :)
 
 * To protect yourself and others against COVID-19, clean your hands frequently and thoroughly. 
-
 * Use alcohol-based hand sanitizer or wash your hands with soap and water.
-
 * If you use an alcohol-based hand sanitizer, make sure you use and store it carefully.
-
 * Remember that washing your hands with soap and water is also effective against COVID-19.
 
 
