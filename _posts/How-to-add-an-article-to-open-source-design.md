@@ -9,6 +9,7 @@ To submit an article using the github interface, here is a step by step guide:
 - Give your file a name that starts with the date in this format: 2020-11-01 (year month day) then a title using '-' inbetween words e.g."2015-04-25-welcome-to-open-source-design". Don't forget the .md at the end to indicate that it will be a [mardown file](https://www.markdownguide.org/)
 
 - Make sure you post/article includes essential information at the top of the file e.g. below: 
+
 ```layout: post
 title: Use your artistic skills to help open source via opensource.com
 date: 2020-08-13
