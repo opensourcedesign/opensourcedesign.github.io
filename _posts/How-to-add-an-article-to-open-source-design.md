@@ -1,6 +1,6 @@
 # How to creat an article for Open Source Design
 
-Posts on Open Source Design.net appear on the [Articles page here](https://opensourcedesign.net/articles/)
+Posts on Open Source Design.net appear on the [Articles page here](https://opensourcedesign.net/articles/).
 
 To submit an article using the github interface, here is a step by step guide:
 
