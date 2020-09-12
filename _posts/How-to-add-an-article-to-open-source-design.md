@@ -1,4 +1,4 @@
-# How to creat an article for Open Source Design
+# How to create an article for Open Source Design
 
 Posts on Open Source Design.net appear on the [Articles page here](https://opensourcedesign.net/articles/).
 
