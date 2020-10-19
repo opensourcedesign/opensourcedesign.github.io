@@ -1,15 +1,3 @@
-/**
- * I take a string and create an excerpt from it
- *
- * @param int limit - the limit of characters
- */
-function excerpt_text(str, limit) {
-  if (limit == null) {
-    limit = 20;
-  }
-  return str.substring(0, limit) + " ...";
-}
-
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (https://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
