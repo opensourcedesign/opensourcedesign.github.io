@@ -6,7 +6,7 @@ categories: design conference open-source
 eventDate: Wed, 10 Feb 2021
 location: Online, Remote
 time: 1/2 days
-status: future
+status: upcoming
 permalink: /2021/02/10/fossback-stage-2021
 ---
 
