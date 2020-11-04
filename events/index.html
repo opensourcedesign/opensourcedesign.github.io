@@ -54,7 +54,7 @@ title: Events
     {% if pastEvents %}
     <h3 id="past-events" class="past-events">Past events</h3>
     <ul class="post-list">
-        {% for post in pastEvents %}
+        {% for post in pastEvents reversed %}
         <li>
             <h2>
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -64,7 +64,6 @@ title: Events
         {% endfor %}
     </ul>
     {% endif %}
-
 
     <p>To add an event, <a href="https://github.com/opensourcedesign/opensourcedesign.github.io" target="_blank">fork us and send a pull request!</a></p>
 
