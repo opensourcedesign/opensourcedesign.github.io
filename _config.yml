@@ -16,11 +16,12 @@ exclude:
   - person-template.md
 
 twitter_username: opensrcdesign
-github_username:  opensourcedesign
+github_username: opensourcedesign
 
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-mentions
 
 # Build settings
 markdown: kramdown
