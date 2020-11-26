@@ -45,7 +45,7 @@ within the OSD community.
 
 ### Experimental
 
-Our other Github repositories are experimental and undecided exactly what
+Our other GitHub repositories are experimental and undecided exactly what
 to best do. Among those are:
 
 - [Logos](https://github.com/opensourcedesign/logos) - a collection of remixes.

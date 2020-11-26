@@ -25,7 +25,7 @@ We talked about:
 - a mentorship program with funding made available to work with us on smaller projects, where more established members in the Open Source Design community would work alongside people who don't usually have time to introduce them to the community, while using the funding to ensure that they can make the time. [[irc](https://botbot.me/freenode/opensourcedesign/msg/38794543/)]
 - the scope of Open Source Design. [[irc](https://botbot.me/freenode/opensourcedesign/msg/38943677/)].
 
-# On Github
+# On GitHub
 
 - We launched [the site](http://opensourcedesign.net/) [[irc](https://botbot.me/freenode/opensourcedesign/msg/37529727/)]!
 - Job postings are [now live](http://opensourcedesign.net/jobs)!

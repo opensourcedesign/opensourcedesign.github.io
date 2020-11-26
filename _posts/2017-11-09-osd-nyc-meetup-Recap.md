@@ -39,7 +39,7 @@ As any designer knows, beginning a new project often requires establishing a pro
 
 Jess and team came up with several strategies to help people understand how to collaborate with designers or on design. This included taking advantage of many different types of tools, such as presentations, blog posts, and contracts. She encourages her teams to design openly and to address conversation expectations and contributions. Throughout her work, she began to use these tools to aid her design process and wanted to make them accessible to the design community.
 
-The project was incubated with the design team at [Bocoup](https://bocoup.com/) (where she was the Principal Designer), and since this Summer has been a completely community managed initiative. There are many active contributors (all who are mentioned by name in the [Github README file](https://github.com/open-design-kit/opendesignkit)) to the project and she is inviting more community participation to generate a more accessible and inclusive resource.
+The project was incubated with the design team at [Bocoup](https://bocoup.com/) (where she was the Principal Designer), and since this Summer has been a completely community managed initiative. There are many active contributors (all who are mentioned by name in the [GitHub README file](https://github.com/open-design-kit/opendesignkit)) to the project and she is inviting more community participation to generate a more accessible and inclusive resource.
 
 ![nycgroup](/images/nyc_image4.png)
 So, why is another kit needed? Jess was quick to point out that there are many great and useful toolkits out in the ecosystem already. The reasons another kit is needed is that existing kits are: specific to studios and organizations, focus on co-located teams, challenging for clients and stakeholders to see themselves doing the method without buying into the whole philosophy and don’t often embrace the fact that there are many different ways to approach a problem space.
@@ -76,7 +76,7 @@ We also talked about the urgent need to have a license for the Kit in general as
 
 Some suggestions were made by the meetup including optimizing the kit for low internet bandwidth - looking at a pattern, to have a low bandwidth option and focusing on how to make the Kit more including users with different capabilities.
 
-To contribute to the project, join the #opendesignkit channel on the [Open Design Foundation Slack](http://slack.opendesign.foundation/), or check out the [Github repository](https://github.com/open-design-kit/opendesignkit).
+To contribute to the project, join the #opendesignkit channel on the [Open Design Foundation Slack](http://slack.opendesign.foundation/), or check out the [GitHub repository](https://github.com/open-design-kit/opendesignkit).
 
 Slides:
 
