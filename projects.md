@@ -25,3 +25,4 @@ permalink: /projects/
 * [Trustroots](https://www.trustroots.org/) hospitality platform
 * [Automattic](https://automattic.com/) the company behind WordPress.com, WooCommerce.com, Jetpack.com. [Design blog](https://automattic.design/)
 * [XWiki](https://www.xwiki.org) development platform. [Design wiki](https://design.xwiki.org)
+* [Working community](https://www.mline.top) Global distance work and learning community, team from China. [our team](https://www.oneshu.xyz)[Design picture](https://www.321one.com)
