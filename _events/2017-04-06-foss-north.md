@@ -41,7 +41,7 @@ Ragy Nayyar, 23, is a post graduate student in Interaction Design at KTH, Stockh
 both as a designer and a developer for both big companies and startups for around 2 years. He has been a
 contributor to open source since he started writing code and majority of my contributions are related to
 front-end programming and user experience decisions. He started contributing to ownCloud when they were not
-even on GitHub, but on Gitorious and now its one of the highest contributed PHP project on Github. He does
+even on GitHub, but on Gitorious and now its one of the highest contributed PHP project on GitHub. He does
 pretty much the same thing at Nextcloud now in his free time. He co-authored and designed the Nextcloud and
 ownCloud calendar which is one of the most famous self hosted calendar solutions. He loves writing CSS and
 building scalable CSS architectures.

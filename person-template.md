@@ -10,4 +10,4 @@ rate: gratis / $60 hour / flexible / etc...
 projects: opensourcedesigners/job-board, opensourcedesigners/resources, github-user/repo-name
 ---
 
-Here you can write a brief description about who you are and what you do... one to two short paragraphs should be plenty. Normal Github markdown tags are acceptable. Have fun with it :)
+Here you can write a brief description about who you are and what you do... one to two short paragraphs should be plenty. Normal GitHub markdown tags are acceptable. Have fun with it :)

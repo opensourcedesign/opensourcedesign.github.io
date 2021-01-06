@@ -26,7 +26,7 @@ A summary of the things that we discussed:
 - How to recruit more designers? More than half of the people were on the engineering/business side.
 - How design process works in your organization?
 - Open surce project that need designers?
-- Teach opensource? (git? Inkscape? Github?)
+- Teach opensource? (git? Inkscape? GitHub?)
 - Bring some projects that we like, that we could work on (all stages) as a group
 - Is there list of local opensource projects that might need help? OSWeekend
 - Build a reference: list of open-source alternatives for designer tools?? (Xavi: alt tools for illustrations and animation, tutorials and workflows)

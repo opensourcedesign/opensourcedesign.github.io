@@ -69,7 +69,7 @@ Check out the links below to learn more about us:
 
 - [Website](https://opensourcedesign.net/)
 - [Discourse Forum](http://opensourcedesign.net/)
-- [Github](https://github.com/opensourcedesign)
+- [GitHub](https://github.com/opensourcedesign)
 - [FOSDEM 2019 devroom](https://archive.fosdem.org/2019/schedule/track/open_source_design/)
 - [FOSDEM 2018 devroom](https://archive.fosdem.org/2018/schedule/track/open_source_design/)
 
