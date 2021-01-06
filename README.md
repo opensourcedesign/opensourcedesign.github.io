@@ -87,18 +87,9 @@ Thank you to **all our backers**! 🙏 ([Become a backer](https://opencollective
 
 <a href="https://opencollective.com/opensourcedesign#backers" target="_blank"><img src="https://opencollective.com/opensourcedesign/backers.svg?width=890"></a>
 
-**Support this project by becoming a sponsor.** Your logo will show up here with a link to your website. ([Become a sponsor](https://opencollective.com/opensourcedesign#sponsor))
+**Support this project by becoming a sponsor.** ([Become a sponsor](https://opencollective.com/opensourcedesign#sponsor))
 
 <a href="https://opencollective.com/opensourcedesign/sponsor/0/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/1/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/2/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/3/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/4/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/5/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/6/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/7/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/8/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/opensourcedesign/sponsor/9/website" target="_blank"><img src="https://opencollective.com/opensourcedesign/sponsor/9/avatar.svg"></a>
 
 
 ## ♥ Code of Conduct
