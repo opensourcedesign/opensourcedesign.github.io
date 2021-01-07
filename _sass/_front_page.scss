@@ -189,14 +189,15 @@ ul.banner-social-buttons {
   & img {
     margin: 25px;
   }
+
+  &.backers object {
+    width: 400px;
+    height: 280px;
+  }
 }
 
 @media(max-width: $screen-xs-max) {
   .supporters {
     margin-bottom: 20px;
-  }
-  #lastOne {
-    text-align: center;
-    margin-top: 15px;
   }
 }
