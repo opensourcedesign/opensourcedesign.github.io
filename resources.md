@@ -78,6 +78,7 @@ prototypes](http://alistapart.com/article/paperprototyping). No hi-fi Photoshop
 work needed.
 * [Draw.io](https://www.draw.io/) (diagrams, mockups)
 * [Pencil](http://pencil.evolus.vn/) (mockups)
+* [Penpot](https://penpot.app/) (mockups)
 * [Krita](https://krita.org/en/) (art, digital painting)
 * [Blender](https://www.blender.org/) (3d rendering, animation, textures)
 * [darktable](https://www.darktable.org/) (photo workflow)
