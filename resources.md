@@ -6,6 +6,8 @@ permalink: /resources/
 
 **This is a showcase of the many websites and platforms where you can find openly licensed icons, fonts, image, tools and other resources.** You can use them for any purpose, also commercial (some works have specific licenses, so always make sure it’s fine to use).
 
+These resources are not in any priority or preference order, they follow a rough order of newest or recently updated or created to oldest in listing order.
+
 ## Icons
 
 * [The Noun Project](http://thenounproject.com) CC and purchasable icons.
@@ -76,6 +78,7 @@ Images](http://www.nypl.org/research/collections/digital-collections/public-doma
 * Use a pen & paper for [mockups and
 prototypes](http://alistapart.com/article/paperprototyping). No hi-fi Photoshop
 work needed.
+* [PenPot.app](https://penpot.app/) A design and prototyping platform meant for cross-domain teams. Non dependent on operating systems, Penpot is web based and works with open web standards (SVG).
 * [Draw.io](https://www.draw.io/) (diagrams, mockups)
 * [Pencil](http://pencil.evolus.vn/) (mockups)
 * [Krita](https://krita.org/en/) (art, digital painting)
