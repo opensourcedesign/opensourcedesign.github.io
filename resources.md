@@ -25,6 +25,7 @@ German artist. Free to use without attribution and free to modify.
 * [React Icons](https://react-icons.github.io/react-icons/) SVG react icons of popular icon packs. [GitHub](https://github.com/react-icons/react-icons)
 * [Styled Icons](https://styled-icons.js.org/) Icon packs like Font Awesome, Material Design, and Octicons, available as React Styled Components. [GitHub](https://github.com/jacobwgillespie/styled-icons)
 * [React Feather Icons](https://www.npmjs.com/package/react-feather) Collection of simply beautiful open source icons for React.js. [GitHub](React component for Feather icons)
+* [Mono Icons](https://icons.mono.company) A simple, consistent open-source icon set designed to be used in a wide variety of digital products. MIT Licensed. [GitHub](https://github.com/mono-company/mono-icons)
 
 
 ## Fonts
