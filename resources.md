@@ -80,6 +80,7 @@ work needed.
 * [Draw.io](https://www.draw.io/) (diagrams, mockups)
 * [Pencil](http://pencil.evolus.vn/) (mockups)
 * [Penpot](https://penpot.app/) (mockups)
+* [Quant UX](https://www.quant-ux.com/#/) (mockups, UX testing, heatmaps)
 * [Krita](https://krita.org/en/) (art, digital painting)
 * [Blender](https://www.blender.org/) (3d rendering, animation, textures)
 * [darktable](https://www.darktable.org/) (photo workflow)
