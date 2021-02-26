@@ -46,6 +46,14 @@ small {
   width: 70%;
 }
 
+.how_to_apply p {
+  margin-bottom: 0;
+}
+
+.how_to_apply ul {
+  margin-bottom: 25px;
+}
+
 legend {
   font-size: 25px;
 }
