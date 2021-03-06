@@ -2,6 +2,7 @@ _site
 .sass-cache
 .editorconfig
 .jekyll-metadata
+.jekyll-cache
 .bundle
 Gemfile.lock
 jobs/
