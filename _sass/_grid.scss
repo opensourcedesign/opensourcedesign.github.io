@@ -1,0 +1,21 @@
+$column_count: 12;
+
+@mixin make-columns() {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat($column_count, 1fr);
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@mixin span-columns($count) {
+  article, div, section {
+    grid-column: span $column_count/$count;
+  }
+}
+
+.grid-c-3 {
+  @include make-columns();
+  @include span-columns(3);
+}
