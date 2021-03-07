@@ -3,3 +3,28 @@
 html {
   scroll-behavior: smooth;
 }
+
+.container {
+  max-width: 1140px;
+  margin: auto;
+}
+
+///////////////////
+//   Job Board   //
+///////////////////
+
+.job-board-container {
+  margin: 2.25rem 0;
+
+  span.payment {
+    font-weight: 700;
+
+    &.paid {
+      color: $green;
+    }
+
+    &.gratis {
+      color: $red;
+    }
+  }
+}

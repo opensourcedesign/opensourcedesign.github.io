@@ -17,6 +17,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 2.5rem;
+  text-align: center;
 }
 
 h2 {
@@ -29,4 +30,25 @@ h3 {
 
 h4 {
   font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+p.subtitle {
+  text-align: center;
+}
+
+p.see-more {
+  color: $purple;
+  text-align: center;
+
+  a {
+    color: $purple;
+  }
 }
