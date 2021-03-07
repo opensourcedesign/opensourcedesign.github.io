@@ -33,6 +33,7 @@ collections:
     permalink: /events/:path/
 
 sass:
+  sass_dir: _sass
   style: compressed
 
 # for events
