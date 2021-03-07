@@ -1,0 +1,11 @@
+.separator {
+  margin: 0 0.5rem;
+  display: inline-block;
+
+  &.oval {
+    width: 4px;
+    height: 4px;
+    background: $black;
+    border-radius: 50%;
+  }
+}
