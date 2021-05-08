@@ -2,17 +2,21 @@
 
 Website of the Open Source Design community, hosted on GitHub Pages.
 
-[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)](https://twitter.com/opensrcdesign)
+[![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Twitter Follow](https://img.shields.io/twitter/follow/opensrcdesign?style=social)](https://twitter.com/opensrcdesign)  [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-5b5bbd?logo=gitpod)](https://gitpod.io/#https://github.com/opensourcedesign/opensourcedesign.github.io)
 
 ## Edit Website
 
-Editing content on [opensourcedesign.net][osd-net] can be done in two ways, both of which, require a GitHub account.
+Editing content on [opensourcedesign.net][osd-net] can be done in 3 ways, all of which require a GitHub account.
 
-1. Using GitHub's nifty file editor
+1. Using GitHub's nifty file editor, which is quick but limited:
 
-![GitHub file tools](images/github-file-tools.png)
+    ![](images/github-file-tools.png)
 
-2. Modifying source code (technical)
+2. [Using Gitpod](https://gitpod.io/#https://github.com/opensourcedesign/opensourcedesign.github.io) which gives you a preconfigured IDE and live preview. This is quick and you can see your changes:
+
+    ![](images/gitpod.png)
+
+3. Setting the website up locally, which is more technical.
 
 ## Code & Design The Website
 
@@ -45,16 +49,13 @@ cd opensourcedesign.github.io/
 bundle install
 ```
 
-3. Run our installer script
+3. Clone the jobs repository
 
-This will pull down all of the repositories (jobs, events, etc...) and put them
-in there proper place to build our website locally.
+Currently the job board is still a separate repository, but [we plan to move it in here](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/236).
 
 ```sh
-./scripts/install.sh
+git clone https://github.com/opensourcedesign/jobs.git
 ```
-
-*Note: you need to be a member of our [GitHub organization][osd-org].*
 
 4. Build the static site & watch for files
 
@@ -62,13 +63,6 @@ in there proper place to build our website locally.
 bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
 ```
 
-### Updating
-
-Updating the various repositories can be done by running this script
-
-```sh
-./scripts/update.sh
-```
 
 [osd-net]: http://opensourcedesign.net
 [osd-org]: https://github.com/opensourcedesign/
