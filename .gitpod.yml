@@ -1,0 +1,4 @@
+tasks:
+  - init: bundle install && git clone https://github.com/opensourcedesign/jobs.git
+  - command: bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
+    name: Server
