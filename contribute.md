@@ -27,7 +27,7 @@ Website and all public facing web content that does have it's own repository
 Jobs submitted to Open Source Design which end up on the public job board
 
 - [Browse Design Jobs](http://opensourcedesign.net/jobs) if have some free cycles for paid or gratis work
-- [Submit a Job](http://opensourcedesign.net/opensrcdesignjobs/) if you need a designer for your project
+- [Submit a Job](https://opensourcedesign.net/jobs/job-form/) if you need a designer for your project
 
 ### Events
 
