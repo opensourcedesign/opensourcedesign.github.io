@@ -34,7 +34,7 @@ Jobs submitted to Open Source Design which end up on the public job board
 Events that are relevant and relate to design and open source and design
 
 - [Browse Events](http://opensourcedesign.net/events) to attend something near you
-- [Add an Event](https://github.com/opensourcedesign/events) to help organize new events
+- [Add an Event](https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/_events) to help organize new events
 
 ### Organization
 
