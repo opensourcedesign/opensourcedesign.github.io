@@ -3,7 +3,7 @@ layout: post
 title: "Mozfest 2021: Open Source Design helps out Simply Secure with a UX Clinic"
 date: 2021-08-06
 categories: design open source 
-author: [Eriol Fox]() & [Core Open Source Design team]()
+author: Eriol Fox & Core Open Source Design team
 ---
 
 # Mozfest 2021: UX Clinic
