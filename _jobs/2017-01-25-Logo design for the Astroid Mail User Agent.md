@@ -1,7 +1,7 @@
 ---
 _id: 02de7930-e31d-11e6-911c-ed484e839de2
 status: solved
-date_posted: '2017-01-25'
+date_posted: 2017-01-25
 layout: jobs
 organization: Astroid Mail
 org_url: 'https://github.com/astroidmail/'

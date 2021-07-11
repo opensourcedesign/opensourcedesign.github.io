@@ -1,7 +1,7 @@
 ---
 _id: e6480390-8fd4-11eb-a6ce-719ae9a5befd
 status: searching
-date_posted: '2021-03-27'
+date_posted: 2021-03-27
 layout: jobs
 organization: DC Mesh Community Network
 org_url: 'https://dcmesh.net'

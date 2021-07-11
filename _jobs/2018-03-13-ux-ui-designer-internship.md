@@ -1,7 +1,7 @@
 ---
 _id: 74a7cea0-270e-11e8-afc0-57350dddc52f
 status: searching
-date_posted: '2018-03-13'
+date_posted: 2018-03-13
 layout: post
 organization: Zamphyr
 org_url: 'https://zamphyr.com'

@@ -1,7 +1,7 @@
 ---
 _id: 8c710af0-4c2d-11eb-bf01-076522c98ca8
 status: searching
-date_posted: '2021-01-01'
+date_posted: 2021-01-01
 layout: jobs
 organization: Improve LibreLingo's design
 org_url: 'https://librelingo.app/'

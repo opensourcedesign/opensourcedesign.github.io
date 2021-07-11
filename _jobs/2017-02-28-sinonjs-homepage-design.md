@@ -1,7 +1,7 @@
 ---
 _id: e38e9be0-fd94-11e6-b6ff-e1c649c108df
 status: solved
-date_posted: '2017-02-28'
+date_posted: 2017-02-28
 layout: jobs
 organization: Sinon.JS
 org_url: 'http://sinonjs.org'

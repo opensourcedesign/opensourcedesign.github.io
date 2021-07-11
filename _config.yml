@@ -31,6 +31,9 @@ collections:
   events:
     output: true
     permalink: /events/:path/
+  jobs:
+    output: true
+    permalink: /jobs/:path/
 
 sass:
   sass_dir: _sass

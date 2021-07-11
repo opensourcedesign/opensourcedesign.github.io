@@ -1,7 +1,7 @@
 ---
 _id: 58bd7380-2d95-11eb-91d5-ede648636eae
 status: solved
-date_posted: '2020-11-23'
+date_posted: 2020-11-23
 layout: jobs
 organization: Anti-phishing tool
 org_url: 'https://simplysecure.org/hiring/brand-designer-cfp.html'

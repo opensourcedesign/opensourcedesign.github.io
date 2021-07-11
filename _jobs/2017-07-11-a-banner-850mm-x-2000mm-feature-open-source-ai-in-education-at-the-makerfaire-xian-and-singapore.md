@@ -1,7 +1,7 @@
 ---
 _id: 651cb4b0-6601-11e7-9b06-05d55a32e74f
 status: searching
-date_posted: '2017-07-11'
+date_posted: 2017-07-11
 layout: jobs
 organization: SUSI.AI (a FOSSASIA's project)
 org_url: 'http://susi.ai'

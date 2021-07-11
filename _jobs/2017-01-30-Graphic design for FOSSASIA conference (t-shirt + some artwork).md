@@ -1,7 +1,7 @@
 ---
 _id: 58c2d210-e7d2-11e6-bf17-3b62c726cec1
 status: searching
-date_posted: '2017-01-30'
+date_posted: 2017-01-30
 layout: jobs
 organization: FOSSASIA
 org_url: 'http://2017.fossasia.org/'

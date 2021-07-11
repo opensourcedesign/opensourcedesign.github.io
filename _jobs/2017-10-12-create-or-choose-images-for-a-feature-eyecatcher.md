@@ -1,7 +1,7 @@
 ---
 _id: 403331a0-af54-11e7-8129-4b38db0f8264
 status: resolved
-date_posted: '2017-10-12'
+date_posted: 2017-10-12
 layout: jobs
 organization: Delta Chat
 org_url: 'https://delta.chat'

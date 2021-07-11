@@ -1,7 +1,7 @@
 ---
 _id: 3c583d10-101a-11e8-9a18-e7aef873d3ef
 status: closed
-date_posted: '2018-02-12'
+date_posted: 2018-02-12
 layout: jobs
 organization: Pet Hero
 org_url: 'https://github.com/pet-heroes/pet-hero'

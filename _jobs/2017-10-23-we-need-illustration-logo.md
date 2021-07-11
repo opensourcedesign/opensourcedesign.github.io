@@ -1,7 +1,7 @@
 ---
 _id: 3677ce00-b774-11e7-9114-b9cdf193a899
 status: searching
-date_posted: '2017-10-23'
+date_posted: 2017-10-23
 layout: jobs
 organization: Mimesis
 org_url: 'https://github.com/lk-geimfari/mimesis'

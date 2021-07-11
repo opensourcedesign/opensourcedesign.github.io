@@ -1,7 +1,7 @@
 ---
 _id: 0a483180-dc4f-11e7-a59d-c98360741d2d
 status: searching
-date_posted: '2017-12-08'
+date_posted: 2017-12-08
 layout: jobs
 organization: Muonium
 org_url: 'http://muonium.io'

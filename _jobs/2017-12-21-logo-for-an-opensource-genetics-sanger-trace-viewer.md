@@ -1,7 +1,7 @@
 ---
 _id: 593f9c00-e5e2-11e7-b3ff-335e77101dd7
 status: solved
-date_posted: '2017-12-21'
+date_posted: 2017-12-21
 layout: jobs
 organization: CutePeaks
 org_url: 'https://github.com/labsquare/CutePeaks'

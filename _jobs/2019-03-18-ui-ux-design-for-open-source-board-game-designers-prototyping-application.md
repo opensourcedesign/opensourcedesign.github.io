@@ -1,7 +1,7 @@
 ---
 _id: 936900c0-4959-11e9-9070-0d8466e89d64
 status: solved
-date_posted: '2019-03-18'
+date_posted: 2019-03-18
 layout: jobs
 organization: Protomorph-BG
 org_url: 'https://github.com/Guitarheroua/protomorph-bg'

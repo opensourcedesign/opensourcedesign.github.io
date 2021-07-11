@@ -1,7 +1,7 @@
 ---
 _id: 8b1145a0-2333-11e9-b607-f720b75a151c
 status: solved
-date_posted: '2019-01-28'
+date_posted: 2019-01-28
 layout: jobs
 organization: Inkscape internship
 org_url: 'http://liviofania.com/'

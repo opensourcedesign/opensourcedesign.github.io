@@ -1,7 +1,7 @@
 ---
 _id: caa4d870-f1ac-11e8-b68c-e5773aea49b1
 status: solved
-date_posted: '2018-11-26'
+date_posted: 2018-11-26
 layout: jobs
 organization: EFF is hiring for a designer.
 org_url: 'https://www.eff.org/opportunities/jobs/designer'

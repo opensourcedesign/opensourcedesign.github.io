@@ -1,7 +1,7 @@
 ---
 _id: eb491800-62ff-11ea-a329-c1bcefee1bd3
 status: closed
-date_posted: '2020-03-10'
+date_posted: 2020-03-10
 layout: jobs
 organization: Berliner Linux User Group e.V.
 org_url: 'https://belug.de'

@@ -1,7 +1,7 @@
 ---
 _id: 2b723ba0-5693-11eb-a43a-19189f099184
 status: searching
-date_posted: '2021-01-14'
+date_posted: 2021-01-14
 layout: jobs
 organization: Ubuntu
 org_url: 'https://canonical.com/'

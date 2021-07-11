@@ -1,7 +1,7 @@
 ---
 _id: 30f4b2d0-b279-11e8-b0ea-dd7cce39bd78
 status: solved
-date_posted: '2018-09-07'
+date_posted: 2018-09-07
 layout: jobs
 organization: Jugaadfest
 org_url: 'https://jugaadfest.com'

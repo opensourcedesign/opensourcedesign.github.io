@@ -1,7 +1,7 @@
 ---
 _id: e6fad130-6966-11eb-a4e1-1912a976d515
 status: searching
-date_posted: '2021-02-07'
+date_posted: 2021-02-07
 layout: jobs
 organization: Contribulle
 org_url: 'https://contribulle.org/'

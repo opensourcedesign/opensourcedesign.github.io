@@ -1,7 +1,7 @@
 ---
 _id: a15bc630-0f40-11e8-ae35-2d4bacaccd25
 status: closed
-date_posted: '2018-02-11'
+date_posted: 2018-02-11
 layout: jobs
 organization: telescope
 org_url: 'https://github.com/josselinchevalay/telescope'

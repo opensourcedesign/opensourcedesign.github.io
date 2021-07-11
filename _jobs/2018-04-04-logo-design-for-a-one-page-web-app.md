@@ -1,7 +1,7 @@
 ---
 _id: 6a63a850-3808-11e8-9fc2-ad7c89f05ee4
 status: searching
-date_posted: '2018-04-04'
+date_posted: 2018-04-04
 layout: post
 organization: CloudCover
 org_url: 'https://cloudcover.me/'

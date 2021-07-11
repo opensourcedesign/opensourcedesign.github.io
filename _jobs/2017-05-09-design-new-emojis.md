@@ -1,7 +1,7 @@
 ---
 _id: 1c5c3010-3493-11e7-b8cf-4112c0297756
 status: searching
-date_posted: '2017-05-09'
+date_posted: 2017-05-09
 layout: jobs
 organization: Emojitwo
 org_url: 'https://emojitwo.github.io'

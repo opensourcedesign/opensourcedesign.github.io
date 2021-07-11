@@ -1,7 +1,7 @@
 ---
 _id: b7c39080-d920-11eb-95e9-4928598a4847
 status: searching
-date_posted: '2021-06-29'
+date_posted: 2021-06-29
 layout: jobs
 organization: Apache Superset
 org_url: 'https://superset.apache.org/'

@@ -1,7 +1,7 @@
 ---
 _id: c1aaed30-8f6a-11e8-94c9-2f9be4a19d96
 status: closed
-date_posted: '2018-07-24'
+date_posted: 2018-07-24
 layout: jobs
 organization: Style Guide Frontend Developer at Ura Design
 org_url: 'https://ura.design'

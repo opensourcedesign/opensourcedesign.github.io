@@ -1,7 +1,7 @@
 ---
 _id: f25c8900-c483-11e7-a796-f9370fc17991
 status: searching
-date_posted: '2017-11-08'
+date_posted: 2017-11-08
 layout: jobs
 organization: Trekking for Charity
 org_url: 'http://www.trekkingforcharity.org'

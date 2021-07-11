@@ -1,7 +1,7 @@
 ---
 _id: 59279880-cb54-11ea-9568-fbef94085fd9
 status: searching
-date_posted: '2020-07-21'
+date_posted: 2020-07-21
 layout: jobs
 organization: New Session Manager
 org_url: 'https://linuxaudio.github.io/new-session-manager'

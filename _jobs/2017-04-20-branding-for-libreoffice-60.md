@@ -1,7 +1,7 @@
 ---
 _id: a724e970-25b2-11e7-afad-f182f109e72e
 status: closed
-date_posted: '2017-04-20'
+date_posted: 2017-04-20
 layout: jobs
 organization: LibreOffice / The Document Foundation
 org_url: 'http://www.libreoffice.org'

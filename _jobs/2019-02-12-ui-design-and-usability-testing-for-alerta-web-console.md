@@ -1,7 +1,7 @@
 ---
 _id: 7967fe80-2ea9-11e9-8891-e51288815d8e
 status: solved
-date_posted: '2019-02-12'
+date_posted: 2019-02-12
 layout: jobs
 organization: Alerta - web monitoring
 org_url: 'https://alerta.io/'

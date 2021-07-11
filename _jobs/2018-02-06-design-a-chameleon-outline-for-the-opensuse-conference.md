@@ -1,7 +1,7 @@
 ---
 _id: aa895280-0b22-11e8-b84f-75476b51bc09
 status: solved
-date_posted: '2018-02-06'
+date_posted: 2018-02-06
 layout: jobs
 organization: openSUSE Conference
 org_url: 'https://www.opensuse.org'

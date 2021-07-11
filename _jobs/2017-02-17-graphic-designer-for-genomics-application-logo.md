@@ -1,7 +1,7 @@
 ---
 _id: 0abbf520-f514-11e6-99e7-05317750223b
 status: searching
-date_posted: '2017-02-17'
+date_posted: 2017-02-17
 layout: jobs
 organization: Labsquare
 org_url: 'https://github.com/labsquare'

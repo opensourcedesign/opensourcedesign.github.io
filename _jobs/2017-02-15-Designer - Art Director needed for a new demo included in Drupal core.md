@@ -1,7 +1,7 @@
 ---
 _id: 80cbc260-f396-11e6-9423-0b1977e996ac
 status: solved
-date_posted: '2017-02-15'
+date_posted: 2017-02-15
 layout: jobs
 organization: Drupal
 org_url: 'https://www.drupal.org'

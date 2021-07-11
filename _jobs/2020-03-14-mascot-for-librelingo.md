@@ -1,7 +1,7 @@
 ---
 _id: 47d83e00-65c8-11ea-8754-9dc818e9bbd4
 status: closed
-date_posted: '2020-03-14'
+date_posted: 2020-03-14
 layout: jobs
 organization: Libre Lingo
 org_url: 'https://librelingo.app'

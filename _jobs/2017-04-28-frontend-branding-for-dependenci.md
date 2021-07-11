@@ -1,7 +1,7 @@
 ---
 _id: 81d76890-2c16-11e7-860b-fdf540b260b5
 status: searching
-date_posted: '2017-04-28'
+date_posted: 2017-04-28
 layout: jobs
 organization: DependenCI
 org_url: 'https://dependenci.miguelpiedrafita.com?ref=osd-jobs'

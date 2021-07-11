@@ -1,7 +1,7 @@
 ---
 _id: 786f25f0-cdbb-11ea-bff7-177f8dca4d4c
 status: solved
-date_posted: '2020-07-24'
+date_posted: 2020-07-24
 layout: jobs
 organization: Fosshost Project
 org_url: 'https://fosshost.org'

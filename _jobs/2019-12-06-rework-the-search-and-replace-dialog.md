@@ -1,7 +1,7 @@
 ---
 _id: 2bca1390-1808-11ea-8501-b380feedf000
 status: solved
-date_posted: '2019-12-06'
+date_posted: 2019-12-06
 layout: jobs
 organization: Scribus
 org_url: 'http://scribus.net'

@@ -1,7 +1,7 @@
 ---
 _id: 8f498890-3ef6-11eb-847d-c553fe5cc0e0
 status: searching
-date_posted: '2020-12-15'
+date_posted: 2020-12-15
 layout: jobs
 organization: pip
 org_url: 'https://pip.pypa.io/en/stable/'

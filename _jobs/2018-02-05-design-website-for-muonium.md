@@ -1,7 +1,7 @@
 ---
 _id: 8d944000-0abd-11e8-8b0e-3fe77088f9e1
 status: solved
-date_posted: '2018-02-05'
+date_posted: 2018-02-05
 layout: post
 organization: Muonium
 org_url: 'http://muonium.io'

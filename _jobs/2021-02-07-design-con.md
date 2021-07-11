@@ -1,7 +1,7 @@
 ---
 _id: 30729b50-6966-11eb-a4e1-1912a976d515
 status: closed
-date_posted: '2021-02-07'
+date_posted: 2021-02-07
 layout: jobs
 organization: QuickMockup
 org_url: 'https://jdittrich.github.io/quickMockup/'

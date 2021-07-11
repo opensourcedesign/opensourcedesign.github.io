@@ -1,7 +1,7 @@
 ---
 _id: 2fd82940-e22d-11e6-b7c4-7beb5d4413a0
 status: searching
-date_posted: '2017-01-24'
+date_posted: 2017-01-24
 layout: jobs
 organization: phpList
 org_url: 'http://phplist.com'

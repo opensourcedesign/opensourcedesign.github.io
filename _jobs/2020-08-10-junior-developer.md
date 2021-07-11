@@ -1,7 +1,7 @@
 ---
 _id: 50b2af10-dafd-11ea-b8cd-cd1613f8d943
 status: solved
-date_posted: '2020-08-10'
+date_posted: 2020-08-10
 layout: jobs
 organization: Humanitarian OpenStreetMap Team
 org_url: 'https://hotosm.org'

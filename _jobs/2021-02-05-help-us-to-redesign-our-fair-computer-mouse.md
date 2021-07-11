@@ -1,7 +1,7 @@
 ---
 _id: 3acf0fb0-6782-11eb-b1fb-01600e187665
 status: searching
-date_posted: '2021-02-05'
+date_posted: 2021-02-05
 layout: jobs
 organization: 3D Design contest
 org_url: 'https://fair-it-yourself.de/gehaeuse_en/'

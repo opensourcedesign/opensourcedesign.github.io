@@ -1,7 +1,7 @@
 ---
 _id: 89e88640-6057-11ea-aa30-975c16bba749
 status: closed
-date_posted: '2020-03-07'
+date_posted: 2020-03-07
 layout: jobs
 organization: pandoc
 org_url: 'https://pandoc.org/'

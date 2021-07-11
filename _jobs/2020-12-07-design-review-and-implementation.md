@@ -1,7 +1,7 @@
 ---
 _id: 7164b530-38ba-11eb-b5e1-47ceef9aeb65
 status: solved
-date_posted: '2020-12-07'
+date_posted: 2020-12-07
 layout: jobs
 organization: Python Software Foundation
 org_url: 'https://www.python.org/psf-landing/'

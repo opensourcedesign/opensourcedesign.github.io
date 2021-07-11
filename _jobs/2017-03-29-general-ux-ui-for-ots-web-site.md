@@ -1,7 +1,7 @@
 ---
 _id: 0db4b9d0-1470-11e7-94de-d70da9440bd5
 status: closed
-date_posted: '2017-03-29'
+date_posted: 2017-03-29
 layout: jobs
 organization: OpenTechSchool
 org_url: 'http://opentechschool.org/'

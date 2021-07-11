@@ -1,7 +1,7 @@
 ---
 _id: 8f813a10-e22f-11e6-b7c4-7beb5d4413a0
 status: searching
-date_posted: '2017-01-23'
+date_posted: 2017-01-23
 layout: jobs
 organization: OpenScore
 org_url: 'https://musescore.org/en/user/57401/blog/2017/01/11/introducing-openscore'

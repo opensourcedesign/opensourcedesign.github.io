@@ -1,7 +1,7 @@
 ---
 _id: 177f43a0-f41f-11e8-9d7f-9d0ec159d85d
 status: searching
-date_posted: '2018-11-29'
+date_posted: 2018-11-29
 layout: jobs
 organization: React Cupertino
 org_url: 'https://github.com/klymenkoo/react-cupertino'

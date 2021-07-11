@@ -1,7 +1,7 @@
 ---
 _id: e2079750-525b-11e8-be5f-67f0db2d8ce5
 status: searching
-date_posted: '2018-05-07'
+date_posted: 2018-05-07
 layout: post
 organization: Hubi
 org_url: 'https://github.com/mvcds/hubi'

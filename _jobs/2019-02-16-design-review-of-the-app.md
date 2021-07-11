@@ -1,7 +1,7 @@
 ---
 _id: a31e5c20-3227-11e9-9a72-dbc555e3e3f2
 status: solved
-date_posted: '2019-02-16'
+date_posted: 2019-02-16
 layout: jobs
 organization: Altair GraphQL Client
 org_url: 'https://altair.sirmuel.design/'

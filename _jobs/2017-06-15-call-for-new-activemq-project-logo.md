@@ -1,7 +1,7 @@
 ---
 _id: 15e82cc0-518f-11e7-b5c8-4d3bff2c3dc8
 status: searching
-date_posted: '2017-06-15'
+date_posted: 2017-06-15
 layout: jobs
 organization: Apache ActiveMQ
 org_url: 'http://activemq.apache.org'

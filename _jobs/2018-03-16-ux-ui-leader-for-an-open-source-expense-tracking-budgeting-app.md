@@ -1,7 +1,7 @@
 ---
 _id: 02cb5be0-297e-11e8-9355-9ff5c65d6e8d
 status: searching
-date_posted: '2018-03-16'
+date_posted: 2018-03-16
 layout: post
 organization: Expensa
 org_url: 'http://52.42.138.175/'

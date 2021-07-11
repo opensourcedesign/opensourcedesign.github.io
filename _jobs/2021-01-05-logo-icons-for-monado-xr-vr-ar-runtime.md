@@ -1,7 +1,7 @@
 ---
 _id: f3daf7b0-4f6f-11eb-a9b4-05090d999c30
 status: solved
-date_posted: '2021-01-05'
+date_posted: 2021-01-05
 layout: jobs
 organization: Monado XR Runtime
 org_url: 'https://monado.freedesktop.org/'

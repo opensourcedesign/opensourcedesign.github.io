@@ -1,7 +1,7 @@
 ---
 _id: 7ac1cdd0-648c-11e7-99c1-3b75b5384da3
 status: closed
-date_posted: '2017-07-09'
+date_posted: 2017-07-09
 layout: jobs
 organization: Recase
 org_url: 'https://github.com/sobolevn/recase'

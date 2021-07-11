@@ -1,7 +1,7 @@
 ---
 _id: 904d6a30-4a5c-11e9-a6e3-456a18357a17
 status: solved
-date_posted: '2019-03-19'
+date_posted: 2019-03-19
 layout: jobs
 organization: XMPP Standards Foundation (XSF)
 org_url: 'https://xmpp.org'

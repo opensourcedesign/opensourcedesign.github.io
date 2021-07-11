@@ -1,11 +1,11 @@
 ---
 _id: a698f420-6964-11eb-a4e1-1912a976d515
 status: closed
-date_posted: '2021-02-07'
+date_posted: 2021-02-07
 layout: jobs
 organization: Open Food Network
 org_url: 'https://www.openfoodnetwork.org/'
-title: Design contributors for Open Food Systems platform: UX, research, UI, Visual Design, build your own project etc.
+title: "Design contributors for Open Food Systems platform: UX, research, UI, Visual Design, build your own project etc."
 role: 'User research, interaction design, visual design'
 compensation: gratis
 deliverables: ''

@@ -1,7 +1,7 @@
 ---
 _id: 5b66ce20-bac1-11ea-b250-e5907f59df9e
 status: closed
-date_posted: '2020-06-30'
+date_posted: 2020-06-30
 layout: jobs
 organization: Akademy 2020 training "UI/UX design for developers"
 org_url: 'https://akademy.kde.org/2020'

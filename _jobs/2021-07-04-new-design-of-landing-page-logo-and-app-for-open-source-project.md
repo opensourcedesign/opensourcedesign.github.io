@@ -1,7 +1,7 @@
 ---
 _id: ae62bd70-dcb5-11eb-a6dc-d5855c00822c
 status: searching
-date_posted: '2021-07-04'
+date_posted: 2021-07-04
 layout: jobs
 organization: Collabfinder
 org_url: 'https://collabfinder.net/'

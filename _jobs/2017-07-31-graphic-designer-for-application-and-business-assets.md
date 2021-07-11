@@ -1,7 +1,7 @@
 ---
 _id: 39259630-7608-11e7-afac-b124940f35fd
 status: solved
-date_posted: '2017-07-31'
+date_posted: 2017-07-31
 layout: jobs
 organization: Peerio
 org_url: 'https://peerio.com'

@@ -1,7 +1,7 @@
 ---
 _id: 8f952720-ebba-11e6-83ab-59313166499a
 status: solved
-date_posted: '2017-02-05'
+date_posted: 2017-02-05
 layout: jobs
 organization: GitMate
 org_url: 'https://gitmate.io'

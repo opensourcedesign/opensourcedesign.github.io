@@ -1,7 +1,7 @@
 ---
 _id: 9e61f5c0-07b0-11ea-a90f-812f07d7e750
 status: closed
-date_posted: '2019-11-15'
+date_posted: 2019-11-15
 layout: jobs
 organization: PLC4x
 org_url: 'https://plc4x.apache.org/'

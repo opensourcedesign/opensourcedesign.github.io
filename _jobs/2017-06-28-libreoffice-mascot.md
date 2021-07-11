@@ -1,7 +1,7 @@
 ---
 _id: 8dfb2d90-5c05-11e7-9a13-b51276a7e587
 status: searching
-date_posted: '2017-06-28'
+date_posted: 2017-06-28
 layout: jobs
 organization: LibreOffice / The Document Foundation
 org_url: 'http://www.libreoffice.org/'

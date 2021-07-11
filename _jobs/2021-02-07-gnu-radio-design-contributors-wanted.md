@@ -1,7 +1,7 @@
 ---
 _id: 91298f20-6967-11eb-a4e1-1912a976d515
 status: searching
-date_posted: '2021-02-07'
+date_posted: 2021-02-07
 layout: jobs
 organization: GNU Radio
 org_url: 'https://www.gnuradio.org/'

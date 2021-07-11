@@ -1,7 +1,7 @@
 ---
 _id: b4795660-b18f-11e7-b553-d17830342549
 status: solved
-date_posted: '2017-10-15'
+date_posted: 2017-10-15
 layout: jobs
 organization: facebook.tracking.exposed (fbtrex)
 org_url: 'http://facebook.tracking.exposed'

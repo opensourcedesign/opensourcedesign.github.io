@@ -1,7 +1,7 @@
 ---
 _id: 2599fa20-1198-11e9-a15f-f5dc9e0c5ef2
 status: searching
-date_posted: '2019-01-06'
+date_posted: 2019-01-06
 layout: jobs
 organization: Open Source project for more transparency in the political process
 org_url: 'http://aboutpolitics.co/Test/mockupindex.html'

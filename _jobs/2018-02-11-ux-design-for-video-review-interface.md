@@ -1,7 +1,7 @@
 ---
 _id: 60691340-0f1c-11e8-ae35-2d4bacaccd25
 status: closed
-date_posted: '2018-02-11'
+date_posted: 2018-02-11
 layout: jobs
 organization: SReview
 org_url: 'https://yoe.github.io/sreview'

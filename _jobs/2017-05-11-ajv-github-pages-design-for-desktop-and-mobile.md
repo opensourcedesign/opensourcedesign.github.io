@@ -1,7 +1,7 @@
 ---
 _id: 9665cc10-368a-11e7-8856-9b031097afe5
 status: solved
-date_posted: '2017-05-11'
+date_posted: 2017-05-11
 layout: jobs
 organization: Ajv
 org_url: 'http://epoberezkin.github.io/ajv/'

@@ -1,7 +1,7 @@
 ---
 _id: 36eeff70-eeb6-11e6-b550-7b45ad070525
 status: solved
-date_posted: '2017-02-09'
+date_posted: 2017-02-09
 layout: jobs
 organization: Wikimedia Deutschland e. V.
 org_url: 'https://www.wikimedia.de/wiki/Hauptseite'

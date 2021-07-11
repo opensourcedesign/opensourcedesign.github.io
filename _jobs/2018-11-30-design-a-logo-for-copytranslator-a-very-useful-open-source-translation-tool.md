@@ -1,7 +1,7 @@
 ---
 _id: 047c1290-f3f4-11e8-9d7f-9d0ec159d85d
 status: solved
-date_posted: '2018-11-30'
+date_posted: 2018-11-30
 layout: jobs
 organization: CopyTranslator
 org_url: 'https://hypercube.top/copytranslator/'

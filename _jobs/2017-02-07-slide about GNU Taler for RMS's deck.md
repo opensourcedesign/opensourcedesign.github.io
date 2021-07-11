@@ -1,7 +1,7 @@
 ---
 _id: 405406c0-ed1a-11e6-a4fd-8d5dbb32c6f4
 status: solved
-date_posted: '2017-02-07'
+date_posted: 2017-02-07
 layout: jobs
 organization: The GNU Project
 org_url: 'https://www.gnu.org/'

@@ -1,7 +1,7 @@
 ---
 _id: 121e3f90-72c8-11eb-b57e-1d9025a304d3
 status: solved
-date_posted: '2021-02-19'
+date_posted: 2021-02-19
 layout: jobs
 organization: BinEd Project
 org_url: 'https://bined.exbin.org'

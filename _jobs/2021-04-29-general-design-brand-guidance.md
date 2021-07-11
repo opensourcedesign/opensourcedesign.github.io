@@ -1,7 +1,7 @@
 ---
 _id: c158cf00-a8b2-11eb-81ab-d5785de3dad9
 status: searching
-date_posted: '2021-04-29'
+date_posted: 2021-04-29
 layout: jobs
 organization: OSArch Style Guide
 org_url: 'https://osarch.org'

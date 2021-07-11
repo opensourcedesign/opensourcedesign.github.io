@@ -1,7 +1,7 @@
 ---
 _id: 4bf56bf0-2d32-11e8-9f0c-3b52df5f76db
 status: solved
-date_posted: '2018-03-21'
+date_posted: 2018-03-21
 layout: jobs
 organization: Remmina
 org_url: 'http://www.remmina.org'

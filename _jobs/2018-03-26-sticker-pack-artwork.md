@@ -1,7 +1,7 @@
 ---
 _id: 6e610120-3117-11e8-8e08-250388061724
 status: solved
-date_posted: '2018-03-26'
+date_posted: 2018-03-26
 layout: jobs
 organization: Dimension (t2bot.io)
 org_url: 'https://github.com/turt2live/matrix-dimension'

@@ -1,7 +1,7 @@
 ---
 _id: 0e54db30-954e-11e8-ad7d-5182ce98e6df
 status: searching
-date_posted: '2018-08-01'
+date_posted: 2018-08-01
 layout: jobs
 organization: Vali Admin
 org_url: 'https://pratikborsadiya.in/vali-admin/'

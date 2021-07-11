@@ -1,7 +1,7 @@
 ---
 _id: f7298740-c57c-11e7-b632-cf088a114575
 status: searching
-date_posted: '2017-11-09'
+date_posted: 2017-11-09
 layout: jobs
 organization: Lumi
 org_url: 'http://lumi.education'

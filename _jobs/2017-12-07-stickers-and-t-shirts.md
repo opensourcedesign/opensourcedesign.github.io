@@ -1,7 +1,7 @@
 ---
 _id: 980acb00-db45-11e7-95c9-2dc45a1a7a05
 status: solved
-date_posted: '2017-12-07'
+date_posted: 2017-12-07
 layout: jobs
 organization: Bitcraze
 org_url: 'https://www.bitcraze.io/'

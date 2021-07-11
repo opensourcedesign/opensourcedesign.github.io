@@ -1,7 +1,7 @@
 ---
 _id: d7525080-fcf2-11e6-8443-11b8fd05dc21
 status: solved
-date_posted: '2017-02-27'
+date_posted: 2017-02-27
 layout: jobs
 organization: Broca Killer
 org_url: 'http://brocakiller.com/'

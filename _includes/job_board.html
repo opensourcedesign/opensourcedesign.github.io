@@ -5,9 +5,11 @@
     both paid and gratis. Interested? Reach out to the job poster!
   </p>
   <div class="job-board-container grid-c-3">
+    {% assign latest_jobs = site.jobs | sort: 'date_posted' | reverse | slice: 0, 6 %}
+    {% for job in latest_jobs %}
     <article class="card">
       <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
+        {{ job.title }}
       </h3></a>
       <div class="meta">
         <span>Organization</span>
@@ -15,56 +17,7 @@
         <span class="payment paid">Paid</span>
       </div>
     </article>
-    <article class="card">
-      <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
-      </h3></a>
-      <div class="meta">
-        <span>Organization</span>
-        <span class="separator oval"></span>
-        <span class="payment gratis">Gratis</span>
-      </div>
-    </article>
-    <article class="card">
-      <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
-      </h3></a>
-      <div class="meta">
-        <span>Organization</span>
-        <span class="separator oval"></span>
-        <span class="payment paid">Paid</span>
-      </div>
-    </article>
-    <article class="card">
-      <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
-      </h3></a>
-      <div class="meta">
-        <span>Organization</span>
-        <span class="separator oval"></span>
-        <span class="payment gratis">Gratis</span>
-      </div>
-    </article>
-    <article class="card">
-      <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
-      </h3></a>
-      <div class="meta">
-        <span>Organization</span>
-        <span class="separator oval"></span>
-        <span class="payment paid">Paid</span>
-      </div>
-    </article>
-    <article class="card">
-      <a href="#"><h3>
-        Flat Infographic Illustrations/icons for a website page
-      </h3></a>
-      <div class="meta">
-        <span>Organization</span>
-        <span class="separator oval"></span>
-        <span class="payment paid">Paid</span>
-      </div>
-    </article>
+    {% endfor %}
   </div>
   <p class="see-more"><a href="/jobs">See all Job Postings</a></p>
 </section>

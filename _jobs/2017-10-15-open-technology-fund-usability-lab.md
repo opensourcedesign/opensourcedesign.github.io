@@ -1,7 +1,7 @@
 ---
 _id: e2c83250-b1b4-11e7-b553-d17830342549
 status: searching
-date_posted: ''
+date_posted: 
 layout: jobs
 organization: Open Technology Fund - Usability Lab
 org_url: 'https://www.opentech.fund/lab/usability-lab'

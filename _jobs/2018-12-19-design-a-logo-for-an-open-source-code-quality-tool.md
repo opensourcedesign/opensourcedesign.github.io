@@ -1,7 +1,7 @@
 ---
 _id: 2166c790-037d-11e9-b939-092381c81468
 status: solved
-date_posted: '2018-12-19'
+date_posted: 2018-12-19
 layout: jobs
 organization: dotenv-linter
 org_url: 'https://github.com/wemake-services/dotenv-linter'

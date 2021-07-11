@@ -1,7 +1,7 @@
 ---
 _id: 465dc260-6d6e-11e8-a340-0b3e32e47a80
 status: searching
-date_posted: ''
+date_posted: 
 layout: jobs
 organization: secushare
 org_url: 'https://secushare.org'

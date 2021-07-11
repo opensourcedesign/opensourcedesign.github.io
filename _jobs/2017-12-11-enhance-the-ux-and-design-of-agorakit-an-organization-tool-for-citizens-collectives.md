@@ -1,7 +1,7 @@
 ---
 _id: 994d11f0-de59-11e7-82cc-c9d7a0230569
 status: searching
-date_posted: '2021-06-22'
+date_posted: 2021-06-22
 layout: jobs
 organization: Agorakit
 org_url: 'https://agorakit.org'

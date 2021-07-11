@@ -1,7 +1,7 @@
 ---
 _id: 62deb4c0-6245-11eb-8290-99afbb980d7d
 status: searching
-date_posted: '2021-01-29'
+date_posted: 2021-01-29
 layout: jobs
 organization: Fedeproxy
 org_url: 'https://fedeproxy.eu/'

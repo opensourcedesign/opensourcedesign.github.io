@@ -1,7 +1,7 @@
 ---
 _id: 6ad86030-1160-11eb-a475-23a377e258a6
 status: closed
-date_posted: '2020-10-18'
+date_posted: 2020-10-18
 layout: jobs
 organization: GNOME Health
 org_url: 'https://gitlab.gnome.org/Cogitri/gnome-health'

@@ -1,7 +1,7 @@
 ---
 _id: b330e700-0635-11e8-aa4d-efe5777f7de1
 status: solved
-date_posted: '2018-01-30'
+date_posted: 2018-01-30
 layout: jobs
 organization: GetTogether
 org_url: 'https://gettogether.community'

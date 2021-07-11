@@ -1,7 +1,7 @@
 ---
 _id: ac3080b0-4919-11e8-a4ac-35a1643ceffc
 status: closed
-date_posted: '2018-04-25'
+date_posted: 2018-04-25
 layout: jobs
 organization: Enough
 org_url: 'http://enough.media/'

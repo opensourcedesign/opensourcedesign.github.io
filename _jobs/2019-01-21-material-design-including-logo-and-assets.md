@@ -1,7 +1,7 @@
 ---
 _id: 9bbf9ca0-1d3c-11e9-b5b3-99db271ab69b
 status: solved
-date_posted: '2019-01-21'
+date_posted: 2019-01-21
 layout: jobs
 organization: Blood Donation
 org_url: 'https://blooddonation.app'

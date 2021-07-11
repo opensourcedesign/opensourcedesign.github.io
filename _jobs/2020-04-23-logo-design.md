@@ -1,7 +1,7 @@
 ---
 _id: 66d99480-8598-11ea-b508-4f974c93c4d9
 status: solved
-date_posted: '2020-04-23'
+date_posted: 2020-04-23
 layout: jobs
 organization: Cluxia
 org_url: 'https://cluxia.eu'
