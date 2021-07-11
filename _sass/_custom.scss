@@ -18,6 +18,7 @@ html {
 
   span.payment {
     font-weight: 700;
+    text-transform: capitalize;
 
     &.paid {
       color: $green;

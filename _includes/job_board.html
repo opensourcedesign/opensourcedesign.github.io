@@ -12,9 +12,9 @@
         {{ job.title }}
       </h3></a>
       <div class="meta">
-        <span>Organization</span>
+        <span>{{ job.organization }}</span>
         <span class="separator oval"></span>
-        <span class="payment paid">Paid</span>
+        <span class="payment {{ job.compensation }}">{{ job.compensation }}</span>
       </div>
     </article>
     {% endfor %}
