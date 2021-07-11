@@ -34,6 +34,9 @@ collections:
   jobs:
     output: true
     permalink: /jobs/:path/
+  showcases:
+    output: true
+    permalink: /showcases/:path/
 
 sass:
   sass_dir: _sass

@@ -15,7 +15,9 @@
 
   a {
     color: $black;
-    flex: 1;
+    &.stretch {
+      flex: 1;
+    }
   }
 
   .image-container {
