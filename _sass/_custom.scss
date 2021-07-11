@@ -6,7 +6,7 @@ html {
 
 .container {
   max-width: 1140px;
-  margin: auto;
+  margin: 5rem auto 8rem;
 }
 
 ///////////////////
@@ -27,5 +27,16 @@ html {
     &.gratis {
       color: $red;
     }
+  }
+}
+
+
+///////////////////
+// Event Board   //
+///////////////////
+
+.event-board-container {
+  .card {
+    min-height: 18.4375rem;
   }
 }
