@@ -47,4 +47,5 @@ We plan to achieve this by creating an awesome and inclusive community that attr
 ---------------------------------------
 
 
-*You might also want to checkout the fine folks over at [Open Design Foundation](http://opendesign.foundation) as they're also doing awesome things relating to many of these same goals.*
+*<p align="center">You would also like to have a look at the Open Design Foundation, fine folks there are doing some awesome works, similar to our goals.<br/>
+Open Design Foundation website has gone down due some reason, but we have an [archive of the site](http://web.archive.org/web/20210125021057/http://opendesign.foundation/) on our Wayback Machine and checkout their [Github repository](https://github.com/DesignOpen/designopen.github.io). </p>*
