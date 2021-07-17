@@ -5,12 +5,16 @@ html {
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 775px;
   margin: 5rem auto 8rem;
+
+  &.wide-containers {
+    max-width: 1140px;
+  }
 }
 
 ///////////////////
-//   Job Board   //
+//   Job         //
 ///////////////////
 
 .job-board-container {
@@ -30,15 +34,45 @@ html {
   }
 }
 
+.job-page {
+  article label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+}
+
 
 ///////////////////
-// Event Board   //
+// Event         //
 ///////////////////
 
 .event-board-container {
   margin: 2.25rem 0;
   .card {
     min-height: 20rem;
+  }
+}
+.event-listing {
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 5rem;
+  }
+
+  .events {
+    margin-bottom: 3rem;
+    h3 {
+      margin-bottom: 0.75rem;
+    }
+    p {
+      margin-top: 0.75rem
+    }
   }
 }
 
@@ -58,29 +92,6 @@ html {
   }
 }
 
-///////////////////
-// event Listing //
-///////////////////
-.post-list {
-  list-style: none;
-  padding: 0;
-}
-
-.event-listing {
-  max-width: 950px;
-
-  h2 {
-    text-align: center;
-    margin-top: 5rem;
-  }
-
-  .events {
-    margin-bottom: 3rem;
-    h3 {
-      margin-bottom: 0.75rem;
-    }
-    p {
-      margin-top: 0.75rem
-    }
-  }
+.post-header {
+  margin-bottom: 5rem;
 }

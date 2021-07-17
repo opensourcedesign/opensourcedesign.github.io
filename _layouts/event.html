@@ -2,27 +2,23 @@
 layout: default
 ---
 
-<div class="container">
-  <div class="row">
-    <div class="post col-md-8 col-md-offset-2">
-      <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta">
-          {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
-        </p>
-      </header>
+<section class="container">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+    </p>
+  </header>
 
-      <article class="post-content">
-        {{ content }}
-        {% if page.location and page.eventDate and page.time %}
-        <h2>Date &amp; Location</h2>
-        <ul>
-          <li><b>Date:</b> {{ page.eventDate }}</li>
-          <li><b>Time:</b> {{ page.time }}</li>
-          <li><b>Location:</b> {{ page.location }}</li>
-        </ul>
-        {% endif %}
-      </article>
-    </div>
-  </div>
-</div>
+  <article class="post-content">
+    {{ content }}
+    {% if page.location and page.eventDate and page.time %}
+    <h2>Date &amp; Location</h2>
+    <ul>
+      <li><b>Date:</b> {{ page.eventDate }}</li>
+      <li><b>Time:</b> {{ page.time }}</li>
+      <li><b>Location:</b> {{ page.location }}</li>
+    </ul>
+    {% endif %}
+  </article>
+</section>

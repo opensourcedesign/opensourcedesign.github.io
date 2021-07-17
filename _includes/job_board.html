@@ -1,4 +1,4 @@
-<section id="jobs" class="container">
+<section id="jobs" class="container wide-containers">
   <h1>Job Board</h1>
   <p class="subtitle">
     Check out our job board for new jobs in open source projects,
@@ -8,7 +8,7 @@
     {% assign latest_jobs = site.jobs | where: "status", "searching" | sort: 'date_posted' | reverse | slice: 0, 6 %}
     {% for job in latest_jobs %}
     <article class="card">
-      <a href="#" class="stretch"><h3>
+      <a href="{{ job.url | prepend: site.baseurl }}" class="stretch"><h3>
         {{ job.title }}
       </h3></a>
       <div class="meta">

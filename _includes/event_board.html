@@ -1,4 +1,4 @@
-<section id="events" class="container">
+<section id="events" class="container wide-containers">
   <h1>Events</h1>
   <p class="subtitle">
     Upcoming Open Source Design Events
@@ -10,7 +10,7 @@
       <div class="image-container">
         <img />
       </div>
-      <a href="#" class="stretch"><h3>
+      <a href="{{ event.url | prepend: site.baseurl }}" class="stretch"><h3>
         {{ event.title }}
       </h3></a>
       <div class="meta">
