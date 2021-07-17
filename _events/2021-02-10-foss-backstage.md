@@ -1,18 +1,14 @@
 ---
 layout: event
-title: "FOSS Backstage 2021"
+title: "FOSS Backstage 2021: Call for Participation from designers"
 date: 2021-02-10
 categories: design conference open-source
 eventDate: Wed, 10 - 11 Feb 2021
 location: Online, Remote
 time: 1/2 days
-status: upcoming
+status: past
 permalink: /2021/02/10/fossback-stage-2021
 ---
-
-# FOSS Backstage 2021: Call for Participation from designers
-
-## What is FOSS Backstage?
 
 [FOSS Backstage](https://foss-backstage.de) is an open platform that thrives on contributions. The dedicated program committee wants to shape a program that truly is “by the community for the community”. Therefore they are looking forward to input.
 

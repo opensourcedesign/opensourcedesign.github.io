@@ -1,0 +1,69 @@
+---
+layout: default
+title: Events
+---
+
+<div class="container event-listing">
+    <h1>Events</h1>
+
+    <h2>Recurring Meeting</h2>
+    <p>
+        Join us for a recurring meeting every first Wednesday of the month. You
+        can find more information on <a href="/events/monthly-online-meeting/">our Event listing</a>.
+    </p>
+
+    {% assign posts = site.events | where: "status", "upcoming" %}
+    {% if posts != empty %}
+        <h2>Upcoming events</h2>
+        <ul class="post-list">
+            {% for post in posts reversed %}
+            <li class="events">
+                <h3>
+                    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h3>
+
+                {{ post.excerpt }}
+                <ul class="location">
+                    {% if post.eventDate %}
+                    <li>
+                        <strong>Date:</strong> {{ post.eventDate }}
+                    </li>
+                    {% endif %}
+                    {% if post.time %}
+                    <li>
+                        <strong>Time:</strong> {{ post.time }}
+                    </li>
+                    {% endif %}
+                    {% if post.location %}
+                    <li>
+                        <strong>Location:</strong> {{ post.location }}
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>There are no upcoming events</h2>
+        <p>To add an event, <a href="https://github.com/opensourcedesign/opensourcedesign.github.io" target="_blank">fork our repository and send a pull request!</a></p>
+    {% endif %}
+
+    {% assign pastEvents = site.events | where: "status", "past" %}
+    {% if pastEvents %}
+    <h2 id="past-events" class="past-events">Past events</h2>
+    <ul class="post-list">
+        {% for post in pastEvents reversed %}
+        <li class="events">
+            <h3>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h3>
+            {{ post.excerpt }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <p>To add an event, <a href="https://github.com/opensourcedesign/opensourcedesign.github.io" target="_blank">fork us and send a pull request!</a></p>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+</div>

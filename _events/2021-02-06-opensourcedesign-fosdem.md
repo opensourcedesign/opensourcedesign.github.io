@@ -7,7 +7,7 @@ eventDate: Sat & Sun, 6 & 7 Feb 2021
 location: Fully online
 timezone: Brussels local time (Central European Time)
 time: Exact times yet to be defined
-status: upcoming
+status: past
 permalink: /2021/02/06/opensourcedesign-fosdem-2021
 ---
 

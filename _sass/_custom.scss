@@ -36,6 +36,7 @@ html {
 ///////////////////
 
 .event-board-container {
+  margin: 2.25rem 0;
   .card {
     min-height: 20rem;
   }
@@ -47,11 +48,39 @@ html {
 ///////////////////
 
 .showcase-container {
+  margin: 2.25rem 0;
   .card {
     min-height: 20rem;
 
     .image-container {
       height: 69.5%
+    }
+  }
+}
+
+///////////////////
+// event Listing //
+///////////////////
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.event-listing {
+  max-width: 950px;
+
+  h2 {
+    text-align: center;
+    margin-top: 5rem;
+  }
+
+  .events {
+    margin-bottom: 3rem;
+    h3 {
+      margin-bottom: 0.75rem;
+    }
+    p {
+      margin-top: 0.75rem
     }
   }
 }
