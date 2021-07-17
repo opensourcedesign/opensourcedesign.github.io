@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+    <div class="post col-md-8 col-md-offset-2">
+      <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div>
+          <label for="organization">Organization:</label>
+          <a id="organization" class="organization" href="{{ page.org_url }}">
+            {{ page.organization }}
+          </a>
+          <br />
+          <label for="status">Status:</label>
+          <span id="status" class="status">{{ page.status }}</span><br />
+          {% if page.rate == empty %}
+          <label for="rate">Rate:</label>
+          <span id="rate" class="rate">{{ page.rate }}</span><br />
+          {% endif %}
+          <label for="date">Date Posted:</label>
+          <span id="date" class="date">{{ page.date_posted }}</span><br />
+          <label>Tagged as:</label>
+          <span id="tags" class="rate">{{ page.tags }}</span><br />
+        </div>
+        <div class="role">
+          {% if page.role %}
+          <label for="skills">Role:</label>
+          {{ page.role }}
+          {% endif %}
+        </div>
+        <div class="skills">
+          {% if page.skills != empty %}
+          <label for="skills">Skills:</label>
+          {{ page.skills }}
+          {% endif %}
+        </div>
+        <div class="how_to_apply">
+          {% if page.how_to_apply %}
+          <label for="how_to_apply">How to apply:</label>
+          <br />
+          {{ page.how_to_apply | join: "<br />"}} {% endif %}
+        </div>
+        <div class="links">
+          {% if page.links %}
+          <label for="links">Links:</label>
+          {{ page.links }}
+          {% endif %}
+        </div>
+      </header>
+      <article class="post-content">
+        {{ content | markdownify }}
+      </article>
+    </div>
+  </div>
+</div>
