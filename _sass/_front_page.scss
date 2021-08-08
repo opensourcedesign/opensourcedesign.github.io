@@ -188,11 +188,29 @@ ul.banner-social-buttons {
 
   & img {
     margin: 25px;
+    @media (max-width: $screen-xs-max) {
+      margin: 15px 10px;
+    }
   }
 
-  &.backers object {
-    width: 400px;
-    height: 280px;
+  &.backers {
+    .desktop {
+      width: 400px;
+      height: 280px;
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
+   }
+
+    .mobile {
+     display: none;
+     @media (max-width: $screen-xs-max) {
+       display: block;
+       width: 280px;
+       height: 390px;
+       margin: auto;
+     }
+    }
   }
 }
 
