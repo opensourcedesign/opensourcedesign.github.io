@@ -83,7 +83,6 @@ work needed.
 * [PenPot.app](https://penpot.app/) A design and prototyping platform meant for cross-domain teams. Non dependent on operating systems, Penpot is web based and works with open web standards (SVG).
 * [Draw.io](https://www.draw.io/) (diagrams, mockups)
 * [Pencil](http://pencil.evolus.vn/) (mockups)
-* [Penpot](https://penpot.app/) (mockups)
 * [Quant UX](https://www.quant-ux.com/#/) (mockups, UX testing, heatmaps)
 * [Krita](https://krita.org/en/) (art, digital painting)
 * [Blender](https://www.blender.org/) (3d rendering, animation, textures)
