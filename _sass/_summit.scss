@@ -128,6 +128,9 @@
 
 #location .sponsor {
   margin: 4rem 4rem 2rem 4rem;
+  @media (max-width: $screen-xs-max) {
+    margin: 2rem 2rem 1rem 2rem;
+  }
 }
 
 #location .supporter {
