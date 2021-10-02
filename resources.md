@@ -211,7 +211,7 @@ animations.
 * [Try Git](http://try.github.io/) also with interactive tutorials.
 * [code.org](http://code.org/)
 * [Code School](https://www.codeschool.com/) learn even more.
-* [Egghead](http://egghead.io/) to learn the AngularJS framework.
+* [Egghead](http://egghead.io/) to learn the Angular framework.
 * [Tota11y](https://github.com/Khan/tota11y) a bookmarklet to check that your
 website is a11y compliant.
 - [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
