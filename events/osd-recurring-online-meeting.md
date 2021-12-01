@@ -15,4 +15,4 @@ These monthly meetings happen as a voice/video call using Jitsi at [meet.jit.si/
 
 To see what we talked about in previous meetings, check out the ["Monthly call" category on the forum](https://discourse.opensourcedesign.net/c/meta/monthly-call).
 
-To get notifications of this meeting and other events, you can subscribe to our Open Source Design events calendar: [Open Source Design calendar](https://cloud.nextcloud.com/index.php/apps/calendar/p/MIFAFLFJADIVX63I/Open-Source-Design)
+To get notifications of this meeting and other events, you can subscribe to our Open Source Design events calendar: [Open Source Design calendar](https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr)
