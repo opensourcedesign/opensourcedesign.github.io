@@ -55,23 +55,23 @@ We mean "design" in a broad sense -
 
 ## What and how to submit
 
-You can find all the information on how to submit on the [FOSS Backstage CfP website](https://pretalx.com/foss-backstage-2022/cfp).
+~~You can find all the information on how to submit on the [FOSS Backstage CfP website](https://pretalx.com/foss-backstage-2022/cfp).~~ Call for proposals has ended! thank you for submitting :)
 
-## Submission format
+~~## Submission format~~
 
-5 minute lightining talk
-30 minute talk (This could be a 20 minute talk with 10 minutes for Q&A)
-40 minute panel discussion
-70 minutes workshop
+~~5 minute lightining talk~~
+~~30 minute talk (This could be a 20 minute talk with 10 minutes for Q&A)~~
+~~40 minute panel discussion~~
+~~70 minutes workshop~~
 
 
 ## Submission deadline
 
-The Call for Participation closes on November, 15th (23:59 CET).
+~~The Call for Participation closes on November, 15th (23:59 CET).~~ Call for proposals has ended! thank you for submitting :)
 
-All submissions will be reviewed anonymously which means that the program committee is unable to see the submitters personal information such as name, location, background etc.
+~~All submissions will be reviewed anonymously which means that the program committee is unable to see the submitters personal information such as name, location, background etc.~~
 
-Only the talk and the describing abstract is rated in order to reduce unconscious bias.
+~~Only the talk and the describing abstract is rated in order to reduce unconscious bias.~~
 
 ### Notifications about submission status
 
