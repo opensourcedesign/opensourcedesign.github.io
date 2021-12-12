@@ -1,23 +1,25 @@
 <section id="events" class="container wide-containers">
-  <h1>Events</h1>
+  <h2>Events</h2>
   <p class="subtitle">
     Upcoming Open Source Design Events
   </p>
-  <div class="event-board-container grid-c-3">
-    {% assign latest_events = site.events | sort: 'date' | reverse | slice: 0, 3 %}
-    {% for event in latest_events %}
-    <article class="card">
-      <div class="image-container">
-        <img />
-      </div>
-      <a href="{{ event.url | prepend: site.baseurl }}" class="stretch"><h3>
-        {{ event.title }}
-      </h3></a>
-      <div class="meta">
-        <span>{{ event.eventDate }}</span>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-  <p class="see-more"><a href="/events">See all Events</a></p>
+  <ol class="event-board-container grid-c-3">
+      {% assign latest_events = site.events | sort: 'date' | reverse | slice: 0, 3 %}
+      {% for event in latest_events %}
+      <li>
+        <article class="card">
+          <div class="image-container">
+            <img src="" width="350" height="150" />
+          </div>
+          <a href="{{ event.url | prepend: site.baseurl }}" class="stretch"><h3>
+            {{ event.title }}
+          </h3></a>
+          <div class="meta">
+            <span>{{ event.eventDate }}</span>
+          </div>
+        </article>
+      </li>
+      {% endfor %}
+  </ol>
+  <div class="see-more"><a href="/events">See all Events</a></div>
 </section>

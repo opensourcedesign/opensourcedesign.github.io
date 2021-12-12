@@ -11,7 +11,44 @@ html {
   &.wide-containers {
     max-width: 1140px;
   }
+
+  ul, ol {
+    padding: 0;
+  }
 }
+
+img[src=""],
+img:not([src]) {
+  opacity: 0
+}
+
+img {
+  max-width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+
+///////////////////
+//   Hero        //
+///////////////////
+section#hero {
+  background-image: url(/assets/images/bg.png);
+  background-size: cover;
+  color: $white;
+
+  .container {
+    margin: 0 auto;
+    padding: 20rem 20rem 16rem;
+  }
+
+  .cta-container {
+    justify-content: center;
+  }
+}
+
 
 ///////////////////
 //   Job         //

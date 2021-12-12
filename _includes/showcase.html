@@ -1,21 +1,23 @@
 <section id="showcase" class="container wide-containers">
-  <h1>This Month’s Open Design Showcase</h1>
+  <h2>This Month’s Open Design Showcase</h2>
   <p class="subtitle">
     See some awesome open designs from amazing designers.
   </p>
-  <div class="showcase-container grid-c-3">
+  <ul class="showcase-container grid-c-3">
     {% for showcase in site.showcases %}
-    <article class="card">
-      <div class="image-container">
-        <img />
-      </div>
-      <a href="#"><h3>
-        {{ showcase.project_name }}
-      </h3></a>
-      <div class="meta">
-        <span>By {{ showcase.author }}</span>
-      </div>
-    </article>
+    <li>
+      <article class="card">
+        <div class="image-container">
+          <img src="" width="350" height="221" />
+        </div>
+        <a href="#"><h3>
+          {{ showcase.project_name }}
+        </h3></a>
+        <div class="meta">
+          <span>By {{ showcase.author }}</span>
+        </div>
+      </article>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>

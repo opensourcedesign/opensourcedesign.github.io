@@ -10,8 +10,17 @@ $column_count: 12;
 }
 
 @mixin span-columns($count) {
-  article, div, section {
+  article, div, section, li {
     grid-column: span $column_count/$count;
+  }
+
+  li {
+    list-style: none;
+    display: flex;
+
+    article {
+      flex: 1
+    }
   }
 }
 

@@ -1,0 +1,23 @@
+.btn {
+  color: #FFF;
+  padding: 11px 16px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 1rem;
+
+  &.btn-primary {
+    background: #5B5BBD;
+  }
+
+  &.btn-secondary {
+    border: 2px solid #FFFFFF;
+  }
+
+  &.btn-nav {
+    margin: 0;
+    background: #C0250C;
+  }
+}

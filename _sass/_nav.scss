@@ -1,0 +1,71 @@
+.skip-link:link, .skip-link:visited {
+  color: $white;
+  text-decoration: none;
+}
+.skip-link:not(:focus) {
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #000;
+  padding: 1.5rem 2rem 1.2rem;
+  border: 5px solid #000;
+  font-weight: 700;
+  line-height: 1;
+}
+
+header {
+  position: absolute;
+  width: 100%;
+}
+
+nav {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 3.5rem auto;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: auto 0.75rem;
+
+      a {
+        color: $white;
+        padding: 0.5rem;
+        text-decoration: none;
+
+        &:focus {
+          border: 1px solid $white;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.btn-nav {
+          padding: 8px 16px;
+        }
+      }
+    }
+  }
+}
