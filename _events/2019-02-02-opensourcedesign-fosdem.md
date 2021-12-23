@@ -1,69 +1,78 @@
 ---
 layout: event
-title: "Call for Participation: Open Source Design Devroom at FOSDEM 2019"
-date: 2019-02-02
-categories: design hack meeting
-eventDate: Sat, 2 Feb 2019
-location: Room not yet confirmed, Solbosch campus - Université Libre Brussels, Brussels, Belgium
-time: full days
-status: past
-permalink: /2019/02/02/opensourcedesign-fosdem-2019
+title: "Call for Participation: Open Source Design Devroom at FOSDEM 2022"
+date: 2021-12-04
+categories: design conference open-source
+eventDate: Saturday 5th February 2022 
+location: Online, Remote via FOSDEM website
+time: 1 day
+status: upcoming
+permalink: /2021/12/04/fosdem-cfp-2022
 ---
 
 [FOSDEM](https://fosdem.org) is the Free and Open source Software Developers’ European Meeting, a free and non-commercial two-day weekend event that offers **all** open source contributors a place to meet, share ideas, learn and collaborate.
 
-After successful runs in 2015, 2016, 2017 and 2018, there will be a design devroom at FOSDEM 2019!
+Every year, thousands of free and open source software contributors from all over the world gather at the event in Brussels, Belguim. This includes the community of designers contributing to free and open source software.
 
-The Open Source Design devroom will take place on **Saturday, February 2nd**, in the [Solbosch campus of the Université Libre Brussels](https://osm.org/go/0EoSssl_x-?way=150213175). The exact room will be confirmed in the coming months.
+In 2022 the event will be online as it was in 2021 due to the ongoing pandemic.
 
-This will be a full day of talks about design work on free, libre and open source projects.
+### Open Source Design at FOSDEM
+Open Source Design have for the last 7 years have curated a design track room at FOSDEM. You can [watch the talks from Open Source Design dev room 2021](https://archive.fosdem.org/2021/schedule/track/open_source_design/) on the FOSDEM website.
 
-**We invite you to send in your submissions about design work on free, libre and open source projects.**
+The Open Source Design devroom showcases design work happening within free and open source projects, because yes, there is design alive in FOSS. We hope to see you there.
 
-We mean ‘design’ in the broadest sense: user research, interface and interaction design, information architecture, visual design, typography, illustration, iconography, accessibility ... – all in the context of open source projects, which we believe introduces unique challenges.
+### When will the devroom take place?
+We have 1 full day of the conference on Saturday the 5th of February, exact times will be released in 2022.
 
-Designers and developers working with designers (or on a design-minded project) are welcome to submit proposals.
+The event will be online and all presentations will be pre-recorded. 
 
-Possible topics include:
+### What do we mean by design?
+We mean "design" in a broad sense including typography, graphic design, interaction design, user experience, human-computer interaction, accessibility, information architecture, content strategy, service design, user researh, design research and <add your favourite buzzword here>. 
+We hope to see you there.
 
-- FOSS design tools
-- Unique challenges that open source brings
-- Design techniques and deliverables
-- Design/engineering collaboration approaches
-- User engagement and design research activities
-- Project case studies
+Here's some ideas of the kinds of topics we're interested in:
+* How you have contributed as a designer to OSS and your experiences
+* What OSS can do to include designers in their OSS
+* Show design work, methods, examples and guides
+* Inclusion, diversity, mentoring and governance of OSS from a design perspective
+* Anything else related to design and OSS!
 
-In the past we've had talks about [getting designers involved in open source](https://archive.fosdem.org/2017/schedule/event/osd_get_designers_involved/), [accessibility in open source](https://archive.fosdem.org/2017/schedule/event/osd_accessibility_in_os/), [application design and development](https://archive.fosdem.org/2017/schedule/event/osd_gnome_recipe_app/), [beyond logos](https://archive.fosdem.org/2017/schedule/event/osd_beyond_fancy_logo/), [architectural font digitisation and design](https://archive.fosdem.org/2017/schedule/event/osd_architectural_font_digitalisation/) and lots more.
+#### Talk format
+- The length of your talk should be 20 minutes with 5 mins of Q&A (leaves us with 5 mins change over for talks)
+- We are open to talks of up to 40 minutes (35 mins talk and 5 mins of Q&A) for talks with a bigger scope, but we would encourage sticking to 20 minute durations
+- Be able to pre-record a talk in advance. In order for us to review recordings, videos must be submitted by January 22nd 2022
 
-If you're interested in seeing all previous talks, have a look at the schedule, and videos for [2018](https://archive.fosdem.org/2018/schedule/track/open_source_design/), [2017](https://archive.fosdem.org/2017/schedule/track/open_source_design/), [2016](https://archive.fosdem.org/2016/schedule/track/open_source_design/) and [2015](https://archive.fosdem.org/2015/schedule/track/open_source_design/).
+### How will the online event run?
+You're required to be online and be present during your presentation and for 5-10 minutes after to answer any questions the audience watching your talk may have.
+- Since FOSDEM is held during UTC +1 (CET timezone) day hours you need to be available during the day on the 5th of February for your presentation and the ensuing Q&A.
 
-### Recording and licensing of talks
+### How do I submit a talk?
+To submit your talk you will need an account on the FOSDEM talk submission system.
+- If you already have a [FOSDEM Pentabarf](https://penta.fosdem.org/submission/) reuse that.
+- If not, you need to create one and make the submission through the [FOSDEM pentabarf system](https://penta.fosdem.org/submission/)
+- When prompted to select 'Track' be sure to select 'Open Source Design' devroom otherwise we will not recieve your submission.
+- ([The Pentabarf beginner’s guide](https://medium.com/@maartjeme/beginners-guide-to-pentabarf-78808a1ce5bf)) will help if you're not familiar with it.
 
-The talks in the Open Source Design devroom will be audio and video recorded, and possibly streamed live too.
+### Important Dates and Deadlines
 
-By submitting a proposal you consent to be recorded and agree to license the content of your talk under a Creative Commons (CC-BY) license.
+**All deadline times are 23:59 UTC.**
 
-### What and how to submit
+#### Submission deadline for talk proposal:
+December 28th 2021 ~~December 23rd~~
 
-#### Submission format
+#### Selected talks announced
+December 31st 2021
+After all talks are rated, we will inform you about the status of your submission starting Mid-December.
 
-20-minute presentations
+#### Video recording submission
+January 22nd 2022
 
-#### Submission deadline
+#### Date Open Source Design devroom talks place
+**Saturday the 5th February 2022**. Exact times will be released in early 2022
 
-Extended to 8th December 2018
-<del>1st December 2018</del>
 
-#### How to submit
+### Additional support
+- Make sure to check out the [FOSDEM Code of Conduct](https://fosdem.org/2022/practical/conduct/).
+- For any questions about this call for participation you can reach out to us in the [Open Source Design discourse forum](https://discourse.opensourcedesign.net/) or [via email](core@opensourcedesign.net)
 
-All submissions are made in the [Pentabarf event planning tool ](https://penta.fosdem.org/submission/FOSDEM19/) at [https://penta.fosdem.org/submission/FOSDEM19/](https://penta.fosdem.org/submission/FOSDEM19/)
-
-When submitting your talk in Pentabarf, when asked for the ‘Track’, you must select the ‘Open source design devroom’.
-
-If you already have a Pentabarf account from a previous year, please reuse it: create an account if, and only if, you don’t have one from a previous year.
-
-If you have any issues with Pentabarf, do not despair contact - bernard+fosdem at ei8fdb dot org
-
-### Who co-ordinates Open Source Design devroom
-
-The Open Source Design Devroom is co-ordinated by [the Open Source Design community](http://opensourcedesign.net/).
+If you are accepted you will be paired with an Open Source Design volunteer to help prompt you to meet deadlines and also check over your recording. They will also be there on the day to facilitate your 5 mins Q&A.
