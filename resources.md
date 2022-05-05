@@ -65,7 +65,6 @@ Images](http://www.nypl.org/research/collections/digital-collections/public-doma
 * [Interfacer](https://interfacer.xyz/)
 * [Open Doodles](https://www.opendoodles.com/)
 * [Unsplash](https://unsplash.com/)
-* [FFCU](https://freeforcommercialuse.net/)  
 
 
 ## Media from big platforms under Creative Commons licenses
