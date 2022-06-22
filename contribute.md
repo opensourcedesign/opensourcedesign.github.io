@@ -43,6 +43,12 @@ within the OSD community.
 
 - [Participate in OSD](https://github.com/opensourcedesign/organization) as an organization and community
 
+### Financial contributions
+
+We also accept financial contributions via our [Open Collective account](https://opencollective.com/opensourcedesign). We have a number of [recurring and once-off ways to contribute](https://opencollective.com/opensourcedesign/contribute). Choose which is best for you.
+
+We don't accept Open Collective contributions from organisations involved in: Casino & Gambling, Pharmacy Products (Weight loss, anti-ageing), and SEO services & social media buying.
+
 ### Experimental
 
 Our other GitHub repositories are experimental and undecided exactly what
