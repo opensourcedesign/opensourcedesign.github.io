@@ -25,3 +25,4 @@ permalink: /projects/
 * [Trustroots](https://www.trustroots.org/) hospitality platform
 * [Automattic](https://automattic.com/) the company behind WordPress.com, WooCommerce.com, Jetpack.com. [Design blog](https://automattic.design/)
 * [XWiki](https://www.xwiki.org) development platform. [Design wiki](https://design.xwiki.org)
+* [Elementary OS](https://elementary.io/en/) Linux distribution. [Design wiki](https://docs.elementary.io/hig/), [Design blog](https://blog.elementary.io/tags/#design)
