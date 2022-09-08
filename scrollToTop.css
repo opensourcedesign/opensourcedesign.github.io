@@ -1,0 +1,45 @@
+body {
+    margin: 0 !important;
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    height: 1000px;
+}
+  
+  /* Scroll function element */
+  .scroll {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(237, 237, 237, 0.9);
+    transition: all 150ms ease;
+    transform: scale(0);
+      outline: none;
+      cursor: pointer;
+      font-weight: bold;
+  }
+  .scroll:focus {
+    outline: none;
+  }
+  
+  .fa-sort-up {
+    color: #f78ca0;
+    margin-top: 15px;
+  }
+  
+  .scroll:hover .fa-sort-up {
+    animation: jump 800ms infinite;
+  }
+  
+  @keyframes jump {
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  /* End scroll function element */
+  
