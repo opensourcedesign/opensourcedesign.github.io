@@ -8,26 +8,27 @@ permalink: /resources/
 
 ## Icons
 
-* [The Noun Project](http://thenounproject.com) CC and purchasable icons.
+* [Bitcoin Icons](https://bitcoinicons.com/) Open source icons made for Bitcoin applications, free to use. MIT licensed.
+* [Circum Icons](https://circumicons.com/) Consistent open source icons as SVG for React, Vue and Svelte.
+* [FontAwesome](http://fontawesome.io/icons/) The iconic font and CSS toolkit. Free to use. [CDN](https://www.bootstrapcdn.com/fontawesome/). [GitHub](https://github.com/FortAwesome/Font-Awesome).
+* [Font Fabulous](https://manageiq.github.io/font-fabulous/) A fabulous iconset packaged as a font. Free to use. [GitHub](https://github.com/ManageIQ/font-fabulous).
 * [IcoMoon](http://icomoon.io/) CC icons and free to use icon-font creation
 software.
+* [IconMonstr](http://iconmonstr.com/) A large collection of glyph icons from a
+German artist. Free to use without attribution and free to modify.
+* [Iconoir](https://iconoir.com/) SVG. MIT licensed.
+* [Inkscape Open Symbols](https://github.com/Xaviju/inkscape-open-symbols) Open
+source icon sets to use as Inkscape symbols.
+* [Mono Icons](https://icons.mono.company) A simple, consistent open-source icon set designed to be used in a wide variety of digital products. MIT licensed. [GitHub](https://github.com/mono-company/mono-icons)
 * [Pictogramas](http://github.com/adrianmg/pictogramas) Open source free icons
+* [Remix Icons](https://remixicon.com/) Huge repo of consistent neutrally styled icons. [GitHub](https://github.com/Remix-Design/remixicon)
+* [React Icons](https://react-icons.github.io/react-icons/) SVG react icons of popular icon packs. [GitHub](https://github.com/react-icons/react-icons)
+* [React Feather Icons](https://www.npmjs.com/package/react-feather) Collection of simply beautiful open source icons for React.js. [GitHub](https://github.com/feathericons/react-feather)
+* [Styled Icons](https://styled-icons.js.org/) Icon packs like Font Awesome, Material Design, and Octicons, available as React Styled Components. [GitHub](https://github.com/jacobwgillespie/styled-icons)
+* [The Noun Project](http://thenounproject.com) CC and purchasable icons.
 for personal and commercial purposes.
 * [ToIcon](http://www.toicon.com/) All icons are licensed under a Creative
 Commons.
-* [Inkscape Open Symbols](https://github.com/Xaviju/inkscape-open-symbols) Open
-source icon sets to use as Inkscape symbols.
-* [IconMonstr](http://iconmonstr.com/) A large collection of glyph icons from a
-German artist. Free to use without attribution and free to modify.
-* [FontAwesome](http://fontawesome.io/icons/) The iconic font and CSS toolkit. Free to use. [CDN](https://www.bootstrapcdn.com/fontawesome/). [GitHub](https://github.com/FortAwesome/Font-Awesome).
-* [Font Fabulous](https://manageiq.github.io/font-fabulous/) A fabulous iconset packaged as a font. Free to use. [GitHub](https://github.com/ManageIQ/font-fabulous).
-* [Remix Icons](https://remixicon.com/) Huge repo of consistent neutrally styled icons. [GitHub](https://github.com/Remix-Design/remixicon)
-* [React Icons](https://react-icons.github.io/react-icons/) SVG react icons of popular icon packs. [GitHub](https://github.com/react-icons/react-icons)
-* [Styled Icons](https://styled-icons.js.org/) Icon packs like Font Awesome, Material Design, and Octicons, available as React Styled Components. [GitHub](https://github.com/jacobwgillespie/styled-icons)
-* [React Feather Icons](https://www.npmjs.com/package/react-feather) Collection of simply beautiful open source icons for React.js. [GitHub](https://github.com/feathericons/react-feather)
-* [Mono Icons](https://icons.mono.company) A simple, consistent open-source icon set designed to be used in a wide variety of digital products. MIT licensed. [GitHub](https://github.com/mono-company/mono-icons)
-* [Iconoir](https://iconoir.com/) SVG. MIT licensed.
-* [Bitcoin Icons](https://bitcoinicons.com/) Open source icons made for Bitcoin applications, free to use. MIT licensed. 
 * [Tabler Icons](https://tabler-icons.io/) Open source SVG icons in a visually consistent style. MIT licensed. [GitHub](https://github.com/tabler/tabler-icons)
 
 
