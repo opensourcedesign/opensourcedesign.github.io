@@ -64,7 +64,7 @@ bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
 ```
 
 
-[osd-net]: http://opensourcedesign.net
+[osd-net]: https://opensourcedesign.net
 [osd-org]: https://github.com/opensourcedesign/
 [jekyll]: https://jekyllrb.com
 [bootstrap]: https://getbootstrap.com
