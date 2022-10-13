@@ -10,7 +10,7 @@ status: past
 permalink: /2015/04/29/libregraphicsmeeting
 ---
 
-The [Libre Graphics Meeting (LGM)](http://libregraphicsmeeting.org/2015/) is an annual meeting on free and open source software for graphics.
+The [Libre Graphics Meeting (LGM)](https://libregraphicsmeeting.org/2015/) is an annual meeting on free and open source software for graphics.
 Held yearly since 2006 the Libre Graphics Meeting aims to attract developers, artists and professionals who use and improve free and open source software graphics applications. The LGM aims to bring these people together in the cause of creating high quality free graphics applications.
 
 ## Date & Location

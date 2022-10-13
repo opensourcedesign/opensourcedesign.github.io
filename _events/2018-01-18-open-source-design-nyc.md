@@ -33,11 +33,11 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 
 #### Introduction
 
-- <http://twitter.com/davelab6>
-- <http://libregraphicsmeeting.org/2006>
+- <https://twitter.com/davelab6>
+- <https://libregraphicsmeeting.org/2006>
 - <https://duckduckgo.com/?q=open+font+license>
 - <http://typefacedesign.net/typefaces/year/2009/cantarell/>
-- <http://a-hackers-craic.blogspot.com/2012/02/cantarell-sucks.html>
+- <https://a-hackers-craic.blogspot.com/2012/02/cantarell-sucks.html>
 - <https://fontlibrary.org>
 - <https://fonts.google.com>
 - <https://fonts.google.com/?subset=gujarati>
@@ -56,7 +56,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://en.wikipedia.org/wiki/Bitcoin#/media/File:Electrum_Bitcoin_Wallet.png>
 - <https://en.wikipedia.org/wiki/Forth_(programming_language)>
 - <https://en.wikipedia.org/wiki/Metcalfe%27s_law>
-- <http://www.businessinsider.com/bitcoin-pizza-10000-100-million-2017-11>
+- <https://www.businessinsider.com/bitcoin-pizza-10000-100-million-2017-11>
 - <https://coinmarketcap.com/currencies/dogecoin/>
 - <https://coinmarketcap.com/currencies/ganjacoin/>
 
@@ -99,7 +99,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://en.wikipedia.org/wiki/Haskell_(programming_language)>
 - <https://en.wikipedia.org/wiki/The_DAO_(organization)>
 - <https://coinmarketcap.com/currencies/ethereum-classic>
-- <http://cryptomiso.com>
+- <https://cryptomiso.com>
 - <https://www.flashcoin.io>
 
 #### In practice
@@ -114,5 +114,5 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 
 #### Conclusion
 
-- <http://libregraphicsmeeting.org/2018/>
+- <https://libregraphicsmeeting.org/2018/>
 - <https://www.jwz.org/blog/2018/01/the-ai-apocalypse-of-1553>

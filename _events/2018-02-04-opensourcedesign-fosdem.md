@@ -52,4 +52,4 @@ If you already have a Pentabarf account from a previous year, please reuse it: c
 
 ### Who coordinates Open Source Design devroom
 
-The Open Source Design Devroom is coordinated by [the Open Source Design community](http://opensourcedesign.net/).
+The Open Source Design Devroom is coordinated by [the Open Source Design community](https://opensourcedesign.net/).

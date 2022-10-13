@@ -62,4 +62,4 @@ If you already have a Pentabarf account from a previous year, please reuse it: c
 
 ### Who coordinates this Open Source Design devroom thing
 
-The Open Source Design Devroom is coordinated by [the Open Source Design Crowd ](http://opensourcedesign.net/) at [http://opensourcedesign.net/ ](http://opensourcedesign.net/)
+The Open Source Design Devroom is coordinated by [the Open Source Design Crowd ](https://opensourcedesign.net/) at [https://opensourcedesign.net/ ](https://opensourcedesign.net/)

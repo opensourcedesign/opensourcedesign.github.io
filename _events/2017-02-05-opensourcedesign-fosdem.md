@@ -65,4 +65,4 @@ If you already have a Pentabarf account from a previous year, please reuse it: c
 
 ### Who coordinates the Open Source Design track
 
-The Open Source Design track is coordinated by [the Open Source Design Crowd](http://opensourcedesign.net/) at [opensourcedesign.net](http://opensourcedesign.net/)
+The Open Source Design track is coordinated by [the Open Source Design Crowd](https://opensourcedesign.net/) at [opensourcedesign.net](https://opensourcedesign.net/)
