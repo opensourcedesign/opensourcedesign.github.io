@@ -3,7 +3,7 @@ layout: post
 title: Henne Vogelsang - Tout like a butterfly, hack like a bee!
 name: Henne Vogelsang
 github: hennevogel
-url: http://www.hennevogel.de
+url: https://www.hennevogel.de
 tags: developer, rails, javascript, css, html
 availability: available
 rate: gratis

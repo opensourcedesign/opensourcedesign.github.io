@@ -3,7 +3,7 @@ layout: page
 title: Director of Autonomy at Loomio
 name: Richard D. Bartlett
 github: rdbartlett
-url: http://loomio.org
+url: https://loomio.org
 tags: designer, front end dev, a11y, BEM
 availability: booked
 rate: gratis / $80 hour

@@ -3,7 +3,7 @@ layout: post
 title: Roy Scholten
 name: Roy Scholten
 github: yoroy
-url: http://www.yoroy.com
+url: https://www.yoroy.com
 tags: interaction designer
 status: unspecified
 rate: unspecified
