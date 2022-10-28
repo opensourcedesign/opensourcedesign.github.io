@@ -29,20 +29,20 @@ We talked about (or what some members of our community have been up to):
 - Etherpad [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
 - A code of conduct [[irc](https://botbot.me/freenode/opensourcedesign/2015-06-11/?msg=41584415&page=1)]
 - Funding open source [[irc](https://botbot.me/freenode/opensourcedesign/2015-07-03/?msg=43599602&page=1)]
-- P2P file back up systems[[irc](http://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)]
+- P2P file back up systems[[irc](https://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)]
 
 # On GitHub
 
-- Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](http://opensourcedesign.net/2015/05/23/text-based-tools-for-designers).
+- Jan D. started a conversation about [Free-as-in-freedom tools for Designer Dev communication and creation](https://github.com/opensourcedesign/resources/issues/16). This resulted in a [blog post on it](https://opensourcedesign.net/2015/05/23/text-based-tools-for-designers).
 - We started [wireframing the website](https://github.com/opensourcedesign/opensourcedesign.net/issues/17) with some concepts.
 - This led to a [conversation about logos](https://github.com/opensourcedesign/opensourcedesign.net/issues/18)!
 - Our [code of conduct](//opensourcedesign.net/code-of-conduct/) is up for discussion.
 
 # Events
 
-- We're planning for [FOSDEM 2016](http://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)
+- We're planning for [FOSDEM 2016](https://opensourcedesign.net/events/design/hack/meeting/2015/02/01/opensourcedesign-fosdem.html)
 
 <br>
 <br>
 
-NOTE: _26.3.2017_: Updated link to [post on tools for designers](http://opensourcedesign.net/2015/05/23/text-based-tools-for-designers)
+NOTE: _26.3.2017_: Updated link to [post on tools for designers](https://opensourcedesign.net/2015/05/23/text-based-tools-for-designers)
