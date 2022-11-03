@@ -4,7 +4,7 @@ title: Máirín Duffy, open design forever
 title: David Leuliette, open source designer
 name: David Leuliette
 github: https://github.com/flexbox
-url: http://davidl.fr
+url: https://davidl.fr
 tags: designer
 availability: unspecified
 rate: unspecified

@@ -3,7 +3,7 @@ layout: post
 title: Bojhan Somers
 name: Bojhan Somers
 github: Bojhan
-url: http://www.bojhan.com
+url: https://www.bojhan.com
 tags: UX Lead
 availability: unspecified
 rate: unspecified

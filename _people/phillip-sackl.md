@@ -3,7 +3,7 @@ layout: page
 title: Phillip Sackl, open source designer
 name: Phillip Sackl
 github: https://github.com/phlsa
-url: http://philippsackl.com
+url: https://philippsackl.com
 tags: designer
 availability: unspecified
 rate: unspecified

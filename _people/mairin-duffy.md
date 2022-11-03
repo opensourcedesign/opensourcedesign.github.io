@@ -3,7 +3,7 @@ layout: page
 title: Máirín Duffy, open design forever
 name: Máirín Duffy
 github: https://github.com/mairin
-url: http://blog.linuxgrrl.com
+url: https://blog.linuxgrrl.com
 tags: designer
 availability: unspecified
 rate: unspecified

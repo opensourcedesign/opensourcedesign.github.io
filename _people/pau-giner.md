@@ -3,7 +3,7 @@ layout: page
 title: Pau Giner, Designer
 name: Pau Giner
 github: pauginer
-url: http://pauginer.com
+url: https://pauginer.com
 tags: designer, researcher, prototyper
 availability: booked
 rate: flexible

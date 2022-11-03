@@ -3,7 +3,7 @@ layout: page
 title: Digital Artist, 3D Generalist and Graphic Designer
 name: Micah Denn
 github: micahdenn
-url: http://micahdenn.com/
+url: https://micahdenn.com/
 tags: designer, 3d, digital art,
 availability: available
 rate: gratis / flexible

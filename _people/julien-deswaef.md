@@ -3,7 +3,7 @@ layout: post
 title: Julien Deswaef, digital artisan.
 name: Julien Deswaef
 github: xuv
-url: http://xuv.be
+url: https://xuv.be
 tags: vj, designer, web, javascript, libreobjet, b3d, bots, python, lgm
 status: active
 availability: available

@@ -3,7 +3,7 @@ layout: post
 title: Adekunle Oduye, Product Designer & Front-end Developer
 name: Adekunle Oduye
 github: adekunleoduye
-url: http://www.adekunleoduye.com
+url: https://www.adekunleoduye.com
 tags: designer, javascript, product design, interaction design, ui design, sass, css architecture
 availability: flexible
 rate: flexible / project based

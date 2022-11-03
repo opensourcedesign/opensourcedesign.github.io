@@ -3,7 +3,7 @@ layout: post
 title: Ivan Ovechkin, curious UI/UX/graphic designer
 name: Ivan Ovechkin
 github: myckyc
-url: http://designninja.ru
+url: https://designninja.ru
 tags: ui, ux, graphics, design, illustrations, logo, apps, websites, digital fabrication, diy, music, zombies
 availability: available
 rate: gratis / flexible

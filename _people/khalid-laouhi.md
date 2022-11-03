@@ -3,7 +3,7 @@ layout: post
 title: Khalid Laouhi, user interface designer and interaction designer, prototyper
 name: Khalid Laouhi
 github: khalidl
-url: http://khalidl.nl
+url: https://khalidl.nl
 tags: designer, ui designer, user interface designer, interface designer, interaction designer, prototyper, motion designer
 availability: available
 rate: gratis / flexible

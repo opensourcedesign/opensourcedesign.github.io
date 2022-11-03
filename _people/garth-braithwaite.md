@@ -3,7 +3,7 @@ layout: post
 title: Garth Braithwaite
 name: Garth Braithwaite
 github: GarthDB
-url: http://garthdb.com
+url: https://garthdb.com
 tags: designer, front-end developer
 availability: unspecified
 rate: unspecified
