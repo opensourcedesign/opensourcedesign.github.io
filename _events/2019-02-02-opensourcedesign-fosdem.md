@@ -66,4 +66,4 @@ If you have any issues with Pentabarf, do not despair contact - bernard+fosdem a
 
 ### Who co-ordinates Open Source Design devroom
 
-The Open Source Design Devroom is co-ordinated by [the Open Source Design community](http://opensourcedesign.net/).
+The Open Source Design Devroom is co-ordinated by [the Open Source Design community](https://opensourcedesign.net/).

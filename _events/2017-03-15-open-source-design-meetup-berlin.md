@@ -130,7 +130,7 @@ We then split into 3 groups for more focused discussions:
 **Links**
 
 - [thesis](https://www.dgsiegel.net/news/2012_12_09-typical_development_processes_of_free_and_open_source_software_projects)
-- [Crowdsourcing / design](http://spdow.ucsd.edu)
+- [Crowdsourcing / design](https://spdow.ucsd.edu)
 
 **Tools**
 

@@ -80,7 +80,7 @@ Kreuzberg, Berlin
 
 Near U7-Südstern stop
 
-[View on Open Street Maps](http://www.openstreetmap.org/?mlat=52.4893&mlon=13.4040#map=15/52.4893/13.4040)
+[View on Open Street Maps](https://www.openstreetmap.org/?mlat=52.4893&mlon=13.4040#map=15/52.4893/13.4040)
 
 ## Specific topics
 

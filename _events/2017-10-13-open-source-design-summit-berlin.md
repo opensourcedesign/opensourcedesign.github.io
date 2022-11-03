@@ -13,7 +13,7 @@ We're organizing a summit for all designers and developers interested in cheerle
 
 October 13 is the arrival day with a social event in the evening. 14-15 are unconf days, 16-17 workshops/discussion, 18 is maybe brunch but also leaving day.
 
-Please see <http://opensourcedesign.net/summit/2017> for more information and <https://opencollective.com/opensourcedesign/events/opensourcedesign-summit> to express interest in attending! You are also welcome to [join the conversation on GitHub](https://github.com/opensourcedesign/organization/issues?q=is%3Aissue+is%3Aopen+label%3Asummit).
+Please see <https://opensourcedesign.net/summit/2017> for more information and <https://opencollective.com/opensourcedesign/events/opensourcedesign-summit> to express interest in attending! You are also welcome to [join the conversation on GitHub](https://github.com/opensourcedesign/organization/issues?q=is%3Aissue+is%3Aopen+label%3Asummit).
 
 ## Date & Location
 

@@ -35,7 +35,7 @@ Lots of things that we've talking about for the last couple months. Time to push
 
 ## Specific Topics
 
-- Getting a site up at [opensourcedesign.net](http://opensourcedesign.net)
+- Getting a site up at [opensourcedesign.net](https://opensourcedesign.net)
 - Decentralized user friendly web messaging tools
   - Modifying & improving the UX of using [Shout IRC](http://shout-irc.com) client
   - WebRTC messaging craziness by [@tOkeshu](https://github.com/tOkeshu)
