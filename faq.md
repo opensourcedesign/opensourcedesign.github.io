@@ -23,7 +23,7 @@ nice, we welcome you :)
 ### What Does Being a Member Mean
 
 Open Source Design offers a "choose-your-own" style of membership, it means you
-are welcome to active engage [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.net/issues) or [attend and organize events](/events/). Also you can just chill in our [chat room](http://chat.opensourcedesign.net) and provide help to newcommers to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
+are welcome to active engage [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.net/issues) or [attend and organize events](/events/). Also you can just chill in our [chat room](https://chat.opensourcedesign.net) and provide help to newcommers to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
 
 ### What Does Being a Core Member Mean
 
@@ -57,7 +57,7 @@ members. Most of us use and rely on free software daily and wouldn't be here wit
 
 ### How are you different from Open Design
 
-There is a community called [Open Design](http://opendesign.foundation) that
+There is a community called [Open Design](https://opendesign.foundation) that
 sometimes gets confused as us. From [this conversation](https://github.com/opensourcedesign/resources/issues/14) our differences are:
 
 > Open Source Design is building a community of designers working on open

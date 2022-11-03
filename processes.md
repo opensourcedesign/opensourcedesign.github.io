@@ -25,5 +25,5 @@ research aimed at solving problems.
 
 ## Tools
 
-[Oblique Stategies](http://www.oblique-strategies.com) - simple phrases to help
+[Oblique Stategies](https://www.oblique-strategies.com) - simple phrases to help
 break creative blocks- made by musician Brian Eno and artist Peter Schmidt

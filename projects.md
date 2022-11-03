@@ -10,13 +10,13 @@ permalink: /projects/
 * [GNOME](https://www.gnome.org/) desktop environment. [Design blogs](https://blogs.gnome.org/aday/category/gnome-ux), [Design wiki](https://wiki.gnome.org/Design)
 * [GitLab](https://about.gitlab.com/) Git hosting and code collaboration. [UX Team](https://about.gitlab.com/handbook/engineering/ux/)
 * [Nextcloud](https://nextcloud.com) data sync & sharing, have a [Design page](https://nextcloud.com/design)
-* [Fedora](https://getfedora.org/), [Design blogs](http://fedoraplanet.org/design/), [Design Team wiki](http://fedoraproject.org/wiki/Design)
-* [Canonical (Ubuntu)](http://ubuntu.com), [Design blog](http://design.canonical.com)
+* [Fedora](https://getfedora.org/), [Design blogs](https://fedoraplanet.org/design/), [Design Team wiki](https://fedoraproject.org/wiki/Design)
+* [Canonical (Ubuntu)](https://ubuntu.com), [Design blog](https://design.canonical.com)
 * [WordPress](https://wordpress.org), [Design discussion](https://make.wordpress.org/design/) and [handbook](https://make.wordpress.org/design/handbook/)
 * [Drupal](https://www.drupal.org/), [usability group](https://groups.drupal.org/usability), [UI standards](https://drupal.org/ui-standards)
 * [Diaspora](https://diasporafoundation.org/) decentralized social network, [UI issues on GitHub](https://github.com/diaspora/diaspora/issues?labels=ui)
 * [MediaGoblin](https://mediagoblin.org/) media platform
-* [BeWelcome](http://www.bewelcome.org/) hospitality platform
+* [BeWelcome](https://www.bewelcome.org/) hospitality platform
 * [Mailpile](https://www.mailpile.is/) mail interface, [Design ideas on GitHub](https://github.com/pagekite/mailpile/issues?milestone=2)
 * [Ghost](https://ghost.org/) simple blogging platform
 * [Terms of Service; Didn’t Read](https://tosdr.org/) contract rating

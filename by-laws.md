@@ -21,7 +21,7 @@ What does that mean?
 1. Conversations that impact the community should not happen in invite-only spaces.
 2. content should be accessible (Preferably ADA accessible. ie. text to speech software should be able to parse it)
 3. As best as we can we should use software that follows Free, Libre, and Open definitions and standards.
-4. This doesn't apply to conversations that require a high level of trust and confidentiality. An example of this is breaches to our [Code of Conduct](http://opensourcedesign.net/code-of-conduct/). See how to do that in [Reporting Violations](http://opensourcedesign.net/code-of-conduct/#reporting-violations).
+4. This doesn't apply to conversations that require a high level of trust and confidentiality. An example of this is breaches to our [Code of Conduct](https://opensourcedesign.net/code-of-conduct/). See how to do that in [Reporting Violations](https://opensourcedesign.net/code-of-conduct/#reporting-violations).
 
 ## Reaching Consensus
  
