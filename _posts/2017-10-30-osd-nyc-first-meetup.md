@@ -14,7 +14,7 @@ authors:
 ---
 
 **The Big Idea - designing in open source**
-Open source communities pushed collaboration, sharing and transparency (in regards to licensing and copyright) throughout various industries. While design and creativity have never been more important, we often wonder where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community? Enter the [Open Source Design NYC Collective](http://opensourcedesign.net/events/2017/09/open-source-design-nyc).
+Open source communities pushed collaboration, sharing and transparency (in regards to licensing and copyright) throughout various industries. While design and creativity have never been more important, we often wonder where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community? Enter the [Open Source Design NYC Collective](https://opensourcedesign.net/events/2017/09/open-source-design-nyc).
 
 **Who are we and where did we contribute last?**
 We are a collective of designers and design advocates who contribute to open source projects. Julien Deswaef, Jessica Klein and Dina Michl opened a chapter in NYC to meet regularly and grow the open source design community. In September, we held our first meeting to collaborate on defining what shape the meetups should take.

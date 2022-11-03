@@ -76,7 +76,7 @@ We also talked about the urgent need to have a license for the Kit in general as
 
 Some suggestions were made by the meetup including optimizing the kit for low internet bandwidth - looking at a pattern, to have a low bandwidth option and focusing on how to make the Kit more including users with different capabilities.
 
-To contribute to the project, join the #opendesignkit channel on the [Open Design Foundation Slack](http://slack.opendesign.foundation/), or check out the [GitHub repository](https://github.com/open-design-kit/opendesignkit).
+To contribute to the project, join the #opendesignkit channel on the [Open Design Foundation Slack](https://slack.opendesign.foundation/), or check out the [GitHub repository](https://github.com/open-design-kit/opendesignkit).
 
 Slides:
 

@@ -28,7 +28,7 @@ In the following months, we coordinated our efforts through monthly calls and [D
 
 #### November 2nd (Reception)
 
-We started on the Friday afternoon with a reception gathering at [Ofiçina](http://oficina.al), the venue where many other past events have been organized by local communities, including [LibreOffice Conference](https://libocon.org/2018). The OSD Summit is not close to any big [conference](https://en.wikipedia.org/wiki/Conference) (yet at least) but more of a small [unconference](https://en.wikipedia.org/wiki/Unconference).
+We started on the Friday afternoon with a reception gathering at [Ofiçina](https://oficina.al), the venue where many other past events have been organized by local communities, including [LibreOffice Conference](https://libocon.org/2018). The OSD Summit is not close to any big [conference](https://en.wikipedia.org/wiki/Conference) (yet at least) but more of a small [unconference](https://en.wikipedia.org/wiki/Unconference).
 
 There were participants from countries as far as [New Zealand](https://en.wikipedia.org/wiki/New_Zealand), [Czech Republic](https://en.wikipedia.org/wiki/Czech_Republic), [Germany](https://en.wikipedia.org/wiki/Germany), [Kosovo](https://en.wikipedia.org/wiki/Kosovo).
 

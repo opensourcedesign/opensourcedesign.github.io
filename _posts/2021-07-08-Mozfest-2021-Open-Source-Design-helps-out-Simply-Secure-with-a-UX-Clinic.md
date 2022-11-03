@@ -27,7 +27,7 @@ I reminded the Radical Engineers of the dominance of proprietary tools in design
 ### Digital Grassroots
 The second conversation we had was centred around mentoring and methods for mentoring in OSS that have worked in the past. 
 
-A person who works at [Digital Grassroots](http://digitalgrassroots.org/) came in to ask about how they can grow and create a community feeling around mentoring and how to encourage participation in broader mentoring conversations.
+A person who works at [Digital Grassroots](https://digitalgrassroots.org/) came in to ask about how they can grow and create a community feeling around mentoring and how to encourage participation in broader mentoring conversations.
 
 The advice that I (Eriol) gave around mentoring is how important it was to grow an authentic relationship between the mentor and mentee and to encourage mentee to mentee communication and support networks too. 
 I've found when mentoring OSS technologists around design considerations and open source design contributors the best way to support these individuals is to talk about what they are doing with technology, design and OSS but also talk about the other things they are passionate about and thinking about as the build their tech and contribute to OSS. 
