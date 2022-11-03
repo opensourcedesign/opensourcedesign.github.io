@@ -26,14 +26,14 @@ Website and all public facing web content that does have it's own repository
 
 Jobs submitted to Open Source Design which end up on the public job board
 
-- [Browse Design Jobs](http://opensourcedesign.net/jobs) if have some free cycles for paid or gratis work
+- [Browse Design Jobs](https://opensourcedesign.net/jobs) if have some free cycles for paid or gratis work
 - [Submit a Job](https://opensourcedesign.net/jobs/job-form/) if you need a designer for your project
 
 ### Events
 
 Events that are relevant and relate to design and open source and design
 
-- [Browse Events](http://opensourcedesign.net/events) to attend something near you
+- [Browse Events](https://opensourcedesign.net/events) to attend something near you
 - [Add an Event](https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/_events) to help organize new events
 
 ### Organization
