@@ -26,3 +26,4 @@ permalink: /projects/
 * [Automattic](https://automattic.com/) the company behind WordPress.com, WooCommerce.com, Jetpack.com. [Design blog](https://automattic.design/)
 * [XWiki](https://www.xwiki.org) development platform. [Design wiki](https://design.xwiki.org)
 * [Elementary OS](https://elementary.io/en/) Linux distribution. [Design wiki](https://docs.elementary.io/hig/), [Design blog](https://blog.elementary.io/tags/#design)
+* [Plasma](https://kde.org/plasma-desktop/) desktop environment by [KDE](https://kde.org/). [Design page](https://develop.kde.org/design/), [Human Interface Guidelines](https://develop.kde.org/hig)
