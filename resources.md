@@ -98,6 +98,7 @@ work needed.
 * [Scribus](https://www.scribus.net/) (page layout, desktop publishing)
 * [DisplayCAL](https://displaycal.net/) (color calibration)
 * [Kdenlive](https://kdenlive.org) (video editing)
+* [Figma](https://www.figma.com/) (UI Design,wireframes,prototypes)
 * Design discussion on the issue tracker of the project. For example at
 [GitHub](https://github.com) – get an account, identify design issues,
 participate, and open new issues. Establish a »Design« tag on the tracker to
@@ -110,6 +111,7 @@ issues](https://github.com/nextcloud/core/issues?labels=Design).
 * [Leonardo.io by Adobe](https://leonardocolor.io/): Color contrast generator.
 * [Tanaguru](https://contrast-finder.tanaguru.com/): For finding complementary colors.
 * [colors.lol](https://colors.lol/): Overly descriptive color palettes.
+* [colorhunt.co](https://colorhunt.co/) : Color Palettes for Designers and Artists
 
 ## CSS Frameworks
 
