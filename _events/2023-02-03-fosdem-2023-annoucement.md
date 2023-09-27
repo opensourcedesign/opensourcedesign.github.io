@@ -6,7 +6,7 @@ categories: design conference open-source
 eventDate: Sunday 5th February 2023 
 location: université Libre Brussels, Belgium 
 time: 13:00 to 17:00 CET 
-status: upcoming
+status: past
 permalink: /2023/02/03/fosdem-2023-annoucement
 ---
 
