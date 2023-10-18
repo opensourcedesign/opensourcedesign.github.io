@@ -5,8 +5,6 @@ header_links:
     url: /articles/
   - name: Resources
     url: /resources/
-  - name: Projects
-    url: /projects/
   - name: Jobs
     url: https://discourse.opensourcedesign.net/t/post-jobs-here-for-now/3416
   - name: Events
