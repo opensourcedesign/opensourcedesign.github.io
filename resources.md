@@ -6,6 +6,32 @@ permalink: /resources/
 
 **This is a showcase of the many websites and platforms where you can find openly licensed icons, fonts, image, tools and other resources.** You can use them for any purpose, also commercial (some works have specific licenses, so always make sure it’s fine to use).
 
+
+## Projects
+
+* [Mozilla](https://mozilla.org), makers of the Firefox browser. Have a [UX blog](https://blog.mozilla.org/ux)
+* [GNOME](https://www.gnome.org/) desktop environment. [Design blogs](https://blogs.gnome.org/aday/category/gnome-ux), [Design wiki](https://wiki.gnome.org/Design)
+* [GitLab](https://about.gitlab.com/) Git hosting and code collaboration. [UX Team](https://about.gitlab.com/handbook/engineering/ux/)
+* [Nextcloud](https://nextcloud.com) data sync & sharing, have a [Design page](https://nextcloud.com/design)
+* [Fedora](https://getfedora.org/), [Design blogs](https://fedoraplanet.org/design/), [Design Team wiki](https://fedoraproject.org/wiki/Design)
+* [Canonical (Ubuntu)](https://ubuntu.com), [Design blog](https://design.canonical.com)
+* [WordPress](https://wordpress.org), [Design discussion](https://make.wordpress.org/design/) and [handbook](https://make.wordpress.org/design/handbook/)
+* [Drupal](https://www.drupal.org/), [usability group](https://groups.drupal.org/usability), [UI standards](https://drupal.org/ui-standards)
+* [Diaspora](https://diasporafoundation.org/) decentralized social network, [UI issues on GitHub](https://github.com/diaspora/diaspora/issues?labels=ui)
+* [MediaGoblin](https://mediagoblin.org/) media platform
+* [BeWelcome](https://www.bewelcome.org/) hospitality platform
+* [Mailpile](https://www.mailpile.is/) mail interface, [Design ideas on GitHub](https://github.com/pagekite/mailpile/issues?milestone=2)
+* [Ghost](https://ghost.org/) simple blogging platform
+* [Terms of Service; Didn’t Read](https://tosdr.org/) contract rating
+* [Libre Office](https://www.libreoffice.org/), [Design Community](https://www.libreoffice.org/community/design/)
+* [Patternfly](https://www.patternfly.org/) A UI framework for enterprise web applications
+* [Trustroots](https://www.trustroots.org/) hospitality platform
+* [Automattic](https://automattic.com/) the company behind WordPress.com, WooCommerce.com, Jetpack.com. [Design blog](https://automattic.design/)
+* [XWiki](https://www.xwiki.org) development platform. [Design wiki](https://design.xwiki.org)
+* [Elementary OS](https://elementary.io/en/) Linux distribution. [Design wiki](https://docs.elementary.io/hig/), [Design blog](https://blog.elementary.io/tags/#design)
+* [Plasma](https://kde.org/plasma-desktop/) desktop environment by [KDE](https://kde.org/). [Design page](https://develop.kde.org/design/), [Human Interface Guidelines](https://develop.kde.org/hig)
+
+
 ## Icons
 
 * [Bitcoin Icons](https://bitcoinicons.com/) Open source icons made for Bitcoin applications, free to use. MIT licensed.
