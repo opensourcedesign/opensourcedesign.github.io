@@ -13,6 +13,8 @@ permalink: /2024/02/03/fosdem-2024-annoucement
 The weekend of FOSDEM 2024 has been annouced and we are excited for another in-person Open Source Design devroom! Join us in Brussels for design talks, discussion and fun! Here's everything you need to know about getting to the Open Source Design devroom at FOSDEM.
 The Open Source Design community groups welcomes and encourages folks from both design and non-design backgrounds to submit talks related to design to the dev room and attend the talks in the devroom. If you'd like a buddy or someone to chat to before joining us you can check out our [discourse forum](https://discourse.opensourcedesign.net).
 
+The devroom talks have now been reviewed and our accepted talks are [published on the FOSDEM website](https://fosdem.org/2024/schedule/track/open-source-design/). The Open Source Design Core team would like to send huge appreciation to all the people that submitted talk proposals, we had amazing proposals this year and we had a really hard time selecting only 8 for the half day we have a devroom for.
+
 ## Where is it?
 
 **In person:** FOSDEM 2024 will take place at the [Université Libre de Bruxelles](https://www.openstreetmap.org/relation/13699100) in Brusells, Belgium. The ULB website has lots of info about [how to get there](https://www.ulb.be/en/solbosch/directions#deplacements). The Open Source Design devroom will take place in room (Pending info). This [map of the campus](https://www.ulb.be/en/maps-directions/solbosch) could be helpful.
