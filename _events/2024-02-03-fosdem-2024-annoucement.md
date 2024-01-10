@@ -17,9 +17,9 @@ The devroom talks have now been reviewed and our accepted talks are [published o
 
 ## Where is it?
 
-**In person:** FOSDEM 2024 will take place at the [Université Libre de Bruxelles](https://www.openstreetmap.org/relation/13699100) in Brusells, Belgium. The ULB website has lots of info about [how to get there](https://www.ulb.be/en/solbosch/directions#deplacements). The Open Source Design devroom will take place in room (Pending info). This [map of the campus](https://www.ulb.be/en/maps-directions/solbosch) could be helpful.
+**In person:** FOSDEM 2024 will take place at the [Université Libre de Bruxelles](https://www.openstreetmap.org/relation/13699100) in Brusells, Belgium. The ULB website has lots of info about [how to get there](https://www.ulb.be/en/solbosch/directions#deplacements). The Open Source Design devroom will take place in room AW1.126 (which is wheelchair accessible). This [map of the campus](https://www.ulb.be/en/maps-directions/solbosch) could be helpful.
 
-**Remote:** All FOSDEM talks are being livestreamed, so you can watch them from anywhere in the world! Find the Open Source Design devroom on the [FOSDEM livestream page](https://fosdem.org/2024/live/). You can also ask questions during the Q&A sessions from there!
+**Remote:** All FOSDEM talks are being livestreamed, so you can watch them from anywhere in the world! Find the Open Source Design devroom on the [FOSDEM livestream page](https://fosdem.org/2024/schedule/streaming/). You can also ask questions during the Q&A sessions from there!
 
 There is also a [chat](https://chat.fosdem.org/) for FOSDEM where you can hang out with other remote attendees and grab a virtual drink, and of course, you can always find us on Mastodon [@opensourcedesign@mastodon.social](https://mastodon.social/@opensourcedesign), Twitter [@opensrcdesign](https://twitter.com/opensrcdesign), and [Discourse](https://discourse.opensourcedesign.net).
 
