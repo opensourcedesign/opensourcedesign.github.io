@@ -6,7 +6,7 @@ categories: design conference open-source
 eventDate: Saturday & Sunday 3rd-4th February 2024
 location: université Libre Brussels, Belgium
 time: 13:00 to 17:00 CET
-status: upcoming
+status: past
 permalink: /2024/02/03/fosdem-2024-annoucement
 ---
 
