@@ -35,7 +35,12 @@ and configured to connect to GitHub with SSH.
 - [Installing Ruby][installing-ruby]
 - [Using GitHub with SSH][github-ssh]
 
-1. Install Jekyll using and other Ruby gems
+1. Install Jekyll using and other Ruby gems. Find out more on https://jekyllrb.com/docs/
+   
+> e.g. Jekyll requires the following:
+Ruby version 2.5.0 or higher
+RubyGems
+GCC and Make
 
 ```sh
 sudo gem install bundler
