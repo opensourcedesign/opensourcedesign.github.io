@@ -223,6 +223,16 @@ a {
   }
 }
 
+.btn-lg svg {
+  width: 1.25em;
+  height: 1em;
+  transition: fill 0.3s ease-in-out;
+}
+
+.btn-lg:hover svg path {
+  fill: white;
+}
+
 /**
  * Paragraphs
  */
