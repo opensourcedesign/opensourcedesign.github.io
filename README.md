@@ -20,27 +20,31 @@ Editing content on [opensourcedesign.net][osd-net] can be done in 3 ways, all of
 
 ## Code & Design The Website
 
-You need some basic ability to use a terminal as well as some knowledge of web
-development like HTML, CSS, and JavaScript. The site is built with the following
-programming tools:
+To contribute to the website, you'll need some basic terminal skills and knowledge of web development technologies like HTML, CSS, and JavaScript. The site is built with the following tools:
 
 - [Jekyll][jekyll]
 - [Bootstrap][bootstrap]
 
 ### Installing
 
-This step requires having a `ruby` development environment and `git` installed
-and configured to connect to GitHub with SSH.
+Before you begin, ensure you have a `Ruby` development environment and `Git` installed and configured to connect to GitHub with SSH.
+
+#### Prerequisites
+
+- **Ruby**: Jekyll requires Ruby version 2.5.0 or higher.
+- **RubyGems**: Ruby package manager.
+- **GCC and Make**: Essential for compiling native extensions.
+
+You can install these dependencies using the following guides:
 
 - [Installing Ruby][installing-ruby]
 - [Using GitHub with SSH][github-ssh]
 
-1. Install Jekyll using and other Ruby gems. Find out more on https://jekyllrb.com/docs/
-   
-> e.g. Jekyll requires the following:
-Ruby version 2.5.0 or higher
-RubyGems
-GCC and Make
+#### Installation Steps
+
+1. **Install Bundler and Jekyll**
+
+    First, install Bundler, which manages Ruby dependencies:
 
 ```sh
 sudo gem install bundler
