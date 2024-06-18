@@ -10,3 +10,4 @@ _patterns/
 _talks/
 vendor
 CNAME
+/**/*.DS_Store
