@@ -20,7 +20,7 @@ Editing content on [opensourcedesign.net][osd-net] can be done in 3 ways, all of
 
 ## Code & Design The Website
 
-To contribute to the website, you'll need some basic terminal skills and knowledge of web development technologies like HTML, CSS, and JavaScript. The [open source design.net](https://opensourcedesign.net/) website is built with the following tools:
+To contribute to the website, you'll need some basic terminal skills and knowledge of web development technologies like HTML, CSS, and JavaScript. The site is built with the following tools:
 
 - [Jekyll][jekyll]
 - [Bootstrap][bootstrap]
@@ -44,7 +44,7 @@ You can install these dependencies using the following guides:
 
 1. **Install Bundler and Jekyll**
 
-First, install Bundler, which manages Ruby dependencies:
+    First, install Bundler, which manages Ruby dependencies:
 
 ```sh
 sudo gem install bundler
