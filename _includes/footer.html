@@ -22,8 +22,9 @@
         <span class="username">{{ site.github_username }}</span>
       </a>
     </li>
+    {% endif %} {% if site.mastodon_username %}
        <li>
-      <a href="https://mastodon.social/@opensourcedesign{{ site.mastodon_username }}">
+      <a href="https://mastodon.social/{{ site.mastodon_username }}">
         <span class="icon icon--mastodon">
           <svg viewBox="0 0 16 16">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mastodon" viewBox="0 0 16 16">
