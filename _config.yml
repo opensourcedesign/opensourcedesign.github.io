@@ -17,6 +17,7 @@ exclude:
 
 twitter_username: opensrcdesign
 github_username:  opensourcedesign
+mastodon_username: @opensourcedesign
 
 plugins:
   - jekyll-redirect-from
