@@ -22,8 +22,8 @@ nice, we welcome you :)
 
 ### What Does Being a Member Mean
 
-Open Source Design offers a "choose-your-own" style of membership, it means you
-are welcome to active engage [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.net/issues) or [attend and organize events](/events/). Also you can just chill in our [chat room](https://chat.opensourcedesign.net) and provide help to newcommers to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
+Open Source Design offers a "choose-your-own" style of membership, which means you
+are welcome to actively engage and provide help to newcommers [in our forum](https://discourse.opensourcedesign.net) or [apply for design jobs](/jobs/). You can help [work on our website](https://github.com/opensourcedesign/opensourcedesign.net/issues) or [attend and organize events](/events/) to be considered a community member. In short, and unofficially, there is no "membership" card, fees, or requirements aside from following our [code of conduct](/code-of-conduct/) and you are involved over some duration of time.
 
 ### What Does Being a Core Member Mean
 
@@ -54,20 +54,3 @@ it stuck. The reasons we feel good about this choice are:
 
 Absolutely. Free software is incredibly important to many of our founders and core
 members. Most of us use and rely on free software daily and wouldn't be here without it. While we are aware of the definitions of "open source" vs. "free software" and the inherent debate, despite Free Software Foundation's ask to "[choose a side](https://www.gnu.org/philosophy/open-source-misses-the-point.html)", OSD as a community has picked a name, but is absolutely not choosing a political side with our choice. However, many of us agree with the FSF's principles in full and have dedicated our lives to working exclusively on free software or open source technologies.
-
-### How are you different from Open Design
-
-There is a community called [Open Design](https://opendesign.foundation) that
-sometimes gets confused as us. From [this conversation](https://github.com/opensourcedesign/resources/issues/14) our differences are:
-
-> Open Source Design is building a community of designers working on open
-> source, while Open Design is focusing on building open workflows for
-> designers.  Open Design is not building tools for the sake of building tools,
-> but to build a community of designers working towards more open practices.
-
-Open Design targets the wider design community, while Open Source Design targets
-getting more people (including designers) involved in designing for Open Source
-Software. This image by [GarthDB](https://garthdb.com) does a good job of
-explaining:
-
-![differences](/images/osd-vs-od.png)
