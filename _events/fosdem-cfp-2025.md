@@ -1,0 +1,91 @@
+---
+layout: event
+title: "Call for Participation: Open Source Design Devroom at FOSDEM 2025"
+date: 2024-10-23
+categories: design conference open-source
+eventDate: 1st February 2025
+location: Université Libre Brussels, Belgium
+time: 13:00 CET
+status: current
+permalink: /2023/11/14/fosdem-cfp-2025
+---
+
+
+[FOSDEM](https://fosdem.org) is the Free and Open source Software Developers’ European Meeting, a free and non-commercial two-day weekend event that offers all open source contributors a place to meet, share ideas, learn and collaborate.
+Every year, thousands of free and open source software contributors from all over the world gather at the event in Brussels, Belgium. After the success of FOSDEM 2024, we are gearing up for the next edition of FOSDEM, taking place at the Université Libre Brussels on 1st and 2nd of February 2025.
+
+## Open Source Design @ FOSDEM
+
+Open Source Design has been part of FOSDEM for close to a decade now, giving designers who work with free, libre and open source software a platform to share their ideas. Much like the previous years, Open Source Design will have a devroom at FOSDEM 2025 for the afternoon of Saturday the 1st of February, and this year it will on the second half of the first day of FOSDEM (15:00 to 19:00 of 3rd February 2024, a Saturday). It will be an in-person event, with a livestream online for the folks who are unable to make it in person.
+
+
+## Get involved!
+
+**We invite you to give a talk about contributing design to open source projects!**
+
+"Design" can mean anything including typography, graphic design, interaction design, user experience, human-computer interaction, accessibility, information architecture, content strategy, service design, user research, design research and more. You don't have to be an expert in the field -- you could have been involved in a project for as little as a year or as long as a decade. As long as you have been involved with design in any respect in an open source project, we're interested to hear what you think!
+
+Here are some topics that may inspire your talk:
+
+- Your experiences contributing to design in an open source project
+
+- How you use FLOSS tools to design
+
+- An open source project which is an example of great design
+
+- Your design process, research methods, and go-to resources while working with open source projects
+
+- Your ideas on fostering diversity and inclusion in design and open source
+
+- Anything else related to design and FLOSS!
+  
+
+### Some examples of previous talks featured at the Open Source Design devroom at FOSDEM are:
+
+[Thunderbird: Why Visual Change Is Good]([https://archive.fosdem.org/2023/schedule/event/building_a_ux_research_toolkit/](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-2728-thunderbird-why-visual-change-is-good/)) by Alessandro Castellani at FOSDEM 2024
+
+[Reimagining Personal Computing with E ink: Community Insights and Design Challenges](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-3049-reimagining-personal-computing-with-e-ink-community-insights-and-design-challenges/) by Alexander Soto at FOSDEM 2024
+
+[Liquid Prompt: yes, we can drastically rethink the design of a shell prompt](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-2897-liquid-prompt-yes-we-can-drastically-rethink-the-design-of-a-shell-prompt/) by nojhan at FOSDEM 2024
+
+[Bad UX is Bad Security: Adventures in Qubes OS UX Design](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-3135-bad-ux-is-bad-security-adventures-in-qubes-os-ux-design/) by Marta Marczykowska-Górecka at FOSDEM 2024
+
+[Web-accessibility for open-source privacy & security tools](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-3326-web-accessibility-for-open-source-privacy-security-tools/) by Raashi Saxena at FOSDEM 2024
+
+[Penpot 2.0 is here!](https://archive.fosdem.org/2024/schedule/event/fosdem-2024-3509-penpot-2-0-is-here-/) by Pablo Ruiz-Múzquiz at FOSDEM 2024
+
+[Accessibility & Open Source: How open source is key to building a more inclusive world](https://archive.fosdem.org/2023/schedule/event/accessibility_and_open_source/) by Mike Gifford at FOSDEM 2023
+
+[Documenting a Design System: Lessons learned from open sourcing the Orbit docs](https://archive.fosdem.org/2022/schedule/event/osd_lessons_learned_from_open_sourcing_the_orbit_docs/) by Aaron Collier at FOSDEM 2022
+
+[Open Source Design movement in Africa](https://archive.fosdem.org/2020/schedule/event/open_source_design_africa/) by Peace Ojemeh at FOSDEM 2020
+
+## What is the talk format?
+
+This year, all talks at the Open Source Design devroom will be in-person and recorded/streamed. You will have the stage for 25 minutes in total, so you can have a 20-minute talk with 5 minutes for questions from the audience, or a 25-minute talk with no questions. Talks cannot be longer than 25 mins otherwise you get gently moved off 'stage'.
+
+## How can I submit a talk?
+
+~**[Link to submit a talk TBC](#)**~
+
+Talk submissions will be sent directly to FOSDEM's Pretalx system. There the [Open Source Design Core Maintainer team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) will review talks and accept and reject. We should have space for around 6 talks in the afternoon.
+
+
+
+## What's the deadline?
+Submission of talks must be done by the end of day 30th of November 2024
+
+Accepted talks would be announced latest in **December 2024**.
+
+All deadlines are 23:59 UTC. If your talk is accepted, an Open Source Design volunteer will keep in touch with you to help you meet deadlines and with any technical difficulties you may face.
+
+
+## Additional information
+
+The Open Source Design devroom at FOSDEM 2025 will be at the Solbosch campus of the Université Libre Brussels, Belgium, the room is TBC. Those who want to watch remotely will be able to attend virtually.
+
+Be sure to read the [FOSDEM Code of Conduct](https://fosdem.org/2024/practical/conduct/).
+
+If you have any questions, reach out to us on the [Open Source Design forum](https://discourse.opensourcedesign.net/t/fosdem-2024-discussion-volunteering-speaker-q-a/3675).
+
+We are looking forward to seeing you at FOSDEM 2025!
