@@ -7,7 +7,7 @@ eventDate: Saturday & Sunday 1st & 2nd February 2025
 location: université Libre Brussels, Belgium
 time: 13:00 to 17:00 CET
 status: current
-permalink: /2024/02/03/fosdem-2025-annoucement
+permalink: /2024/10/23/fosdem-2025-annoucement
 ---
 
 ## FOSDEM 2025 has been annouced and we are excited for another in-person Open Source Design devroom! 
@@ -41,7 +41,7 @@ There is also a [chat](https://chat.fosdem.org/) for FOSDEM where you can hang o
 
 ## When do I need to be there?
 
-The Open Source Design FOSDEM Devroom will run for the afternoon on saturday 1st of February. Keep an eye on the [schedule](https://fosdem.org/2025/schedule/track/design/) to make sure you don't miss your favourite talk once published!
+The Open Source Design FOSDEM Devroom will run for the afternoon (from 13.00pm CET) on Sunday 2nd of February. Keep an eye on the [schedule](https://fosdem.org/2025/schedule/track/design/) to make sure you don't miss your favourite talk once published!
 
 Besides the actual talks, we are also going to be hanging out in main cafeteria for some chitchat, casual conversations and we're also waiting to know if we have a stand at FOSDEM 2025.
 
