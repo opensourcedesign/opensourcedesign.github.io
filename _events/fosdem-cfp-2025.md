@@ -7,7 +7,7 @@ eventDate: 1st February 2025
 location: Université Libre Brussels, Belgium
 time: 13:00 CET
 status: current
-permalink: /2023/11/14/fosdem-cfp-2025
+permalink: /2024/10/23/fosdem-cfp-2025
 ---
 
 
@@ -16,7 +16,7 @@ Every year, thousands of free and open source software contributors from all ove
 
 ## Open Source Design @ FOSDEM
 
-Open Source Design has been part of FOSDEM for close to a decade now, giving designers who work with free, libre and open source software a platform to share their ideas. Much like the previous years, Open Source Design will have a devroom at FOSDEM 2025 for the afternoon of Saturday the 1st of February, and this year it will on the second half of the first day of FOSDEM (15:00 to 19:00 of 3rd February 2024, a Saturday). It will be an in-person event, with a livestream online for the folks who are unable to make it in person.
+Open Source Design has been part of FOSDEM for close to a decade now, giving designers who work with free, libre and open source software a platform to share their ideas. Much like the previous years, Open Source Design will have a devroom at FOSDEM 2025 for the afternoon of Sunday the 2nd of February, and this year it will on the second half of the second day of FOSDEM (13:00pm CET). It will be an in-person event, with a livestream online for the folks who are unable to make it in person.
 
 
 ## Get involved!
