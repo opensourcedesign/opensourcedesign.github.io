@@ -6,11 +6,11 @@ categories: design conference open-source
 eventDate: Saturday & Sunday 1st & 2nd February 2025
 location: université Libre Brussels, Belgium
 time: 13:00 to 17:00 CET
-status: current
+status: upcoming
 permalink: /2024/10/23/fosdem-2025-annoucement
 ---
 
-## FOSDEM 2025 has been annouced and we are excited for another in-person Open Source Design devroom! 
+## FOSDEM 2025 has been annouced and we are excited for another in-person Open Source Design devroom!
 
 
 *FOSDEM is a free event for software developers to meet, share ideas and collaborate. Every year, thousands of developers of free and open source software from all over the world gather at the event in Brussels. You don't need to register. Just turn up and join in!*
