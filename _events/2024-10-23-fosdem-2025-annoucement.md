@@ -19,8 +19,10 @@ Join us in Brussels, Belgium for design talks, discussion and fun! Here's everyt
 
 The Open Source Design community groups welcomes and encourages folks from both design and non-design backgrounds to submit talks related to design to the dev room and attend the talks in the devroom. If you'd like a buddy or someone to chat to before joining us you can check out our [discourse forum](https://discourse.opensourcedesign.net).
 
-The **call for proposals/talks** opens on the **30th of October 2024**. Find more info about submitting a talk here: [https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025](https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025)
-We will **close** the call for proposals/talks on **November 30th 2024** will go through a round of reviews by the [open source design core team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) and you'll get a notification of acceptance or rejection in early to mid December 2024.
+The **call for proposals** is now closed and the round of reviews by the [open source design core team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) has started! If you submitted you'll get a notification of acceptance or rejection in early to mid December 2024 but no later than December 15th. You'll then be paired with a volunteer to help you prepare for the conference if you need. 
+
+~The **call for proposals/talks** opens on the **30th of October 2024**. Find more info about submitting a talk here: [https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025](https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025)
+We will **close** the call for proposals/talks on **November 30th 2024** will go through a round of reviews by the [open source design core team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) and you'll get a notification of acceptance or rejection in early to mid December 2024.~ 
 
 
 ## I can't attend but how can I support Open Source Design?
