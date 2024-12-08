@@ -34,7 +34,7 @@ You can also donate your time or funds to help open source design make the most 
 
 ## Where is it?
 
-**In person:** FOSDEM 2025 will take place at the [Université Libre de Bruxelles](https://www.openstreetmap.org/relation/13699100) in Brusells, Belgium. The ULB website has lots of info about [how to get there](https://www.ulb.be/en/solbosch/directions#deplacements). The Open Source Design devroom has yet to have a room assigned, please check back later! This [map of the campus](https://www.ulb.be/en/maps-directions/solbosch) is helpful.
+**In person:** FOSDEM 2025 will take place at the [Université Libre de Bruxelles](https://www.openstreetmap.org/relation/13699100) in Brusells, Belgium. The ULB website has lots of info about [how to get there](https://www.ulb.be/en/solbosch/directions#deplacements). The Open Source Design devroom is **k3201** with a capcity of 80 people. This [map of the campus](https://www.ulb.be/en/maps-directions/solbosch) is helpful.
 
 **Remote:** All FOSDEM talks are being livestreamed, so you can watch them from anywhere in the world! Come back later for the link to the Open Source Design devroom on the FOSDEM livestream page(#). You can also ask questions during the Q&A sessions from there!
 
