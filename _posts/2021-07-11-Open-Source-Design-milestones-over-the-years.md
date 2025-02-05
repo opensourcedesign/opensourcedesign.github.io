@@ -12,6 +12,19 @@ Open Source Design has acheived many things in the 5+ years the community has be
 The community has changed and evolved over the years and its great to look back on the achievements of Open Source Design, so in response to an [issue created in 2016](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/63) I began to catalogue a few of the key milestones of open source design.
 There will be events and occurences I've missed but here's a round up of the last 6 years.
 
+👋 As of February 5th 2025 there have been [426 messages on the introduction thread](https://discourse.opensourcedesign.net/t/introductions-come-in-say-hi/41/436) in our forum!
+
+🕚 In February 2025 the design volunteers at open source design return to run another [devroom at FOSDEM 25](https://fosdem.org/2025/schedule/track/design/) and all talks (except the last one at the end on sunday!) are packed full with a line out the door at the conference! With over 30 talk proposals submitted to be considers for 2025's FOSDEM.
+
+🇩🇪 In March 2024, [FOSS Backstage run a design specific day](https://24.foss-backstage.de/foss-backstage-design/index.html) in Berlin for design in Open Source! Many open source design members speak and attend.
+
+🔟 In February 2024, Open Source Design run both a [stand](https://archive.fosdem.org/2024/stands/) and a [devroom at FOSDEM 24](https://archive.fosdem.org/2024/schedule/track/open-source-design/). The stand sees the return of the Open Source Design usability and design clinic where open source designers help projects out with design problems and our 10th year of running devrooms at FOSDEM!
+
+💰 Open Source Design's [open collective donations](https://opencollective.com/opensourcedesign) reach over $10,000.
+
+9️⃣ In February 2023, Open Source design returns to Brussels for the first Open Source Design [FOSDEM 23 devroom](https://archive.fosdem.org/2023/schedule/track/open_source_design/) back in person post-covid pandemic lock-downs and travel complications
+
+8️⃣ In February 2022, Open Source design runs another virtual devroom at [FOSDEM 22](https://archive.fosdem.org/2022/schedule/track/open_source_design/)
 
 🧵 As of July 2021 there have been 548 topics posted on the open source design discourse forum!
 
