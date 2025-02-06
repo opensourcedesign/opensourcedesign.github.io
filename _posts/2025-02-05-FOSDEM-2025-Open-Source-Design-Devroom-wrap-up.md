@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "FOSDEM 2025: Open Source Design Devroom wrap up"
-date: 2025-05-05
-categories: design open source 
+date: 2025-02-05
+categories: design open source
 author: Eriol Fox
 ---
 
@@ -14,7 +14,7 @@ FOSDEM 2025 now marks the eleventh year that Open Source Design have applied for
 
 The devroom in 2025 ran for a half a day on Sunday from 13.00pm until the end of the conference at 17.00pm. Most talks, apart from the one at the end of the day (many folks from overseas head home on Sunday evening!). We had 9 speakers total with 8 talks of 20 minutes each with 5 minutes for questions, though many talks could have been much longer and involved topics and Q&A was full of rich insights, perspective and discussions. All the talks were recorded and will be available on their individual pages on the FOSDEM website. https://fosdem.org/2025/schedule/track/design/ (this website will be archived once FOSDEM 2026’s website is live. When that happens please search for ‘FOSDEM 2025’ in a search engine and look for the archived site)
 
-You can also find every design devroom from 2015 onwards by visiting the yearly specific website of FOSDEM 
+You can also find every design devroom from 2015 onwards by visiting the yearly specific website of FOSDEM
 e.g. https://archive.fosdem.org/2015/schedule/track/open_source_design/ https://archive.fosdem.org/2018/schedule/track/open_source_design/ etc.
 
 One aspect of 2025 that this author is particularly proud of, is that we had a majority (7) people that were femme presenting/women speaking (and two masc presenting/men) speak at the Open Source Design devroom. This is a fantastic ratio in terms of diversity of genders to speak at an OSS conference.
@@ -37,7 +37,7 @@ Delivered by: [Harmut Obendorf](https://fosdem.org/2025/schedule/speaker/hartmut
 Harmut took us on a journey through the interfaces that developers and coders use and how to ensure that you are optimising the options at your disposal for making these interfaces the best experience for the specific circumstance.
 
 ### From Accessibility to Inclusion - Interdisciplinary Design
-[From Accessibility to Inclusion - Interdisciplinary Design](https://fosdem.org/2025/schedule/event/fosdem-2025-6054-from-accessibility-to-inclusion-interdisciplinary-design/) 
+[From Accessibility to Inclusion - Interdisciplinary Design](https://fosdem.org/2025/schedule/event/fosdem-2025-6054-from-accessibility-to-inclusion-interdisciplinary-design/)
 Delivered by: [Raashi Saxena](https://fosdem.org/2025/schedule/speaker/raashi_saxena/)
 Raashi takes us through the differences between accessibility and usability, along with ways in which the two complement and support each other in the design of open source tools and the unique opportunities open source communities have for serving disable user needs.
 
@@ -76,7 +76,7 @@ This year, many folks approached the volunteers at the devroom with comments, th
 
 *“I’ve been coming to the open source design devroom for the last 3-4 years and I’m so glad there are other designers doing work in this space and are excited to speak about it”*
 
-If you’d like to send us a review or quote from your experience of the FOSDEM Open Source Design devroom please email us on [core@opensourcedesign.net](mailto:core@opensourcedesign.net) - feedback, compliments and critique is how we keep our volunteer energy up year on year and we always hope to improve experiences of people at FOSDEM as best we can. 
+If you’d like to send us a review or quote from your experience of the FOSDEM Open Source Design devroom please email us on [core@opensourcedesign.net](mailto:core@opensourcedesign.net) - feedback, compliments and critique is how we keep our volunteer energy up year on year and we always hope to improve experiences of people at FOSDEM as best we can.
 
 You can also email us if you’d like to be involved in the Open Source Design Devroom as a volunteer next year. We always need help with the following:
 
