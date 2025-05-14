@@ -10,7 +10,7 @@ author: Eriol Fox
 
 ## Open Source Design @ FOSS Backstage
 
-![signs outside of FOSS Backstage's venue entrance](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-signs.jpg "signs outside of FOSS Backstage's venue entrance")
+![signs outside of FOSS Backstage's venue entrance](/images/articles/foss-backstage-2025/foss-backstage-signs.jpg "signs outside of FOSS Backstage's venue entrance")
 
 FOSS Backstage in 2025 has now been running since 2017 and FOSS Backstage Design is now in its second year. FOSS backstage is held in Berlin (and online) typically in early March and in 2025 it was held on March 10th and 11th and FOSS Backstage Design was on the 12th of March 2025.
 
@@ -25,7 +25,7 @@ This articles author [(Eriol Fox)](https://discourse.opensourcedesign.net/u/erio
 [Read the recap from the FOSS Backstage conference organisers here](https://25.foss-backstage.design/news/barcamp-recap/)
 
 
-![a speaker and the tech behind the speaker](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech.jpg "a speaker and the tech behind the speaker")
+![a speaker and the tech behind the speaker](/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech.jpg "a speaker and the tech behind the speaker")
 
 
 # The design talks for FOSS backstage
@@ -33,7 +33,7 @@ This articles author [(Eriol Fox)](https://discourse.opensourcedesign.net/u/erio
 This year FOSS Backstage not only ran a day of design (FOSS Backstage Design) but also had a number of design talks throughout the main 2 day conference. These talks included topics around the usability of critical civic crisis technologies, how OSS organisations are understanding and building out their design processes for the wider community, the importance of cultural contexts with language orientation, design for command line interfaces and how open source designers are building out community learning resources so that more designers can be onboarded into OSS contribution.
 
 
-![Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Miruna.jpg "Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan")
+![Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan](/images/articles/foss-backstage-2025/foss-backstage-Miruna.jpg "Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan")
 
 ### Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan
 
@@ -42,7 +42,7 @@ Miruna shares the story behind [Commit Global's](https://www.commitglobal.org/en
 [Watch Miruna Muscan’s talk here](https://www.youtube.com/watch?v=GGkr2Z5nh2Q&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=27)
 
 
-![Bridging the Gap Between Designers & Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola.jpg "Bridging the Gap Between Designers & Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide")
+![Bridging the Gap Between Designers & Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide](/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola.jpg "Bridging the Gap Between Designers & Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide")
 
 ### Bridging the Gap Between Designers & Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide
 
@@ -53,7 +53,7 @@ In the talk they share key findings, including the biggest obstacles designers f
 [Watch Nina, Leia and Kola’s talk here](https://www.youtube.com/watch?v=5kq2emKppSc&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=47)
 
 
-![Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie.jpg "Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno")
+![Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno](/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie.jpg "Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno")
 
 ### Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno
 
@@ -62,26 +62,26 @@ Batool, Goodnews and Richie detailed the importance of careful and considerate d
 [Watch Batool, Goodnews and Richie’s talk here](https://www.youtube.com/watch?v=mNI-TI2aCbY&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=48)
 
 
-![Open Design Guide by Christoph Ono, Eriol Fox](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol.jpg "Open Design Guide by Christoph Ono, Eriol Fox")
+![Open Design Guide by Christoph Ono, Eriol Fox](/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol.jpg "Open Design Guide by Christoph Ono, Eriol Fox")
 
 ### Open Design Guide by Christoph Ono, Eriol Fox
 
-This talk introduced the [opendesign.guide](https://opendesign.guide/) which is a project created and maintained by designers across the [bitcoin design](https://bitcoin.design/) community. The purpose of the open design guide grew from the speakers spending time over the years mentoring and supporting designers new to OSS to get into contributing. Both the speakers wished that there were public and comprehensive resources to help them through the mentoring process but writing guides and resources about how OSS works and how you can contribute design to OSS is nuanced and specific to each designer. Most of the problems then, with writing guides, is that a guide written by one designer about their perspective will not be broad enough for the wider OSS community. With the Open Design Guide, AI was used to write the first version and then it was edited, improved and built upon by holding ‘reading group’ community calls. 
+This talk introduced the [opendesign.guide](https://opendesign.guide/) which is a project created and maintained by designers across the [bitcoin design](https://bitcoin.design/) community. The purpose of the open design guide grew from the speakers spending time over the years mentoring and supporting designers new to OSS to get into contributing. Both the speakers wished that there were public and comprehensive resources to help them through the mentoring process but writing guides and resources about how OSS works and how you can contribute design to OSS is nuanced and specific to each designer. Most of the problems then, with writing guides, is that a guide written by one designer about their perspective will not be broad enough for the wider OSS community. With the Open Design Guide, AI was used to write the first version and then it was edited, improved and built upon by holding ‘reading group’ community calls.
 
 [Watch Christoph and Eriol’s talk here](https://www.youtube.com/watch?v=VUofVwvgWuU&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=40)
 
 
-![Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Hartmut.jpg "Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf")
+![Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf](/images/articles/foss-backstage-2025/foss-backstage-Hartmut.jpg "Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf")
 
 ### Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf
 
-OSS projects are used to not having a designer. What would you ask one if you had them available? To look at your Command Line Interface? (CLI) This is exactly what you should do! 
+OSS projects are used to not having a designer. What would you ask one if you had them available? To look at your Command Line Interface? (CLI) This is exactly what you should do!
 In this talk, Hartmut goes into depth about how information architecture and conceptual architecture is critical in designing for command line interfaces . This dives deep into the use of ‘experts’ that interact with OSS primarily through prompts in the terminal. The command line is an environment that changes its state continuously, making a good design both important and challenging. Designing for command line interfaces also grapples with the assumption that ‘design’ is not needed, therefore advocating for usability and accessibility in the command line  is difficult. Watch this talk to get some great guidance on how to start designing for text-based interfaces.
 
 [Watch Hartmut’s talk here](https://www.youtube.com/watch?v=1D_8HnsfWkU&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=41)
 
 
-![Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley.jpg "Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok")
+![Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok](/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley.png "Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok")
 
 ### Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok
 
@@ -90,14 +90,14 @@ For Open Source Software, developer contributions are essential. While involveme
 [Watch Oluwadunsin and Kingsley’s talk here](https://www.youtube.com/watch?v=agVaQdQmXWs&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=54)
 
 
-![FOSS Backstage Design signed, sign](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-design-sign.jpg "FOSS Backstage Design signed, sign")
+![FOSS Backstage Design signed, sign](/images/articles/foss-backstage-2025/foss-backstage-design-sign.jpg "FOSS Backstage Design signed, sign")
 
 # The design talks for FOSS Backstage Design
 
 FOSS Backstage Design’s day kicked off with three fantastic talks by Martin Keary, Marta Marczykowska-Górecka and Tobias Bernard. All the speakers presented on common design in OSS topics but from their own unique experiences. There are common themes across the talks, from communication across role divides to both designers and developers getting intensely nerdy about their specific domains. The most common thread being that no matter what you’re contributing to the OSS, you're there because you support free and open software and ultimately want it to be used, enjoyed and valuable to any user.
 
 
-![Achieving Excellence in Open Source Software Design by Martin Keary](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/ffoss-backstage-tantacrul.jpg "Achieving Excellence in Open Source Software Design by Martin Keary")
+![Achieving Excellence in Open Source Software Design by Martin Keary](/images/articles/foss-backstage-2025/foss-backstage-tantacrul.jpg "Achieving Excellence in Open Source Software Design by Martin Keary")
 
 ### Achieving Excellence in Open Source Software Design by Martin Keary
 
@@ -106,7 +106,7 @@ FOSS Backstage Design’s day kicked off with three fantastic talks by Martin Ke
 [Watch Martin Keary’s talk here](https://www.youtube.com/watch?v=12TJ-zTgiH0&t=1296s)
 
 
-![Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Marta.jpg "Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka")
+![Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka](/images/articles/foss-backstage-2025/foss-backstage-Marta.jpg "Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka")
 
 ### Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka
 
@@ -115,7 +115,7 @@ Marta, who is [Qubes](https://www.qubes-os.org/) Manager, takes us through some 
 [Watch Marta Marczykowska-Górecka talk here](https://www.youtube.com/watch?v=A2OwHpjULK0&list=PLq-odUc2x7i96d9aKqcf-d47Jy5dYnyIT&index=1)
 
 
-![GNOME Design: A Report From the Trenches by Tobias Bernard](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-Tobias.jpg "GNOME Design: A Report From the Trenches by Tobias Bernard")
+![GNOME Design: A Report From the Trenches by Tobias Bernard](/images/articles/foss-backstage-2025/foss-backstage-Tobias.jpg "GNOME Design: A Report From the Trenches by Tobias Bernard")
 
 ### GNOME Design: A Report From the Trenches by Tobias Bernard
 
@@ -124,14 +124,14 @@ Tobias speaks about designing but also being embedded in the Gnome community. To
 [Watch Tobias Bernard’s talk here](https://www.youtube.com/watch?v=-aJm05Cj7hs&list=PLq-odUc2x7i96d9aKqcf-d47Jy5dYnyIT&index=2)
 
 
-![A circle of people discussing open source design topics at the barcamp](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-barcamp.jpg "A circle of people discussing open source design topics at the barcamp")
+![A circle of people discussing open source design topics at the barcamp](/images/articles/foss-backstage-2025/foss-backstage-barcamp.jpg "A circle of people discussing open source design topics at the barcamp")
 
 
 # The FOSS Backstage Design ‘barcamp’ aka pitch a discussion topic and then vote!
 
 After the talks we move into a [‘barcamp’](https://en.wikipedia.org/wiki/BarCamp) afternoon. All attendees had time to write what kinds of conversations and sessions they wanted to see happen for the remainder of the afternoon. These were then voted on and 3 sessions were run in parallel for 3 1 hour time slots. Notes were taken by volunteers and summaries can be found below.
 
-![The schedule written on a whiteboard](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions.jpeg "The schedule written on a whiteboard")
+![The schedule written on a whiteboard](/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions.jpeg "The schedule written on a whiteboard")
 
 **The selected topics are listed below with some sessions having summary notes and others that were more private do not have summaries**
 
@@ -153,7 +153,7 @@ A private discussion where designers in FOSS projects spoke about projects they�
 **Measuring design success in a FOSS project**
 This discussion began with defining what success is or can be within any given OSS project. The discussion then moved on to how hard it is to measure success, communication sometimes stops after the design engagement, so designers don't have access to feedback. This then moved onto values, principles, metrics and ways of gathering and finding feedback and how to see the bias in feedback.
 
-**Harmful UX patterns and their alternatives** 
+**Harmful UX patterns and their alternatives**
 Various reasons for harmful UX patterns manipulating users like deliberate attempts to manipulate users to satisfy a business goal or accidental ones, because there isn't enough knowledge/feedback. An example of UX pattern mentioned in one of the talks at FOSS Backstage: Creating addiction (getting people "hooked").
 
 *“Marija: there is a dissonance that weaponizes the general principle of "keeping users engaged", originally as a metric for product quality, which then becomes an aim to create a dependency, or create growth per se to satisfy shareholders.”*
@@ -174,15 +174,15 @@ A conversation that centered on privacy and security in FOSS projects and how th
 **How to be nice to each other in our community**
 Private discussion centering on how to be supportive, collaborative and kind in a ‘scarcity’ environment like OSS and Design in OSS.
 
-![All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-stickies.jpg "All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones")
+![All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones](/images/articles/foss-backstage-2025/foss-backstage-stickies.jpg "All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones")
 
 
 # Authors final thoughts
 
-In the ‘post’-covid (is it over really?) era, where we saw many OSS foundations and organisations struggling to maintain already tightening budgets. Who now faces the onslaught of challenges to sustainability and existence across the rapidly changing (for the better?) tech ecosystem. It feels increasingly difficult to find events and communities carving out the space for the less prominent ways of supporting and contributing to OSS - design (and all of ‘designs’ subsidiary practices aka UI, UX, Usability, Accessibility, user research etc.). Maintaining design’s presence and relevancy to OSS continues to feel like pushing a boulder up a hill (in this author’s opinion). But the more we’re able to come together as a community of designers, around our commonalities as both designers in proprietary commercial spaces as well as open source software spaces, we can support the events and communities that support us, support not only our contribution labour, but also our advocacy and relevancy in OSS. 
+In the ‘post’-covid (is it over really?) era, where we saw many OSS foundations and organisations struggling to maintain already tightening budgets. Who now faces the onslaught of challenges to sustainability and existence across the rapidly changing (for the better?) tech ecosystem. It feels increasingly difficult to find events and communities carving out the space for the less prominent ways of supporting and contributing to OSS - design (and all of ‘designs’ subsidiary practices aka UI, UX, Usability, Accessibility, user research etc.). Maintaining design’s presence and relevancy to OSS continues to feel like pushing a boulder up a hill (in this author’s opinion). But the more we’re able to come together as a community of designers, around our commonalities as both designers in proprietary commercial spaces as well as open source software spaces, we can support the events and communities that support us, support not only our contribution labour, but also our advocacy and relevancy in OSS.
 
 
-![A sticky note that reads 'developers and designers, a match made in heaven/hell?](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers.jpg "A sticky note that reads 'developers and designers, a match made in heaven/hell?")
+![A sticky note that reads 'developers and designers, a match made in heaven/hell?](/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers.jpg "A sticky note that reads 'developers and designers, a match made in heaven/hell?")
 
 
 # Credits and thanks
