@@ -189,7 +189,7 @@ In the ‘post’-covid (is it over really?) era, where we saw many OSS foundati
 
 Thanks to the Open Source Design core maintainer team broadly and the wider community for discussing sponsoring FOSS Backstage.
 
-Special thanks to the OSD maintainers and members in attendance [Elio Qoshi](https://github.com/elioqoshi), [Jan Ditrich](https://github.com/jdittrich) and [Julia Racsko](https://hachyderm.io/@juliaro@mastodon.art).
+Special thanks to the OSD maintainers and members in attendance [Elio Qoshi](https://github.com/elioqoshi), [Jan Dittrich](https://github.com/jdittrich) and [Julia Racsko](https://hachyderm.io/@juliaro@mastodon.art).
 
 Thank you to [Plain Schwarz](https://plainschwarz.com/) (especially Alex, Paul, Sven & Anne) for organising FOSS Backstage and FOSS Backstage Design.
 
