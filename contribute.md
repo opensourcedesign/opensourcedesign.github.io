@@ -19,7 +19,6 @@ consider how you can best contribute to Open Source Design.
 
 Website and all public facing web content that does have it's own repository
 
-- [Edit Content](https://edit.opensourcedesign.net) on this website
 - [Website Development](https://github.com/opensourcedesign/opensourcedesign.net) if you're handy with HTML, CSS, JS, and Jekyll
 
 ### Jobs

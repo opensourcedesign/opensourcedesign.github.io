@@ -9,7 +9,7 @@ permalink: /by-laws/
 > We are a community of designers and developers pushing more open design
 > processes and improving the design of open source and free software.
 
-You can read more [here](/about/)
+You can read more [here](/goals/)
 
 ## Open
 

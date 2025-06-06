@@ -13,7 +13,7 @@ permalink: /resources/
 * [GNOME](https://www.gnome.org/) desktop environment. [Design blogs](https://blogs.gnome.org/aday/category/gnome-ux), [Design wiki](https://wiki.gnome.org/Design)
 * [GitLab](https://about.gitlab.com/) Git hosting and code collaboration. [UX Team](https://about.gitlab.com/handbook/engineering/ux/)
 * [Nextcloud](https://nextcloud.com) data sync & sharing, have a [Design page](https://nextcloud.com/design)
-* [Fedora](https://getfedora.org/), [Design blogs](https://fedoraplanet.org/design/), [Design Team wiki](https://fedoraproject.org/wiki/Design)
+* [Fedora](https://getfedora.org/), [Design blogs](https://communityblog.fedoraproject.org/category/design/), [Design Team wiki](https://fedoraproject.org/wiki/Design)
 * [Canonical (Ubuntu)](https://ubuntu.com), [Design blog](https://design.canonical.com)
 * [WordPress](https://wordpress.org), [Design discussion](https://make.wordpress.org/design/) and [handbook](https://make.wordpress.org/design/handbook/)
 * [Drupal](https://www.drupal.org/), [usability group](https://groups.drupal.org/usability), [UI standards](https://drupal.org/ui-standards)
@@ -62,7 +62,7 @@ Commons.
 
 * [The League of Movable Type](https://www.theleagueofmoveabletype.com/)
 * [Open Font Library](https://openfontlibrary.org)
-* [Google Web Fonts](https://google.com/fonts)
+* [Google Web Fonts](https://fonts.google.com/)
 * [Libre Fonts by Womxn](https://design-research.be/by-womxn/)
 * [Open Foundry](https://open-foundry.com)
 * [Open Source Publishing Foundry](https://osp.kitchen/foundry/)
@@ -71,7 +71,7 @@ Commons.
 * [FontForge](https://fontforge.github.io) font editor
 * [Metaflop](https://www.metaflop.com) parametric font editor
 * [Prototypo](https://www.prototypo.io) parametric font editor ([source code](https://github.com/byte-foundry/prototypo))
-* [Metapolator](https://metapolator.com/home/) font editor
+* [Metapolator](http://metapolator.com/home) font editor
 * [Type:Bits](https://manufacturaindependente.org/typebits/) collaborative type design workshop
 
 Some of these platforms also take submissions, so if you designed a font with an open license, submit it there!
@@ -146,7 +146,7 @@ issues](https://github.com/nextcloud/core/issues?labels=Design).
 Javascript.
 * [Foundation](http://foundation.zurb.com) Fully featured mature HTML, CSS
 (Sass) & Javascript.
-* [BASCSS](https://www.basscss.com/) Lightning-Fast, Modular CSS for Designers.
+* [BASCSS](https://basscss.com/) Lightning-Fast, Modular CSS for Designers.
 * [Bourbon](https://bourbon.io/) A simple and lightweight mixin library for Sass.
 * [Kickoff](https://tmwagency.github.io/kickoff/) A lightweight front-end
 framework for creating scalable, responsive sites.
@@ -164,8 +164,7 @@ by Jakob Nielsen (2001)
 * [10 Heuristics for User Interface
 Design](https://www.nngroup.com/articles/ten-usability-heuristics/) by Jakob
 Nielsen (1995)
-* [19 Principles of User Interface
-Design](https://bokardo.com/principles-of-user-interface-design/) by Joshua
+* [New Resource: Principles of User Interface Design](http://bokardo.com/archives/new-resource-principles-of-user-interface-design/) by Joshua
 Porter
 * [ten principles for good design](https://www.vitsoe.com/gb/about/good-design)
 by Dieter Rams (1970s)
@@ -193,7 +192,7 @@ Portfolio](https://www.alexcornell.com/the-worst-portfolio-ever/)
 project](https://designopen.org/articles/import-designers/) recent article on
 Design Open.
 * [Barriers Faced by newcomers to open source projects: a systematic
-review](https://www.academia.edu/6537077/Barriers_faced_by_newcomers_to_open_source_projects_a_systematic_review)
+review](https://www.academia.edu/73768438/Barriers_faced_by_newcomers_to_open_source_projects_a_systematic_review)
 Research Paper.
 * [An Exploration of Fedora's Online Open Source Development
 Community](https://www.academia.edu/4303779/An_Exploration_of_Fedora_s_Online_Open_Source_Development_Community)
