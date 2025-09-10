@@ -3,7 +3,7 @@ categories: design open source <br>
 author: Aila Araghi
 
 
-# Job Poster: How to Make a Successful Job Post
+# OSS Projects: Here's how to make a successful job post
 
 ## Introduction
 
