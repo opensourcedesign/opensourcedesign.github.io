@@ -5,14 +5,14 @@
 
   <div class="mx-auto max-w-6xl px-4 py-12">
     {{/* Header */}}
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <header class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{{ .Title }}</h1>
         {{ with .Description }}
           <p class="mt-2 text-lg text-slate-600">{{ . }}</p>
         {{ end }}
       </div>
-      <a class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/articles/feed.xml" | relURL }}" aria-label="Subscribe to Articles RSS feed">
+      <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/articles/feed.xml" | relURL }}" aria-label="Subscribe to Articles RSS feed">
         <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
         RSS Feed
       </a>
