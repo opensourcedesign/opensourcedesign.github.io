@@ -1,0 +1,48 @@
+{{/*
+  Badge Partial
+  
+  Usage: {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
+  
+  Parameters:
+  - text: Badge text (required)
+  - color: Color scheme - "emerald", "violet", "amber", "blue", "slate" (default: "slate")
+  - dot: Show dot indicator (default: true)
+  - size: "sm" or "md" (default: "md")
+*/}}
+
+{{ $text := .text }}
+{{ $color := .color | default "slate" }}
+{{ $showDot := .dot | default true }}
+{{ $size := .size | default "md" }}
+
+{{ $sizeClasses := "px-2.5 py-1 text-xs" }}
+{{ if eq $size "sm" }}
+  {{ $sizeClasses = "px-2 py-0.5 text-xs" }}
+{{ end }}
+
+{{ $colorClasses := "" }}
+{{ $dotColor := "" }}
+{{ if eq $color "emerald" }}
+  {{ $colorClasses = "bg-emerald-100 text-emerald-800" }}
+  {{ $dotColor = "bg-emerald-500" }}
+{{ else if eq $color "violet" }}
+  {{ $colorClasses = "bg-violet-100 text-violet-800" }}
+  {{ $dotColor = "bg-violet-500" }}
+{{ else if eq $color "amber" }}
+  {{ $colorClasses = "bg-amber-100 text-amber-800" }}
+  {{ $dotColor = "bg-amber-500" }}
+{{ else if eq $color "blue" }}
+  {{ $colorClasses = "bg-blue-100 text-blue-800" }}
+  {{ $dotColor = "bg-blue-500" }}
+{{ else }}
+  {{ $colorClasses = "bg-slate-100 text-slate-800" }}
+  {{ $dotColor = "bg-slate-500" }}
+{{ end }}
+
+<span class="inline-flex shrink-0 items-center gap-1 rounded-full font-medium {{ $sizeClasses }} {{ $colorClasses }}">
+  {{ if $showDot }}
+    <span class="h-1.5 w-1.5 rounded-full {{ $dotColor }}" aria-hidden="true"></span>
+  {{ end }}
+  {{ $text }}
+</span>
+

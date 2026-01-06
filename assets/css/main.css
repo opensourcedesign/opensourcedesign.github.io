@@ -1,0 +1,214 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "../../layouts/**/*.html";
+@source "../../content/**/*.{html,md}";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  ::selection {
+    background: rgb(15 23 42 / 0.12);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid rgb(15 23 42 / 0.9);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+}
+
+@layer components {
+  .osd-card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow;
+  }
+
+  .osd-card-link {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50;
+  }
+
+  .osd-pill {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+
+  .osd-prose {
+    @apply text-slate-800 leading-relaxed;
+  }
+
+  .osd-prose > * + * {
+    @apply mt-4;
+  }
+
+  .osd-prose h2 {
+    @apply mt-10 text-2xl font-semibold tracking-tight text-slate-950;
+  }
+
+  .osd-prose h3 {
+    @apply mt-8 text-xl font-semibold tracking-tight text-slate-950;
+  }
+
+  .osd-prose a {
+    @apply font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950;
+  }
+
+  .osd-prose ul {
+    @apply list-disc pl-5;
+  }
+
+  .osd-prose ol {
+    @apply list-decimal pl-5;
+  }
+
+  .osd-prose li {
+    @apply mt-2;
+  }
+
+  .osd-prose code {
+    @apply rounded bg-slate-900/5 px-1 py-0.5 font-mono text-[0.9em] text-slate-900;
+  }
+
+  .osd-prose pre {
+    @apply overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 text-sm;
+  }
+
+  .osd-prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .osd-prose blockquote {
+    @apply border-l-2 border-slate-200 pl-4 text-slate-700;
+  }
+
+  .osd-prose img {
+    @apply cursor-zoom-in;
+  }
+
+  .osd-lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgb(15 23 42 / 0.85);
+    z-index: 60;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .osd-lightbox-backdrop.open {
+    display: flex;
+    animation: osd-lb-fade-in 200ms ease-out;
+  }
+
+  @keyframes osd-lb-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .osd-lightbox-panel {
+    width: 100%;
+    max-width: 72rem;
+    max-height: 95vh;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    animation: osd-lb-scale-in 200ms ease-out;
+  }
+
+  @keyframes osd-lb-scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .osd-lightbox-topbar {
+    @apply flex items-center justify-between gap-2 border-b border-slate-200 bg-white px-3 py-2 sm:gap-4 sm:px-4 sm:py-3;
+  }
+
+  .osd-lightbox-caption {
+    @apply min-w-0 flex-1 truncate text-xs font-medium text-slate-800 sm:text-sm;
+  }
+
+  .osd-lightbox-nav {
+    @apply flex shrink-0 items-center gap-1 sm:gap-2;
+  }
+
+  .osd-lightbox-counter {
+    @apply hidden text-sm text-slate-500 tabular-nums sm:block;
+  }
+
+  .osd-lightbox-btn {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:h-10 sm:w-10;
+    /* Ensure minimum touch target size */
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .osd-lightbox-body {
+    @apply bg-slate-900;
+    position: relative;
+    touch-action: pan-x pan-y pinch-zoom;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .osd-lightbox-body img {
+    display: block;
+    max-height: 85vh;
+    width: 100%;
+    object-fit: contain;
+    transition: transform 200ms ease-out;
+  }
+
+  /* Swipe hint for mobile */
+  .osd-lightbox-swipe-hint {
+    @apply absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/20 px-3 py-1.5 text-xs text-white backdrop-blur-sm sm:hidden;
+    animation: osd-lb-hint-fade 3s ease-out forwards;
+  }
+
+  @keyframes osd-lb-hint-fade {
+    0%, 70% { opacity: 1; }
+    100% { opacity: 0; pointer-events: none; }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .osd-lightbox-backdrop {
+      padding: 0;
+    }
+    
+    .osd-lightbox-panel {
+      max-height: 100vh;
+      border-radius: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .osd-lightbox-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .osd-lightbox-body img {
+      max-height: calc(100vh - 60px);
+    }
+  }
+}

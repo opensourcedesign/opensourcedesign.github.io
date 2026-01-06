@@ -1,0 +1,359 @@
+{{ define "main" }}
+  {{/* Hero Section */}}
+  <section class="relative overflow-hidden bg-slate-900 text-white">
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ "/images/2017-fosdem-picture-compressed-blur30px.jpg" | relURL }}');"></div>
+    <div class="absolute inset-0 bg-slate-900/70"></div>
+    <div class="relative mx-auto max-w-6xl px-4 py-24 text-center sm:py-32">
+      <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-white/10 p-4 shadow-lg ring-1 ring-white/20 backdrop-blur-sm sm:h-28 sm:w-28">
+        <svg class="h-full w-full text-white" viewBox="-497 263.9 273 273" fill="currentColor" aria-hidden="true">
+          <path d="m-224 263.9-273 0.00001v273l87.7 0.00001 0.1-0.2s27.7-74.7 31.4-80.2c0 0-31.9-7.2-31-59.3s40.8-78.6 40.8-78.6-7 40 24.7 54.8c0 0 30.5 8.7 30 39.4-0.6 30.7-19.7 39.9-29.5 44.1 3.6 5.3 29.4 74.9 31.3 79.9l87.5 0.1z"/>
+        </svg>
+      </div>
+      <h1 class="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Open Source Design</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">Bringing great design to Open Source Software</p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ "/jobs/" | relURL }}">
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+            Browse Jobs
+          </span>
+        </a>
+        <a class="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ "/people/" | relURL }}">
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            Find Designers
+          </span>
+        </a>
+        <a class="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/" target="_blank" rel="noopener noreferrer">
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+            Join Forum
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* Stats Bar */}}
+  {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
+  {{ $jobsOpen := len (where $jobsAll "Params.status" "searching") }}
+  {{ $jobsTotal := len $jobsAll }}
+  {{ $peopleCount := len (where site.RegularPages "Section" "people") }}
+  {{ $articlesCount := len (where site.RegularPages "Section" "articles") }}
+  <section class="border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-6">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-slate-900 sm:text-3xl">{{ $jobsOpen }}</div>
+          <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Open Jobs</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-slate-900 sm:text-3xl">{{ $jobsTotal }}+</div>
+          <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Jobs Posted</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-slate-900 sm:text-3xl">{{ $peopleCount }}+</div>
+          <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Designers</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-slate-900 sm:text-3xl">{{ $articlesCount }}</div>
+          <div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Articles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* About Section */}}
+  <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Connecting Designers with Open Source</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-slate-600">We are a community of designers and developers pushing for more open design processes and improving the user experience of open-source software.</p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+            <svg class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-slate-900">Who We Are</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">A global community of designers, developers, and advocates passionate about improving the usability and aesthetics of open-source software.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100">
+            <svg class="h-6 w-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-slate-900">What We Do</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">We write <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/articles/" | relURL }}">articles</a>, run a <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/jobs/" | relURL }}">job board</a>, organize <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/events/" | relURL }}">events</a>, and share <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/resources/" | relURL }}">resources</a>.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
+            <svg class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-slate-900">Get Involved</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Read our <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/goals/" | relURL }}">goals</a> and <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/manifesto/" | relURL }}">manifesto</a>, check the <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/faq/" | relURL }}">FAQ</a>, and learn how to <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/contribute/" | relURL }}">contribute</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* Featured Article */}}
+  {{ $articles := where site.RegularPages "Section" "articles" }}
+  {{ $featured := first 1 ($articles.ByDate.Reverse) }}
+  {{ with index $featured 0 }}
+    <section class="bg-white py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-semibold text-slate-900">Latest Article</h2>
+          <a class="text-sm font-medium text-slate-600 hover:text-slate-900" href="{{ "/articles/" | relURL }}">View all →</a>
+        </div>
+        {{/* Try: 1) front matter image, 2) page bundle resource, 3) first image in content */}}
+        {{ $imgUrl := "" }}
+        {{ with .Params.image }}
+          {{ $imgUrl = . }}
+        {{ else }}
+          {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+          {{ if $res }}
+            {{ $imgUrl = $res.RelPermalink }}
+          {{ else }}
+            {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
+            {{ if $matches }}
+              {{ $imgUrl = index (findRE `src=["']([^"']+)["']` (index $matches 0) 1) 0 | replaceRE `src=["']` "" | replaceRE `["']$` "" }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        <a class="mt-6 block overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition hover:border-slate-300 hover:shadow-lg md:flex" href="{{ .RelPermalink }}">
+          {{ if $imgUrl }}
+            <div class="aspect-video md:aspect-auto md:w-1/3">
+              <img class="h-full w-full object-cover" src="{{ $imgUrl }}" alt="" loading="lazy" />
+            </div>
+          {{ else }}
+            <div class="flex aspect-video items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 md:aspect-auto md:w-1/3">
+              <svg class="h-16 w-16 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+            </div>
+          {{ end }}
+          <div class="flex flex-1 flex-col justify-center p-6 md:p-8">
+            <div class="text-xs font-medium uppercase tracking-wider text-slate-500">{{ .Date.Format "January 2, 2006" }}</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900 md:text-2xl">{{ .Title }}</h3>
+            <p class="mt-3 line-clamp-2 text-sm text-slate-600">{{ .Summary | plainify | truncate 200 }}</p>
+            <div class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-slate-900">
+              Read more
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* Content Overview Section */}}
+  <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {{/* Events & Calendar */}}
+        <div class="space-y-6">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-slate-900">Upcoming Events</h2>
+              <a class="text-sm font-medium text-slate-600 hover:text-slate-900" href="{{ "/events/" | relURL }}">All →</a>
+            </div>
+            {{ $upcomingEvents := where (where site.RegularPages "Section" "events") "Params.status" "in" (slice "upcoming" "started") }}
+            {{ if $upcomingEvents }}
+              {{ range first 2 $upcomingEvents }}
+                <a class="mt-4 block rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-slate-300 hover:bg-white" href="{{ .RelPermalink }}">
+                  <div class="font-medium text-slate-900">{{ .Title }}</div>
+                  {{ with .Params.eventDate }}<div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>{{ . }}</div>{{ end }}
+                </a>
+              {{ end }}
+            {{ else }}
+              <p class="mt-4 text-sm text-slate-500">No upcoming events scheduled.</p>
+            {{ end }}
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 class="font-semibold text-slate-900">Community Calendar</h2>
+            <p class="mt-2 text-sm text-slate-600">Subscribe and join our monthly community calls.</p>
+            <a class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate-900 hover:underline" href="{{ site.Params.calendarURL | default "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now" }}" target="_blank" rel="noopener noreferrer">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M6.75 2.5a.75.75 0 0 0-1.5 0v.75H5A2.5 2.5 0 0 0 2.5 5.75v9.25A2.5 2.5 0 0 0 5 17.5h10A2.5 2.5 0 0 0 17.5 15V5.75A2.5 2.5 0 0 0 15 3.25h-.25V2.5a.75.75 0 0 0-1.5 0v.75h-6.5V2.5ZM4 7v8a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7H4Z"/></svg>
+              View calendar →
+            </a>
+          </div>
+        </div>
+
+        {{/* Jobs */}}
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-slate-900">Open Jobs</h2>
+            <a class="text-sm font-medium text-slate-600 hover:text-slate-900" href="{{ "/jobs/" | relURL }}">All →</a>
+          </div>
+          {{ $jobs := where $jobsAll "Params.status" "searching" }}
+          <ul class="mt-4 space-y-2">
+            {{ range first 6 (sort $jobs "Params.date_posted" "desc") }}
+              {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+              {{ $isPaid := eq $comp "paid" }}
+              {{ $dot := cond $isPaid "bg-emerald-500" "bg-violet-500" }}
+              <li>
+                <a class="flex items-start gap-3 rounded-lg p-2 text-sm transition hover:bg-slate-50" href="{{ .RelPermalink }}">
+                  <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full {{ $dot }}" aria-hidden="true"></span>
+                  <span class="line-clamp-2 text-slate-700 hover:text-slate-900">{{ .Title }}</span>
+                </a>
+              </li>
+            {{ else }}
+              <li class="text-sm text-slate-500">No open jobs yet.</li>
+            {{ end }}
+          </ul>
+          <div class="mt-6 flex flex-col gap-2">
+            <a class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" href="{{ "/jobs/job-form/" | relURL }}">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.5a.75.75 0 0 1 .75.75v6h6a.75.75 0 0 1 0 1.5h-6v6a.75.75 0 0 1-1.5 0v-6h-6a.75.75 0 0 1 0-1.5h6v-6A.75.75 0 0 1 10 2.5Z"/></svg>
+              Post a Job
+            </a>
+            <a class="text-center text-xs text-slate-500 hover:text-slate-700" href="{{ "/jobs/archive/" | relURL }}">View {{ $jobsTotal }}+ archived jobs →</a>
+          </div>
+        </div>
+
+        {{/* People / Find a Designer */}}
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-slate-900">Community</h2>
+            <a class="text-sm font-medium text-slate-600 hover:text-slate-900" href="{{ "/people/" | relURL }}">All →</a>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Connect with designers who are passionate about open source and available for collaboration.</p>
+          {{ $people := where site.RegularPages "Section" "people" }}
+          <div class="mt-4 flex flex-wrap gap-2">
+            {{ range first 8 (shuffle $people) }}
+              <a class="group relative" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                {{ $avatar := .Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+                {{ if $avatar }}
+                  <img class="h-10 w-10 rounded-full object-cover ring-2 ring-white transition group-hover:ring-slate-300" src="{{ $avatar.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                {{ else }}
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-xs font-medium text-slate-600 ring-2 ring-white transition group-hover:ring-slate-300">{{ substr .Title 0 2 | upper }}</div>
+                {{ end }}
+              </a>
+            {{ end }}
+            <a class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-medium text-slate-500 ring-2 ring-white transition hover:bg-slate-200" href="{{ "/people/" | relURL }}">+{{ sub $peopleCount 8 }}</a>
+          </div>
+          <div class="mt-6">
+            <a class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100" href="{{ "/people/" | relURL }}">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+              Find a Designer
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* Resources Highlight - Data driven from data/tools.yaml */}}
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-slate-900">Open Source Design Tools</h2>
+        <p class="mt-2 text-slate-600">Free and open resources for designers</p>
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+        {{ range site.Data.tools }}
+          <a class="group flex flex-col items-center rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-md" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .description }}">
+            <div class="flex h-12 w-12 items-center justify-center">
+              <img src="{{ .logo | relURL }}" alt="" class="h-10 w-10" aria-hidden="true" loading="lazy" />
+            </div>
+            <span class="mt-2 text-xs font-medium text-slate-700 group-hover:text-slate-900">{{ .name }}</span>
+          </a>
+        {{ end }}
+        <a class="group flex flex-col items-center rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-md" href="{{ "/resources/" | relURL }}">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </div>
+          <span class="mt-2 text-xs font-medium text-slate-700 group-hover:text-slate-900">See all</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* Supporters Section - Data driven from data/supporters.yaml */}}
+  <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl font-semibold text-slate-900">Supported By</h2>
+      <p class="mt-2 text-sm text-slate-600">Organizations that believe in open source design</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        {{ range site.Data.supporters }}
+          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+          </a>
+        {{ end }}
+      </div>
+      <div class="mt-8">
+        <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50" href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}/contribute" target="_blank" rel="noopener noreferrer">
+          <svg class="h-4 w-4 text-rose-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 17.2a.75.75 0 0 1-.37-.1C6.3 15.2 3.75 12.9 3.75 9.74c0-2.08 1.55-3.74 3.6-3.74 1.12 0 2.13.5 2.65 1.29.52-.79 1.53-1.29 2.65-1.29 2.05 0 3.6 1.66 3.6 3.74 0 3.16-2.55 5.46-5.88 7.36a.75.75 0 0 1-.37.1Z"/></svg>
+          Become a Sponsor
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* Conferences Section - Data driven from data/conferences.yaml */}}
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl font-semibold text-slate-900">Where We Present</h2>
+      <p class="mt-2 text-sm text-slate-600">Conferences where we organize design tracks and devrooms</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        {{ range site.Data.conferences }}
+          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* Affiliates Section - Data driven from data/affiliates.yaml */}}
+  <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl font-semibold text-slate-900">Affiliates</h2>
+      <p class="mt-2 text-sm text-slate-600">Organizations we proudly collaborate with</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        {{ range site.Data.affiliates }}
+          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* Contact / CTA Section */}}
+  <section class="bg-slate-900 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="text-3xl font-bold">Ready to Join Us?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-slate-300">Whether you're a designer looking to contribute to open source or a project seeking design help, we'd love to have you in our community.</p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/" target="_blank" rel="noopener noreferrer">
+          Join the Forum
+        </a>
+        <a class="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}" target="_blank" rel="noopener noreferrer">
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.75a8.25 8.25 0 0 0-2.607 16.07c.412.076.563-.18.563-.398 0-.197-.007-.717-.011-1.408-2.293.498-2.777-1.104-2.777-1.104-.375-.953-.916-1.207-.916-1.207-.748-.512.057-.502.057-.502.828.058 1.263.85 1.263.85.736 1.26 1.93.896 2.4.686.075-.533.288-.896.524-1.102-1.832-.208-3.758-.916-3.758-4.078 0-.901.321-1.638.85-2.215-.085-.209-.368-1.048.08-2.184 0 0 .693-.222 2.27.847a7.862 7.862 0 0 1 2.066-.278c.701.003 1.407.095 2.066.278 1.576-1.069 2.267-.847 2.267-.847.45 1.136.167 1.975.082 2.184.529.577.849 1.314.849 2.215 0 3.17-1.929 3.867-3.766 4.072.296.255.56.759.56 1.529 0 1.104-.01 1.994-.01 2.265 0 .22.15.478.568.397A8.25 8.25 0 0 0 10 1.75Z" clip-rule="evenodd"/></svg>
+            Contribute on GitHub
+          </span>
+        </a>
+      </div>
+      <div class="mt-12 flex flex-wrap justify-center gap-6">
+        {{ range site.Params.social }}
+          <a class="text-slate-400 transition hover:text-white" href="{{ .url }}" target="_blank" rel="{{ if eq .name "Mastodon" }}me {{ end }}noopener noreferrer" title="{{ .name }}">
+            {{ if eq .name "Twitter" }}
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            {{ else if eq .name "GitHub" }}
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+            {{ else if eq .name "Mastodon" }}
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 00.023-.043v-1.809a.052.052 0 00-.02-.041.053.053 0 00-.046-.01 20.282 20.282 0 01-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 01-.319-1.433.053.053 0 01.066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.668 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/></svg>
+            {{ else if eq .name "Open Collective" }}
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10h-2a8 8 0 11-2.343-5.657l1.414-1.414A9.969 9.969 0 0012 2zm0 4a6 6 0 106 6h-2a4 4 0 11-1.172-2.828l1.414-1.414A5.972 5.972 0 0012 6z"/></svg>
+            {{ else if eq .name "Forum" }}
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.5A2.5 2.5 0 002 6v10a2.5 2.5 0 002.5 2.5h.75v3.25a.75.75 0 001.28.53l3.78-3.78H19.5A2.5 2.5 0 0022 16V6a2.5 2.5 0 00-2.5-2.5h-15z"/></svg>
+            {{ end }}
+          </a>
+        {{ end }}
+      </div>
+      <p class="mt-8 text-sm text-slate-400">
+        <a class="underline underline-offset-2 hover:text-white" href="{{ "/code-of-conduct/" | relURL }}">Read our Code of Conduct</a>
+      </p>
+    </div>
+  </section>
+{{ end }}

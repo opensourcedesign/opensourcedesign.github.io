@@ -1,0 +1,28 @@
+# Social media links - edit here instead of hugo.toml for easier management
+# Icons are rendered in the footer and homepage
+
+- name: GitHub
+  url: https://github.com/opensourcedesign
+  icon: github
+  rel: noopener noreferrer
+
+- name: Twitter
+  url: https://twitter.com/opensrcdesign
+  icon: twitter
+  rel: noopener noreferrer
+
+- name: Mastodon
+  url: https://mastodon.social/@opensourcedesign
+  icon: mastodon
+  rel: me noopener noreferrer
+
+- name: Open Collective
+  url: https://opencollective.com/opensourcedesign
+  icon: opencollective
+  rel: noopener noreferrer
+
+- name: Forum
+  url: https://discourse.opensourcedesign.net
+  icon: forum
+  rel: noopener noreferrer
+

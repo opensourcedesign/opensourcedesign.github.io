@@ -1,0 +1,37 @@
+{{/*
+  Custom Image Render Hook
+  
+  Adds lazy loading, responsive sizing, and accessibility improvements
+  to all images rendered from Markdown content.
+*/}}
+
+{{ $src := .Destination }}
+{{ $alt := .Text }}
+{{ $title := .Title }}
+
+{{/* Determine if image is external or local */}}
+{{ $isExternal := or (hasPrefix $src "http://") (hasPrefix $src "https://") }}
+
+{{/* Build image attributes */}}
+<figure class="my-6">
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+    class="mx-auto rounded-lg shadow-sm"
+    {{ if not $isExternal }}
+      {{/* For local images, try to get dimensions */}}
+      {{ $img := resources.Get $src }}
+      {{ with $img }}
+        width="{{ .Width }}"
+        height="{{ .Height }}"
+      {{ end }}
+    {{ end }}
+  />
+  {{ with $title }}
+    <figcaption class="mt-2 text-center text-sm text-slate-500">{{ . }}</figcaption>
+  {{ end }}
+</figure>
+

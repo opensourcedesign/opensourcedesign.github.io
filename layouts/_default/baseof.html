@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="view-transition" content="same-origin" />
+
+    {{ $title := cond (ne .Title "") (printf "%s | %s" .Title site.Title) site.Title }}
+    {{ $desc := .Description | default .Summary | default site.Params.description | default site.Title }}
+    {{ $desc = $desc | plainify | truncate 160 }}
+
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $desc }}" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="{{ .Params.author | default site.Title }}" />
+    <meta name="generator" content="Hugo {{ hugo.Version }}" />
+    
+    {{/* Social verification links */}}
+    {{ range site.Params.social }}
+      {{ if eq .name "Mastodon" }}
+        <link rel="me" href="{{ .url }}" />
+      {{ end }}
+    {{ end }}
+
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="icon" href="{{ "/images/opensourcedesign-logo.svg" | relURL }}" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="{{ "/images/opensourcedesign-logo-inverted.svg" | relURL }}" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="{{ "/images/favicon.ico" | relURL }}" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ "/images/favicons/apple-touch-icon.png" | relURL }}" />
+
+    {{/* Determine OG image - try page image, page bundle, content image, or fallback */}}
+    {{ $ogImage := "" }}
+    {{ with .Params.image }}
+      {{ $ogImage = . | absURL }}
+    {{ else }}
+      {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+      {{ if $res }}
+        {{ $ogImage = $res.Permalink }}
+      {{ else }}
+        {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
+        {{ if $matches }}
+          {{ $src := index (findRE `src=["']([^"']+)["']` (index $matches 0) 1) 0 | replaceRE `src=["']` "" | replaceRE `["']$` "" }}
+          {{ if hasPrefix $src "http" }}
+            {{ $ogImage = $src }}
+          {{ else }}
+            {{ $ogImage = $src | absURL }}
+          {{ end }}
+        {{ else }}
+          {{ $ogImage = "/images/opensourcedesign-logo.svg" | absURL }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Open Graph */}}
+    <meta property="og:site_name" content="{{ site.Title }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $desc }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+    <meta property="og:locale" content="en_US" />
+    {{ if $ogImage }}
+      <meta property="og:image" content="{{ $ogImage }}" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    {{ end }}
+    {{ if .IsPage }}
+      {{ with .Params.author }}
+        <meta property="article:author" content="{{ . }}" />
+      {{ end }}
+      <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
+      <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
+      {{ with .Params.tags }}
+        {{ if reflect.IsSlice . }}
+          {{ range . }}
+            <meta property="article:tag" content="{{ . }}" />
+          {{ end }}
+        {{ else }}
+          {{ range split (printf "%v" .) "," }}
+            {{ $t := trim . " " }}
+            {{ if $t }}
+              <meta property="article:tag" content="{{ $t }}" />
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Twitter / X */}}
+    <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}" />
+    <meta name="twitter:site" content="@{{ site.Params.twitterHandle | default "opensrcdesign" }}" />
+    <meta name="twitter:title" content="{{ $title }}" />
+    <meta name="twitter:description" content="{{ $desc }}" />
+    {{ if $ogImage }}
+      <meta name="twitter:image" content="{{ $ogImage }}" />
+    {{ end }}
+
+    {{/* JSON-LD structured data */}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ site.Title }}",
+      "url": "{{ site.BaseURL }}",
+      "logo": "{{ "/images/opensourcedesign-logo.svg" | absURL }}",
+      "description": {{ site.Params.description | jsonify }},
+      "sameAs": [
+        {{- $socials := slice -}}
+        {{- range site.Params.social -}}
+          {{- $socials = $socials | append .url -}}
+        {{- end -}}
+        {{- delimit $socials ", " -}}
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "community",
+        "url": "{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/"
+      }
+    }
+    </script>
+
+    {{/* Page-specific schema */}}
+    {{ if eq .Section "jobs" }}
+      {{ if .IsPage }}
+        {{ if ne .File.ContentBaseName "job-form" }}
+          {{ if ne .File.ContentBaseName "archive" }}
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "JobPosting",
+              "title": {{ .Title | jsonify }},
+              "description": {{ .Summary | plainify | jsonify }},
+              "datePosted": "{{ if .Params.date_posted }}{{ .Params.date_posted }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}",
+              "hiringOrganization": {
+                "@type": "Organization",
+                "name": {{ (.Params.organization | default "Open Source Design") | jsonify }}
+                {{ with .Params.org_url }},"url": {{ . | jsonify }}{{ end }}
+              },
+              "employmentType": "{{ if eq (.Params.compensation | default "" | lower) "paid" }}CONTRACTOR{{ else }}VOLUNTEER{{ end }}",
+              "jobLocationType": "TELECOMMUTE"
+            }
+            </script>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else if eq .Section "events" }}
+      {{ if .IsPage }}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": {{ .Title | jsonify }},
+          "description": {{ .Summary | plainify | jsonify }},
+          {{ with .Params.eventDate }}"startDate": {{ . | jsonify }},{{ end }}
+          {{ with .Params.location }}"location": { "@type": "Place", "name": {{ . | jsonify }} },{{ end }}
+          "organizer": {
+            "@type": "Organization",
+            "name": "Open Source Design",
+            "url": "{{ site.BaseURL }}"
+          }
+        }
+        </script>
+      {{ end }}
+    {{ else if eq .Section "articles" }}
+      {{ if .IsPage }}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": {{ .Title | jsonify }},
+          "description": {{ .Summary | plainify | jsonify }},
+          "datePublished": "{{ .Date.Format "2006-01-02" }}",
+          "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+          {{ with .Params.author }}"author": { "@type": "Person", "name": {{ . | jsonify }} },{{ end }}
+          "publisher": {
+            "@type": "Organization",
+            "name": "Open Source Design",
+            "logo": { "@type": "ImageObject", "url": "{{ "/images/opensourcedesign-logo.svg" | absURL }}" }
+          }
+        }
+        </script>
+      {{ end }}
+    {{ else if eq .Section "people" }}
+      {{ if .IsPage }}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": {{ (.Params.name | default .Title) | jsonify }},
+          "description": {{ .Summary | plainify | jsonify }},
+          "url": "{{ .Permalink }}"
+          {{ with .Params.website }},"sameAs": {{ . | jsonify }}{{ end }}
+        }
+        </script>
+      {{ end }}
+    {{ end }}
+
+    {{ $css := resources.Get "css/output.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+    {{/* RSS Feed */}}
+    {{ with .OutputFormats.Get "RSS" }}
+      <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}" />
+    {{ end }}
+
+    <style>
+      /* View Transitions API - smooth page navigation */
+      @view-transition {
+        navigation: auto;
+      }
+
+      /* Named elements for transitions - use specific selectors to avoid duplicates */
+      /* view-transition-name must be unique per page, so we target direct children of body */
+      body > header { view-transition-name: site-header; }
+      body > footer { view-transition-name: site-footer; }
+      body > main { view-transition-name: main-content; }
+
+      /* Header and footer stay static during transitions */
+      ::view-transition-old(site-header),
+      ::view-transition-new(site-header),
+      ::view-transition-old(site-footer),
+      ::view-transition-new(site-footer) {
+        animation: none;
+        mix-blend-mode: normal;
+      }
+
+      /* Main content transition - crossfade */
+      ::view-transition-old(main-content) {
+        animation: 250ms ease-out both fade-out;
+      }
+      ::view-transition-new(main-content) {
+        animation: 250ms ease-in both fade-in;
+      }
+
+      @keyframes fade-out {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      /* Root transition - crossfade */
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 250ms;
+      }
+
+      /* Scroll-to-top button */
+      .scroll-to-top {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 200ms ease-in-out;
+      }
+      .scroll-to-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Focus visible for accessibility */
+      :focus-visible {
+        outline: 2px solid #0f172a;
+        outline-offset: 2px;
+      }
+
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        ::view-transition-group(*),
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+          animation: none !important;
+          animation-duration: 0ms !important;
+        }
+      }
+
+      /* Browsers that don't support view transitions - subtle opacity hint */
+      @supports not (view-transition-name: none) {
+        body > main {
+          transition: opacity 150ms ease;
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        /* Hide non-essential elements */
+        header, footer, nav, .scroll-to-top, .breadcrumbs,
+        .share-buttons, button, .sr-only, .toc,
+        [aria-label="Page navigation"], [aria-label="Skip to content"] {
+          display: none !important;
+        }
+
+        /* Reset background colors */
+        body, main, article, .prose {
+          background: white !important;
+          color: black !important;
+        }
+
+        /* Ensure content fills page */
+        body {
+          min-height: auto;
+          font-size: 12pt;
+          line-height: 1.5;
+        }
+
+        main {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+
+        /* Better link handling */
+        a {
+          color: black !important;
+          text-decoration: underline;
+        }
+        a[href^="http"]:after {
+          content: " (" attr(href) ")";
+          font-size: 0.8em;
+          color: #666;
+        }
+        a[href^="/"]:after,
+        a[href^="#"]:after {
+          content: none;
+        }
+
+        /* Page breaks */
+        h1, h2, h3 {
+          page-break-after: avoid;
+        }
+        img, pre, blockquote {
+          page-break-inside: avoid;
+        }
+
+        /* Better image handling */
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+
+        /* Code blocks */
+        pre, code {
+          background: #f5f5f5 !important;
+          border: 1px solid #ddd !important;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+
+        /* Remove shadows and borders */
+        * {
+          box-shadow: none !important;
+        }
+
+        /* Article specific */
+        article {
+          border: none !important;
+          box-shadow: none !important;
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen flex-col bg-slate-50 text-slate-950 antialiased">
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg" href="#main">Skip to content</a>
+
+    {{ partial "header.html" . }}
+
+    <main id="main" class="flex-1" role="main" aria-label="Main content">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    {{/* Scroll to top button */}}
+    <button
+      class="scroll-to-top fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/50 focus-visible:ring-offset-2"
+      type="button"
+      aria-label="Scroll to top of page"
+      id="scroll-to-top"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 17a.75.75 0 0 1-.75-.75V5.56l-3.47 3.47a.75.75 0 0 1-1.06-1.06l4.75-4.75a.75.75 0 0 1 1.06 0l4.75 4.75a.75.75 0 0 1-1.06 1.06l-3.47-3.47v10.69A.75.75 0 0 1 10 17Z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <script>
+      (function() {
+        // Scroll to top button
+        var btn = document.getElementById('scroll-to-top');
+        if (btn) {
+          var threshold = 400;
+          function updateBtn() {
+            btn.classList.toggle('visible', window.scrollY > threshold);
+          }
+          window.addEventListener('scroll', updateBtn, { passive: true });
+          btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+          updateBtn();
+        }
+
+        // Close mobile menu on navigation
+        document.querySelectorAll('details').forEach(function(d) {
+          d.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() {
+              d.removeAttribute('open');
+            });
+          });
+        });
+
+        // Lightbox for images inside rich content (articles, etc.)
+        var imgs = Array.prototype.slice.call(document.querySelectorAll('main .prose img, main .osd-prose img'));
+        if (imgs.length) {
+          var overlay = document.createElement('div');
+          overlay.className = 'osd-lightbox-backdrop';
+          overlay.setAttribute('role', 'dialog');
+          overlay.setAttribute('aria-modal', 'true');
+          overlay.setAttribute('aria-label', 'Image preview');
+          overlay.innerHTML = [
+            '<div class="osd-lightbox-panel">',
+            '  <div class="osd-lightbox-topbar">',
+            '    <div class="osd-lightbox-caption" id="osd-lb-cap"></div>',
+            '    <div class="osd-lightbox-nav">',
+            '      <span class="osd-lightbox-counter" id="osd-lb-counter"></span>',
+            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-prev" aria-label="Previous image">',
+            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>',
+            '      </button>',
+            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-next" aria-label="Next image">',
+            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>',
+            '      </button>',
+            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-close" aria-label="Close image preview">',
+            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>',
+            '      </button>',
+            '    </div>',
+            '  </div>',
+            '  <div class="osd-lightbox-body" id="osd-lb-body">',
+            '    <img id="osd-lb-img" alt="" />',
+            '    <div class="osd-lightbox-swipe-hint" id="osd-lb-hint">Swipe to navigate</div>',
+            '  </div>',
+            '</div>'
+          ].join('');
+          document.body.appendChild(overlay);
+
+          var cap = document.getElementById('osd-lb-cap');
+          var counter = document.getElementById('osd-lb-counter');
+          var img = document.getElementById('osd-lb-img');
+          var closeBtn = document.getElementById('osd-lb-close');
+          var prevBtn = document.getElementById('osd-lb-prev');
+          var nextBtn = document.getElementById('osd-lb-next');
+          var lastFocus = null;
+          var index = 0;
+
+          function updateCounter() {
+            if (counter) counter.textContent = (index + 1) + ' / ' + imgs.length;
+            if (prevBtn) prevBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
+            if (nextBtn) nextBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
+          }
+
+          function openAt(i) {
+            index = ((i % imgs.length) + imgs.length) % imgs.length;
+            var el = imgs[index];
+            if (!el) return;
+            lastFocus = document.activeElement;
+            img.src = el.currentSrc || el.src;
+            img.alt = el.alt || '';
+            if (cap) cap.textContent = el.alt || '';
+            updateCounter();
+            overlay.classList.add('open');
+            document.documentElement.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+          }
+
+          function close() {
+            overlay.classList.remove('open');
+            document.documentElement.style.overflow = '';
+            img.removeAttribute('src');
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
+          }
+
+          function goPrev() { openAt(index - 1); }
+          function goNext() { openAt(index + 1); }
+
+          function onKey(e) {
+            if (!overlay.classList.contains('open')) return;
+            if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); return; }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); return; }
+          }
+
+          imgs.forEach(function (el, i) {
+            el.style.cursor = 'zoom-in';
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('role', 'button');
+            el.setAttribute('aria-label', (el.alt ? ('View larger image: ' + el.alt) : 'View larger image'));
+            el.addEventListener('click', function (ev) { ev.preventDefault(); openAt(i); });
+            el.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openAt(i); } });
+          });
+
+          document.addEventListener('keydown', onKey);
+          overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+          if (closeBtn) closeBtn.addEventListener('click', close);
+          if (prevBtn) prevBtn.addEventListener('click', goPrev);
+          if (nextBtn) nextBtn.addEventListener('click', goNext);
+
+          // Touch/swipe support for mobile
+          var body = document.getElementById('osd-lb-body');
+          var hint = document.getElementById('osd-lb-hint');
+          if (body) {
+            var touchStartX = 0, touchStartY = 0;
+            body.addEventListener('touchstart', function(e) {
+              touchStartX = e.changedTouches[0].screenX;
+              touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+            body.addEventListener('touchend', function(e) {
+              var diffX = e.changedTouches[0].screenX - touchStartX;
+              var diffY = e.changedTouches[0].screenY - touchStartY;
+              if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) goPrev(); else goNext();
+                if (hint) hint.style.display = 'none';
+              }
+            }, { passive: true });
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

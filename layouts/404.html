@@ -1,0 +1,98 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    {{/* Hero section */}}
+    <div class="text-center">
+      <div class="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 ring-1 ring-slate-200">
+        <svg class="h-10 w-10 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/>
+        </svg>
+      </div>
+      <h1 class="mt-6 text-4xl font-bold tracking-tight text-slate-900">Page not found</h1>
+      <p class="mt-3 text-lg text-slate-600">Sorry, we couldn't find the page you're looking for.</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/" | relURL }}">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Go back home
+        </a>
+        <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/" target="_blank" rel="noopener noreferrer">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+          Ask the community
+        </a>
+      </div>
+    </div>
+
+    {{/* Quick links */}}
+    <div class="mt-16">
+      <h2 class="text-center text-sm font-semibold uppercase tracking-wider text-slate-500">Popular pages</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a class="group rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-300 hover:shadow-md" href="{{ "/jobs/" | relURL }}">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900 group-hover:text-slate-950">Jobs</h3>
+          <p class="mt-1 text-sm text-slate-500">Find open source design opportunities</p>
+        </a>
+        
+        <a class="group rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-300 hover:shadow-md" href="{{ "/articles/" | relURL }}">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900 group-hover:text-slate-950">Articles</h3>
+          <p class="mt-1 text-sm text-slate-500">Read about design in open source</p>
+        </a>
+        
+        <a class="group rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-300 hover:shadow-md" href="{{ "/events/" | relURL }}">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-100 text-violet-600">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900 group-hover:text-slate-950">Events</h3>
+          <p class="mt-1 text-sm text-slate-500">Upcoming meetups and conferences</p>
+        </a>
+        
+        <a class="group rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-300 hover:shadow-md" href="{{ "/resources/" | relURL }}">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900 group-hover:text-slate-950">Resources</h3>
+          <p class="mt-1 text-sm text-slate-500">Tools and guides for designers</p>
+        </a>
+      </div>
+    </div>
+
+    {{/* Recent content */}}
+    <div class="mt-16">
+      <h2 class="text-center text-sm font-semibold uppercase tracking-wider text-slate-500">Recent updates</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {{/* Latest jobs */}}
+        {{ $jobs := where site.RegularPages "Section" "jobs" }}
+        {{ $openJobs := where $jobs ".Params.status" "!=" "filled" }}
+        {{ $openJobs = where $openJobs ".Params.status" "!=" "closed" }}
+        {{ range first 2 (sort $openJobs ".Params.date_posted" "desc") }}
+          <a class="group rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm" href="{{ .RelPermalink }}">
+            <div class="flex items-center gap-2 text-xs text-emerald-600">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+              <span class="font-medium">Job</span>
+            </div>
+            <h3 class="mt-2 font-medium text-slate-900 group-hover:text-slate-950 line-clamp-1">{{ .Title }}</h3>
+            {{ with .Params.organization }}
+              <p class="mt-1 text-sm text-slate-500">{{ . }}</p>
+            {{ end }}
+          </a>
+        {{ end }}
+        
+        {{/* Latest article */}}
+        {{ $articles := where site.RegularPages "Section" "articles" }}
+        {{ range first 1 (sort $articles ".Date" "desc") }}
+          <a class="group rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm" href="{{ .RelPermalink }}">
+            <div class="flex items-center gap-2 text-xs text-blue-600">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+              <span class="font-medium">Article</span>
+            </div>
+            <h3 class="mt-2 font-medium text-slate-900 group-hover:text-slate-950 line-clamp-1">{{ .Title }}</h3>
+            <p class="mt-1 text-sm text-slate-500">{{ .Date.Format "Jan 2, 2006" }}</p>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}

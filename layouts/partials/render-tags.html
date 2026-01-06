@@ -1,0 +1,33 @@
+{{/*
+  Render Tags Partial
+  
+  Usage: {{ partial "render-tags.html" (dict "tags" .Params.tags "limit" 3) }}
+  
+  Parameters:
+  - tags: Tags value (can be slice or comma-separated string)
+  - limit: Maximum number of tags to display (default: 3)
+  - class: Additional classes for the wrapper div (optional)
+*/}}
+
+{{ $tags := .tags | default (slice) }}
+{{ $limit := .limit | default 3 }}
+{{ $wrapperClass := .class | default "" }}
+
+{{ if $tags }}
+  <div class="flex flex-wrap gap-1.5 {{ $wrapperClass }}">
+    {{ if (reflect.IsSlice $tags) }}
+      {{ range first $limit $tags }}
+        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">{{ . }}</span>
+      {{ end }}
+    {{ else }}
+      {{ $raw := printf "%v" $tags }}
+      {{ range first $limit (split $raw ",") }}
+        {{ $t := trim . " " }}
+        {{ if $t }}
+          <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">{{ $t }}</span>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
+

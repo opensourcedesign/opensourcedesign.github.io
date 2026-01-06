@@ -1,0 +1,234 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+      <header>
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{{ .Title }}</h1>
+        <p class="mt-4 text-lg text-slate-600">{{ .Description }}</p>
+      </header>
+
+      <div class="prose prose-slate mt-8 max-w-none">
+        {{ .Content }}
+      </div>
+
+      {{/* Primary Logos */}}
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Primary Logo</h2>
+        <p class="mt-2 text-slate-600">The main Open Source Design logo for general use.</p>
+        
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          {{/* Light background */}}
+          <div class="rounded-xl border border-slate-200 bg-white p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo.svg" alt="Open Source Design Logo" class="h-24 w-24" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+            <p class="mt-2 text-xs text-slate-500">For light backgrounds</p>
+          </div>
+
+          {{/* Dark background */}}
+          <div class="rounded-xl border border-slate-200 bg-slate-900 p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-inverted.svg" alt="Open Source Design Logo (Inverted)" class="h-24 w-24" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-inverted.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-inverted.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">For dark backgrounds</p>
+          </div>
+        </div>
+      </section>
+
+      {{/* Logo with Text */}}
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Logo with Text</h2>
+        <p class="mt-2 text-slate-600">Full logo with "Open Source Design" wordmark.</p>
+        
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-white p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-text.svg" alt="Open Source Design Logo with Text" class="h-16" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-text.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-text.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-slate-900 p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-text-inverted.svg" alt="Open Source Design Logo with Text (Inverted)" class="h-16" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-text-inverted.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-text-inverted.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{/* Narrow Logo with Text */}}
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Narrow Logo</h2>
+        <p class="mt-2 text-slate-600">Horizontal version ideal for headers and banners.</p>
+        
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-white p-8">
+            <div class="flex h-24 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-text-narrow.svg" alt="Open Source Design Narrow Logo" class="h-10" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-text-narrow.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-text-narrow.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-slate-900 p-8">
+            <div class="flex h-24 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-text-narrow-inverted.svg" alt="Open Source Design Narrow Logo (Inverted)" class="h-10" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-text-narrow-inverted.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-text-narrow-inverted.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-700">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{/* Logo with Margin */}}
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Logo with Safe Area</h2>
+        <p class="mt-2 text-slate-600">Logo with built-in margin for proper spacing.</p>
+        
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-slate-100 p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-margin.svg" alt="Open Source Design Logo with Margin" class="h-24 w-24" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-margin.svg" download class="inline-flex items-center gap-1 rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-margin.png" download class="inline-flex items-center gap-1 rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-slate-800 p-8">
+            <div class="flex h-32 items-center justify-center">
+              <img src="/images/brand/opensourcedesign-logo-margin-inverted.svg" alt="Open Source Design Logo with Margin (Inverted)" class="h-24 w-24" />
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="/images/brand/opensourcedesign-logo-margin-inverted.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                SVG
+              </a>
+              <a href="/images/brand/opensourcedesign-logo-margin-inverted.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-slate-600">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                PNG
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{/* Promotional Materials */}}
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Promotional Materials</h2>
+        <p class="mt-2 text-slate-600">Ready-to-print materials for events and meetups.</p>
+        
+        <div class="mt-6 grid gap-6 sm:grid-cols-3">
+          {{/* Poster */}}
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <div class="aspect-[3/4] overflow-hidden rounded-lg bg-slate-100">
+              <img src="/images/brand/promo/poster.png" alt="Open Source Design Poster" class="h-full w-full object-cover" />
+            </div>
+            <h3 class="mt-3 font-medium text-slate-900">Poster</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <a href="/images/brand/promo/poster.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">SVG</a>
+              <a href="/images/brand/promo/poster.png" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">PNG</a>
+            </div>
+          </div>
+
+          {{/* Business Card Front */}}
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <div class="aspect-[3/2] overflow-hidden rounded-lg bg-slate-100">
+              <img src="/images/brand/promo/card front.jpg" alt="Business Card Front" class="h-full w-full object-cover" />
+            </div>
+            <h3 class="mt-3 font-medium text-slate-900">Business Card</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <a href="/images/brand/promo/card.svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">SVG</a>
+              <a href="/images/brand/promo/card front.jpg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">JPG (Front)</a>
+              <a href="/images/brand/promo/card back.jpg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">JPG (Back)</a>
+            </div>
+          </div>
+
+          {{/* Sticker */}}
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <div class="flex aspect-[3/2] items-center justify-center overflow-hidden rounded-lg bg-slate-100 p-4">
+              <img src="/images/brand/opensourcedesign-logo-text-narrow.svg" alt="Sticker Design" class="h-8" />
+            </div>
+            <h3 class="mt-3 font-medium text-slate-900">Sticker</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <a href="/images/brand/promo/Sticker opensourcedesign-logo-text-narrow(3.63x1).svg" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">SVG</a>
+              <a href="/images/brand/promo/Sticker opensourcedesign-logo-text-narrow.pdf" download class="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200">PDF</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{/* Download All */}}
+      <section class="mt-12 rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
+        <h2 class="text-xl font-bold text-slate-900">Need Everything?</h2>
+        <p class="mt-2 text-slate-600">Download all brand assets in one package from our GitHub repository.</p>
+        <a href="https://github.com/opensourcedesign/opensourcedesign.github.io/tree/main/site/static/images/brand" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+          View on GitHub
+        </a>
+      </section>
+    </div>
+  </div>
+{{ end }}
+

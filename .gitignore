@@ -1,13 +1,23 @@
-_site
-.sass-cache
-.editorconfig
-.jekyll-metadata
-.bundle
-Gemfile.lock
-jobs/
-_organization/
-_patterns/
-_talks/
-vendor
-CNAME
-/**/*.DS_Store
+# Hugo build output
+public/
+resources/
+
+# Dependencies
+node_modules/
+
+# Generated CSS
+assets/css/output.css
+
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Hugo
+.hugo_build.lock

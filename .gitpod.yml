@@ -1,4 +1,10 @@
 tasks:
-  - init: bundle install && git clone https://github.com/opensourcedesign/jobs.git
-  - command: bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
-    name: Server
+  - init: |
+      brew install hugo
+      npm install
+    command: npm run dev
+    name: Development Server
+
+ports:
+  - port: 1313
+    onOpen: open-preview

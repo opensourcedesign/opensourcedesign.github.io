@@ -1,0 +1,70 @@
+{{/*
+  Button Partial
+  
+  Usage: {{ partial "button.html" (dict "text" "Click me" "href" "/path/" "variant" "primary" "icon" "plus" "size" "md") }}
+  
+  Parameters:
+  - text: Button text (required)
+  - href: Link URL (required)
+  - variant: "primary", "secondary", "ghost", "dark" (default: "primary")
+  - icon: Icon name - "plus", "rss", "calendar", "arrow-right", "github", "search", "user-plus" (optional)
+  - size: "sm", "md", "lg" (default: "md")
+  - ariaLabel: Aria label (optional)
+  - external: Force external link treatment (optional)
+*/}}
+
+{{ $text := .text }}
+{{ $href := .href }}
+{{ $variant := .variant | default "primary" }}
+{{ $icon := .icon | default "" }}
+{{ $size := .size | default "md" }}
+{{ $ariaLabel := .ariaLabel | default "" }}
+{{ $isExternal := or .external (hasPrefix $href "http") }}
+
+{{ $sizeClasses := "px-5 py-3 text-sm" }}
+{{ if eq $size "sm" }}
+  {{ $sizeClasses = "px-4 py-2 text-sm" }}
+{{ else if eq $size "lg" }}
+  {{ $sizeClasses = "px-6 py-3.5 text-base" }}
+{{ end }}
+
+{{ $variantClasses := "" }}
+{{ if eq $variant "primary" }}
+  {{ $variantClasses = "bg-slate-900 text-white shadow-sm hover:bg-slate-800 focus-visible:ring-slate-900" }}
+{{ else if eq $variant "secondary" }}
+  {{ $variantClasses = "border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 focus-visible:ring-slate-900" }}
+{{ else if eq $variant "ghost" }}
+  {{ $variantClasses = "text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus-visible:ring-slate-900" }}
+{{ else if eq $variant "dark" }}
+  {{ $variantClasses = "bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus-visible:ring-white/50 focus-visible:ring-offset-slate-900" }}
+{{ else if eq $variant "dark-secondary" }}
+  {{ $variantClasses = "border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 focus-visible:ring-white/50" }}
+{{ end }}
+
+<a 
+  class="inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 {{ $sizeClasses }} {{ $variantClasses }}"
+  href="{{ $href }}"
+  {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+  {{ if $ariaLabel }}aria-label="{{ $ariaLabel }}"{{ end }}
+>
+  {{/* Icon before text */}}
+  {{ if $icon }}
+    {{ if eq $icon "plus" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+    {{ else if eq $icon "user-plus" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM3 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z"/></svg>
+    {{ else if eq $icon "rss" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+    {{ else if eq $icon "calendar" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+    {{ else if eq $icon "arrow-right" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+    {{ else if eq $icon "github" }}
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 1.75a8.25 8.25 0 0 0-2.607 16.07c.412.076.563-.18.563-.398 0-.197-.007-.717-.011-1.408-2.293.498-2.777-1.104-2.777-1.104-.375-.953-.916-1.207-.916-1.207-.748-.512.057-.502.057-.502.828.058 1.263.85 1.263.85.736 1.26 1.93.896 2.4.686.075-.533.288-.896.524-1.102-1.832-.208-3.758-.916-3.758-4.078 0-.901.321-1.638.85-2.215-.085-.209-.368-1.048.08-2.184 0 0 .693-.222 2.27.847a7.862 7.862 0 0 1 2.066-.278c.701.003 1.407.095 2.066.278 1.576-1.069 2.267-.847 2.267-.847.45 1.136.167 1.975.082 2.184.529.577.849 1.314.849 2.215 0 3.17-1.929 3.867-3.766 4.072.296.255.56.759.56 1.529 0 1.104-.01 1.994-.01 2.265 0 .22.15.478.568.397A8.25 8.25 0 0 0 10 1.75Z" clip-rule="evenodd"/></svg>
+    {{ else if eq $icon "search" }}
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+    {{ end }}
+  {{ end }}
+  {{ $text }}
+</a>
+

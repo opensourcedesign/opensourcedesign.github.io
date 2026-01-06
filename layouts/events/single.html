@@ -1,0 +1,42 @@
+{{ define "main" }}
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <header class="p-6 sm:p-10">
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">{{ .Title }}</h1>
+        <div class="mt-4 space-y-2 text-sm text-slate-700">
+          {{ with .Params.eventDate }}
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+              <span><span class="font-semibold text-slate-950">Date:</span> {{ . }}</span>
+            </div>
+          {{ end }}
+          {{ with .Params.time }}
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span><span class="font-semibold text-slate-950">Time:</span> {{ . }}</span>
+            </div>
+          {{ end }}
+          {{ with .Params.location }}
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+              <span><span class="font-semibold text-slate-950">Location:</span> {{ . }}</span>
+            </div>
+          {{ end }}
+        </div>
+      </header>
+
+      {{ with .Content }}
+        <div class="border-t border-slate-100 p-6 sm:p-10">
+          <div class="prose prose-slate max-w-none">{{ . }}</div>
+        </div>
+      {{ end }}
+
+      <footer class="border-t border-slate-100 p-6 sm:px-10">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" href="{{ "/events/" | relURL }}">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Back to events
+        </a>
+      </footer>
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,34 @@
+{{/*
+  Section Footer Partial
+  
+  Usage: 
+  {{ partial "section-footer.html" (dict 
+      "items" (slice
+        (dict "icon" "code" "text" "More comfortable with Git?" "linkText" "Use our git-based method" "href" "https://github.com/...")
+        (dict "text" "Checkout other places like:" "linkText" "FOSS Jobs" "href" "https://fossjobs.net")
+      )
+  ) }}
+  
+  Parameters:
+  - items: Slice of footer items, each with optional icon, text, linkText, and href
+*/}}
+
+{{ $items := .items | default (slice) }}
+
+{{ if $items }}
+  <footer class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-slate-200 pt-8 text-sm text-slate-600">
+    {{ range $i, $item := $items }}
+      {{ if $i }}<span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>{{ end }}
+      <span class="flex items-center gap-2">
+        {{ with $item.icon }}
+          {{ partial "svg-icon.html" (dict "name" . "class" "h-4 w-4 text-slate-400") }}
+        {{ end }}
+        {{ with $item.text }}{{ . }}{{ end }}
+        {{ if and $item.linkText $item.href }}
+          <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900" href="{{ $item.href }}" target="_blank" rel="noopener noreferrer">{{ $item.linkText }}</a>
+        {{ end }}
+      </span>
+    {{ end }}
+  </footer>
+{{ end }}
+

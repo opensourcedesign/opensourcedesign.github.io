@@ -1,0 +1,30 @@
+{{/*
+  Meta Item Partial - for displaying metadata with icons
+  
+  Usage: {{ partial "meta-item.html" (dict "icon" "calendar" "text" "2024-01-15" "time" true) }}
+  
+  Parameters:
+  - icon: Icon name (calendar, clock, building, location, globe, currency)
+  - text: Text to display
+  - time: If true, wrap text in <time> tag with datetime attribute
+  - highlight: If true, use stronger text color
+*/}}
+
+{{ $icon := .icon | default "" }}
+{{ $text := .text }}
+{{ $isTime := .time | default false }}
+{{ $highlight := .highlight | default false }}
+
+{{ if $text }}
+  <span class="inline-flex items-center gap-1.5">
+    {{ if $icon }}
+      {{ partial "svg-icon.html" (dict "name" $icon "class" "h-3.5 w-3.5 text-slate-400") }}
+    {{ end }}
+    {{ if $isTime }}
+      <time datetime="{{ $text }}" class="{{ if $highlight }}font-medium text-slate-700{{ end }}">{{ $text }}</time>
+    {{ else }}
+      <span class="{{ if $highlight }}font-medium text-slate-700{{ end }}">{{ $text }}</span>
+    {{ end }}
+  </span>
+{{ end }}
+

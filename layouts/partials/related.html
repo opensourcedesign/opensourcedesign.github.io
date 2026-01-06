@@ -1,0 +1,80 @@
+{{/*
+  Related Content Partial
+  
+  Usage: {{ partial "related.html" . }}
+  
+  Shows related content based on tags and section.
+  Parameters can be passed via dict for customization:
+  {{ partial "related.html" (dict "page" . "limit" 3 "title" "Related Articles") }}
+*/}}
+
+{{ $page := .page | default . }}
+{{ $limit := .limit | default 3 }}
+{{ $title := .title | default "Related Content" }}
+
+{{ $related := slice }}
+
+{{/* First try Hugo's built-in related content */}}
+{{ with site.RegularPages.Related $page | first $limit }}
+  {{ $related = . }}
+{{ end }}
+
+{{/* Fallback: find pages with matching tags in same section */}}
+{{ if eq (len $related) 0 }}
+  {{ $tags := $page.Params.tags | default (slice) }}
+  {{ if reflect.IsSlice $tags }}
+    {{ range $page.CurrentSection.Pages }}
+      {{ if and (ne .RelPermalink $page.RelPermalink) (lt (len $related) $limit) }}
+        {{ $pageTags := .Params.tags | default (slice) }}
+        {{ if reflect.IsSlice $pageTags }}
+          {{ range $tags }}
+            {{ $tag := . }}
+            {{ if in $pageTags $tag }}
+              {{ if not (in $related $) }}
+                {{ $related = $related | append $ }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Final fallback: recent pages from same section */}}
+{{ if eq (len $related) 0 }}
+  {{ range first $limit (where $page.CurrentSection.Pages ".RelPermalink" "!=" $page.RelPermalink) }}
+    {{ $related = $related | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $related) 0 }}
+  <aside class="related-content" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-slate-500">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+      </svg>
+      {{ $title }}
+    </h2>
+    <ul class="mt-4 space-y-3">
+      {{ range $related }}
+        <li>
+          <a class="group block rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm" href="{{ .RelPermalink }}">
+            <h3 class="font-medium text-slate-900 group-hover:text-slate-950">{{ .Title }}</h3>
+            {{ with .Description }}
+              <p class="mt-1 line-clamp-2 text-sm text-slate-600">{{ . | plainify | truncate 100 }}</p>
+            {{ else }}
+              {{ with .Summary }}
+                <p class="mt-1 line-clamp-2 text-sm text-slate-600">{{ . | plainify | truncate 100 }}</p>
+              {{ end }}
+            {{ end }}
+            {{ with .Date }}
+              <time class="mt-2 block text-xs text-slate-400" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
+            {{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </aside>
+{{ end }}
+

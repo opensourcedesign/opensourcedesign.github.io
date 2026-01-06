@@ -1,0 +1,95 @@
+{{ define "main" }}
+  <article class="mx-auto max-w-3xl px-4 py-12" itemscope itemtype="https://schema.org/Article">
+    <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <header class="p-6 sm:p-10">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl" itemprop="headline">{{ .Title }}</h1>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
+          {{ with .Date }}
+            <span class="inline-flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+              <time datetime="{{ .Format "2006-01-02" }}" itemprop="datePublished">{{ .Format "January 2, 2006" }}</time>
+            </span>
+          {{ end }}
+          {{ with .Params.author }}
+            <span class="inline-flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+              <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">{{ . }}</span>
+              </span>
+            </span>
+          {{ end }}
+          {{ with .ReadingTime }}
+            <span class="inline-flex items-center gap-2">
+              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>{{ . }} min read</span>
+            </span>
+          {{ end }}
+        </div>
+      </header>
+
+      <div class="border-t border-slate-100 p-6 sm:p-10">
+        {{/* Table of Contents for long articles */}}
+        {{ if gt .WordCount 500 }}
+          <div class="mb-8">
+            {{ partial "toc.html" . }}
+          </div>
+        {{ end }}
+
+        <div class="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:scroll-mt-20 prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 hover:prose-a:decoration-slate-900 prose-img:rounded-lg prose-img:cursor-zoom-in" itemprop="articleBody">
+          {{ .Content }}
+        </div>
+      </div>
+
+      {{/* Tags */}}
+      {{ with .Params.tags }}
+        <div class="border-t border-slate-100 p-6 sm:px-10">
+          <div class="flex flex-wrap items-center gap-2" role="list" aria-label="Tags">
+            <span class="text-sm font-medium text-slate-500">Tags:</span>
+            {{ range . }}
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-600" role="listitem">{{ . }}</span>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+
+      {{/* Share Buttons */}}
+      <div class="border-t border-slate-100 p-6 sm:px-10">
+        {{ partial "share.html" . }}
+      </div>
+
+      {{/* Related Content */}}
+      {{ if .CurrentSection }}
+        <div class="border-t border-slate-100 p-6 sm:px-10">
+          {{ partial "related.html" (dict "page" . "limit" 3 "title" "You might also like") }}
+        </div>
+      {{ end }}
+
+      <footer class="border-t border-slate-100 p-6 sm:px-10">
+        <nav class="flex flex-wrap items-center justify-between gap-4" aria-label="Page navigation">
+          {{ $back := "/" }}
+          {{ if .Parent }}
+            {{ $back = .Parent.RelPermalink }}
+          {{ end }}
+          <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $back }}">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+            Back
+          </a>
+          <div class="flex items-center gap-2">
+            {{ with .PrevInSection }}
+              <a class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" rel="prev" title="Previous: {{ .Title }}">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+                <span class="sr-only sm:not-sr-only">Prev</span>
+              </a>
+            {{ end }}
+            {{ with .NextInSection }}
+              <a class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" rel="next" title="Next: {{ .Title }}">
+                <span class="sr-only sm:not-sr-only">Next</span>
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+              </a>
+            {{ end }}
+          </div>
+        </nav>
+      </footer>
+    </div>
+  </article>
+{{ end }}

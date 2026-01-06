@@ -1,0 +1,251 @@
+{{ define "main" }}
+  {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
+  {{ $jobs := where $jobsAll "Params.status" "searching" }}
+  {{ $paidCount := len (where $jobs "Params.compensation" "paid") }}
+  {{ $gratisCount := len (where $jobs "Params.compensation" "gratis") }}
+
+  {{/* Hero Header */}}
+  <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white" aria-labelledby="jobs-heading">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
+            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/>
+            </svg>
+          </div>
+          <h1 id="jobs-heading" class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{{ .Title }}</h1>
+          {{ with .Content }}
+            <div class="mt-4 text-lg text-slate-300 prose prose-invert prose-a:text-white prose-a:underline prose-a:decoration-white/50 prose-a:underline-offset-4 hover:prose-a:decoration-white max-w-none">{{ . }}</div>
+          {{ else }}
+            {{ with $.Description }}
+              <p class="mt-4 text-lg text-slate-300">{{ . }}</p>
+            {{ end }}
+          {{ end }}
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ "/jobs/job-form/" | relURL }}">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            Post a Job
+          </a>
+          <a class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50" href="{{ "/jobs/feed.xml" | relURL }}" aria-label="Subscribe to jobs RSS feed">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+            RSS Feed
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* Stats Bar */}}
+  <section class="border-b border-slate-200 bg-white" aria-label="Job statistics">
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm sm:justify-start">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-slate-900">{{ len $jobs }}</span>
+          <span class="text-slate-600">open jobs</span>
+        </div>
+        <span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
+          <span class="font-semibold text-slate-900">{{ $paidCount }}</span>
+          <span class="text-slate-600">paid</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-violet-500" aria-hidden="true"></span>
+          <span class="font-semibold text-slate-900">{{ $gratisCount }}</span>
+          <span class="text-slate-600">volunteer</span>
+        </div>
+        <span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>
+        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 hover:decoration-slate-900" href="{{ "/jobs/archive/" | relURL }}">Browse {{ len $jobsAll }}+ archived jobs</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    {{/* Important Notice */}}
+    <aside class="rounded-xl border border-amber-200 bg-amber-50 p-5" role="alert">
+      <div class="flex gap-3">
+        <svg class="h-5 w-5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+        <div class="text-sm text-amber-800">
+          <p class="font-semibold">Important</p>
+          <p class="mt-1">When responding to job postings, please avoid generic copy-pasted responses. See our <a class="font-medium underline decoration-amber-400 underline-offset-2 hover:decoration-amber-600" href="{{ site.Params.jobGuidelinesURL | default "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925" }}" target="_blank" rel="noopener noreferrer">guidelines for responding to jobs</a> to avoid being banned from the community.</p>
+        </div>
+      </div>
+    </aside>
+
+    {{/* Filters */}}
+    <div class="flex flex-col gap-4 mt-4 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
+          All ({{ len $jobs }})
+        </button>
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="paid" aria-pressed="false">
+          <span class="inline-flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+            Paid ({{ $paidCount }})
+          </span>
+        </button>
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="gratis" aria-pressed="false">
+          <span class="inline-flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>
+            Volunteer ({{ $gratisCount }})
+          </span>
+        </button>
+      </div>
+      <div class="flex gap-2">
+        <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
+        <input class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-900/10 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
+        <button class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
+      </div>
+    </div>
+
+    <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
+      <span id="jobs-count">{{ len $jobs }}</span> results
+    </div>
+
+    <p class="mt-6 hidden rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
+
+    {{/* Job Cards */}}
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="jobs-list" role="list" aria-label="Job listings">
+      {{ range (sort $jobs "Params.date_posted" "desc") }}
+        {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+        {{ $org := .Params.organization | default "" }}
+        {{ $tags := .Params.tags | default (slice) }}
+        {{ $tagsStr := "" }}
+        {{ if (reflect.IsSlice $tags) }}
+          {{ $tagsStr = delimit $tags "," }}
+        {{ else }}
+          {{ $tagsStr = printf "%v" $tags }}
+        {{ end }}
+        {{ $isPaid := eq $comp "paid" }}
+        <li class="job-item" data-comp="{{ $comp }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
+          <a class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ if $org }} at {{ $org }}{{ end }}">
+            {{/* Header */}}
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="font-semibold leading-snug text-slate-900 group-hover:text-slate-950">{{ .Title }}</h2>
+              {{ if $comp }}
+                {{ if $isPaid }}
+                  {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
+                {{ else }}
+                  {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet") }}
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{/* Meta */}}
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+              {{ with $org }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+                  <span class="font-medium text-slate-700">{{ . }}</span>
+                </span>
+              {{ end }}
+              {{ with .Params.date_posted }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  <time datetime="{{ . }}">{{ . }}</time>
+                </span>
+              {{ end }}
+            </div>
+
+            {{/* Summary */}}
+            {{ with .Summary }}
+              <p class="mt-3 flex-1 line-clamp-3 text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</p>
+            {{ end }}
+
+            {{/* Tags */}}
+            {{ if $tags }}
+              <div class="mt-4 border-t border-slate-100 pt-4">
+                {{ partial "render-tags.html" (dict "tags" $tags "limit" 3) }}
+              </div>
+            {{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+
+    {{/* Footer Links */}}
+    {{ partial "section-footer.html" (dict "items" (slice
+      (dict "icon" "code" "text" "More comfortable with Git?" "linkText" "Use our git-based method" "href" (site.Params.jobsRepoURL | default "https://github.com/opensourcedesign/jobs"))
+      (dict "text" "Checkout other places like:" "linkText" "FOSS Jobs" "href" (site.Params.fossJobsURL | default "https://www.fossjobs.net/"))
+    )) }}
+
+    <script>
+      (function () {
+        var list = document.getElementById('jobs-list');
+        if (!list) return;
+
+        var items = Array.prototype.slice.call(list.querySelectorAll('.job-item'));
+        var countEl = document.getElementById('jobs-count');
+        var input = document.getElementById('jobs-q');
+        var clearBtn = document.getElementById('jobs-clear');
+        var emptyEl = document.getElementById('jobs-empty');
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('.osd-filter'));
+
+        function setPressed(activeComp) {
+          buttons.forEach(function (btn) {
+            var on = btn.getAttribute('data-comp') === activeComp;
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            if (on) {
+              btn.classList.add('bg-slate-900', 'text-white');
+              btn.classList.remove('bg-slate-100', 'text-slate-700');
+            } else {
+              btn.classList.remove('bg-slate-900', 'text-white');
+              btn.classList.add('bg-slate-100', 'text-slate-700');
+            }
+          });
+        }
+
+        function getState() {
+          var params = new URLSearchParams(window.location.search);
+          return { comp: params.get('comp') || 'all', q: params.get('q') || '' };
+        }
+
+        function setState(next) {
+          var params = new URLSearchParams(window.location.search);
+          if (next.comp && next.comp !== 'all') params.set('comp', next.comp); else params.delete('comp');
+          if (next.q) params.set('q', next.q); else params.delete('q');
+          var qs = params.toString();
+          var url = window.location.pathname + (qs ? ('?' + qs) : '');
+          window.history.replaceState({}, '', url);
+        }
+
+        function apply() {
+          var state = getState();
+          var q = (state.q || '').trim().toLowerCase();
+          setPressed(state.comp);
+          if (input && input.value !== state.q) input.value = state.q;
+
+          var shown = 0;
+          items.forEach(function (li) {
+            var comp = li.getAttribute('data-comp') || '';
+            var hay = (li.getAttribute('data-title') || '') + ' ' + (li.getAttribute('data-org') || '') + ' ' + (li.getAttribute('data-tags') || '');
+            var okComp = state.comp === 'all' || comp === state.comp;
+            var okQ = !q || hay.indexOf(q) !== -1;
+            var show = okComp && okQ;
+            li.style.display = show ? '' : 'none';
+            if (show) shown++;
+          });
+
+          if (countEl) countEl.textContent = String(shown);
+          if (emptyEl) emptyEl.classList.toggle('hidden', shown !== 0);
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var next = getState();
+            next.comp = btn.getAttribute('data-comp') || 'all';
+            setState(next);
+            apply();
+          });
+        });
+
+        if (input) input.addEventListener('input', function () { var next = getState(); next.q = input.value || ''; setState(next); apply(); });
+        if (clearBtn && input) clearBtn.addEventListener('click', function () { var next = getState(); next.q = ''; setState(next); input.value = ''; apply(); input.focus(); });
+
+        apply();
+      })();
+    </script>
+  </div>
+{{ end }}

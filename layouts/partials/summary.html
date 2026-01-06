@@ -1,0 +1,16 @@
+{{- $p := .page -}}
+{{- $max := .max | default 140 -}}
+{{- $s := "" -}}
+{{- if $p.Summary -}}
+  {{- $s = $p.Summary | plainify -}}
+{{- else if $p.Description -}}
+  {{- $s = $p.Description | plainify -}}
+{{- else -}}
+  {{- $s = $p.Content | plainify -}}
+{{- end -}}
+{{- $s = strings.TrimSpace $s -}}
+{{- if and $s (gt (len $s) $max) -}}
+  {{- $s = truncate $max $s -}}
+{{- end -}}
+{{- $s -}}
+

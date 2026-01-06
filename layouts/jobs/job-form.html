@@ -1,0 +1,402 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    {{/* Header Card */}}
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+      <header>
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">Post a Job</h1>
+        <p class="mt-4 text-base text-slate-600">Submit a design job for your Free/Libre and Open Source project. All submissions are reviewed by our community moderators before publishing.</p>
+      </header>
+
+      {{/* Guidelines */}}
+      <div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
+        <div class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+          </svg>
+          <div class="text-sm text-amber-800">
+            <p>Please read our <a class="font-semibold underline underline-offset-2 hover:no-underline" href="{{ "/code-of-conduct/" | relURL }}">Code of Conduct</a> before submitting.</p>
+          </div>
+        </div>
+      </div>
+
+      {{/* Form */}}
+      <form id="osd-job-form" class="mt-10 space-y-12" novalidate>
+        {{/* Project Section */}}
+        <fieldset class="space-y-6">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">1</span>
+            About your project
+          </legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700" for="organization">Project name <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="organization" name="organization" placeholder="e.g., Nextcloud, GNOME, LibreOffice" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="org_url">Project website <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="org_url" name="org_url" type="url" inputmode="url" placeholder="https://..." required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="license">Project license URL <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="license" name="license" type="url" inputmode="url" placeholder="https://github.com/..." required />
+              <p class="text-xs text-slate-500">Link to an OSI/FSF approved license.</p>
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Job Section */}}
+        <fieldset class="space-y-6 border-t border-slate-200 mt-10">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">2</span>
+            About the job
+          </legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700" for="title">Job title <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="title" name="title" placeholder="e.g., UX Designer needed for mobile app redesign" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="role">Job category <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="role" name="role" placeholder="e.g., UX Design" required />
+              <p class="text-xs text-slate-500">e.g., Web design, UX review, Branding</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="text-sm font-medium text-slate-700">Compensation <span class="text-red-500">*</span></div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50/50 has-[:checked]:ring-1 has-[:checked]:ring-violet-500">
+                <input type="radio" name="compensation" value="gratis" class="mt-1 h-4 w-4 text-violet-600 focus:ring-violet-500" checked />
+                <div>
+                  <div class="font-semibold text-slate-900">Volunteer</div>
+                  <div class="text-sm text-slate-500">No payment offered</div>
+                </div>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:ring-1 has-[:checked]:ring-emerald-500">
+                <input type="radio" name="compensation" value="paid" class="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500" />
+                <div>
+                  <div class="font-semibold text-slate-900">Paid</div>
+                  <div class="text-sm text-slate-500">We can pay for this work</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-2" id="paidDetailsWrap" hidden>
+            <label class="text-sm font-medium text-slate-700" for="paid_details">Budget / rate <span class="text-slate-400">(optional)</span></label>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="paid_details" name="paid_details" placeholder="e.g., $500 fixed, $50/hour, negotiable" />
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="description">Job description <span class="text-red-500">*</span></label>
+            <p class="text-xs text-slate-500">Describe what you need help with. Markdown is supported.</p>
+            <textarea class="min-h-48 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="description" name="description" placeholder="We are looking for a designer to help us..." required></textarea>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="deliverables">Deliverables <span class="text-slate-400">(optional)</span></label>
+            <p class="text-xs text-slate-500">What specific deliverables are you expecting? One per line.</p>
+            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="deliverables" name="deliverables" placeholder="Logo in SVG format&#10;Style guide PDF&#10;Figma source files"></textarea>
+          </div>
+        </fieldset>
+
+        {{/* Contact Section */}}
+        <fieldset class="space-y-6 border-t border-slate-200 mt-10">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">3</span>
+            Contact information
+          </legend>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="how_to_apply">How to apply <span class="text-red-500">*</span></label>
+            <p class="text-xs text-slate-500">How should designers contact you? One per line: email, URL, GitHub handle, etc.</p>
+            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="how_to_apply" name="how_to_apply" placeholder="yourname@example.com&#10;https://github.com/yourproject/issues" required></textarea>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="links">Relevant links <span class="text-slate-400">(optional)</span></label>
+            <p class="text-xs text-slate-500">Design docs, contributing guide, existing design files, etc. One per line.</p>
+            <textarea class="min-h-24 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="links" name="links" placeholder="https://github.com/yourproject/CONTRIBUTING.md"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="github_handle">Your GitHub <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="github_handle" name="github_handle" placeholder="@username" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="tags">Tags <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="tags" name="tags" placeholder="ux, mobile, figma" />
+            </div>
+          </div>
+
+          {{ with site.Params.turnstileSiteKey }}
+            <div class="pt-2">
+              <div class="cf-turnstile" data-sitekey="{{ . }}"></div>
+            </div>
+          {{ end }}
+
+          {{/* Honeypot */}}
+          <div class="hidden" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+        </fieldset>
+
+        {{/* Submit */}}
+        <div class="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-6">
+          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2" type="submit" id="osd-submit">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+            Submit job
+          </button>
+          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50" type="reset" id="osd-reset">Reset</button>
+          <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+
+    {{/* Result Card */}}
+    <div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm" id="osd-result" hidden>
+      <h2 class="flex items-center gap-2 text-sm font-semibold text-emerald-900" id="osd-result-title">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Submission result
+      </h2>
+      <div class="mt-3 text-sm text-emerald-800" id="osd-result-body"></div>
+      <div class="mt-4" id="osd-result-extra"></div>
+    </div>
+
+    {{ with site.Params.turnstileSiteKey }}
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    {{ end }}
+
+    <script>
+      (function () {
+        var endpoint = {{ jsonify (site.Params.jobSubmitEndpoint | default "") }};
+
+        var form = document.getElementById('osd-job-form');
+        if (!form) return;
+
+        var paidWrap = document.getElementById('paidDetailsWrap');
+        var note = document.getElementById('osd-form-note');
+        var out = document.getElementById('osd-result');
+        var outTitle = document.getElementById('osd-result-title');
+        var outBody = document.getElementById('osd-result-body');
+        var outExtra = document.getElementById('osd-result-extra');
+        var submitBtn = document.getElementById('osd-submit');
+
+        function slugify(str) {
+          str = (str || '').trim().toLowerCase();
+          str = str.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+          str = str.replace(/[^a-z0-9\s-]/g, '');
+          str = str.replace(/\s+/g, '-').replace(/-+/g, '-');
+          return str;
+        }
+
+        function yq(v) {
+          var s = String(v == null ? '' : v);
+          s = s.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+          return '"' + s + '"';
+        }
+
+        function getRadio(name) {
+          var el = form.querySelector('input[name="' + name + '"]:checked');
+          return el ? el.value : '';
+        }
+
+        function syncPaid() {
+          var comp = getRadio('compensation');
+          if (!paidWrap) return;
+          paidWrap.hidden = comp !== 'paid';
+        }
+
+        function linesToList(s) {
+          return String(s || '')
+            .split(/\r?\n/)
+            .map(function (x) { return x.trim(); })
+            .filter(Boolean);
+        }
+
+        function tagsToList(s) {
+          return String(s || '')
+            .split(',')
+            .map(function (x) { return x.trim(); })
+            .filter(Boolean);
+        }
+
+        function showResult(title, bodyHtml, extraHtml) {
+          if (outTitle) outTitle.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ' + title;
+          if (outBody) outBody.innerHTML = bodyHtml || '';
+          if (outExtra) outExtra.innerHTML = extraHtml || '';
+          if (out) out.hidden = false;
+          out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateMarkdown(data, datePosted, isoNow) {
+          var slug = datePosted + '-' + slugify(data.title);
+          var path = 'site/content/jobs/' + slug + '.md';
+
+          var applyList = linesToList(data.how_to_apply);
+          var linkList = linesToList(data.links);
+          var tagList = tagsToList(data.tags);
+
+          var fm = [];
+          fm.push('---');
+          fm.push('title: ' + yq(data.title));
+          fm.push('status: searching');
+          fm.push('date_posted: ' + yq(datePosted));
+          fm.push('date: ' + yq(isoNow));
+          fm.push('organization: ' + yq(data.organization));
+          fm.push('org_url: ' + yq(data.org_url));
+          fm.push('license: ' + yq(data.license));
+          fm.push('role: ' + yq(data.role));
+          fm.push('compensation: ' + yq(data.compensation));
+          if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+          if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
+
+          if (tagList.length) {
+            fm.push('tags:');
+            tagList.forEach(function (t) { fm.push('  - ' + yq(t)); });
+          }
+
+          if (applyList.length) {
+            fm.push('how_to_apply:');
+            applyList.forEach(function (t) { fm.push('  - ' + yq(t)); });
+          }
+
+          if (linkList.length) {
+            fm.push('links:');
+            linkList.forEach(function (t) { fm.push('  - ' + yq(t)); });
+          }
+
+          if (data.deliverables) {
+            fm.push('deliverables: |-');
+            linesToList(data.deliverables).forEach(function (t) { fm.push('  ' + t); });
+          }
+
+          fm.push('---');
+          fm.push('');
+          fm.push(data.description);
+          fm.push('');
+
+          return { path: path, markdown: fm.join('\n') };
+        }
+
+        form.addEventListener('change', function (e) {
+          if (e && e.target && e.target.name === 'compensation') syncPaid();
+        });
+
+        form.addEventListener('reset', function () {
+          if (out) out.hidden = true;
+          if (note) note.textContent = '';
+          setTimeout(syncPaid, 0);
+        });
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          if (note) note.textContent = '';
+
+          var honeypot = (form.company || {}).value;
+          if (honeypot) return;
+
+          var now = new Date();
+          var yyyy = String(now.getFullYear());
+          var mm = String(now.getMonth() + 1).padStart(2, '0');
+          var dd = String(now.getDate()).padStart(2, '0');
+          var datePosted = yyyy + '-' + mm + '-' + dd;
+          var isoNow = now.toISOString();
+
+          var data = {
+            title: form.title.value.trim(),
+            organization: form.organization.value.trim(),
+            org_url: form.org_url.value.trim(),
+            license: form.license.value.trim(),
+            role: form.role.value.trim(),
+            compensation: getRadio('compensation'),
+            paid_details: (form.paid_details || {}).value ? form.paid_details.value.trim() : '',
+            description: form.description.value.trim(),
+            deliverables: form.deliverables.value.trim(),
+            how_to_apply: form.how_to_apply.value.trim(),
+            links: form.links.value.trim(),
+            github_handle: form.github_handle.value.trim(),
+            tags: form.tags.value.trim(),
+            date_posted: datePosted
+          };
+
+          if (!data.organization || !data.org_url || !data.license || !data.title || !data.role || !data.description || !data.how_to_apply) {
+            if (note) note.textContent = 'Please fill in all required fields.';
+            return;
+          }
+
+          var turnstile = document.querySelector('[name="cf-turnstile-response"]');
+          var turnstileToken = turnstile && turnstile.value ? String(turnstile.value) : '';
+
+          if (endpoint) {
+            try {
+              if (submitBtn) submitBtn.disabled = true;
+              if (note) note.textContent = 'Submitting…';
+
+              var resp = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  company: honeypot,
+                  turnstile_token: turnstileToken,
+                  ...data
+                }),
+                mode: 'cors'
+              });
+
+              var json = await resp.json().catch(function () { return null; });
+
+              if (resp.ok && json && json.ok && json.pr_url) {
+                if (note) note.textContent = 'Submitted.';
+                showResult(
+                  'Thanks — submission received',
+                  'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
+                  ''
+                );
+                form.reset();
+                return;
+              }
+
+              var msg = (json && json.error) ? String(json.error) : 'Submission failed.';
+              throw new Error(msg);
+            } catch (err) {
+              if (note) note.textContent = 'Could not submit automatically. Use the fallback below.';
+              out.classList.remove('border-emerald-200', 'bg-emerald-50');
+              out.classList.add('border-slate-200', 'bg-white');
+
+              var gen = generateMarkdown(data, datePosted, isoNow);
+              showResult(
+                'Fallback: copy this file and open a PR',
+                '<p class="text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path + '</code></p>',
+                '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-500/20" readonly>' + gen.markdown.replace(/</g,'&lt;') + '</textarea>'
+              );
+              return;
+            } finally {
+              if (submitBtn) submitBtn.disabled = false;
+            }
+          }
+
+          out.classList.remove('border-emerald-200', 'bg-emerald-50');
+          out.classList.add('border-slate-200', 'bg-white');
+
+          var gen2 = generateMarkdown(data, datePosted, isoNow);
+          showResult(
+            'Preview: copy this file and open a PR',
+            '<p class="text-slate-700">No serverless endpoint configured. Copy the markdown below and <a class="font-medium underline" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main/site/content/jobs" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a>.</p><p class="mt-2 text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen2.path + '</code></p>',
+            '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-500/20" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
+          );
+        });
+
+        syncPaid();
+      })();
+    </script>
+  </div>
+{{ end }}

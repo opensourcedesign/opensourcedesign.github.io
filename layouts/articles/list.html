@@ -1,0 +1,150 @@
+{{ define "main" }}
+  {{ $articles := .RegularPagesRecursive.ByDate.Reverse }}
+  {{ $featured := first 1 $articles }}
+  {{ $rest := after 1 $articles }}
+
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    {{/* Header */}}
+    <header class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{{ .Title }}</h1>
+        {{ with .Description }}
+          <p class="mt-2 text-lg text-slate-600">{{ . }}</p>
+        {{ end }}
+      </div>
+      <a class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/articles/feed.xml" | relURL }}" aria-label="Subscribe to Articles RSS feed">
+        <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+        RSS Feed
+      </a>
+    </header>
+
+    {{/* Featured Article */}}
+    {{ with index $featured 0 }}
+      <section class="mt-10" aria-labelledby="featured-heading">
+        <div class="flex items-center gap-3">
+          <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">Latest</span>
+          <h2 id="featured-heading" class="text-sm font-medium uppercase tracking-wider text-slate-500">Featured Article</h2>
+        </div>
+        <a class="mt-4 block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+          <div class="flex flex-col md:flex-row">
+            {{/* Try: 1) front matter image, 2) page bundle resource, 3) first image in content */}}
+            {{ $imgUrl := "" }}
+            {{ with .Params.image }}
+              {{ $imgUrl = . }}
+            {{ else }}
+              {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+              {{ if $res }}
+                {{ $imgUrl = $res.RelPermalink }}
+              {{ else }}
+                {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
+                {{ if $matches }}
+                  {{ $imgUrl = index (findRE `src=["']([^"']+)["']` (index $matches 0) 1) 0 | replaceRE `src=["']` "" | replaceRE `["']$` "" }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            {{ if $imgUrl }}
+              <div class="aspect-video md:aspect-auto md:w-2/5">
+                <img class="h-full w-full object-cover" src="{{ $imgUrl }}" alt="" loading="lazy" />
+              </div>
+            {{ else }}
+              <div class="flex aspect-video items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 md:aspect-auto md:w-2/5">
+                <svg class="h-20 w-20 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+              </div>
+            {{ end }}
+            <div class="flex flex-1 flex-col justify-center p-6 md:p-10">
+              <div class="flex items-center gap-3 text-sm text-slate-500">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                {{ with .Params.author }}
+                  <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                  <span>{{ . }}</span>
+                {{ end }}
+              </div>
+              <h3 class="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">{{ .Title }}</h3>
+              {{ with .Summary }}
+                <p class="mt-4 line-clamp-3 text-base text-slate-600 md:text-lg">{{ . | plainify | truncate 250 }}</p>
+              {{ end }}
+              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                Read article
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </section>
+    {{ end }}
+
+    {{/* All Articles Grid */}}
+    {{ if $rest }}
+      <section class="mt-16" aria-labelledby="all-articles-heading">
+        <div class="flex items-center justify-between">
+          <h2 id="all-articles-heading" class="text-lg font-semibold text-slate-900">All Articles</h2>
+          <span class="text-sm text-slate-500">{{ len $articles }} articles</span>
+        </div>
+
+        <ul class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list" aria-label="Articles list">
+          {{ range $rest }}
+            <li>
+              <a class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+                {{/* Try: 1) front matter image, 2) page bundle resource, 3) first image in content */}}
+                {{ $imgUrl := "" }}
+                {{ with .Params.image }}
+                  {{ $imgUrl = . }}
+                {{ else }}
+                  {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+                  {{ if $res }}
+                    {{ $imgUrl = $res.RelPermalink }}
+                  {{ else }}
+                    {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
+                    {{ if $matches }}
+                      {{ $imgUrl = index (findRE `src=["']([^"']+)["']` (index $matches 0) 1) 0 | replaceRE `src=["']` "" | replaceRE `["']$` "" }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                {{ if $imgUrl }}
+                  <div class="aspect-video overflow-hidden">
+                    <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="{{ $imgUrl }}" alt="" loading="lazy" />
+                  </div>
+                {{ else }}
+                  <div class="flex aspect-video items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                    <svg class="h-12 w-12 text-slate-200" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+                  </div>
+                {{ end }}
+                <div class="flex flex-1 flex-col p-5">
+                  <div class="text-xs text-slate-500">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ with .Params.author }}
+                      <span class="mx-1">·</span>
+                      <span>{{ . }}</span>
+                    {{ end }}
+                  </div>
+                  <h3 class="mt-2 line-clamp-2 font-semibold text-slate-900 group-hover:text-slate-950">{{ .Title }}</h3>
+                  {{ with .Summary }}
+                    <p class="mt-2 flex-1 line-clamp-2 text-sm text-slate-600">{{ . | plainify | truncate 120 }}</p>
+                  {{ end }}
+                </div>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+
+    {{/* Footer - Call to Contribute */}}
+    <footer class="mt-16 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center">
+      <svg class="mx-auto h-10 w-10 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+      <h2 class="mt-4 text-lg font-semibold text-slate-900">Want to contribute?</h2>
+      <p class="mx-auto mt-2 max-w-md text-sm text-slate-600">We love to have new writers so if you have an idea for an article or something you've already written elsewhere, but would be a good addition here, please let us know.</p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/" target="_blank" rel="noopener noreferrer">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+          Contact us on our forum
+        </a>
+        <a class="inline-flex items-center gap-2 text-sm font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 hover:decoration-slate-900" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/tree/main/site/content/articles" target="_blank" rel="noopener noreferrer">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+          Submit via GitHub
+        </a>
+      </div>
+    </footer>
+  </div>
+{{ end }}
+

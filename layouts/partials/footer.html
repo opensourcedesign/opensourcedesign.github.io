@@ -1,0 +1,82 @@
+<footer class="mt-auto border-t border-slate-200 bg-white" role="contentinfo" aria-label="Site footer">
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    {{/* Main footer grid */}}
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {{/* Brand column */}}
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a class="inline-flex items-center gap-2 font-semibold text-slate-900" href="{{ "/" | relURL }}">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white" aria-hidden="true">
+            <span class="h-4 w-4">{{ partial "icons/osd-logo.svg" . }}</span>
+          </span>
+          Open Source Design
+        </a>
+        <p class="mt-3 text-sm text-slate-600">Bringing great design to Open Source Software since 2015.</p>
+        {{/* Social icons */}}
+        <div class="mt-4 flex gap-3">
+          {{ range site.Data.social }}
+            <a class="text-slate-400 transition hover:text-slate-600" href="{{ .url }}" target="_blank" rel="{{ .rel }}" title="{{ .name }}">
+              {{ if eq .icon "github" }}
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+              {{ else if eq .icon "twitter" }}
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              {{ else if eq .icon "mastodon" }}
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 00.023-.043v-1.809a.052.052 0 00-.02-.041.053.053 0 00-.046-.01 20.282 20.282 0 01-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 01-.319-1.433.053.053 0 01.066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.668 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/></svg>
+              {{ else if eq .icon "opencollective" }}
+                {{/* Official Open Collective logo - concentric circles with opening */}}
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12c2.54 0 4.894-.79 6.834-2.135l-3.107-3.109a7.715 7.715 0 1 1 0-13.512l3.107-3.109A11.943 11.943 0 0 0 12 0zm9.865 5.166l-3.109 3.107A7.67 7.67 0 0 1 19.715 12a7.682 7.682 0 0 1-.959 3.727l3.109 3.107A11.943 11.943 0 0 0 24 12c0-2.54-.79-4.894-2.135-6.834z"/></svg>
+              {{ else if eq .icon "forum" }}
+                {{/* Official Discourse logo - stylized "d" speech bubble */}}
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0z"/></svg>
+              {{ end }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* Quick links columns - data driven from data/quicklinks.yaml */}}
+      {{ with site.Data.quicklinks }}
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Community</h3>
+          <ul class="mt-3 space-y-2">
+            {{ range .community }}
+              <li>
+                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Resources</h3>
+          <ul class="mt-3 space-y-2">
+            {{ range .resources }}
+              <li>
+                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ .url | relURL }}">{{ .name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Contribute</h3>
+          <ul class="mt-3 space-y-2">
+            {{ range .contribute }}
+              <li>
+                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ if .external }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+
+    {{/* Bottom bar */}}
+    <div class="mt-10 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {{ now.Format "2006" }} Open Source Design. Content licensed under <a class="underline underline-offset-2 hover:text-slate-700" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</p>
+      <div class="flex items-center gap-4">
+        <a class="hover:text-slate-700" href="{{ "/feed.xml" | relURL }}">RSS Feed</a>
+        <a class="hover:text-slate-700" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}" target="_blank" rel="noopener noreferrer">Source Code</a>
+      </div>
+    </div>
+  </div>
+</footer>

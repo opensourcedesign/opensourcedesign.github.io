@@ -1,0 +1,118 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+{{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+{{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+<title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+<link>{{ .Permalink }}</link>
+<description>{{ with .Description }}{{ . | plainify | htmlEscape }}{{ else }}{{ with .Site.Params.description }}{{ . | htmlEscape }}{{ end }}{{ end }}</description>
+<language>{{ .Site.Language.LanguageCode }}</language>
+<copyright>© {{ now.Year }} {{ .Site.Title }}. Content licensed under CC BY-SA 4.0.</copyright>
+<lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+<generator>Hugo {{ hugo.Version }}</generator>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<atom:link href="{{ .Permalink }}feed.xml" rel="self" type="application/rss+xml"/>
+{{- with .Site.Params.author }}
+<managingEditor>{{ . }}</managingEditor>
+<webMaster>{{ . }}</webMaster>
+{{- end }}
+<image>
+<url>{{ "images/opensourcedesign-logo-icon.png" | absURL }}</url>
+<title>{{ .Site.Title }}</title>
+<link>{{ .Site.BaseURL }}</link>
+<width>144</width>
+<height>144</height>
+</image>
+{{- range $pages }}
+{{- $fullContent := "" -}}
+{{- with .Params.image -}}
+{{- $fullContent = printf "%s<figure><img src=\"%s\" alt=\"%s\"/></figure>" $fullContent (. | absURL) ($.Title | htmlEscape) -}}
+{{- end -}}
+{{- if eq .Section "jobs" -}}
+{{- $fullContent = printf "%s<div style=\"margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;\">" $fullContent -}}
+{{- with .Params.organization }}{{ $fullContent = printf "%s<p><strong>Organization:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.status }}{{ $fullContent = printf "%s<p><strong>Status:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.compensation }}{{ $fullContent = printf "%s<p><strong>Compensation:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.role }}{{ $fullContent = printf "%s<p><strong>Role:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- $fullContent = printf "%s</div>" $fullContent -}}
+{{- end -}}
+{{- if eq .Section "events" -}}
+{{- $fullContent = printf "%s<div style=\"margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;\">" $fullContent -}}
+{{- with .Params.eventDate }}{{ $fullContent = printf "%s<p><strong>Date:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.time }}{{ $fullContent = printf "%s<p><strong>Time:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.location }}{{ $fullContent = printf "%s<p><strong>Location:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- $fullContent = printf "%s</div>" $fullContent -}}
+{{- end -}}
+{{- if eq .Section "people" -}}
+{{- $fullContent = printf "%s<div style=\"margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;\">" $fullContent -}}
+{{- with .Params.name }}{{ $fullContent = printf "%s<p><strong>Name:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.status }}{{ $fullContent = printf "%s<p><strong>Status:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.availability }}{{ $fullContent = printf "%s<p><strong>Availability:</strong> %s</p>" $fullContent . }}{{ end -}}
+{{- with .Params.website }}{{ $fullContent = printf "%s<p><strong>Website:</strong> <a href=\"%s\">%s</a></p>" $fullContent . . }}{{ end -}}
+{{- $fullContent = printf "%s</div>" $fullContent -}}
+{{- end -}}
+{{- $fullContent = printf "%s%s" $fullContent .Content -}}
+{{- if eq .Section "jobs" -}}
+{{- with .Params.how_to_apply -}}
+{{- $fullContent = printf "%s<div style=\"margin-top:1.5em;padding:1em;background:#e8f5e9;border-radius:8px;\"><p><strong>How to Apply:</strong></p>" $fullContent -}}
+{{- if reflect.IsSlice . -}}
+{{- $fullContent = printf "%s<ul>" $fullContent -}}
+{{- range . }}{{ $fullContent = printf "%s<li>%s</li>" $fullContent . }}{{ end -}}
+{{- $fullContent = printf "%s</ul>" $fullContent -}}
+{{- else -}}
+{{- $fullContent = printf "%s<p>%s</p>" $fullContent . -}}
+{{- end -}}
+{{- $fullContent = printf "%s</div>" $fullContent -}}
+{{- end -}}
+{{- end -}}
+{{- $fullContent = printf "%s<p style=\"margin-top:2em;font-size:0.9em;color:#666;\"><a href=\"%s\">Read more on opensourcedesign.net →</a></p>" $fullContent .Permalink -}}
+<item>
+<title>{{ .Title | htmlEscape }}</title>
+<link>{{ .Permalink }}</link>
+<guid isPermaLink="true">{{ .Permalink }}</guid>
+<pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+{{- with .Params.author }}
+<dc:creator>{{ . | htmlEscape }}</dc:creator>
+<author>{{ . | htmlEscape }}</author>
+{{- end }}
+{{- with .Params.organization }}
+<dc:creator>{{ . | htmlEscape }}</dc:creator>
+{{- end }}
+<description>{{ with .Description }}{{ . | plainify | htmlEscape }}{{ else }}{{ .Summary | plainify | htmlEscape }}{{ end }}</description>
+<content:encoded>{{ $fullContent | htmlEscape }}</content:encoded>
+{{- with .Params.tags }}
+{{- if reflect.IsSlice . -}}
+{{- range . }}
+<category>{{ . | htmlEscape }}</category>
+{{- end -}}
+{{- else -}}
+{{- $tagStr := printf "%v" . -}}
+{{- range split $tagStr "," }}
+{{- $t := trim . " " -}}
+{{- if $t }}
+<category>{{ $t | htmlEscape }}</category>
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end }}
+{{- with .Section }}
+<category>{{ . | title }}</category>
+{{- end }}
+{{- with .Params.image }}
+<media:content url="{{ . | absURL }}" medium="image"/>
+<enclosure url="{{ . | absURL }}" type="image/jpeg"/>
+{{- end }}
+</item>
+{{- end }}
+</channel>
+</rss>

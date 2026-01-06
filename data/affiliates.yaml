@@ -1,0 +1,18 @@
+# Organizations we collaborate with as affiliates
+# Add/remove affiliates here - no need to edit HTML templates
+
+- name: Electronic Frontier Foundation
+  url: https://www.eff.org/electronic-frontier-alliance/allies
+  logo: /images/supporters/eff.svg
+  height: h-8
+
+- name: Free Software Foundation Europe
+  url: https://fsfe.org/about/associates/associates.en.html
+  logo: /images/supporters/fsfe.svg
+  height: h-10
+
+- name: Open Source Initiative
+  url: https://opensource.org/affiliates
+  logo: /images/supporters/osi.svg
+  height: h-20
+

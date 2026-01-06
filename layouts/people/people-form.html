@@ -1,0 +1,301 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    {{/* Header Card */}}
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+      <header>
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">Join the Community</h1>
+        <p class="mt-4 text-base text-slate-600">List yourself on Open Source Design and connect with projects looking for designers. Your profile will be reviewed by our community moderators before publishing.</p>
+      </header>
+
+      {{/* Guidelines */}}
+      <div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
+        <div class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+          </svg>
+          <div class="text-sm text-amber-800">
+            <p>Please read our <a class="font-semibold underline underline-offset-2 hover:no-underline" href="{{ "/code-of-conduct/" | relURL }}">Code of Conduct</a> before submitting your profile.</p>
+          </div>
+        </div>
+      </div>
+
+      {{/* Form */}}
+      <form id="osd-people-form" class="mt-10 space-y-4" novalidate>
+        {{/* About You Section */}}
+        <fieldset class="space-y-6">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">1</span>
+            About you
+          </legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700" for="name">Your name <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="name" name="name" placeholder="e.g., Jane Designer" required />
+            </div>
+
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700" for="bio">Short bio <span class="text-red-500">*</span></label>
+              <p class="text-xs text-slate-500">Tell us about yourself, your experience, and what kind of work you enjoy. Markdown is supported.</p>
+              <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="bio" name="bio" placeholder="I'm a UX designer passionate about open source..." required></textarea>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="url">Portfolio / Website <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="url" name="url" type="url" inputmode="url" placeholder="https://..." required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="location">Location <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="location" name="location" placeholder="e.g., Berlin, Germany" />
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Availability Section */}}
+        <fieldset class="space-y-6 border-t border-slate-200">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">2</span>
+            Availability & Skills
+          </legend>
+
+          <div class="space-y-3">
+            <div class="text-sm font-medium text-slate-700">Current availability <span class="text-red-500">*</span></div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:ring-1 has-[:checked]:ring-emerald-500">
+                <input type="radio" name="availability" value="available" class="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500" checked />
+                <div>
+                  <div class="font-semibold text-slate-900">Available</div>
+                  <div class="text-sm text-slate-500">Open for new projects</div>
+                </div>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 has-[:checked]:ring-1 has-[:checked]:ring-amber-500">
+                <input type="radio" name="availability" value="booked" class="mt-1 h-4 w-4 text-amber-600 focus:ring-amber-500" />
+                <div>
+                  <div class="font-semibold text-slate-900">Booked</div>
+                  <div class="text-sm text-slate-500">Currently not taking work</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="rate">Your rate <span class="text-slate-400">(optional)</span></label>
+            <p class="text-xs text-slate-500">How do you typically charge? Be specific: fixed amount, hourly, or if you do volunteer work.</p>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="rate" name="rate" placeholder="e.g., $50/hour, €500 fixed, or Volunteer only" />
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="skills">Skills & expertise <span class="text-red-500">*</span></label>
+            <p class="text-xs text-slate-500">Comma-separated list of your skills and tools.</p>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="skills" name="skills" placeholder="e.g., UX Design, UI Design, Figma, User Research, Accessibility" required />
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="projects">Open source projects you've contributed to <span class="text-slate-400">(optional)</span></label>
+            <p class="text-xs text-slate-500">Comma-separated list of projects.</p>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="projects" name="projects" placeholder="e.g., GNOME, Firefox, Nextcloud" />
+          </div>
+        </fieldset>
+
+        {{/* Social Links Section */}}
+        <fieldset class="space-y-6 border-t border-slate-200">
+          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">3</span>
+            Social & Contact
+          </legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="github">GitHub <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="github" name="github" placeholder="username" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="twitter">Twitter/X <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="twitter" name="twitter" placeholder="username" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="linkedin">LinkedIn <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="linkedin" name="linkedin" placeholder="in/username" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="mastodon">Mastodon <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="mastodon" name="mastodon" placeholder="@user@instance.social" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="dribbble">Dribbble <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="dribbble" name="dribbble" placeholder="username" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="behance">Behance <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="behance" name="behance" placeholder="username" />
+            </div>
+          </div>
+
+          {{/* Honeypot */}}
+          <div class="hidden" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+        </fieldset>
+
+        {{/* Submit */}}
+        <div class="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-6">
+          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2" type="submit" id="osd-submit">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM3 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z"/></svg>
+            Submit profile
+          </button>
+          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50" type="reset" id="osd-reset">Reset</button>
+          <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+
+    {{/* Result Card */}}
+    <div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm" id="osd-result" hidden>
+      <h2 class="flex items-center gap-2 text-sm font-semibold text-emerald-900" id="osd-result-title">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Submission result
+      </h2>
+      <div class="mt-3 text-sm text-emerald-800" id="osd-result-body"></div>
+      <div class="mt-4" id="osd-result-extra"></div>
+    </div>
+
+    <script>
+      (function () {
+        var form = document.getElementById('osd-people-form');
+        if (!form) return;
+
+        var note = document.getElementById('osd-form-note');
+        var out = document.getElementById('osd-result');
+        var outTitle = document.getElementById('osd-result-title');
+        var outBody = document.getElementById('osd-result-body');
+        var outExtra = document.getElementById('osd-result-extra');
+
+        function slugify(str) {
+          str = (str || '').trim().toLowerCase();
+          str = str.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+          str = str.replace(/[^a-z0-9\s-]/g, '');
+          str = str.replace(/\s+/g, '-').replace(/-+/g, '-');
+          return str;
+        }
+
+        function yq(v) {
+          var s = String(v == null ? '' : v);
+          s = s.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+          return '"' + s + '"';
+        }
+
+        function getRadio(name) {
+          var el = form.querySelector('input[name="' + name + '"]:checked');
+          return el ? el.value : '';
+        }
+
+        function tagsToList(s) {
+          return String(s || '')
+            .split(',')
+            .map(function (x) { return x.trim(); })
+            .filter(Boolean);
+        }
+
+        function showResult(title, bodyHtml, extraHtml) {
+          if (outTitle) outTitle.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ' + title;
+          if (outBody) outBody.innerHTML = bodyHtml || '';
+          if (outExtra) outExtra.innerHTML = extraHtml || '';
+          if (out) out.hidden = false;
+          out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateMarkdown(data) {
+          var slug = slugify(data.name);
+          var path = 'site/content/people/' + slug + '.md';
+
+          var skillsList = tagsToList(data.skills);
+          var projectsList = tagsToList(data.projects);
+
+          var fm = [];
+          fm.push('---');
+          fm.push('name: ' + yq(data.name));
+          fm.push('url: ' + yq(data.url));
+          fm.push('availability: ' + yq(data.availability));
+          if (data.rate) fm.push('rate: ' + yq(data.rate));
+          if (data.location) fm.push('location: ' + yq(data.location));
+          if (data.github) fm.push('github: ' + yq(data.github));
+          if (data.twitter) fm.push('twitter: ' + yq(data.twitter));
+          if (data.linkedin) fm.push('linkedin: ' + yq(data.linkedin));
+          if (data.mastodon) fm.push('mastodon: ' + yq(data.mastodon));
+          if (data.dribbble) fm.push('dribbble: ' + yq(data.dribbble));
+          if (data.behance) fm.push('behance: ' + yq(data.behance));
+
+          if (skillsList.length) {
+            fm.push('skills:');
+            skillsList.forEach(function (s) { fm.push('  - ' + yq(s)); });
+          }
+
+          if (projectsList.length) {
+            fm.push('projects:');
+            projectsList.forEach(function (p) { fm.push('  - ' + yq(p)); });
+          }
+
+          fm.push('---');
+          fm.push('');
+          fm.push(data.bio);
+          fm.push('');
+
+          return { path: path, markdown: fm.join('\n') };
+        }
+
+        form.addEventListener('reset', function () {
+          if (out) out.hidden = true;
+          if (note) note.textContent = '';
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (note) note.textContent = '';
+
+          var honeypot = (form.company || {}).value;
+          if (honeypot) return;
+
+          var data = {
+            name: form.name.value.trim(),
+            bio: form.bio.value.trim(),
+            url: form.url.value.trim(),
+            location: form.location.value.trim(),
+            availability: getRadio('availability'),
+            rate: form.rate.value.trim(),
+            skills: form.skills.value.trim(),
+            projects: form.projects.value.trim(),
+            github: form.github.value.trim(),
+            twitter: form.twitter.value.trim(),
+            linkedin: form.linkedin.value.trim(),
+            mastodon: form.mastodon.value.trim(),
+            dribbble: form.dribbble.value.trim(),
+            behance: form.behance.value.trim()
+          };
+
+          if (!data.name || !data.bio || !data.url || !data.skills) {
+            if (note) note.textContent = 'Please fill in all required fields.';
+            return;
+          }
+
+          out.classList.remove('border-emerald-200', 'bg-emerald-50');
+          out.classList.add('border-slate-200', 'bg-white');
+
+          var gen = generateMarkdown(data);
+          showResult(
+            'Copy this file and open a PR',
+            '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main/site/content/people" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a>.</p><p class="mt-2 text-slate-700">Suggested filename: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path.split('/').pop() + '</code></p>',
+            '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-500/20" readonly>' + gen.markdown.replace(/</g,'&lt;') + '</textarea>'
+          );
+        });
+      })();
+    </script>
+  </div>
+{{ end }}
+

@@ -1,0 +1,128 @@
+baseURL = "https://opensourcedesign.net/"
+languageCode = "en"
+title = "Open Source Design"
+
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 20
+
+[services]
+  [services.rss]
+    limit = 50
+
+[mediaTypes]
+  [mediaTypes."application/rss+xml"]
+    suffixes = ["xml"]
+  [mediaTypes."text/calendar"]
+    suffixes = ["ics"]
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed"
+    isPlainText = false
+  [outputFormats.Calendar]
+    mediaType = "text/calendar"
+    baseName = "calendar"
+    isPlainText = true
+    rel = "alternate"
+
+[params]
+  description = "We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software."
+  # Serverless job submission endpoint (POST). When empty, the site falls back to generating Markdown for manual PRs.
+  jobSubmitEndpoint = ""
+  # Optional Cloudflare Turnstile site key for spam protection.
+  turnstileSiteKey = ""
+
+  # Repository and external links
+  repoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io"
+  jobsRepoURL = "https://github.com/opensourcedesign/jobs"
+  forumURL = "https://discourse.opensourcedesign.net"
+  calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
+  fossJobsURL = "https://www.fossjobs.net/"
+  openCollectiveURL = "https://opencollective.com/opensourcedesign"
+  jobGuidelinesURL = "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925"
+
+  # Twitter handle (without @)
+  twitterHandle = "opensrcdesign"
+
+  [params.cards]
+    summaryMax = 120
+    maxTags = 3
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks]
+  # Preserve the current production URL structure for job detail pages.
+  # (Current site links look like /jobs/jobs/2025-11-20-...)
+  jobs = "/jobs/jobs/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[menu]
+  [[menu.main]]
+    name = "Goals"
+    pageRef = "/goals"
+    weight = 10
+  [[menu.main]]
+    name = "Articles"
+    pageRef = "/articles"
+    weight = 20
+  [[menu.main]]
+    name = "Resources"
+    pageRef = "/resources"
+    weight = 30
+  [[menu.main]]
+    name = "Jobs"
+    pageRef = "/jobs"
+    weight = 40
+  [[menu.main]]
+    name = "Events"
+    pageRef = "/events"
+    weight = 50
+  [[menu.main]]
+    name = "Archive"
+    pageRef = "/archive"
+    weight = 60
+  [[menu.main]]
+    name = "Forum"
+    url = "https://discourse.opensourcedesign.net/"
+    weight = 70
+
+[[params.social]]
+  name = "GitHub"
+  url = "https://github.com/opensourcedesign"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Twitter"
+  url = "https://twitter.com/opensrcdesign"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Mastodon"
+  url = "https://mastodon.social/@opensourcedesign"
+  rel = "me noopener noreferrer"
+[[params.social]]
+  name = "Open Collective"
+  url = "https://opencollective.com/opensourcedesign"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Forum"
+  url = "https://discourse.opensourcedesign.net"
+  rel = "noopener noreferrer"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      linkify = true
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false

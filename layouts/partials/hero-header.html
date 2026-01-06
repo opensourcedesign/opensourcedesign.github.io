@@ -1,0 +1,87 @@
+{{/*
+  Hero Header Partial
+  
+  Usage: {{ partial "hero-header.html" (dict "page" . "icon" "briefcase" "buttons" $buttons) }}
+  
+  Parameters:
+  - page: The current page context (required)
+  - icon: Icon name - "briefcase", "users", "calendar", "article" (optional)
+  - buttons: Slice of button configs (optional)
+    Each button: (dict "text" "Label" "href" "/path/" "icon" "plus" "primary" true)
+*/}}
+
+{{ $page := .page }}
+{{ $icon := .icon | default "" }}
+{{ $buttons := .buttons | default (slice) }}
+
+<section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white" aria-labelledby="page-heading">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        {{/* Icon */}}
+        {{ if $icon }}
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
+            {{ if eq $icon "briefcase" }}
+              <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/>
+              </svg>
+            {{ else if eq $icon "users" }}
+              <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+              </svg>
+            {{ else if eq $icon "calendar" }}
+              <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+              </svg>
+            {{ else if eq $icon "article" }}
+              <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/>
+              </svg>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{/* Title */}}
+        <h1 id="page-heading" class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{{ $page.Title }}</h1>
+
+        {{/* Content or Description */}}
+        {{ with $page.Content }}
+          <div class="mt-4 text-lg text-slate-300 prose prose-invert prose-a:text-white prose-a:underline prose-a:decoration-white/50 prose-a:underline-offset-4 hover:prose-a:decoration-white max-w-none">{{ . }}</div>
+        {{ else }}
+          {{ with $page.Description }}
+            <p class="mt-4 text-lg text-slate-300">{{ . }}</p>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{/* Buttons */}}
+      {{ if $buttons }}
+        <div class="flex flex-wrap gap-3">
+          {{ range $buttons }}
+            {{ $isPrimary := .primary | default false }}
+            {{ $isExternal := hasPrefix .href "http" }}
+            <a 
+              class="{{ if $isPrimary }}inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900{{ else }}inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50{{ end }}"
+              href="{{ .href }}"
+              {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+              {{ with .ariaLabel }}aria-label="{{ . }}"{{ end }}
+            >
+              {{/* Button Icons */}}
+              {{ if eq .icon "plus" }}
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              {{ else if eq .icon "user-plus" }}
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM3 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z"/></svg>
+              {{ else if eq .icon "rss" }}
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+              {{ else if eq .icon "calendar" }}
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+              {{ end }}
+              {{ .text }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,38 @@
+# Organizations that support Open Source Design
+# Add/remove supporters here - no need to edit HTML templates
+
+- name: Creative Commons
+  url: https://creativecommons.org
+  logo: /images/supporters/creativecommons.svg
+  height: h-8
+
+- name: Discourse
+  url: https://www.discourse.org
+  logo: /images/supporters/discourse.svg
+  height: h-10
+
+- name: Mozilla
+  url: https://www.mozilla.org
+  logo: /images/supporters/mozilla.svg
+  height: h-10
+
+- name: Nextcloud
+  url: https://nextcloud.com
+  logo: /images/supporters/nextcloud.svg
+  height: h-12
+
+- name: Open Technology Fund
+  url: https://www.opentech.fund
+  logo: /images/supporters/opentechfund.svg
+  height: h-8
+
+- name: Red Hat
+  url: https://www.redhat.com
+  logo: /images/supporters/redhat.svg
+  height: h-10
+
+- name: Wikimedia Germany
+  url: https://www.wikimedia.de
+  logo: /images/supporters/wikimedia-germany.svg
+  height: h-10
+

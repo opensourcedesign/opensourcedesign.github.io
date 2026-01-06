@@ -1,0 +1,143 @@
+{{ define "main" }}
+  {{ $name := .Params.name | default .Title }}
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <header class="p-6 sm:p-10">
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">{{ $name }}</h1>
+        {{ if and .Title (ne .Title $name) }}
+          <p class="mt-3 text-base text-slate-700">{{ .Title }}</p>
+        {{ end }}
+
+        <div class="mt-4 flex flex-wrap gap-2 text-sm">
+          {{ with .Params.status }}
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">
+              <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {{ . }}
+            </span>
+          {{ end }}
+          {{ with .Params.availability }}
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">
+              <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {{ . }}
+            </span>
+          {{ end }}
+          {{ with (index .Params "hourly rate") }}
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">
+              <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {{ . }}
+            </span>
+          {{ else }}
+            {{ with .Params.rate }}
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700">
+                <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                {{ . }}
+              </span>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          {{ with .Params.website }}
+            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+              Website
+            </a>
+          {{ end }}
+
+          {{ with .Params.github }}
+            {{ $gh := printf "%v" . }}
+            {{ $ghUrl := cond (hasPrefix $gh "http") $gh (printf "https://github.com/%s" $gh) }}
+            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50" href="{{ $ghUrl }}" target="_blank" rel="noopener noreferrer">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          {{ end }}
+
+          {{ with .Params.twitter }}
+            {{ $tw := printf "%v" . }}
+            {{ $twUrl := cond (hasPrefix $tw "http") $tw (printf "https://twitter.com/%s" (strings.TrimPrefix "@" $tw)) }}
+            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50" href="{{ $twUrl }}" target="_blank" rel="noopener noreferrer">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter
+            </a>
+          {{ end }}
+
+          {{ with .Params.linkedin }}
+            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          {{ end }}
+        </div>
+      </header>
+
+      {{ with .Content }}
+        <div class="border-t border-slate-100 p-6 sm:p-10">
+          <div class="prose prose-slate max-w-none">{{ . }}</div>
+        </div>
+      {{ end }}
+
+      <div class="space-y-8 border-t border-slate-100 p-6 sm:p-10">
+        {{ with .Params.projects }}
+          {{ $t := (replace (printf "%v" .) "\r\n" "\n") }}
+          {{ $t = (replace $t "\r" "\n") }}
+          <section>
+            <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg>
+              Projects
+            </h2>
+            <div class="mt-3 prose prose-sm prose-slate max-w-none">{{ $t | markdownify }}</div>
+          </section>
+        {{ end }}
+
+        {{ with .Params.roles }}
+          <section>
+            <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+              Roles
+            </h2>
+            {{ if (reflect.IsSlice .) }}
+              <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-800">
+                {{ range . }}<li>{{ (printf "%v" .) | markdownify }}</li>{{ end }}
+              </ul>
+            {{ else }}
+              <div class="mt-3 prose prose-sm prose-slate max-w-none">{{ (printf "%v" .) | markdownify }}</div>
+            {{ end }}
+          </section>
+        {{ end }}
+
+        {{ with .Params.tags }}
+          {{ $tags := . }}
+          <section>
+            <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg>
+              Tags
+            </h2>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {{ if (reflect.IsSlice $tags) }}
+                {{ range $tags }}
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700">{{ . }}</span>
+                {{ end }}
+              {{ else }}
+                {{ $raw := printf "%v" $tags }}
+                {{ range (split $raw ",") }}
+                  {{ $t := trim . " " }}
+                  {{ if $t }}
+                    <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700">{{ $t }}</span>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            </div>
+          </section>
+        {{ end }}
+
+        <footer class="pt-4">
+          <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" href="{{ "/people/" | relURL }}">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+            Back to people
+          </a>
+        </footer>
+      </div>
+    </div>
+  </article>
+{{ end }}

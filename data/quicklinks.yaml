@@ -1,0 +1,42 @@
+# Quick links shown in footer - edit here to update footer links
+# These complement the main navigation
+
+community:
+  - name: Forum
+    url: https://discourse.opensourcedesign.net/
+    external: true
+  - name: GitHub
+    url: https://github.com/opensourcedesign
+    external: true
+  - name: Open Collective
+    url: https://opencollective.com/opensourcedesign
+    external: true
+  - name: Community Calendar
+    url: https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now
+    external: true
+
+resources:
+  - name: Goals
+    url: /goals/
+  - name: Manifesto
+    url: /manifesto/
+  - name: By-Laws
+    url: /by-laws/
+  - name: Governance
+    url: /governance/
+  - name: Code of Conduct
+    url: /code-of-conduct/
+  - name: Brand Assets
+    url: /brand/
+
+contribute:
+  - name: Post a Job
+    url: /jobs/job-form/
+  - name: Join as Designer
+    url: /people/join/
+  - name: Write an Article
+    url: /articles/how-to-add-an-article-to-open-source-design/
+  - name: Contribute on GitHub
+    url: https://github.com/opensourcedesign/opensourcedesign.github.io
+    external: true
+

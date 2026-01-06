@@ -1,0 +1,37 @@
+{{ $current := .RelPermalink }}
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/85 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <a class="flex items-center gap-2 rounded-md font-semibold tracking-tight text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" href="{{ "/" | relURL }}">
+      <img src="{{ "/images/opensourcedesign-logo.svg" | relURL }}" alt="Open Source Design" class="h-8 w-8" />
+      <span class="hidden sm:inline">Open Source Design</span>
+      <span class="sm:hidden">OSD</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-2 md:flex">
+      {{ $links := site.Menus.main }}
+      {{ range $links }}
+        {{ $isExternal := hasPrefix .URL "http" }}
+        {{ $active := and (not $isExternal) (or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $current .URL) (hasPrefix $current .URL)) }}
+        <a class="rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 hover:bg-slate-100 hover:text-slate-950 {{ if $active }}bg-slate-900 text-white hover:bg-slate-900 hover:text-white{{ else }}text-slate-700{{ end }}" href="{{ .URL }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }} {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    <details class="relative group md:hidden">
+      <summary class="flex cursor-pointer list-none items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 group-open:border-slate-900 group-open:bg-slate-900 group-open:text-white">
+        Menu
+        <svg class="h-4 w-4 text-slate-500 transition-transform group-open:rotate-180 group-open:text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.24 4.5a.75.75 0 0 1-1.08 0l-4.24-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+        </svg>
+      </summary>
+      <div class="absolute right-0 top-full mt-2 w-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-lg">
+        <nav aria-label="Mobile" class="flex flex-col">
+          {{ range $links }}
+            {{ $isExternal := hasPrefix .URL "http" }}
+            {{ $active := and (not $isExternal) (or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $current .URL) (hasPrefix $current .URL)) }}
+            <a class="rounded-lg px-3 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white {{ if $active }}bg-slate-900 text-white{{ else }}text-slate-800 hover:bg-slate-50{{ end }}" href="{{ .URL }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }} {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
+          {{ end }}
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
