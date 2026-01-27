@@ -45,11 +45,9 @@ German artist. Free to use without attribution and free to modify.
 * [Iconoir](https://iconoir.com/) SVG. MIT licensed.
 * [Inkscape Open Symbols](https://github.com/Xaviju/inkscape-open-symbols) Open
 source icon sets to use as Inkscape symbols.
-* [Mono Icons](https://icons.mono.company) A simple, consistent open-source icon set designed to be used in a wide variety of digital products. MIT licensed. [GitHub](https://github.com/mono-company/mono-icons)
 * [Pictogramas](https://github.com/adrianmg/pictogramas) Open source free icons
 * [Remix Icons](https://remixicon.com/) Huge repo of consistent neutrally styled icons. [GitHub](https://github.com/Remix-Design/remixicon)
 * [React Icons](https://react-icons.github.io/react-icons/) SVG react icons of popular icon packs. [GitHub](https://github.com/react-icons/react-icons)
-* [React Feather Icons](https://www.npmjs.com/package/react-feather) Collection of simply beautiful open source icons for React.js. [GitHub](https://github.com/feathericons/react-feather)
 * [Styled Icons](https://styled-icons.js.org/) Icon packs like Font Awesome, Material Design, and Octicons, available as React Styled Components. [GitHub](https://github.com/jacobwgillespie/styled-icons)
 * [The Noun Project](https://thenounproject.com) CC and purchasable icons.
 for personal and commercial purposes.
@@ -179,7 +177,7 @@ Things](https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/046506710
 * [Humane by Design ](https://humanebydesign.com/)
 * [Human Flourishing Design Guide](https://flourishing.cc/)
 * [Designing for Trust](https://medium.com/greater-than-experience-design/data-trust-by-design-principles-patterns-and-best-practices-part-1-defffaac014b)
-* [Inclusive Design: Cards for Humanity ](https://cardsforhumanity.idean.com/)
+* [Inclusive Design: Cards for Humanity ](https://web.archive.org/web/20240322002906/https://cardsforhumanity.idean.com/)
 
 ## Open Source and Design Reads
 
@@ -198,7 +196,7 @@ Research Paper.
 Community](https://www.academia.edu/4303779/An_Exploration_of_Fedora_s_Online_Open_Source_Development_Community)
 Research Paper.
 * [Designers and women in open
-source](https://old.vi.to/designers-and-women-in-open-source.html) Why designing
+source](https://web.archive.org/web/20220625033024/https://old.vi.to/designers-and-women-in-open-source.html) Why designing
 is difficult for Open Source.
 * [Designers, Women, and Hostility in Open Source
 Project](https://smarterware.org/7550/designers-women-and-hostility-in-open-source)
@@ -258,4 +256,4 @@ Learn about design concepts! :)
 designers.
 * [Design Lab](https://trydesignlab.com/) Design course with mentorship and
 projects.
-* [Voice and Tone](https://voiceandtone.com/) Learn about writing good copy.
+* [Voice and Tone](https://web.archive.org/web/20251230104449/https://voiceandtone.com/) Learn about writing good copy.
