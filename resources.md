@@ -177,7 +177,7 @@ Things](https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/046506710
 * [Humane by Design ](https://humanebydesign.com/)
 * [Human Flourishing Design Guide](https://flourishing.cc/)
 * [Designing for Trust](https://medium.com/greater-than-experience-design/data-trust-by-design-principles-patterns-and-best-practices-part-1-defffaac014b)
-* [Inclusive Design: Cards for Humanity ](https://web.archive.org/web/20240322002906/https://cardsforhumanity.idean.com/)
+* [Inclusive Design: Cards for Humanity ](http://web.archive.org/web/20230127140001/https://cardsforhumanity.idean.com/)
 
 ## Open Source and Design Reads
 
@@ -244,7 +244,7 @@ animations.
 * [Egghead](https://egghead.io/) to learn the Angular framework.
 * [Tota11y](https://github.com/Khan/tota11y) a bookmarklet to check that your
 website is a11y compliant.
-- [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
+* [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 * [Course: How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 
@@ -256,4 +256,4 @@ Learn about design concepts! :)
 designers.
 * [Design Lab](https://trydesignlab.com/) Design course with mentorship and
 projects.
-* [Voice and Tone](https://web.archive.org/web/20251230104449/https://voiceandtone.com/) Learn about writing good copy.
+* [Voice and Tone](https://web.archive.org/web/20180820235305/https://voiceandtone.com/) Learn about writing good copy.
