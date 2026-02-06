@@ -248,6 +248,7 @@ animations.
 website is a11y compliant.
 - [Open Source Guide: How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 * [Course: How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+* [The Learning People](https://www.learningpeople.com/uk/courses/coding-courses/) study accredited online coding courses.
 
 
 ## Learn to Design
