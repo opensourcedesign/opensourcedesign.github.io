@@ -15,7 +15,7 @@ Editing content on [opensourcedesign.net][osd-net] can be done in 2 ways, all of
 
     ![](images/github-file-tools.png)
 
-2. [Setting the website up locally](#code--design-the-website), which is more technical
+1. [Setting the website up locally](#code--design-the-website), which is more technical
 
 ## Code & Design The Website
 
@@ -40,7 +40,7 @@ You can install these dependencies using the following guides:
 
 #### Installation Steps
 
-1. Fork and clone the main website repository
+1. Clone the main website repository
 
     ```sh
     git clone https://github.com/opensourcedesign/opensourcedesign.github.io
