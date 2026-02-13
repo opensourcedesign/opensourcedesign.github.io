@@ -7,54 +7,44 @@ Website of the Open Source Design community, hosted on GitHub Pages.
 [![Mastodon Follow](https://img.shields.io/badge/mastodon-@opensourcedesign-blue?logo=mastodon)](https://mastodon.social/@opensourcedesign)
 [![Bluesky Follow](https://img.shields.io/badge/bluesky-OpenSourceDesign-blue?logo=bluesky)](https://bsky.app/profile/opensourcedesign.net)
 
-## Edit Website
+## Editing Website Content
 
 Editing content on [opensourcedesign.net][osd-net] can be done in 2 ways, all of which require a GitHub account.
 
 1. Using GitHub's nifty file editor, which is quick but limited:
 
-    ![](images/github-file-tools.png)
+    ![GitHub File Tools](images/github-file-tools.png)
 
-1. [Setting the website up locally](#code--design-the-website), which is more technical
+1. [Setting the website up locally](#coding--designing-the-website), which is more technical
 
-## Code & Design The Website
+## Coding & Designing The Website
 
 To contribute to the [website](opensourcedesign.net), you'll need some basic terminal skills and knowledge of web development technologies like HTML, CSS, and JavaScript. The site is built with the following tools:
 
 - [Jekyll][jekyll]
 - [Bootstrap][bootstrap]
 
-### Installing
+### Prerequisites
 
-Before you begin, ensure you have a `Ruby` development environment and `Git` installed and configured to connect to GitHub with SSH.
+Before you begin, ensure you have [Docker](https://docker.com) and [Git](https://git-scm.com) installed, and Git is configured to connect to GitHub with SSH.
 
-#### Prerequisites
-
-- **Ruby**: Jekyll requires Ruby version 2.5.0 or higher.
-- **RubyGems**: Ruby package manager.
-- **GCC and Make**: Essential for compiling native extensions.
+- **Docker**: A container platform to run Jekyll without installing Ruby and its dependencies on your machine
+- **Git**: Version control system to manage code changes and collaborate with others
 
 You can install these dependencies using the following guides:
 
-- [Installing Ruby][installing-ruby]
+- [Installing Docker](https://docs.docker.com/get-docker/)
 - [Using GitHub with SSH][github-ssh]
 
-#### Installation Steps
+### Installation Steps
 
-1. **Install Bundler and Jekyll**
+Open your terminal and follow these steps to set up the website locally:
 
-    First, install Bundler, which manages Ruby dependencies:
-
-    ```sh
-    sudo gem install bundler
-    ```
-
-1. Fork and clone the main website repository
+1. Clone the main website repository
 
     ```sh
-    git clone --single-branch --branch master https://github.com/opensourcedesign/opensourcedesign.github.io.git
-    cd opensourcedesign.github.io/
-    bundle install
+    git clone --single-branch --branch master https://github.com/opensourcedesign/opensourcedesign.github.io
+    cd opensourcedesign.github.io
     ```
 
 1. Clone the jobs repository
@@ -62,14 +52,16 @@ You can install these dependencies using the following guides:
     Currently the job board is still a separate repository, but [we plan to move it in here](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/236).
 
     ```sh
-    git clone https://github.com/opensourcedesign/jobs.git
+    git clone https://github.com/opensourcedesign/jobs
     ```
 
 1. Build the static site & watch for files
 
     ```sh
-    bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
+    docker compose up
     ```
+
+    This builds the Jekyll site and starts a local server at `http://localhost:4000`. Any changes you make to the files will automatically trigger a rebuild and reload of the site.
 
 ## 👩‍🚀 Contributors, backers & sponsors
 
@@ -99,8 +91,6 @@ Please note that Open Source Design has a [Contributor Code of Conduct](https://
 **🔀 You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.** [Code license is AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) and content is [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/).
 
 [osd-net]: https://opensourcedesign.net
-[osd-org]: https://github.com/opensourcedesign/
 [jekyll]: https://jekyllrb.com
 [bootstrap]: https://getbootstrap.com
-[installing-ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [github-ssh]: https://help.github.com/articles/connecting-to-github-with-ssh/
