@@ -15,7 +15,7 @@ Editing content on [opensourcedesign.net][osd-net] can be done in 2 ways, all of
 
     ![GitHub File Tools](images/github-file-tools.png)
 
-1. [Setting the website up locally](#code--design-the-website), which is more technical
+1. [Setting the website up locally](#coding--designing-the-website), which is more technical
 
 ## Coding & Designing The Website
 
