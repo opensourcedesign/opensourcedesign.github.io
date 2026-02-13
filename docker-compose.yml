@@ -1,0 +1,9 @@
+services:
+  jekyll:
+    image: bretfisher/jekyll-serve:latest
+    command: "bundle exec jekyll serve --watch --force_polling --incremental --host 0.0.0.0 --livereload"
+    ports:
+      - 4000:4000
+      - 35729:35729
+    volumes:
+      - .:/site
