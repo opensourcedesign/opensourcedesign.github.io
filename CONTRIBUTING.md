@@ -37,14 +37,6 @@ Post something to our [job board](https://opensourcedesign.net/jobs/job-form/).
 
 Join us on our forum and [tell us about yourself](https://discourse.opensourcedesign.net/t/introductions-come-in-say-hi/41).
 
-## Want to organize a local or international event?
-
-Good! A whole bunch of us organize events all over the world. Get involved here on our [Event Organizing](https://github.com/opensourcedesign/events) repo.
-
-## Hope to get involved in making Open Source Design run?
-
-Have a look at the [Organization Repo](https://github.com/opensourcedesign/organization)
-
 ## Want to fund Open Source Design projects? (YES)
 
 [Give us some spare change](https://opencollective.com/opensourcedesign) every month and we will make cool stuff happen.
