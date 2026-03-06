@@ -61,6 +61,22 @@ This is another tricky point as some people see no harm in naming a code librari
 
 Most of our community are adults and should know when it's ok to flirt with other adults. However, we're also an online community whereby many people don't know each other in real life. Many of us come from different cultures. What might be seen as lighthearted flirting in one culture, might be extremely offensive to another culture. This discomfort causes people to not participate in communities. Therefore it's best to not do it. Open Source Design is a community about bringing great design to open source software, let's keep it focused on that.
 
+## Artificial Intelligence and Automated Tools
+
+As AI-assisted design and development tools such as Codex, Claude Code, etc. become increasingly common in open source workflows, we ask that community members and contributors apply the same values outlined in this Code of Conduct when using these tools.
+
+**Don't conceal AI usage**
+
+If you contribute work that is generated or assisted by AI tools, be upfront about it when sharing your code within the development community. Open Source Design is all about transparency, and that includes the use of AI.
+
+**Don't use AI to harm or exclude**
+
+AI tools can reflect or amplify biases within their training data. Be critical of outputs that may inadvertently stereotype, misrepresent, or exclude groups of people. The same standards of respect apply whether the work is produced by a human or AI.
+
+**Take responsibility for your contribution**
+
+Community members are accountable for the content they submit, and that includes AI assisted work. All work that is submitted, whether AI assisted, or human produced, is subject to this code of conduct outlined.
+
 ## Where this CoC is upheld
 
 This code of conduct especially pertains to our online community platforms (GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Discourse Forum: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
