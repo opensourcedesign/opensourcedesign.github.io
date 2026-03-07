@@ -63,19 +63,7 @@ Most of our community are adults and should know when it's ok to flirt with othe
 
 ## Artificial Intelligence and Automated Tools
 
-As AI-assisted design and development tools such as Codex, Claude Code, etc. become increasingly common in open source workflows, we ask that community members and contributors apply the same values outlined in this Code of Conduct when using these tools.
-
-**Don't conceal AI usage**
-
-If you contribute work that is generated or assisted by AI tools, be upfront about it when sharing your code within the development community. Open Source Design is all about transparency, and that includes the use of AI.
-
-**Don't use AI to harm or exclude**
-
-AI tools can reflect or amplify biases within their training data. Be critical of outputs that may inadvertently stereotype, misrepresent, or exclude groups of people. The same standards of respect apply whether the work is produced by a human or AI.
-
-**Take responsibility for your contribution**
-
-Community members are accountable for the content they submit, and that includes AI assisted work. All work that is submitted, whether AI assisted, or human produced, is subject to this code of conduct outlined.
+As AI-assisted design and development tools such as Codex, Claude Code, etc. become increasingly common in open source workflows, we ask that community members and contributors apply the same values outlined in this Code of Conduct when using these tools. Contributors remain responsible for reviewing and validating any AI-generated code or content before submitting it to the project.
 
 ## Where this CoC is upheld
 
