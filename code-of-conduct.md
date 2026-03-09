@@ -61,6 +61,10 @@ This is another tricky point as some people see no harm in naming a code librari
 
 Most of our community are adults and should know when it's ok to flirt with other adults. However, we're also an online community whereby many people don't know each other in real life. Many of us come from different cultures. What might be seen as lighthearted flirting in one culture, might be extremely offensive to another culture. This discomfort causes people to not participate in communities. Therefore it's best to not do it. Open Source Design is a community about bringing great design to open source software, let's keep it focused on that.
 
+## Artificial Intelligence and Automated Tools
+
+As AI-assisted design and development tools such as Codex, Claude Code, etc. become increasingly common in open source workflows, we ask that community members and contributors apply the same values outlined in this Code of Conduct when using these tools. Contributors remain responsible for reviewing and validating any AI-generated code or content before submitting it to the project.
+
 ## Where this CoC is upheld
 
 This code of conduct especially pertains to our online community platforms (GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Discourse Forum: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
