@@ -70,6 +70,10 @@ You can install these dependencies using the following guides:
     ```sh
     bundler exec jekyll serve --watch --config _config.yml,_config-dev.yml
     ```
+## Contributing
+
+* Before submitting a pull request, it is best to [open an issue first](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) to describe the suggestion and to get feedback (except it is a fix for obvious bugs or spelling mistakes)
+* Please do not submit AI-generated code changes, issues, documentation or code reviews. 
 
 ## 👩‍🚀 Contributors, backers & sponsors
 
