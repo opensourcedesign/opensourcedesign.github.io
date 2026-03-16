@@ -1,6 +1,7 @@
 ---
 title: "Manifesto"
-url: /manifesto/
+aliases:
+  - /manifesto/
 ---
 
 # Open Source Design Manifesto
