@@ -1,6 +1,8 @@
 ---
 title: "Governance"
-url: /governance/
+aliases:
+  - /governance/
+  - /processes/
 ---
 
 ## Why
