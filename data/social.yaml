@@ -6,11 +6,6 @@
   icon: github
   rel: noopener noreferrer
 
-- name: Twitter
-  url: https://twitter.com/opensrcdesign
-  icon: twitter
-  rel: noopener noreferrer
-
 - name: Mastodon
   url: https://mastodon.social/@opensourcedesign
   icon: mastodon

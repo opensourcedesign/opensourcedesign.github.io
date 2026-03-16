@@ -44,9 +44,6 @@ enableRobotsTXT = true
   openCollectiveURL = "https://opencollective.com/opensourcedesign"
   jobGuidelinesURL = "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925"
 
-  # Twitter handle (without @)
-  twitterHandle = "opensrcdesign"
-
   [params.cards]
     summaryMax = 120
     maxTags = 3
@@ -98,10 +95,6 @@ enableRobotsTXT = true
 [[params.social]]
   name = "GitHub"
   url = "https://github.com/opensourcedesign"
-  rel = "noopener noreferrer"
-[[params.social]]
-  name = "Twitter"
-  url = "https://twitter.com/opensrcdesign"
   rel = "noopener noreferrer"
 [[params.social]]
   name = "Mastodon"
