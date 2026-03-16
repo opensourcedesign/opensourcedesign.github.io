@@ -64,12 +64,12 @@ enableRobotsTXT = true
 
 [menu]
   [[menu.main]]
-    name = "Goals"
-    pageRef = "/goals"
+    name = "About Us"
+    pageRef = "/about-us"
     weight = 10
   [[menu.main]]
-    name = "Articles"
-    pageRef = "/articles"
+    name = "Events"
+    pageRef = "/events"
     weight = 20
   [[menu.main]]
     name = "Resources"
@@ -80,17 +80,9 @@ enableRobotsTXT = true
     pageRef = "/jobs"
     weight = 40
   [[menu.main]]
-    name = "Events"
-    pageRef = "/events"
-    weight = 50
-  [[menu.main]]
-    name = "Archive"
-    pageRef = "/archive"
-    weight = 60
-  [[menu.main]]
     name = "Forum"
     url = "https://discourse.opensourcedesign.net/"
-    weight = 70
+    weight = 50
 
 [[params.social]]
   name = "GitHub"

@@ -16,27 +16,22 @@ community:
     external: true
 
 resources:
-  - name: Goals
-    url: /goals/
   - name: Manifesto
-    url: /manifesto/
+    url: /about-us/manifesto/
   - name: By-Laws
-    url: /by-laws/
+    url: /about-us/by-laws/
   - name: Governance
-    url: /governance/
+    url: /about-us/governance/
   - name: Code of Conduct
-    url: /code-of-conduct/
+    url: /about-us/code-of-conduct/
   - name: Brand Assets
     url: /brand/
 
 contribute:
   - name: Post a Job
     url: /jobs/job-form/
-  - name: Join as Designer
-    url: /people/join/
-  - name: Write an Article
-    url: /articles/how-to-add-an-article-to-open-source-design/
+  - name: How to Join
+    url: /about-us/how-to-join/
   - name: Contribute on GitHub
     url: https://github.com/opensourcedesign/opensourcedesign.github.io
     external: true
-
