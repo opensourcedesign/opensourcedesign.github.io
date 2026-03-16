@@ -1,6 +1,7 @@
 ---
 title: "Resources"
-url: /resources/
+aliases:
+  - /articles/
 ---
 
 **This is a showcase of the many websites and platforms where you can find openly licensed icons, fonts, image, tools and other resources.** You can use them for any purpose, also commercial (some works have specific licenses, so always make sure it's fine to use).
