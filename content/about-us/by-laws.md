@@ -1,6 +1,7 @@
 ---
 title: "By-laws"
-url: /by-laws/
+aliases:
+  - /by-laws/
 ---
 
 ## Mission
