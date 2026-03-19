@@ -123,7 +123,7 @@ work needed.
 * [Scribus](https://www.scribus.net/) (page layout, desktop publishing)
 * [DisplayCAL](https://displaycal.net/) (color calibration)
 * [Kdenlive](https://kdenlive.org) (video editing)
-* [Figma](https://www.figma.com/) (UI Design,wireframes,prototypes)
+* [Penpot](https://penpot.app/) for UX design (similar to Figma but Open Source)
 * Design discussion on the issue tracker of the project. For example at
 [GitHub](https://github.com) – get an account, identify design issues,
 participate, and open new issues. Establish a »Design« tag on the tracker to
