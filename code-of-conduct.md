@@ -67,7 +67,7 @@ As AI-assisted design and development tools such as Codex, Claude Code, etc. bec
 
 ## Where this CoC is upheld
 
-This code of conduct especially pertains to our online community platforms (GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Twitter: [@opensrcdesign](https://twitter.com/opensrcdesign), Discourse Forum: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
+This code of conduct especially pertains to our online community platforms (GitHub: [@opensourcedesign](https://github.com/opensourcedesign), Mastodon: [@opensourcedesign@mastodon.social](https://mastodon.social/@opensourcedesign), Discourse Forum: [discourse.opensourcedesign.net](https://discourse.opensourcedesign.net)) as well as our offline events like the FOSDEM Open Source Design room, the FOSSASIA Design track, the Open Source Design Summit and local meetups. But it also pertains to your personal public communications and views.
 
 Being a respectful contributor to Open Source Design by day and a ragging (or even mild) neo-nazi by night is still grounds for expulsion. Some people see this as impinging on personal freedoms, we disagree, sorry.
 
