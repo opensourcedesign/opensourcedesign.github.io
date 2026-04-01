@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Help fund the recordings of talks for FOSS Backstage Design 2026"
-date: 2026-31-03
+date: 2026-03-31
 categories: design open source 
 author: Eriol Fox & Core Open Source Design team
 ---
