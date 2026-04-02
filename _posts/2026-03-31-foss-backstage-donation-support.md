@@ -6,8 +6,6 @@ categories: design open source
 author: Eriol Fox & Core Open Source Design team
 ---
 
-# Help fund the recordings of talks for FOSS Backstage Design 2026!
-
 ![a photo of the speakers podium from FOSS Backstage Design 2026](/images/events/foss-backstage-design-2026.jpg "a photo of the speakers podium from FOSS Backstage Design 2026")
 
 [FOSS Backstage Design](https://26.foss-backstage.design/) took place for the 3rd year in a row to bring together people working on the user experience of open source software. 
