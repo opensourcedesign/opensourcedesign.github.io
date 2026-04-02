@@ -4,6 +4,8 @@ title: Goals
 permalink: /goals/
 ---
 
+#### ❗This document is currently not being actively maintained. Please contact [@opensourcedesign](https://mastodon.social/@opensourcedesign) for further information
+
 # What We Want to Achieve
 
 ## 1. Open up the design process
@@ -48,4 +50,4 @@ We plan to achieve this by creating an awesome and inclusive community that attr
 
 
 *You would also like to have a look at the Open Design Foundation, fine folks there are doing some awesome works, similar to our goals.<br/>
-Open Design Foundation website has gone down due some reason, but we have an [archive of the site](https://web.archive.org/web/20210125021057/http://opendesign.foundation/) on our Wayback Machine and checkout their [GitHub repository](https://github.com/DesignOpen/designopen.github.io).*
+Open Design Foundation website has gone down due to some reason, but we have an [archive of the site](https://web.archive.org/web/20210125021057/http://opendesign.foundation/) on our Wayback Machine and checkout their [GitHub repository](https://github.com/DesignOpen/designopen.github.io).*
