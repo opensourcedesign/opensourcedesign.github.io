@@ -4,7 +4,7 @@ title: Goals
 permalink: /goals/
 ---
 
-#### ❗This document is currently not being actively maintained. Please contact [@opensourcedesign](https://mastodon.social/@opensourcedesign) for further information
+#### ❗This document is currently not being actively maintained.
 
 # What We Want to Achieve
 
