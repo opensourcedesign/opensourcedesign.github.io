@@ -113,6 +113,7 @@ work needed.
 * [Quant UX](https://www.quant-ux.com/#/) (mockups, UX testing, heatmaps)
 * [Krita](https://krita.org/en/) (art, digital painting)
 * [Blender](https://www.blender.org/) (3d rendering, animation, textures)
+* [BulkPicTools](https://bulkpictools.com) Free browser-based bulk image processor. Compress, convert, resize, and crop 1,000+ images at once — no upload, no account, works offline.
 * [darktable](https://www.darktable.org/) (photo workflow)
 * [RawTherapee](https://www.rawtherapee.com) (photo workflow)
 * [digiKam](https://www.digikam.org/) (photo management)
