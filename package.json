@@ -14,10 +14,16 @@
     "type": "git",
     "url": "https://github.com/opensourcedesign/opensourcedesign.github.io"
   },
-  "keywords": ["open-source", "design", "community", "hugo"],
+  "keywords": [
+    "open-source",
+    "design",
+    "community",
+    "hugo"
+  ],
   "license": "AGPL-3.0",
   "homepage": "https://opensourcedesign.net",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.4",
     "@tailwindcss/typography": "^0.5.19",
     "concurrently": "^9.2.1",
     "tailwindcss": "^4.1.18"
