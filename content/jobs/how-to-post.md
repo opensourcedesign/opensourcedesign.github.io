@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "OSS Projects: Here's how to make a successful job post"
 date: 2024-05-09
-categories: design open source
 author: Aila Araghi
 ---
 
