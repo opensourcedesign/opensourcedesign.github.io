@@ -4,11 +4,12 @@
   "description": "Website of the Open Source Design community",
   "scripts": {
     "dev": "concurrently \"npm run css:watch\" \"npm run hugo:dev\"",
-    "build": "npm run css:build && npm run hugo:build",
+    "build": "npm run css:build && npm run hugo:build && npm run search:index",
     "css:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --minify",
     "css:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
     "hugo:dev": "hugo server --buildDrafts --buildFuture",
-    "hugo:build": "hugo --minify"
+    "hugo:build": "hugo --minify --gc",
+    "search:index": "pagefind --site public"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,10 @@
   "license": "AGPL-3.0",
   "homepage": "https://opensourcedesign.net",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.2.4",
-    "@tailwindcss/typography": "^0.5.19",
-    "concurrently": "^9.2.1",
-    "tailwindcss": "^4.1.18"
+    "@tailwindcss/cli": "^4.3.1",
+    "@tailwindcss/typography": "^0.5.20",
+    "concurrently": "^10.0.3",
+    "pagefind": "^1.5.2",
+    "tailwindcss": "^4.3.1"
   }
 }

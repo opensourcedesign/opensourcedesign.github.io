@@ -7,7 +7,7 @@
   rel: noopener noreferrer
 
 - name: Mastodon
-  url: https://mastodon.social/@opensourcedesign
+  url: https://fosstodon.org/@opensourcedesign
   icon: mastodon
   rel: me noopener noreferrer
 

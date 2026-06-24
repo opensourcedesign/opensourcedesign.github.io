@@ -1,8 +1,27 @@
 {{ define "main" }}
   {{ $eventsAll := (where site.RegularPages "Section" "events") }}
-  {{ $upcomingAll := where $eventsAll "Params.status" "in" (slice "upcoming" "started") }}
-  {{ $pastAll := where $eventsAll "Params.status" "in" (slice "past" "cancelled") }}
-  {{ $upcoming := where $upcomingAll "File.ContentBaseName" "ne" "monthly-online-meeting" }}
+  {{ $pastStatus := where $eventsAll "Params.status" "in" (slice "past" "cancelled") }}
+  {{/* Non-recurring events flagged upcoming/started (the monthly call is handled on its own). */}}
+  {{ $upcomingStatus := where (where $eventsAll "Params.status" "in" (slice "upcoming" "started")) "File.ContentBaseName" "ne" "monthly-online-meeting" }}
+
+  {{/* Date-aware: an "upcoming" event whose endDate has passed is treated as past, so a */}}
+  {{/* stale status never leaves a finished event sitting in the Upcoming list. */}}
+  {{ $nowUnix := now.Unix }}
+  {{ $upcoming := slice }}
+  {{ $expired := slice }}
+  {{ range $upcomingStatus }}
+    {{ $end := .Params.endDate }}
+    {{ if and $end (lt (time.AsTime $end).Unix $nowUnix) }}
+      {{ $expired = $expired | append . }}
+    {{ else }}
+      {{ $upcoming = $upcoming | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ $pastAll := $pastStatus | append $expired }}
+  {{/* Write-ups are recaps that carry an author byline; plain entries do not. */}}
+  {{ $writeups := where $pastAll "Params.author" "!=" nil }}
+  {{ $pastPlain := where $pastAll "Params.author" "==" nil }}
 
   {{/* Hero Header */}}
   <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white" aria-labelledby="events-heading">
@@ -43,10 +62,15 @@
     <div class="mx-auto max-w-6xl px-4 py-4">
       <div class="flex flex-wrap items-center justify-center gap-6 text-sm sm:justify-start">
         <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-slate-900">{{ len $upcomingAll }}</span>
+          <span class="text-2xl font-bold text-slate-900">{{ len $upcoming }}</span>
           <span class="text-slate-600">upcoming</span>
         </div>
         <span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-indigo-500" aria-hidden="true"></span>
+          <span class="font-semibold text-slate-900">{{ len $writeups }}</span>
+          <span class="text-slate-600">write-ups</span>
+        </div>
         <div class="flex items-center gap-2">
           <span class="font-semibold text-slate-900">{{ len $pastAll }}</span>
           <span class="text-slate-600">past events</span>
@@ -57,51 +81,100 @@
 
   <div class="mx-auto max-w-6xl px-4 py-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-      {{/* Main: Upcoming Events */}}
-      <section class="lg:col-span-8" aria-labelledby="upcoming-heading">
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <h2 id="upcoming-heading" class="text-lg font-semibold text-slate-900">Upcoming Events</h2>
-          <p class="mt-1 text-sm text-slate-500">{{ len $upcomingAll }} events scheduled</p>
+      {{/* Main: Write-ups & Recaps (visually distinct from plain listings) */}}
+      <section class="lg:col-span-8" aria-labelledby="writeups-heading">
+        <h2 id="writeups-heading" class="text-lg font-semibold text-slate-900">Write-ups &amp; Recaps</h2>
+        <p class="mt-1 text-sm text-slate-500">Reports and reflections from events we joined</p>
 
-          {{ if $upcoming }}
-            <ul class="mt-6 space-y-4" role="list">
-              {{ range $upcoming.ByDate.Reverse }}
-                <li>
-                  <a class="group block rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ with .Params.eventDate }}, {{ . }}{{ end }}">
-                    <h3 class="font-semibold text-slate-900 group-hover:text-slate-950">{{ .Title }}</h3>
-                    <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
-                      {{ with .Params.eventDate }}
-                        <span class="inline-flex items-center gap-1.5">
-                          <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                          <time>{{ . }}</time>
+        {{ if $writeups }}
+          <div class="mt-6 space-y-5">
+            {{ range first 6 (sort $writeups "Date" "desc") }}
+              {{/* Pull the first image from the rendered content for a thumbnail */}}
+              {{ $img := "" }}
+              {{ with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 }}
+                {{ $img = index (index . 0) 1 }}
+              {{ end }}
+              <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-indigo-300 hover:shadow-md">
+                <a class="flex flex-col sm:flex-row" href="{{ .RelPermalink }}" aria-label="{{ .Title }} (recap)">
+                  {{ if $img }}
+                    <div class="relative h-44 w-full shrink-0 overflow-hidden bg-slate-100 sm:h-auto sm:w-56">
+                      <img class="h-full w-full object-cover transition duration-300 group-hover:scale-105" src="{{ $img }}" alt="" loading="lazy" />
+                    </div>
+                  {{ end }}
+                  <div class="flex flex-1 flex-col p-5 sm:p-6">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-700">
+                        <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                        Recap
+                      </span>
+                      {{ with .Params.eventDate }}<span class="text-xs text-slate-500">{{ . }}</span>{{ end }}
+                    </div>
+                    <h3 class="mt-2 font-semibold leading-snug text-slate-900 group-hover:text-indigo-700">{{ .Title }}</h3>
+                    {{ with .Summary }}
+                      <p class="mt-2 line-clamp-2 text-sm text-slate-600">{{ . | plainify | truncate 160 }}</p>
+                    {{ end }}
+                    <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                      {{ with .Params.author }}
+                        <span class="inline-flex items-center gap-1.5 font-medium text-slate-700">
+                          <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                          {{ . }}
                         </span>
                       {{ end }}
                       {{ with .Params.location }}
                         <span class="inline-flex items-center gap-1.5">
-                          <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-                          <span>{{ . }}</span>
+                          <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                          {{ . }}
                         </span>
                       {{ end }}
                     </div>
-                    {{ with .Summary }}
-                      <p class="mt-3 line-clamp-2 text-sm text-slate-600">{{ . | plainify | truncate 120 }}</p>
-                    {{ end }}
-                  </a>
-                </li>
-              {{ end }}
-            </ul>
-          {{ else }}
-            <p class="mt-6 text-sm text-slate-600">No upcoming events at the moment. Check back soon!</p>
-          {{ end }}
-        </div>
+                  </div>
+                </a>
+              </article>
+            {{ end }}
+          </div>
+        {{ else }}
+          <p class="mt-6 text-sm text-slate-600">No write-ups yet.</p>
+        {{ end }}
       </section>
 
-      {{/* Sidebar: Monthly Meeting */}}
-      <aside class="lg:col-span-4">
+      {{/* Sidebar: Upcoming + Recurring (heading layout mirrors the left column so the tops align) */}}
+      <aside class="space-y-8 lg:col-span-4">
+        <section aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading" class="text-lg font-semibold text-slate-900">Upcoming</h2>
+          <p class="mt-1 text-sm text-slate-500">Events on the horizon</p>
+          <div class="mt-6">
+            {{ if $upcoming }}
+              <ul class="space-y-3" role="list">
+                {{ range first 5 (sort $upcoming "Date" "desc") }}
+                  <li>
+                    <a class="group flex gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-indigo-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900" href="{{ .RelPermalink }}">
+                      <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600" aria-hidden="true">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                      </span>
+                      <span class="min-w-0">
+                        <span class="block text-sm font-medium leading-snug text-slate-900 group-hover:text-indigo-700">{{ .Title }}</span>
+                        {{ with .Params.eventDate }}<span class="mt-0.5 block text-xs text-slate-500">{{ . }}</span>{{ end }}
+                      </span>
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            {{ else }}
+              <div class="rounded-xl border border-dashed border-slate-300 bg-white p-5 text-sm text-slate-500">
+                No one-off events scheduled right now — join our monthly call below, or
+                <a class="font-medium text-slate-700 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/events/calendar.ics" | relURL }}">subscribe to the calendar</a>.
+              </div>
+            {{ end }}
+          </div>
+        </section>
+
+        {{/* Recurring: Monthly Meeting */}}
         {{ with site.GetPage "/events/monthly-online-meeting/" }}
-          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Recurring</div>
-            <h2 class="mt-2 text-lg font-semibold text-slate-900">{{ .Title }}</h2>
+          <section aria-labelledby="recurring-heading">
+            <h2 id="recurring-heading" class="text-lg font-semibold text-slate-900">Recurring</h2>
+            <p class="mt-1 text-sm text-slate-500">Join us online every month</p>
+            <article class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-base font-semibold text-slate-900">{{ .Title }}</h3>
             <dl class="mt-4 space-y-2 text-sm text-slate-700">
               {{ with .Params.eventDate }}
                 <div class="flex items-center gap-2">
@@ -131,7 +204,8 @@
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
               </a>
             </div>
-          </article>
+            </article>
+          </section>
         {{ end }}
       </aside>
     </div>
@@ -150,9 +224,9 @@
       </div>
 
       <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
-        {{ range first 9 ($pastAll.ByDate.Reverse) }}
+        {{ range first 9 (sort $pastPlain "Date" "desc") }}
           <li>
-            <a class="group block rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900" href="{{ .RelPermalink }}">
+            <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900" href="{{ .RelPermalink }}">
               <div class="font-medium text-slate-900 group-hover:text-slate-950">{{ .Title }}</div>
               <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
                 {{ with .Params.eventDate }}

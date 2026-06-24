@@ -7,15 +7,6 @@ aliases:
 
 We are a community of designers and developers pushing for more open design processes and better user experience in open source software.
 
-**In this section:**
-[Manifesto](/about-us/manifesto/) ·
-[How to Join](/about-us/how-to-join/) ·
-[Code of Conduct](/about-us/code-of-conduct/) ·
-[Governance](/about-us/governance/) ·
-[By-laws](/about-us/by-laws/)
-
----
-
 ## What we do
 
 Open source projects are built in the open, but their design processes often aren't. We work to change that — by aggregating knowledge, connecting people, and making it easier for designers to participate in open source.

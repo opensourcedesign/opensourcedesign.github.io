@@ -7,18 +7,28 @@
 {{- range $lines -}}
   {{- $line := trim . " " -}}
   {{- if $line -}}
-    {{- /* Check if line is a URL */ -}}
+    {{- /* Whole line is a URL */ -}}
     {{- if or (hasPrefix $line "http://") (hasPrefix $line "https://") -}}
-      {{- $output = $output | append (printf `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current break-all" href="%s" target="_blank" rel="noopener noreferrer">%s</a>` $line $line) -}}
-    {{- /* Check if line contains an email in angle brackets like "Name <email@example.com>" */ -}}
+      {{- $output = $output | append (printf `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current break-words" href="%s" target="_blank" rel="noopener noreferrer">%s</a>` $line $line) -}}
+    {{- /* "Name <email@example.com>" — link the email, show the (escaped) name */ -}}
     {{- else if findRE `<[^>]+@[^>]+>` $line -}}
       {{- $email := replaceRE `.*<([^>]+)>.*` "$1" $line -}}
-      {{- $output = $output | append (printf `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current" href="mailto:%s">%s</a>` $email $line) -}}
-    {{- /* Check if line is a plain email */ -}}
+      {{- $name := trim (replaceRE `<[^>]*>` "" $line) " " -}}
+      {{- $label := cond (ne $name "") $name $email -}}
+      {{- $label = replace $label "&" "&amp;" -}}
+      {{- $label = replace $label "<" "&lt;" -}}
+      {{- $label = replace $label ">" "&gt;" -}}
+      {{- $output = $output | append (printf `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current" href="mailto:%s">%s</a>` $email $label) -}}
+    {{- /* Whole line is a plain email */ -}}
     {{- else if findRE `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$` $line -}}
       {{- $output = $output | append (printf `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current" href="mailto:%s">%s</a>` $line $line) -}}
+    {{- /* Prose: escape HTML, then linkify any inline URLs */ -}}
     {{- else -}}
-      {{- $output = $output | append $line -}}
+      {{- $safe := replace $line "&" "&amp;" -}}
+      {{- $safe = replace $safe "<" "&lt;" -}}
+      {{- $safe = replace $safe ">" "&gt;" -}}
+      {{- $safe = replaceRE `(https?://[^\s<]+)` `<a class="text-current underline decoration-current/30 underline-offset-4 hover:decoration-current break-words" href="$1" target="_blank" rel="noopener noreferrer">$1</a>` $safe -}}
+      {{- $output = $output | append $safe -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

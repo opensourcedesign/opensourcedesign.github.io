@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="view-transition" content="same-origin" />
 
+    {{/* Apply saved reader display preferences before paint (no FOUC). Controls
+         live in the footer (DisplayToggle); see html[data-contrast|motion|spacing|
+         links] and --user-text-scale in assets/css/main.css. */}}
+    <script>
+      (function () {
+        try {
+          var p = JSON.parse(localStorage.getItem("osd-display") || "{}");
+          var el = document.documentElement;
+          if (p.contrast === "more") el.setAttribute("data-contrast", "more");
+          if (p.motion === "reduce") el.setAttribute("data-motion", "reduce");
+          if (p.spacing === "loose") el.setAttribute("data-spacing", "loose");
+          if (p.links === "underline") el.setAttribute("data-links", "underline");
+          var s = typeof p.textScale === "number" ? p.textScale : 1;
+          if (s && Math.abs(s - 1) > 0.001) el.style.setProperty("--user-text-scale", String(s));
+        } catch (e) {}
+      })();
+    </script>
+
     {{ $title := cond (ne .Title "") (printf "%s | %s" .Title site.Title) site.Title }}
     {{ $desc := .Description | default .Summary | default site.Params.description | default site.Title }}
     {{ $desc = $desc | plainify | truncate 160 }}
@@ -120,31 +138,9 @@
     }
     </script>
 
-    {{/* Page-specific schema */}}
-    {{ if eq .Section "jobs" }}
-      {{ if .IsPage }}
-        {{ if ne .File.ContentBaseName "job-form" }}
-          {{ if ne .File.ContentBaseName "archive" }}
-            <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@type": "JobPosting",
-              "title": {{ .Title | jsonify }},
-              "description": {{ .Summary | plainify | jsonify }},
-              "datePosted": "{{ if .Params.date_posted }}{{ .Params.date_posted }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}",
-              "hiringOrganization": {
-                "@type": "Organization",
-                "name": {{ (.Params.organization | default "Open Source Design") | jsonify }}
-                {{ with .Params.org_url }},"url": {{ . | jsonify }}{{ end }}
-              },
-              "employmentType": "{{ if eq (.Params.compensation | default "" | lower) "paid" }}CONTRACTOR{{ else }}VOLUNTEER{{ end }}",
-              "jobLocationType": "TELECOMMUTE"
-            }
-            </script>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ else if eq .Section "events" }}
+    {{/* Page-specific schema. JobPosting is emitted by layouts/jobs/single.html
+         (only for open listings) to avoid duplication and advertising filled jobs. */}}
+    {{ if eq .Section "events" }}
       {{ if .IsPage }}
         <script type="application/ld+json">
         {
@@ -249,30 +245,8 @@
         animation-duration: 250ms;
       }
 
-      /* Scroll-to-top button */
-      .scroll-to-top {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 200ms ease-in-out;
-      }
-      .scroll-to-top.visible {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      /* Focus visible for accessibility */
-      :focus-visible {
-        outline: 2px solid #0f172a;
-        outline-offset: 2px;
-      }
-
       /* Reduce motion for accessibility */
       @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
         ::view-transition-group(*),
         ::view-transition-old(*),
         ::view-transition-new(*) {
@@ -285,84 +259,6 @@
       @supports not (view-transition-name: none) {
         body > main {
           transition: opacity 150ms ease;
-        }
-      }
-
-      /* Print styles */
-      @media print {
-        /* Hide non-essential elements */
-        header, footer, nav, .scroll-to-top, .breadcrumbs,
-        .share-buttons, button, .sr-only, .toc,
-        [aria-label="Page navigation"], [aria-label="Skip to content"] {
-          display: none !important;
-        }
-
-        /* Reset background colors */
-        body, main, article, .prose {
-          background: white !important;
-          color: black !important;
-        }
-
-        /* Ensure content fills page */
-        body {
-          min-height: auto;
-          font-size: 12pt;
-          line-height: 1.5;
-        }
-
-        main {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-
-        /* Better link handling */
-        a {
-          color: black !important;
-          text-decoration: underline;
-        }
-        a[href^="http"]:after {
-          content: " (" attr(href) ")";
-          font-size: 0.8em;
-          color: #666;
-        }
-        a[href^="/"]:after,
-        a[href^="#"]:after {
-          content: none;
-        }
-
-        /* Page breaks */
-        h1, h2, h3 {
-          page-break-after: avoid;
-        }
-        img, pre, blockquote {
-          page-break-inside: avoid;
-        }
-
-        /* Better image handling */
-        img {
-          max-width: 100% !important;
-          height: auto !important;
-        }
-
-        /* Code blocks */
-        pre, code {
-          background: #f5f5f5 !important;
-          border: 1px solid #ddd !important;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        }
-
-        /* Remove shadows and borders */
-        * {
-          box-shadow: none !important;
-        }
-
-        /* Article specific */
-        article {
-          border: none !important;
-          box-shadow: none !important;
-          max-width: 100% !important;
-          padding: 0 !important;
         }
       }
     </style>
@@ -378,6 +274,8 @@
 
     {{ partial "footer.html" . }}
 
+    {{ partial "search-modal.html" . }}
+
     {{/* Scroll to top button */}}
     <button
       class="scroll-to-top fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/50 focus-visible:ring-offset-2"
@@ -390,145 +288,7 @@
       </svg>
     </button>
 
-    <script>
-      (function() {
-        // Scroll to top button
-        var btn = document.getElementById('scroll-to-top');
-        if (btn) {
-          var threshold = 400;
-          function updateBtn() {
-            btn.classList.toggle('visible', window.scrollY > threshold);
-          }
-          window.addEventListener('scroll', updateBtn, { passive: true });
-          btn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-          updateBtn();
-        }
-
-        // Close mobile menu on navigation
-        document.querySelectorAll('details').forEach(function(d) {
-          d.querySelectorAll('a').forEach(function(a) {
-            a.addEventListener('click', function() {
-              d.removeAttribute('open');
-            });
-          });
-        });
-
-        // Lightbox for images inside rich content (articles, etc.)
-        var imgs = Array.prototype.slice.call(document.querySelectorAll('main .prose img, main .osd-prose img'));
-        if (imgs.length) {
-          var overlay = document.createElement('div');
-          overlay.className = 'osd-lightbox-backdrop';
-          overlay.setAttribute('role', 'dialog');
-          overlay.setAttribute('aria-modal', 'true');
-          overlay.setAttribute('aria-label', 'Image preview');
-          overlay.innerHTML = [
-            '<div class="osd-lightbox-panel">',
-            '  <div class="osd-lightbox-topbar">',
-            '    <div class="osd-lightbox-caption" id="osd-lb-cap"></div>',
-            '    <div class="osd-lightbox-nav">',
-            '      <span class="osd-lightbox-counter" id="osd-lb-counter"></span>',
-            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-prev" aria-label="Previous image">',
-            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>',
-            '      </button>',
-            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-next" aria-label="Next image">',
-            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>',
-            '      </button>',
-            '      <button type="button" class="osd-lightbox-btn" id="osd-lb-close" aria-label="Close image preview">',
-            '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>',
-            '      </button>',
-            '    </div>',
-            '  </div>',
-            '  <div class="osd-lightbox-body" id="osd-lb-body">',
-            '    <img id="osd-lb-img" alt="" />',
-            '    <div class="osd-lightbox-swipe-hint" id="osd-lb-hint">Swipe to navigate</div>',
-            '  </div>',
-            '</div>'
-          ].join('');
-          document.body.appendChild(overlay);
-
-          var cap = document.getElementById('osd-lb-cap');
-          var counter = document.getElementById('osd-lb-counter');
-          var img = document.getElementById('osd-lb-img');
-          var closeBtn = document.getElementById('osd-lb-close');
-          var prevBtn = document.getElementById('osd-lb-prev');
-          var nextBtn = document.getElementById('osd-lb-next');
-          var lastFocus = null;
-          var index = 0;
-
-          function updateCounter() {
-            if (counter) counter.textContent = (index + 1) + ' / ' + imgs.length;
-            if (prevBtn) prevBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
-            if (nextBtn) nextBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
-          }
-
-          function openAt(i) {
-            index = ((i % imgs.length) + imgs.length) % imgs.length;
-            var el = imgs[index];
-            if (!el) return;
-            lastFocus = document.activeElement;
-            img.src = el.currentSrc || el.src;
-            img.alt = el.alt || '';
-            if (cap) cap.textContent = el.alt || '';
-            updateCounter();
-            overlay.classList.add('open');
-            document.documentElement.style.overflow = 'hidden';
-            if (closeBtn) closeBtn.focus();
-          }
-
-          function close() {
-            overlay.classList.remove('open');
-            document.documentElement.style.overflow = '';
-            img.removeAttribute('src');
-            if (lastFocus && lastFocus.focus) lastFocus.focus();
-          }
-
-          function goPrev() { openAt(index - 1); }
-          function goNext() { openAt(index + 1); }
-
-          function onKey(e) {
-            if (!overlay.classList.contains('open')) return;
-            if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-            if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); return; }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); return; }
-          }
-
-          imgs.forEach(function (el, i) {
-            el.style.cursor = 'zoom-in';
-            el.setAttribute('tabindex', '0');
-            el.setAttribute('role', 'button');
-            el.setAttribute('aria-label', (el.alt ? ('View larger image: ' + el.alt) : 'View larger image'));
-            el.addEventListener('click', function (ev) { ev.preventDefault(); openAt(i); });
-            el.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openAt(i); } });
-          });
-
-          document.addEventListener('keydown', onKey);
-          overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-          if (closeBtn) closeBtn.addEventListener('click', close);
-          if (prevBtn) prevBtn.addEventListener('click', goPrev);
-          if (nextBtn) nextBtn.addEventListener('click', goNext);
-
-          // Touch/swipe support for mobile
-          var body = document.getElementById('osd-lb-body');
-          var hint = document.getElementById('osd-lb-hint');
-          if (body) {
-            var touchStartX = 0, touchStartY = 0;
-            body.addEventListener('touchstart', function(e) {
-              touchStartX = e.changedTouches[0].screenX;
-              touchStartY = e.changedTouches[0].screenY;
-            }, { passive: true });
-            body.addEventListener('touchend', function(e) {
-              var diffX = e.changedTouches[0].screenX - touchStartX;
-              var diffY = e.changedTouches[0].screenY - touchStartY;
-              if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-                if (diffX > 0) goPrev(); else goNext();
-                if (hint) hint.style.display = 'none';
-              }
-            }, { passive: true });
-          }
-        }
-      })();
-    </script>
+    {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
   </body>
 </html>

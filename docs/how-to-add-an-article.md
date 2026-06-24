@@ -1,33 +1,37 @@
----
-layout: post
-title: "How to add an article to Open Source Design"
-date: 2020-11-15
-categories: documentation
-author: Open Source Design
----
+# How to add content to Open Source Design
 
-Posts on Open Source Design.net appear on the [Articles page here](https://opensourcedesign.net/articles/).
+> The website moved from Jekyll to Hugo and the standalone *Articles* section was retired during the information-architecture overhaul. Article-style writing now lives under **Resources**, and event write-ups live under **Events**. This guide explains how to contribute content using the GitHub web interface — no local setup required.
 
-To submit an article using the github interface, here is a step by step guide:
+## Where content lives
 
-- In the _posts folder, create a 'new file'.
+| You want to add… | Edit / create a file in… |
+|------------------|--------------------------|
+| A job post | `content/jobs/` (or use the [online form](https://opensourcedesign.net/jobs/job-form/)) |
+| An event announcement or write-up | `content/events/` |
+| A tool, link, or reading-list entry | `content/resources/_index.md` or `data/bibliography.yaml` |
+| An About Us page | `content/about-us/` |
 
-- Give your file a name that starts with the date in this format: 2020-11-01 (year month day) then a title using '-' inbetween words e.g."2015-04-25-welcome-to-open-source-design". Don't forget the .md at the end to indicate that it will be a [mardown file](https://www.markdownguide.org/).
+## Submitting content via GitHub
 
-- Make sure you post/article includes essential information at the top of the file e.g. below: 
+1. Open the relevant folder above on GitHub and choose **Add file → Create new file** (or open an existing file and click the pencil icon to edit it).
 
-```
-layout: post
-title: Use your artistic skills to help open source via opensource.com
-date: 2020-08-13
-categories: design open source 
-author: Jeff Macharyas
-```
+2. Give new files a descriptive name. For dated content (events, jobs) start with the date, e.g. `2026-03-15-my-event.md`. Use `-` between words and end with `.md` so it is treated as a [Markdown file](https://www.markdownguide.org/).
 
-- Check the alignment and formatting of images, text etc. in your article/post. You may need to use span css styles and workarounds to have your article display how you want it to.
+3. Start the file with front matter between `---` markers. For example, for an event:
 
-- Once finished, you can submit a pull request of your article/post. This will then be reviewed by two open source design community members and comments, changes may be requested before it is published on the [Articles page here](https://opensourcedesign.net/articles/).
+   ```yaml
+   ---
+   title: "Open Source Design at FOSDEM 2026"
+   eventDate: 2026-02-01
+   status: upcoming
+   location: "Brussels, Belgium"
+   ---
+   ```
 
+4. Write your content in Markdown below the front matter. Check the formatting and alignment of images, links, and text.
 
+5. Once finished, submit a pull request. It will be reviewed by two Open Source Design community members, who may request changes before it is published.
 
-If another community member who has posted an article using git commands from their local repo instanace can submit a step by step, that would be great :)
+## Previewing locally (optional)
+
+For larger contributions, clone the repository and run `npm install` then `npm run dev` to preview your changes at `http://localhost:1313/` with live reload. See the main [README](../README.md) for full setup instructions.

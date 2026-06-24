@@ -6,18 +6,6 @@
 <div class="flex flex-wrap items-center gap-3">
   <span class="text-sm font-medium text-slate-500">Share:</span>
   
-  {{/* Twitter/X */}}
-  <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" 
-     href="https://twitter.com/intent/tweet?text={{ $encodedTitle }}&url={{ $encodedUrl }}&via=opensrcdesign" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     aria-label="Share on Twitter/X"
-     title="Share on Twitter/X">
-    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-  </a>
-  
   {{/* LinkedIn */}}
   <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" 
      href="https://www.linkedin.com/sharing/share-offsite/?url={{ $encodedUrl }}" 

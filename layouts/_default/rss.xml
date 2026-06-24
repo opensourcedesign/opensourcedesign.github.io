@@ -16,7 +16,7 @@
 <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 <link>{{ .Permalink }}</link>
 <description>{{ with .Description }}{{ . | plainify | htmlEscape }}{{ else }}{{ with .Site.Params.description }}{{ . | htmlEscape }}{{ end }}{{ end }}</description>
-<language>{{ .Site.Language.LanguageCode }}</language>
+<language>{{ .Site.Language.Locale }}</language>
 <copyright>© {{ now.Year }} {{ .Site.Title }}. Content licensed under CC BY-SA 4.0.</copyright>
 <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
 <generator>Hugo {{ hugo.Version }}</generator>

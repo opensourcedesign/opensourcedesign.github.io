@@ -13,28 +13,41 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  HUGO_VERSION: 0.154.3
+  HUGO_VERSION: 0.163.2
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      # The trailing comment records the human-readable version.
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 20
           cache: npm
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
         with:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
+
+      # Cache Hugo's processed asset derivatives (resized images, AVIF/WebP
+      # encodes). This skips expensive re-encoding when the source images and
+      # image templates are unchanged, keeping builds fast.
+      - name: Cache Hugo resources
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
+          restore-keys: |
+            hugo-resources-
 
       - name: Install npm dependencies
         run: npm ci
@@ -43,10 +56,13 @@ jobs:
         run: npm run css:build
 
       - name: Build site
-        run: hugo --minify
+        run: hugo --minify --gc
+
+      - name: Build search index (Pagefind)
+        run: npm run search:index
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

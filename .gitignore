@@ -1,6 +1,8 @@
 # Hugo build output
 public/
-resources/
+# Hugo resource cache (root only; do NOT ignore content/resources or layouts/resources)
+/resources/_gen/
+/resources/
 
 # Dependencies
 node_modules/

@@ -26,6 +26,8 @@ resources:
     url: /about-us/code-of-conduct/
   - name: Brand Assets
     url: /brand/
+  - name: Browse Topics
+    url: /tags/
 
 contribute:
   - name: Post a Job

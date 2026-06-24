@@ -30,7 +30,7 @@
       <p class="mt-2 text-center text-slate-600">A look back at our community gatherings</p>
 
       <div class="mt-12 space-y-12">
-        {{ range $summit := site.Data.summits }}
+        {{ range $summit := hugo.Data.summits }}
           <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             {{/* Header */}}
             <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-8 text-white sm:px-10">

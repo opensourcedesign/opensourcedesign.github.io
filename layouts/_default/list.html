@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="mx-auto max-w-6xl px-4 py-12">
+  <div class="mx-auto max-w-6xl px-4 py-12" data-pagefind-body>
     {{/* Header Card */}}
     <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
       <header>
@@ -39,9 +39,9 @@
 
     {{ $pages := .RegularPagesRecursive }}
     {{ if $pages }}
-      <div class="mt-6 text-sm text-slate-500" aria-live="polite">{{ len $pages }} items</div>
+      <div class="mt-6 text-sm text-slate-500" aria-live="polite" data-pagefind-ignore>{{ len $pages }} items</div>
 
-      <ul class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list" aria-label="Content list">
+      <ul class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list" aria-label="Content list" data-pagefind-ignore>
         {{ range $pages.ByDate.Reverse }}
           <li>
             <a class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" aria-label="{{ .Title }}">

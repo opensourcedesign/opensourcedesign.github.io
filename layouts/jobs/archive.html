@@ -7,9 +7,9 @@
     {{ $scratch.Set "gratis" 0 }}
     {{ range $jobs }}
       {{ $compRaw := (printf "%v" (.Params.compensation | default "")) | lower }}
-      {{ if or (in $compRaw "gratis") (in $compRaw "volunteer") }}
+      {{ if or (in $compRaw "gratis") (in $compRaw "volunteer") (eq $compRaw "free") }}
         {{ $scratch.Add "gratis" 1 }}
-      {{ else }}
+      {{ else if eq $compRaw "paid" }}
         {{ $scratch.Add "paid" 1 }}
       {{ end }}
     {{ end }}
@@ -76,7 +76,9 @@
     <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="jobs-list">
       {{ range (sort $jobs "Params.date_posted" "desc") }}
         {{ $compRaw := (printf "%v" (.Params.compensation | default "")) | lower }}
-        {{ $compType := cond (or (in $compRaw "gratis") (in $compRaw "volunteer")) "gratis" "paid" }}
+        {{ $isPaid := eq $compRaw "paid" }}
+        {{ $isVol := or (in $compRaw "gratis") (in $compRaw "volunteer") (eq $compRaw "free") }}
+        {{ $compType := cond $isPaid "paid" (cond $isVol "gratis" "other") }}
         {{ $org := .Params.organization | default "" }}
         {{ $tags := .Params.tags | default (slice) }}
         {{ $tagsStr := "" }}
@@ -85,7 +87,6 @@
         {{ else }}
           {{ $tagsStr = printf "%v" $tags }}
         {{ end }}
-        {{ $isPaid := eq $compType "paid" }}
         <li class="job-item" data-comp="{{ $compType }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
           <a class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-slate-300 hover:shadow" href="{{ .RelPermalink }}">
             {{/* Header: Title + Badges */}}
@@ -100,7 +101,7 @@
                     <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                     Paid
                   </span>
-                {{ else }}
+                {{ else if $isVol }}
                   <span class="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-medium text-violet-800">
                     <span class="h-1.5 w-1.5 rounded-full bg-violet-500"></span>
                     Volunteer

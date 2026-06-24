@@ -1,5 +1,5 @@
 baseURL = "https://opensourcedesign.net/"
-languageCode = "en"
+locale = "en"
 title = "Open Source Design"
 
 enableRobotsTXT = true
@@ -52,9 +52,10 @@ enableRobotsTXT = true
   tag = "tags"
 
 [permalinks]
-  # Preserve the current production URL structure for job detail pages.
-  # (Current site links look like /jobs/jobs/2025-11-20-...)
-  jobs = "/jobs/jobs/:slug/"
+  # Clean job detail URLs: /jobs/<slug>/ (slug derived from the title, or an
+  # explicit `slug:`/`url:` in front matter). Section pages job-form and archive
+  # set their own `url` in front matter, so they are unaffected.
+  jobs = "/jobs/:slug/"
 
 [outputs]
   home = ["HTML", "RSS"]
@@ -81,7 +82,7 @@ enableRobotsTXT = true
     weight = 40
   [[menu.main]]
     name = "Forum"
-    url = "https://discourse.opensourcedesign.net/"
+    pageRef = "/forum"
     weight = 50
 
 [[params.social]]
@@ -90,7 +91,7 @@ enableRobotsTXT = true
   rel = "noopener noreferrer"
 [[params.social]]
   name = "Mastodon"
-  url = "https://mastodon.social/@opensourcedesign"
+  url = "https://fosstodon.org/@opensourcedesign"
   rel = "me noopener noreferrer"
 [[params.social]]
   name = "Open Collective"
@@ -100,6 +101,19 @@ enableRobotsTXT = true
   name = "Forum"
   url = "https://discourse.opensourcedesign.net"
   rel = "noopener noreferrer"
+
+[imaging]
+  # Resampling filter used when down-scaling content images.
+  resampleFilter = "Lanczos"
+  [imaging.avif]
+    compression = "lossy"
+    # 0 = slowest/smallest, 10 = fastest. Keep builds practical while still small.
+    encoderSpeed = 8
+    quality = 55
+  [imaging.webp]
+    quality = 80
+  [imaging.jpeg]
+    quality = 82
 
 [markup]
   [markup.goldmark]

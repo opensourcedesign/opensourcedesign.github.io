@@ -7,6 +7,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Global reader text zoom: scaled by the footer "Text size" control via
+       --user-text-scale on <html>. rem-based utilities scale with the root. */
+    font-size: calc(100% * var(--user-text-scale, 1));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -16,7 +19,20 @@
   }
 
   ::selection {
-    background: rgb(15 23 42 / 0.12);
+    background: #334155;   /* slate-700 — stays visible on light and dark surfaces */
+    color: #f8fafc;        /* slate-50 */
+  }
+
+  /* Pagefind search-term highlighting on destination pages (arriving from a
+     search result). addStyles is disabled in JS so these on-brand styles win. */
+  mark.pagefind-highlight,
+  .pagefind-highlight {
+    background-color: #fde68a;   /* amber-200 */
+    color: #422006;              /* amber-950 */
+    border-radius: 2px;
+    padding: 0 0.12em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   summary::-webkit-details-marker {
@@ -29,6 +45,133 @@
     outline: 2px solid rgb(15 23 42 / 0.9);
     outline-offset: 3px;
     border-radius: 0.5rem;
+  }
+
+  /* Catch-all focus ring for any other focusable element */
+  :focus-visible {
+    outline: 2px solid #0f172a;
+    outline-offset: 2px;
+  }
+
+  /* Respect reduced-motion preferences globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Scroll-to-top button visibility (toggled via JS) */
+  .scroll-to-top {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media print {
+  /* Hide non-essential elements */
+  header,
+  footer,
+  nav,
+  .scroll-to-top,
+  .breadcrumbs,
+  .share-buttons,
+  button,
+  .sr-only,
+  .toc,
+  [aria-label="Page navigation"],
+  [aria-label="Skip to content"] {
+    display: none !important;
+  }
+
+  /* Reset background colors */
+  body,
+  main,
+  article,
+  .prose {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure content fills page */
+  body {
+    min-height: auto;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Better link handling */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="/"]:after,
+  a[href^="#"]:after {
+    content: none;
+  }
+
+  /* Page breaks */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  img,
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  /* Better image handling */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Code blocks */
+  pre,
+  code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Remove shadows and borders */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Article specific */
+  article {
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    padding: 0 !important;
   }
 }
 
@@ -211,4 +354,322 @@
       max-height: calc(100vh - 60px);
     }
   }
+}
+
+/* ==========================================================================
+   Site search — a custom UI built on the Pagefind JS API.
+   Uses the site's slate palette, inherits the body font, and mirrors the
+   card / radius / spacing language used elsewhere on the site.
+   ========================================================================== */
+
+/* Dialog shell */
+.osd-search-dialog {
+  width: min(40rem, calc(100vw - 1.5rem));
+  max-width: 40rem;
+  margin: 8vh auto auto;
+  padding: 0;
+  border: 1px solid #e2e8f0;            /* slate-200 */
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 24px 60px -20px rgba(15, 23, 42, 0.45);
+  overflow: hidden;
+}
+
+.osd-search-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);   /* slate-900 @ 45% */
+  backdrop-filter: blur(2px);
+}
+
+/* Component layout: fixed search bar + footer, scrollable results */
+.osd-search {
+  display: flex;
+  flex-direction: column;
+  max-height: min(72vh, 38rem);
+  font: inherit;
+  color: #0f172a;                       /* slate-900 */
+}
+
+/* --- Search bar --- */
+.osd-search__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.osd-search__bar-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  flex: none;
+  color: #94a3b8;                       /* slate-400 */
+}
+
+.osd-search__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #0f172a;
+  appearance: none;
+}
+
+.osd-search__field::placeholder { color: #94a3b8; }
+.osd-search__field:focus { outline: none; }
+.osd-search__field::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+
+.osd-search__close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  color: #64748b;                       /* slate-500 */
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.osd-search__close:hover { background: #f1f5f9; color: #0f172a; }
+.osd-search__close:focus-visible { outline: 2px solid #0f172a; outline-offset: 2px; }
+
+/* --- Results panel --- */
+.osd-search__panel {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.osd-search__status {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.osd-search__results {
+  list-style: none;
+  margin: 0;
+  padding: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+/* Hide the redundant status line once we have a results list */
+.osd-search__results:not(:empty) { padding-top: 0; }
+
+.osd-search__result { border-radius: 0.75rem; }
+.osd-search__result.is-active { background: #f1f5f9; }   /* slate-100 */
+
+.osd-search__result-main {
+  display: block;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.osd-search__result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.osd-search__result-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  color: #0f172a;
+}
+
+.osd-search__badge {
+  flex: none;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.osd-search__result.is-active .osd-search__badge { background: #ffffff; }
+
+.osd-search__result-excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #475569;                       /* slate-600 */
+}
+
+.osd-search__result-excerpt mark,
+.osd-search__sub mark {
+  padding: 0 0.1em;
+  border-radius: 2px;
+  background: rgba(15, 23, 42, 0.1);    /* subtle slate highlight, on-brand */
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* --- Sub-results (section jump links) --- */
+.osd-search__subs {
+  margin: 0.125rem 0.5rem 0.5rem 1.625rem;
+  padding-left: 0.625rem;
+  border-left: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.osd-search__sub {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  color: #475569;
+  text-decoration: none;
+}
+
+.osd-search__sub svg { height: 0.75rem; width: 0.75rem; flex: none; color: #94a3b8; }
+.osd-search__sub:hover { background: #f1f5f9; color: #0f172a; }
+.osd-search__sub:hover svg { color: #475569; }
+
+/* --- Footer --- */
+.osd-search__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.625rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.6875rem;
+  color: #94a3b8;
+}
+
+.osd-search__hint { display: inline-flex; align-items: center; gap: 0.25rem; }
+
+.osd-search__footer kbd {
+  font: inherit;
+  font-size: 0.6875rem;
+  min-width: 1.25rem;
+  padding: 0.0625rem 0.3125rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  border-bottom-width: 2px;
+  border-radius: 0.375rem;
+  background: #f8fafc;
+  color: #475569;
+}
+
+.osd-search__brand { margin-left: auto; }
+
+/* Hide the keyboard hints on very narrow screens, keep the credit */
+@media (max-width: 28rem) {
+  .osd-search__hint { display: none; }
+  .osd-search__brand { margin-left: 0; }
+}
+
+/* Entrance animation (disabled for reduced-motion users) */
+@media (prefers-reduced-motion: no-preference) {
+  .osd-search-dialog[open] { animation: osd-search-in 160ms ease-out; }
+  .osd-search-dialog[open]::backdrop { animation: osd-search-backdrop-in 160ms ease-out; }
+}
+
+@keyframes osd-search-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes osd-search-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+   Reader accessibility preferences (footer DisplayToggle)
+   Toggled via data-* attributes on <html> + the --user-text-scale property.
+   These rules are intentionally unlayered so they win over Tailwind utilities
+   (unlayered styles outrank @layer styles in the cascade) without !important.
+   ========================================================================== */
+
+/* --- High contrast --------------------------------------------------------
+   OSD uses Tailwind slate utilities directly (no theme variables to remap),
+   so darken the muted text/icons and strengthen borders on light surfaces.
+   Descendants of dark (slate-800/900/950) backgrounds are excluded so their
+   light-on-dark text is left untouched. */
+html[data-contrast="more"]
+  :is(.text-slate-400, .text-slate-500):not([aria-pressed="true"]):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+  color: #1e293b;   /* slate-800 */
+}
+html[data-contrast="more"]
+  .text-slate-600:not([aria-pressed="true"]):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+  color: #0f172a;   /* slate-900 */
+}
+html[data-contrast="more"]
+  :is(.border-slate-100, .border-slate-200):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+  border-color: #94a3b8;   /* slate-400 */
+}
+/* Rich content (Tailwind Typography) — remap its CSS variables for legibility. */
+html[data-contrast="more"] .prose {
+  --tw-prose-body: #0f172a;
+  --tw-prose-headings: #000000;
+  --tw-prose-links: #0f172a;
+  --tw-prose-bold: #000000;
+  --tw-prose-captions: #1e293b;
+  --tw-prose-quotes: #0f172a;
+}
+html[data-contrast="more"] mark.pagefind-highlight {
+  outline: 2px solid #0f172a;
+}
+
+/* --- Readable spacing ----------------------------------------------------- */
+html[data-spacing="loose"]
+  :is(p, li, dd, dt, blockquote, figcaption):not(header *):not(nav *) {
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+  word-spacing: 0.08em;
+}
+html[data-spacing="loose"]
+  :is(p, ul, ol, blockquote):not(header *):not(nav *) {
+  margin-block-end: 1.4em;
+}
+
+/* --- Underline links ------------------------------------------------------
+   Underline textual links, but skip buttons/pills/cards (rounded or role=button)
+   and links that only wrap an icon/image. */
+html[data-links="underline"]
+  a:not([class*="btn"]):not([role="button"]):not([class*="rounded"]):not(:has(img)):not(:has(svg)) {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* --- Reduce motion -------------------------------------------------------- */
+html[data-motion="reduce"] {
+  scroll-behavior: auto;
+}
+html[data-motion="reduce"] *,
+html[data-motion="reduce"] *::before,
+html[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-motion="reduce"]::view-transition-group(*),
+html[data-motion="reduce"]::view-transition-old(*),
+html[data-motion="reduce"]::view-transition-new(*) {
+  animation: none !important;
 }

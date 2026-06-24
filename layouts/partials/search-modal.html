@@ -1,0 +1,48 @@
+{{/*
+  Global search dialog with a fully custom UI.
+
+  Rendered once per page (from baseof) and opened from the header search
+  buttons, or via the Ctrl/⌘ + K and "/" shortcuts. The Pagefind JS API
+  (/pagefind/pagefind.js) is lazy-loaded the first time the dialog is opened
+  and results are rendered with the site's own markup (see assets/js/main.js).
+
+  The /pagefind/ bundle is generated after the Hugo build (npm run search:index);
+  in `hugo server` dev mode it is absent and the dialog shows a friendly notice.
+*/}}
+<dialog id="osd-search-dialog" class="osd-search-dialog" aria-label="Search the site" data-pagefind-base="{{ "/pagefind/" | relURL }}" data-pagefind-ignore>
+  <div class="osd-search">
+    <form class="osd-search__bar" role="search" data-search-form>
+      <svg class="osd-search__bar-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+      <input
+        type="search"
+        class="osd-search__field"
+        placeholder="Search events, resources, jobs&hellip;"
+        aria-label="Search the site"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="osd-search-results"
+        aria-autocomplete="list"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        enterkeyhint="search"
+        data-search-input
+      />
+      <button type="button" class="osd-search__close" data-search-close aria-label="Close search">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </form>
+
+    <div class="osd-search__panel">
+      <p class="osd-search__status" data-search-status aria-live="polite">Type to search events, resources, jobs, and pages.</p>
+      <ul id="osd-search-results" class="osd-search__results" role="listbox" aria-label="Search results" data-search-results></ul>
+    </div>
+
+    <div class="osd-search__footer">
+      <span class="osd-search__hint"><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span class="osd-search__hint"><kbd>&crarr;</kbd> open</span>
+      <span class="osd-search__hint"><kbd>esc</kbd> close</span>
+      <span class="osd-search__brand">Search by Pagefind</span>
+    </div>
+  </div>
+</dialog>
