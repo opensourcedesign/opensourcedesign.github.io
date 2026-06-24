@@ -12,7 +12,7 @@ deliverables: ''
 how_to_apply:
   - fanialivio@gmail.com
   - ''
-tags: 'Inkscape, vector, Design, Isometric,'
+tags: [inkscape, vector, design, isometric]
 date: '2019-01-28T19:33:09.825Z'
 ---
 ​Hi,

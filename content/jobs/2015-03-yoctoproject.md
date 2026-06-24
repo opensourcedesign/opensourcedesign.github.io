@@ -6,7 +6,7 @@ role: Icon designer
 organization: Yocto Project
 github: belenbarrospena
 org_url: http://yoctoproject.org
-tags: icon favicon
+tags: [icon favicon]
 status: resolved
 compensation: gratis
 date_posted: 2015-02-06

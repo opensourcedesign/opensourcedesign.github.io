@@ -2,12 +2,13 @@
 _id: 00000000-0000-0000-0000-000000000028
 layout: jobs
 title: Frontend Developer / Designer (f/m)
+slug: frontend-developer-designer-f-m
 role: Frontend Developer / Designer
 organization: Jolocom
 github: https://github.com/jolocom
 contact: joachim@jolocom.com
 org_url: http://jolocom.com
-tags: UI, D3js, JS, React
+tags: [ui, d3js, js, react]
 status: solved
 compensation: part-time / 18hrs/week
 date_posted: 2015-11-25

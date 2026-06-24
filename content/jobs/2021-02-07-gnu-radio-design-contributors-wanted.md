@@ -6,6 +6,7 @@ layout: jobs
 organization: GNU Radio
 org_url: 'https://www.gnuradio.org/'
 title: Design contributors wanted
+slug: gnu-radio-design-contributors
 role: 'User research, interaction design, visual design'
 compensation: gratis
 deliverables: ''

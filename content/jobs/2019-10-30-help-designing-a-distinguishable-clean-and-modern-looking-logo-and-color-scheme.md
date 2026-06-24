@@ -5,6 +5,7 @@ date_posted: '2019-10-30'
 layout: jobs
 organization: Mailchain
 org_url: 'https://mailchain.xyz'
+slug: help-designing-a-distinguishable-clean-and-modern-looking-logo-and-color-scheme
 title: >-
   Help designing a distinguishable, clean, and modern looking logo and color
   scheme.
@@ -15,7 +16,7 @@ how_to_apply:
   - Tim <team@mailchain.xyz>
   - "https://github.com/mailchain/mailchain-web/issues/80\r\nhttps://github.com/mailchain/mailchain-web/issues/81"
 github_handle: ''
-tags: 'logo, branding, color scheme'
+tags: [logo, branding, color scheme]
 date: '2019-11-03T10:46:39.758Z'
 ---
 ## Brief

@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000002
 layout: jobs
 title: IoT dashboard/ iotstack.io
+slug: iot-dashboard-iotstack-io
 role: Logo design
 organization: IoTStack
 github: j8
@@ -9,7 +10,7 @@ contact: jordan@iotstack.io
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://iotstack.io
-tags: interface design, branding, logo
+tags: [interface design, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-03-20

@@ -16,7 +16,7 @@ deliverables: "- Logo\r\n- Favicon\r\n- Responsive design for the page, with err
 how_to_apply:
   - Allan Kimmer Jensen <allankimmerjensen@gmail.com>
   - "- https://cloudcover.me/\r\n- https://github.com/bizarrefishfry/CloudCover"
-tags: 'logo, branding, app, website, privacy'
+tags: [logo, branding, app, website, privacy]
 date: '2018-04-04T13:02:23.497Z'
 timestamp: 1522846943
 ---

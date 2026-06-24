@@ -6,6 +6,7 @@ layout: jobs
 organization: CORRECTIV - Various projects
 org_url: 'https://correctiv.org/stellenangebote/developer-ux/'
 title: Designer / UX Designer
+slug: designer-ux-designer
 role: App design
 compensation: paid
 deliverables: ''

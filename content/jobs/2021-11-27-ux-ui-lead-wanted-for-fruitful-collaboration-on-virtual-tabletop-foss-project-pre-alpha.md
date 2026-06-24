@@ -8,6 +8,7 @@ org_url: 'http://gitlab.com/dynastra-tabletop'
 title: >-
   UX/UI lead wanted for fruitful collaboration on Virtual Tabletop FOSS project
   (Pre-Alpha)
+slug: ux-ui-lead-wanted-for-fruitful-collaboration-on-virtual-tabletop-foss-project-pre-alpha
 role: 'UX Design, UI Design'
 compensation: gratis
 deliverables: ''

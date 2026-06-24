@@ -2,12 +2,13 @@
 _id: 00000000-0000-0000-0000-000000000044
 layout: jobs
 title: RadioWitness.io - alpha release branding
+slug: radiowitness-io-alpha-release-branding
 role: Logo Designer
 organization: Radio Witness Project
 github: rhodey
 contact: rhodey@anhonesteffort.org, @NotRhodey
 org_url: https://radiowitness.io
-tags: branding, logo
+tags: [branding, logo]
 status: closed
 compensation: gratis or $120 total
 date_posted: 2016-07-29

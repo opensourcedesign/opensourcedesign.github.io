@@ -2,8 +2,7 @@
 layout: event
 title: Open Source Design Summit 2018
 date: 2018-12-25
-authors:
-  - AnXh3L0
+author: AnXh3L0
 status: past
 eventDate: "2–4 November 2018"
 location: "Tirana, Albania"

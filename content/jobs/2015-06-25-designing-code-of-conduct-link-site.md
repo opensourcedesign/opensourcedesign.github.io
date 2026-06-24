@@ -8,7 +8,7 @@ organization: "Code of Conduct Link"
 contributing_md: https://github.com/emilyhorsman/codeofconductlink/blob/develop/code_of_conduct.md
 contributors_md: https://github.com/emilyhorsman/codeofconductlink/blob/develop/CONTRIBUTORS.md
 org_url: https://github.com/emilyhorsman/codeofconductlink
-tags: interface design, branding, logo
+tags: [interface design, branding, logo]
 status: solved
 compensation: gratis
 description:

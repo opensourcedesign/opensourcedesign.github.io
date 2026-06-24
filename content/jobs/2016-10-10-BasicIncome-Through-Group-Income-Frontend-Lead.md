@@ -9,7 +9,7 @@ contact: hi@okturtles.com
 contributing_md: https://github.com/okTurtles/group-income-simple/blob/master/CONTRIBUTING.md
 contributors_md: (optional)
 org_url: https://groupincome.org/
-tags: vuejs, decentralization, javascript, js, frontend, lead, basic income, basicincome
+tags: [vuejs, decentralization, javascript, js, frontend, lead, basic income, basicincome]
 status: closed
 compensation: paid, fulltime, negotiated
 date_posted: 2016-10-10
@@ -29,7 +29,7 @@ This is an opportunity to:
 - Impact how the world's economy works and the way groups and communities interact.
 - Use the latest technologies in decentralized application design.
 
-You'll work with a team of experts to finish [the prototype](https://github.com/okTurtles/group-income-simple) of [Group Income](/other/Group_Income.pdf) that will be used by real groups during our trial phrase.
+You'll work with a team of experts to finish [the prototype](https://github.com/okTurtles/group-income-simple) of [Group Income](https://groupincome.org/) that will be used by real groups during our trial phrase.
 
 #### Requirements
 
@@ -55,7 +55,7 @@ Negotiated hourly rate, based on experience.
 <a name="GIG"></a>
 #### Perk: Membership in the Group Income Developers Group
 
-After receiving the position and making at least one successful pull request, you'll be granted membership in a Group Income Group (GIG) that's specially purposed for Group Income contributors and is sustained by voluntary contributions from other GIGs. Members retain membership for one year after their most recent contribution, unless [voted out](/2016/06/what-makes-a-good-voting-system/#groupincome) ("disowned") by the existing members. Any funds you receive from this group are entirely separate and unrelated to any compensation you receive for contract work.
+After receiving the position and making at least one successful pull request, you'll be granted membership in a Group Income Group (GIG) that's specially purposed for Group Income contributors and is sustained by voluntary contributions from other GIGs. Members retain membership for one year after their most recent contribution, unless voted out ("disowned") by the existing members. Any funds you receive from this group are entirely separate and unrelated to any compensation you receive for contract work.
 
 This Lead Frontend Developer will be eligible for one of the **five lifetime** "founders seats" in the developer GIG. The lifetime seats will go to the top 5 contributors to Group Income once it reaches its 1.0 public debut (the major release that comes after the prototype).
 
@@ -77,7 +77,7 @@ Finally, **we recommend** (but don't require) sending a DM to [@Group_Income](ht
 <a name="volunteer"></a>
 ### Volunteer
 
-Most of the people who work on Group Income do so as volunteers. If you'd like to join our volunteer team, [get in touch with us](/community/). We're looking for designers, developers, and writers.
+Most of the people who work on Group Income do so as volunteers. If you'd like to join our volunteer team, [get in touch with us](https://groupincome.org/). We're looking for designers, developers, and writers.
 
 *Whether you're a contractor or volunteer, every regular contributor to the development of Group Income will be added to the developer GIG mentioned above.*
 

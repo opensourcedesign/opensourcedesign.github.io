@@ -12,7 +12,7 @@ deliverables: ''
 how_to_apply:
   - Tord (lead dev) <tord@disroot.org>
   - ''
-tags: 'ux design, ui design, interaction design'
+tags: [ux design, ui design, interaction design]
 commentDate: '2018-01-14T22:46:04.738Z'
 date: '2018-01-14T22:46:04.738Z'
 ---

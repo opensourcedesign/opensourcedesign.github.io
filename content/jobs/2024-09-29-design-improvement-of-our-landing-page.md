@@ -16,7 +16,7 @@ how_to_apply:
   - Carlos (project creator) <mail@getontime.no>
   - "The existing page is located at https://www.getontime.no/\r\nIf you want to find out about the project you can also visit the documentation https://docs.getontime.no/ or the github page https://github.com/cpvalente/ontime"
 github_handle: '@cpvalente'
-tags: landing page design
+tags: [landing page design]
 date: '2024-09-29T17:53:59.901Z'
 ---
 Ontime is a growing FOSS application for rundown management, used mostly by video engineers and entertainment technicians. Our landing page needs improvement to better represent the application and attract potential users

@@ -6,6 +6,7 @@ layout: jobs
 organization: QuickMockup
 org_url: 'https://jdittrich.github.io/quickMockup/'
 title: Design contributors wanted
+slug: quickmockup-design-contributors
 role: 'Interaction design, visual design'
 compensation: gratis
 deliverables: ''

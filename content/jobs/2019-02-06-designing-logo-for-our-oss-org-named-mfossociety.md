@@ -12,7 +12,7 @@ deliverables: 'Logos, 5-10 iterations, if possible :)'
 how_to_apply:
   - piyush@linuxmail.org
   - ''
-tags: 'logo, branding, designing, graphic-designing'
+tags: [logo, branding, designing, graphic-designing]
 date: '2019-02-05T22:19:53.403Z'
 ---
 We need a logo to kick start our journey.

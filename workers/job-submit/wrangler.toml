@@ -1,0 +1,37 @@
+name = "osd-job-submit"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+# --- Public, non-secret configuration -------------------------------------
+# Override any of these in the Cloudflare dashboard or here as needed.
+[vars]
+GITHUB_OWNER = "opensourcedesign"
+GITHUB_REPO = "opensourcedesign.github.io"
+GITHUB_BRANCH = "main"
+CONTENT_DIR = "content/jobs"
+# Comma-separated list of allowed browser origins for CORS. The first entry is
+# used as the default; a request whose Origin matches any entry is echoed back.
+ALLOWED_ORIGIN = "https://opensourcedesign.net"
+PR_LABEL = "job-submission"
+EMAIL_TTL_DAYS = "90"
+# Optional per-IP daily cap; only enforced if a RATE_LIMIT KV namespace is bound.
+RATE_LIMIT_MAX = "5"
+
+# --- KV: maps a created PR number -> submitter email (kept private) ---------
+# Create it once, then paste the returned id below:
+#   npx wrangler kv namespace create EMAILS
+[[kv_namespaces]]
+binding = "EMAILS"
+id = "REPLACE_WITH_EMAILS_KV_NAMESPACE_ID"
+
+# --- Optional: per-IP rate limiting (uncomment + create to enable) ----------
+#   npx wrangler kv namespace create RATE_LIMIT
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "REPLACE_WITH_RATE_LIMIT_KV_NAMESPACE_ID"
+
+# --- Secrets (NEVER commit; set via `npx wrangler secret put <NAME>`) -------
+#   GITHUB_TOKEN      Fine-grained PAT: Contents RW + Pull requests RW on the repo
+#   TURNSTILE_SECRET  Cloudflare Turnstile secret key
+#   LOOKUP_SECRET     Shared bearer secret for GET /lookup (also a GitHub repo secret)

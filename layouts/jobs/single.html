@@ -298,8 +298,18 @@
       "employmentType" (cond $isPaid "CONTRACTOR" "VOLUNTEER")
       "jobLocationType" "TELECOMMUTE"
       "url" .Permalink
-      "hiringOrganization" (dict "@type" "Organization" "name" ($org | default site.Title) "sameAs" (.Params.org_url | default ""))
     }}
+    {{/* hiringOrganization: legacy org_url can hold several comma/space-separated
+         URLs; reduce to the first and only emit sameAs when it is a usable URL
+         (an empty sameAs is invalid structured data). */}}
+    {{ $orgUrl := trim (replaceRE `[\s,].*$` "" (printf "%v" (.Params.org_url | default ""))) " " }}
+    {{ $hiring := dict "@type" "Organization" "name" ($org | default site.Title) }}
+    {{ if $orgUrl }}{{ $hiring = merge $hiring (dict "sameAs" $orgUrl) }}{{ end }}
+    {{ $jp = merge $jp (dict "hiringOrganization" $hiring) }}
+    {{/* Stable identifier helps search engines de-duplicate reposts of a role. */}}
+    {{ with .File }}
+      {{ $jp = merge $jp (dict "identifier" (dict "@type" "PropertyValue" "name" ($org | default site.Title) "value" .ContentBaseName)) }}
+    {{ end }}
     {{ with .Params.date_posted }}
       {{ $jp = merge $jp (dict "validThrough" (((time.AsTime .).AddDate 0 6 0).Format "2006-01-02")) }}
     {{ end }}

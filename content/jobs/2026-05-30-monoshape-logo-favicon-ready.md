@@ -14,7 +14,7 @@ how_to_apply:
   - Jakub T. Jankiewicz <jcubic@jcubic.pl>
   - "The README of a project contains a illustration of the project:\r\n\r\nhttps://github.com/jcubic/Clarity\r\n\r\nAll SVGs are in the repository; you can use them for your work. The Git repo only contains shape, SVG templates (where path is injected when generating an icon), and additional small elements added on top."
 github_handle: Jcubic
-tags: 'logo, svg'
+tags: [logo, svg]
 date: '2026-05-30T16:15:33.179Z'
 ---
 Clarity is a project that was neglected by me. I want to create a new website and need a logo that will look good on a favicon and represent the Monoshape icon theme.

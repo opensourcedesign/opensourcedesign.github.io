@@ -6,15 +6,14 @@ layout: jobs
 organization: Alby
 org_url: 'https://getalby.com/'
 title: UI/ UX Design Lead
+slug: ui-ux-design-lead
 role: '''User experience''; ''Design''; ''User interface'''
 compensation: paid
 deliverables: ''
 how_to_apply:
   - moritz@getalby.com
 github_handle: '@MoritzKa'
-tags: >-
-  user research, open source design process, user interface design, branding,
-  graphic design,
+tags: [user research, open source design process, user interface design, branding, graphic design]
 date: '2022-03-15T09:26:12.055Z'
 ---
 **About Alby**  

@@ -12,9 +12,7 @@ deliverables: A logo and a set of wallpaper to use in the Linux Distribution
 how_to_apply:
   - Ettore Di Giacinto (Project Lead) mudler@sabayon.org
   - 'https://www.sabayon.org/, https://github.com/Sabayon/artwork'
-tags: >-
-  logo, branding, graphic, Open Source, Operative System, Distribution, Linux,
-  Sabayon, Gentoo
+tags: [logo, branding, graphic, open source, operative system, distribution, linux, sabayon, gentoo]
 date: '2018-11-01T11:30:27.901Z'
 ---
 Sabayon is a Gentoo-based Open Source Linux Distribution. 

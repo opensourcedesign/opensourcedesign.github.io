@@ -14,7 +14,7 @@ how_to_apply:
   - >-
     https://jobs.unicef.org/cw/en-us/job/546057/consultancy-giga-user-experience-design-specialist-office-of-innovation-remote-115-months
 github_handle: '@jwflory'
-tags: 'user experience, full-time, contract'
+tags: [user experience, full-time, contract]
 date: '2021-11-09T21:59:26.802Z'
 ---
 Launched in 2019 as a joint-initiative between UNICEF and ITU, [**Giga**](https://gigaconnect.org/) has set the ambitious goal to connect every school in the world to the internet. Giga focuses on connecting schools so that children and young people have access to information, opportunity, and choice.

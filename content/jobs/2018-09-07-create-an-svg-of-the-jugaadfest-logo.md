@@ -14,7 +14,7 @@ how_to_apply:
   - >-
     Please follow up on the issue tracker here:
     https://github.com/fossasia/jugaadfest-artwork/issues/1
-tags: 'logo, Jugaadfest'
+tags: [logo, jugaadfest]
 date: '2018-09-07T08:37:02.067Z'
 ---
 Please create a SVG with the following specifications of the colorful logo of Jugaadfest:

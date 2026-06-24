@@ -13,7 +13,7 @@ skills: "Svg & png files for the logo, the font and main colors should be delive
 how_to_apply:
   - Send a mail to dependenci@miguelpiedrafita.com
   - ''
-tags: 'branding, logo, design, gratis, free'
+tags: [branding, logo, design, gratis, free]
 date: '2017-04-28T13:28:04.234Z'
 ---
 

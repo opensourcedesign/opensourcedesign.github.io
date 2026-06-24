@@ -13,7 +13,7 @@ how_to_apply:
   - Florian Bruhin (maintainer) <mail@qutebrowser.org>
   - "https://www.qutebrowser.org/\r\nhttps://blog.qutebrowser.org/\r\nhttps://github.com/qutebrowser/qutebrowser/blob/master/qutebrowser/html/styled.html"
 github_handle: ''
-tags: 'web design, html, css, sphinx, pelican'
+tags: [web design, html, css, sphinx, pelican]
 date: '2021-04-24T08:46:52.463Z'
 ---
 The qutebrowser project is a web browser for power users, focused on keyboard usage. Its inspired by the vim editor and similar to projects like Tridactyl, Vimperator or Vimium.

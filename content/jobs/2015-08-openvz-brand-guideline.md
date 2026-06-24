@@ -9,7 +9,7 @@ contact: sergeyb@openvz.org
 contributing_md: (optional) # A link to your contributing guidelines for newcomers
 contributors_md: (optional) # A list of contributors who are reach-out-able.
 org_url: https://openvz.org
-tags: design, branding, logo
+tags: [design, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2015-08-27

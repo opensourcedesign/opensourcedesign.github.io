@@ -14,7 +14,7 @@ how_to_apply:
     Respond to the github issue here:
     https://github.com/subuser-security/subuser/issues/170
   - "Here is the issue in the usue tracker: https://github.com/subuser-security/subuser/issues/170\r\n\r\nHere is the source of the logo: https://github.com/subuser-security/subuser-logo"
-tags: logo
+tags: [logo]
 date: '2017-02-08T17:03:35.589Z'
 timestamp: 1486573415
 ---

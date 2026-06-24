@@ -12,7 +12,7 @@ deliverables: "Must Have\r\n- A primary logo (png, svg, ico files)\r\n- Inverted
 how_to_apply:
   - pip-ux@pypa.io
 github_handle: ''
-tags: 'logo, branding, design, identity project'
+tags: [logo, branding, design, identity project]
 date: '2020-12-15T16:57:05.392Z'
 ---
 pip is the package installer for Python. You can use pip to install packages from the Python Package Index and other indexes. pip has never had a dedicated identity or logo, but the pip team would love to have a stronger visual identity and brand.

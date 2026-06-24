@@ -7,6 +7,7 @@ organization: Collabora Online
 org_url: 'https://www.collaboraonline.com/'
 license: 'https://www.collaboraonline.com/'
 title: UI/UX & Interaction Designer (Remote/Europe)
+slug: ui-ux-interaction-designer-remote-europe
 role: 'UX, UI, interaction design'
 compensation: paid
 deliverables: ''
@@ -14,7 +15,7 @@ how_to_apply:
   - ben.toynton@collabora.com
   - 'https://jobs.lever.co/collabora/9829e319-e3b1-431e-b360-af9c8d10adb5'
 github_handle: ''
-tags: 'UX, UI, interaction design'
+tags: [ux, ui, interaction design]
 date: '2025-09-19T11:56:36.131Z'
 ---
 Collabora Productivity build Collabora Online - an open source, in-browser, interoperable, feature-rich, enterprise document collaboration suite.

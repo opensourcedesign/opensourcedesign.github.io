@@ -16,7 +16,7 @@ how_to_apply:
   - >-
     https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/presentations/UX%20Clinic.pdf
 github_handle: ''
-tags: 'poster design, graphic design, poster, sign making, typography,'
+tags: [poster design, graphic design, poster, sign making, typography]
 date: '2024-01-04T11:16:17.883Z'
 ---
 Open Source Design runs design clinics at various conferences and we’d like to make sure we can decorate our stand and our helpers for the clinic! things we’ll need:

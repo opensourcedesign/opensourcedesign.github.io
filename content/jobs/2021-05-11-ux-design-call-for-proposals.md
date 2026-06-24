@@ -7,6 +7,7 @@ organization: OpenAppStack
 org_url: >-
   https://www.openappstack.net/2021/05/11/make-us-look-good-ux-design-call-for-proposals.html
 title: UX/Design Call for Proposals
+slug: ux-design-call-for-proposals
 role: 'UX, UI, visual design, dashboard'
 compensation: paid
 deliverables: "- A full set of UX and visual design boards that completely describe the user journeys in a format that can be easily translated into code (Figma mockups, for example)\r\n - A design package with all the assets (icons, fonts, colors, etc) we would need in order to translate the boards into code"

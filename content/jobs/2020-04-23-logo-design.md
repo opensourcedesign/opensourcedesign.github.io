@@ -6,6 +6,7 @@ layout: jobs
 organization: Cluxia
 org_url: 'https://cluxia.eu'
 title: Logo design
+slug: cluxia-logo-design
 role: Logo design & branding
 compensation: gratis
 deliverables: A vectorized logo under FLOSS license
@@ -13,7 +14,7 @@ how_to_apply:
   - Maxime “pep” Buquet <pep@bouah.net>
   - "https://cluxia.eu\r\nhttps://cluxia.eu/draft"
 github_handle: ''
-tags: 'logo, color, branding'
+tags: [logo, color, branding]
 date: '2020-04-23T19:26:59.693Z'
 ---
 I'm currently working on making a project of mine, Cluxia, a bit more public. At the moment it consists only of public chat services (XMPP) but it will eventually provide free email, social network, git hosting etc.

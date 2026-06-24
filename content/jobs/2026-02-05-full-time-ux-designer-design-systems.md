@@ -14,7 +14,7 @@ how_to_apply:
   - hayden.chambers@canonical.com
   - 'https://www.linkedin.com/jobs/view/4262272853/'
 github_handle: ''
-tags: 'design system, ubuntu'
+tags: [design system, ubuntu]
 date: '2026-02-05T14:35:35.613Z'
 ---
 Please apply through: https://www.linkedin.com/jobs/view/4262272853/

@@ -13,7 +13,7 @@ how_to_apply:
   - aimee@ecohackerfarm.org
   - ''
 github_handle: ''
-tags: UX design
+tags: [ux design]
 date: '2022-02-21T11:34:30.393Z'
 ---
 we have a couple of days paid work available for graphic design tweaks on an app in development on bubble.io

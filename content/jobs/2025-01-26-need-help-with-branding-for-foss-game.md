@@ -15,7 +15,7 @@ how_to_apply:
   - opensourcedesign.version657@passmail.net
   - "https://github.com/ultimateownsz/PySeas/discussions/94 ,\r\nhttps://github.com/ultimateownsz/PySeas/blob/main/docs%2FGame%20Design%20Document%2FGGD.md ,\r\n"
 github_handle: '@ultimateownsz'
-tags: 'Logo, branding, pixelart'
+tags: [logo, branding, pixelart]
 date: '2025-01-26T18:39:21.572Z'
 ---
 Our project aims to create a pirate themed 2D, topdown, turn based boardgame in Pygame.

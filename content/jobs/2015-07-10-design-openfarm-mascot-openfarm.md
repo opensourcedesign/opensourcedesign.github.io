@@ -8,8 +8,8 @@ organization: "OpenFarm"
 github: openfarmcc
 contributing_md: https://github.com/openfarmcc/OpenFarm/blob/master/CONTRIBUTING.md
 contributors_md: https://github.com/openfarmcc/OpenFarm/graphs/contributors
-org_url: openfarm.cc
-tags: logo
+org_url: https://openfarm.cc
+tags: [logo]
 status: closed
 compensation: gratis, up for discussion
 contact: simonv3 on twitter or post on github

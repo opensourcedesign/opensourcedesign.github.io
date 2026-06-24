@@ -6,6 +6,7 @@ layout: jobs
 organization: Ambar System
 org_url: 'https://github.com/ambar-system'
 title: UI/UX design for an open source handheld console (proof-of-concept)
+slug: ui-ux-design-for-an-open-source-handheld-console-proof-of-concept
 role: UI/UX design
 compensation: gratis
 deliverables: >-
@@ -13,7 +14,7 @@ deliverables: >-
 how_to_apply:
   - Comment here - https://github.com/ambar-system/ambar-board/issues/1
 github_handle: ''
-tags: 'interface, game console, open source'
+tags: [interface, game console, open source]
 date: '2020-07-29T02:51:10.579Z'
 ---
 Ambar System is a proof of concept to make a handheld pure gaming experience. Currently, Ambar System target to provide a better user experience and have a good interface.

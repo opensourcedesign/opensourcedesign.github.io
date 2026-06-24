@@ -2,11 +2,12 @@
 _id: 00000000-0000-0000-0000-000000000015
 layout: jobs
 title: Full/part-time Web GL/Three.JS specialist
+slug: full-part-time-web-gl-three-js-specialist
 role: Three.js Developer
 organization: Ethereal Lifestyle
 github: CrasHog
 contact: email, github
-tags: Three.js, 3d, WebGL, design, branding, Archetecture
+tags: [three.js, 3d, webgl, design, branding, archetecture]
 status: solved
 compensation: salary depending on skill level and experience
 date_posted: 2015-06-04

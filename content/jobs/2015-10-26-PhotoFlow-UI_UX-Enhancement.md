@@ -2,12 +2,13 @@
 _id: 00000000-0000-0000-0000-000000000026
 layout: jobs
 title: PhotoFlow Image Editor UI/Usability improvement
+slug: photoflow-image-editor-ui-usability-improvement
 role: UI/UX Designer
 organization: PhotoFlow editor
 github: aferrero2707
 contact: photofloweditor@gmail.com
 org_url: https://aferrero2707.github.io/PhotoFlow/, https://photoflowblog.blogspot.com/
-tags: interface design, usability enhancement
+tags: [interface design, usability enhancement]
 status: solved
 compensation: gratis
 date_posted: 2015-10-26

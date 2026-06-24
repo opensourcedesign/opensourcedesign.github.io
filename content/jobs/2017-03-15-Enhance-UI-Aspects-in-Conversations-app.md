@@ -13,7 +13,7 @@ skills: 'Material design for Android platform'
 how_to_apply:
   - "Are you interested? Respond to the issue."
   - 'https://github.com/siacs/Conversations/issues/2327'
-tags: 'interface design, UI, Material Design, Android app, XMPP, Chat'
+tags: [interface design, ui, material design, android app, xmpp, chat]
 date: '2017-03-15'
 ---
 

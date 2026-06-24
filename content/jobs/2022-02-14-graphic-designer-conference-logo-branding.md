@@ -15,7 +15,7 @@ how_to_apply:
     [Wiki of past conferences with websites and logo
     designs](https://wiki.openstreetmap.org/wiki/State_of_the_Map#State_of_the_Map_U.S._.28SotM-US.29).
 github_handle: ''
-tags: 'logo, branding, graphic design'
+tags: [logo, branding, graphic design]
 date: '2022-02-14T14:31:27.168Z'
 ---
 [OpenStreetMap US](https://www.openstreetmap.us/) is seeking to hire a professional graphic designer to improve and further develop our annual conference logo and branding based on existing assets and guidelines. 

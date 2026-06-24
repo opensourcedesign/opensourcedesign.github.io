@@ -15,7 +15,7 @@ how_to_apply:
     project code repository (includes some example images):
     https://github.com/alan-turing-institute/AutSPACEs
 github_handle: ''
-tags: 'illustration, citizen science, web platform'
+tags: [illustration, citizen science, web platform]
 date: '2024-03-15T13:48:35.848Z'
 ---
 ## About AutSPACEs

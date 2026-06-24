@@ -6,6 +6,7 @@ layout: jobs
 organization: Ubuntu
 org_url: 'https://canonical.com/'
 title: Senior UX Designer at Ubuntu / Canonical
+slug: senior-ux-designer-at-ubuntu-canonical
 role: UX Design
 compensation: paid
 deliverables: "## Required Skills And Experience\r\n\r\n- Ability to maintain a good view across a number of projects, and to be a go-to person for the design team as a whole and work with other seniors and leads to align overall departmental processes \r\n- Ability to articulate clearly and effectively your design decisions to team members, engineers and stakeholders\r\n- Ability to develop the process / approach for tackling a design problem and to lead the exploration and design solutions of undefined problem spaces\r\n- Ability to set up, attend and run weekly catch-ups with engineers and stakeholders you are collaborating with\r\n- Desire to work collaboratively with team members across different disciplines\r\n- Ability to work in an agile way and manage your own workload to deliver designs to agreed timescales\r\n- Motivation to drive understanding of impact and success metrics to focus your efforts. Develop a good working knowledge of KPI’s and Google Analytics - goal setting and tracking, A/B testing etc.\r\n- Proficiency in design and prototyping tools and basic understanding of HTML and CSS\r\n- Bachelor’s or master’s degrees or equivalent\r\n- 5~7 years experience in UX design roles"
@@ -13,7 +14,7 @@ how_to_apply:
   - elio.qoshi@canonical.com
   - "GreenHouse application link:\r\nhttps://grnh.se/fcbd33bb1us"
 github_handle: ''
-tags: 'ux, ubuntu, canonical'
+tags: [ux, ubuntu, canonical]
 date: '2021-01-14T18:06:05.713Z'
 ---
 Canonical is the company behind Ubuntu, the leading operating system for container, cloud, internet of things and hyperscale computing, central to modern tech from development to production.

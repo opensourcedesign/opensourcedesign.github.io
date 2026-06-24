@@ -12,7 +12,7 @@ deliverables: A logo and a set of icons
 how_to_apply:
   - Kortanul <kortanul@protonmail.com>
   - ''
-tags: 'logo, branding, graphic design'
+tags: [logo, branding, graphic design]
 date: '2018-01-28T07:19:22.427Z'
 ---
 We're running a community-driven fork of a commercial product, but we're not affiliated with the company that maintains the commercial version. We need a logo to differentiate ourselves from the original company.

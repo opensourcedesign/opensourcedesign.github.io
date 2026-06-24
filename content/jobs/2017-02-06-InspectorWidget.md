@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000057
 layout: jobs
 title: Testing/re-designing InspectorWidget
+slug: testing-re-designing-inspectorwidget
 role: UX/UI Designer/Researcher
 organization: Public research - Inria Lille, CNRS, University of Mons
 github: ChristianFrisson
@@ -9,7 +10,7 @@ contact: https://github.com/InspectorWidget
 contributing_md: https://github.com/InspectorWidget/InspectorWidget/blob/master/README.md
 contributors_md: https://github.com/InspectorWidget/InspectorWidget/blob/master/README.md
 org_url: https://github.com/InspectorWidget
-tags: usability testing, user interface design, website, logo
+tags: [usability testing, user interface design, website, logo]
 status: solved
 compensation: gratis (free beers if and whenever we meet in Brussels or Lille)
 date_posted: 2017-02-06

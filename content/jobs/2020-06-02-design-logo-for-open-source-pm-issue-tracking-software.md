@@ -6,6 +6,7 @@ layout: jobs
 organization: Pachno
 org_url: 'https://www.thebuggenie.com'
 title: Design logo for open source PM/Issue tracking software
+slug: design-logo-for-open-source-pm-issue-tracking-software
 role: Logo design & branding
 compensation: gratis
 deliverables: 'A logo (and color profile to match, if desired).'
@@ -13,7 +14,7 @@ how_to_apply:
   - Daniel André (lead developer) <zegenie@thebuggenie.com>
   - 'https://www.thebuggenie.com'
 github_handle: ''
-tags: 'logo, branding'
+tags: [logo, branding]
 date: '2020-06-02T11:32:42.035Z'
 ---
 We'd love a beautiful logo to go with our open source project and platform.

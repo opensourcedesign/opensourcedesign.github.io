@@ -10,7 +10,7 @@ status: past
 permalink: /2015/03/29/planning-meetup
 ---
 
-In our [last meetup](2015-03-15%20Berlin%20Open%20Source%20Design%20meetup.md) we outlined a bunch of good plans.
+In our [last meetup](/events/2015-03-15-berlin-open-source-design-meetup/) we outlined a bunch of good plans.
 
 Let’s meet and work on driving the Open Soure Design movement forward! Everyone who wants to contribute is welcome.
 

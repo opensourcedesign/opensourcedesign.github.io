@@ -13,7 +13,7 @@ how_to_apply:
   - Clemens <metacreature@fantasymail.de>
   - "https://ibb.co/xCGy9v9\r\n"
 github_handle: github@metacreature
-tags: 'graphic design, app design'
+tags: [graphic design, app design]
 date: '2024-11-03T00:17:02.817Z'
 ---
 I need a design for a tecnical finished eBook-Reader app. 

@@ -7,7 +7,7 @@ organization: "Metta Center for Nonviolence"
 github: MettaCenter
 contact: tord.dellsen@gmail.com
 org_url: http://mettacenter.org
-tags: interface design, branding, text layout
+tags: [interface design, branding, text layout]
 status: solved
 compensation: gratis
 date_posted: 2015-07-15

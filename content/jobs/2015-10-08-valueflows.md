@@ -2,12 +2,13 @@
 _id: 00000000-0000-0000-0000-000000000025
 layout: jobs
 title: valueflo.ws design
+slug: valueflo-ws-design
 role: Designer
 organization: Value Flows
 github: valueflows
 contact: ahdinosaur on github
 org_url: https://valueflo.ws
-tags: visual design, economic flows, diagrams, icons
+tags: [visual design, economic flows, diagrams, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-10-08

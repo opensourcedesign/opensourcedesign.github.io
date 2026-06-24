@@ -13,7 +13,7 @@ how_to_apply:
   - Reinold (lead Dev) <oknolaz.freedom@protonmail.com>
   - ''
 github_handle: GitHub @Oknolaz
-tags: 'logo,icon,voice assistant,app'
+tags: [logo, icon, voice assistant, app]
 date: '2021-08-22T11:56:32.661Z'
 ---
 We need a logo & icon for the voice assistant.

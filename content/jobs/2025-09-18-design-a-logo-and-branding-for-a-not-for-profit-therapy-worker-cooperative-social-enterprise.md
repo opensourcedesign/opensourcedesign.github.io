@@ -20,7 +20,7 @@ how_to_apply:
   - Nicholas
   - "www.therapy.coop\r\n\r\nhttps://www.baatn.org.uk/job/common-ground-therapy-worker-cooperative-south-east-london-part-time-join-londons-only-therapy-cooperative-common-ground-therapy-is-a-worker-cooperative-social-enterprise-which-is-seeking/\r\n"
 github_handle: commonground@therapy.coop
-tags: 'logo, branding, design language, visual language'
+tags: [logo, branding, design language, visual language]
 date: '2025-09-18T21:51:43.393Z'
 ---
 Logo design, Branding of a design or visual language that we can use to create our website

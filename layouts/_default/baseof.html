@@ -5,9 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="view-transition" content="same-origin" />
 
-    {{ $title := cond (ne .Title "") (printf "%s | %s" .Title site.Title) site.Title }}
-    {{ $desc := .Description | default .Summary | default site.Params.description | default site.Title }}
-    {{ $desc = $desc | plainify | truncate 160 }}
+    {{/* Distinguish taxonomy term pages (e.g. /tags/governance/) from same-named
+         content pages so titles/OG tags stay unique for SEO. */}}
+    {{ $pageTitle := .Title }}
+    {{ if eq .Kind "term" }}{{ $pageTitle = printf "Posts tagged “%s”" .Title }}{{ end }}
+    {{/* Many job posts share generic titles ("Logo design"); append the org for
+         unique, descriptive <title>/OG tags. */}}
+    {{ if and .IsPage (eq .Section "jobs") .Params.organization }}{{ $pageTitle = printf "%s · %s" .Title .Params.organization }}{{ end }}
+    {{ $title := cond (ne $pageTitle "") (printf "%s | %s" $pageTitle site.Title) site.Title }}
+    {{ $desc := .Description | default .Summary }}
+    {{/* Taxonomy pages otherwise all inherit the generic site description, which
+         creates hundreds of duplicate meta descriptions. Generate a unique,
+         descriptive one per topic instead. */}}
+    {{ if not $desc }}
+      {{ if eq .Kind "term" }}{{ $desc = printf "Open Source Design jobs, events, and resources tagged “%s”." .Title }}
+      {{ else if eq .Kind "taxonomy" }}{{ $desc = "Browse Open Source Design jobs, events, and resources by topic." }}
+      {{ else }}{{ $desc = site.Params.description }}{{ end }}
+    {{ end }}
+    {{ $desc = $desc | default site.Title | plainify | truncate 160 }}
 
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $desc }}" />
@@ -97,81 +112,73 @@
       <meta name="twitter:image" content="{{ $ogImage }}" />
     {{ end }}
 
-    {{/* JSON-LD structured data */}}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "{{ site.Title }}",
-      "url": "{{ site.BaseURL }}",
-      "logo": "{{ "/images/opensourcedesign-logo.svg" | absURL }}",
-      "description": {{ site.Params.description | jsonify }},
-      "sameAs": [
-        {{- $socials := slice -}}
-        {{- range site.Params.social -}}
-          {{- $socials = $socials | append .url -}}
-        {{- end -}}
-        {{- delimit $socials ", " -}}
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "community",
-        "url": "{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/"
-      }
-    }
-    </script>
+    {{/* JSON-LD structured data. Built as maps and emitted with `jsonify | safeJS`:
+         inside a <script> Go's html/template contextually re-encodes every
+         interpolated value, so hand-writing JSON with `| jsonify` per field
+         double-encodes it (strings gain literal quotes; arrays collapse into a
+         single string). One jsonify pass + safeJS is the correct, safe idiom. */}}
+    {{ $socials := slice }}
+    {{ range site.Params.social }}{{ $socials = $socials | append .url }}{{ end }}
+    {{ $org := dict
+      "@context" "https://schema.org"
+      "@type" "Organization"
+      "name" site.Title
+      "url" site.BaseURL
+      "logo" (absURL "/images/opensourcedesign-logo.svg")
+      "description" site.Params.description
+      "sameAs" $socials
+      "contactPoint" (dict
+        "@type" "ContactPoint"
+        "contactType" "community"
+        "url" (printf "%s/" (site.Params.forumURL | default "https://discourse.opensourcedesign.net"))
+      )
+    }}
+    <script type="application/ld+json">{{ $org | jsonify | safeJS }}</script>
 
     {{/* Page-specific schema. JobPosting is emitted by layouts/jobs/single.html
          (only for open listings) to avoid duplication and advertising filled jobs. */}}
     {{ if eq .Section "events" }}
       {{ if .IsPage }}
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Event",
-          "name": {{ .Title | jsonify }},
-          "description": {{ .Summary | plainify | jsonify }},
-          {{ with .Params.eventDate }}"startDate": {{ . | jsonify }},{{ end }}
-          {{ with .Params.location }}"location": { "@type": "Place", "name": {{ . | jsonify }} },{{ end }}
-          "organizer": {
-            "@type": "Organization",
-            "name": "Open Source Design",
-            "url": "{{ site.BaseURL }}"
-          }
-        }
-        </script>
+        {{ $event := dict
+          "@context" "https://schema.org"
+          "@type" "Event"
+          "name" .Title
+          "description" (.Summary | plainify)
+          "organizer" (dict "@type" "Organization" "name" "Open Source Design" "url" site.BaseURL)
+        }}
+        {{/* startDate must be ISO 8601; prefer eventStart, else an ISO eventDate. */}}
+        {{ $start := "" }}
+        {{ with .Params.eventStart }}{{ $start = printf "%v" . }}{{ end }}
+        {{ if not $start }}{{ $ed := printf "%v" (.Params.eventDate | default "") }}{{ if findRE `^\d{4}-\d{2}-\d{2}` $ed }}{{ $start = $ed }}{{ end }}{{ end }}
+        {{ with $start }}{{ $event = merge $event (dict "startDate" .) }}{{ end }}
+        {{ with .Params.location }}{{ $event = merge $event (dict "location" (dict "@type" "Place" "name" .)) }}{{ end }}
+        <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
       {{ end }}
     {{ else if eq .Section "articles" }}
       {{ if .IsPage }}
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": {{ .Title | jsonify }},
-          "description": {{ .Summary | plainify | jsonify }},
-          "datePublished": "{{ .Date.Format "2006-01-02" }}",
-          "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-          {{ with .Params.author }}"author": { "@type": "Person", "name": {{ . | jsonify }} },{{ end }}
-          "publisher": {
-            "@type": "Organization",
-            "name": "Open Source Design",
-            "logo": { "@type": "ImageObject", "url": "{{ "/images/opensourcedesign-logo.svg" | absURL }}" }
-          }
-        }
-        </script>
+        {{ $article := dict
+          "@context" "https://schema.org"
+          "@type" "Article"
+          "headline" .Title
+          "description" (.Summary | plainify)
+          "datePublished" (.Date.Format "2006-01-02")
+          "dateModified" (.Lastmod.Format "2006-01-02")
+          "publisher" (dict "@type" "Organization" "name" "Open Source Design" "logo" (dict "@type" "ImageObject" "url" (absURL "/images/opensourcedesign-logo.svg")))
+        }}
+        {{ with .Params.author }}{{ $article = merge $article (dict "author" (dict "@type" "Person" "name" .)) }}{{ end }}
+        <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
       {{ end }}
     {{ else if eq .Section "people" }}
       {{ if .IsPage }}
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": {{ (.Params.name | default .Title) | jsonify }},
-          "description": {{ .Summary | plainify | jsonify }},
-          "url": "{{ .Permalink }}"
-          {{ with .Params.website }},"sameAs": {{ . | jsonify }}{{ end }}
-        }
-        </script>
+        {{ $person := dict
+          "@context" "https://schema.org"
+          "@type" "Person"
+          "name" (.Params.name | default .Title)
+          "description" (.Summary | plainify)
+          "url" .Permalink
+        }}
+        {{ with .Params.website }}{{ $person = merge $person (dict "sameAs" .) }}{{ end }}
+        <script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
       {{ end }}
     {{ end }}
 
@@ -181,6 +188,14 @@
     {{/* RSS Feed */}}
     {{ with .OutputFormats.Get "RSS" }}
       <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}" />
+    {{ end }}
+
+    {{/* iCal feed (events section) for calendar autodiscovery. Hugo gives the
+         text/calendar format a webcal:// permalink (so it opens in a calendar
+         app); html/template's URL filter only trusts http/https/mailto and would
+         otherwise rewrite our own permalink to "#ZgotmplZ", so mark it safe. */}}
+    {{ with .OutputFormats.Get "Calendar" }}
+      <link rel="alternate" type="text/calendar" title="{{ site.Title }} — Events" href="{{ .Permalink | safeURL }}" />
     {{ end }}
 
     <style>
@@ -249,15 +264,17 @@
   <body class="flex min-h-screen flex-col bg-slate-50 text-slate-950 antialiased">
     <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg" href="#main">Skip to content</a>
 
-    {{ partial "header.html" . }}
+    {{/* Header varies only by active nav section, so cache per-section. */}}
+    {{ partialCached "header.html" . .Section }}
 
-    <main id="main" class="flex-1" role="main" aria-label="Main content">
+    <main id="main" class="flex-1">
       {{ block "main" . }}{{ end }}
     </main>
 
-    {{ partial "footer.html" . }}
+    {{/* Footer and search dialog are identical on every page; cache once. */}}
+    {{ partialCached "footer.html" . }}
 
-    {{ partial "search-modal.html" . }}
+    {{ partialCached "search-modal.html" . }}
 
     {{/* Scroll to top button */}}
     <button

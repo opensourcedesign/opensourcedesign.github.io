@@ -13,7 +13,7 @@ how_to_apply:
   - joaodasilvagithub@gmail.com
   - "https://windowjs.org/\r\nhttps://github.com/windowjs/windowjs\r\nhttps://github.com/windowjs/windowjs/discussions/24"
 github_handle: joaodasilva
-tags: logo
+tags: [logo]
 date: '2022-01-16T11:25:52.095Z'
 ---
 Window.js is an open-source Javascript runtime for desktop graphics programming.

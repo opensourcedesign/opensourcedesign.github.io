@@ -18,7 +18,7 @@ deliverables: >-
 how_to_apply:
   - ddemaio@opensuse.org
   - "Geeko - https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/OpenSUSE_Logo.svg/1280px-OpenSUSE_Logo.svg.png\r\nAlex - https://events.opensuse.org/system/conferences/logos/000/000/044/original/alext.png"
-tags: openSUSE
+tags: [opensuse]
 date: '2018-02-06T09:46:55.717Z'
 timestamp: 1517910415
 ---

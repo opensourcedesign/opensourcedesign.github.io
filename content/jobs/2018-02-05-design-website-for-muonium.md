@@ -16,7 +16,7 @@ deliverables: ''
 how_to_apply:
   - design@muonium.ee
   - "https://github.com/muonium\r\n\r\nhttps://framavox.org/g/KgLMT6H2/muonium"
-tags: branding
+tags: [branding]
 date: '2018-02-05T21:43:07.923Z'
 ---
  

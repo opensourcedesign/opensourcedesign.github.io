@@ -2,6 +2,8 @@
 title: "Open Source Design monthly call"
 categories: online meet-up
 eventDate: Every First Wednesday
+eventStart: 2026-07-01
+recurrence: "FREQ=MONTHLY;BYDAY=1WE"
 location: Online
 time: 19:00-20:00 (Berlin Time)
 status: upcoming

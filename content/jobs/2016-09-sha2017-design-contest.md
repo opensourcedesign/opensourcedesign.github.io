@@ -9,7 +9,7 @@ contact: design@sha2017.org
 contributing_md: https://sha2017.org/call-for-design
 contributors_md: realitygaps
 org_url: https://sha2017.org
-tags: design, branding, logo, theme
+tags: [design, branding, logo, theme]
 status: closed
 compensation: gratis
 date_posted: 2016-09-13

@@ -12,7 +12,7 @@ deliverables: "- Mockups"
 how_to_apply:
   - 'Karan (project lead): bookproject@madebykarankumar.com'
 github_handle: ''
-tags: 'ui, design'
+tags: [ui, design]
 date: '2021-01-28T18:00:54.816Z'
 ---
 

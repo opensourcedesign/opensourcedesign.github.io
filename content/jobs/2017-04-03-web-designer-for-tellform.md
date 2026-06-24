@@ -12,7 +12,7 @@ skills: ''
 how_to_apply:
   - Email polydaic@gmail.com with a CV or portfolio (if you have one).
   - "http://tellform.com\r\nhttp://github.com/whitef0x0/tellform"
-tags: 'ui design, web design, typeform, forms'
+tags: [ui design, web design, typeform, forms]
 date: '2017-04-03T19:22:08.944Z'
 timestamp: 1491247328
 ---

@@ -6,13 +6,14 @@ layout: jobs
 organization: CopyTranslator
 org_url: 'https://hypercube.top/copytranslator/'
 title: 'Design a logo for CopyTranslator, a very useful open source translation tool.'
+slug: design-a-logo-for-copytranslator-a-very-useful-open-source-translation-tool
 role: Logo design and branding
 compensation: gratis
 deliverables: 'svg or png is ok,bigger image is prefered.'
 how_to_apply:
   - copytranslator@hypercube.top
   - 'https://github.com/elliottzheng/CopyTranslator'
-tags: 'logo,branding'
+tags: [logo, branding]
 date: '2018-11-29T16:30:01.245Z'
 ---
 CopyTranslator is a free open source translation tool, which can help you process(e.g remove the extra line breaks when you copy from pdf) and translate the clipboard contents and display them in real time. It can also handle various demands for real-time translation. It has get more than 120 stars and more than 1k downloads on Github. 

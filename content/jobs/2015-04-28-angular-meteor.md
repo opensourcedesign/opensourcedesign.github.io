@@ -9,7 +9,7 @@ contact: simonv3 on github
 contributing_md:
 contributors_md:
 org_url: http://angularjs.meteor.com
-tags: angular, meteor, branding, documentation, information architecture
+tags: [angular, meteor, branding, documentation, information architecture]
 status: solved
 compensation: gratis
 date_posted: 2015-04-28

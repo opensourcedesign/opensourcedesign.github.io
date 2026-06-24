@@ -13,7 +13,7 @@ how_to_apply:
     Simply reach us at
     https://github.com/astroidmail/astroid/issues/254#issuecomment-271138689
   - 'https://github.com/astroidmail/'
-tags: 'logo, graphic design, email'
+tags: [logo, graphic design, email]
 date: '2017-01-25T16:40:42.751Z'
 description:
 ---

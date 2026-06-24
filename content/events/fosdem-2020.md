@@ -2,8 +2,7 @@
 layout: event
 title: Open Source Design speak at FOSDEM 2020
 date: 2020-02-01
-authors:
-  - amitlzkpa
+author: amitlzkpa
 status: past
 eventDate: "1–2 February 2020"
 location: "Brussels, Belgium"

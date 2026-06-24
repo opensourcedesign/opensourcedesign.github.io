@@ -6,6 +6,7 @@ layout: post
 organization: parceldude
 org_url: 'https://github.com/grindhold/parceldude'
 title: Create an Icon that does not suck.
+slug: create-an-icon-that-does-not-suck
 role: Icon Design
 compensation: gratis
 deliverables: 1 Icon (svg or raster in multiple resolutions)

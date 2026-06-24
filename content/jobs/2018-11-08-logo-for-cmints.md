@@ -6,6 +6,7 @@ layout: jobs
 organization: CMintS
 org_url: 'https://cmints.io/'
 title: Design a logo
+slug: cmints-design-a-logo
 role: Logo design & branding
 compensation: gratis
 deliverables: >-
@@ -13,7 +14,7 @@ deliverables: >-
   favicon. If your proposal requires changes in the website, please describe
   them or propose color adjustments.
 how_to_apply: See below
-tags: 'logo, branding'
+tags: [logo, branding]
 date: '2018-11-08T09:52:02.796Z'
 ---
 

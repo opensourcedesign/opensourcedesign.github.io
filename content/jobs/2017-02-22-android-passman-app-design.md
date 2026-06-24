@@ -13,7 +13,7 @@ how_to_apply:
   - "If you think you made a great design, show it to us!\r\nCreate an new issue at https://github.com/nextcloud/passman-android "
   - "Passman repo: https://github.com/nextcloud/passman   
      Demo: https://demo.passman.cc"
-tags: 'nextcloud, passman, android app, material design'
+tags: [nextcloud, passman, android app, material design]
 date: '2017-02-22T12:49:36.851Z'
 ---
 At the moment the android app is pretty default. 

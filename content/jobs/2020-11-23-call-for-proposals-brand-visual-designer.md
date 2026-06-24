@@ -6,6 +6,7 @@ layout: jobs
 organization: Anti-phishing tool
 org_url: 'https://simplysecure.org/hiring/brand-designer-cfp.html'
 title: Call for Proposals — Brand/Visual Designer
+slug: call-for-proposals-brand-visual-designer
 role: Branding Identity
 compensation: paid
 deliverables: "You’ll propose, create, and deliver an identity and design system that includes:\r\n    A logo\r\n    Logotype\r\n    A brand mascot\r\n    Illustrations\r\n    Typography\r\n    Color palette\r\n    Guidelines for usage (dos and don’ts)"
@@ -13,7 +14,7 @@ how_to_apply:
   - jobs-brand@simplysecure.org
   - 'https://simplysecure.org/hiring/brand-designer-cfp.html'
 github_handle: ''
-tags: 'logo, branding, illustration, typography'
+tags: [logo, branding, illustration, typography]
 date: '2020-11-23T14:08:22.929Z'
 ---
 We’re looking for a designer to create the visual identity elements of an anti-phishing tool launching in February 2021.

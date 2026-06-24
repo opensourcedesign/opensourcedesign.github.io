@@ -6,13 +6,14 @@ layout: jobs
 organization: Passbolt
 org_url: 'https://www.passbolt.com/'
 title: Designer (UX/UI) - Remote / Luxembourg - Fulltime
+slug: designer-ux-ui-remote-luxembourg-fulltime
 role: web design
 compensation: paid
 deliverables: ''
 how_to_apply:
   - careers@passbolt.com
   - 'https://careers.passbolt.com/openings/product/designer'
-tags: 'ux, ui, web design'
+tags: [ux, ui, web design]
 date: '2019-01-07T10:42:27.178Z'
 ---
 Passbolt is looking for a web designer. If you are passionate about privacy, security, open source software and can craft elegant user interfaces we want to hear from you! The successful candidate will have a portfolio demonstrating their skills. 

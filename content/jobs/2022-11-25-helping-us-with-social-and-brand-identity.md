@@ -13,7 +13,7 @@ how_to_apply:
   - Davide Imola <me@davideimola.com>
   - "https://schrodinger-hat.it\r\nhttps://github.com/Schrodinger-Hat/"
 github_handle: '@davideimola'
-tags: 'branding, social media graphics, logo'
+tags: [branding, social media graphics, logo]
 date: '2022-11-25T20:18:58.139Z'
 ---
 Schrödinger Hat is an open-source community. Our mission is to share the love for open-source!

@@ -13,7 +13,7 @@ how_to_apply:
   - dgsaiu@proton.me
   - "* Join the discussion on GitHub: [Project Discussion](https://github.com/ultimateownsz/PySeas/discussions/94)\r\n* Check out the **Game Design Document (GGD)** for more details: [GGD.md](https://github.com/ultimateownsz/PySeas/blob/main/docs/Game%20Design%20Document/GGD.md)"
 github_handle: ultimateownsz
-tags: 'logo, branding, pixelart, pygame'
+tags: [logo, branding, pixelart, pygame]
 date: '2025-01-31T00:11:24.861Z'
 ---
 **Organization:** PySeas *(soon to be PyCeas)*

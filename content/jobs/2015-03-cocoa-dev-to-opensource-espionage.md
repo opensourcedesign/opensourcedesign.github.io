@@ -6,7 +6,7 @@ role: Design focused Cocoa developer
 organization: Tao Effect LLC
 github: taoeffect
 org_url: https://www.espionageapp.com
-tags: cocoa, mac, os x, encryption, security, plausible deniability
+tags: [cocoa, mac, os x, encryption, security, plausible deniability]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2015-03-18
@@ -14,7 +14,7 @@ description:
 how_to_apply:
 ---
 
-# Toward Sustainable Open Source Development. Cocoa Developer Wanted.
+## Toward Sustainable Open Source Development. Cocoa Developer Wanted.
 
 [Espionage](https://www.espionageapp.com) is a highly rated personal data encryption app for Mac OS X.
 

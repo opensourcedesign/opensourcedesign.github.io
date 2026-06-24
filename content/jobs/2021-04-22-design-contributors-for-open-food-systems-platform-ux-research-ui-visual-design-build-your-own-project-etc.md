@@ -5,9 +5,10 @@ date_posted: '2021-04-22'
 layout: jobs
 organization: Open Food Network
 org_url: 'https://www.openfoodnetwork.org/'
+slug: open-food-network-design-contributors
 title: >-
   Design contributors for Open Food Systems platform: UX, research, UI, Visual
-  Design, build your own project etc.
+  Design, build your own project etc. (April 2021)
 role: 'User research, interaction design, visual design'
 compensation: gratis
 deliverables: 'Various: UI, UX, Research docs and advocacy'
@@ -15,9 +16,7 @@ how_to_apply:
   - erioldoesdesign@gmail.com
   - 'https://www.openfoodnetwork.org/become-a-contributor/'
 github_handle: ''
-tags: >-
-  User research, interaction design, visual design, food systems, illustration,
-  infographics
+tags: [user research, interaction design, visual design, food systems, illustration, infographics]
 date: '2021-04-22T14:26:36.130Z'
 ---
 The project is looking for design contributions of all kinds. 

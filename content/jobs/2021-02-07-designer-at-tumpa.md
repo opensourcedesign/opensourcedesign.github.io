@@ -6,6 +6,7 @@ layout: jobs
 organization: Tumpa
 org_url: 'https://github.com/kushaldas/tumpa'
 title: Design contributors wanted
+slug: tumpa-designer
 role: 'Interaction design, visual design'
 compensation: gratis
 deliverables: ''

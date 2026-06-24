@@ -14,7 +14,7 @@ how_to_apply:
     Reply below (or contact Keunes <keunes+antennapod-logo :at: mailbox.org>)
   - ""
 github_handle: '@keunes'
-tags: 'logo, branding'
+tags: [logo, branding]
 date: '2020-05-26T20:31:47.618Z'
 ---
 _AntennaPod is a podcast manager and player for Android. Contrary to many of its competitors, it is open source (MIT License), developed and translated by volunteers, gratis and ad-free._

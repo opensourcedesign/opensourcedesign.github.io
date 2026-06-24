@@ -14,7 +14,7 @@ how_to_apply:
   - Daniel Moran (daniel@moransoftware.ca)
   - 'Existing logo: https://github.com/django-commons'
 github_handle: '@cunla'
-tags: logo
+tags: [logo]
 date: '2025-07-19T13:46:10.785Z'
 ---
 Django Commons is an organization dedicated to supporting the community's efforts to maintain packages. It seeks to improve the maintenance experience for all contributors; reducing the barrier to entry for new contributors and reducing overhead for existing maintainers.

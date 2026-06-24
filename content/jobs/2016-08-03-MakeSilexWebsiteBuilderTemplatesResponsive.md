@@ -7,7 +7,7 @@ organization: Silex Labs
 github: silexlabs
 contact: contact at silexlabs.org
 org_url: https://www.silexlabs.org/
-tags: website templates, webdesign, design
+tags: [website templates, webdesign, design]
 status: solved
 compensation: gratis / we provide 1 to 1 support
 date_posted: 2016-08-03
@@ -16,7 +16,7 @@ how_to_apply:
 ---
 [Silex](http://www.silex.me/) is a free and open source website builder (community driven), that can be used directly in a browser. It is an alternative to Wix, Squarespace, etc.
 
-![](https://www.silex.me/assets/silex-screenshot.png)
+![Silex website builder editor screenshot](https://www.silex.me/assets/silex-screenshot.png)
 
 This job offer is a one time mission to make our free templates responsive / mobile friendly. It is also a way to involve a designer, teach him / her how to use the new functionnalities we developed, and maybe document it for others. **If you are interested, please contact us at `contact at silexlabs.org`**.
 

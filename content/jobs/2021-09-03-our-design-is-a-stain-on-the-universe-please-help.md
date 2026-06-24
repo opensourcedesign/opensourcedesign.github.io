@@ -6,6 +6,7 @@ layout: jobs
 organization: Heinous design of widely used open playlist tech
 org_url: 'https://xspf.org/'
 title: Our design is a stain on the universe. Please help.
+slug: our-design-is-a-stain-on-the-universe-please-help
 role: web design
 compensation: gratis
 deliverables: ''

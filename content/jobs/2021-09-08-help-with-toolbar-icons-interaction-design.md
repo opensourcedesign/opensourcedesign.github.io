@@ -13,7 +13,7 @@ how_to_apply:
   - Geoff Hutchison (lead dev) geoff.hutchison@gmail.com
   - "Current screenshot: https://imgur.com/a/nLRiwKp\r\nExample updates: https://imgur.com/a/eZx7J5m\r\nVersion 1 homepage: https://avogadro.cc\r\nVersion 2 beta: https://two.avogadro.cc\r\n\r\nMain GitHub repo:\r\nhttps://github.com/openchemistry/avogadrolibs\r\n"
 github_handle: '@ghutchis'
-tags: 'icon design, interaction design, branding'
+tags: [icon design, interaction design, branding]
 date: '2021-09-09T16:41:09.402Z'
 ---
 Avogadro is a leading 3D molecular design and visualization tool, downloaded over 1 million times. As coders and scientists, we need help with icon design and UI / UX as we finish Avogadro 2.0

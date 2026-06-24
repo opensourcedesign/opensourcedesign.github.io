@@ -6,6 +6,7 @@ layout: jobs
 organization: Akademy 2020 training "UI/UX design for developers"
 org_url: 'https://akademy.kde.org/2020'
 title: UI/UX design trainer for Akademy 2020 online event
+slug: ui-ux-design-trainer-for-akademy-2020-online-event
 role: 'UI/UX, training, workshop'
 compensation: paid
 deliverables: ''

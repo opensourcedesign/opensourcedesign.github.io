@@ -10,9 +10,9 @@ aliases:
   - /2025/05/13/FOSSBACKSTAGE-2025-wrap-up/
 ---
 
-# FOSS Backstage 2025 wrap up recap
+## FOSS Backstage 2025 wrap up recap
 
-## Open Source Design @ FOSS Backstage
+### Open Source Design @ FOSS Backstage
 
 ![signs outside of FOSS Backstage's venue entrance](/images/articles/foss-backstage-2025/foss-backstage-signs.jpg "signs outside of FOSS Backstage's venue entrance")
 
@@ -32,7 +32,7 @@ This articles author [(Eriol Fox)](https://discourse.opensourcedesign.net/u/erio
 ![a speaker and the tech behind the speaker](/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech.jpg "a speaker and the tech behind the speaker")
 
 
-# The design talks for FOSS backstage
+## The design talks for FOSS backstage
 
 This year FOSS Backstage not only ran a day of design (FOSS Backstage Design) but also had a number of design talks throughout the main 2 day conference. These talks included topics around the usability of critical civic crisis technologies, how OSS organisations are understanding and building out their design processes for the wider community, the importance of cultural contexts with language orientation, design for command line interfaces and how open source designers are building out community learning resources so that more designers can be onboarded into OSS contribution.
 
@@ -96,7 +96,7 @@ For Open Source Software, developer contributions are essential. While involveme
 
 ![FOSS Backstage Design signed, sign](/images/articles/foss-backstage-2025/foss-backstage-design-sign.jpg "FOSS Backstage Design signed, sign")
 
-# The design talks for FOSS Backstage Design
+## The design talks for FOSS Backstage Design
 
 FOSS Backstage Design’s day kicked off with three fantastic talks by Martin Keary, Marta Marczykowska-Górecka and Tobias Bernard. All the speakers presented on common design in OSS topics but from their own unique experiences. There are common themes across the talks, from communication across role divides to both designers and developers getting intensely nerdy about their specific domains. The most common thread being that no matter what you’re contributing to the OSS, you're there because you support free and open software and ultimately want it to be used, enjoyed and valuable to any user.
 
@@ -131,7 +131,7 @@ Tobias speaks about designing but also being embedded in the Gnome community. To
 ![A circle of people discussing open source design topics at the barcamp](/images/articles/foss-backstage-2025/foss-backstage-barcamp.jpg "A circle of people discussing open source design topics at the barcamp")
 
 
-# The FOSS Backstage Design ‘barcamp’ aka pitch a discussion topic and then vote!
+## The FOSS Backstage Design ‘barcamp’ aka pitch a discussion topic and then vote!
 
 After the talks we move into a [‘barcamp’](https://en.wikipedia.org/wiki/BarCamp) afternoon. All attendees had time to write what kinds of conversations and sessions they wanted to see happen for the remainder of the afternoon. These were then voted on and 3 sessions were run in parallel for 3 1 hour time slots. Notes were taken by volunteers and summaries can be found below.
 
@@ -181,7 +181,7 @@ Private discussion centering on how to be supportive, collaborative and kind in 
 ![All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones](/images/articles/foss-backstage-2025/foss-backstage-stickies.jpg "All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones")
 
 
-# Authors final thoughts
+## Authors final thoughts
 
 In the ‘post’-covid (is it over really?) era, where we saw many OSS foundations and organisations struggling to maintain already tightening budgets. Who now faces the onslaught of challenges to sustainability and existence across the rapidly changing (for the better?) tech ecosystem. It feels increasingly difficult to find events and communities carving out the space for the less prominent ways of supporting and contributing to OSS - design (and all of ‘designs’ subsidiary practices aka UI, UX, Usability, Accessibility, user research etc.). Maintaining design’s presence and relevancy to OSS continues to feel like pushing a boulder up a hill (in this author’s opinion). But the more we’re able to come together as a community of designers, around our commonalities as both designers in proprietary commercial spaces as well as open source software spaces, we can support the events and communities that support us, support not only our contribution labour, but also our advocacy and relevancy in OSS.
 
@@ -189,7 +189,7 @@ In the ‘post’-covid (is it over really?) era, where we saw many OSS foundati
 ![A sticky note that reads 'developers and designers, a match made in heaven/hell?](/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers.jpg "A sticky note that reads 'developers and designers, a match made in heaven/hell?")
 
 
-# Credits and thanks
+## Credits and thanks
 
 Thanks to the Open Source Design core maintainer team broadly and the wider community for discussing sponsoring FOSS Backstage.
 

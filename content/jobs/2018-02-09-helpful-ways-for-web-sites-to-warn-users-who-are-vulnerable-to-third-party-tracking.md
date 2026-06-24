@@ -17,7 +17,7 @@ deliverables: >-
 how_to_apply:
   - Don Marti <dmarti@zgp.org>
   - "Example of a really basic action: swap out the page header for a message: https://blog.zgp.org/code/warn3p.js\r\n\r\nProject blog: http://blog.aloodo.org/\r\n\r\nProject on GitHub: https://github.com/aloodo\r\n\r\n"
-tags: 'privacy, web, JavaScript, "tracking protection"'
+tags: [privacy, web, javascript, tracking protection]
 date: '2018-02-09T15:48:13.529Z'
 timestamp: 1518191293
 ---

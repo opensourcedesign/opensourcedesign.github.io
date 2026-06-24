@@ -22,9 +22,9 @@ how_to_apply:
     the work. The work will reach a state that the OSD community can continue
     with and meets as reasonable an amount of ‘approval’ as feasible in the
     current decision making processes.
-  - "[https://archive.fosdem.org/2022/schedule/event/osd_introduction_to_open_source_design/](https://archive.fosdem.org/2022/schedule/event/osd_introduction_to_open_source_design/)\r\n\r\n[https://opensourcedesign.net/](https://opensourcedesign.net/) (Specifically the goals and manifesto pages)\r\n\r\n[https://opencollective.com/opensourcedesign](https://opencollective.com/opensourcedesign) \r\n\r\n[https://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md](https://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md) "
+  - "https://archive.fosdem.org/2022/schedule/event/osd_introduction_to_open_source_design/\r\n\r\nhttps://opensourcedesign.net/ (Specifically the goals and manifesto pages)\r\n\r\nhttps://opencollective.com/opensourcedesign\r\n\r\nhttps://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md"
 github_handle: ''
-tags: 'Governance, design, community building, support, documentation, research,'
+tags: [governance, design, community building, support, documentation, research]
 date: '2026-04-01T08:22:48.621Z'
 ---
 Please see this document for the full job description: [https://cloud.opensourcedesign.net/s/Ly6WTWYg4Gn5aQT](https://cloud.opensourcedesign.net/s/Ly6WTWYg4Gn5aQT)

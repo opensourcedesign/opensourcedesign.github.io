@@ -11,7 +11,7 @@ skills: design
 how_to_apply:
   - "UI or UX project portfolio appreciated (links or images of at least two past projects please).\r\nTo apply email hosted at phplist dot com with your details."
   - "Example of pages to be redesigned: \r\nhttp://www.imagebam.com/gallery/z4vl1q6i4ga6cr3vmymulndbvaduntim\r\n\r\nPages from new application theme: \r\nhttp://www.imagebam.com/gallery/tzpc5x71it9h1yz1ef07ib7ansm7nl4h"
-tags: 'ui, ux, web, css, inkscape, phplist'
+tags: [ui, ux, web, css, inkscape, phplist]
 date: '2017-01-24T12:03:58.981Z'
 description:
 ---

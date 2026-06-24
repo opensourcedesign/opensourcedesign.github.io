@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000057
 layout: jobs
 title: Inkscape Open Symbols UX/UI
+slug: inkscape-open-symbols-ux-ui
 role: UX/UI Designer
 organization: Inkscape Open Symbols
 github: xaviju
@@ -9,7 +10,7 @@ contact: xaviju@gmail.com
 contributing_md: https://github.com/Xaviju/inkscape-open-symbols/blob/master/CONTRIBUTING.md
 contributors_md: https://github.com/Xaviju/inkscape-open-symbols/blob/master/AUTHORS.md
 org_url: https://github.com/Xaviju/inkscape-open-symbols/
-tags: website, UX, UI, design
+tags: [website, ux, ui, design]
 status: solved
 compensation: gratis
 date_posted: 2017-01-14

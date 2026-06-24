@@ -13,7 +13,7 @@ how_to_apply:
   - pedro@craftweg.com
   - 'https://github.com/catalysisdotdev'
 github_handle: '@pepicrft'
-tags: 'deployments,dx,developers,tooling,netlify,heroku'
+tags: [deployments, dx, developers, tooling, netlify, heroku]
 date: '2022-09-28T19:13:28.516Z'
 ---
 I’m building an open-source AGPL-3-licensed tool for deployments. It takes inspiration from close-sourced tools like Fly.io, Netlify, or Vercel that have a strong focus on providing a great DX. Users will be able to run the tool themselves or use a hosted version with a transparent pricing.

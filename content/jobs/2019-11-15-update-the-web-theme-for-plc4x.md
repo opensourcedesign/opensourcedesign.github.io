@@ -15,7 +15,7 @@ how_to_apply:
     https://github.com/apache/plc4x/tree/feature/new-site-skin - Branch used to
     work on the new Maven Skin
 github_handle: ''
-tags: Web Design
+tags: [web design]
 date: '2019-11-15T14:02:54.403Z'
 ---
 It is our goal to create a set of libraries, that allow unified access to any type of Programmable Logic Controllers.

@@ -13,7 +13,7 @@ how_to_apply:
   - aimee@ecohackerfarm.org
   - ''
 github_handle: ''
-tags: logo
+tags: [logo]
 date: '2022-06-14T14:56:41.006Z'
 ---
 Hi all,

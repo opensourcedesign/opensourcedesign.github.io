@@ -16,6 +16,6 @@ how_to_apply:
 tags: []
 date: '2018-06-11T11:55:03.348Z'
 timestamp: 1528718103
-slug: design-a-logo
+slug: secushare-design-a-logo
 ---
 undefined

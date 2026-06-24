@@ -13,7 +13,7 @@ how_to_apply:
   - Reshama (project manager) <info@dataumbrella.org>
   - 'https://github.com/data-umbrella/event-board-web'
 github_handle: reshamas
-tags: 'logo, branding, events, open source, calendar'
+tags: [logo, branding, events, open source, calendar]
 date: '2022-09-26T20:15:58.575Z'
 ---
 The Data Events Board is a platform for the community to share their events. In the spirit of open source, this event board has been built using open source software (Python, Django, React) and the application code is publicly available.

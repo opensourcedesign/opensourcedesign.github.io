@@ -21,7 +21,7 @@ The Open Source Design community groups welcomes and encourages folks from both 
 
 The **call for proposals** is now closed and the round of reviews by the [open source design core team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) has started! If you submitted you'll get a notification of acceptance or rejection in early to mid December 2024 but no later than December 15th. You'll then be paired with a volunteer to help you prepare for the conference if you need. 
 
-~The **call for proposals/talks** opens on the **30th of October 2024**. Find more info about submitting a talk here: [https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025](https://opensourcedesign.net/2024/10/23/fosdem-cfp-2025)
+~The **call for proposals/talks** opens on the **30th of October 2024**. Find more info about submitting a talk here: [opensourcedesign.net/events/2024-10-23-fosdem-cfp-2025](/events/2024-10-23-fosdem-cfp-2025/)
 We will **close** the call for proposals/talks on **November 30th 2024** will go through a round of reviews by the [open source design core team](https://discourse.opensourcedesign.net/t/open-source-design-core-team/888) and you'll get a notification of acceptance or rejection in early to mid December 2024.~ 
 
 
@@ -49,7 +49,7 @@ Besides the actual talks, we are also going to be hanging out in main cafeteria 
 
 ## How do I get involved?
 
-We're glad you asked! You can help in many ways, including managing the crowd and making sure the room is not exceeding capacity, covering the event on social media, moderating and helping out in the chat rooms, and anything else! [Please respond to this forum post to indicate your interest to volunteer]([https://cloud.opensourcedesign.net/s/d9jsa3EDJWAKKHG](https://discourse.opensourcedesign.net/t/fosdem-2025-lets-get-a-head-start-on-planning/3891/19)).
+We're glad you asked! You can help in many ways, including managing the crowd and making sure the room is not exceeding capacity, covering the event on social media, moderating and helping out in the chat rooms, and anything else! [Please respond to this forum post to indicate your interest to volunteer](https://discourse.opensourcedesign.net/t/fosdem-2025-lets-get-a-head-start-on-planning/3891/19).
 Sadly we cannot fund volunteer travel, visa applications or accomodation.
 
 ## Any questions?

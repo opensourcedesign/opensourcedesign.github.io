@@ -10,7 +10,7 @@ skills: The svg files for the icons and an svg/png file for the mockup's.
 how_to_apply:
   - Just contact me by email or create an issue on the github repository
   - "https://github.com/bil-elmoussaoui/Gnome-TwoFactorAuth/issues/16\r\nhttps://github.com/bil-elmoussaoui/Gnome-TwoFactorAuth/issues/9"
-tags: 'logo, mockup, gnome, linux'
+tags: [logo, mockup, gnome, linux]
 date: 2017-01-02
 date_posted: 2017-01-02
 description:

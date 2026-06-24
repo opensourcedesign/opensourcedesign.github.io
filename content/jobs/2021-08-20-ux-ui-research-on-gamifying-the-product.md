@@ -6,6 +6,7 @@ layout: jobs
 organization: RestQA
 org_url: 'https://restqa.io'
 title: Ux/UI research on gamifying the product
+slug: ux-ui-research-on-gamifying-the-product
 role: 'ux research, gamification'
 compensation: gratis
 deliverables: ''
@@ -13,7 +14,7 @@ how_to_apply:
   - hi@olivierodo.me
   - "Documentation: https://docs.restqa.io\r\nDiscord:  https://restqa.io/chat\r\nDashboard demo: https://dashboard.restqa.io"
 github_handle: '@olivierodo'
-tags: 'ux research, design, gamification'
+tags: [ux research, design, gamification]
 date: '2021-08-21T03:42:28.526Z'
 ---
 Hello 👋,

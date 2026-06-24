@@ -43,12 +43,16 @@
         {{ if not $label }}{{ $label = $email }}{{ end }}
         {{ $contacts = $contacts | append (dict "type" "email" "href" (printf "mailto:%s" $email) "label" $label "sub" $email) }}
       {{ else if or (hasPrefix $line "http://") (hasPrefix $line "https://") }}
-        {{/* Derive a clean host without urls.Parse, which errors on malformed input. */}}
-        {{ $host := replaceRE `^[a-zA-Z][a-zA-Z0-9+.-]*://` "" $line }}
-        {{ $host = replaceRE `[/?#\s,].*$` "" $host }}
+        {{/* A line may append a prose note after the URL ("https://… (see X)").
+             URLs contain no spaces, so the href is the first whitespace-delimited
+             token; keep the full line as the sub-label so the note stays visible.
+             Derive the host without urls.Parse, which errors on malformed input. */}}
+        {{ $url := replaceRE `\s.*$` "" $line }}
+        {{ $host := replaceRE `^[a-zA-Z][a-zA-Z0-9+.-]*://` "" $url }}
+        {{ $host = replaceRE `[/?#].*$` "" $host }}
         {{ $host = strings.TrimPrefix "www." $host }}
-        {{ if not $host }}{{ $host = $line }}{{ end }}
-        {{ $contacts = $contacts | append (dict "type" "url" "href" $line "label" $host "sub" $line) }}
+        {{ if not $host }}{{ $host = $url }}{{ end }}
+        {{ $contacts = $contacts | append (dict "type" "url" "href" $url "label" $host "sub" $line) }}
       {{ else if findRE `^@[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $line }}
         {{ $handle := strings.TrimPrefix "@" $line }}
         {{ $contacts = $contacts | append (dict "type" "github" "href" (printf "https://github.com/%s" $handle) "label" (printf "@%s" $handle) "sub" "GitHub") }}

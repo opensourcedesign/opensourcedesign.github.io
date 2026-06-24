@@ -11,7 +11,7 @@ compensation: paid
 deliverables: "## How will the final deliverable look like?\r\n\r\nThe final deliverable should be in a vectorial editable file format, since it needs to be converted to SVG format, and it should be of good quality. The [Chromium logo](https://commons.wikimedia.org/wiki/File:Chromium_11_Logo.svg) is an example of a good SVG.\r\n\r\nThe license of the submitted work should be [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)."
 how_to_apply:
   - "https://www.bromite.org/news/2018-09-05-submissions-for-new-logo\r\nhttps://github.com/bromite/bromite/issues/120"
-tags: 'logo, browser, privacy, open source'
+tags: [logo, browser, privacy, open source]
 date: '2018-09-06T17:48:40.434Z'
 ---
 # Submissions for new logo

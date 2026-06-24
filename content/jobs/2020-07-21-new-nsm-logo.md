@@ -16,7 +16,7 @@ how_to_apply:
     Original issue: https://github.com/linuxaudio/new-session-manager/issues/52
   - 
 github_handle: ''
-tags: 'logo, graphic design, audio, music production, session management, api, osc, reference app, encapsulation, fork'
+tags: [logo, graphic design, audio, music production, session management, api, osc, reference app, encapsulation, fork]
 date: '2020-07-21T13:16:12.297Z'
 ---
 New Session Manager is a new community-led fork of NSM, the *de facto* libre audio session manager API in the JACK and audio production world. The fork brings a slightly better defined API, a new reference server and front-end GUI control app.

@@ -13,7 +13,7 @@ how_to_apply:
   - Navan Chauhan (Contributor) <navanchauhan@gmail.com>
   - 'https://github.com/kantord/LibreLingo'
 github_handle: ''
-tags: 'mascot, graphic design'
+tags: [mascot, graphic design]
 date: '2020-03-14T07:49:06.247Z'
 ---
 LibreLingo is an experiment to create a community-driven language-learning platform. We are looking for a mascot for this project.

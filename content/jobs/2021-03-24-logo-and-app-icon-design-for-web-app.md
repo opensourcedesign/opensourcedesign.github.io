@@ -13,7 +13,7 @@ how_to_apply:
   - hello@nibdo.com
   - "https://bloben.com\r\nhttps://calendar.bloben.com\r\nhttps://github.com/nibdo/bloben-calendar"
 github_handle: ''
-tags: 'logo, branding'
+tags: [logo, branding]
 date: '2021-03-24T20:13:58.530Z'
 ---
 Bloben is set of end to end encrypted web apps - calendar, notes.

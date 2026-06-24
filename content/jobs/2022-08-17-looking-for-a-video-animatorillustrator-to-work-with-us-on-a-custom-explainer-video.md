@@ -15,7 +15,7 @@ how_to_apply:
   - Gabe <gabek@real-ity.com>
   - "Example Owncast instance: https://watch.owncast.online\r\nOwncast project page: https://owncast.online"
 github_handle: gabek
-tags: 'video,animation,illustration'
+tags: [video, animation, illustration]
 date: '2022-08-17T22:29:37.831Z'
 ---
 Owncast is a free and open source piece of software to allow individuals and organizations to run their own live video streams, similar to Twitch or YouTube Live.

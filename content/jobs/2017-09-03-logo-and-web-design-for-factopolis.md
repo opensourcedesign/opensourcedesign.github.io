@@ -15,7 +15,7 @@ how_to_apply:
     use [our issue tracker](https://github.com/factopolis/factopolis/issues);
     Jeff (@jetwash) will respond.
   - 'https://www.factopolis.com/contributing/#designers'
-tags: 'logo, web design'
+tags: [logo, web design]
 date: '2017-09-04T04:03:26.132Z'
 ---
 Factopolis is an open, collaboratively edited database to track politician's lies. We need a logo and a new theme for our web site.

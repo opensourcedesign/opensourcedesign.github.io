@@ -6,11 +6,12 @@ layout: jobs
 organization: LibreOffice / The Document Foundation
 org_url: 'http://www.libreoffice.org'
 title: (done) Branding for LibreOffice 6.0
+slug: done-branding-for-libreoffice-6-0
 role: Graphic Designer
 compensation: gratis
 skills: ""
 how_to_apply: 'see below'
-tags: 'Visual design, Branding'
+tags: [visual design, branding]
 date: '2017-04-20T10:18:10.119Z'
 ---
 Disucssion was done on Discourse https://discourse.opensourcedesign.net/t/branding-libreoffice-6-0/175

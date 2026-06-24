@@ -12,7 +12,7 @@ deliverables: 'wireframes , mockups of UI designs , usability testing'
 how_to_apply:
   - nick.satterly@gmail.com
   - "https://alerta.io/\r\nhttps://github.com/alerta/alerta/\r\nhttps://docs.alerta.io\r\nhttps://beta.alerta.io\r\nhttps://twitter.com/alertaio\r\nhttps://vuejs.org\r\nhttps://vuetifyjs.com"
-tags: 'interaction design , system administration , ui design , usability testing'
+tags: [interaction design, system administration, ui design, usability testing]
 date: '2019-02-12T09:35:04.329Z'
 ---
 Alerta is looking for help to evaluate the usability of it's new version and also improve interface design which is currently in beta.

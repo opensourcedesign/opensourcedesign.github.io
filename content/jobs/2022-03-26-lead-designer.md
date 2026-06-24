@@ -13,7 +13,7 @@ how_to_apply:
   - John (project manager) <contact@quantu.app>
   - ''
 github_handle: '@DataDaoDe'
-tags: 'graphic design, web design, ui/ux design, design thinking'
+tags: [graphic design, web design, ui-ux design, design thinking]
 date: '2022-03-26T22:18:53.151Z'
 ---
 We are building an open education platform for lifelong learners!

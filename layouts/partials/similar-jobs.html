@@ -14,12 +14,14 @@
 {{ $currentComp := (printf "%v" (.Params.compensation | default "")) | lower }}
 {{ $limit := 3 }}
 
-{{/* Get all jobs except current */}}
-{{ $allJobs := where (where site.RegularPages "Section" "jobs") ".RelPermalink" "!=" $current.RelPermalink }}
+{{/* Get all jobs except current (exclude non-listing pages: form, archive, how-to) */}}
+{{ $jobPages := where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive" "how-to-post") }}
+{{ $allJobs := where $jobPages ".RelPermalink" "!=" $current.RelPermalink }}
 
-{{/* Filter to only open jobs */}}
-{{ $openJobs := where $allJobs ".Params.status" "!=" "filled" }}
-{{ $openJobs = where $openJobs ".Params.status" "!=" "closed" }}
+{{/* Filter to only open jobs. Only "searching" is open; every other status
+     (solved/closed/resolved/completed/filled) is a finished posting and must
+     not be recommended. */}}
+{{ $openJobs := where $allJobs ".Params.status" "searching" }}
 
 {{/* Score and sort jobs by relevance */}}
 {{ $scored := slice }}

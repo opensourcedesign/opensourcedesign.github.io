@@ -15,7 +15,7 @@ how_to_apply:
     See https://gitlab.gnome.org/Cogitri/gnome-health/ for how the application
     currently looks
 github_handle: ''
-tags: 'logo,branding'
+tags: [logo, branding]
 date: '2020-10-18T16:38:57.300Z'
 ---
 Hello,

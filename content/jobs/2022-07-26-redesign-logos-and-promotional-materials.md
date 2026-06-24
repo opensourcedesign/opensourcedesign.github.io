@@ -15,7 +15,7 @@ how_to_apply:
   - William McGonagle (President) <mcgonaglew@fairfieldprogramming.org>
   - ''
 github_handle: '@fairfield-programming'
-tags: 'logo, branding, graphic design'
+tags: [logo, branding, graphic design]
 date: '2022-07-26T11:31:50.030Z'
 ---
 The Fairfield Programming Association is an open-source, non-profit with a focus on education in the world of computer science. Currently, we have a logo and some promotional materials, but these promotional materials and logo need to be redone or polished up as they were done by someone with no design experience. These logos and this redesign does not need to keep the current FPA style, it can be a redesign from scratch if need be.

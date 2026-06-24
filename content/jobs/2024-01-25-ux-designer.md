@@ -6,6 +6,7 @@ layout: jobs
 organization: ApiOpenStudio
 org_url: 'https://www.apiopenstudio.com/'
 title: UX designer
+slug: apiopenstudio-ux-designer
 role: Application Design
 compensation: gratis
 deliverables: >-
@@ -16,7 +17,7 @@ how_to_apply:
   - John (Technical Director) <john@apiopenstudio.com>
   - "Wiki: https://wiki.apiopenstudio.com/\r\nApiOpenStudio Core: https://gitlab.com/apiopenstudio/apiopenstudio\r\nApiOpenStudio Admin (old, MVP): https://gitlab.com/apiopenstudio/apiopenstudio_admin\r\nApiOpenStudio Admin (new, WIP): https://gitlab.com/apiopenstudio/apiopenstudio_admin_vue\r\n"
 github_handle: '@naala89'
-tags: 'API, low-code, iPaaS, integration, vuejs, web application'
+tags: [api, low-code, ipaas, integration, vuejs, web application]
 date: '2024-01-25T04:43:30.194Z'
 ---
 ApiOpenStudio is comprehensive, pluggable and Open Source, allowing fast creation of secure REST APIs with full logic and granular access management

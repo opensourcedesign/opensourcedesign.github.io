@@ -12,9 +12,7 @@ skills: ''
 how_to_apply:
   - design@peerio.com
   - ''
-tags: >-
-  graphic design, security, encryption, privacy, startup, full time, Montreal,
-  Canada, remote
+tags: [graphic design, security, encryption, privacy, startup, full time, montreal, canada, remote]
 date: '2017-07-31T15:52:15.312Z'
 ---
 Peerio is a Montreal-based company specialising in usable end-to-end encryption tools for team collaboration across desktop and mobile platforms. 

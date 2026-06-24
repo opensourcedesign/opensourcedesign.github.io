@@ -20,7 +20,7 @@ how_to_apply:
     The CNCF Slack ( https://communityinviter.com/apps/cloud-native/cncf ), has
     a #tuf channel. This is the best place to reach out.
 github_handle: JustinCappos
-tags: book
+tags: [book]
 date: '2025-08-28T13:01:00.036Z'
 ---
 Want to make a children's book?

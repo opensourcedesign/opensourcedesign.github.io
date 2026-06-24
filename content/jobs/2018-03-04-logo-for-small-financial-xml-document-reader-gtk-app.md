@@ -13,7 +13,7 @@ how_to_apply:
   - Cimm <cimm@inboxbear.com>
   - >-
     [Screenshot](https://raw.githubusercontent.com/cimm/codav/master/data/Screenshot.png)
-tags: 'logo, application, gtk, gnome'
+tags: [logo, application, gtk, gnome]
 date: '2018-03-04T21:40:02.892Z'
 data: '2018-03-04T21:40:02.892Z'
 ---

@@ -13,7 +13,7 @@ how_to_apply:
   - dieterplaetinck@gmail.com
   - 'https://tapas.fit'
 github_handle: Dieterbe
-tags: 'design, branding, ux'
+tags: [design, branding, ux]
 date: '2024-02-27T18:59:01.764Z'
 ---
 The mission of tapas.fit is to make self-improvement accessible and free to all, via a free database and open source mobile app.

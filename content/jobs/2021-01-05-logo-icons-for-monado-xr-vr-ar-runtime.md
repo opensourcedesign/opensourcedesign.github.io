@@ -6,12 +6,13 @@ layout: jobs
 organization: Monado XR Runtime
 org_url: 'https://monado.freedesktop.org/'
 title: Logo/icons for Monado XR (VR/AR) Runtime
+slug: logo-icons-for-monado-xr-vr-ar-runtime
 role: Logo design & branding
 compensation: paid
 deliverables: "- A logo (in SVG) in both a full-color and single-color (mono/black-and-white) version. Should be suitable for use:\r\n  - web branding\r\n  - marketing slides, brochures, etc.\r\n  - as part of Android app icon, notification icon\r\n  - on a \"hexie\" (hexagonal sticker)\r\n- Preferably with color suggestions, and ideally open-source font suggestions (in some places we'll presumably have the logo next to the word Monado)\r\n- We'd be really excited if there was a clear way to create a 3D model equivalent of it. That would be useful in 3D UI stuff.\r\n\r\nThe results will be licensed as a part of the Monado project."
 how_to_apply: "Contact Ryan (co-maintainer) <ryan.pavlik@collabora.com>"
 github_handle: ''
-tags: 'logo, branding, graphic design'
+tags: [logo, branding, graphic design]
 date: '2021-01-05T16:06:21.795Z'
 ---
 Monado is an open-source runtime, focused on implementing the Khronos OpenXR standard in a fully open-source, permissively-licensed project. The project was founded by Collabora, so in some places (e.g. Khronos slide decks) the project gets represented by a Collabora logo right now, which isn't great since we want it to be independent.

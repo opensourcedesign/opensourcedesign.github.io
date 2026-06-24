@@ -9,7 +9,7 @@ contact: sajolida@pimienta.org
 contributing_md: (optional) # A link to your contributing guidelines for newcomers
 contributors_md: (optional) # A list of contributors who are reach-out-able.
 org_url: https://tails.boum.org/
-tags: illustrations
+tags: [illustrations]
 status: solved
 compensation: Billable hours paid up to 2 000€, including meetings.
 date_posted: 2019-09-27

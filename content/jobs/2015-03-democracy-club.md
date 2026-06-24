@@ -6,7 +6,7 @@ role: Front-end Designer
 organization: DemocracyClub
 github: DemocracyClub
 org_url: https://democracyclub.org.uk/
-tags: interface design, user experience design, logo
+tags: [interface design, user experience design, logo]
 status: closed
 compensation: gratis
 date_posted: 2015-03-02

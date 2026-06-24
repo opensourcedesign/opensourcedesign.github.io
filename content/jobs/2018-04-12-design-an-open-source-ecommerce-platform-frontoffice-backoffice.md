@@ -6,6 +6,7 @@ layout: post
 organization: ventas
 org_url: 'https://github.com/JoelSanchez/ventas'
 title: Design an open source ecommerce platform (frontoffice / backoffice)
+slug: design-an-open-source-ecommerce-platform-frontoffice-backoffice
 role: Web design
 compensation: gratis
 description: >-
@@ -19,7 +20,7 @@ deliverables: >-
 how_to_apply:
   - webmaster@kazer.es
   - "See the demo for the existing design work.\r\nFrontoffice:\r\nhttps://ventas2.kazer.es\r\nBackofffice: \r\nhttps://ventas2.kazer.es/admin (user test@test.com, password test)\r\nhttps://ventas2.kazer.es/admin/products/17592186045931/edit\r\netc\r\n\r\n"
-tags: web design
+tags: [web design]
 date: '2018-04-12T08:46:03.700Z'
 ---
  

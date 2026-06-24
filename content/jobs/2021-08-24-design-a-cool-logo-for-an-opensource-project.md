@@ -13,7 +13,7 @@ how_to_apply:
   - omri@eggpack.io
   - 'https://protoconf.github.io/protoconf/'
 github_handle: ''
-tags: 'Logo, Design,'
+tags: [logo, design]
 date: '2021-08-24T20:23:29.237Z'
 ---
 Design a cool Logo for an OpenSource Project - we will integrate it

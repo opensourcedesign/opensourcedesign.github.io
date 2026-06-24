@@ -13,7 +13,7 @@ how_to_apply:
   - Ale Rimoldi <ale@graphicslab.org>
   - ''
 github_handle: ''
-tags: 'User interface, UI'
+tags: [user interface, ui]
 date: '2019-12-06T09:09:57.781Z'
 ---
 The Scribus "Search and Replace" dialog feels overwhelming. It's very powerful, but it also present all the options as equal, which can be confusing for the user.

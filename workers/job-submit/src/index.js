@@ -1,0 +1,438 @@
+/**
+ * Open Source Design - job submission Worker.
+ *
+ * Free replacement for the old Staticman backend. The "Post a Job" form
+ * (layouts/jobs/job-form.html) POSTs a JSON submission here. We verify it
+ * (Cloudflare Turnstile + honeypot), rebuild the Markdown server-side, and open
+ * a moderated pull request against the site repo's content/jobs/ directory via
+ * the GitHub REST API.
+ *
+ * The submitter's private email is NOT placed in the (public) PR. It is stored
+ * in KV keyed by the created PR number so the merge workflow can email them on
+ * publish via an authenticated lookup.
+ *
+ * Routes:
+ *   POST /submit         -> { ok, pr_url }
+ *   GET  /lookup?pr=<n>  -> { ok, found, email, title }  (Bearer LOOKUP_SECRET)
+ */
+
+const GH_API = 'https://api.github.com';
+
+// Defensive input caps (the form validates too, but never trust the client).
+const MAX_FIELD = 8000;        // generous cap for most fields + Turnstile token
+const MAX_DESCRIPTION = 30000; // description / deliverables may be longer
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (request.method === 'OPTIONS') {
+      return withCors(env, request, new Response(null, { status: 204 }));
+    }
+
+    if ((url.pathname === '/' || url.pathname === '/health') && request.method === 'GET') {
+      return withCors(env, request, json({ ok: true, service: 'osd-job-submit' }));
+    }
+
+    if (url.pathname === '/submit' && request.method === 'POST') {
+      return withCors(env, request, await handleSubmit(request, env));
+    }
+
+    // Server-to-server only (no CORS headers needed).
+    if (url.pathname === '/lookup' && request.method === 'GET') {
+      return handleLookup(request, env, url);
+    }
+
+    return withCors(env, request, json({ ok: false, error: 'Not found' }, 404));
+  }
+};
+
+/* -------------------------------------------------------------------------- */
+/* Handlers                                                                   */
+/* -------------------------------------------------------------------------- */
+
+async function handleSubmit(request, env) {
+  let data;
+  try {
+    data = await request.json();
+  } catch (e) {
+    return json({ ok: false, error: 'Invalid JSON.' }, 400);
+  }
+
+  // Honeypot: silently accept so bots get no signal, but do nothing.
+  if (data.company) {
+    return json({ ok: true, pr_url: '' });
+  }
+
+  // Cloudflare Turnstile (skipped only when no secret is configured, e.g. dev).
+  if (env.TURNSTILE_SECRET) {
+    const ok = await verifyTurnstile(env.TURNSTILE_SECRET, data.turnstile_token, request);
+    if (!ok) {
+      return json({ ok: false, error: 'Captcha verification failed. Please try again.' }, 400);
+    }
+  }
+
+  // Required fields (mirror the form's client-side validation).
+  const required = ['title', 'organization', 'org_url', 'license', 'role', 'description', 'how_to_apply'];
+  for (const f of required) {
+    if (!data[f] || !String(data[f]).trim()) {
+      return json({ ok: false, error: 'Missing required field: ' + f }, 400);
+    }
+  }
+
+  // Defense-in-depth format/length validation (the form validates too).
+  const lengthError = checkLengths(data);
+  if (lengthError) return json({ ok: false, error: lengthError }, 400);
+  if (!isHttpUrl(data.org_url)) {
+    return json({ ok: false, error: 'Project website must be a valid http(s) URL.' }, 400);
+  }
+  if (!isHttpUrl(data.license)) {
+    return json({ ok: false, error: 'Project license must be a valid http(s) URL.' }, 400);
+  }
+  if (data.email && !isEmail(data.email)) {
+    return json({ ok: false, error: 'Please provide a valid email address (or leave it blank).' }, 400);
+  }
+
+  // Optional, best-effort per-IP daily cap (only if a RATE_LIMIT KV is bound).
+  if (env.RATE_LIMIT) {
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const day = new Date().toISOString().slice(0, 10);
+    const key = 'rl:' + day + ':' + ip;
+    const cur = parseInt((await env.RATE_LIMIT.get(key)) || '0', 10) || 0;
+    const max = parseInt(env.RATE_LIMIT_MAX || '5', 10) || 5;
+    if (cur >= max) {
+      return json({ ok: false, error: 'Too many submissions today. Please try again tomorrow.' }, 429);
+    }
+    await env.RATE_LIMIT.put(key, String(cur + 1), { expirationTtl: 86400 });
+  }
+
+  const built = buildMarkdown(data, env);
+
+  let pr;
+  try {
+    pr = await createPullRequest(env, built, data);
+  } catch (err) {
+    return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
+  }
+
+  // Store the submitter email privately for the merge-time notification.
+  if (data.email && String(data.email).trim() && env.EMAILS) {
+    const days = parseInt(env.EMAIL_TTL_DAYS || '90', 10) || 90;
+    try {
+      await env.EMAILS.put(
+        'pr:' + pr.number,
+        JSON.stringify({ email: String(data.email).trim(), title: data.title }),
+        { expirationTtl: days * 86400 }
+      );
+    } catch (e) {
+      // Non-fatal: the PR still exists, only the auto-email would be skipped.
+    }
+  }
+
+  return json({ ok: true, pr_url: pr.html_url });
+}
+
+async function handleLookup(request, env, url) {
+  const auth = request.headers.get('Authorization') || '';
+  if (!env.LOOKUP_SECRET || !safeEqual(auth, 'Bearer ' + env.LOOKUP_SECRET)) {
+    return json({ ok: false, error: 'Unauthorized' }, 401);
+  }
+  const pr = url.searchParams.get('pr');
+  if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!env.EMAILS) return json({ ok: true, found: false });
+
+  const raw = await env.EMAILS.get('pr:' + pr);
+  if (!raw) return json({ ok: true, found: false });
+
+  let rec = null;
+  try { rec = JSON.parse(raw); } catch (e) { rec = null; }
+  if (!rec || !rec.email) return json({ ok: true, found: false });
+
+  return json({ ok: true, found: true, email: rec.email, title: rec.title || '' });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Turnstile                                                                  */
+/* -------------------------------------------------------------------------- */
+
+async function verifyTurnstile(secret, token, request) {
+  if (!token) return false;
+  const body = new URLSearchParams();
+  body.append('secret', secret);
+  body.append('response', String(token));
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) body.append('remoteip', ip);
+  try {
+    const resp = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body
+    });
+    const out = await resp.json();
+    return !!(out && out.success);
+  } catch (e) {
+    return false;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Markdown generation (mirrors generateMarkdown in job-form.html)            */
+/* -------------------------------------------------------------------------- */
+
+function buildMarkdown(data, env) {
+  const now = new Date();
+  const datePosted =
+    now.getUTCFullYear() +
+    '-' + String(now.getUTCMonth() + 1).padStart(2, '0') +
+    '-' + String(now.getUTCDate()).padStart(2, '0');
+  const isoNow = now.toISOString();
+
+  const slug = datePosted + '-' + slugify(data.title);
+  const dir = (env.CONTENT_DIR || 'content/jobs').replace(/\/+$/, '');
+  const path = dir + '/' + slug + '.md';
+
+  const applyList = linesToList(data.how_to_apply);
+  const linkList = linesToList(data.links);
+  const tagList = tagsToList(data.tags);
+
+  const fm = [];
+  fm.push('---');
+  fm.push('title: ' + yq(data.title));
+  fm.push('status: searching');
+  fm.push('date_posted: ' + yq(datePosted));
+  fm.push('date: ' + yq(isoNow));
+  fm.push('organization: ' + yq(data.organization));
+  fm.push('org_url: ' + yq(data.org_url));
+  fm.push('license: ' + yq(data.license));
+  fm.push('role: ' + yq(data.role));
+  fm.push('compensation: ' + yq(data.compensation || 'gratis'));
+  if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+  if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
+
+  if (tagList.length) {
+    fm.push('tags:');
+    tagList.forEach((t) => fm.push('  - ' + yq(t)));
+  }
+  if (applyList.length) {
+    fm.push('how_to_apply:');
+    applyList.forEach((t) => fm.push('  - ' + yq(t)));
+  }
+  if (linkList.length) {
+    fm.push('links:');
+    linkList.forEach((t) => fm.push('  - ' + yq(t)));
+  }
+  if (data.deliverables) {
+    fm.push('deliverables: |-');
+    linesToList(data.deliverables).forEach((t) => fm.push('  ' + t));
+  }
+  fm.push('---');
+  fm.push('');
+  fm.push(String(data.description || '').trim());
+  fm.push('');
+
+  return { path, slug, markdown: fm.join('\n') };
+}
+
+function slugify(str) {
+  return String(str || '')
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+function yq(v) {
+  const s = String(v == null ? '' : v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  return '"' + s + '"';
+}
+
+function linesToList(s) {
+  return String(s || '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
+}
+
+function tagsToList(s) {
+  return String(s || '').split(',').map((x) => x.trim()).filter(Boolean);
+}
+
+/* -------------------------------------------------------------------------- */
+/* GitHub REST API                                                            */
+/* -------------------------------------------------------------------------- */
+
+async function createPullRequest(env, built, data) {
+  const owner = env.GITHUB_OWNER;
+  const repo = env.GITHUB_REPO;
+  const base = env.GITHUB_BRANCH || 'main';
+
+  // 1. Resolve the base branch head SHA.
+  const ref = await gh(env, 'GET', `/repos/${owner}/${repo}/git/ref/heads/${base}`);
+  const baseSha = ref.object.sha;
+
+  // 2. Create a fresh branch off the base head.
+  const branch = 'job/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
+  await gh(env, 'POST', `/repos/${owner}/${repo}/git/refs`, {
+    ref: 'refs/heads/' + branch,
+    sha: baseSha
+  });
+
+  // 3. Pick a path that doesn't collide with an existing job, then commit it.
+  const filePath = await uniquePath(env, owner, repo, base, built.path);
+  await gh(env, 'PUT', `/repos/${owner}/${repo}/contents/${encodeURIPath(filePath)}`, {
+    message: 'Add job: ' + data.title,
+    content: b64encode(built.markdown),
+    branch
+  });
+
+  // 4. Open the pull request.
+  const pr = await gh(env, 'POST', `/repos/${owner}/${repo}/pulls`, {
+    title: 'Job submission: ' + data.title,
+    head: branch,
+    base,
+    body: prBody(data, filePath)
+  });
+
+  // 5. Label it (best-effort; the merge workflow keys off the branch name, not the label).
+  if (env.PR_LABEL) {
+    try {
+      await gh(env, 'POST', `/repos/${owner}/${repo}/issues/${pr.number}/labels`, {
+        labels: [env.PR_LABEL]
+      });
+    } catch (e) {
+      // Label may not exist or token lacks Issues scope; non-fatal.
+    }
+  }
+
+  return pr;
+}
+
+function ghHeaders(env) {
+  return {
+    Authorization: 'Bearer ' + env.GITHUB_TOKEN,
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'osd-job-submit-worker',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+}
+
+async function gh(env, method, path, body) {
+  const resp = await fetch(GH_API + path, {
+    method,
+    headers: { ...ghHeaders(env), 'Content-Type': 'application/json' },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  const text = await resp.text();
+  let out;
+  try { out = text ? JSON.parse(text) : {}; } catch (e) { out = { raw: text }; }
+  if (!resp.ok) {
+    throw new Error((out && out.message) ? out.message : 'GitHub API ' + resp.status);
+  }
+  return out;
+}
+
+// Returns the first path variant (foo.md, foo-2.md, foo-3.md, ...) that does not
+// already exist on the base branch, so the contents PUT never collides.
+async function uniquePath(env, owner, repo, base, path) {
+  for (let i = 0; i < 25; i++) {
+    const candidate = i === 0 ? path : path.replace(/\.md$/, '-' + (i + 1) + '.md');
+    const u = `/repos/${owner}/${repo}/contents/${encodeURIPath(candidate)}?ref=${encodeURIComponent(base)}`;
+    const resp = await fetch(GH_API + u, { headers: ghHeaders(env) });
+    if (resp.status === 404) return candidate;   // free
+    if (resp.status !== 200) return candidate;   // can't tell; let PUT decide
+  }
+  return path;
+}
+
+function prBody(data, filePath) {
+  const lines = [];
+  lines.push('Automated submission from the **Post a Job** form.');
+  lines.push('');
+  lines.push('| Field | Value |');
+  lines.push('| --- | --- |');
+  lines.push('| Project | ' + cell(data.organization) + ' |');
+  lines.push('| Website | ' + cell(data.org_url) + ' |');
+  lines.push('| License | ' + cell(data.license) + ' |');
+  lines.push('| Role | ' + cell(data.role) + ' |');
+  lines.push('| Compensation | ' + cell(data.compensation) + (data.paid_details ? ' (' + cell(data.paid_details) + ')' : '') + ' |');
+  if (data.github_handle) lines.push('| Submitter GitHub | ' + cell(data.github_handle) + ' |');
+  lines.push('| File | `' + filePath + '` |');
+  lines.push('');
+  lines.push('Review the file, then merge to publish. The submitter is emailed automatically on merge (their address is stored privately and is not shown here).');
+  return lines.join('\n');
+}
+
+function cell(s) {
+  return String(s == null ? '' : s).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilities                                                                  */
+/* -------------------------------------------------------------------------- */
+
+function b64encode(str) {
+  // UTF-8 safe base64 (GitHub contents API expects base64-encoded content).
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function encodeURIPath(p) {
+  return String(p).split('/').map(encodeURIComponent).join('/');
+}
+
+function safeEqual(a, b) {
+  a = String(a || '');
+  b = String(b || '');
+  if (a.length !== b.length) return false;
+  let out = 0;
+  for (let i = 0; i < a.length; i++) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return out === 0;
+}
+
+function checkLengths(data) {
+  for (const [k, v] of Object.entries(data)) {
+    if (typeof v !== 'string') continue;
+    const cap = (k === 'description' || k === 'deliverables') ? MAX_DESCRIPTION : MAX_FIELD;
+    if (v.length > cap) return 'Field too long: ' + k;
+  }
+  return null;
+}
+
+function isHttpUrl(s) {
+  try {
+    const u = new URL(String(s).trim());
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch (e) {
+    return false;
+  }
+}
+
+function isEmail(s) {
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s).trim());
+}
+
+function errMsg(err) {
+  return err && err.message ? err.message : 'unknown error';
+}
+
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+
+function withCors(env, request, resp) {
+  const allowed = String(env.ALLOWED_ORIGIN || '*').split(',').map((s) => s.trim()).filter(Boolean);
+  const reqOrigin = request.headers.get('Origin') || '';
+  let allow = allowed[0] || '*';
+  if (allow !== '*' && allowed.includes(reqOrigin)) allow = reqOrigin;
+
+  const h = new Headers(resp.headers);
+  h.set('Access-Control-Allow-Origin', allow);
+  h.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  h.set('Access-Control-Allow-Headers', 'Content-Type');
+  h.set('Vary', 'Origin');
+  return new Response(resp.body, { status: resp.status, headers: h });
+}

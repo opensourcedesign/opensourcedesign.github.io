@@ -12,7 +12,7 @@ skills: "* T-shirt (main)\r\n * Name badge\r\n * X-stand banner\r\n * Poster"
 how_to_apply:
   - 'Submit your work at https://github.com/opensourcedesign/jobs/issues/149'
   - 'https://github.com/fossasia/fossasia-artwork '
-tags: 't-shirt, graphic design, conference'
+tags: [t-shirt, graphic design, conference]
 date: '2017-01-31T16:28:50.377Z'
 ---
 

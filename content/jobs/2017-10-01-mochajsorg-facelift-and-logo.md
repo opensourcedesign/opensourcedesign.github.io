@@ -6,6 +6,7 @@ layout: jobs
 organization: Mocha
 org_url: 'https://mochajs.org'
 title: mochajs.org facelift and logo
+slug: mochajs-org-facelift-and-logo
 role: 'logo, branding, site design'
 compensation: paid
 skills: "This is off the top of my head, but happy to discuss.\r\n\r\n- A primary \"hexagon-style\" logo in SVG format ([examples](http://hexb.in/))\r\n- An alternate logo or logotype in SVG format\r\n- Color palette (think \"brown\") \"swatches\" in whatever format\r\n- Markup and styles to replace mochajs.org.  We'd like these \"layouts\":\r\n  - Landing page\r\n  - Individual documentation page\r\n  - Individual blog/news post (if different than previous)\r\n  - List of blog posts (should probably not be front page)\r\n\r\nOur team would be responsible for putting the content where it belongs, but if anyone knows a technical writer, the content itself needs some love!!"
@@ -14,7 +15,7 @@ how_to_apply:
     Contact Christopher Hiller on [Twitter](https://twitter.com/b0neskull) or
     email [boneskull@boneskull.com](mailto:boneskull@boneskull.com)
   - '[GitHub project](https://github.com/mochajs/mocha)'
-tags: 'logo, site design, documentation'
+tags: [logo, site design, documentation]
 date: '2017-10-02T05:40:27.160Z'
 timestamp: 1506922827
 ---

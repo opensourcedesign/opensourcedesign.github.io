@@ -31,7 +31,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 
 ## Links
 
-#### Introduction
+### Introduction
 
 - <https://twitter.com/davelab6>
 - <https://libregraphicsmeeting.org/2006>
@@ -45,7 +45,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://fonts.google.com/analytics>
 - <https://opensource.com/life/13/11/dave-crossland-history-future-open-source-fonts>
 
-#### 1st generation
+### 1st generation
 
 - <https://coinmarketcap.com>
 - <https://coinmarketcap.com/charts>
@@ -60,7 +60,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://coinmarketcap.com/currencies/dogecoin/>
 - <https://coinmarketcap.com/currencies/ganjacoin/>
 
-#### 2nd generation
+### 2nd generation
 
 - <https://en.wikipedia.org/wiki/Ethereum>
 - <https://ethereum.org/crowdsale>
@@ -68,7 +68,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://duckduckgo.com/?q=marshall+mcluhan>
 - <https://en.wikipedia.org/wiki/Recursion_(computer_science)>
 
-#### What does it mean?
+### What does it mean?
 
 - <https://www.forbes.com/sites/rahulsingireddy/2017/10/18/vinay-gupta-on-why-ethereum-is-the-future/#e84a07656f29>
 - <https://twitter.com/leashless>
@@ -79,7 +79,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://mattereum.com>
 - <http://internetofagreements.com>
 
-#### Funding libre networks
+### Funding libre networks
 
 - <https://medium.com/@cdixon/crypto-tokens-a-breakthrough-in-open-network-design-e600975be2ef>
 - <https://po.et>
@@ -93,7 +93,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://snowdrift.coop/how-it-works>
 - <http://www.fund-io.com>
 
-#### 3rd generation
+### 3rd generation
 
 - <https://www.cardanohub.org/en/what-is-cardano>
 - <https://en.wikipedia.org/wiki/Haskell_(programming_language)>
@@ -102,7 +102,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://cryptomiso.com>
 - <https://www.flashcoin.io>
 
-#### In practice
+### In practice
 
 - <https://www.google.com/search?q=lambo+vitalik&tbm=isch>
 - <https://gemini.com>
@@ -112,7 +112,7 @@ The meetup will take place in [ThoughtWorks offices, 99 Madison Avenue](https://
 - <https://bitcoin.tax>
 - <https://www.saltlending.com>
 
-#### Conclusion
+### Conclusion
 
 - <https://libregraphicsmeeting.org/2018/>
 - <https://www.jwz.org/blog/2018/01/the-ai-apocalypse-of-1553>

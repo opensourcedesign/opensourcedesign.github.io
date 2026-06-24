@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000020
 layout: jobs
 title: UI/UX
+slug: ui-ux
 role: UI Designer, UX Designer, Icon Designer
 organization: Navit
 github: navit-gps
@@ -9,7 +10,7 @@ contact: github ( navit-gps ), #navit on Freenode
 contributing_md:
 contributors_md:
 org_url: http://www.navit-project.org
-tags: interface design, icons
+tags: [interface design, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-08-10

@@ -12,7 +12,7 @@ deliverables: ''
 how_to_apply:
   - andrew@trekkingforcharity.org
   - ''
-tags: 'logo, branding, UX design'
+tags: [logo, branding, ux design]
 date: '2017-11-08T12:54:24.839Z'
 ---
 Trekking for Charity is a project to help people organise and run sponsored events like walks and bike rides.  I came up with the idea run a family member was doing a week long hike to raise money for charity, but was unable to keep people updated with things like their location and post updates to their feeds.  Another key issue is that they wasn't able to set up a plan, e.g. set up points on a map and detail when they planned to reach it.

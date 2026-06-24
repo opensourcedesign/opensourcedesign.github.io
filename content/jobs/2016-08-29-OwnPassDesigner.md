@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000046
 layout: jobs
 title: Designer
+slug: ownpass-designer
 role: UI/UX Designer
 organization: OwnPass
 github: ownpass
@@ -9,7 +10,7 @@ contact: https://github.com/ownpass/ownpass, Freenode #ownpass
 contributing_md: https://github.com/ownpass/ownpass/blob/master/CONTRIBUTING.md
 contributors_md: https://github.com/ownpass/ownpass/graphs/contributors
 org_url: https://github.com/ownpass/ownpass/wiki
-tags: interface design, branding, logo, ux, mobile
+tags: [interface design, branding, logo, ux, mobile]
 status: solved
 compensation: gratis
 date_posted: 2016-08-29

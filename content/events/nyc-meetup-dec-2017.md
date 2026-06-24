@@ -1,10 +1,8 @@
 ---
 layout: event
-title: Open source design NYC meetup recap
+title: Open Source Design NYC meetup recap — December 2017
 date: 2017-12-14
-authors:
-  - Dinamichl
-  - Atulvarma
+author: Dinamichl, Atulvarma
 status: past
 eventDate: "14 December 2017"
 location: "New York, USA"

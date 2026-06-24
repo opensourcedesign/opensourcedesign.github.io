@@ -13,7 +13,7 @@ how_to_apply:
   - Matthias (memeber of core team) <code@mjmair.com>
   - 'https://docs.inventree.org/en/latest/develop/contributing/'
 github_handle: matmair
-tags: 'design,ux,accesibility'
+tags: [design, ux, accesibility]
 date: '2024-03-19T16:12:21.953Z'
 ---
 InvenTree is an open-source PLM (parts libary managment) with a backend API server, a frontend based on Bootstrap/jquery /JS-based frontend and several apps.

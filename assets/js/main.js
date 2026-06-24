@@ -43,6 +43,37 @@
     });
   });
 
+  // Copy-link buttons (share partial) — delegated so there is no inline JS (CSP-friendly).
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-copy-link]');
+    if (!btn || btn.dataset.copied === '1') return;
+    var url = btn.getAttribute('data-copy-link') || window.location.href;
+    var original = btn.innerHTML;
+    var confirm = function () {
+      btn.dataset.copied = '1';
+      btn.innerHTML = '<svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>';
+      btn.setAttribute('aria-label', 'Link copied');
+      setTimeout(function () {
+        btn.innerHTML = original;
+        btn.setAttribute('aria-label', 'Copy link');
+        delete btn.dataset.copied;
+      }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(confirm).catch(function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); confirm(); } catch (err) { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+  });
+
   // Global search modal — custom UI on top of the Pagefind JS API.
   (function () {
     var dialog = document.getElementById('osd-search-dialog');

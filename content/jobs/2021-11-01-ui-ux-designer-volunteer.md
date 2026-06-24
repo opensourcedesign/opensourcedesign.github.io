@@ -6,6 +6,7 @@ layout: jobs
 organization: ZAKKI
 org_url: 'https://www.zakki.org'
 title: UI/UX DESIGNER VOLUNTEER
+slug: ui-ux-designer-volunteer
 role: UI/UX DESIGNER
 compensation: gratis
 deliverables: PWA Web and Mobile Design
@@ -13,7 +14,7 @@ how_to_apply:
   - hr@zakki.org
   - "We are from www.zakki.org, we are recruiting UIUX Designer volunteers. Kindly check out our \r\nrecruitment post on blog.zakki.org or \r\nWhen you have difficulties accessing those URLs link, kindly access this link:\r\nhttps://linktr.ee/zakkifoundation.\r\nThen, please click the desirable role accordingly."
 github_handle: ''
-tags: 'ui,ux, interaction design, volunteer'
+tags: [ui, ux, interaction design, volunteer]
 date: '2021-11-01T10:01:05.804Z'
 ---
 UI/UX DESIGNER

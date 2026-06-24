@@ -15,7 +15,7 @@
 <channel>
 <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 <link>{{ .Permalink }}</link>
-<description>{{ with .Description }}{{ . | plainify | htmlEscape }}{{ else }}{{ with .Site.Params.description }}{{ . | htmlEscape }}{{ end }}{{ end }}</description>
+<description>{{ with .Description }}{{ . | plainify | htmlUnescape }}{{ else }}{{ with .Site.Params.description }}{{ . | htmlUnescape }}{{ end }}{{ end }}</description>
 <language>{{ .Site.Language.Locale }}</language>
 <copyright>© {{ now.Year }} {{ .Site.Title }}. Content licensed under CC BY-SA 4.0.</copyright>
 <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
@@ -77,30 +77,30 @@
 {{- end -}}
 {{- $fullContent = printf "%s<p style=\"margin-top:2em;font-size:0.9em;color:#666;\"><a href=\"%s\">Read more on opensourcedesign.net →</a></p>" $fullContent .Permalink -}}
 <item>
-<title>{{ .Title | htmlEscape }}</title>
+<title>{{ .Title }}</title>
 <link>{{ .Permalink }}</link>
 <guid isPermaLink="true">{{ .Permalink }}</guid>
 <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
 {{- with .Params.author }}
-<dc:creator>{{ . | htmlEscape }}</dc:creator>
-<author>{{ . | htmlEscape }}</author>
+<dc:creator>{{ . }}</dc:creator>
+<author>{{ . }}</author>
 {{- end }}
 {{- with .Params.organization }}
-<dc:creator>{{ . | htmlEscape }}</dc:creator>
+<dc:creator>{{ . }}</dc:creator>
 {{- end }}
-<description>{{ with .Description }}{{ . | plainify | htmlEscape }}{{ else }}{{ .Summary | plainify | htmlEscape }}{{ end }}</description>
-<content:encoded>{{ $fullContent | htmlEscape }}</content:encoded>
+<description>{{ with .Description }}{{ . | plainify | htmlUnescape }}{{ else }}{{ .Summary | plainify | htmlUnescape }}{{ end }}</description>
+<content:encoded>{{ $fullContent }}</content:encoded>
 {{- with .Params.tags }}
 {{- if reflect.IsSlice . -}}
 {{- range . }}
-<category>{{ . | htmlEscape }}</category>
+<category>{{ . }}</category>
 {{- end -}}
 {{- else -}}
 {{- $tagStr := printf "%v" . -}}
 {{- range split $tagStr "," }}
 {{- $t := trim . " " -}}
 {{- if $t }}
-<category>{{ $t | htmlEscape }}</category>
+<category>{{ $t }}</category>
 {{- end -}}
 {{- end -}}
 {{- end -}}

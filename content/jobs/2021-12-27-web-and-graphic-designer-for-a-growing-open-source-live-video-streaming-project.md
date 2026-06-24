@@ -15,7 +15,7 @@ how_to_apply:
   - Gabe Kangas (maintainer) <gabek@real-ity.com>
   - 'https://owncast.online'
 github_handle: gabek
-tags: 'web design, graphic design, interfaces'
+tags: [web design, graphic design, interfaces]
 date: '2021-12-28T05:43:00.771Z'
 ---
 Owncast is a growing open source project that for over a year have empowered live streamers to take control over their live streams, no longer requiring them to hand over their content and their audience to the large, centralized corporate enterprises.

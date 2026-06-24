@@ -8,6 +8,7 @@ org_url: 'https://github.com/tuttle-dev/tuttle'
 title: >-
   UI design and development for a desktop app built with Python and Flet (i.e.
   Flutter)
+slug: ui-design-and-development-for-a-desktop-app-built-with-python-and-flet-i-e-flutter
 role: UI Designer and/or Developer
 compensation: paid
 deliverables: >-
@@ -17,7 +18,7 @@ how_to_apply:
   - Chris (lead developer) <mail @ clstaudt.me>
   - "https://prototypefund.de\r\nhttps://flet.dev"
 github_handle: '@clstaudt'
-tags: 'UI design, frontend development'
+tags: [ui design, frontend development]
 date: '2022-10-16T14:02:59.559Z'
 ---
 Tuttle is an open-source software project supported by the Prototype Fund. We develop a time and finance management tool tailored for the requirements of freelancers.

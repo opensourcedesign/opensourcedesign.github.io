@@ -13,7 +13,7 @@ how_to_apply: "
   Elio Qoshi (Lead Designer) <elio@ura.design>
   Link to GitHub Repo:
   <https://github.com/uracreative/identihub>"
-tags: 'Frontend, UX, CSS, ReactJS'
+tags: [frontend, ux, css, reactjs]
 date: '2017-11-10T21:09:38.305Z'
 ---
 Identihub is free and open source software which lets you host your own branding and visual assets and reshare them easily. It allows for SVG to PNG conversion in any given resolution, embedding and linking to assets and organizing your projects within your organization. The project is open source under AGPLv3: <https://github.com/uracreative/identihub>

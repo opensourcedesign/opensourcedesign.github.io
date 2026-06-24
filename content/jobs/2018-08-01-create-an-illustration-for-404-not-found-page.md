@@ -12,7 +12,7 @@ deliverables: A vector illustration file in either .ai or .svg format.
 how_to_apply:
   - Pratik Borsadiya <pratikborsadiya@gmail.com>
   - "Here are some of the sample links of 404 illustrations.\r\nhttps://github.com/zxcvbg\r\nhttps://sailsjs.com/asd"
-tags: graphic design
+tags: [graphic design]
 date: '2018-08-01T05:45:11.858Z'
 ---
 Vali Admin is a free and open source dashboard theme.

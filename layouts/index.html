@@ -1,7 +1,16 @@
 {{ define "main" }}
   {{/* Hero Section */}}
+  {{/* Decorative, blurred hero backdrop processed through the asset pipeline:
+       resized + re-encoded to WebP (with a JPEG fallback via image-set). */}}
+  {{ $heroJpg := "" }}{{ $heroWebp := "" }}
+  {{ with resources.Get "images/2017-fosdem-picture-compressed-blur30px.jpg" }}
+    {{ $b := . }}
+    {{ if gt .Width 1920 }}{{ $b = .Resize "1920x" }}{{ end }}
+    {{ $heroJpg = ($b.Process "jpeg q68").RelPermalink }}
+    {{ $heroWebp = ($b.Process "webp q60").RelPermalink }}
+  {{ end }}
   <section class="relative overflow-hidden bg-slate-900 text-white">
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ "/images/2017-fosdem-picture-compressed-blur30px.jpg" | relURL }}');"></div>
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" {{ if $heroJpg }}style="background-image: url('{{ $heroJpg }}'); background-image: image-set(url('{{ $heroWebp }}') type('image/webp'), url('{{ $heroJpg }}') type('image/jpeg'));"{{ else }}style="background-image: url('{{ "/images/2017-fosdem-picture-compressed-blur30px.jpg" | relURL }}');"{{ end }}></div>
     <div class="absolute inset-0 bg-slate-900/70"></div>
     <div class="relative mx-auto max-w-6xl px-4 py-24 text-center sm:py-32">
       <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-white/10 p-4 shadow-lg ring-1 ring-white/20 backdrop-blur-sm sm:h-28 sm:w-28">
@@ -14,13 +23,13 @@
       <div class="mt-10 flex flex-wrap justify-center gap-4">
         <a class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ "/jobs/" | relURL }}">
           <span class="flex items-center gap-2">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
             Browse Jobs
           </span>
         </a>
         <a class="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}/" target="_blank" rel="noopener noreferrer">
           <span class="flex items-center gap-2">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
             Join Forum
           </span>
         </a>
@@ -62,21 +71,21 @@
       <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
-            <svg class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            <svg class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
           </div>
           <h3 class="mt-4 text-lg font-semibold text-slate-900">Who We Are</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-600">A global community of designers, developers, and advocates passionate about improving the usability and aesthetics of open-source software.</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100">
-            <svg class="h-6 w-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+            <svg class="h-6 w-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
           </div>
           <h3 class="mt-4 text-lg font-semibold text-slate-900">What We Do</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-600">We run a <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/jobs/" | relURL }}">job board</a>, organize <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/events/" | relURL }}">events</a>, share <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/resources/" | relURL }}">resources</a>, and talk on the <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-            <svg class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+            <svg class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
           </div>
           <h3 class="mt-4 text-lg font-semibold text-slate-900">Get Involved</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-600">Read our <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/about-us/" | relURL }}">about page</a> and <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/about-us/manifesto/" | relURL }}">manifesto</a>, and learn <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ "/about-us/how-to-join/" | relURL }}">how to join</a>.</p>
@@ -108,7 +117,7 @@
               {{ range first 2 (sort $liveUpcoming "Date" "desc") }}
                 <a class="mt-4 block rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-slate-300 hover:bg-white" href="{{ .RelPermalink }}">
                   <div class="font-medium text-slate-900">{{ .Title }}</div>
-                  {{ with .Params.eventDate }}<div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>{{ . }}</div>{{ end }}
+                  {{ with .Params.eventDate }}<div class="mt-1 flex items-center gap-1.5 text-xs text-slate-500"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>{{ . }}</div>{{ end }}
                 </a>
               {{ end }}
             {{ else }}
@@ -127,7 +136,7 @@
             <h2 class="font-semibold text-slate-900">Community Calendar</h2>
             <p class="mt-2 text-sm text-slate-600">Subscribe and join our monthly community calls.</p>
             <a class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate-900 hover:underline" href="{{ site.Params.calendarURL | default "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now" }}" target="_blank" rel="noopener noreferrer">
-              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M6.75 2.5a.75.75 0 0 0-1.5 0v.75H5A2.5 2.5 0 0 0 2.5 5.75v9.25A2.5 2.5 0 0 0 5 17.5h10A2.5 2.5 0 0 0 17.5 15V5.75A2.5 2.5 0 0 0 15 3.25h-.25V2.5a.75.75 0 0 0-1.5 0v.75h-6.5V2.5ZM4 7v8a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7H4Z"/></svg>
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.75 2.5a.75.75 0 0 0-1.5 0v.75H5A2.5 2.5 0 0 0 2.5 5.75v9.25A2.5 2.5 0 0 0 5 17.5h10A2.5 2.5 0 0 0 17.5 15V5.75A2.5 2.5 0 0 0 15 3.25h-.25V2.5a.75.75 0 0 0-1.5 0v.75h-6.5V2.5ZM4 7v8a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7H4Z"/></svg>
               View calendar →
             </a>
           </div>
@@ -157,7 +166,7 @@
           </ul>
           <div class="mt-6 flex flex-col gap-2">
             <a class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" href="{{ "/jobs/job-form/" | relURL }}">
-              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2.5a.75.75 0 0 1 .75.75v6h6a.75.75 0 0 1 0 1.5h-6v6a.75.75 0 0 1-1.5 0v-6h-6a.75.75 0 0 1 0-1.5h6v-6A.75.75 0 0 1 10 2.5Z"/></svg>
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2.5a.75.75 0 0 1 .75.75v6h6a.75.75 0 0 1 0 1.5h-6v6a.75.75 0 0 1-1.5 0v-6h-6a.75.75 0 0 1 0-1.5h6v-6A.75.75 0 0 1 10 2.5Z"/></svg>
               Post a Job
             </a>
             <a class="text-center text-xs text-slate-500 hover:text-slate-700" href="{{ "/jobs/archive/" | relURL }}">View {{ $jobsTotal }}+ archived jobs →</a>
@@ -173,7 +182,7 @@
           <p class="mt-3 text-sm text-slate-600">Our Discourse forum is where design discussions, project feedback, and community conversations happen.</p>
           <div class="mt-6 flex flex-col gap-2">
             <a class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
               Visit the Forum
             </a>
             <a class="text-center text-xs text-slate-500 hover:text-slate-700" href="{{ "/about-us/how-to-join/" | relURL }}">How to get involved →</a>
@@ -201,7 +210,7 @@
         {{ end }}
         <a class="group flex flex-col items-center rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-md" href="{{ "/resources/" | relURL }}">
           <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </div>
           <span class="mt-2 text-xs font-medium text-slate-700 group-hover:text-slate-900">See all</span>
         </a>
@@ -223,7 +232,7 @@
       </div>
       <div class="mt-8">
         <a class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50" href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}/contribute" target="_blank" rel="noopener noreferrer">
-          <svg class="h-4 w-4 text-rose-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 17.2a.75.75 0 0 1-.37-.1C6.3 15.2 3.75 12.9 3.75 9.74c0-2.08 1.55-3.74 3.6-3.74 1.12 0 2.13.5 2.65 1.29.52-.79 1.53-1.29 2.65-1.29 2.05 0 3.6 1.66 3.6 3.74 0 3.16-2.55 5.46-5.88 7.36a.75.75 0 0 1-.37.1Z"/></svg>
+          <svg class="h-4 w-4 text-rose-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 17.2a.75.75 0 0 1-.37-.1C6.3 15.2 3.75 12.9 3.75 9.74c0-2.08 1.55-3.74 3.6-3.74 1.12 0 2.13.5 2.65 1.29.52-.79 1.53-1.29 2.65-1.29 2.05 0 3.6 1.66 3.6 3.74 0 3.16-2.55 5.46-5.88 7.36a.75.75 0 0 1-.37.1Z"/></svg>
           Become a Sponsor
         </a>
       </div>

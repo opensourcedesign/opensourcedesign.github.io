@@ -2,9 +2,7 @@
 layout: event
 title: "Open source design first NYC meetup"
 date: 2017-10-31
-authors:
-  - dinamichl
-  - jessklein
+author: dinamichl, jessklein
 status: past
 eventDate: "October 2017"
 location: "New York, USA"
@@ -13,7 +11,7 @@ aliases:
 ---
 
 **The Big Idea - designing in open source**
-Open source communities pushed collaboration, sharing and transparency (in regards to licensing and copyright) throughout various industries. While design and creativity have never been more important, we often wonder where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community? Enter the [Open Source Design NYC Collective](https://opensourcedesign.net/events/2017/09/open-source-design-nyc).
+Open source communities pushed collaboration, sharing and transparency (in regards to licensing and copyright) throughout various industries. While design and creativity have never been more important, we often wonder where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community? Enter the Open Source Design NYC Collective.
 
 **Who are we and where did we contribute last?**
 We are a collective of designers and design advocates who contribute to open source projects. Julien Deswaef, Jessica Klein and Dina Michl opened a chapter in NYC to meet regularly and grow the open source design community. In September, we held our first meeting to collaborate on defining what shape the meetups should take.
@@ -31,7 +29,10 @@ At the first meetup, we got to know one another through a series of design exerc
 - Sticky clustering
 - What common themes are emerging?
 
-![sticyclustering](/images/cardsorting1.jpg) (/images/cardsorting2.jpg)
+![Sticky clustering exercise in progress](/images/cardsorting1.jpg)
+
+![Sticky clustering results grouped into themes](/images/cardsorting2.jpg)
+
 Sticky clustering happened!!
 
 **Themes**

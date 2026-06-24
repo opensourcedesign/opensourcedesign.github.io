@@ -16,7 +16,7 @@ how_to_apply:
   - 'https://matrix.to/#/#woodpecker-ci:matrix.org'
   - "https://matrix.to/#/#woodpecker-ci:matrix.org\r\nhttps://woodpecker-ci.org/"
 github_handle: ''
-tags: 'ui, accessibility, usability, issue creation, interviews'
+tags: [ui, accessibility, usability, issue creation, interviews]
 date: '2022-02-05T18:36:07.258Z'
 ---
 Woodpecker is a CI tool

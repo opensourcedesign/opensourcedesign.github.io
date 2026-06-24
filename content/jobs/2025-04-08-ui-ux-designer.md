@@ -6,6 +6,7 @@ layout: jobs
 organization: Nextcloud
 org_url: 'https://nextcloud.com'
 title: UI/UX Designer
+slug: ui-ux-designer
 role: UI/UX & interaction design
 compensation: paid
 deliverables: ''
@@ -13,7 +14,7 @@ how_to_apply:
   - Nextcloud job application email address <jobs@nextcloud.com>
   - "- The full jobs page with additional context https://nextcloud.com/jobs/\r\n- Our design contribution page https://nextcloud.com/design/"
 github_handle: '@jancborchardt'
-tags: 'UX, UI, interaction design'
+tags: [ux, ui, interaction design]
 date: '2025-04-08T14:52:43.255Z'
 ---
 **Nextcloud is an open source platform for collaboration and productivity, including things like voice & video chat, file sync & share, calendar, contacts, mail and an app ecosystem to do much more.**

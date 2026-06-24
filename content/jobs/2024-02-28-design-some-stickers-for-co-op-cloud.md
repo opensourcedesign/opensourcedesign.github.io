@@ -13,7 +13,7 @@ how_to_apply:
   - Javier (Volunteer) <javielico@riseup.net>
   - "https://coopcloud.tech/svg/coopcloud_logo_grey.svg\r\nhttps://coopcloud.tech/"
 github_handle: ''
-tags: stickers
+tags: [stickers]
 date: '2024-02-28T12:29:21.892Z'
 ---
 About

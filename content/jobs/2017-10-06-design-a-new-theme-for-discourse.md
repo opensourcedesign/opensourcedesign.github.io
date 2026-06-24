@@ -12,7 +12,7 @@ skills: "We're looking for someone capable of creating a new Discourse theme fro
 how_to_apply:
   - Erlend Sogge Heggen (Community Advocate) - erlend@discourse.org
   - 'https://github.com/discourse/discourse/wiki/Outreachy'
-tags: 'HTML, CSS, JavaScript'
+tags: [html, css, javascript]
 date: '2017-10-06T11:46:18.531Z'
 ---
 ## About Outreachy

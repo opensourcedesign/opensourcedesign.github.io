@@ -7,6 +7,7 @@ organization: VOID
 org_url: 'https://github.com/WTWB-none/void'
 license: 'https://github.com/WTWB-none/void/blob/main/LICENSE.md'
 title: UX/UI Designer Wanted for Open-Source Second-Brain App (VOID)
+slug: ux-ui-designer-wanted-for-open-source-second-brain-app-void
 role: UX/UI Design
 compensation: gratis
 deliverables: >-
@@ -19,10 +20,7 @@ how_to_apply:
   - Egor (lead dev) ghostoftranshumanist@gmail.com
   - "GitHub: https://github.com/WTWB-none/void\r\nCurrent tasks board: https://github.com/users/WTWB-none/projects/3"
 github_handle: '@WTWB-none'
-tags: >-
-  open-source, ui-design, ux, tauri, vue, rust, markdown, second-brain,
-  design-system, plugin-architecture, self-hosted, local-first, obsidian,
-  notion, codemirror, theming
+tags: [open-source, ui-design, ux, tauri, vue, rust, markdown, second-brain, design-system, plugin-architecture, self-hosted, local-first, obsidian, notion, codemirror, theming]
 date: '2025-07-16T22:21:54.730Z'
 ---
 VOID is an open-source, local-first second-brain app built with Rust, Vue, and Tauri — inspired by Notion and Obsidian, but designed to be truly yours.

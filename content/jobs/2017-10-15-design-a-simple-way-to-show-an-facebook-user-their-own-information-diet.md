@@ -12,7 +12,7 @@ skills: single web page UX
 how_to_apply:
   - claudio@tracking.exposed
   - 'https://www.youtube.com/watch?v=ct9d-o7NrSg'
-tags: 'UX, javascript, data reduction'
+tags: [ux, javascript, data reduction]
 date: '2017-10-15T10:00:42.878Z'
 ---
 fbtrex wants show to a facebook user about how the social media informs them.

@@ -13,7 +13,7 @@ how_to_apply:
   - Râu Cao <raucao@kosmos.org>
   - You can find everything on the website
 github_handle: '@raucao'
-tags: 'graphic design, illustration'
+tags: [graphic design, illustration]
 date: '2025-04-17T11:15:12.692Z'
 ---
 There's a big gaping hole on the frontpage of our website. It would be fantastic to have a graphic there, which would explain the concept of remoteStorage visually, and make the page more attractive and visually pleasing at the same time.

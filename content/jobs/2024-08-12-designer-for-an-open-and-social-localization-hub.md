@@ -15,7 +15,7 @@ how_to_apply:
   - pedro@pepicrft.me
   - ''
 github_handle: '@pepicrft.me'
-tags: 'design,localization,open software'
+tags: [design, localization, open software]
 date: '2024-08-12T07:47:38.529Z'
 ---
 We are building an open localization platform that embraces ideas and principles from GitHub's social approach to coding. We'd like to design a platform that empowers translators, and tears downs the walls that the localization industry has built over the years.

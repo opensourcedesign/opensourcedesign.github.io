@@ -6,13 +6,14 @@ layout: jobs
 organization: Enough
 org_url: 'http://enough.media/'
 title: Design logo for our tool
+slug: enough-design-logo-for-our-tool
 role: Logo desing & branding
 compensation: gratis
 deliverables: A logo & a set of icons
 how_to_apply:
   - Veronika (volunteer) veronika.nad@gmail.com
   - ''
-tags: 'logo, graphic design, journalism'
+tags: [logo, graphic design, journalism]
 date: '2018-04-26T06:18:45.035Z'
 ---
 “Enough” is an innovative tool for journalists to communicate with their sources via encrypted technology. It has a dual mode function, which allows for communication and data transfer on two different levels of security.

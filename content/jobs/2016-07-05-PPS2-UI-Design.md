@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000041
 layout: jobs
 title: UI/UX Design
+slug: ui-ux-design
 role: UI/UX Designer
 organization: PLLUG Comunity
 github: guitarheroua
@@ -9,7 +10,7 @@ contact: https://github.com/Guitarheroua
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://pllug.org.ua/
-tags: interface design,
+tags: [interface design]
 status: solved
 compensation: gratis
 date_posted: 2016-07-05

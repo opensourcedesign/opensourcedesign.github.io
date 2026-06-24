@@ -9,7 +9,7 @@ contact: UX@simplysecure.org
 contributing_md:
 contributors_md:
 org_url: https://simplysecure.org/
-tags: branding, visual design
+tags: [branding, visual design]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2016-04-19

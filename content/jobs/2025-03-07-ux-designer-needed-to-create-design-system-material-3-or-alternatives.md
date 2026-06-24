@@ -13,7 +13,7 @@ how_to_apply:
   - Henrik Allberg(founder) <henrik@thexorb.com>
   - "https://www.linkedin.com/company/the-x-orb-ab/\r\nhttps://thexorb.com"
 github_handle: 'https://github.com/TheXOrb'
-tags: 'UXdesign, DesignSystem, Material3, IoT, innovation, Penpot'
+tags: [uxdesign, designsystem, material3, iot, innovation, penpot]
 date: '2025-03-07T13:23:00.196Z'
 ---
 The X ORB AB is an innovative company focused on realizing groundbreaking semiconductor projects in 5G, IoT, and blockchain technology. We are seeking a dedicated and creative UX designer to help us develop a Design System, initially based on Google Material 3, but open to exploring other suitable options. This is a unique opportunity to shape our visual identity and create a world-class user experience.

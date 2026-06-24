@@ -14,7 +14,7 @@ how_to_apply:
     You can propose your logo on github :
     https://github.com/labsquare/fastQt/issues/35
   - 'https://github.com/labsquare/fastQt/issues/35'
-tags: 'genomics, bioinformatics, dna'
+tags: [genomics, bioinformatics, dna]
 date: '2017-02-17T13:21:51.383Z'
 ---
 Labsquare is a community of bioinformatics scientist whose aims to create

@@ -16,7 +16,7 @@ how_to_apply:
     Discourse](https://discourse.opensourcedesign.net/u/fnetx/summary)
   - "* My recent call for help: https://codeberg.org/forgejo/discussions/issues/323\r\n* Public repository for user research findings: https://codeberg.org/forgejo/user-research/\r\n* Dedicated design repository for designing new features: https://codeberg.org/forgejo/design/\r\n* Regular Forgejo issue tracker, example filter to only include issues that have been assigned the highest value due to user research: https://codeberg.org/forgejo/forgejo/issues?labels=226640\r\n* Forgejo contributor documentation: https://forgejo.org/docs/next/contributor/\r\n  * A welcome and motivation for contributors that I want to share: https://forgejo.org/docs/next/contributor/welcome/"
 github_handle: ''
-tags: 'user research, user testing'
+tags: [user research, user testing]
 date: '2025-04-01T18:33:42.988Z'
 ---
 Forgejo is a self-hosted platform for software development (version tracking and project management).

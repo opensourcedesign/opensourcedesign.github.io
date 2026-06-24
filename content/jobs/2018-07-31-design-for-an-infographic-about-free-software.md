@@ -12,7 +12,7 @@ deliverables: "* A infographic that visualizes different arguments (and includes
 how_to_apply:
   - katharina.nocun@posteo.de
   - "* https://fsfe.org/\r\n* https://publiccode.eu/"
-tags: 'graphic design, infographic, brochure, leaflet'
+tags: [graphic design, infographic, brochure, leaflet]
 date: '2018-07-31T12:03:04.317Z'
 ---
 We are looking for a designer who can create an infographic that visualizes the benefits of Free Software licences based on the imput that we gathered with our campaign group.

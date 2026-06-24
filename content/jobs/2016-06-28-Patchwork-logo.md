@@ -7,7 +7,7 @@ organization:
 github: https://github.com/getpatchwork/patchwork
 contact: https://github.com/stephenfin,irc:sfinucan,mailto:stephenfinucane@hotmail.com
 org_url: http://jk.ozlabs.org/projects/patchwork/
-tags: branding, logo
+tags: [branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-06-28

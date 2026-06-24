@@ -7,7 +7,7 @@ organization: does not yet have a name. probably Libreflip
 github: ij0n
 contact: ijon@c-base.org, hanging out on freenode, usually in #c-base
 org_url: http://www.ijon.me
-tags: logo
+tags: [logo]
 status: solved
 compensation: gratis / maybe some money later on when funding has been secured.
 date_posted: 2016-11-28

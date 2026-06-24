@@ -12,7 +12,7 @@ deliverables: "A logo\r\nUX design and assets for various screens\r\n- Onboardin
 how_to_apply:
   - sriram.s@outlook.in
   - ''
-tags: 'logo, branding, material design, angular material'
+tags: [logo, branding, material design, angular material]
 date: '2019-01-21T05:22:56.306Z'
 ---
 The project is to convert the blood donation flow to push based, where the donors register in our app and set a base location. If any request posted near them for blood or platelets, they will get a push notification to which they can respond. 

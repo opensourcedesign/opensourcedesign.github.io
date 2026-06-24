@@ -14,7 +14,7 @@ how_to_apply:
   - Matt Tutt (degoog1e@protonmail.com)
   - 'https://www.notobigtech.org/'
 github_handle: ''
-tags: website
+tags: [website]
 date: '2026-04-16T10:18:50.234Z'
 ---
 No To Big Tech is a decentralised, people-powered movement that aims to raise awareness and take action against Big Tech.

@@ -6,7 +6,7 @@ role: Front-end Developer and UX Designer
 organization: OKFN
 github: okfn
 org_url: http://okfn.org
-tags: front-end, ux design, data visualization, javsacript, CSS, HTML, interface design, agile
+tags: [front-end, ux design, data visualization, javsacript, css, html, interface design, agile]
 status: closed
 compensation: competitive
 date_posted: 2015-02-13
@@ -14,7 +14,7 @@ description:
 how_to_apply:
 ---
 
-# Frontend Developer and UX Designer for Data-Driven Project
+## Frontend Developer and UX Designer for Data-Driven Project
 
 
 What: working on cutting edge data-driven, high-impact open knowledge projects related to public finances and healthcare with a world-leading non-profit.
@@ -40,4 +40,4 @@ Form of Engagement
 Likely length of the engagement: at least 6m close to full-time
 Start date: it can vary but we would
 Form of engagement: this will be a contracting role
-Test: give them some data from e.g. [http://wiki.okfn.org/Get_The_Data_Challenge](http://wiki.okfn.org/Get_The_Data_Challenge) or [github.com/datasets](github.com/datasets) and ask them to mock a small website presenting it.
+Test: give them some data from e.g. [http://wiki.okfn.org/Get_The_Data_Challenge](http://wiki.okfn.org/Get_The_Data_Challenge) or [github.com/datasets](https://github.com/datasets) and ask them to mock a small website presenting it.

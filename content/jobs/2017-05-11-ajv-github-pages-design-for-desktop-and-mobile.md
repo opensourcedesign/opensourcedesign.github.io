@@ -12,7 +12,7 @@ skills: ''
 how_to_apply:
   - 'Please add comment to https://github.com/epoberezkin/ajv/issues/487'
   - "http://epoberezkin.github.io/ajv/\r\nhttps://gitter.im/ajv-validator/ajv"
-tags: 'design, branding, logo'
+tags: [design, branding, logo]
 date: '2017-05-11T20:44:11.912Z'
 ---
 Ajv is the fastest and the most feature rich JSON-schema validator with 12m+ monthly downloads.

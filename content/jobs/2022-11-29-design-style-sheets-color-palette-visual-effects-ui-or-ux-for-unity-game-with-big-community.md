@@ -7,6 +7,7 @@ organization: >-
   UltraStar Play: SingStar-like singing game looking for designer, make this
   open source gem eye candy
 org_url: 'https://ultrastar-play.com'
+slug: design-style-sheets-color-palette-visual-effects-ui-or-ux-for-unity-game-with-big-community
 title: >-
   Design style sheets, color palette, visual effects, UI or UX for Unity game
   with big community.
@@ -17,7 +18,7 @@ how_to_apply:
   - email@ultrastar-play.com
   - "Website: https://ultrastar-play.com\r\nPress Kit: https://ultrastar-play.com/presskit.zip\r\nIndieDB: https://www.indiedb.com/games/ultrastar-play\r\nGitHub: https://github.com/UltraStar-Deluxe/Play\r\nDiscord: https://discord.gg/PAUJFKCGbb\r\nYouTube: https://www.youtube.com/@ultrastar_play\r\nDownload latest release: https://github.com/UltraStar-Deluxe/Play/releases/latest"
 github_handle: GitHub @achimmihca
-tags: 'graphic, game, UI, UX, effects, design'
+tags: [graphic, game, ui, ux, effects, design]
 date: '2022-11-29T12:56:14.622Z'
 ---
 UltraStar Play took on the legacy of a popular singing game from the last decade. The gameplay has aged well but visually there is room for improvement.

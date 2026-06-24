@@ -6,13 +6,14 @@ layout: jobs
 organization: Open Source project for more transparency in the political process
 org_url: 'http://aboutpolitics.co/Test/mockupindex.html'
 title: UX/UI for a Open Source project for more transparency in the political process
+slug: ux-ui-for-a-open-source-project-for-more-transparency-in-the-political-process
 role: 'Web design, Usability design'
 compensation: gratis
 deliverables: ''
 how_to_apply:
   - fs@aboutpolitics.co
   - ''
-tags: 'UX,UI'
+tags: [ux, ui]
 date: '2019-01-06T09:47:57.847Z'
 ---
 In times of worryingly rising populismus it is our goal to make the process from an election promise to an adopted law transparent and easy to understand. And with your support, the platform’s design will further enhance understanding of our audience. 

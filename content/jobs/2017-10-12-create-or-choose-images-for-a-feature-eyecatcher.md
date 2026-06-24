@@ -16,7 +16,7 @@ how_to_apply:
     https://github.com/deltachat/deltachat-android/issues/176 - Björn Petersen
     will read there, too (as r10s)
   - "Exiting homepage: https://delta.chat\r\nThe same images are in the app, screenshots are here: https://github.com/deltachat/deltachat-android/issues/176#issue-263268955\r\n\r\nSources for the app icons are here: https://github.com/deltachat/deltachat-android/tree/master/MessengerProj/src/main/res/drawable-xhdpi (files intro2.png .. intro7.png)"
-tags: 'Icons, Branding'
+tags: [icons, branding]
 date: '2017-10-12T13:50:05.200Z'
 ---
 Delta Chat is the new arising messenger that is compatible to the existing e-mail infrastructure, open-source, pgp-encrypted, secure and all :)

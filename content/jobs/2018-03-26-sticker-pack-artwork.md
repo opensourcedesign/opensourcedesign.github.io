@@ -12,7 +12,7 @@ deliverables: "* 10-20 stickers per \"pack\" (or theme)\r\n* A white outline on 
 how_to_apply:
   - 'Travis R (lead dev) <@travis:t2l.io on [riot.im](https://about.riot.im)>'
   - "Github repo: https://github.com/turt2live/matrix-dimension\r\n"
-tags: 'graphic design, artwork, stickers'
+tags: [graphic design, artwork, stickers]
 date: '2018-03-26T17:02:14.509Z'
 ---
 Dimension (an open source integrations manager for clients like Riot.im) is tackling stickers in an upcoming update and needs some stickers to be included in the launch.

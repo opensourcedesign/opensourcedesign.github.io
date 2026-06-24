@@ -12,8 +12,7 @@ deliverables: ''
 how_to_apply:
   - bjorn@bitcraze.io
   - ''
-tags:
-  - ''
+tags: [graphic design, branding]
 date: '2017-12-07T11:56:01.242Z'
 slug: stickers-and-t-shirts
 ---

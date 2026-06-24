@@ -6,6 +6,7 @@ layout: jobs
 organization: AntennaPod
 org_url: 'https://antennapod.org'
 title: UX/UI review of AntennaPod player screen (to fit more features)
+slug: ux-ui-review-of-antennapod-player-screen-to-fit-more-features
 role: '''Interaction design'', ''UX study'''
 compensation: gratis
 deliverables: >-

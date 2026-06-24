@@ -14,7 +14,7 @@ how_to_apply:
   - Francisco V. <fvasquez.public@fvtronics.com>
   - 'https://developer.gnome.org/hig/guidelines/app-icons.html'
 github_handle: '@fvtronics'
-tags: 'logo, hig'
+tags: [logo, hig]
 date: '2026-06-05T17:25:55.434Z'
 ---
 Quire is a libadwaita PDF utility app to merge, organize, split and edit PDF metadata.

@@ -17,7 +17,7 @@ how_to_apply:
   - gilgongo@phreak.co.uk
   - 'https://github.com/jamulussoftware'
 github_handle: '@gilgongo or @mulyaj'
-tags: 'graphic design, icons, UI design'
+tags: [graphic design, icons, ui design]
 date: '2022-02-08T16:05:39.490Z'
 ---
 Jamulus is open-source software that enables musicians to perform music in real-time online. Currently, elements of our UI are outdated and need some updating. 

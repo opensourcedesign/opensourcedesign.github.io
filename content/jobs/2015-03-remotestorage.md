@@ -2,18 +2,17 @@
 _id: 00000000-0000-0000-0000-000000000009
 layout: jobs
 title: UI Design for remoteStorage-connect widget/dialog
+slug: ui-design-for-remotestorage-connect-widget-dialog
 organization: 5apps
 github: remotestorage,5apps
 org_url: https://remotestorage.io
-tags: interface design, ui, ux, frontend, web
+tags: [interface design, ui, ux, frontend, web]
 status: solved
 compensation: unspecified
 date_posted: 2015-03-22
 description:
 how_to_apply:
 ---
-
-# UI Design for remoteStorage-connect widget/dialog
 
 This is a freelance gig for improving the user interface and experience of a
 general-purpose open-source library, used in many different apps.

@@ -6,6 +6,7 @@ layout: jobs
 organization: Contribulle
 org_url: 'https://contribulle.org/'
 title: Design contributors wanted
+slug: contribulle-design-contributors
 role: 'Interaction design, visual design'
 compensation: gratis
 deliverables: ''

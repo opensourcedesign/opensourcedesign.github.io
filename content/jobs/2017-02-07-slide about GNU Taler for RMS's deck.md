@@ -12,7 +12,7 @@ skills: "The slides need to be in the style of the existing deck:\r\nhttps://sta
 how_to_apply:
   - 'Just ping grothoff@taler.net for now.  '
   - "https://git.taler.net/ has slide decks in _incompatible_ styles (for RMS) in the 'marketing.git' repository. \r\n$ git clone git://taler.net/marketing\r\n\r\nNote that you will need pdflatex to generate PDFs..."
-tags: 'slides, teaching, illustration, handdrawing'
+tags: [slides, teaching, illustration, handdrawing]
 date: '2017-02-07T09:46:09.006Z'
 ---
 

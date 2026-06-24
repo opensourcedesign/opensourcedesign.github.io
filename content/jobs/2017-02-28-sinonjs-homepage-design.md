@@ -6,6 +6,7 @@ layout: jobs
 organization: Sinon.JS
 org_url: 'http://sinonjs.org'
 title: Sinon.JS homepage design
+slug: sinon-js-homepage-design
 role: Graphic Designer
 compensation: gratis
 skills: "- The existing page is a Jekyll template and we don't want to change that\r\n- The template / CSS should be contributed directory to the Sinon.JS codebase on GitHub\r\n- We have a Logo that should be part of the new design\r\n- We'd like to add the content from the README.md to show who is sponsoring the project and link to the Sinon.JS open collective page"

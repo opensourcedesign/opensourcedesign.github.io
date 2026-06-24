@@ -6,13 +6,14 @@ layout: jobs
 organization: Wikimedia Deutschland e.V.
 org_url: 'http://www.wikimedia.de'
 title: UX/Interaction Designer Wikipedia(f/m)
+slug: ux-interaction-designer-wikipedia-f-m
 role: 'Interaction Design, UX'
 compensation: paid
 skills: ''
 how_to_apply:
   - sandra.muellrick@wikimedia.de
   - ''
-tags: 'Interaction Design, UX, Usability'
+tags: [interaction design, ux, usability]
 date: '2017-07-05T10:44:47.242Z'
 datum_inschrijving: '2017-07-05T10:44:47.242Z'
 doet_mee: true

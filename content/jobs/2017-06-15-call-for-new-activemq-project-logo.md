@@ -12,7 +12,7 @@ skills: "The new Logo submission should have two versions:\r\nAn Abstract image,
 how_to_apply:
   - dev@activemq.apache.org
   - 'https://blogs.apache.org/activemq/entry/apache-activemq-call-for-logo'
-tags: 'Logo, apache, activemq'
+tags: [logo, apache, activemq]
 timestamp: 1497506065
 date: '2017-06-15T05:54:25.222Z'
 ---

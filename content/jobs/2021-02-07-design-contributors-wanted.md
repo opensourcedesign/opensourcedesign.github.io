@@ -5,7 +5,8 @@ date_posted: '2021-02-07'
 layout: jobs
 organization: Open Food Network
 org_url: 'https://www.openfoodnetwork.org/'
-title: 'Design contributors for Open Food Systems platform: UX, research, UI, Visual Design, build your own project etc.'
+slug: open-food-network-design-contributors-2021
+title: 'Design contributors for Open Food Systems platform: UX, research, UI, Visual Design, build your own project etc. (February 2021)'
 role: 'User research, interaction design, visual design'
 compensation: gratis
 deliverables: ''

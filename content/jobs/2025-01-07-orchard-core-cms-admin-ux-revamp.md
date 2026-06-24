@@ -13,7 +13,7 @@ how_to_apply:
   - Zoltán Lehóczky (one of the maintainers) <zoltan.lehoczky@lombiq.com>
   - "https://docs.orchardcore.net/en/latest/contributing/\r\nhttps://docs.orchardcore.net/en/latest/reference/branding/"
 github_handle: 'https://github.com/Piedone'
-tags: 'web design, cms, .net, asp.net core, admin, dashboard'
+tags: [web design, cms, .net, asp.net core, admin, dashboard]
 date: '2025-01-07T01:43:26.975Z'
 ---
 We're looking for a UX professional to renew the admin (dashboard) experience of the CMS Orchard Core, i.e. where the owners of a site edit content, manage users, change settings, etc. If you enjoy open-source, have worked with such projects before, and perhaps want to get your name on another one as a contributor, then this can be you! (Being a developer, even a frontend one, is NOT necessary, we'd write the code. But if you do code, then all the better.)

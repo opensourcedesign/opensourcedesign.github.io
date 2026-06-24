@@ -6,6 +6,7 @@ layout: jobs
 organization: Simply Secure
 org_url: 'https://simplysecure.org/'
 title: Visual/Web Designer
+slug: visual-web-designer
 role: 'Identity design and branding, web design'
 compensation: paid
 deliverables: "You’ll propose, create, and deliver an identity and visual/web design that includes:\r\nA logo for the website (name is already in place)\r\n\r\n- Typography\r\n- Illustrations/icons\r\n- Color palette\r\n- Guidelines for usage (dos and don’ts)\r\n- Web design (Working with UX designers to apply your identity guidelines to the UI)\r\n\r\nThis is a time-limited contract, from approximately July 2021 through August 2021. We are a US 501(c)3 organization that has the ability to contract internationally."
@@ -15,7 +16,7 @@ how_to_apply:
     please see full job description here:
     https://simplysecure.org/hiring/visual_web_designer.html
 github_handle: ''
-tags: 'logo, branding, graphic design, visual design, identity, web design'
+tags: [logo, branding, graphic design, visual design, identity, web design]
 date: '2021-07-06T11:25:54.110Z'
 ---
 - Simply Secure is looking to contract a visual designer who can bring their expertise in web design and crafting brand identities to a new educational website and resource repository launching in August 2021. The website helps lawmakers, advocates, and concerned citizens get the tech policy information they need.

@@ -13,7 +13,7 @@ how_to_apply:
   - Boerny <>
   - "Works from the last year could be found here: https://cloud.linuxtage.at/s/oAy9tYHPgqMnCwE\r\n\r\nOur website: https://www.linuxtage.at/en/"
 github_handle: '@Nalaxon'
-tags: 'logo, conference logo, graphic design'
+tags: [logo, conference logo, graphic design]
 date: '2022-06-13T13:41:00.301Z'
 ---
 **Grazer Linuxtage** is an annually conference about free and open hard and software,

@@ -13,7 +13,7 @@ how_to_apply:
   - exbinproject@gmail.com
   - 'https://github.com/exbin/bined/issues/2'
 github_handle: ''
-tags: icon design
+tags: [icon design]
 date: '2021-02-19T15:35:18.997Z'
 ---
 BinEd is very basic editor for binary data (hexadecimal editor) and also plugin for various IDEs. 

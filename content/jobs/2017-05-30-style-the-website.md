@@ -12,7 +12,7 @@ skills: At least one pull-request with a new design.
 how_to_apply:
   - "You can contact me directly: Nicco Kunzmann <niccokunzmann@gmail.com>\r\nOr even better, create a new issue on github after login to have a transparent discussion. https://github.com/niccokunzmann/first_timer_scraper/issues"
   - "This is the repository: https://github.com/niccokunzmann/first_timer_scraper\r\nYou can view the web pages in these folders:\r\n- https://github.com/niccokunzmann/first_timer_scraper/tree/master/first_timer_scraper/templates\r\n- https://github.com/niccokunzmann/first_timer_scraper/tree/master/first_timer_scraper/static"
-tags: 'HTML,CSS'
+tags: [html, css]
 date: '2017-05-30T09:14:26.488Z'
 ---
 This is a website to search for contributions on github by people who are new to a project.

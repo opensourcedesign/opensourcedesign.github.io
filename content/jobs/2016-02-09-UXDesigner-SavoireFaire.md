@@ -2,6 +2,7 @@
 _id: 00000000-0000-0000-0000-000000000032
 layout: jobs
 title: UX/UI Designer
+slug: ux-ui-designer
 role: UX/UI Designer
 organization: Savoir-faire Linux
 github: savoirfairelinux
@@ -9,7 +10,7 @@ contact: https://jobs.savoirfairelinux.com/#uxui-designer
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: https://jobs.savoirfairelinux.com/#uxui-designer
-tags: Quebec, UX Designer
+tags: [quebec, ux designer]
 status: solved
 compensation: full time
 date_posted: 2016-02-09

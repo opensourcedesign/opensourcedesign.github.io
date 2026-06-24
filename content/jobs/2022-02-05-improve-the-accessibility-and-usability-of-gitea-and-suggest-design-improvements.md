@@ -17,7 +17,7 @@ how_to_apply:
   - 'https://discord.gg/Gitea'
   - "https://discord.gg/Gitea\r\nhttps://github.com/go-gitea/gitea\r\nhttps://matrix.to/#/#gitea-space:matrix.org"
 github_handle: ''
-tags: 'ui, accessibility'
+tags: [ui, accessibility]
 date: '2022-02-05T18:40:00.844Z'
 ---
 Gitea wants an accessibility review and designers to come and suggest improvements to the tool based on user insight and feedback.

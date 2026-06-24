@@ -2,12 +2,13 @@
 _id: 00000000-0000-0000-0000-000000000043
 layout: jobs
 title: elixir-lang.moscow website and identity
+slug: elixir-lang-moscow-website-and-identity
 role: Logo Designer, UX Designer
 organization: wemake.services
 github: https://github.com/elixir-lang-moscow/site
 contact: mail@sobolevn.me
 org_url: https://elixir-lang-moscow.herokuapp.com/
-tags: interface design, branding, logo
+tags: [interface design, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-07-23

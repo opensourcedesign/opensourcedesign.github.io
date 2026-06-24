@@ -12,7 +12,7 @@ deliverables: ''
 how_to_apply:
   - Tord (programmer) <tord.dellsen@gmail.com>
 github_handle: ''
-tags: 'graphic design, svg'
+tags: [graphic design, svg]
 date: '2024-09-10T11:58:55.425Z'
 ---
 Paul from mentalhealthrevolution.org has has developed the Daily Wellness Empowerment Program (DWEP) course. This has further been developed into an app with the help of a programmer (Tord) https://dwep-app.gitlab.io/

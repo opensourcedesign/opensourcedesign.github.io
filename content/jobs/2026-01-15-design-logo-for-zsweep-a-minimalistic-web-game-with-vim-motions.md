@@ -14,7 +14,7 @@ how_to_apply:
   - tommyguo024@outlook.com
   - 'https://github.com/oug-t/zsweep'
 github_handle: oug-t
-tags: 'logo, branding, design'
+tags: [logo, branding, design]
 date: '2026-01-15T23:14:18.875Z'
 ---
 Design a logo that will be put on the website page and as favicon for web zsweep.

@@ -2,10 +2,11 @@
 _id: 00000000-0000-0000-0000-000000000010
 layout: jobs
 title: raml2html UI Update
+organization: raml2html
 role: UI designer
 github: kevinrenskers
 org_url: https://github.com/kevinrenskers/raml2html
-tags: interface design
+tags: [interface design]
 status: closed
 compensation: gratis
 date_posted: 2015-03-24

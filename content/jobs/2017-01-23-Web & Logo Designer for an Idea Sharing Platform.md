@@ -11,7 +11,7 @@ skills: "Web Design\r\nLogo\r\nUX/UI"
 how_to_apply:
   - if you are interested please send an email at george2seven@gmail.com
   - 'https://pacific-wildwood-38870.herokuapp.com/'
-tags: 'web design, logo, ux, ui'
+tags: [web design, logo, ux, ui]
 date: '2017-01-23T19:05:13.590Z'
 description:
 ---

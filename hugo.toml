@@ -30,9 +30,14 @@ enableRobotsTXT = true
 
 [params]
   description = "We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software."
-  # Serverless job submission endpoint (POST). When empty, the site falls back to generating Markdown for manual PRs.
+  # Serverless job submission endpoint (POST) handled by the Cloudflare Worker in
+  # workers/job-submit/. After deploying, set this to "<worker-url>/submit", e.g.
+  # "https://osd-job-submit.<account>.workers.dev/submit" (or a custom route).
+  # When empty, the site gracefully falls back to generating Markdown for manual PRs.
   jobSubmitEndpoint = ""
-  # Optional Cloudflare Turnstile site key for spam protection.
+  # Cloudflare Turnstile site key for spam protection (pairs with the Worker's
+  # TURNSTILE_SECRET). Leave empty to disable the captcha widget. See
+  # workers/job-submit/README.md for setup.
   turnstileSiteKey = ""
 
   # Repository and external links

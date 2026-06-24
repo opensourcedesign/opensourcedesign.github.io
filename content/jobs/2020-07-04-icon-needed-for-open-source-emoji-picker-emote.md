@@ -15,7 +15,7 @@ how_to_apply:
     https://github.com/tom-james-watson/emote/issues
   - "Repository: https://github.com/tom-james-watson/emote\r\n\r\nSnap Store Listing: https://snapcraft.io/emote"
 github_handle: ''
-tags: 'logo, icon'
+tags: [logo, icon]
 date: '2020-07-04T14:50:53.705Z'
 ---
 Emote currently simply uses an emoji from the Twitter emoji set as its icon. This is by definition not unique at all and I don't think is particularly aesthetically pleasing either.

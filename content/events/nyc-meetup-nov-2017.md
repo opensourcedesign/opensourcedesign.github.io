@@ -2,9 +2,7 @@
 layout: event
 title: "Open Source Design NYC 11-09 meetup Recap"
 date: 2017-11-09
-authors:
-  - Dinamichl
-  - Jessklein
+author: Dinamichl, Jessklein
 status: past
 eventDate: "9 November 2017"
 location: "New York, USA"

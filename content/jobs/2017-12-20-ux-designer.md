@@ -6,6 +6,7 @@ layout: jobs
 organization: Moodle
 org_url: 'http://www.moodle.com/'
 title: UX Designer
+slug: moodle-ux-designer
 role: 'UX Design, Interaction Design, Human Centered Design'
 compensation: paid
 deliverables: ''

@@ -6,6 +6,7 @@ layout: jobs
 organization: Fedeproxy
 org_url: 'https://fedeproxy.eu/'
 title: Design logo for our tool
+slug: fedeproxy-design-logo-for-our-tool
 role: logo design
 compensation: gratis
 deliverables: A logo & a set of icons
@@ -13,7 +14,7 @@ how_to_apply:
   - Pierre-Louis (developer) pierre-louis.bonicoli@gmx.fr
   - "Main website: https://www.fedeproxy.eu/\r\nForum: https://forum.fedeproxy.eu/\r\nForge: https://lab.enough.community/fedeproxy/server"
 github_handle: ''
-tags: 'logo, graphic design, forge'
+tags: [logo, graphic design, forge]
 date: '2021-01-29T15:19:31.682Z'
 ---
 Fedeproxy is an [online service to federate forges](https://fedeproxy.eu/blog/2021/01/16/what-is-fedeproxy/).

@@ -13,7 +13,7 @@ how_to_apply:
   - Felicity Brand
   - "The  project lives on GitHub: https://github.com/thegooddocsproject\r\n\r\n* We've already got our Doctopus mascot design - which we use as a logo: https://github.com/thegooddocsproject/brand-assets\r\n* We've already got a design for our [Chronologue](https://chronologue.netlify.app/Community)\r\n* We think our [blog](https://thegooddocsproject.dev/blog/) looks quite nice."
 github_handle: '@flicstar'
-tags: 'branding, website theme'
+tags: [branding, website theme]
 date: '2022-07-12T02:38:47.292Z'
 ---
 The content strategy working group of [The Good Docs Project](https://thegooddocsproject.dev/) is about to embark on a refresh of our website. 

@@ -13,7 +13,7 @@ how_to_apply:
   - ewa@python.org
   - 'https://www.python.org/sponsors/application/'
 github_handle: ''
-tags: UX/UI
+tags: [ux-ui]
 date: '2020-12-07T18:31:38.400Z'
 ---
 The PSF recently launched a new sponsorship app that allows companies to select from pre-set packages or to customize their benefits: https://www.python.org/sponsors/application/. Even though instructions are typed up at the top of the page, it is not clear to folks how to use this app intuitively.

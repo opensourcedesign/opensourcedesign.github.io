@@ -15,7 +15,7 @@ how_to_apply:
     https://github.com/theia-ide/theia/issues/454. You can reference Anton by
     mentioning @akosyakov in the comment.
   - ''
-tags: 'logo, graphical design'
+tags: [logo, graphical design]
 date: '2017-09-03T13:26:21.096Z'
 ---
 Theia is a cloud & desktop IDE framework implemented in TypeScript. Read more here: http://typefox.io/theia-one-ide-for-desktop-cloud.

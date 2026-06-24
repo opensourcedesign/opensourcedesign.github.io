@@ -10,8 +10,6 @@ aliases:
   - /2026/03/09/FOSDEM-2026-wrap-up/
 ---
 
-# FOSDEM 2026: Open Source Design Devroom wrap up
-
 ![A photo from towards the end of the open source design devroom day](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/refs/heads/master/images/events/OSD-FOSDEM-devroom-2026-2.jpeg "A photo from towards the end of the open source design devroom day")
 
 ## Introduction

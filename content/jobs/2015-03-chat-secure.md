@@ -6,7 +6,7 @@ role: Usability
 organization: The Guardian Project
 github: guardianproject
 org_url: https://guardianproject.info/apps/chatsecure/
-tags: interface design, branding, logo
+tags: [interface design, branding, logo]
 status: solved
 submited_by: bvnk
 compensation: unspecified

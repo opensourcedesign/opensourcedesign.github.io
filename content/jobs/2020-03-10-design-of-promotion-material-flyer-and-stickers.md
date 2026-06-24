@@ -13,7 +13,7 @@ how_to_apply:
   - Erik Grun <erik.grun@belug.de>
   - 'There are templates, which you will receive, when you apply for the job.'
 github_handle: ''
-tags: 'graphic design, promotion material'
+tags: [graphic design, promotion material]
 date: '2020-03-10T18:49:49.624Z'
 ---
 We are a local GNU+Linux user group based in Berlin, that wants to spread Free and Open Source Software and the knowledge about it, with a special focus on Linux.

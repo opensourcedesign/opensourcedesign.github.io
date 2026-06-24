@@ -6,6 +6,7 @@ layout: jobs
 organization: Freedom of the Press Foundation
 org_url: 'https://freedom.press/'
 title: UX Designer (Mid-Level to Sr.)
+slug: ux-designer-mid-level-to-sr
 role: User experience design
 compensation: paid
 deliverables: ''
@@ -13,7 +14,7 @@ how_to_apply:
   - 'Erik Moeller, jobs+ux@freedom.press'
   - ''
 github_handle: ''
-tags: 'UI, visual, product design, UX design/research, web design'
+tags: [ui, visual, product design, ux design-research, web design]
 date: '2022-01-18T22:19:08.305Z'
 ---
 Freedom of the Press Foundation (FPF), a nonprofit organization dedicated to protecting and defending public interest journalism, is hiring a User Experience Designer.

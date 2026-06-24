@@ -6,6 +6,7 @@ layout: jobs
 organization: grunf
 org_url: 'https://gitlab.com/stormfinger/grunf'
 title: UI/UX for grunf (wizard application)
+slug: ui-ux-for-grunf-wizard-application
 role: interaction desing and feel and look for an application
 compensation: gratis
 deliverables: >-
@@ -15,7 +16,7 @@ how_to_apply:
   - eduard.filipas@rhea.si
   - 'existing work can be found https://gitlab.com/stormfinger/grunf'
 github_handle: ''
-tags: graphic design
+tags: [graphic design]
 date: '2025-03-31T15:06:47.636Z'
 ---
 We've developed application called grunf  when user inserts his/her data with his/her own structure and prints it with libre office writer or calc
