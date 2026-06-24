@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="view-transition" content="same-origin" />
 
-    {{/* Apply saved reader display preferences before paint (no FOUC). Controls
-         live in the footer (DisplayToggle); see html[data-contrast|motion|spacing|
-         links] and --user-text-scale in assets/css/main.css. */}}
-    <script>
-      (function () {
-        try {
-          var p = JSON.parse(localStorage.getItem("osd-display") || "{}");
-          var el = document.documentElement;
-          if (p.contrast === "more") el.setAttribute("data-contrast", "more");
-          if (p.motion === "reduce") el.setAttribute("data-motion", "reduce");
-          if (p.spacing === "loose") el.setAttribute("data-spacing", "loose");
-          if (p.links === "underline") el.setAttribute("data-links", "underline");
-          var s = typeof p.textScale === "number" ? p.textScale : 1;
-          if (s && Math.abs(s - 1) > 0.001) el.style.setProperty("--user-text-scale", String(s));
-        } catch (e) {}
-      })();
-    </script>
-
     {{ $title := cond (ne .Title "") (printf "%s | %s" .Title site.Title) site.Title }}
     {{ $desc := .Description | default .Summary | default site.Params.description | default site.Title }}
     {{ $desc = $desc | plainify | truncate 160 }}
@@ -43,8 +25,9 @@
     {{ end }}
 
     <link rel="canonical" href="{{ .Permalink }}" />
-    <link rel="icon" href="{{ "/images/opensourcedesign-logo.svg" | relURL }}" type="image/svg+xml" media="(prefers-color-scheme: light)" />
-    <link rel="icon" href="{{ "/images/opensourcedesign-logo-inverted.svg" | relURL }}" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    {{/* Single theme-aware SVG favicon (adapts to system light/dark via an
+         internal prefers-color-scheme media query); .ico is a legacy fallback. */}}
+    <link rel="icon" href="{{ "/images/favicon.svg" | relURL }}" type="image/svg+xml" />
     <link rel="icon" href="{{ "/images/favicon.ico" | relURL }}" sizes="32x32" />
     <link rel="apple-touch-icon" href="{{ "/images/favicons/apple-touch-icon.png" | relURL }}" />
 

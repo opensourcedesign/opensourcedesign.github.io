@@ -69,41 +69,9 @@
       {{ end }}
     </div>
 
-    {{/* Accessibility + bottom bar */}}
+    {{/* Bottom bar */}}
     <div class="mt-10 border-t border-slate-200 pt-6">
-      {{/* Reader display controls (wired in assets/js/main.js, persisted to localStorage). */}}
-      <section data-display-toggle class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between" aria-label="Display preferences">
-        <div class="flex flex-col gap-2">
-          <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Display</span>
-          <div class="flex flex-wrap gap-2">
-            <button type="button" data-toggle-contrast aria-pressed="false" class="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-900 hover:text-slate-900 aria-pressed:border-slate-900 aria-pressed:bg-slate-900 aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2">High contrast</button>
-            <button type="button" data-toggle-motion aria-pressed="false" class="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-900 hover:text-slate-900 aria-pressed:border-slate-900 aria-pressed:bg-slate-900 aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2">Reduce motion</button>
-            <button type="button" data-toggle-spacing aria-pressed="false" class="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-900 hover:text-slate-900 aria-pressed:border-slate-900 aria-pressed:bg-slate-900 aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2">Readable spacing</button>
-            <button type="button" data-toggle-links aria-pressed="false" class="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-900 hover:text-slate-900 aria-pressed:border-slate-900 aria-pressed:bg-slate-900 aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2">Underline links</button>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Text size</span>
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="inline-flex items-center overflow-hidden rounded-md border border-slate-300">
-              <button type="button" data-text-dec aria-label="Decrease text size" class="flex h-9 w-10 items-center justify-center text-base font-bold text-slate-600 transition hover:text-slate-900 aria-disabled:cursor-not-allowed aria-disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-slate-900">
-                <span aria-hidden="true">A&minus;</span>
-              </button>
-              <span data-text-readout aria-live="polite" class="min-w-[3.5rem] border-x border-slate-300 px-1 py-2 text-center text-xs font-semibold tabular-nums text-slate-700">100%</span>
-              <button type="button" data-text-inc aria-label="Increase text size" class="flex h-9 w-10 items-center justify-center text-base font-bold text-slate-600 transition hover:text-slate-900 aria-disabled:cursor-not-allowed aria-disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-slate-900">
-                <span aria-hidden="true">A+</span>
-              </button>
-            </div>
-            <button type="button" data-text-reset aria-label="Reset text size" class="flex h-9 w-10 items-center justify-center rounded-md border border-slate-300 text-base font-bold leading-none text-slate-600 transition hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2">
-              <span aria-hidden="true">&#8635;</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {{/* Bottom bar */}}
-      <div class="mt-6 flex flex-col gap-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-col gap-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; {{ now.Format "2006" }} Open Source Design. Content licensed under <a class="underline underline-offset-2 hover:text-slate-700" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</p>
         <div class="flex items-center gap-4">
           <a class="hover:text-slate-700" href="{{ "/imprint/" | relURL }}">Imprint</a>

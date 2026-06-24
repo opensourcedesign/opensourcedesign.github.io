@@ -7,9 +7,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Global reader text zoom: scaled by the footer "Text size" control via
-       --user-text-scale on <html>. rem-based utilities scale with the root. */
-    font-size: calc(100% * var(--user-text-scale, 1));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -53,7 +50,7 @@
     outline-offset: 2px;
   }
 
-  /* Respect reduced-motion preferences globally */
+  /* Respect reduced-motion preferences globally (honors the OS/browser setting). */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -61,6 +58,12 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
     }
   }
 }
@@ -599,77 +602,38 @@
 }
 
 /* ==========================================================================
-   Reader accessibility preferences (footer DisplayToggle)
-   Toggled via data-* attributes on <html> + the --user-text-scale property.
-   These rules are intentionally unlayered so they win over Tailwind utilities
-   (unlayered styles outrank @layer styles in the cascade) without !important.
+   Automatic accessibility preferences
+   These honor the user's OS/browser settings directly — there are no manual
+   controls. High-contrast styling kicks in under prefers-contrast: more, and
+   reduced motion is handled by the prefers-reduced-motion block in @layer base
+   above. Rules here are intentionally unlayered so they win over Tailwind
+   utilities (unlayered styles outrank @layer styles) without !important.
    ========================================================================== */
 
-/* --- High contrast --------------------------------------------------------
-   OSD uses Tailwind slate utilities directly (no theme variables to remap),
-   so darken the muted text/icons and strengthen borders on light surfaces.
-   Descendants of dark (slate-800/900/950) backgrounds are excluded so their
-   light-on-dark text is left untouched. */
-html[data-contrast="more"]
-  :is(.text-slate-400, .text-slate-500):not([aria-pressed="true"]):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
-  color: #1e293b;   /* slate-800 */
-}
-html[data-contrast="more"]
-  .text-slate-600:not([aria-pressed="true"]):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
-  color: #0f172a;   /* slate-900 */
-}
-html[data-contrast="more"]
+@media (prefers-contrast: more) {
+  /* OSD uses Tailwind slate utilities directly (no theme variables to remap),
+     so darken the muted text/icons and strengthen borders on light surfaces.
+     Descendants of dark (slate-800/900/950) backgrounds are excluded so their
+     light-on-dark text is left untouched. */
+  :is(.text-slate-400, .text-slate-500):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+    color: #1e293b;   /* slate-800 */
+  }
+  .text-slate-600:not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+    color: #0f172a;   /* slate-900 */
+  }
   :is(.border-slate-100, .border-slate-200):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
-  border-color: #94a3b8;   /* slate-400 */
-}
-/* Rich content (Tailwind Typography) — remap its CSS variables for legibility. */
-html[data-contrast="more"] .prose {
-  --tw-prose-body: #0f172a;
-  --tw-prose-headings: #000000;
-  --tw-prose-links: #0f172a;
-  --tw-prose-bold: #000000;
-  --tw-prose-captions: #1e293b;
-  --tw-prose-quotes: #0f172a;
-}
-html[data-contrast="more"] mark.pagefind-highlight {
-  outline: 2px solid #0f172a;
-}
-
-/* --- Readable spacing ----------------------------------------------------- */
-html[data-spacing="loose"]
-  :is(p, li, dd, dt, blockquote, figcaption):not(header *):not(nav *) {
-  line-height: 1.85;
-  letter-spacing: 0.03em;
-  word-spacing: 0.08em;
-}
-html[data-spacing="loose"]
-  :is(p, ul, ol, blockquote):not(header *):not(nav *) {
-  margin-block-end: 1.4em;
-}
-
-/* --- Underline links ------------------------------------------------------
-   Underline textual links, but skip buttons/pills/cards (rounded or role=button)
-   and links that only wrap an icon/image. */
-html[data-links="underline"]
-  a:not([class*="btn"]):not([role="button"]):not([class*="rounded"]):not(:has(img)):not(:has(svg)) {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-/* --- Reduce motion -------------------------------------------------------- */
-html[data-motion="reduce"] {
-  scroll-behavior: auto;
-}
-html[data-motion="reduce"] *,
-html[data-motion="reduce"] *::before,
-html[data-motion="reduce"] *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
-}
-html[data-motion="reduce"]::view-transition-group(*),
-html[data-motion="reduce"]::view-transition-old(*),
-html[data-motion="reduce"]::view-transition-new(*) {
-  animation: none !important;
+    border-color: #94a3b8;   /* slate-400 */
+  }
+  /* Rich content (Tailwind Typography) — remap its CSS variables for legibility. */
+  .prose {
+    --tw-prose-body: #0f172a;
+    --tw-prose-headings: #000000;
+    --tw-prose-links: #0f172a;
+    --tw-prose-bold: #000000;
+    --tw-prose-captions: #1e293b;
+    --tw-prose-quotes: #0f172a;
+  }
+  mark.pagefind-highlight {
+    outline: 2px solid #0f172a;
+  }
 }

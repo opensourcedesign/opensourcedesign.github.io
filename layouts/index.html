@@ -230,8 +230,36 @@
     </div>
   </section>
 
-  {{/* Affiliates Section - Data driven from data/affiliates.yaml */}}
+  {{/* Contributors & Backers - live avatar grid from Open Collective */}}
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl font-semibold text-slate-900">Contributors &amp; Backers</h2>
+      <p class="mt-2 text-sm text-slate-600">The people and organizations who make our work possible</p>
+      <div class="mt-8 flex justify-center">
+        <a href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}" target="_blank" rel="noopener noreferrer" aria-label="View backers and contributors on Open Collective">
+          <img class="mx-auto h-auto max-w-full" src="https://opencollective.com/opensourcedesign/backers.svg?width=880&avatarHeight=48&button=false" alt="Open Source Design backers and contributors on Open Collective" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* Conferences Section - Data driven from data/conferences.yaml */}}
   <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl font-semibold text-slate-900">Conferences</h2>
+      <p class="mt-2 text-sm text-slate-600">Where we organize design tracks and devrooms</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        {{ range hugo.Data.conferences }}
+          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* Affiliates Section - Data driven from data/affiliates.yaml */}}
+  <section class="bg-white py-16">
     <div class="mx-auto max-w-6xl px-4 text-center">
       <h2 class="text-2xl font-semibold text-slate-900">Affiliates</h2>
       <p class="mt-2 text-sm text-slate-600">Organizations we proudly collaborate with</p>

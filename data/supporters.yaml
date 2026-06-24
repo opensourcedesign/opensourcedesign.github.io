@@ -26,6 +26,16 @@
   logo: /images/supporters/opentechfund.svg
   height: h-8
 
+- name: phpList
+  url: https://www.phplist.org
+  logo: /images/supporters/phplist.svg
+  height: h-8
+
+- name: Portknox
+  url: https://portknox.net
+  logo: /images/supporters/portknox.svg
+  height: h-7
+
 - name: Red Hat
   url: https://www.redhat.com
   logo: /images/supporters/redhat.svg
