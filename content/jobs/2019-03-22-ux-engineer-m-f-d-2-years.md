@@ -15,7 +15,7 @@ how_to_apply:
     [Please contact us via our online
     platform](https://wikimedia-deutschland.softgarden.io/job/3696022/UX-Engineer--m-f-d-?jobDbPVId=10049097&l=en)
   - ''
-tags: [ux design, ux engineering, ui, interaction design]
+tags: [ux, ux engineering, ui, interaction design]
 date: '2019-03-22T11:13:47.107Z'
 ---
 Wikimedia Deutschland e. V. is a non-profit organisation based in Berlin, Germany. Our objective is to create a world in which the sum of all human knowledge is freely accessible for everyone.

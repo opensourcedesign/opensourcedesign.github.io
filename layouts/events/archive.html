@@ -1,61 +1,45 @@
 {{ define "main" }}
-  <div class="mx-auto max-w-6xl px-4 py-12">
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     <header class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <div class="max-w-2xl">
-        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">{{ .Title }}</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
         {{ with .Description }}
-          <p class="mt-3 text-base text-slate-700">{{ . }}</p>
+          <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
         {{ end }}
         {{ with .Content }}
-          <div class="osd-prose mt-6">{{ . }}</div>
+          <div class="prose prose-slate mt-6 max-w-none">{{ . }}</div>
         {{ end }}
       </div>
-      <div class="flex flex-wrap gap-3">
-        <a class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" href="{{ "/events/" | relURL }}">Back to events</a>
-        <a class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" href="{{ "/events/feed.xml" | relURL }}">RSS</a>
+      <div class="flex shrink-0 flex-wrap gap-4 text-sm font-medium">
+        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/" | relURL }}">Back to events</a>
+        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/feed.xml" | relURL }}">RSS</a>
       </div>
     </header>
 
-    <div class="mt-8 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-      <div class="text-sm text-slate-600">
-        Search past events
-      </div>
+    <div class="mt-12 flex flex-col gap-3 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex w-full gap-2 sm:w-auto">
         <label class="sr-only" for="events-q">Search events</label>
-        <input class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-900 sm:w-72" id="events-q" type="search" placeholder="Search events…" autocomplete="off" />
-        <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" type="button" id="events-clear">Clear</button>
+        <input class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72" id="events-q" type="search" placeholder="Search past events…" autocomplete="off" />
+        <button class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2" type="button" id="events-clear">Clear</button>
       </div>
-    </div>
-
-    <div class="mt-4 text-sm text-slate-600">
-      <span id="events-count">0</span> results
+      <p class="text-sm text-slate-500" aria-live="polite"><span id="events-count">0</span> results</p>
     </div>
 
     {{ $eventsAll := (where site.RegularPages "Section" "events") }}
     {{ $past := where $eventsAll "Params.status" "in" (slice "past" "cancelled") }}
 
-    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="events-list">
+    <ul class="mt-4 border-t border-slate-200" id="events-list" role="list">
       {{ range $past.ByDate.Reverse }}
         {{ $title := .Title | plainify | lower }}
         {{ $loc := (.Params.location | default "") | plainify | lower }}
         {{ $dateLabel := (.Params.eventDate | default "") | plainify | lower }}
-        <li class="event-item" data-title="{{ $title }}" data-loc="{{ $loc }}" data-date="{{ $dateLabel }}">
-          <a class="osd-card osd-card-link block h-full overflow-hidden p-5" href="{{ .RelPermalink }}">
-            <div class="text-sm font-semibold text-slate-950">{{ .Title }}</div>
-            <div class="mt-2 text-xs text-slate-500">
-              {{ with .Params.eventDate }}
-                <span class="inline-flex items-center gap-1">
-                  {{ partial "icon.html" (dict "name" "calendar" "class" "h-4 w-4 text-slate-400") }}
-                  <span>{{ . }}</span>
-                </span>
-              {{ end }}
-              {{ with .Params.location }}
-                <span class="inline-flex items-center gap-1">
-                  {{ partial "icon.html" (dict "name" "location" "class" "h-4 w-4 text-slate-400") }}
-                  <span>{{ . }}</span>
-                </span>
-              {{ end }}
-            </div>
+        <li class="event-item border-b border-slate-200" data-title="{{ $title }}" data-loc="{{ $loc }}" data-date="{{ $dateLabel }}">
+          <a class="group grid grid-cols-1 gap-1 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:grid-cols-[10rem_1fr] sm:gap-6" href="{{ .RelPermalink }}">
+            <span class="text-sm text-slate-500">{{ .Params.eventDate | default "" }}</span>
+            <span>
+              <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              {{ with .Params.location }}<span class="mt-0.5 block text-sm text-slate-500">{{ . }}</span>{{ end }}
+            </span>
           </a>
         </li>
       {{ end }}
@@ -102,5 +86,3 @@
     </script>
   </div>
 {{ end }}
-
-

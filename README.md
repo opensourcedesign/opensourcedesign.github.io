@@ -22,9 +22,13 @@ There are several ways to edit content on [opensourcedesign.net](https://opensou
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** (version 22 or higher) - Required by Tailwind CSS v4. [Download Node.js](https://nodejs.org/)
 - **Hugo** (extended version recommended)
 - **Git** - [Download Git](https://git-scm.com/)
+
+That's all — **no Node.js or npm**. There is no CSS build step (Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn)), and the two optional build tools are standalone binaries:
+
+- **[Pagefind](https://github.com/Pagefind/pagefind/releases)** (*optional*) - single binary that generates the search index; only needed to test search locally (CI downloads it automatically)
+- **[Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases)** (*optional*) - single binary; only needed to regenerate the vendored typography stylesheet, which is rare
 
 #### Installing Hugo
 
@@ -75,21 +79,26 @@ For other platforms, download from the [Hugo releases page](https://github.com/g
    cd opensourcedesign.github.io
    ```
 
-2. **Install Node.js dependencies**
+2. **Start the development server**
 
    ```bash
-   npm install
+   hugo server
    ```
 
-3. **Start the development server**
+   That's it — styling works out of the box. Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser).
 
-   ```bash
-   npm run dev
-   ```
+3. **Open your browser** at `http://localhost:1313/`
 
-   This runs both Tailwind CSS (watching for changes) and Hugo's development server with live reload.
+#### Working on styles
 
-4. **Open your browser** at `http://localhost:1313/`
+No build step: edit `assets/css/main.css` (custom theme, components, base styles) or add any standard Tailwind utility class to templates in `layouts/` — both take effect on the next reload with plain `hugo server`.
+
+The only exception is `prose-*` typography classes: since the Play CDN cannot load Tailwind plugins, the `@tailwindcss/typography` styles are pre-compiled into the checked-in `assets/css/typography.css`. If you need a `prose-*` class that isn't in there yet, add it to `assets/css/typography.src.css` and regenerate with the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) (a single executable — it bundles the typography plugin, so no Node.js or npm is required):
+
+```bash
+tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify
+# rebuilds assets/css/typography.css — commit it
+```
 
 ## Project Structure
 
@@ -98,13 +107,14 @@ opensourcedesign.github.io/
 ├── archetypes/       # Hugo content templates for new pages
 ├── assets/
 │   └── css/
-│       ├── main.css    # Tailwind CSS source (edit this!)
-│       └── output.css  # Generated CSS (gitignored, don't edit)
+│       ├── main.css            # Custom styles (edit this!) — compiled in the browser by the Play CDN
+│       ├── typography.src.css  # Source/safelist for the typography (prose) bundle
+│       └── typography.css      # Pre-compiled prose styles (regenerate via the Tailwind standalone CLI, don't edit)
 ├── content/          # All website content in Markdown
 │   ├── about-us/     # About, manifesto, governance, by-laws, code of conduct, how to join
 │   ├── events/       # Event announcements and write-ups
 │   ├── jobs/         # Job listings
-│   ├── resources/    # Curated tools, links, and reading list (also serves /articles/)
+│   ├── resources/    # Curated directory + sub-pages: articles/ and reading.md (bibliography)
 │   └── ...           # Standalone pages (forum, imprint, brand, etc.)
 ├── data/             # YAML data files for dynamic content
 ├── layouts/          # Hugo HTML templates
@@ -112,30 +122,28 @@ opensourcedesign.github.io/
 │   └── images/
 │       └── brand/    # Official logos and branding assets
 ├── hugo.toml         # Hugo configuration
-└── package.json      # npm scripts and dependencies
+└── workers/          # Cloudflare Worker for the job & event submission forms (deployed separately)
 ```
 
 ## Development Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server (CSS + Hugo with live reload) |
-| `npm run build` | Build for production (minified CSS + Hugo + search index) |
-| `npm run css:build` | Build Tailwind CSS only |
-| `npm run css:watch` | Watch and rebuild CSS on changes |
-| `npm run hugo:dev` | Run Hugo development server only |
-| `npm run hugo:build` | Build Hugo site only |
-| `npm run search:index` | Generate the Pagefind search index from `public/` (runs after the Hugo build) |
+| `hugo server` | Start the development server with live reload |
+| `hugo --minify --gc` | Build the site for production into `public/` |
+| `pagefind --site public` | Generate the Pagefind search index (standalone binary, runs after the Hugo build) |
+| `tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify` | Regenerate the vendored `prose` stylesheet (standalone binary) |
 
-> **Search:** Search is a site-wide modal (opened from the header search button, or with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> or <kbd>/</kbd>), powered by [Pagefind](https://pagefind.app/). The index lives in `public/pagefind/` and is generated by `npm run search:index`; the Pagefind assets are lazy-loaded the first time the dialog is opened. During `npm run dev` the index is not built, so the modal only returns results after a full `npm run build`.
+> **Search:** Search is a site-wide modal (opened from the header search button, or with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> or <kbd>/</kbd>), powered by [Pagefind](https://pagefind.app/). The index lives in `public/pagefind/` and is generated by running the `pagefind` binary against the built site; the Pagefind assets are lazy-loaded the first time the dialog is opened. During `hugo server` the index is not built, so the modal only returns results after a production build followed by `pagefind --site public`.
 
 > **Images:** Markdown images are processed through Hugo's asset pipeline (`layouts/partials/resolve-image.html`). Local raster images placed under `assets/images/` are automatically down-scaled and served as AVIF + WebP with the original as a fallback, with intrinsic `width`/`height` to avoid layout shift. SVGs, GIFs, and external URLs are passed through untouched.
 
 ## Technology Stack
 
 - **[Hugo](https://gohugo.io/)** - Fast static site generator written in Go
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)** - Beautiful typographic defaults for Markdown content
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework, compiled in the browser via the [Play CDN](https://tailwindcss.com/docs/installation/play-cdn) (no build step)
+- **[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)** - Beautiful typographic defaults for Markdown content (pre-compiled into `assets/css/typography.css`)
+- **[Inter](https://rsms.me/inter/)** - Self-hosted variable font (woff2, in `static/fonts/`)
 - **[Pagefind](https://pagefind.app/)** - Static, client-side search index generated at build time
 
 ## Editing Content
@@ -147,14 +155,14 @@ All content lives as Markdown in `content/`. The site uses the following section
 | About Us | `content/about-us/` | About page, manifesto, governance, by-laws, code of conduct, how to join |
 | Events | `content/events/` | Event announcements and write-ups |
 | Jobs | `content/jobs/` | Job listings (also accepts submissions via the online form) |
-| Resources | `content/resources/` | Curated tools/links and the reading list (`/articles/` redirects here) |
+| Resources | `content/resources/` | Curated tools/links directory; community articles live at `/resources/articles/` (`/articles/` redirects there) and the reading list at `/resources/reading/` |
 | Standalone | `content/*.md` | `forum`, `imprint`, `brand`, and the homepage (`_index.md`) |
 
 ### Editing Process
 
 The recommended workflow for any content change:
 
-1. **Edit the Markdown** in the relevant `content/` folder (see the table above). For quick fixes use GitHub's pencil icon; for larger work, set up the project locally and run `npm run dev` to preview.
+1. **Edit the Markdown** in the relevant `content/` folder (see the table above). For quick fixes use GitHub's pencil icon; for larger work, set up the project locally and run `hugo server` to preview.
 2. **Preview locally** at `http://localhost:1313/` to confirm formatting, front matter, and links render correctly.
 3. **Open a pull request.** Content PRs are reviewed by two Open Source Design community members before they are merged and published.
 4. **Cross-team content edits** (copy rewrites, page merges) are coordinated by the community — major restructuring is tracked in the project's GitHub issues before landing on a branch.
@@ -172,6 +180,7 @@ The recommended workflow for any content change:
 1. Navigate to `content/events/`
 2. Create a new `.md` file (date-prefixed for announcements, or a short slug for write-ups, e.g. `fosdem-2026.md`)
 3. Fill in the front matter with event details (`title`, `eventDate`, `status`, location, etc.)
+4. Or use the online form at [opensourcedesign.net/events/event-form/](https://opensourcedesign.net/events/event-form/), which opens a moderated pull request for you (handled by the same Cloudflare Worker as the job form)
 
 > **Announcements vs. write-ups:** add an `author` to the front matter to mark a page as a **write-up / recap**. Those entries get a "Recap" card (with a thumbnail pulled from the first image in the body) in the *Write-ups & Recaps* column on `/events/` and surface on the homepage. Pages without an `author` are treated as plain listings. Set `status` to `upcoming`/`started` to appear in the *Upcoming* list, or `past`/`cancelled` to move into the archive.
 >
@@ -179,8 +188,9 @@ The recommended workflow for any content change:
 
 ### Updating Resources
 
-1. Edit `content/resources/_index.md` to add or update curated tools and links.
+1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` — each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format.
 2. To add a talk, article, paper, or book to the **Reading & Research** list, add an entry to `data/bibliography.yaml`.
+3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/_index.md`) and `{{</* bibliography */>}}` for Reading & Research (in `content/resources/reading.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
 
 ### Editing an About Us Page
 
@@ -202,17 +212,19 @@ Content that appears on multiple pages is managed through YAML files in `data/`:
 | `conferences.yaml` | Conference partnerships |
 | `affiliates.yaml` | Affiliate organizations |
 | `tools.yaml` | Featured open source design tools (homepage) |
-| `bibliography.yaml` | Reading & research list shown on `/resources/` |
+| `resources.yaml` | Curated resources directory shown on `/resources/` |
+| `bibliography.yaml` | Reading & research list shown on `/resources/reading/` |
 | `quicklinks.yaml` | Footer navigation links |
 | `summits.yaml` | Past summit event information |
 
 ## Styling Guidelines
 
-The site uses Tailwind CSS v4 with CSS-based configuration. To modify styles:
+The site uses Tailwind CSS v4 with CSS-based configuration, compiled at runtime by the Play CDN — there is no CSS build step. To modify styles:
 
-1. Edit `assets/css/main.css` for custom components and base styles
+1. Edit `assets/css/main.css` for custom components and base styles (it is inlined into every page as `text/tailwindcss` and supports the full Tailwind syntax, including `@apply` and `@theme`)
 2. Use Tailwind utility classes directly in HTML templates (`layouts/`)
-3. Run `npm run dev` to see changes with live reload
+3. Run `hugo server` to see changes with live reload
+4. Only `prose-*` typography classes are pre-compiled — see *Working on styles* above if you need a new one
 
 Custom component classes (prefixed with `osd-`) are defined in `main.css`:
 - `.osd-card` - Card component styling

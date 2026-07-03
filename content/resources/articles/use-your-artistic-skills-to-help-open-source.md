@@ -3,6 +3,7 @@ title: Use your artistic skills to help open source via opensource.com
 date: 2020-08-13
 author: Jeff Macharyas
 aliases:
+  - /resources/use-your-artistic-skills-to-help-open-source/
   - /2020/08/13/Use-your-artistic-skills-to-help-open-source/
 ---
 

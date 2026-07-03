@@ -13,7 +13,7 @@ how_to_apply:
   - job-ux@torproject.org
   - 'https://www.torproject.org/about/jobs/brand-designer/'
 github_handle: ''
-tags: [logo, branding, open source, foss, nonprofit, ux]
+tags: [logo, branding, open source, non-profit, ux]
 date: '2021-11-13T03:59:20.156Z'
 ---
 Internet Freedom Nonprofit Seeks Brand Designed for User Experience Team

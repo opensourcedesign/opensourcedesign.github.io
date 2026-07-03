@@ -7,7 +7,7 @@ organization: circuits
 github: circuits
 contact: prologic@shortcircuit.net.au, prologic, #circuits (FreeNode)
 org_url: http://circuitsframework.com/
-tags: [logo design, branding, logo]
+tags: [logo, branding]
 status: solved
 compensation: gratis
 date_posted: 2015-09-02

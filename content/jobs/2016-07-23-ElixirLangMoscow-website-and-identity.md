@@ -8,7 +8,7 @@ organization: wemake.services
 github: https://github.com/elixir-lang-moscow/site
 contact: mail@sobolevn.me
 org_url: https://elixir-lang-moscow.herokuapp.com/
-tags: [interface design, branding, logo]
+tags: [ui, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-07-23

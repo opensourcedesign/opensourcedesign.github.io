@@ -13,7 +13,7 @@ deliverables: "PDF/PSD/JPEG file with the mockup will be fine.\r\nOr you can sen
 how_to_apply:
   - sobolevn@wemake.services
   - 'https://github.com/wemake-services/meta'
-tags: [website, design, web design]
+tags: [web design, design]
 date: '2018-04-08T16:30:56.064Z'
 slug: fix-navigation-design
 ---

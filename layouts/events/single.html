@@ -1,42 +1,42 @@
 {{ define "main" }}
-  <article class="mx-auto max-w-3xl px-4 py-12" data-pagefind-body>
-    <div class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-      <header class="p-6 sm:p-10">
-        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">{{ .Title }}</h1>
-        <div class="mt-4 space-y-2 text-sm text-slate-700">
+  <article class="mx-auto max-w-3xl px-4 py-14 sm:py-20" data-pagefind-body>
+    <header>
+      <h1 class="text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+      {{ if or .Params.eventDate .Params.time .Params.location }}
+        <dl class="mt-6 space-y-1.5 text-sm text-slate-600">
           {{ with .Params.eventDate }}
-            <div class="flex items-center gap-2">
-              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-              <span><span class="font-semibold text-slate-950">Date:</span> {{ . }}</span>
+            <div class="flex gap-3">
+              <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Date</dt>
+              <dd class="text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
           {{ with .Params.time }}
-            <div class="flex items-center gap-2">
-              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span><span class="font-semibold text-slate-950">Time:</span> {{ . }}</span>
+            <div class="flex gap-3">
+              <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Time</dt>
+              <dd class="text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
           {{ with .Params.location }}
-            <div class="flex items-center gap-2">
-              <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-              <span><span class="font-semibold text-slate-950">Location:</span> {{ . }}</span>
+            <div class="flex gap-3">
+              <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Where</dt>
+              <dd class="text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
-        </div>
-      </header>
-
-      {{ with .Content }}
-        <div class="border-t border-slate-100 p-6 sm:p-10">
-          <div class="prose prose-slate max-w-none">{{ . }}</div>
-        </div>
+        </dl>
       {{ end }}
+    </header>
 
-      <footer class="border-t border-slate-100 p-6 sm:px-10" data-pagefind-ignore>
-        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" href="{{ "/events/" | relURL }}">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
-          Back to events
-        </a>
-      </footer>
-    </div>
+    {{ with .Content }}
+      <div class="mt-10 border-t border-slate-200 pt-10">
+        <div class="prose prose-slate max-w-none">{{ . }}</div>
+      </div>
+    {{ end }}
+
+    <footer class="mt-12 border-t border-slate-200 pt-6" data-pagefind-ignore>
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ "/events/" | relURL }}">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Back to events
+      </a>
+    </footer>
   </article>
 {{ end }}

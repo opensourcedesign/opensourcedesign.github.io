@@ -7,7 +7,7 @@ role: Three.js Developer
 organization: Ethereal Lifestyle
 github: CrasHog
 contact: email, github
-tags: [three.js, 3d, webgl, design, branding, archetecture]
+tags: [three.js, 3d, webgl, design, branding, architecture]
 status: solved
 compensation: salary depending on skill level and experience
 date_posted: 2015-06-04

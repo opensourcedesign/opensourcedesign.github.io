@@ -4,11 +4,20 @@ public/
 /resources/_gen/
 /resources/
 
-# Dependencies
+# Dependencies (only workers/job-submit uses npm; the site itself is npm-free)
 node_modules/
 
-# Generated CSS
-assets/css/output.css
+# NOTE: there is no CSS build step (issue #556). Tailwind utilities compile
+# in the browser via the Play CDN, and assets/css/typography.css (the prose
+# classes) is a checked-in, pre-compiled bundle — regenerate it with the
+# Tailwind standalone CLI only when typography.src.css changes (see the
+# header comment in assets/css/typography.src.css).
+
+# Downloaded standalone binaries (Pagefind, Tailwind CLI)
+pagefind
+pagefind.exe
+tailwindcss
+tailwindcss.exe
 
 # OS files
 .DS_Store
@@ -23,3 +32,7 @@ Thumbs.db
 
 # Hugo
 .hugo_build.lock
+
+# Scratch build output (local verification builds)
+/tmp/
+/.verify-build/

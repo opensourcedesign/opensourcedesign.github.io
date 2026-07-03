@@ -16,7 +16,7 @@ how_to_apply:
   - josh@githedgehog.com
   - ''
 github_handle: ''
-tags: [logo, branding, website]
+tags: [logo, branding, web design]
 date: '2022-07-11T17:02:05.442Z'
 ---
 We are launching a new open source project and company and need some help with a very creative set of tasks.

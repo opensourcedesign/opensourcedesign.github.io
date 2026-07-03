@@ -14,7 +14,7 @@ how_to_apply:
   - hi@olivierodo.me
   - "Documentation: https://docs.restqa.io\r\nDiscord:  https://restqa.io/chat\r\nDashboard demo: https://dashboard.restqa.io"
 github_handle: '@olivierodo'
-tags: [ux research, design, gamification]
+tags: [user research, design, gamification]
 date: '2021-08-21T03:42:28.526Z'
 ---
 Hello 👋,

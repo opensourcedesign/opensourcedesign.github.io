@@ -10,7 +10,7 @@ contact: https://jobs.savoirfairelinux.com/#uxui-designer
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: https://jobs.savoirfairelinux.com/#uxui-designer
-tags: [quebec, ux designer]
+tags: [quebec, ux]
 status: solved
 compensation: full time
 date_posted: 2016-02-09

@@ -14,7 +14,7 @@ how_to_apply:
   - Gabe Kangas (Project Maintainer) <gabek@real-ity.com>
   - "https://owncast.online\r\nhttps://docs.owncast.dev/updated-web-site-2025"
 github_handle: '@gabek'
-tags: [web design, documentation site]
+tags: [web design, documentation]
 date: '2025-10-03T19:23:06.511Z'
 ---
 Owncast is the free and open source live video streaming + chat server, allowing anybody to run their self-hosted live streams similar to the large big tech options.

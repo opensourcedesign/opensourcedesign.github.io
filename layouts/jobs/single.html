@@ -14,8 +14,11 @@
   {{ with .Params.date_posted }}
     {{ $t := time.AsTime . }}
     {{ $postedHuman = $t.Format "2 January 2006" }}
+    {{/* Three-month threshold; keep in sync with data-stale-days default in
+         main.js. Build-time is only the no-JS baseline — the notice is also
+         revealed client-side, since builds may be weeks apart. */}}
     {{ $days := int (div (now.Sub $t).Hours 24) }}
-    {{ if and $isOpen (gt $days 365) }}{{ $stale = true }}{{ end }}
+    {{ if and $isOpen (gt $days 90) }}{{ $stale = true }}{{ end }}
   {{ end }}
 
   <article class="mx-auto max-w-5xl px-4 py-10" data-pagefind-body>
@@ -28,12 +31,11 @@
       <span class="truncate font-medium text-slate-700" aria-current="page">{{ .Title }}</span>
     </nav>
 
-    <div class="mt-6 grid gap-8 lg:grid-cols-3">
+    <div class="mt-8 grid gap-10 lg:grid-cols-3">
       {{/* ───── Main column ───── */}}
-      <div class="space-y-6 lg:col-span-2">
-        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div class="lg:col-span-2">
           {{/* Header */}}
-          <header class="border-b border-slate-100 p-6 sm:p-8">
+          <header>
             <div class="flex flex-wrap items-center gap-2">
               {{ if $isOpen }}
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
@@ -49,7 +51,7 @@
               {{ end }}
             </div>
 
-            <h1 class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{{ .Title }}</h1>
+            <h1 class="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
 
             <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-500">
               {{ with $org }}
@@ -72,18 +74,18 @@
               {{ end }}
             </div>
 
-            {{ if $stale }}
-              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200">
+            {{ if and $isOpen $postedISO }}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200" data-stale-check data-posted="{{ $postedISO }}" {{ if not $stale }}hidden{{ end }}>
                 <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                This posting is over a year old and may no longer be active.
+                This posting is over three months old and may no longer be active.
               </p>
             {{ end }}
           </header>
 
           {{/* Body */}}
-          <div class="space-y-8 p-6 sm:p-8">
+          <div class="mt-8 space-y-8 border-t border-slate-200 pt-8">
             {{ with .Content }}
-              <div class="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 hover:prose-a:decoration-slate-600">
+              <div class="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-600">
                 {{ . }}
               </div>
             {{ end }}
@@ -173,7 +175,6 @@
               {{ end }}
             {{ end }}
           </div>
-        </div>
       </div>
 
       {{/* ───── Sidebar ───── */}}
@@ -247,16 +248,54 @@
                 </div>
               {{ end }}
               {{ with .Params.github_handle }}
-                {{ $gh := strings.TrimPrefix "@" (printf "%v" .) }}
-                {{ if $gh }}
+                {{/* The corpus stores this field in many shapes: "@handle",
+                     "handle", "https://github.com/handle", "GitHub @handle",
+                     "my github is @handle", "@one or @two" (several people),
+                     "github@handle", and even plain email addresses. Extract
+                     every valid GitHub username (max 39 chars, alphanumerics
+                     and hyphens); fall back to a mailto link for emails and to
+                     plain text when nothing parses. */}}
+                {{ $raw := trim (printf "%v" .) " " }}
+                {{ $handles := slice }}
+                {{ $email := "" }}
+                {{ range findRE `(?i)github\.com/([A-Za-z0-9][A-Za-z0-9-]{0,38})` $raw }}
+                  {{ $handles = $handles | append (replaceRE `(?i)^github\.com/` "" .) }}
+                {{ end }}
+                {{ if not $handles }}
+                  {{ if findRE `^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$` $raw }}
+                    {{ $email = $raw }}
+                  {{ else }}
+                    {{ range findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $raw }}
+                      {{ $handles = $handles | append (strings.TrimPrefix "@" .) }}
+                    {{ end }}
+                    {{ if and (not $handles) (findRE `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $raw) }}
+                      {{ $handles = slice $raw }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                {{ $handles = $handles | uniq }}
+                {{ if $raw }}
                   <div>
                     <dt class="text-slate-500">Posted by</dt>
-                    <dd class="mt-1">
-                      <a class="inline-flex items-center gap-1.5 font-medium text-slate-700 transition hover:text-slate-900" href="https://github.com/{{ $gh }}" target="_blank" rel="noopener noreferrer">
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
-                        @{{ $gh }}
-                      </a>
-                    </dd>
+                    {{ range $handles }}
+                      <dd class="mt-1">
+                        <a class="inline-flex items-center gap-1.5 font-medium text-slate-700 transition hover:text-slate-900" href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">
+                          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
+                          @{{ . }}
+                        </a>
+                      </dd>
+                    {{ end }}
+                    {{ with $email }}
+                      <dd class="mt-1">
+                        <a class="inline-flex items-center gap-1.5 font-medium text-slate-700 transition hover:text-slate-900 break-all" href="mailto:{{ . }}">
+                          <svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                          {{ . }}
+                        </a>
+                      </dd>
+                    {{ end }}
+                    {{ if and (not $handles) (not $email) }}
+                      <dd class="mt-1 font-medium text-slate-700">{{ $raw }}</dd>
+                    {{ end }}
                   </div>
                 {{ end }}
               {{ end }}
@@ -278,8 +317,8 @@
     </div>
 
     {{/* Back link */}}
-    <div class="mt-8" data-pagefind-ignore>
-      <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/jobs/" | relURL }}">
+    <div class="mt-12 border-t border-slate-200 pt-6" data-pagefind-ignore>
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ "/jobs/" | relURL }}">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
         Back to jobs
       </a>

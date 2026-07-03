@@ -10,10 +10,12 @@ GITHUB_OWNER = "opensourcedesign"
 GITHUB_REPO = "opensourcedesign.github.io"
 GITHUB_BRANCH = "main"
 CONTENT_DIR = "content/jobs"
+CONTENT_DIR_EVENTS = "content/events"
 # Comma-separated list of allowed browser origins for CORS. The first entry is
 # used as the default; a request whose Origin matches any entry is echoed back.
 ALLOWED_ORIGIN = "https://opensourcedesign.net"
 PR_LABEL = "job-submission"
+PR_LABEL_EVENT = "event-submission"
 EMAIL_TTL_DAYS = "90"
 # Optional per-IP daily cap; only enforced if a RATE_LIMIT KV namespace is bound.
 RATE_LIMIT_MAX = "5"

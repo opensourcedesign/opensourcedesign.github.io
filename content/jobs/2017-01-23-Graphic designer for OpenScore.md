@@ -9,7 +9,7 @@ title: Graphic designer for OpenScore
 compensation: paid
 skills: "OpenScore logo\r\nGraphics for communications (videos, presentations, blog posts, etc.)"
 how_to_apply: Email openscore@musescore.com with links to CV and portfolio.
-tags: [music, open data, creative commons, crowdfund, crowdsource, accessibility]
+tags: [music, open data, creative commons, crowdfunding, accessibility]
 date: '2017-01-24T12:20:58.454Z'
 description:
 ---

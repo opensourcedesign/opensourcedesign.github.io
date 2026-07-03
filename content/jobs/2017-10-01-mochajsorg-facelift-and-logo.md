@@ -15,7 +15,7 @@ how_to_apply:
     Contact Christopher Hiller on [Twitter](https://twitter.com/b0neskull) or
     email [boneskull@boneskull.com](mailto:boneskull@boneskull.com)
   - '[GitHub project](https://github.com/mochajs/mocha)'
-tags: [logo, site design, documentation]
+tags: [logo, web design, documentation]
 date: '2017-10-02T05:40:27.160Z'
 timestamp: 1506922827
 ---

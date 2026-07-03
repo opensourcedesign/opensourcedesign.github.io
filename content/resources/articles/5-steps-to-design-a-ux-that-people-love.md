@@ -4,6 +4,7 @@ date: 2015-11-21
 authors:
   - rdbartlett
 aliases:
+  - /resources/5-steps-to-design-a-ux-that-people-love/
   - /2015/11/21/5-steps-to-design-a-ux-that-people-love/
 ---
 
@@ -21,14 +22,14 @@ Thinking in terms of _problems people have_ or _jobs people want to do_ is a gre
 
 For this example, we’re looking at redesigning the search experience for Loomio. The first step is to talk to people and ask what are you searching for?
 
-![Matt uses Loomio to ask the community about search](https://opensourcedesign.net/images/asking-loomio-community-about-search.png)
+![Matt uses Loomio to ask the community about search](/images/articles/5-steps-ux/asking-loomio-community-about-search.png)
 
 ## 2. Research how other people solve it.
 
 In some respects, all UX design is ‘open source’, even if the underlying code is hidden: if you can play with the software, you can learn how it works.
 
 Here’s the result of a couple hours of research into how other popular apps handle search:
-![L-R: Loomio, Facebook, Gmail, Inbox, Google, Trello](https://opensourcedesign.net/images/researching-how-apps-do-search.png)
+![L-R: Loomio, Facebook, Gmail, Inbox, Google, Trello](/images/articles/5-steps-ux/researching-how-apps-do-search.jpg)
 
 In this case, Matt created [a little video](https://youtu.be/LtT0_zjNyAk) to distill what he learnt from the research, and share it with the rest of the team.
 
@@ -42,7 +43,7 @@ So for the Loomio Search example, Matt made [this video demonstrating](https://y
 
 Video is a good a way of sharing a workflow, but quick animated gifs are even better! With a tool like [RecordIt](https://recordit.co/) you can record an interaction, and upload and share it in a few seconds, which makes it effortless to get feedback:
 
-![A Demo of Search](https://opensourcedesign.net/images/search-demo.gif)
+![A Demo of Search](/images/articles/5-steps-ux/search-demo.gif)
 
 This gif took me about 20 seconds to record and share. Gifs are also awesome for help documentation, developer QA, and marketing, but that’s a whole other blog post :P
 

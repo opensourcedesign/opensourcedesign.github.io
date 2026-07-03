@@ -10,7 +10,7 @@ status: past
 permalink: /2017/05/25/opentechsummit
 ---
 
-[![Open Source Design track at OpenTechSummit 2017](https://pbs.twimg.com/media/DAHB2JuUQAIrWat.jpg)](https://twitter.com/opensrcdesign/status/865185759246077952)
+[![Open Source Design track at OpenTechSummit 2017](/images/events/opentechsummit-2017.jpg)](https://twitter.com/opensrcdesign/status/865185759246077952)
 
 [OpenTechSummit](https://opentechsummit.net/) had its first [Open Source Design track](https://opentechsummit.net/programm/tracks.html#2017-05-25-Open_Source_Design) this year, which we organized!
 

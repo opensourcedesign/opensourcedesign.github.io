@@ -13,7 +13,7 @@ how_to_apply:
   - Kristifor Milchev <kristiformilchev@outlook.com>
   - 'https://github.com/KristiforMilchev/KeyFortress'
 github_handle: KristiforMilchev
-tags: [logo, graphic designer, ui-ux]
+tags: [logo, graphic design, ui, ux]
 date: '2024-01-14T22:02:00.357Z'
 ---
 I am looking for someone to join my team, i am software developer and at my day job i lead a small team of people, in my spare time i am always trying to contribute to society by creating free software that benefits the people and not the companies around the world. 

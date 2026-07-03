@@ -12,7 +12,7 @@ skills: "one or more modified views (all would be awesome!).\r\nYou can find cur
 how_to_apply:
   - "Open an issue on the Orgmanager repo:\r\nhttps://github.com/m1guelpf/orgmanager/\r\nYou can also ask for help if you are having problems."
   - "Repo:\r\nhttps://github.com/m1guelpf/orgmanager\r\nCurrent views:\r\nhttps://github.com/m1guelpf/orgmanager/tree/master/resources/views"
-tags: [frontend, design, website, views, bootstrap, laravel]
+tags: [frontend, design, web design, views, bootstrap, laravel]
 date: '2017-02-14T19:46:39.746Z'
 timestamp: 1487101599
 ---

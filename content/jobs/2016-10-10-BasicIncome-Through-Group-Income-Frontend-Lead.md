@@ -9,7 +9,7 @@ contact: hi@okturtles.com
 contributing_md: https://github.com/okTurtles/group-income-simple/blob/master/CONTRIBUTING.md
 contributors_md: (optional)
 org_url: https://groupincome.org/
-tags: [vuejs, decentralization, javascript, js, frontend, lead, basic income, basicincome]
+tags: [vue, decentralization, javascript, frontend, lead, basic income]
 status: closed
 compensation: paid, fulltime, negotiated
 date_posted: 2016-10-10

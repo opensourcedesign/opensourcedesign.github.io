@@ -14,7 +14,7 @@ deliverables: >-
   our organization, so you can push them there.
 how_to_apply:
   - Miguel Piedrafita <coderyouth@miguelpiedrafita.com>
-tags: [logo, brading, graphic, design]
+tags: [logo, branding, graphic design, design]
 date: '2018-01-13T08:45:38.045Z'
 ---
 CoderYouth is a new code community with a difference. It's built by teenagers for other teenagers. By doing this, we help people of our age to get started (and excited) with coding, while we get some mates to talk about open-source, projects or our (code) problems.

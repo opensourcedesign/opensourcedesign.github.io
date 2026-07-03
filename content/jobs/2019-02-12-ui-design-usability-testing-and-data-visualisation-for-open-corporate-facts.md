@@ -12,7 +12,7 @@ deliverables: "wireframes , mockups of UI designs , usability testing,\r\ndata v
 how_to_apply:
   - leonard.michelet@gmail.com
   - "https://github.com/leonarf/OpenCorporateFacts - software repository\r\nhttps://opencorporates.com/ - an open database containing a some data about a lot of corporations\r\nhttps://fr.openfoodfacts.org/ - the open food fact website, whose concept is inspiring"
-tags: [interaction design, corporate transparency, ui design, usability testing, data visualisation]
+tags: [interaction design, corporate transparency, ui, usability testing, data visualization]
 date: '2019-02-12T09:51:29.961Z'
 ---
 Open Corporate Facts (OCF) is in early stages. There is no demo site yet. 

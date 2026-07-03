@@ -13,7 +13,7 @@ how_to_apply:
   - olivier@restqa.io
   - ''
 github_handle: '@olivierodo'
-tags: [gaming, pixel art]
+tags: [games, pixel art]
 date: '2022-08-16T16:15:36.066Z'
 ---
 Hi 👋,

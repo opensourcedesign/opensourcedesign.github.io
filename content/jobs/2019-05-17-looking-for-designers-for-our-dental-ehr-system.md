@@ -13,7 +13,7 @@ how_to_apply:
   - Tej Shah (lead developer) <tshah.dental@gmail.com>
   - "https://clear.dental/\r\nhttps://gitlab.com/cleardental"
 github_handle: ''
-tags: [dental, logo, ui, ux]
+tags: [healthcare, logo, ui, ux]
 date: '2019-05-17T13:20:57.973Z'
 ---
 Looking for any designer willing to help. A lot of the backend design is done but none of the front end design is finalized. 

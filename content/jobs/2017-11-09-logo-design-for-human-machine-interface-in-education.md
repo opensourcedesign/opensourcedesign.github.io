@@ -12,7 +12,7 @@ deliverables: "logos for the above use-cases\r\ncolor schemes that goe along\r\n
 how_to_apply:
   - Andrej Kliman <ak@lumi.education>
   - ''
-tags: [logo, branding, interaction-design, human-machine interface, education, raspberry pi]
+tags: [logo, branding, interaction design, education, raspberry pi]
 date: '2017-11-09T18:36:57.578Z'
 ---
 Lumi is a Raspberry Pi based reactive web-app that connects everyone in the same room via local WIFI and thus opens a whole new dimension of interactive group learning .

@@ -5,10 +5,11 @@ date: 2020-08-20
 authors:
   - hqrshguptq
 aliases:
+  - /resources/covid19-illustrations-2020/
   - /2020/08/20/COVID19-Illustrations-2020/
 ---
 
-<img src="https://user-images.githubusercontent.com/54597242/90833938-b1f4c800-e366-11ea-95e3-07747a9aad15.png">
+![A set of COVID-19 awareness icons](/images/articles/covid19-illustrations/covid19-icons-cover.png)
 
 Based on [recommendations from The World Health Organization](https://www.who.int/emergencies/diseases/novel-coronavirus-2019)  and others, you’ll find symbols to communicate good hygiene and social distancing. While we can’t be like front line brave medical professionals across the globe, we hope these icons/illustrations aid in communicating some of the most important things people can do to protect themselves and their communities.
 
@@ -17,11 +18,15 @@ Based on [recommendations from The World Health Organization](https://www.who.in
 All solid COVID-19 illustrations are available [Open Source](https://app.biorender.com/). A trial for some period to incorporate these can be availed at [bioRENDER](https://app.biorender.com/).
 Use them however you can in your signage, reports, sites, apps and projects. And please share any of your efforts – we’d love to see them and help boost awareness and helpful information.
 
-<img src="https://user-images.githubusercontent.com/54597242/90834044-f3857300-e366-11ea-9863-7c0392f04dbb.png">
-<img src="https://user-images.githubusercontent.com/54597242/90834072-05671600-e367-11ea-8fc8-edea9c3e69a9.png">
+![Icons illustrating good hygiene practices like hand washing](/images/articles/covid19-illustrations/covid19-icons-hygiene.png)
+
+![Icons illustrating social distancing recommendations](/images/articles/covid19-illustrations/covid19-icons-distancing.png)
 
 ## About BioRender  
-<img src="https://user-images.githubusercontent.com/54597242/90834223-570fa080-e367-11ea-97a9-4a75fc7e0018.png" style="margin: 0; margin-right: 16px;" width="125px" height="125px" align="left"> BioRender envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
+
+![BioRender logo](/images/articles/covid19-illustrations/biorender-logo.png)
+
+BioRender envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
 
 <br><br>
 ## WHO guidelines against COVID-19 :)

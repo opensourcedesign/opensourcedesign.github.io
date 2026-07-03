@@ -13,7 +13,7 @@ how_to_apply: "
   Tara Tarakiyee (Program Manager) <tara@opentechfund.org>
   Link to RFP:
   https://www.opentech.fund/requests/expanding-services-offered-otfs-usability-lab"
-tags: [rfp, usability lab, open technology fund, usability audits, ux consultation]
+tags: [rfp, usability testing, open technology fund, usability]
 date: '2017-10-15T14:26:51.952Z'
 ---
 OTF seeks multiple service partners to help expand its services to better support the community as well as improve knowledge sharing around specific usability challenges facing internet freedom tools. To this end OTF seeks services toward three different objectives:-

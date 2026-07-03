@@ -350,133 +350,155 @@
     });
   })();
 
-  // Lightbox for images inside rich content (articles, etc.)
-  var imgs = Array.prototype.slice.call(document.querySelectorAll('main .prose img, main .osd-prose img'));
-  if (imgs.length) {
-    var overlay = document.createElement('div');
-    overlay.className = 'osd-lightbox-backdrop';
-    overlay.setAttribute('role', 'dialog');
-    overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-label', 'Image preview');
-    overlay.innerHTML = [
-      '<div class="osd-lightbox-panel">',
-      '  <div class="osd-lightbox-topbar">',
-      '    <div class="osd-lightbox-caption" id="osd-lb-cap"></div>',
-      '    <div class="osd-lightbox-nav">',
-      '      <span class="osd-lightbox-counter" id="osd-lb-counter"></span>',
-      '      <button type="button" class="osd-lightbox-btn" id="osd-lb-prev" aria-label="Previous image">',
-      '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>',
-      '      </button>',
-      '      <button type="button" class="osd-lightbox-btn" id="osd-lb-next" aria-label="Next image">',
-      '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>',
-      '      </button>',
-      '      <button type="button" class="osd-lightbox-btn" id="osd-lb-close" aria-label="Close image preview">',
-      '        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>',
-      '      </button>',
-      '    </div>',
-      '  </div>',
-      '  <div class="osd-lightbox-body" id="osd-lb-body">',
-      '    <img id="osd-lb-img" alt="" />',
-      '    <div class="osd-lightbox-swipe-hint" id="osd-lb-hint">Swipe to navigate</div>',
-      '  </div>',
-      '</div>'
-    ].join('');
-    document.body.appendChild(overlay);
+  // Image lightbox for rich content, built on the native <dialog> element:
+  // showModal() provides the top layer, an inert page behind the dialog, a real
+  // focus trap, and Escape-to-close — none of which the old div overlay had.
+  (function () {
+    // Skip images inside links (they navigate) and require <dialog> support;
+    // without it images simply stay plain images (progressive enhancement).
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('main .prose img, main .osd-prose img'))
+      .filter(function (el) { return !el.closest('a'); });
+    if (!imgs.length || typeof document.createElement('dialog').showModal !== 'function') return;
 
-    var cap = document.getElementById('osd-lb-cap');
-    var counter = document.getElementById('osd-lb-counter');
-    var img = document.getElementById('osd-lb-img');
-    var closeBtn = document.getElementById('osd-lb-close');
-    var prevBtn = document.getElementById('osd-lb-prev');
-    var nextBtn = document.getElementById('osd-lb-next');
+    var dialog = document.createElement('dialog');
+    dialog.className = 'osd-lightbox';
+    dialog.setAttribute('aria-label', 'Image viewer');
+    dialog.innerHTML = [
+      '<div class="osd-lightbox__bar">',
+      '  <p class="osd-lightbox__counter" data-lb-counter aria-hidden="true"></p>',
+      '  <div class="osd-lightbox__controls">',
+      '    <button type="button" class="osd-lightbox__btn" data-lb-prev aria-label="Previous image">',
+      '      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>',
+      '    </button>',
+      '    <button type="button" class="osd-lightbox__btn" data-lb-next aria-label="Next image">',
+      '      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>',
+      '    </button>',
+      '    <button type="button" class="osd-lightbox__btn" data-lb-close aria-label="Close image viewer" autofocus>',
+      '      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>',
+      '    </button>',
+      '  </div>',
+      '</div>',
+      '<figure class="osd-lightbox__figure" data-lb-figure>',
+      '  <img class="osd-lightbox__img" data-lb-image alt="" decoding="async" />',
+      '  <figcaption class="osd-lightbox__caption" data-lb-caption hidden></figcaption>',
+      '</figure>',
+      '<p class="osd-lightbox__status" role="status" aria-live="polite" data-lb-status></p>'
+    ].join('\n');
+    document.body.appendChild(dialog);
+
+    var img = dialog.querySelector('[data-lb-image]');
+    var captionEl = dialog.querySelector('[data-lb-caption]');
+    var counterEl = dialog.querySelector('[data-lb-counter]');
+    var statusEl = dialog.querySelector('[data-lb-status]');
+    var figureEl = dialog.querySelector('[data-lb-figure]');
+    var prevBtn = dialog.querySelector('[data-lb-prev]');
+    var nextBtn = dialog.querySelector('[data-lb-next]');
+    var closeBtn = dialog.querySelector('[data-lb-close]');
     var lastFocus = null;
     var index = 0;
 
-    function updateCounter() {
-      if (counter) counter.textContent = (index + 1) + ' / ' + imgs.length;
-      if (prevBtn) prevBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
-      if (nextBtn) nextBtn.style.visibility = imgs.length > 1 ? 'visible' : 'hidden';
+    var single = imgs.length <= 1;
+    prevBtn.hidden = single;
+    nextBtn.hidden = single;
+
+    function captionFor(el) {
+      var fig = el.closest('figure');
+      var fc = fig && fig.querySelector('figcaption');
+      return (fc && fc.textContent.trim()) || el.getAttribute('title') || el.alt || '';
+    }
+
+    // Update the viewer in place: unlike the old implementation this never
+    // re-opens the dialog or moves focus, so prev/next keep focus where it is.
+    function show(i) {
+      index = ((i % imgs.length) + imgs.length) % imgs.length;
+      var el = imgs[index];
+      img.src = el.currentSrc || el.src;
+      img.alt = el.alt || '';
+      var caption = captionFor(el);
+      captionEl.textContent = caption;
+      captionEl.hidden = !caption;
+      counterEl.textContent = single ? '' : (index + 1) + ' / ' + imgs.length;
+      statusEl.textContent = 'Image ' + (index + 1) + ' of ' + imgs.length + (caption ? ': ' + caption : '');
     }
 
     function openAt(i) {
-      index = ((i % imgs.length) + imgs.length) % imgs.length;
-      var el = imgs[index];
-      if (!el) return;
       lastFocus = document.activeElement;
-      img.src = el.currentSrc || el.src;
-      img.alt = el.alt || '';
-      if (cap) cap.textContent = el.alt || '';
-      updateCounter();
-      overlay.classList.add('open');
+      show(i);
+      dialog.showModal();
       document.documentElement.style.overflow = 'hidden';
-      if (closeBtn) closeBtn.focus();
     }
 
-    function close() {
-      overlay.classList.remove('open');
+    // Each image is wrapped in a real <button>: correct role and name for
+    // assistive tech, Enter/Space and focusability for free, and the image
+    // keeps its own semantics (the old code overwrote them with role="button").
+    imgs.forEach(function (el, i) {
+      var target = el.closest('picture') || el;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'osd-lightbox-trigger';
+      btn.setAttribute('aria-label', el.alt ? 'View larger image: ' + el.alt : 'View larger image');
+      btn.setAttribute('aria-haspopup', 'dialog');
+      target.parentNode.insertBefore(btn, target);
+      btn.appendChild(target);
+      btn.addEventListener('click', function () { openAt(i); });
+    });
+
+    prevBtn.addEventListener('click', function () { show(index - 1); });
+    nextBtn.addEventListener('click', function () { show(index + 1); });
+    closeBtn.addEventListener('click', function () { dialog.close(); });
+
+    // Escape is handled natively; arrows navigate while the dialog is open.
+    dialog.addEventListener('keydown', function (e) {
+      if (single) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); show(0); }
+      else if (e.key === 'End') { e.preventDefault(); show(imgs.length - 1); }
+    });
+
+    // Click on the dark area (dialog itself or empty figure space) closes.
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog || e.target === figureEl) dialog.close();
+    });
+
+    // Single close path for every way the dialog can close (button, Escape,
+    // backdrop): release the scroll lock and hand focus back to the trigger.
+    dialog.addEventListener('close', function () {
       document.documentElement.style.overflow = '';
       img.removeAttribute('src');
       if (lastFocus && lastFocus.focus) lastFocus.focus();
-    }
-
-    function goPrev() { openAt(index - 1); }
-    function goNext() { openAt(index + 1); }
-
-    function onKey(e) {
-      if (!overlay.classList.contains('open')) return;
-      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-      if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); return; }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); return; }
-      // Keep keyboard focus trapped inside the dialog while it is open
-      if (e.key === 'Tab') {
-        var focusable = [closeBtn, prevBtn, nextBtn].filter(function (n) {
-          return n && n.offsetParent !== null;
-        });
-        if (!focusable.length) return;
-        var firstEl = focusable[0];
-        var lastEl = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        } else if (!e.shiftKey && document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
-    }
-
-    imgs.forEach(function (el, i) {
-      el.style.cursor = 'zoom-in';
-      el.setAttribute('tabindex', '0');
-      el.setAttribute('role', 'button');
-      el.setAttribute('aria-label', (el.alt ? ('View larger image: ' + el.alt) : 'View larger image'));
-      el.addEventListener('click', function (ev) { ev.preventDefault(); openAt(i); });
-      el.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openAt(i); } });
     });
 
-    document.addEventListener('keydown', onKey);
-    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-    if (closeBtn) closeBtn.addEventListener('click', close);
-    if (prevBtn) prevBtn.addEventListener('click', goPrev);
-    if (nextBtn) nextBtn.addEventListener('click', goNext);
+    // Swipe navigation on touch screens.
+    var touchStartX = 0, touchStartY = 0;
+    figureEl.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    figureEl.addEventListener('touchend', function (e) {
+      if (single) return;
+      var diffX = e.changedTouches[0].screenX - touchStartX;
+      var diffY = e.changedTouches[0].screenY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX > 0) show(index - 1); else show(index + 1);
+      }
+    }, { passive: true });
+  })();
 
-    // Touch/swipe support for mobile
-    var body = document.getElementById('osd-lb-body');
-    var hint = document.getElementById('osd-lb-hint');
-    if (body) {
-      var touchStartX = 0, touchStartY = 0;
-      body.addEventListener('touchstart', function (e) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-      }, { passive: true });
-      body.addEventListener('touchend', function (e) {
-        var diffX = e.changedTouches[0].screenX - touchStartX;
-        var diffY = e.changedTouches[0].screenY - touchStartY;
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-          if (diffX > 0) goPrev(); else goNext();
-          if (hint) hint.style.display = 'none';
-        }
-      }, { passive: true });
-    }
-  }
+  // ── Stale job markers ─────────────────────────────────────────────────────
+  // Freshness is decided client-side so it never depends on how recently the
+  // site was built (builds can be weeks apart). Hugo renders every marker and
+  // pre-shows only the ones already stale at build time (the no-JS baseline);
+  // here we un-hide the rest once the posting crosses the threshold.
+  (function () {
+    var markers = document.querySelectorAll('[data-stale-check][data-posted]');
+    if (!markers.length) return;
+    var now = Date.now();
+    markers.forEach(function (el) {
+      var posted = Date.parse(el.getAttribute('data-posted'));
+      if (isNaN(posted)) return;
+      var days = parseInt(el.getAttribute('data-stale-days') || '90', 10) || 90;
+      if (now - posted > days * 86400000) el.hidden = false;
+    });
+  })();
 })();

@@ -4,6 +4,7 @@ date: 2017-03-27
 authors:
   - studiospring
 aliases:
+  - /resources/osd-needs-better-collaboration-tools/
   - /2017/03/27/osd-needs-better-collaboration-tools/
 ---
 

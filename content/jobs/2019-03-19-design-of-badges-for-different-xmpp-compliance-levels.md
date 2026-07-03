@@ -14,7 +14,7 @@ deliverables: >-
 how_to_apply:
   - Georg Lukas <georg@op-co.de>
   - ''
-tags: [badge, shield, logo, graphic design]
+tags: [badges, logo, graphic design]
 date: '2019-03-19T15:35:03.473Z'
 ---
 The XSF is an independent, nonprofit standards development organisation whose primary mission is to define open protocols for presence, instant messaging, and real-time communication and collaboration on top of the IETF’s Extensible Messaging and Presence Protocol (XMPP).

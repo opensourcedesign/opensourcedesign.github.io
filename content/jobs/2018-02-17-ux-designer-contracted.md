@@ -13,7 +13,7 @@ deliverables: "Analyse the existing Kiwix-desktop 1.0 (to be downloaded from her
 how_to_apply:
   - jobs@kiwix.org
   - "* Original version of the position description http://www.kiwix.org/ux-designer-contracted/\r\n* Kiwix web site http://www.kiwix.org/"
-tags: [ux design windows linux offline wikipedia]
+tags: [ux]
 date: '2018-02-17T17:19:11.694Z'
 slug: ux-designer-contracted
 ---

@@ -10,7 +10,7 @@ contact: https://github.com/Guitarheroua
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://pllug.org.ua/
-tags: [interface design]
+tags: [ui]
 status: solved
 compensation: gratis
 date_posted: 2016-07-05

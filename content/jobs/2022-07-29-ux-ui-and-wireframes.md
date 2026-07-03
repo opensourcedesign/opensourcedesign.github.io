@@ -16,7 +16,7 @@ how_to_apply:
   - 'Squiddo (founder, developer) <speedrunwebsite@gmail.com>'
   - "Our discord is the best way to contact us, at discord.leaderboards.gg\r\nMiro Sitemap (not finalized): https://miro.com/app/board/uXjVOkcBwoE=/?share_link_id=500154809168\r\nOld Figma Files: https://www.figma.com/files/project/34020889/Leaderboards-gg?fuid=996887714666332938\r\nInfo site at info.leaderboards.gg\r\n"
 github_handle: squiddot
-tags: [speedrun, gaming, retro, video games, leaderboards, user accounts, 3 levels of user, scoreboard]
+tags: [games, retro, user accounts]
 date: '2022-07-29T19:22:37.972Z'
 ---
 LeaderboardsGG is an open source replacement for a heavily used, corporate-sold competitive leaderboard website.

@@ -3,6 +3,7 @@ title: Beginners Guide to OPEN SOURCE Design via Victory Brown's Hashnode.dev pa
 date: 2020-11-02
 author: Victory Brown
 aliases:
+  - /resources/beginners-guide/
   - /2020/08/13/beginners-guide-to-open-source-design-by-Victory-Brown/
 ---
 

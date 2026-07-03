@@ -39,15 +39,31 @@
         {{ $email := index $emails 0 }}
         {{ $label := trim (replaceRE `<[^>]*>` "" $line) " " }}
         {{ $label = trim (replace $label $email "") " " }}
-        {{ $label = trim $label " :<>-" }}
+        {{ $label = trim $label " :<>-()," }}
+        {{/* A long residue means the line is prose that merely contains an
+             email ("To apply, send your portfolio to x@y.z…"): keep the whole
+             line as a readable note and label the button with the address
+             itself, instead of cramming the prose into the button. */}}
+        {{ if gt (len $label) 48 }}
+          {{ $notes = $notes | append $line }}
+          {{ $label = "" }}
+        {{ end }}
         {{ if not $label }}{{ $label = $email }}{{ end }}
-        {{ $contacts = $contacts | append (dict "type" "email" "href" (printf "mailto:%s" $email) "label" $label "sub" $email) }}
-      {{ else if or (hasPrefix $line "http://") (hasPrefix $line "https://") }}
+        {{ $sub := cond (eq $label $email) "Email" $email }}
+        {{ $contacts = $contacts | append (dict "type" "email" "href" (printf "mailto:%s" $email) "label" $label "sub" $sub) }}
+      {{ else if or (hasPrefix $line "http://") (hasPrefix $line "https://") (hasPrefix $line "www.") }}
         {{/* A line may append a prose note after the URL ("https://… (see X)").
              URLs contain no spaces, so the href is the first whitespace-delimited
-             token; keep the full line as the sub-label so the note stays visible.
-             Derive the host without urls.Parse, which errors on malformed input. */}}
-        {{ $url := replaceRE `\s.*$` "" $line }}
+             token; trailing punctuation ("…/issues/454." or "…>.") belongs to
+             the sentence, not the URL. Keep the full line as the sub-label so
+             the note stays visible. Derive the host without urls.Parse, which
+             errors on malformed input. */}}
+        {{ $rawTok := replaceRE `\s.*$` "" $line }}
+        {{ $url := strings.TrimRight ").,;:!?>'\"" $rawTok }}
+        {{/* Re-attach one ")" when it was trimmed but balances a "(" inside
+             the URL, e.g. wikipedia.org/wiki/Forge_(software). */}}
+        {{ if and (hasPrefix (strings.TrimPrefix $url $rawTok) ")") (gt (strings.Count "(" $url) (strings.Count ")" $url)) }}{{ $url = printf "%s)" $url }}{{ end }}
+        {{ if hasPrefix $url "www." }}{{ $url = printf "https://%s" $url }}{{ end }}
         {{ $host := replaceRE `^[a-zA-Z][a-zA-Z0-9+.-]*://` "" $url }}
         {{ $host = replaceRE `[/?#].*$` "" $host }}
         {{ $host = strings.TrimPrefix "www." $host }}
@@ -55,6 +71,10 @@
         {{ $contacts = $contacts | append (dict "type" "url" "href" $url "label" $host "sub" $line) }}
       {{ else if findRE `^@[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $line }}
         {{ $handle := strings.TrimPrefix "@" $line }}
+        {{ $contacts = $contacts | append (dict "type" "github" "href" (printf "https://github.com/%s" $handle) "label" (printf "@%s" $handle) "sub" "GitHub") }}
+      {{ else if and (findRE `(?i)\bgithub\b` $line) (findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $line) (lt (len $line) 60) }}
+        {{/* Short "GitHub @handle" / "Username Github @handle" lines. */}}
+        {{ $handle := strings.TrimPrefix "@" (index (findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $line 1) 0) }}
         {{ $contacts = $contacts | append (dict "type" "github" "href" (printf "https://github.com/%s" $handle) "label" (printf "@%s" $handle) "sub" "GitHub") }}
       {{ else }}
         {{ $notes = $notes | append $line }}

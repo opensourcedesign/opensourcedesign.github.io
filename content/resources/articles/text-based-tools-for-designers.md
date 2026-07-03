@@ -4,6 +4,7 @@ title: "Why open source designers need tools beyond text and code"
 authors:
   - jdittrich
 aliases:
+  - /resources/text-based-tools-for-designers/
   - /2015/05/23/text-based-tools-for-designers/
 ---
 

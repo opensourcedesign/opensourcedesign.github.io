@@ -15,7 +15,7 @@ how_to_apply:
   - commonground@therapy.coop
   - "https://www.therapy.coop/\r\nhttps://www.loomio.com/commongroundtherapy/"
 github_handle: '@Common-Ground-Therapy'
-tags: [ui, ux, redesign, webpage, website, enhance, upgrade, cooperative, therapy]
+tags: [ui, ux, redesign, web design, enhance, upgrade, cooperative, healthcare]
 date: '2026-06-06T00:45:55.066Z'
 ---
 A not-for-profit social enterprise for local communities in south-east London, UK — owned and run by the therapists who work here.

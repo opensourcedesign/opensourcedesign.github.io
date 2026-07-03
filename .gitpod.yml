@@ -1,8 +1,7 @@
 tasks:
   - init: |
       brew install hugo
-      npm install
-    command: npm run dev
+    command: hugo server --buildDrafts --buildFuture
     name: Development Server
 
 ports:

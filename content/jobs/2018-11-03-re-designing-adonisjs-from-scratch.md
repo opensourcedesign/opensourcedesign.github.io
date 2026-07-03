@@ -12,7 +12,7 @@ deliverables: "1. Home page design\r\n2. Documentation page ( we have some initi
 how_to_apply:
   - Harminder Virk virk@adonisjs.com
   - "https://adonisjs.com\r\nhttps://projects.invisionapp.com/share/8FOOWXKNCPU#/screens"
-tags: [ui design, branding]
+tags: [ui, branding]
 date: '2018-11-02T23:38:37.031Z'
 ---
 AdonisJs is a MVC framework for Node.js, used by thousands of companies and individuals to write web servers.

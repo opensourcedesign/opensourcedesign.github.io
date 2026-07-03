@@ -12,7 +12,7 @@ deliverables: a Professional svg logo
 how_to_apply:
   - sacha@labsquare.org
   - "http://www.labsquare.org/\r\nOur community logo : https://avatars1.githubusercontent.com/u/2106259?s=200&v=4\r\nLogo I like :\r\n https://cdn.dribbble.com/users/533705/screenshots/3811091/sublime-icon.png\r\n"
-tags: [logo, genomics, opensource]
+tags: [logo, bioinformatics, open source]
 date: '2017-12-21T00:03:18.532Z'
 ---
 CutePeaks is a cross plateform Sanger Trace viewer wihch allow biologist to view DNA sequence. 

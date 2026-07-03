@@ -14,7 +14,7 @@ how_to_apply:
   - sourav@openprivacytech.org
   - 'https://github.com/openprivacytech/design/issues/2'
 github_handle: ''
-tags: [logo, branding, open source, non profit, privacy]
+tags: [logo, branding, open source, non-profit, privacy]
 date: '2022-10-01T07:41:15.607Z'
 ---
 We are looking for an awesome color (geometric logo preferred) and brand design for our organization.

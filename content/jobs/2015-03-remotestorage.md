@@ -6,7 +6,7 @@ slug: ui-design-for-remotestorage-connect-widget-dialog
 organization: 5apps
 github: remotestorage,5apps
 org_url: https://remotestorage.io
-tags: [interface design, ui, ux, frontend, web]
+tags: [ui, ux, frontend, web]
 status: solved
 compensation: unspecified
 date_posted: 2015-03-22

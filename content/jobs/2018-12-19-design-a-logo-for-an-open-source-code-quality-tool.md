@@ -12,7 +12,7 @@ deliverables: ''
 how_to_apply:
   - Nikita Sobolev mail@sobolevn.me
   - ''
-tags: [logo, python, open-source]
+tags: [logo, python, open source]
 date: '2018-12-19T10:59:18.144Z'
 ---
 We have just released a new tool to validate your `.env` files. 

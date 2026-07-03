@@ -13,7 +13,7 @@ how_to_apply:
   - Lukasz <activey@doaplatform.org>
   - "https://github.com/flatscrew/latte\r\nhttps://github.com/charmbracelet/bubbletea"
 github_handle: activey
-tags: [logo, branding, opensource, framework]
+tags: [logo, branding, open source, framework]
 date: '2024-12-28T18:37:49.302Z'
 ---
 I'm looking for a kind person that could deliver a logo for my Java framework ;) I'm working on a project after hours, releasing it under MIT license.

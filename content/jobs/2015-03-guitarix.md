@@ -6,7 +6,7 @@ role: GUI Designer
 organization: guitarix
 github: brummer10
 org_url: https://guitarix.sourceforge.net/
-tags: [interface design, branding, logo]
+tags: [ui, branding, logo]
 status: solved
 compensation: gratis, open source
 date_posted: 2015-02-15

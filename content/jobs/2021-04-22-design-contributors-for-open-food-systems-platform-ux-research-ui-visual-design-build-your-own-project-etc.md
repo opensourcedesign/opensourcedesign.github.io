@@ -16,7 +16,7 @@ how_to_apply:
   - erioldoesdesign@gmail.com
   - 'https://www.openfoodnetwork.org/become-a-contributor/'
 github_handle: ''
-tags: [user research, interaction design, visual design, food systems, illustration, infographics]
+tags: [user research, interaction design, visual design, agriculture, illustration, data visualization]
 date: '2021-04-22T14:26:36.130Z'
 ---
 The project is looking for design contributions of all kinds. 

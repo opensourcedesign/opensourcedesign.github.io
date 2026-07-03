@@ -14,7 +14,7 @@ how_to_apply:
   - 'Erik Moeller, jobs+ux@freedom.press'
   - ''
 github_handle: ''
-tags: [ui, visual, product design, ux design-research, web design]
+tags: [ui, visual design, product design, user research, web design]
 date: '2022-01-18T22:19:08.305Z'
 ---
 Freedom of the Press Foundation (FPF), a nonprofit organization dedicated to protecting and defending public interest journalism, is hiring a User Experience Designer.

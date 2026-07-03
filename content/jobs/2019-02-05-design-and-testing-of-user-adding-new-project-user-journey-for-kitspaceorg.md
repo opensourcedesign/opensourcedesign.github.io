@@ -13,7 +13,7 @@ deliverables: 'wireframes , mockups of UI designs , usability testing'
 how_to_apply:
   - kaspar@kitspace.org
   - "https://kitspace.org/\r\nhttps://github.com/kitspace/kitspace\r\nhttps://bom-builder.kitspace.org\r\nhttps://riot.im/app/#/room/#kitspace:matrix.org"
-tags: [interaction design, electronics, ui design, usability testing]
+tags: [interaction design, electronics, ui, usability testing]
 date: '2019-02-05T07:58:32.016Z'
 ---
 Kitspace is looking for help to improve the user experience for a new user who wants to add a new project to Kitspace.

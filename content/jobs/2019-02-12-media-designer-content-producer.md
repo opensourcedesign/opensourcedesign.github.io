@@ -13,7 +13,7 @@ deliverables: ''
 how_to_apply:
   - Hiring Dept. <personal@tuxedocomputers.com>
   - "https://www.tuxedocomputers.com/en/Infos/Jobs/Media-Designer-/-Content-Producer-m/f.tuxedo\r\nhttps://linuxrocks.online/@tuxedocomputers\r\nhttps://twitter.com/TUXEDOComputers\r\nhttps://www.facebook.com/tuxedocomputers/"
-tags: [advertising, manual, video, product photography, banners, print ads]
+tags: [advertising, documentation, video, product photography, banner, print ads]
 date: '2019-02-14T09:55:13.780Z'
 ---
 To increase our team in Königsbrunn (Germany) we are looking for 

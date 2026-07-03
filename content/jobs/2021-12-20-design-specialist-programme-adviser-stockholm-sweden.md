@@ -14,7 +14,7 @@ how_to_apply:
   - >-
     https://jobs.unicef.org/en-us/job/547064/design-specialist-programme-adviser-p3-ta-office-of-innovation-stockholm-sweden-00118612
 github_handle: '@jwflory'
-tags: [design strategy, community building, guidance, mentorship, knowledge-sharing]
+tags: [design strategy, community building, mentorship]
 date: '2021-12-20T16:03:39.330Z'
 ---
 * Level: [P-3](https://careers.un.org/lbw/home.aspx?viewtype=SC)

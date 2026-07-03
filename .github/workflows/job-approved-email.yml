@@ -1,10 +1,11 @@
-name: Email submitter when job is published
+name: Email submitter when job or event is published
 
-# When a job-submission pull request (branch job/*, opened by the job-submit
-# Cloudflare Worker) is merged, look up the submitter's private email — stored
-# in Cloudflare KV by the Worker, keyed by PR number — and notify them that
-# their posting is live. The address is never committed to the repo or shown in
-# the PR; it is fetched at merge time over an authenticated endpoint.
+# When a submission pull request (branch job/* or event/*, opened by the
+# job-submit Cloudflare Worker) is merged, look up the submitter's private
+# email — stored in Cloudflare KV by the Worker, keyed by PR number — and
+# notify them that their posting is live. The address is never committed to
+# the repo or shown in the PR; it is fetched at merge time over an
+# authenticated endpoint.
 
 on:
   pull_request:
@@ -15,10 +16,11 @@ permissions:
 
 jobs:
   notify:
-    # Only fire on an actual merge of a job-submission branch.
+    # Only fire on an actual merge of a submission branch.
     if: >-
       github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.head.ref, 'job/')
+      (startsWith(github.event.pull_request.head.ref, 'job/') ||
+       startsWith(github.event.pull_request.head.ref, 'event/'))
     runs-on: ubuntu-latest
     steps:
       - name: Look up submitter email
@@ -27,6 +29,7 @@ jobs:
           LOOKUP_URL: ${{ secrets.JOB_LOOKUP_URL }}
           LOOKUP_SECRET: ${{ secrets.JOB_LOOKUP_SECRET }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
           if [ -z "$LOOKUP_URL" ] || [ -z "$LOOKUP_SECRET" ]; then
             echo "Lookup secrets not configured; skipping email."
@@ -44,10 +47,23 @@ jobs:
           # workflow outputs (GitHub Actions output-injection hardening).
           email="$(printf '%s' "$resp" | jq -r '.email' | tr -d '\r\n')"
           title="$(printf '%s' "$resp" | jq -r '.title // ""' | tr -d '\r\n')"
+          # The branch prefix decides the wording (job posting vs. event).
+          case "$HEAD_REF" in
+            event/*)
+              kind="event"
+              url="https://opensourcedesign.net/events/"
+              ;;
+            *)
+              kind="job posting"
+              url="https://opensourcedesign.net/jobs/"
+              ;;
+          esac
           {
             echo "found=true"
             echo "email=${email}"
             echo "title=${title}"
+            echo "kind=${kind}"
+            echo "url=${url}"
           } >> "$GITHUB_OUTPUT"
 
       - name: Send notification email
@@ -64,14 +80,14 @@ jobs:
           password: ${{ secrets.SMTP_PASS }}
           from: Open Source Design <${{ secrets.SMTP_FROM }}>
           to: ${{ steps.lookup.outputs.email }}
-          subject: Your job posting is now live on Open Source Design
+          subject: Your ${{ steps.lookup.outputs.kind }} is now live on Open Source Design
           body: |
             Hi,
 
-            Good news — your job posting "${{ steps.lookup.outputs.title }}" has been
+            Good news — your ${{ steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" has been
             reviewed and is now published on Open Source Design:
 
-            https://opensourcedesign.net/jobs/
+            ${{ steps.lookup.outputs.url }}
 
             Thanks for supporting open source design!
 

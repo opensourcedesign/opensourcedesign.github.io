@@ -12,7 +12,7 @@ deliverables: Web Style Guides implementation based on design mockups
 how_to_apply:
   - Elio (Creative Lead) <elio@ura.design>
   - "Examples:\r\nhttps://reproducible-builds.org/style/\r\nhttps://thunderbird.ura.design"
-tags: [style guide, guidelines, frontend, design]
+tags: [design system, frontend, design]
 date: '2018-07-24T17:55:31.698Z'
 ---
 At Ura we are constantly working on style guides for Free Open Source projects. Some of our past projects include The Tor Project, Thunderbird, Reproducible Builds and I2P. We are looking for a Entry-level to mid-level Frontend Developer to help us implement living style guides for upcoming projects. You will be working in an open source environment in the open and help open source projects with better design and usability. 

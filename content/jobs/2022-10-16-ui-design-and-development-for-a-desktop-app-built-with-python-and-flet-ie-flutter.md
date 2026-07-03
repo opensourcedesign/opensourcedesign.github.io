@@ -18,7 +18,7 @@ how_to_apply:
   - Chris (lead developer) <mail @ clstaudt.me>
   - "https://prototypefund.de\r\nhttps://flet.dev"
 github_handle: '@clstaudt'
-tags: [ui design, frontend development]
+tags: [ui, frontend]
 date: '2022-10-16T14:02:59.559Z'
 ---
 Tuttle is an open-source software project supported by the Prototype Fund. We develop a time and finance management tool tailored for the requirements of freelancers.

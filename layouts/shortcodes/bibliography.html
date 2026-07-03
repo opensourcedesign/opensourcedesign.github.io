@@ -1,0 +1,33 @@
+{{- /* Renders the Reading & Research bibliography from data/bibliography.yaml.
+     Place the `bibliography` shortcode in any page's markdown to transclude
+     the list there (see issue #557 — no longer hard-wired to /resources/).
+     `not-prose` opts the section out of Tailwind typography styling so the
+     custom list layout is preserved wherever the shortcode is used.
+
+     Pass heading="false" when the host page already provides its own title
+     (e.g. /resources/reading/) to skip the built-in heading and intro. */ -}}
+{{- $heading := ne (.Get "heading") "false" -}}
+{{ with hugo.Data.bibliography }}
+  <section class="not-prose my-8" {{ if $heading }}aria-labelledby="bibliography-heading"{{ else }}aria-label="Reading & Research bibliography"{{ end }}>
+    {{ if $heading }}
+      <h2 id="bibliography-heading" class="scroll-mt-24 text-xl font-semibold text-slate-900">Reading &amp; Research</h2>
+      <p class="mt-1 text-sm text-slate-600">A bibliography of articles, talks, papers, and books on design in open source.</p>
+    {{ end }}
+    <ul class="mt-6 space-y-4" role="list">
+      {{ range sort . "year" "desc" }}
+        <li class="flex flex-col gap-1 border-b border-slate-100 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+          <div class="min-w-0">
+            <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+            <div class="mt-0.5 text-sm text-slate-600">
+              {{ with .author }}{{ . }}{{ end }}{{ with .publication }} &middot; {{ . }}{{ end }}
+            </div>
+          </div>
+          <div class="flex shrink-0 items-center gap-2 text-xs">
+            {{ with .type }}<span class="rounded-full bg-slate-100 px-2.5 py-1 font-medium capitalize text-slate-600">{{ . }}</span>{{ end }}
+            {{ with .year }}<span class="font-medium text-slate-500">{{ . }}</span>{{ end }}
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}

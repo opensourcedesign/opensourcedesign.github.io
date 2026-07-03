@@ -24,7 +24,7 @@ how_to_apply:
     current decision making processes.
   - "https://archive.fosdem.org/2022/schedule/event/osd_introduction_to_open_source_design/\r\n\r\nhttps://opensourcedesign.net/ (Specifically the goals and manifesto pages)\r\n\r\nhttps://opencollective.com/opensourcedesign\r\n\r\nhttps://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md"
 github_handle: ''
-tags: [governance, design, community building, support, documentation, research]
+tags: [governance, design, community building, support, documentation, user research]
 date: '2026-04-01T08:22:48.621Z'
 ---
 Please see this document for the full job description: [https://cloud.opensourcedesign.net/s/Ly6WTWYg4Gn5aQT](https://cloud.opensourcedesign.net/s/Ly6WTWYg4Gn5aQT)

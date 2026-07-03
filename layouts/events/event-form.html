@@ -1,0 +1,335 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
+    <div>
+      <header>
+        <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
+          <a class="transition hover:text-slate-900" href="{{ "/events/" | relURL }}">Events</a>
+          <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          <span class="font-medium text-slate-700" aria-current="page">Submit an event</span>
+        </nav>
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Submit an Event</h1>
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">Add a meetup, conference track, workshop, or community gathering related to open source design. Submissions are reviewed by our community moderators before they appear on the events page and calendar.</p>
+      </header>
+
+      {{/* Guidelines */}}
+      <p class="mt-6 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+        </svg>
+        <span>Please read our <a class="font-semibold underline decoration-amber-400 underline-offset-4 transition hover:decoration-amber-800" href="{{ "/about-us/code-of-conduct/" | relURL }}">Code of Conduct</a> before submitting.</span>
+      </p>
+
+      {{/* Form */}}
+      <form id="osd-event-form" class="mt-10 space-y-12 border-t border-slate-200 pt-10" novalidate>
+        {{/* Event Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">1 · About the event</legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700" for="title">Event name <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="title" name="title" placeholder="e.g., Open Source Design Devroom at FOSDEM 2027" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="website">Event website <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="website" name="website" type="url" inputmode="url" placeholder="https://..." />
+              <p class="text-xs text-slate-500">Registration page, program, or announcement.</p>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="location">Location <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="location" name="location" placeholder="e.g., Brussels, Belgium — or Online" required />
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Date & Time Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">2 · Date &amp; time</legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="start_date">Start date <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="start_date" name="start_date" type="date" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="end_date">End date <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="end_date" name="end_date" type="date" />
+              <p class="text-xs text-slate-500">Leave empty for a one-day event.</p>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="time">Time <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="time" name="time" placeholder="e.g., 18:00–19:00 CET" />
+              <p class="text-xs text-slate-500">Include the timezone.</p>
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Details & Contact Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">3 · Details &amp; contact</legend>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="description">Event description <span class="text-red-500">*</span></label>
+            <p class="text-xs text-slate-500">What is the event about? Who is it for? How can people join? Markdown is supported.</p>
+            <textarea class="min-h-48 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="description" name="description" placeholder="Join us for..." required></textarea>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700" for="email">Your email <span class="text-slate-400">(for status updates, not published)</span></label>
+            <p class="text-xs text-slate-500">We'll email you here once your event is reviewed and published. This is kept private and never shown on the site.</p>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          {{ with site.Params.turnstileSiteKey }}
+            <div class="pt-2">
+              <div class="cf-turnstile" data-sitekey="{{ . }}"></div>
+            </div>
+          {{ end }}
+
+          {{/* Honeypot */}}
+          <div class="hidden" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+        </fieldset>
+
+        {{/* Submit */}}
+        <div class="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
+          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="submit" id="osd-submit">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+            Submit event
+          </button>
+          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="reset" id="osd-reset">Reset</button>
+          <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+
+    {{/* Result panel */}}
+    <div class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6" id="osd-result" hidden>
+      <h2 class="flex items-center gap-2 text-sm font-semibold text-emerald-900" id="osd-result-title">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Submission result
+      </h2>
+      <div class="mt-3 text-sm text-emerald-800" id="osd-result-body"></div>
+      <div class="mt-4" id="osd-result-extra"></div>
+    </div>
+
+    {{ with site.Params.turnstileSiteKey }}
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    {{ end }}
+
+    <script>
+      (function () {
+        {{/* Hugo's JS-context autoescaper already emits strings as JSON — no jsonify. */}}
+        var endpoint = {{ site.Params.eventSubmitEndpoint | default "" }};
+
+        var form = document.getElementById('osd-event-form');
+        if (!form) return;
+
+        var note = document.getElementById('osd-form-note');
+        var out = document.getElementById('osd-result');
+        var outTitle = document.getElementById('osd-result-title');
+        var outBody = document.getElementById('osd-result-body');
+        var outExtra = document.getElementById('osd-result-extra');
+        var submitBtn = document.getElementById('osd-submit');
+
+        function slugify(str) {
+          str = (str || '').trim().toLowerCase();
+          str = str.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+          str = str.replace(/[^a-z0-9\s-]/g, '');
+          str = str.replace(/\s+/g, '-').replace(/-+/g, '-');
+          return str;
+        }
+
+        function yq(v) {
+          var s = String(v == null ? '' : v);
+          s = s.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+          return '"' + s + '"';
+        }
+
+        // Human-readable date range in the site's eventDate style,
+        // e.g. "1 February 2027", "1–2 February 2027", "28 February – 1 March 2027".
+        function formatEventDate(startISO, endISO) {
+          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          function parts(iso) {
+            var m = String(iso).split('-');
+            return { y: +m[0], mo: +m[1], d: +m[2] };
+          }
+          var s = parts(startISO);
+          var e = endISO ? parts(endISO) : s;
+          if (s.y === e.y && s.mo === e.mo && s.d === e.d) return s.d + ' ' + months[s.mo - 1] + ' ' + s.y;
+          if (s.y === e.y && s.mo === e.mo) return s.d + '\u2013' + e.d + ' ' + months[s.mo - 1] + ' ' + s.y;
+          if (s.y === e.y) return s.d + ' ' + months[s.mo - 1] + ' \u2013 ' + e.d + ' ' + months[e.mo - 1] + ' ' + s.y;
+          return s.d + ' ' + months[s.mo - 1] + ' ' + s.y + ' \u2013 ' + e.d + ' ' + months[e.mo - 1] + ' ' + e.y;
+        }
+
+        function showResult(title, bodyHtml, extraHtml) {
+          if (outTitle) outTitle.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ' + title;
+          if (outBody) outBody.innerHTML = bodyHtml || '';
+          if (outExtra) outExtra.innerHTML = extraHtml || '';
+          if (out) out.hidden = false;
+          out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateMarkdown(data, isoNow) {
+          var slug = data.start_date + '-' + slugify(data.title);
+          var path = 'content/events/' + slug + '.md';
+
+          var fm = [];
+          fm.push('---');
+          fm.push('layout: event');
+          fm.push('title: ' + yq(data.title));
+          fm.push('status: upcoming');
+          fm.push('date: ' + yq(isoNow));
+          fm.push('eventDate: ' + yq(formatEventDate(data.start_date, data.end_date)));
+          fm.push('eventStart: ' + yq(data.start_date));
+          fm.push('endDate: ' + yq(data.end_date || data.start_date));
+          if (data.time) fm.push('time: ' + yq(data.time));
+          fm.push('location: ' + yq(data.location));
+          fm.push('---');
+          fm.push('');
+          fm.push(data.description);
+          if (data.website) {
+            fm.push('');
+            fm.push('More information: <' + data.website + '>');
+          }
+          fm.push('');
+
+          return { path: path, markdown: fm.join('\n') };
+        }
+
+        // GitHub's new-file editor accepts ?filename= and ?value= to pre-fill
+        // the path and contents. For visitors without push access GitHub forks
+        // automatically and "Propose new file" leads straight to the PR screen.
+        // Returns '' when the encoded URL would exceed GitHub's ~8K URL limit,
+        // in which case the copy-paste flow is the only option.
+        function githubNewFileURL(gen) {
+          var repoURL = '{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}';
+          var url = repoURL + '/new/main?filename=' + encodeURIComponent(gen.path) + '&value=' + encodeURIComponent(gen.markdown);
+          return url.length <= 7500 ? url : '';
+        }
+
+        function fallbackBodyHTML(gen) {
+          var gh = githubNewFileURL(gen);
+          var html = '';
+          if (gh) {
+            html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
+            html += '<p class="mt-3 text-slate-700">The file name and contents are already filled in. GitHub will fork the repository if needed; press <strong>Propose new file</strong>, then <strong>Create pull request</strong>. Prefer to do it by hand? The markdown is below.</p>';
+          } else {
+            html += '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline underline-offset-4" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main?filename=' + encodeURIComponent(gen.path) + '" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a> (the event is too long for a fully pre-filled link, so paste the contents into the editor).</p>';
+          }
+          html += '<p class="mt-2 text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path + '</code></p>';
+          return html;
+        }
+
+        form.addEventListener('reset', function () {
+          if (out) out.hidden = true;
+          if (note) note.textContent = '';
+        });
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          if (note) note.textContent = '';
+
+          var honeypot = (form.company || {}).value;
+          if (honeypot) return;
+
+          var isoNow = new Date().toISOString();
+
+          var data = {
+            kind: 'event',
+            title: form.title.value.trim(),
+            website: form.website.value.trim(),
+            location: form.location.value.trim(),
+            start_date: form.start_date.value,
+            end_date: form.end_date.value,
+            time: form.time.value.trim(),
+            description: form.description.value.trim(),
+            email: (form.email || {}).value ? form.email.value.trim() : ''
+          };
+
+          if (!data.title || !data.location || !data.start_date || !data.description) {
+            if (note) note.textContent = 'Please fill in all required fields.';
+            return;
+          }
+
+          if (data.end_date && data.end_date < data.start_date) {
+            if (note) note.textContent = 'The end date cannot be before the start date.';
+            return;
+          }
+
+          if (data.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
+            if (note) note.textContent = 'Please enter a valid email address, or leave it blank.';
+            return;
+          }
+
+          var turnstile = document.querySelector('[name="cf-turnstile-response"]');
+          var turnstileToken = turnstile && turnstile.value ? String(turnstile.value) : '';
+
+          if (endpoint) {
+            try {
+              if (submitBtn) submitBtn.disabled = true;
+              if (note) note.textContent = 'Submitting…';
+
+              var resp = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  company: honeypot,
+                  turnstile_token: turnstileToken,
+                  ...data
+                }),
+                mode: 'cors'
+              });
+
+              var json = await resp.json().catch(function () { return null; });
+
+              if (resp.ok && json && json.ok && json.pr_url) {
+                if (note) note.textContent = 'Submitted.';
+                showResult(
+                  'Thanks — submission received',
+                  'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
+                  ''
+                );
+                form.reset();
+                return;
+              }
+
+              var msg = (json && json.error) ? String(json.error) : 'Submission failed.';
+              throw new Error(msg);
+            } catch (err) {
+              if (note) note.textContent = 'Could not submit automatically. Use the fallback below.';
+              out.classList.remove('border-emerald-200', 'bg-emerald-50');
+              out.classList.add('border-slate-200', 'bg-white');
+
+              var gen = generateMarkdown(data, isoNow);
+              showResult(
+                'Fallback: open the pull request yourself',
+                fallbackBodyHTML(gen),
+                '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated event markdown" readonly>' + gen.markdown.replace(/</g,'&lt;') + '</textarea>'
+              );
+              return;
+            } finally {
+              if (submitBtn) submitBtn.disabled = false;
+            }
+          }
+
+          out.classList.remove('border-emerald-200', 'bg-emerald-50');
+          out.classList.add('border-slate-200', 'bg-white');
+
+          var gen2 = generateMarkdown(data, isoNow);
+          showResult(
+            'Open the pull request on GitHub',
+            fallbackBodyHTML(gen2),
+            '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated event markdown" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
+          );
+        });
+      })();
+    </script>
+  </div>
+{{ end }}

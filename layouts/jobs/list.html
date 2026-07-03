@@ -16,78 +16,35 @@
   {{ $paidCount := $counts.Get "paid" }}
   {{ $gratisCount := $counts.Get "gratis" }}
 
-  {{/* Hero Header */}}
-  <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white" aria-labelledby="jobs-heading">
-    <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <div class="max-w-2xl">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/>
-            </svg>
-          </div>
-          <h1 id="jobs-heading" class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{{ .Title }}</h1>
-          {{ with .Content }}
-            <div class="mt-4 text-lg text-slate-300 prose prose-invert prose-a:text-white prose-a:underline prose-a:decoration-white/50 prose-a:underline-offset-4 hover:prose-a:decoration-white max-w-none">{{ . }}</div>
-          {{ else }}
-            {{ with $.Description }}
-              <p class="mt-4 text-lg text-slate-300">{{ . }}</p>
-            {{ end }}
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
+    {{/* Editorial header */}}
+    <header class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between" aria-labelledby="jobs-heading">
+      <div class="max-w-2xl">
+        <h1 id="jobs-heading" class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+        {{ with .Content }}
+          <div class="prose prose-slate mt-4 max-w-none text-lg">{{ . }}</div>
+        {{ else }}
+          {{ with $.Description }}
+            <p class="mt-4 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
           {{ end }}
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900" href="{{ "/jobs/job-form/" | relURL }}">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-            Post a Job
-          </a>
-          <a class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50" href="{{ "/jobs/feed.xml" | relURL }}" aria-label="Subscribe to jobs RSS feed">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
-            RSS Feed
-          </a>
-        </div>
+        {{ end }}
       </div>
-    </div>
-  </section>
+      <div class="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-3">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/jobs/job-form/" | relURL }}">Post a job</a>
+        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/jobs/feed.xml" | relURL }}" aria-label="Subscribe to jobs RSS feed">RSS</a>
+      </div>
+    </header>
 
-  {{/* Stats Bar */}}
-  <section class="border-b border-slate-200 bg-white" aria-label="Job statistics">
-    <div class="mx-auto max-w-6xl px-4 py-4">
-      <div class="flex flex-wrap items-center justify-center gap-6 text-sm sm:justify-start">
-        <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-slate-900">{{ len $jobs }}</span>
-          <span class="text-slate-600">open jobs</span>
-        </div>
-        <span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>
-        <div class="flex items-center gap-2">
-          <span class="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
-          <span class="font-semibold text-slate-900">{{ $paidCount }}</span>
-          <span class="text-slate-600">paid</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="h-2.5 w-2.5 rounded-full bg-violet-500" aria-hidden="true"></span>
-          <span class="font-semibold text-slate-900">{{ $gratisCount }}</span>
-          <span class="text-slate-600">volunteer</span>
-        </div>
-        <span class="hidden h-4 w-px bg-slate-200 sm:block" aria-hidden="true"></span>
-        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 hover:decoration-slate-900" href="{{ "/jobs/archive/" | relURL }}">Browse {{ len $jobsAll }}+ archived jobs</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="mx-auto max-w-6xl px-4 py-8">
-    {{/* Important Notice */}}
-    <aside class="rounded-xl border border-amber-200 bg-amber-50 p-5" role="alert">
-      <div class="flex gap-3">
-        <svg class="h-5 w-5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
-        <div class="text-sm text-amber-800">
-          <p class="font-semibold">Important</p>
-          <p class="mt-1">When responding to job postings, please avoid generic copy-pasted responses. See our <a class="font-medium underline decoration-amber-400 underline-offset-2 hover:decoration-amber-600" href="{{ site.Params.jobGuidelinesURL | default "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925" }}" target="_blank" rel="noopener noreferrer">guidelines for responding to jobs</a> to avoid being banned from the community.</p>
-        </div>
-      </div>
+    {{/* Response guidelines notice */}}
+    <aside class="mt-10 rounded-xl border border-amber-200 bg-amber-50 p-5" role="alert">
+      <p class="text-sm text-amber-900">
+        <span class="font-semibold">Before you reply:</span>
+        avoid generic copy-pasted responses. See our <a class="font-medium underline decoration-amber-400 underline-offset-2 transition hover:decoration-amber-700" href="{{ site.Params.jobGuidelinesURL | default "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925" }}" target="_blank" rel="noopener noreferrer">guidelines for responding to jobs</a> to avoid being banned from the community.
+      </p>
     </aside>
 
     {{/* Filters */}}
-    <div class="flex flex-col gap-4 mt-4 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
+    <div class="mt-10 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
       <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
         <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
           All ({{ len $jobs }})
@@ -107,19 +64,19 @@
       </div>
       <div class="flex gap-2">
         <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
-        <input class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-900/10 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
-        <button class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
+        <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
+        <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
       </div>
     </div>
 
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
-      <span id="jobs-count">{{ len $jobs }}</span> results
+      <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/jobs/archive/" | relURL }}">browse {{ len $jobsAll }}+ archived jobs</a>
     </div>
 
-    <p class="mt-6 hidden rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
+    <p class="mt-6 hidden text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
 
-    {{/* Job Cards */}}
-    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="jobs-list" role="list" aria-label="Job listings">
+    {{/* Job list */}}
+    <ul class="mt-4 border-t border-slate-200" id="jobs-list" role="list" aria-label="Job listings">
       {{ range (sort $jobs "Params.date_posted" "desc") }}
         {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
         {{ $isPaid := eq $comp "paid" }}
@@ -134,50 +91,43 @@
         {{ else }}
           {{ $tagsStr = printf "%v" $tags }}
         {{ end }}
-        <li class="job-item" data-comp="{{ $compType }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
-          <a class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ if $org }} at {{ $org }}{{ end }}">
-            {{/* Header */}}
-            <div class="flex items-start justify-between gap-3">
-              <h2 class="font-semibold leading-snug text-slate-900 group-hover:text-slate-950">{{ .Title }}</h2>
-              {{ if $isPaid }}
-                {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
-              {{ else if $isVol }}
-                {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet") }}
-              {{ end }}
-            </div>
-
-            {{/* Meta */}}
-            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
-              {{ with $org }}
-                <span class="inline-flex items-center gap-1.5">
-                  <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
-                  <span class="font-medium text-slate-700">{{ . }}</span>
-                </span>
-              {{ end }}
-              {{ with $role }}
-                <span class="inline-flex items-center gap-1.5">
-                  <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26"/></svg>
-                  <span>{{ . }}</span>
-                </span>
-              {{ end }}
-              {{ with .Params.date_posted }}
-                <span class="inline-flex items-center gap-1.5">
-                  <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                  <time datetime="{{ . }}">{{ . }}</time>
-                </span>
-              {{ end }}
-            </div>
-
-            {{/* Summary */}}
+        <li class="job-item border-b border-slate-200" data-comp="{{ $compType }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
+          {{/* Stale marker: visible at build time when already past the
+               three-month threshold, otherwise revealed client-side by main.js
+               (builds can be weeks apart, so build time alone undercounts). */}}
+          {{ $posted := printf "%v" (.Params.date_posted | default "") }}
+          {{ $staleNow := false }}
+          {{ with .Params.date_posted }}
+            {{ if gt (int (div (now.Sub (time.AsTime .)).Hours 24)) 90 }}{{ $staleNow = true }}{{ end }}
+          {{ end }}
+          <a class="group block py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ if $org }} at {{ $org }}{{ end }}">
+            <span class="flex items-start justify-between gap-4">
+              <span class="text-lg font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              <span class="flex shrink-0 items-center gap-2">
+                {{ if $posted }}
+                  <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 sm:px-2.5 sm:py-1 sm:text-xs" data-stale-check data-posted="{{ $posted }}" {{ if not $staleNow }}hidden{{ end }}>
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true"></span>
+                    <span class="sm:hidden">Inactive?</span>
+                    <span class="hidden sm:inline">May be inactive</span>
+                  </span>
+                {{ end }}
+                {{ if $isPaid }}
+                  {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
+                {{ else if $isVol }}
+                  {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet") }}
+                {{ end }}
+              </span>
+            </span>
+            <span class="mt-1.5 block text-sm text-slate-500">
+              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) .Params.date_posted }} · {{ end }}{{ with .Params.date_posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
+            </span>
             {{ with .Summary }}
-              <p class="mt-3 flex-1 line-clamp-3 text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</p>
+              <span class="mt-2 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</span>
             {{ end }}
-
-            {{/* Tags — pinned to the card bottom so footers align across each row */}}
             {{ if $tags }}
-              <div class="mt-auto border-t border-slate-100 pt-4">
+              <span class="mt-3 block">
                 {{ partial "render-tags.html" (dict "tags" $tags "limit" 3) }}
-              </div>
+              </span>
             {{ end }}
           </a>
         </li>

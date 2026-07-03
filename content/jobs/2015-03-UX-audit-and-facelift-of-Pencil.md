@@ -7,7 +7,7 @@ organization: Evolus
 github:
 org_url: http://pencil.evolus.vn
 code: https://code.google.com/p/evoluspencil/
-tags: [ux audit, product refinement, interface design, logo]
+tags: [usability, product refinement, ui, logo]
 status: solved
 compensation: unspecified
 date_posted: 2015-03-11

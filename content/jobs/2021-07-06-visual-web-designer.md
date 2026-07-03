@@ -16,7 +16,7 @@ how_to_apply:
     please see full job description here:
     https://simplysecure.org/hiring/visual_web_designer.html
 github_handle: ''
-tags: [logo, branding, graphic design, visual design, identity, web design]
+tags: [logo, branding, graphic design, visual design, web design]
 date: '2021-07-06T11:25:54.110Z'
 ---
 - Simply Secure is looking to contract a visual designer who can bring their expertise in web design and crafting brand identities to a new educational website and resource repository launching in August 2021. The website helps lawmakers, advocates, and concerned citizens get the tech policy information they need.

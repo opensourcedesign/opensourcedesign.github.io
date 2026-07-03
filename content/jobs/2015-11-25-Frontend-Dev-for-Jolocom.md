@@ -8,7 +8,7 @@ organization: Jolocom
 github: https://github.com/jolocom
 contact: joachim@jolocom.com
 org_url: http://jolocom.com
-tags: [ui, d3js, js, react]
+tags: [ui, data visualization, javascript, react]
 status: solved
 compensation: part-time / 18hrs/week
 date_posted: 2015-11-25

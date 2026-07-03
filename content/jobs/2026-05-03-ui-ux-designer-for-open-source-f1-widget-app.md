@@ -15,7 +15,7 @@ how_to_apply:
   - Raztamim94@gmail.com
   - ''
 github_handle: raztam
-tags: [mobile app widgets]
+tags: [mobile]
 date: '2026-05-03T07:39:37.388Z'
 ---
 I have developed a functional F1 widget app that provides Driver and Constructor standings. I've used it personally for a year, and now I want to release it for free on the App Store and Google Play for the 2026 season.

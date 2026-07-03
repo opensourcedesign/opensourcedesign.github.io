@@ -9,7 +9,7 @@ contact: rory@openfarm.cc, roryaronson, http://slack.openfarm.cc
 contributing_md: https://github.com/openfarmcc/OpenFarm/blob/master/CONTRIBUTING.md
 contributors_md: http://slack.openfarm.cc
 org_url: http://openfarm.cc, http://farmbot.io, http://hortomatic.com
-tags: [icon design, icons, plants, crops, svg]
+tags: [icons, agriculture, svg]
 status: solved
 compensation: gratis
 date_posted: 2015-09-26

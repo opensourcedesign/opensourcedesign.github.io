@@ -8,7 +8,7 @@ github: bdavidxyz
 contact: bdavidxyz@gmail.com
 contributing_md:
 org_url: https://github.com/bdavidxyz/zee
-tags: [interface design, branding, landing page]
+tags: [ui, branding, web design]
 status: solved
 compensation: gratis
 date_posted: 2016-04-20

@@ -13,7 +13,7 @@ how_to_apply:
   - dev@aithscel.eu
   - ''
 github_handle: ''
-tags: [logo design]
+tags: [logo]
 date: '2020-06-18T18:50:24.242Z'
 ---
 Just need a logo for an OpenSource OData library.

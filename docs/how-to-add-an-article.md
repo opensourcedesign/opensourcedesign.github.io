@@ -34,4 +34,4 @@
 
 ## Previewing locally (optional)
 
-For larger contributions, clone the repository and run `npm install` then `npm run dev` to preview your changes at `http://localhost:1313/` with live reload. See the main [README](../README.md) for full setup instructions.
+For larger contributions, clone the repository and run `hugo server` to preview your changes at `http://localhost:1313/` with live reload — styling is compiled in the browser, so only [Hugo](https://gohugo.io/) is needed. See the main [README](../README.md) for full setup instructions.

@@ -1,14 +1,16 @@
+{{- /* Values are interpolated raw: Hugo's contextual auto-escaper already
+     percent-encodes template values placed in a URL query position, so
+     pre-encoding with urlquery would double-encode every link. */ -}}
 {{- $title := .Title | plainify -}}
 {{- $url := .Permalink -}}
-{{- $encodedTitle := $title | urlquery -}}
-{{- $encodedUrl := $url | urlquery -}}
+{{- $emailBody := printf "Check out this: %s" $url -}}
 
 <div class="flex flex-wrap items-center gap-3">
   <span class="text-sm font-medium text-slate-500">Share:</span>
   
   {{/* LinkedIn */}}
   <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" 
-     href="https://www.linkedin.com/sharing/share-offsite/?url={{ $encodedUrl }}" 
+     href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" 
      target="_blank" 
      rel="noopener noreferrer" 
      aria-label="Share on LinkedIn"
@@ -20,7 +22,7 @@
   
   {{/* Mastodon */}}
   <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" 
-     href="https://mastodonshare.com/?text={{ $encodedTitle }}&url={{ $encodedUrl }}" 
+     href="https://mastodonshare.com/?text={{ $title }}&url={{ $url }}" 
      target="_blank" 
      rel="noopener noreferrer" 
      aria-label="Share on Mastodon"
@@ -32,7 +34,7 @@
   
   {{/* Email */}}
   <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" 
-     href="mailto:?subject={{ $encodedTitle }}&body=Check out this: {{ $encodedUrl }}" 
+     href="mailto:?subject={{ $title }}&body={{ $emailBody }}" 
      aria-label="Share via Email"
      title="Share via Email">
     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

@@ -4,6 +4,10 @@ title = "Open Source Design"
 
 enableRobotsTXT = true
 
+# Tags are authored lowercase ("ux", "web design") and shown that way in pills
+# across the site; don't title-case term page titles into "Ux" / "Web Design".
+capitalizeListTitles = false
+
 [pagination]
   pagerSize = 20
 
@@ -35,6 +39,10 @@ enableRobotsTXT = true
   # "https://osd-job-submit.<account>.workers.dev/submit" (or a custom route).
   # When empty, the site gracefully falls back to generating Markdown for manual PRs.
   jobSubmitEndpoint = ""
+  # Same Worker, event submissions (the Worker branches on the "kind" field), so
+  # this is normally the same "<worker-url>/submit" URL as jobSubmitEndpoint.
+  # When empty, the event form falls back to generating Markdown for manual PRs.
+  eventSubmitEndpoint = ""
   # Cloudflare Turnstile site key for spam protection (pairs with the Worker's
   # TURNSTILE_SECRET). Leave empty to disable the captcha widget. See
   # workers/job-submit/README.md for setup.

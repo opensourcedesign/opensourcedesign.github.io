@@ -6,7 +6,7 @@ role: Front-end Developer and UX Designer
 organization: OKFN
 github: okfn
 org_url: http://okfn.org
-tags: [front-end, ux design, data visualization, javsacript, css, html, interface design, agile]
+tags: [frontend, ux, data visualization, javascript, css, html, ui, agile]
 status: closed
 compensation: competitive
 date_posted: 2015-02-13

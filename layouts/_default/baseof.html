@@ -182,8 +182,41 @@
       {{ end }}
     {{ end }}
 
-    {{ $css := resources.Get "css/output.css" | fingerprint }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+    {{/* Self-hosted Inter variable font (woff2 only — universally supported).
+         Only the roman face is preloaded; italic is rare enough to load on
+         demand. crossorigin is required for font preloads even same-origin. */}}
+    <link rel="preload" href="{{ "/fonts/InterVariable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: "InterVariable";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("{{ "/fonts/InterVariable.woff2" | relURL }}") format("woff2");
+      }
+      @font-face {
+        font-family: "InterVariable";
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("{{ "/fonts/InterVariable-Italic.woff2" | relURL }}") format("woff2");
+      }
+    </style>
+
+    {{/* Styling (issue #556 — no CSS build step):
+         1. typography.css — pre-compiled @tailwindcss/typography `prose`
+            classes plus Tailwind preflight/theme, giving a readable no-JS
+            baseline. The Play CDN cannot load plugins, hence vendored.
+         2. The Tailwind Play CDN (@tailwindcss/browser) — compiles utility
+            classes from the DOM at runtime; any standard Tailwind class used
+            in templates just works. Pinned + SRI for supply-chain safety.
+         3. main.css inlined as text/tailwindcss — custom theme (Inter),
+            components, and base styles, compiled by the CDN (supports @apply). */}}
+    {{ $typo := resources.Get "css/typography.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ $typo.RelPermalink }}" integrity="{{ $typo.Data.Integrity }}" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.2/dist/index.global.js" integrity="sha384-yzJGD2ZXURu6RaDFjaXOC6IrnZq1aEeldwvXw7Pec43Q2BnmHkys/fGPzvwEtojO" crossorigin="anonymous"></script>
+    {{ $tw := resources.Get "css/main.css" }}
+    <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
 
     {{/* RSS Feed */}}
     {{ with .OutputFormats.Get "RSS" }}
@@ -290,5 +323,12 @@
 
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+    {{/* instant.page: prefetches internal links on hover/touchstart, making
+         navigation feel instant. Loaded as a module (deferred, and skipped by
+         legacy browsers that couldn't parse it). It reads its options from
+         document.body data attributes, hence end-of-body placement. */}}
+    {{ $instant := resources.Get "js/instantpage.js" | minify | fingerprint }}
+    <script src="{{ $instant.RelPermalink }}" integrity="{{ $instant.Data.Integrity }}" type="module"></script>
   </body>
 </html>

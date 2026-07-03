@@ -1,0 +1,528 @@
+# Curated resources shown on opensourcedesign.net/resources/
+#
+# THIS IS THE FILE TO EDIT to add, change, or remove a resource — no HTML or
+# template knowledge needed. The page is rendered by the `resources` shortcode
+# (layouts/shortcodes/resources.html), placed in content/resources/_index.md.
+#
+# Structure:
+#   - id:    stable slug for the category (used for #anchors and ?cat= filters)
+#     title: category heading shown on the page (also the filter chip label)
+#     note:  optional intro text under the heading (markdown supported)
+#     items:
+#       - name:        display name of the resource (required)
+#         url:         where the name links to (required)
+#         description: short plain-text blurb shown after the name (optional)
+#         links:       optional extra links shown after the description
+#           - text: link label
+#             url:  link target
+#
+# The Reading & Research bibliography is separate: data/bibliography.yaml.
+
+- id: projects
+  title: Projects
+  note: "Open source projects with active design teams, blogs, and processes: good places to see open design in practice or to start contributing."
+  items:
+    - name: Mozilla
+      url: https://mozilla.org
+      description: Makers of the Firefox browser.
+      links:
+        - text: UX blog
+          url: https://blog.mozilla.org/ux
+    - name: GNOME
+      url: https://www.gnome.org/
+      description: Desktop environment.
+      links:
+        - text: Design blog
+          url: https://blogs.gnome.org/aday/category/gnome-ux
+        - text: Design team
+          url: https://gitlab.gnome.org/Teams/Design
+        - text: Human Interface Guidelines
+          url: https://developer.gnome.org/hig/
+    - name: GitLab
+      url: https://about.gitlab.com/
+      description: Git hosting and code collaboration.
+      links:
+        - text: UX team
+          url: https://handbook.gitlab.com/handbook/product/ux/
+    - name: Nextcloud
+      url: https://nextcloud.com
+      description: Data sync and sharing.
+      links:
+        - text: Design page
+          url: https://nextcloud.com/design
+    - name: Fedora
+      url: https://fedoraproject.org/
+      description: Linux distribution.
+      links:
+        - text: Design blog
+          url: https://communityblog.fedoraproject.org/category/design/
+        - text: Design team wiki
+          url: https://fedoraproject.org/wiki/Design
+    - name: Canonical (Ubuntu)
+      url: https://ubuntu.com
+      links:
+        - text: Design blog
+          url: https://ubuntu.com/blog/topics/design
+    - name: WordPress
+      url: https://wordpress.org
+      links:
+        - text: Design discussion
+          url: https://make.wordpress.org/design/
+        - text: Handbook
+          url: https://make.wordpress.org/design/handbook/
+    - name: Drupal
+      url: https://www.drupal.org/
+      links:
+        - text: Usability group
+          url: https://groups.drupal.org/usability
+        - text: UI standards
+          url: https://drupal.org/ui-standards
+    - name: Diaspora
+      url: https://diasporafoundation.org/
+      description: Decentralized social network.
+      links:
+        - text: UI issues on GitHub
+          url: https://github.com/diaspora/diaspora/issues?labels=ui
+    - name: MediaGoblin
+      url: https://mediagoblin.org/
+      description: Media platform.
+    - name: BeWelcome
+      url: https://www.bewelcome.org/
+      description: Hospitality platform.
+    - name: Mailpile
+      url: https://www.mailpile.is/
+      description: Mail interface.
+      links:
+        - text: Issues on GitHub
+          url: https://github.com/mailpile/Mailpile/issues
+    - name: Ghost
+      url: https://ghost.org/
+      description: Simple blogging platform.
+    - name: "Terms of Service; Didn't Read"
+      url: https://tosdr.org/
+      description: Contract rating.
+    - name: LibreOffice
+      url: https://www.libreoffice.org/
+      links:
+        - text: Design team wiki
+          url: https://wiki.documentfoundation.org/Design
+    - name: Trustroots
+      url: https://www.trustroots.org/
+      description: Hospitality platform.
+    - name: Automattic
+      url: https://automattic.com/
+      description: The company behind WordPress.com, WooCommerce, and Jetpack.
+      links:
+        - text: Design blog
+          url: https://automattic.design/
+    - name: XWiki
+      url: https://www.xwiki.org
+      description: Development platform.
+      links:
+        - text: Design wiki
+          url: https://design.xwiki.org
+    - name: elementary OS
+      url: https://elementary.io/en/
+      description: Linux distribution.
+      links:
+        - text: Human Interface Guidelines
+          url: https://docs.elementary.io/hig/
+        - text: Design blog
+          url: https://blog.elementary.io/tags/#design
+    - name: Plasma
+      url: https://kde.org/plasma-desktop/
+      description: Desktop environment by KDE.
+      links:
+        - text: KDE
+          url: https://kde.org/
+        - text: Design page
+          url: https://develop.kde.org/design/
+        - text: Human Interface Guidelines
+          url: https://develop.kde.org/hig
+
+- id: icons
+  title: Icons
+  items:
+    - name: Bitcoin Icons
+      url: https://bitcoinicons.com/
+      description: Open source icons made for Bitcoin applications, free to use. MIT licensed.
+    - name: Circum Icons
+      url: https://circumicons.com/
+      description: Consistent open source icons as SVG for React, Vue, and Svelte.
+    - name: Font Awesome
+      url: https://fontawesome.com/
+      description: The iconic font and CSS toolkit with a large free tier.
+      links:
+        - text: GitHub
+          url: https://github.com/FortAwesome/Font-Awesome
+    - name: Font Fabulous
+      url: https://www.manageiq.org/font-fabulous/
+      description: A fabulous icon set packaged as a font, free to use.
+      links:
+        - text: GitHub
+          url: https://github.com/ManageIQ/font-fabulous
+    - name: IcoMoon
+      url: https://icomoon.io/
+      description: CC icons and free-to-use icon-font creation software.
+    - name: IconMonstr
+      url: https://iconmonstr.com/
+      description: A large collection of glyph icons, free to use and modify without attribution.
+    - name: Iconoir
+      url: https://iconoir.com/
+      description: SVG icons, MIT licensed.
+    - name: Inkscape Open Symbols
+      url: https://github.com/PanderMusubi/inkscape-open-symbols
+      description: Open source icon sets to use as Inkscape symbols.
+    - name: Mono Icons
+      url: https://github.com/mono-company/mono-icons
+      description: A simple, consistent open source icon set for a wide variety of digital products. MIT licensed.
+    - name: Pictogramas
+      url: https://github.com/adrianmg/pictogramas
+      description: Open source free icons.
+    - name: Remix Icons
+      url: https://remixicon.com/
+      description: Huge repository of consistent, neutrally styled icons.
+      links:
+        - text: GitHub
+          url: https://github.com/Remix-Design/remixicon
+    - name: React Icons
+      url: https://react-icons.github.io/react-icons/
+      description: SVG React icons from popular icon packs.
+      links:
+        - text: GitHub
+          url: https://github.com/react-icons/react-icons
+    - name: Feather Icons
+      url: https://feathericons.com/
+      description: Simply beautiful open source icons. MIT licensed.
+      links:
+        - text: React version
+          url: https://github.com/feathericons/react-feather
+    - name: Styled Icons
+      url: https://styled-icons.js.org/
+      description: Icon packs like Font Awesome, Material Design, and Octicons as React styled-components.
+      links:
+        - text: GitHub
+          url: https://github.com/styled-icons/styled-icons
+    - name: The Noun Project
+      url: https://thenounproject.com
+      description: CC and purchasable icons for personal and commercial purposes.
+    - name: Tabler Icons
+      url: https://tabler.io/icons
+      description: Open source SVG icons in a visually consistent style. MIT licensed.
+      links:
+        - text: GitHub
+          url: https://github.com/tabler/tabler-icons
+
+- id: fonts
+  title: Fonts
+  note: "Some of these platforms also take submissions, so if you designed a font with an open license, submit it there!"
+  items:
+    - name: The League of Moveable Type
+      url: https://www.theleagueofmoveabletype.com/
+    - name: Font Library
+      url: https://fontlibrary.org/
+    - name: Google Web Fonts
+      url: https://fonts.google.com/
+    - name: Libre Fonts by Womxn
+      url: https://design-research.be/by-womxn/
+    - name: Open Foundry
+      url: https://open-foundry.com
+    - name: Open Source Publishing Foundry
+      url: https://osp.kitchen/foundry/
+    - name: Velvetyne
+      url: https://www.velvetyne.fr
+    - name: Use & Modify
+      url: https://usemodify.com
+    - name: FontForge
+      url: https://fontforge.org/
+      description: Font editor.
+    - name: Metaflop
+      url: https://www.metaflop.com
+      description: Parametric font editor.
+    - name: "Type:Bits"
+      url: https://manufacturaindependente.org/typebits/
+      description: Collaborative type design workshop.
+
+- id: images
+  title: Images
+  items:
+    - name: Pixabay
+      url: https://pixabay.com/
+    - name: Flickr Creative Commons
+      url: https://www.flickr.com/creativecommons/
+    - name: Gratisography
+      url: https://gratisography.com/
+    - name: The Stocks
+      url: https://thestocks.im/
+    - name: StockSnap
+      url: https://stocksnap.io/
+    - name: NYPL Public Domain Images
+      url: https://www.nypl.org/research/collections/digital-collections/public-domain?hspace=331354
+      description: Public-domain digital collections of the New York Public Library.
+    - name: unDraw
+      url: https://undraw.co/
+      description: Open source illustrations.
+    - name: Interfacer
+      url: https://interfacer.xyz/
+    - name: Open Doodles
+      url: https://www.opendoodles.com/
+      description: Free sketchy illustrations.
+    - name: Unsplash
+      url: https://unsplash.com/
+    - name: Pexels
+      url: https://www.pexels.com/
+
+- id: cc-media
+  title: Creative Commons media
+  note: "Media from big platforms published under Creative Commons licenses."
+  items:
+    - name: Openverse
+      url: https://openverse.org/
+      description: Search over 800 million openly licensed images and audio files (formerly CC Search).
+    - name: Wikimedia Commons
+      url: https://commons.wikimedia.org/wiki/Main_Page
+    - name: YouTube
+      url: https://support.google.com/youtube/answer/2797468
+      description: Creative Commons licensed videos on YouTube.
+    - name: SoundCloud
+      url: https://soundcloud.com/search/sounds?filter.license=to_share
+      description: Creative Commons licensed sounds and music.
+
+- id: tools
+  title: Design tools
+  note: "Design discussion also happens right on a project's issue tracker, for example at [GitHub](https://github.com): get an account, identify design issues, participate, and open new ones. A »Design« label groups them, like in the [Nextcloud issues](https://github.com/nextcloud/core/issues?labels=Design)."
+  items:
+    - name: Pen & paper
+      url: https://alistapart.com/article/paperprototyping
+      description: Mockups and prototypes without hi-fi Photoshop work.
+    - name: draw.io
+      url: https://www.drawio.com/
+      description: Diagrams, mockups.
+    - name: Pencil
+      url: https://pencil.evolus.vn/
+      description: Mockups.
+    - name: Penpot
+      url: https://penpot.app/
+      description: Mockups.
+    - name: Quant UX
+      url: https://www.quant-ux.com/#/
+      description: Mockups, UX testing, heatmaps.
+    - name: Krita
+      url: https://krita.org/en/
+      description: Art, digital painting.
+    - name: Blender
+      url: https://www.blender.org/
+      description: 3D rendering, animation, textures.
+    - name: darktable
+      url: https://www.darktable.org/
+      description: Photo workflow.
+    - name: RawTherapee
+      url: https://www.rawtherapee.com
+      description: Photo workflow.
+    - name: digiKam
+      url: https://www.digikam.org/
+      description: Photo management.
+    - name: GIMP
+      url: https://www.gimp.org/
+      description: Image manipulation, compositing.
+    - name: Inkscape
+      url: https://inkscape.org/
+      description: Vector elements, print export.
+    - name: Synfig
+      url: https://synfig.org/
+      description: Animation.
+    - name: Natron
+      url: https://natrongithub.github.io/
+      description: Compositing, VFX, motion graphics.
+    - name: Scribus
+      url: https://www.scribus.net/
+      description: Page layout, desktop publishing.
+    - name: DisplayCAL
+      url: https://displaycal.net/
+      description: Color calibration.
+    - name: Kdenlive
+      url: https://kdenlive.org
+      description: Video editing.
+    - name: Figma
+      url: https://www.figma.com/
+      description: UI design, wireframes, prototypes.
+
+- id: color
+  title: Color
+  items:
+    - name: Blend
+      url: https://www.colinkeany.com/blend/
+      description: CSS gradient generator.
+    - name: Leonardo by Adobe
+      url: https://leonardocolor.io/
+      description: Color contrast generator.
+    - name: Tanaguru Contrast-Finder
+      url: https://contrast-finder.tanaguru.com/
+      description: For finding complementary colors.
+    - name: colors.lol
+      url: https://colors.lol/
+      description: Overly descriptive color palettes.
+    - name: Color Hunt
+      url: https://colorhunt.co/
+      description: Color palettes for designers and artists.
+
+- id: css
+  title: CSS frameworks
+  items:
+    - name: Bootstrap
+      url: https://getbootstrap.com
+      description: Fully featured, mature HTML, CSS (LESS), and JavaScript.
+    - name: Foundation
+      url: https://get.foundation/
+      description: Fully featured, mature HTML, CSS (Sass), and JavaScript.
+    - name: Basscss
+      url: https://basscss.com/
+      description: Lightning-fast, modular CSS for designers.
+    - name: Bourbon
+      url: https://bourbon.io/
+      description: A simple and lightweight mixin library for Sass.
+    - name: Kickoff
+      url: https://tmwagency.github.io/kickoff/
+      description: A lightweight front-end framework for scalable, responsive sites.
+    - name: Space Base
+      url: https://spacebase.space150.com/
+      description: A Sass-based responsive CSS framework.
+    - name: Rebar
+      url: https://github.com/bnvk/Rebar
+      description: Simple, lightweight HTML and CSS (LESS).
+    - name: PatternFly
+      url: https://www.patternfly.org/
+      description: A community of designers and developers building a UI framework for enterprise web applications.
+
+- id: design-reads
+  title: Design reads
+  items:
+    - name: "First Rule of Usability? Don't Listen to Users"
+      url: https://www.nngroup.com/articles/first-rule-of-usability-dont-listen-to-users/
+      description: Jakob Nielsen, 2001.
+    - name: 10 Heuristics for User Interface Design
+      url: https://www.nngroup.com/articles/ten-usability-heuristics/
+      description: Jakob Nielsen, 1995.
+    - name: Principles of User Interface Design
+      url: http://bokardo.com/archives/new-resource-principles-of-user-interface-design/
+      description: Joshua Porter.
+    - name: Ten Principles for Good Design
+      url: https://www.vitsoe.com/gb/about/good-design
+      description: Dieter Rams, 1970s.
+    - name: A Beginner's Guide to Finding User Needs
+      url: https://jdittrich.github.io/userNeedResearchBook/
+    - name: Don't Make Me Think
+      url: https://www.amazon.com/dp/0321344758
+      description: Steve Krug's usability classic (book).
+    - name: The Design of Everyday Things
+      url: https://www.amazon.com/dp/0465067107
+      description: Don Norman's design classic (book).
+    - name: Humane by Design
+      url: https://humanebydesign.com/
+    - name: Human Flourishing Design Guide
+      url: https://flourishing.cc/
+    - name: Designing for Trust
+      url: https://medium.com/greater-than-experience-design/data-trust-by-design-principles-patterns-and-best-practices-part-1-defffaac014b
+      description: Data trust by design, principles, patterns, and best practices.
+    - name: "Inclusive Design: Cards for Humanity"
+      url: https://cardsforhumanity.frog.co/
+
+- id: osd-reads
+  title: Open source design reads
+  items:
+    - name: Free Software UI
+      url: https://ometer.com/free-software-ui.html
+      description: Havoc Pennington, 2002.
+    - name: How Not To Design a Portfolio
+      url: https://www.alexcornell.com/the-worst-portfolio-ever/
+    - name: Open Design Now
+      url: https://opendesignnow.org/
+      description: Book.
+    - name: Coordinating usability & testing in Free Software
+      url: https://jancborchardt.net/usability-in-free-software
+      description: Thesis, 2011.
+    - name: Barriers Faced by Newcomers to Open Source Projects
+      url: https://link.springer.com/chapter/10.1007/978-3-642-55128-4_21
+      description: A systematic review by Steinmacher, Silva, and Gerosa, 2014 (research paper).
+    - name: An Exploration of Fedora's Online Open Source Development Community
+      url: https://www.cyber-anthro.com/beta-an-exploration-of-fedoras-online-open-source-development-community/
+      description: Ethnographic study by Diana Harrelson, 2010 (research paper).
+- id: community
+  title: Community & inspiration
+  note: "Other nice stuff in the design and open source space."
+  items:
+    - name: Libre Graphics magazine
+      url: https://libregraphicsmag.com/
+      description: Print magazine.
+    - name: Libre Projects
+      url: https://libreprojects.net
+      description: Collection of nice open source web apps.
+    - name: Libre Arts
+      url: https://librearts.org/
+      description: News for creative professionals using free software (formerly Libre Graphics World).
+    - name: Libre Graphics Meeting
+      url: https://libregraphicsmeeting.org/
+      description: Conference.
+    - name: Beautiful Open
+      url: https://beautifulopen.com
+      description: Beautiful sites for open source projects.
+    - name: Open Design and Hardware Group
+      url: https://design.okfn.org/
+      description: OKFN open design and hardware group.
+    - name: PIXLS.US
+      url: https://pixls.us
+      description: Free and open source photography.
+      links:
+        - text: Software list
+          url: https://pixls.us/software/
+    - name: Photos of Design Research
+      url: https://commons.wikimedia.org/wiki/Category:Designethnography
+      description: On Wikimedia Commons.
+    - name: Checklist Design
+      url: https://www.checklist.design/
+      description: A collection of UX and UI best practices.
+    - name: Untools
+      url: https://untools.co/
+      description: Tools for better thinking.
+
+- id: learn-code
+  title: Learn to code
+  note: "Focused on HTML, CSS, and JavaScript. Ideally to implement your own suggestions, but also to better discuss with developers and understand why and how certain things work and don't work."
+  items:
+    - name: Mozilla Developer Network
+      url: https://developer.mozilla.org/
+      description: Great web dev documentation.
+    - name: Transitional Interfaces, Coded
+      url: https://css-tricks.com/transitional-interfaces-coded/
+      description: For good animations.
+    - name: Codecademy
+      url: https://www.codecademy.com/
+      description: Interactive tutorials.
+    - name: Git basics
+      url: https://docs.github.com/en/get-started/git-basics/set-up-git
+      description: GitHub's guide to getting started with Git.
+    - name: code.org
+      url: https://code.org/
+    - name: Egghead
+      url: https://egghead.io/
+      description: Video courses on web development.
+    - name: tota11y
+      url: https://github.com/jdan/tota11y
+      description: A bookmarklet to check that your website is accessibility compliant.
+    - name: "Open Source Guide: How to Contribute to Open Source"
+      url: https://opensource.guide/how-to-contribute/
+    - name: "Course: How to Contribute to an Open Source Project on GitHub"
+      url: https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github
+
+- id: learn-design
+  title: Learn to design
+  items:
+    - name: Hack Design
+      url: https://hackdesign.org/
+      description: Free design lessons by inspirational designers.
+    - name: Designlab
+      url: https://designlab.com/
+      description: Design courses with mentorship and projects.
+    - name: Voice and Tone
+      url: https://styleguide.mailchimp.com/voice-and-tone/
+      description: Mailchimp's guide to writing good copy.

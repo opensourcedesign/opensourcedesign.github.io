@@ -16,7 +16,7 @@ how_to_apply:
   - Tim <team@mailchain.xyz>
   - "https://github.com/mailchain/mailchain-web/issues/80\r\nhttps://github.com/mailchain/mailchain-web/issues/81"
 github_handle: ''
-tags: [logo, branding, color scheme]
+tags: [logo, branding, color]
 date: '2019-11-03T10:46:39.758Z'
 ---
 ## Brief

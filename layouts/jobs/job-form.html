@@ -1,68 +1,62 @@
 {{ define "main" }}
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    {{/* Header Card */}}
-    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
+    <div>
       <header>
-        <h1 class="text-3xl font-semibold tracking-tight text-slate-950">Post a Job</h1>
-        <p class="mt-4 text-base text-slate-600">Submit a design job for your Free/Libre and Open Source project. All submissions are reviewed by our community moderators before publishing.</p>
+        <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
+          <a class="transition hover:text-slate-900" href="{{ "/jobs/" | relURL }}">Jobs</a>
+          <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          <span class="font-medium text-slate-700" aria-current="page">Post a job</span>
+        </nav>
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Post a Job</h1>
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">Submit a design job for your Free/Libre and Open Source project. All submissions are reviewed by our community moderators before publishing.</p>
       </header>
 
       {{/* Guidelines */}}
-      <div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
-        <div class="flex gap-3">
-          <svg class="mt-0.5 h-5 w-5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
-          </svg>
-          <div class="text-sm text-amber-800">
-            <p>Please read our <a class="font-semibold underline underline-offset-2 hover:no-underline" href="{{ "/about-us/code-of-conduct/" | relURL }}">Code of Conduct</a> before submitting.</p>
-          </div>
-        </div>
-      </div>
+      <p class="mt-6 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+        </svg>
+        <span>Please read our <a class="font-semibold underline decoration-amber-400 underline-offset-4 transition hover:decoration-amber-800" href="{{ "/about-us/code-of-conduct/" | relURL }}">Code of Conduct</a> before submitting.</span>
+      </p>
 
       {{/* Form */}}
-      <form id="osd-job-form" class="mt-10 space-y-12" novalidate>
+      <form id="osd-job-form" class="mt-10 space-y-12 border-t border-slate-200 pt-10" novalidate>
         {{/* Project Section */}}
         <fieldset class="space-y-6">
-          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">1</span>
-            About your project
-          </legend>
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">1 · About your project</legend>
 
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div class="space-y-2 sm:col-span-2">
               <label class="text-sm font-medium text-slate-700" for="organization">Project name <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="organization" name="organization" placeholder="e.g., Nextcloud, GNOME, LibreOffice" required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="organization" name="organization" placeholder="e.g., Nextcloud, GNOME, LibreOffice" required />
             </div>
 
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="org_url">Project website <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="org_url" name="org_url" type="url" inputmode="url" placeholder="https://..." required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="org_url" name="org_url" type="url" inputmode="url" placeholder="https://..." required />
             </div>
 
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="license">Project license URL <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="license" name="license" type="url" inputmode="url" placeholder="https://github.com/..." required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="license" name="license" type="url" inputmode="url" placeholder="https://github.com/..." required />
               <p class="text-xs text-slate-500">Link to an OSI/FSF approved license.</p>
             </div>
           </div>
         </fieldset>
 
         {{/* Job Section */}}
-        <fieldset class="space-y-6 border-t border-slate-200 mt-10">
-          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">2</span>
-            About the job
-          </legend>
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">2 · About the job</legend>
 
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div class="space-y-2 sm:col-span-2">
               <label class="text-sm font-medium text-slate-700" for="title">Job title <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="title" name="title" placeholder="e.g., UX Designer needed for mobile app redesign" required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="title" name="title" placeholder="e.g., UX Designer needed for mobile app redesign" required />
             </div>
 
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="role">Job category <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="role" name="role" placeholder="e.g., UX Design" required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="role" name="role" placeholder="e.g., UX Design" required />
               <p class="text-xs text-slate-500">e.g., Web design, UX review, Branding</p>
             </div>
           </div>
@@ -70,14 +64,14 @@
           <div class="space-y-3">
             <div class="text-sm font-medium text-slate-700" id="compensation-label">Compensation <span class="text-red-500">*</span></div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2" role="radiogroup" aria-labelledby="compensation-label">
-              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50/50 has-[:checked]:ring-1 has-[:checked]:ring-violet-500">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50/50 has-[:checked]:ring-1 has-[:checked]:ring-violet-500">
                 <input type="radio" name="compensation" value="gratis" class="mt-1 h-4 w-4 text-violet-600 focus:ring-violet-500" checked />
                 <div>
                   <div class="font-semibold text-slate-900">Volunteer</div>
                   <div class="text-sm text-slate-500">No payment offered</div>
                 </div>
               </label>
-              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:ring-1 has-[:checked]:ring-emerald-500">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:ring-1 has-[:checked]:ring-emerald-500">
                 <input type="radio" name="compensation" value="paid" class="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500" />
                 <div>
                   <div class="font-semibold text-slate-900">Paid</div>
@@ -89,56 +83,53 @@
 
           <div class="space-y-2" id="paidDetailsWrap" hidden>
             <label class="text-sm font-medium text-slate-700" for="paid_details">Budget / rate <span class="text-slate-400">(optional)</span></label>
-            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="paid_details" name="paid_details" placeholder="e.g., $500 fixed, $50/hour, negotiable" />
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="paid_details" name="paid_details" placeholder="e.g., $500 fixed, $50/hour, negotiable" />
           </div>
 
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-700" for="description">Job description <span class="text-red-500">*</span></label>
             <p class="text-xs text-slate-500">Describe what you need help with. Markdown is supported.</p>
-            <textarea class="min-h-48 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="description" name="description" placeholder="We are looking for a designer to help us..." required></textarea>
+            <textarea class="min-h-48 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="description" name="description" placeholder="We are looking for a designer to help us..." required></textarea>
           </div>
 
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-700" for="deliverables">Deliverables <span class="text-slate-400">(optional)</span></label>
             <p class="text-xs text-slate-500">What specific deliverables are you expecting? One per line.</p>
-            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="deliverables" name="deliverables" placeholder="Logo in SVG format&#10;Style guide PDF&#10;Figma source files"></textarea>
+            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="deliverables" name="deliverables" placeholder="Logo in SVG format&#10;Style guide PDF&#10;Figma source files"></textarea>
           </div>
         </fieldset>
 
         {{/* Contact Section */}}
-        <fieldset class="space-y-6 border-t border-slate-200 mt-10">
-          <legend class="flex items-center gap-3 text-lg font-semibold text-slate-900 w-full">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">3</span>
-            Contact information
-          </legend>
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">3 · Contact information</legend>
 
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-700" for="how_to_apply">How to apply <span class="text-red-500">*</span></label>
             <p class="text-xs text-slate-500">How should designers contact you? One per line: email, URL, GitHub handle, etc.</p>
-            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="how_to_apply" name="how_to_apply" placeholder="yourname@example.com&#10;https://github.com/yourproject/issues" required></textarea>
+            <textarea class="min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="how_to_apply" name="how_to_apply" placeholder="yourname@example.com&#10;https://github.com/yourproject/issues" required></textarea>
           </div>
 
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-700" for="email">Your email <span class="text-slate-400">(for status updates, not published)</span></label>
             <p class="text-xs text-slate-500">We'll email you here once your posting is reviewed and published. This is kept private and never shown on the site.</p>
-            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
           </div>
 
           <div class="space-y-2">
             <label class="text-sm font-medium text-slate-700" for="links">Relevant links <span class="text-slate-400">(optional)</span></label>
             <p class="text-xs text-slate-500">Design docs, contributing guide, existing design files, etc. One per line.</p>
-            <textarea class="min-h-24 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="links" name="links" placeholder="https://github.com/yourproject/CONTRIBUTING.md"></textarea>
+            <textarea class="min-h-24 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="links" name="links" placeholder="https://github.com/yourproject/CONTRIBUTING.md"></textarea>
           </div>
 
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="github_handle">Your GitHub <span class="text-slate-400">(optional)</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="github_handle" name="github_handle" placeholder="@username" />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="github_handle" name="github_handle" placeholder="@username" />
             </div>
 
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="tags">Tags <span class="text-slate-400">(optional)</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20" id="tags" name="tags" placeholder="ux, mobile, figma" />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="tags" name="tags" placeholder="ux, mobile, figma" />
             </div>
           </div>
 
@@ -156,19 +147,19 @@
         </fieldset>
 
         {{/* Submit */}}
-        <div class="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-6">
-          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2" type="submit" id="osd-submit">
+        <div class="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
+          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="submit" id="osd-submit">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
             Submit job
           </button>
-          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50" type="reset" id="osd-reset">Reset</button>
+          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="reset" id="osd-reset">Reset</button>
           <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
         </div>
       </form>
     </div>
 
-    {{/* Result Card */}}
-    <div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm" id="osd-result" hidden>
+    {{/* Result panel */}}
+    <div class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6" id="osd-result" hidden>
       <h2 class="flex items-center gap-2 text-sm font-semibold text-emerald-900" id="osd-result-title">
         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         Submission result
@@ -183,7 +174,8 @@
 
     <script>
       (function () {
-        var endpoint = {{ jsonify (site.Params.jobSubmitEndpoint | default "") }};
+        {{/* Hugo's JS-context autoescaper already emits strings as JSON — no jsonify. */}}
+        var endpoint = {{ site.Params.jobSubmitEndpoint | default "" }};
 
         var form = document.getElementById('osd-job-form');
         if (!form) return;
@@ -293,6 +285,30 @@
           return { path: path, markdown: fm.join('\n') };
         }
 
+        // GitHub's new-file editor accepts ?filename= and ?value= to pre-fill
+        // the path and contents. For visitors without push access GitHub forks
+        // automatically and "Propose new file" leads straight to the PR screen.
+        // Returns '' when the encoded URL would exceed GitHub's ~8K URL limit,
+        // in which case the copy-paste flow is the only option.
+        function githubNewFileURL(gen) {
+          var repoURL = '{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}';
+          var url = repoURL + '/new/main?filename=' + encodeURIComponent(gen.path) + '&value=' + encodeURIComponent(gen.markdown);
+          return url.length <= 7500 ? url : '';
+        }
+
+        function fallbackBodyHTML(gen) {
+          var gh = githubNewFileURL(gen);
+          var html = '';
+          if (gh) {
+            html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
+            html += '<p class="mt-3 text-slate-700">The file name and contents are already filled in. GitHub will fork the repository if needed; press <strong>Propose new file</strong>, then <strong>Create pull request</strong>. Prefer to do it by hand? The markdown is below.</p>';
+          } else {
+            html += '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline underline-offset-4" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main?filename=' + encodeURIComponent(gen.path) + '" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a> (the posting is too long for a fully pre-filled link, so paste the contents into the editor).</p>';
+          }
+          html += '<p class="mt-2 text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path + '</code></p>';
+          return html;
+        }
+
         form.addEventListener('change', function (e) {
           if (e && e.target && e.target.name === 'compensation') syncPaid();
         });
@@ -386,9 +402,9 @@
 
               var gen = generateMarkdown(data, datePosted, isoNow);
               showResult(
-                'Fallback: copy this file and open a PR',
-                '<p class="text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path + '</code></p>',
-                '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-500/20" aria-label="Generated job posting markdown" readonly>' + gen.markdown.replace(/</g,'&lt;') + '</textarea>'
+                'Fallback: open the pull request yourself',
+                fallbackBodyHTML(gen),
+                '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated job posting markdown" readonly>' + gen.markdown.replace(/</g,'&lt;') + '</textarea>'
               );
               return;
             } finally {
@@ -401,9 +417,9 @@
 
           var gen2 = generateMarkdown(data, datePosted, isoNow);
           showResult(
-            'Preview: copy this file and open a PR',
-            '<p class="text-slate-700">No serverless endpoint configured. Copy the markdown below and <a class="font-medium underline" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main/content/jobs" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a>.</p><p class="mt-2 text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen2.path + '</code></p>',
-            '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-500/20" aria-label="Generated job posting markdown" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
+            'Open the pull request on GitHub',
+            fallbackBodyHTML(gen2),
+            '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated job posting markdown" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
           );
         });
 

@@ -13,7 +13,7 @@ deliverables: 'Screens, dialogs, panels design in any comfortable format'
 how_to_apply:
   - 'Andrii Slisarchuk (AndriySlisarchuk@gmail.com) '
   - 'https://github.com/Guitarheroua/protomorph-bg'
-tags: [ui design, ux design, board games]
+tags: [ui, ux, games]
 date: '2019-03-18T08:41:09.052Z'
 ---
 "Protomorph BG" is a tool, that will help board game designers to prototype games components(cards, tiles, boards etc.) and save them as a project. It will also have layouts mechanisms, to layout components for printing on standard paper formats and export the entire project to PDF or other formats. Will be available for Windows/Linux/OSX (I hope :))

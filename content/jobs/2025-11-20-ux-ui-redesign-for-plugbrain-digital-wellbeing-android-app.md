@@ -15,7 +15,7 @@ how_to_apply:
   - belaid.mohammed.said@gmail.com
   - "https://github.com/msbelaid/PlugBrain/\r\nhttps://f-droid.org/packages/app.plugbrain.android/\r\nhttps://play.google.com/store/apps/details?id=app.plugbrain.android"
 github_handle: '@msbelaid'
-tags: [android, ux design, ui design, open source, figma, jetpack compose, productivity]
+tags: [android, ux, ui, open source, figma, jetpack compose, productivity]
 date: '2025-11-20T21:46:53.141Z'
 ---
 PlugBrain is an open-source digital wellbeing app for Android. It reduces distraction by locking selected apps, users must solve math challenges to unlock them. Difficulty increases the more they use their phone, encouraging healthy habits.

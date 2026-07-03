@@ -9,7 +9,7 @@ contact: write@moritz.berlin
 contributing_md: (optional) # A link to your contributing guidelines for newcomers
 contributors_md: (optional) # A list of contributors who are reach-out-able.
 org_url: http://moritz.berlin
-tags: [interface design]
+tags: [ui]
 status: solved
 compensation: gratis
 date_posted: 2016-09-02

@@ -13,7 +13,7 @@ how_to_apply:
   - Bruno Miguel <bruno@fosshost.org)
   - ''
 github_handle: ''
-tags: [logo, branding, foss]
+tags: [logo, branding, open source]
 date: '2021-11-27T15:23:10.493Z'
 ---
 Fosshost is a project the offers free hosting and other services to the FOSS community, and is run entirely by a team of volunteers. To help us advance our brand, we want a new logo that encompasses what we do and what our goals are

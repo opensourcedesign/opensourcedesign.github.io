@@ -9,7 +9,7 @@ contact: dry.python.org@gmail.com
 contributing_md:
 contributors_md:
 org_url: https://dry-python.org
-tags: [web-design]
+tags: [web design]
 status: closed
 compensation: gratis
 date_posted: 2019-06-28

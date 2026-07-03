@@ -12,7 +12,7 @@ deliverables: 'Logo, branding, landing page, web application and mobile applicat
 how_to_apply:
   - Patrik Szabó patricktailor@icloud.com
   - "https://sleepeowl.com\r\nhttps://github.com/Sleepe-Owl"
-tags: [logo, branding, web, mobile, landing, application, sketch, adobe, illustrator, open-source, non-profit, collaboration, learning, teaching, animation]
+tags: [logo, branding, web, mobile, web design, app design, sketch, adobe, illustration, open source, non-profit, collaboration, education, animation]
 date: '2018-03-31T10:06:12.683Z'
 ---
 Hi,

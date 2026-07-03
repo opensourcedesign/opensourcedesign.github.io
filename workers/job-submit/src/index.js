@@ -1,11 +1,13 @@
 /**
- * Open Source Design - job submission Worker.
+ * Open Source Design - submission Worker (jobs + events).
  *
  * Free replacement for the old Staticman backend. The "Post a Job" form
- * (layouts/jobs/job-form.html) POSTs a JSON submission here. We verify it
- * (Cloudflare Turnstile + honeypot), rebuild the Markdown server-side, and open
- * a moderated pull request against the site repo's content/jobs/ directory via
- * the GitHub REST API.
+ * (layouts/jobs/job-form.html) and the "Submit an Event" form
+ * (layouts/events/event-form.html) POST a JSON submission here; events are
+ * marked with kind: "event". We verify it (Cloudflare Turnstile + honeypot),
+ * rebuild the Markdown server-side, and open a moderated pull request against
+ * the site repo's content/jobs/ or content/events/ directory via the GitHub
+ * REST API.
  *
  * The submitter's private email is NOT placed in the (public) PR. It is stored
  * in KV keyed by the created PR number so the merge workflow can email them on
@@ -13,7 +15,7 @@
  *
  * Routes:
  *   POST /submit         -> { ok, pr_url }
- *   GET  /lookup?pr=<n>  -> { ok, found, email, title }  (Bearer LOOKUP_SECRET)
+ *   GET  /lookup?pr=<n>  -> { ok, found, email, title, kind }  (Bearer LOOKUP_SECRET)
  */
 
 const GH_API = 'https://api.github.com';
@@ -72,22 +74,41 @@ async function handleSubmit(request, env) {
     }
   }
 
-  // Required fields (mirror the form's client-side validation).
-  const required = ['title', 'organization', 'org_url', 'license', 'role', 'description', 'how_to_apply'];
+  const kind = data.kind === 'event' ? 'event' : 'job';
+
+  // Required fields (mirror each form's client-side validation).
+  const required = kind === 'event'
+    ? ['title', 'location', 'start_date', 'description']
+    : ['title', 'organization', 'org_url', 'license', 'role', 'description', 'how_to_apply'];
   for (const f of required) {
     if (!data[f] || !String(data[f]).trim()) {
       return json({ ok: false, error: 'Missing required field: ' + f }, 400);
     }
   }
 
-  // Defense-in-depth format/length validation (the form validates too).
+  // Defense-in-depth format/length validation (the forms validate too).
   const lengthError = checkLengths(data);
   if (lengthError) return json({ ok: false, error: lengthError }, 400);
-  if (!isHttpUrl(data.org_url)) {
-    return json({ ok: false, error: 'Project website must be a valid http(s) URL.' }, 400);
-  }
-  if (!isHttpUrl(data.license)) {
-    return json({ ok: false, error: 'Project license must be a valid http(s) URL.' }, 400);
+  if (kind === 'event') {
+    if (!isIsoDate(data.start_date)) {
+      return json({ ok: false, error: 'Start date must be a valid YYYY-MM-DD date.' }, 400);
+    }
+    if (data.end_date && !isIsoDate(data.end_date)) {
+      return json({ ok: false, error: 'End date must be a valid YYYY-MM-DD date.' }, 400);
+    }
+    if (data.end_date && String(data.end_date) < String(data.start_date)) {
+      return json({ ok: false, error: 'The end date cannot be before the start date.' }, 400);
+    }
+    if (data.website && !isHttpUrl(data.website)) {
+      return json({ ok: false, error: 'Event website must be a valid http(s) URL.' }, 400);
+    }
+  } else {
+    if (!isHttpUrl(data.org_url)) {
+      return json({ ok: false, error: 'Project website must be a valid http(s) URL.' }, 400);
+    }
+    if (!isHttpUrl(data.license)) {
+      return json({ ok: false, error: 'Project license must be a valid http(s) URL.' }, 400);
+    }
   }
   if (data.email && !isEmail(data.email)) {
     return json({ ok: false, error: 'Please provide a valid email address (or leave it blank).' }, 400);
@@ -106,11 +127,11 @@ async function handleSubmit(request, env) {
     await env.RATE_LIMIT.put(key, String(cur + 1), { expirationTtl: 86400 });
   }
 
-  const built = buildMarkdown(data, env);
+  const built = kind === 'event' ? buildEventMarkdown(data, env) : buildMarkdown(data, env);
 
   let pr;
   try {
-    pr = await createPullRequest(env, built, data);
+    pr = await createPullRequest(env, built, data, kind);
   } catch (err) {
     return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
   }
@@ -121,7 +142,7 @@ async function handleSubmit(request, env) {
     try {
       await env.EMAILS.put(
         'pr:' + pr.number,
-        JSON.stringify({ email: String(data.email).trim(), title: data.title }),
+        JSON.stringify({ email: String(data.email).trim(), title: data.title, kind }),
         { expirationTtl: days * 86400 }
       );
     } catch (e) {
@@ -148,7 +169,7 @@ async function handleLookup(request, env, url) {
   try { rec = JSON.parse(raw); } catch (e) { rec = null; }
   if (!rec || !rec.email) return json({ ok: true, found: false });
 
-  return json({ ok: true, found: true, email: rec.email, title: rec.title || '' });
+  return json({ ok: true, found: true, email: rec.email, title: rec.title || '', kind: rec.kind || 'job' });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -232,6 +253,55 @@ function buildMarkdown(data, env) {
   return { path, slug, markdown: fm.join('\n') };
 }
 
+/* Mirrors generateMarkdown in event-form.html. */
+function buildEventMarkdown(data, env) {
+  const isoNow = new Date().toISOString();
+  const start = String(data.start_date).trim();
+  const end = data.end_date ? String(data.end_date).trim() : '';
+
+  const slug = start + '-' + slugify(data.title);
+  const dir = (env.CONTENT_DIR_EVENTS || 'content/events').replace(/\/+$/, '');
+  const path = dir + '/' + slug + '.md';
+
+  const fm = [];
+  fm.push('---');
+  fm.push('layout: event');
+  fm.push('title: ' + yq(data.title));
+  fm.push('status: upcoming');
+  fm.push('date: ' + yq(isoNow));
+  fm.push('eventDate: ' + yq(formatEventDate(start, end)));
+  fm.push('eventStart: ' + yq(start));
+  fm.push('endDate: ' + yq(end || start));
+  if (data.time) fm.push('time: ' + yq(data.time));
+  fm.push('location: ' + yq(data.location));
+  fm.push('---');
+  fm.push('');
+  fm.push(String(data.description || '').trim());
+  if (data.website) {
+    fm.push('');
+    fm.push('More information: <' + String(data.website).trim() + '>');
+  }
+  fm.push('');
+
+  return { path, slug, markdown: fm.join('\n') };
+}
+
+// Human-readable date range in the site's eventDate style, e.g.
+// "1 February 2027", "1–2 February 2027", "28 February – 1 March 2027".
+function formatEventDate(startISO, endISO) {
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const parts = (iso) => {
+    const m = String(iso).split('-');
+    return { y: +m[0], mo: +m[1], d: +m[2] };
+  };
+  const s = parts(startISO);
+  const e = endISO ? parts(endISO) : s;
+  if (s.y === e.y && s.mo === e.mo && s.d === e.d) return s.d + ' ' + months[s.mo - 1] + ' ' + s.y;
+  if (s.y === e.y && s.mo === e.mo) return s.d + '\u2013' + e.d + ' ' + months[s.mo - 1] + ' ' + s.y;
+  if (s.y === e.y) return s.d + ' ' + months[s.mo - 1] + ' \u2013 ' + e.d + ' ' + months[e.mo - 1] + ' ' + s.y;
+  return s.d + ' ' + months[s.mo - 1] + ' ' + s.y + ' \u2013 ' + e.d + ' ' + months[e.mo - 1] + ' ' + e.y;
+}
+
 function slugify(str) {
   return String(str || '')
     .trim()
@@ -260,43 +330,46 @@ function tagsToList(s) {
 /* GitHub REST API                                                            */
 /* -------------------------------------------------------------------------- */
 
-async function createPullRequest(env, built, data) {
+async function createPullRequest(env, built, data, kind) {
   const owner = env.GITHUB_OWNER;
   const repo = env.GITHUB_REPO;
   const base = env.GITHUB_BRANCH || 'main';
+  const isEvent = kind === 'event';
 
   // 1. Resolve the base branch head SHA.
   const ref = await gh(env, 'GET', `/repos/${owner}/${repo}/git/ref/heads/${base}`);
   const baseSha = ref.object.sha;
 
-  // 2. Create a fresh branch off the base head.
-  const branch = 'job/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
+  // 2. Create a fresh branch off the base head. The prefix (job/ or event/)
+  //    is what the merge-time email workflow keys off.
+  const branch = kind + '/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
   await gh(env, 'POST', `/repos/${owner}/${repo}/git/refs`, {
     ref: 'refs/heads/' + branch,
     sha: baseSha
   });
 
-  // 3. Pick a path that doesn't collide with an existing job, then commit it.
+  // 3. Pick a path that doesn't collide with an existing file, then commit it.
   const filePath = await uniquePath(env, owner, repo, base, built.path);
   await gh(env, 'PUT', `/repos/${owner}/${repo}/contents/${encodeURIPath(filePath)}`, {
-    message: 'Add job: ' + data.title,
+    message: (isEvent ? 'Add event: ' : 'Add job: ') + data.title,
     content: b64encode(built.markdown),
     branch
   });
 
   // 4. Open the pull request.
   const pr = await gh(env, 'POST', `/repos/${owner}/${repo}/pulls`, {
-    title: 'Job submission: ' + data.title,
+    title: (isEvent ? 'Event submission: ' : 'Job submission: ') + data.title,
     head: branch,
     base,
-    body: prBody(data, filePath)
+    body: isEvent ? eventPrBody(data, filePath) : prBody(data, filePath)
   });
 
   // 5. Label it (best-effort; the merge workflow keys off the branch name, not the label).
-  if (env.PR_LABEL) {
+  const label = isEvent ? (env.PR_LABEL_EVENT || 'event-submission') : env.PR_LABEL;
+  if (label) {
     try {
       await gh(env, 'POST', `/repos/${owner}/${repo}/issues/${pr.number}/labels`, {
-        labels: [env.PR_LABEL]
+        labels: [label]
       });
     } catch (e) {
       // Label may not exist or token lacks Issues scope; non-fatal.
@@ -361,6 +434,23 @@ function prBody(data, filePath) {
   return lines.join('\n');
 }
 
+function eventPrBody(data, filePath) {
+  const lines = [];
+  lines.push('Automated submission from the **Submit an Event** form.');
+  lines.push('');
+  lines.push('| Field | Value |');
+  lines.push('| --- | --- |');
+  lines.push('| Event | ' + cell(data.title) + ' |');
+  lines.push('| Dates | ' + cell(formatEventDate(data.start_date, data.end_date)) + ' |');
+  if (data.time) lines.push('| Time | ' + cell(data.time) + ' |');
+  lines.push('| Location | ' + cell(data.location) + ' |');
+  if (data.website) lines.push('| Website | ' + cell(data.website) + ' |');
+  lines.push('| File | `' + filePath + '` |');
+  lines.push('');
+  lines.push('Review the file, then merge to publish. The submitter is emailed automatically on merge (their address is stored privately and is not shown here).');
+  return lines.join('\n');
+}
+
 function cell(s) {
   return String(s == null ? '' : s).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 }
@@ -410,6 +500,13 @@ function isHttpUrl(s) {
 
 function isEmail(s) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s).trim());
+}
+
+function isIsoDate(s) {
+  const str = String(s).trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(str)) return false;
+  const d = new Date(str + 'T00:00:00Z');
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === str;
 }
 
 function errMsg(err) {

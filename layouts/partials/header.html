@@ -32,10 +32,7 @@
             {{ $active := and (not $isExternal) (or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $current .URL) (hasPrefix $current .URL)) }}
             <a class="rounded-lg px-3 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white {{ if $active }}bg-slate-900 text-white{{ else }}text-slate-800 hover:bg-slate-50{{ end }}" href="{{ .URL }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }} {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
           {{ end }}
-          <button type="button" class="flex items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white" data-search-open aria-haspopup="dialog">
-            <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-            Search
-          </button>
+          <button type="button" class="rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white" data-search-open aria-haspopup="dialog">Search</button>
         </nav>
       </div>
     </details>

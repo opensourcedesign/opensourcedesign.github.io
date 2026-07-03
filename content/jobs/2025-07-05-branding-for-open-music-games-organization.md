@@ -14,7 +14,7 @@ how_to_apply:
   - Marwin (Founder) contact@open-music-games.org
   - 'https://open-music-games.org/news/'
 github_handle: 'https://github.com/marwin89'
-tags: [logo, branding, music games, karaoke games, band games]
+tags: [logo, branding, games]
 date: '2025-07-05T15:05:17.898Z'
 ---
 About Us:

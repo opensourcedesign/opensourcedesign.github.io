@@ -12,7 +12,7 @@ skills: "- improvments on new home page \r\n- internal page template (chapter pa
 how_to_apply:
   - "You can write to giorgia@opentechschool.org and we can grab a coffie together.\r\nYou are also welcome to show up to any of our Wednseday meetup to get to know our community: https://www.meetup.com/it-IT/opentechschool-berlin/events/236518184/?eventId=236518184&chapter_analytics_code=UA-33344154-1\r\n"
   - "Current website: http://www.opentechschool.org/\r\nNew website code: https://github.com/OpenTechSchool/website-relaunch\r\n"
-tags: [ui design, ux, homepage]
+tags: [ui, ux, web design]
 date: '2017-03-29T11:08:36.105Z'
 timestamp: 1490785716
 ---

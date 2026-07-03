@@ -1,15 +1,17 @@
-# Job submission Worker
+# Submission Worker (jobs + events)
 
 A free Cloudflare Worker that replaces the old Staticman/Heroku backend for the
-**Post a Job** form. It verifies a submission (Cloudflare Turnstile + honeypot),
-rebuilds the Markdown server-side, and opens a moderated pull request into
-`content/jobs/`. The submitter's email is kept private in Cloudflare KV (keyed by
-PR number) so the [`job-approved-email`](../../.github/workflows/job-approved-email.yml)
+**Post a Job** and **Submit an Event** forms. It verifies a submission
+(Cloudflare Turnstile + honeypot), rebuilds the Markdown server-side, and opens
+a moderated pull request into `content/jobs/` (or `content/events/` when the
+payload carries `kind: "event"`). The submitter's email is kept private in
+Cloudflare KV (keyed by PR number) so the
+[`job-approved-email`](../../.github/workflows/job-approved-email.yml)
 workflow can notify them when the posting is merged and published.
 
 ```
-Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/
-                                 → KV: pr:<n> = { email, title }
+Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/ or content/events/
+                                 → KV: pr:<n> = { email, title, kind }
 Maintainer merges PR → GitHub Action → GET /lookup?pr=<n> → email submitter via SMTP
 ```
 
@@ -70,15 +72,17 @@ simply skipped.
 
 ## Wire it into the site (`hugo.toml`)
 
-Set both params under `[params]`, then commit:
+Set the params under `[params]`, then commit. Both forms talk to the same
+`/submit` route — the Worker tells them apart by the `kind` field:
 
 ```toml
-jobSubmitEndpoint = "https://osd-job-submit.<account>.workers.dev/submit"
-turnstileSiteKey  = "<your-turnstile-site-key>"
+jobSubmitEndpoint   = "https://osd-job-submit.<account>.workers.dev/submit"
+eventSubmitEndpoint = "https://osd-job-submit.<account>.workers.dev/submit"
+turnstileSiteKey    = "<your-turnstile-site-key>"
 ```
 
-When `jobSubmitEndpoint` is empty the form still works — it falls back to showing
-the generated Markdown for a manual PR.
+When an endpoint param is empty the corresponding form still works — it falls
+back to showing the generated Markdown for a manual PR.
 
 ## GitHub repo secrets (for the approval email)
 
@@ -95,8 +99,9 @@ In the site repo: **Settings → Secrets and variables → Actions → New repos
 | `SMTP_FROM`         | from address, e.g. `hello@opensourcedesign.net`                 |
 | `SMTP_SECURE`       | *(optional)* `true` for port 465; omit/`false` for 587          |
 
-The workflow triggers on any merged PR whose branch starts with `job/` (which the
-Worker always uses), so the `job-submission` label is informational only.
+The workflow triggers on any merged PR whose branch starts with `job/` or
+`event/` (which the Worker always uses), so the `job-submission` and
+`event-submission` labels are informational only.
 
 ## Local development
 

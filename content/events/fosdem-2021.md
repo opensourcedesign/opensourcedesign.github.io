@@ -121,4 +121,4 @@ As Open Source Design we've discovered over the years, that FLOSS projects are i
 
 And finally, here's a screenshot of the Open Source Design team and attendees at the end of FOSDEM 2021!
 Add the lovely screenshot here.
-![Screenshot of the open source design dev room at the end of FOSDEM 2021 ](https://raw.githubusercontent.com/opensourcedesign/opensourcedesign.github.io/c9bb383a4b056bed650bff891c9d6452262a338e/images/Screenshot%202021-02-07%20at%2016.35.21.png)
+![Screenshot of the open source design dev room at the end of FOSDEM 2021](/images/events/fosdem-2021-devroom-screenshot.png)

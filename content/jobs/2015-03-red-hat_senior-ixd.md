@@ -5,7 +5,7 @@ title: open source storage technologies
 role: UX Design
 organization: Red Hat, Inc.
 org_url: https://redhat.com
-tags: [interface design, ixd, ux, usability, design, user research, storage, visual design, hci, human factors]
+tags: [ui, interaction design, ux, usability, design, user research, storage, visual design]
 status: closed
 submited_by: mairin
 compensation: unspecified

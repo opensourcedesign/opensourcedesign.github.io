@@ -7,7 +7,7 @@ organization: Silex Labs
 github: silexlabs
 contact: contact at silexlabs.org
 org_url: https://www.silexlabs.org/
-tags: [website templates, webdesign, design]
+tags: [web design, design]
 status: solved
 compensation: gratis / we provide 1 to 1 support
 date_posted: 2016-08-03

@@ -13,7 +13,7 @@ how_to_apply:
   - dburka@resolvetosavelives.org
   - "Job description and application:\r\nhttps://phg.tbe.taleo.net/phg01/ats/careers/v2/viewRequisition?org=VITASTRA&cws=37&rid=494"
 github_handle: dburka
-tags: [full-time, ui design, ux design, information design]
+tags: [full-time, ui, ux, information design]
 date: '2022-02-23T09:54:20.390Z'
 ---
 We’re hiring a full-time Product Designer to work with us on a wide variety of product design work related to the web-based Simple Dashboard (for health administrators), the Simple mobile app (for healthcare workers), and the BP Passport mobile app (for patients).

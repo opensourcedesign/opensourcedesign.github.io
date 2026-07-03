@@ -14,7 +14,7 @@ how_to_apply:
   - '- https://github.com/andreademasi/openW2G/issues/3'
   - 'https://github.com/andreademasi/openW2G/issues/3'
 github_handle: '@andreademasi'
-tags: [logo, branding, open-source]
+tags: [logo, branding, open source]
 date: '2022-11-23T17:39:52.474Z'
 ---
 The aim of openW2G is to enable two users to sync any kind of streaming service playback by simply sharing a room code similar to how w2g.tv works. openW2G is an ad-free open-source MIT-licensed browser extension that syncs users' clicks in their browser.

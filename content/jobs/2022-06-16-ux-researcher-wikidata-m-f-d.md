@@ -16,7 +16,7 @@ how_to_apply:
     You can find the full description and the link to apply in our job portal:
     https://short.sg/j/19290694
 github_handle: ''
-tags: [ux, research, ux research, design, wikimedia, wikidata, open source, researcher, software, development, strategy, berlin]
+tags: [ux, user research, design, wikimedia, wikidata, open source, software, development, strategy, berlin]
 date: '2022-06-16T12:19:26.470Z'
 ---
 We are looking for an experienced Researcher (m/f/d) (full-time or part time) to join our Software & Development Department. In this role you will focus on doing research activities for a worldwide community of users for one of Wikimedia Deutschland’s main products: Wikidata.

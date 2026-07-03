@@ -15,7 +15,7 @@ how_to_apply:
   - Hady Osman <hadyos@gmail.com>
   - ''
 github_handle: '@hadynz'
-tags: [design, user experience]
+tags: [design, ux]
 date: '2022-07-16T11:23:36.365Z'
 ---
 Kindle Highlights is a very popular plugin that allows a user to sync their book highlights from their Kindle into Obsidian - a very popular note taking app that empowers people to connect their ideas and build a second brain.

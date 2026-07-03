@@ -14,7 +14,7 @@ how_to_apply:
   - Marcel <marcel@leantime.io>
   - "Current Design (screenshots)\r\nhttps://github.com/Leantime/leantime\r\n\r\nNew Design (one screenshot)\r\nhttps://github.com/Leantime/leantime/discussions/698"
 github_handle: ''
-tags: [graphics design, ux, ui]
+tags: [graphic design, ux, ui]
 date: '2022-06-24T14:47:53.990Z'
 ---
 We are looking for feedback on the current as well as a "new" design proposal for our innovation management system Leantime.io

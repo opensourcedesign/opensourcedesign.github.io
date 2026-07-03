@@ -6,7 +6,7 @@ organization: raml2html
 role: UI designer
 github: kevinrenskers
 org_url: https://github.com/kevinrenskers/raml2html
-tags: [interface design]
+tags: [ui]
 status: closed
 compensation: gratis
 date_posted: 2015-03-24

@@ -18,7 +18,7 @@ how_to_apply:
   - email@ultrastar-play.com
   - "Website: https://ultrastar-play.com\r\nPress Kit: https://ultrastar-play.com/presskit.zip\r\nIndieDB: https://www.indiedb.com/games/ultrastar-play\r\nGitHub: https://github.com/UltraStar-Deluxe/Play\r\nDiscord: https://discord.gg/PAUJFKCGbb\r\nYouTube: https://www.youtube.com/@ultrastar_play\r\nDownload latest release: https://github.com/UltraStar-Deluxe/Play/releases/latest"
 github_handle: GitHub @achimmihca
-tags: [graphic, game, ui, ux, effects, design]
+tags: [graphic design, games, ui, ux, effects, design]
 date: '2022-11-29T12:56:14.622Z'
 ---
 UltraStar Play took on the legacy of a popular singing game from the last decade. The gameplay has aged well but visually there is room for improvement.

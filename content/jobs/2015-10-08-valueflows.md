@@ -8,7 +8,7 @@ organization: Value Flows
 github: valueflows
 contact: ahdinosaur on github
 org_url: https://valueflo.ws
-tags: [visual design, economic flows, diagrams, icons]
+tags: [visual design, economic flows, data visualization, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-10-08

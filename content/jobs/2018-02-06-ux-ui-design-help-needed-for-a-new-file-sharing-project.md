@@ -14,7 +14,7 @@ deliverables: "There is a lot of low hanging fruit that you can help me with:\r\
 how_to_apply:
   - Michael Muré <batolettre@gmail.com>
   - "http://arbo.re - future homepage, currently redirecting to the github repository\r\nhttps://gitter.im/Arbore/Lobby - Gitter lobby\r\n"
-tags: [graphic design, interface, interaction design, ui, ux]
+tags: [graphic design, ui, interaction design, ux]
 date: '2018-02-06T11:43:08.158Z'
 timestamp: 1517917388
 ---

@@ -1,51 +1,36 @@
 {{ define "main" }}
-  <div class="mx-auto max-w-6xl px-4 py-12" data-pagefind-body>
-    {{/* Header Card */}}
-    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
-      <header>
-        <div class="flex items-center gap-4">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600" aria-hidden="true">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-          </div>
-          <div>
-            <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{{ .Title }}</h1>
-            {{ with .Description }}
-              <p class="mt-1 text-slate-600">{{ . }}</p>
-            {{ end }}
-          </div>
-        </div>
-      </header>
-    </div>
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20" data-pagefind-body>
+    <header>
+      <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
+      {{ end }}
+    </header>
 
-    {{/* Curated links (page content) */}}
-    {{ with .Content }}
-      <div class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
-        <div class="prose prose-slate max-w-none">{{ . }}</div>
-      </div>
+    {{/* Sub-pages: Reading & Research (bibliography) and community articles
+         live on their own pages rather than inline on this one. */}}
+    {{ $reading := .GetPage "reading" }}
+    {{ $articles := .GetPage "articles" }}
+    {{ if or $reading $articles }}
+      <nav class="mt-8 grid gap-3 sm:grid-cols-2" aria-label="More in resources">
+        {{ range slice $reading $articles }}
+          {{ with . }}
+            <a class="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 transition hover:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+              <span class="min-w-0">
+                <span class="block font-semibold text-slate-900">{{ .Title }}</span>
+                {{ with .Description }}<span class="mt-0.5 line-clamp-2 block text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
+              </span>
+              <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+          {{ end }}
+        {{ end }}
+      </nav>
     {{ end }}
 
-    {{/* Reading & Research bibliography - data driven from data/bibliography.yaml */}}
-    {{ with hugo.Data.bibliography }}
-      <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
-        <h2 class="text-xl font-semibold text-slate-900">Reading &amp; Research</h2>
-        <p class="mt-1 text-sm text-slate-600">A bibliography of articles, talks, papers, and books on design in open source.</p>
-        <ul class="mt-6 space-y-4" role="list">
-          {{ range sort . "year" "desc" }}
-            <li class="flex flex-col gap-1 border-b border-slate-100 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-              <div class="min-w-0">
-                <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
-                <div class="mt-0.5 text-sm text-slate-600">
-                  {{ with .author }}{{ . }}{{ end }}{{ with .publication }} &middot; {{ . }}{{ end }}
-                </div>
-              </div>
-              <div class="flex shrink-0 items-center gap-2 text-xs">
-                {{ with .type }}<span class="rounded-full bg-slate-100 px-2.5 py-1 font-medium capitalize text-slate-600">{{ . }}</span>{{ end }}
-                {{ with .year }}<span class="font-medium text-slate-500">{{ . }}</span>{{ end }}
-              </div>
-            </li>
-          {{ end }}
-        </ul>
-      </section>
+    {{/* Page body: intro, then the filterable directory (`resources`
+         shortcode, backed by data/resources.yaml). */}}
+    {{ with .Content }}
+      <div class="prose prose-slate mt-8 max-w-none">{{ . }}</div>
     {{ end }}
   </div>
 {{ end }}

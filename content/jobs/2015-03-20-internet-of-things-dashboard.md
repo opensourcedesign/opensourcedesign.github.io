@@ -10,7 +10,7 @@ contact: jordan@iotstack.io
 contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://iotstack.io
-tags: [interface design, branding, logo]
+tags: [ui, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-03-20

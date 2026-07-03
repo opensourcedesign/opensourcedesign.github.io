@@ -14,7 +14,7 @@ how_to_apply:
   - Elio (Lead Designer) <elio@ura.design>
   - "https://ura.design/\r\n\r\nPage mockup: https://www.figma.com/proto/NHrPwDhOz1aDbKy2eR93HR8m/Impacts-and-Outcomes?node-id=6%3A15&viewport=426%2C413%2C0.07685817778110504&scaling=min-zoom\r\n"
 github_handle: ''
-tags: [illustrations, icons, infographic]
+tags: [illustration, icons, data visualization]
 date: '2019-06-09T16:15:14.086Z'
 ---
 As part of the Open Tech Fund Usability Lab, we at Ura Design (https://ura.design) are redesigning OTF's Impact page:
