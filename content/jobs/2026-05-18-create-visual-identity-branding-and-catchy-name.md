@@ -7,7 +7,7 @@ organization: Love takes authenticity
 org_url: 'https://github.com/JuanTorres93'
 license: 'https://github.com/JuanTorres93/love-takes-authenticity/blob/main/LICENSE'
 title: 'Create visual identity, branding and catchy name'
-role: '''branding'', ''visual identity'', ''logo design'''
+role: Branding, Visual identity, Logo design
 compensation: gratis
 deliverables: "- Visual style guide (colors, typography, spacing and icons). It can be a simple text file.\r\n- Logo assets.\r\n- Catchy name for the application"
 how_to_apply:

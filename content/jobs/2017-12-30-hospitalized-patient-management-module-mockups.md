@@ -6,7 +6,7 @@ layout: jobs
 organization: OpenEMR
 org_url: 'http://open-emr.org'
 title: Hospitalized patient management module mockups
-role: '''Healthcare'', ''UX'', ''UI'''
+role: Healthcare, UX, UI
 compensation: gratis
 deliverables: Mockups and a desire to do good in the developing world.
 how_to_apply:

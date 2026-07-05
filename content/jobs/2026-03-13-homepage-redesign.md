@@ -7,7 +7,7 @@ organization: Figranium
 org_url: 'https://figranium.dev'
 license: 'https://github.com/figranium/figranium/blob/main/LICENSE'
 title: Homepage Redesign
-role: '''Web Design'', ''UI Design'', ''Homepage Design'''
+role: Web Design, UI Design, Homepage Design
 compensation: gratis
 deliverables: ''
 how_to_apply:

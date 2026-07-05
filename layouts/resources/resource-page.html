@@ -12,7 +12,8 @@
       {{ end }}
     </header>
 
-    {{/* Page body: the bibliography shortcode (data/bibliography.yaml),
+    {{/* Shared layout for resource sub-pages (Links, Bibliography, guides).
+         The body typically embeds a shortcode (`resources`, `bibliography`)
          rendered without its own heading since the page provides one. */}}
     <div class="prose prose-slate mt-8 max-w-none">{{ .Content }}</div>
 

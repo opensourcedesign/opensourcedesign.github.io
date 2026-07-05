@@ -6,7 +6,7 @@ layout: jobs
 organization: Kedro
 org_url: 'https://github.com/kedro-org/kedro'
 title: Senior Technical UX Designer
-role: '''Usability review'', ''Research'', ''Technical design'''
+role: Usability review, Research, Technical design
 compensation: paid
 deliverables: ''
 how_to_apply:

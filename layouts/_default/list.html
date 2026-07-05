@@ -14,14 +14,23 @@
     {{ if $pages }}
       <p class="mt-12 border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500" aria-live="polite" data-pagefind-ignore>{{ len $pages }} {{ cond (eq (len $pages) 1) "entry" "entries" }}</p>
 
+      {{/* Only reserve the left date column when at least one page is dated;
+           sections like About Us have no dates and would show an empty gutter. */}}
+      {{ $hasDates := false }}
+      {{ range $pages }}
+        {{ if not .Date.IsZero }}{{ $hasDates = true }}{{ break }}{{ end }}
+      {{ end }}
+
       <ul role="list" aria-label="Content list" data-pagefind-ignore>
         {{ range $pages.ByDate.Reverse }}
           <li class="border-b border-slate-200">
-            <a class="group grid grid-cols-1 gap-1 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:grid-cols-[8rem_1fr] sm:gap-6" href="{{ .RelPermalink }}">
-              {{ with .Date }}
-                <time class="text-sm text-slate-500 sm:pt-0.5" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
-              {{ else }}
-                <span aria-hidden="true"></span>
+            <a class="group grid grid-cols-1 gap-1 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20{{ if $hasDates }} sm:grid-cols-[8rem_1fr] sm:gap-6{{ end }}" href="{{ .RelPermalink }}">
+              {{ if $hasDates }}
+                {{ with .Date }}
+                  <time class="text-sm text-slate-500 sm:pt-0.5" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
+                {{ else }}
+                  <span aria-hidden="true"></span>
+                {{ end }}
               {{ end }}
               <span>
                 <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>

@@ -6,7 +6,7 @@ layout: jobs
 organization: Humanitarian OpenStreetMap Team
 org_url: 'https://hotosm.org'
 title: Junior Developer
-role: '''backend development'''
+role: Backend development
 compensation: paid
 deliverables: "-Development tasks include backend development, designing and deploying services, integrations with and consumption of third party services, database development, unit testing and mock data generation, development of regression testing scenarios and scripts\r\n-This position will cover some DevOps responsibilities, especially pertaining to change management and source control, continuous integration, and deploying and maintaining test and production environments. This may include some scripting and automation tasks, test development, database management activities, and server configuration management\r\n-Responsibilities will include analysis of requirements, authoring of documentation, and detailed design, both independently and as part of a team\r\n-Work with other engineers, designers, and test engineers to bring prototypes to life\r\n-Participate in agile software planning and development activities including daily standups, user story and task organization and grooming activities, and effort estimation\r\n-Monitoring technical performance of applications to ensure code optimisations\r\n-Troubleshoot and debug applications"
 how_to_apply:

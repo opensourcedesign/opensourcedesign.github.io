@@ -6,7 +6,7 @@ layout: jobs
 organization: Fosshost
 org_url: 'https://fosshost.org'
 title: Design a new logo
-role: '''logo design'' ''brand design'''
+role: Logo design, Brand design
 compensation: gratis
 deliverables: A logo
 how_to_apply:

@@ -7,7 +7,7 @@ organization: TUXEDO Computers
 org_url: 'https://www.tuxedocomputers.com'
 title: Media Designer / Content Producer
 slug: media-designer-content-producer
-role: '''Print Ads'', ''Manual Graphics'', ''Video Tutorials'', ''Product Photography'''
+role: Print Ads, Manual Graphics, Video Tutorials, Product Photography
 compensation: paid
 deliverables: ''
 how_to_apply:

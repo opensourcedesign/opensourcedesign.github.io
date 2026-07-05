@@ -16,6 +16,8 @@ date: '2017-01-24T12:03:58.981Z'
 description:
 ---
 
-"We need designs, in layered SVG (preferably using Inkscape) or CSS and HTML. Our frontend developers will convert your designs into the new interface.\r\nThere are around 6 short pages of content which need to be rethought in terms of layout, grouping and wording of information, and visual design. The style needs to fit closely, but not exactly, with the new application theme. We're looking for something functional and beautiful."
+"We need designs, in layered SVG (preferably using Inkscape) or CSS and HTML. Our frontend developers will convert your designs into the new interface.
+
+There are around 6 short pages of content which need to be rethought in terms of layout, grouping and wording of information, and visual design. The style needs to fit closely, but not exactly, with the new application theme. We're looking for something functional and beautiful."
 
 phpList is redesigning the account management pages for our hosted platform which provides Open Source email marketing services to tens of thousands of customers. We have a new application interface (using bootstrap) and now need to design the account management pages to compliment it.

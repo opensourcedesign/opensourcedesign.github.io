@@ -7,7 +7,7 @@ organization: Enough
 org_url: 'http://enough.media/'
 title: Design logo for our tool
 slug: enough-design-logo-for-our-tool
-role: Logo desing & branding
+role: Logo design & branding
 compensation: gratis
 deliverables: A logo & a set of icons
 how_to_apply:

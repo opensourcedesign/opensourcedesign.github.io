@@ -77,7 +77,10 @@
 
     {{/* Job list */}}
     <ul class="mt-4 border-t border-slate-200" id="jobs-list" role="list" aria-label="Job listings">
-      {{ range (sort $jobs "Params.date_posted" "desc") }}
+      {{/* Sort on .Date (front matter `date`, falling back to `date_posted`
+           via hugo.toml [frontmatter]) — sorting the raw param would mix
+           strings with time.Time values on posts that lack a `date` field. */}}
+      {{ range $jobs.ByDate.Reverse }}
         {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
         {{ $isPaid := eq $comp "paid" }}
         {{ $isVol := or (in $comp "gratis") (in $comp "volunteer") (eq $comp "free") }}
@@ -95,9 +98,10 @@
           {{/* Stale marker: visible at build time when already past the
                three-month threshold, otherwise revealed client-side by main.js
                (builds can be weeks apart, so build time alone undercounts). */}}
-          {{ $posted := printf "%v" (.Params.date_posted | default "") }}
+          {{ $posted := "" }}
           {{ $staleNow := false }}
           {{ with .Params.date_posted }}
+            {{ $posted = (time.AsTime .).Format "2006-01-02" }}
             {{ if gt (int (div (now.Sub (time.AsTime .)).Hours 24)) 90 }}{{ $staleNow = true }}{{ end }}
           {{ end }}
           <a class="group block py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ if $org }} at {{ $org }}{{ end }}">
@@ -119,7 +123,7 @@
               </span>
             </span>
             <span class="mt-1.5 block text-sm text-slate-500">
-              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) .Params.date_posted }} · {{ end }}{{ with .Params.date_posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
+              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) $posted }} · {{ end }}{{ with $posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
             </span>
             {{ with .Summary }}
               <span class="mt-2 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</span>
@@ -136,7 +140,7 @@
 
     {{/* Footer Links */}}
     {{ partial "section-footer.html" (dict "items" (slice
-      (dict "icon" "code" "text" "More comfortable with Git?" "linkText" "Use our git-based method" "href" (site.Params.jobsRepoURL | default "https://github.com/opensourcedesign/jobs"))
+      (dict "icon" "code" "text" "More comfortable with Git?" "linkText" "Use our git-based method" "href" (site.Params.jobsRepoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/content/jobs"))
       (dict "text" "Checkout other places like:" "linkText" "FOSS Jobs" "href" (site.Params.fossJobsURL | default "https://www.fossjobs.net/"))
     )) }}
 

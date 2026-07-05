@@ -50,7 +50,10 @@ capitalizeListTitles = false
 
   # Repository and external links
   repoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io"
-  jobsRepoURL = "https://github.com/opensourcedesign/jobs"
+  # Default branch of repoURL; used by the job form's edit mode to fetch the
+  # current posting (raw.githubusercontent.com) and for GitHub fallback links.
+  repoBranch = "master"
+  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/content/jobs"
   forumURL = "https://discourse.opensourcedesign.net"
   calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
   fossJobsURL = "https://www.fossjobs.net/"
@@ -60,6 +63,12 @@ capitalizeListTitles = false
   [params.cards]
     summaryMax = 120
     maxTags = 3
+
+[frontmatter]
+  # Old job posts (2015–2017) predate the `date` field and only carry
+  # `date_posted`; fall back to it so .Date is set everywhere it matters
+  # (topic pages' date column, ByDate sorting, RSS timestamps).
+  date = ["date", "date_posted", ":default"]
 
 [taxonomies]
   tag = "tags"

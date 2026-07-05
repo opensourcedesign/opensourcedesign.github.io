@@ -19,4 +19,3 @@ tags: ''
 date: '2018-02-11T11:11:58.905Z'
 slug: ux-design-for-video-review-interface
 ---
-undefined

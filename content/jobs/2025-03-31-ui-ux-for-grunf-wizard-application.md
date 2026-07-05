@@ -7,7 +7,7 @@ organization: grunf
 org_url: 'https://gitlab.com/stormfinger/grunf'
 title: UI/UX for grunf (wizard application)
 slug: ui-ux-for-grunf-wizard-application
-role: interaction desing and feel and look for an application
+role: Interaction design and look and feel for an application
 compensation: gratis
 deliverables: >-
   ui/ux as is now its basic. We would like to boost intuitive user experience 

@@ -6,7 +6,7 @@ layout: jobs
 organization: Humanitarian OpenStreetMap Team
 org_url: 'https://hotosm.org'
 title: Senior Designer
-role: '''Web design'''
+role: Web design
 compensation: paid
 deliverables: "-Contribute to the creative vision and implementation of the HOT technology strategy\r\n-Conceptualise ideas that bring simplicity and user friendliness to complex design challenges\r\n-Facilitate the design thinking process including user research, discovery and product concept to imagine the HOT technology strategy into existence\r\n-Develop and implement successful design strategies, working with and managing feedback from the global HOT community\r\n-Collaborate with HOT’s global tech team and open source community to define, build, and release new user centered updates and enhancements\r\n-Oversee all design projects, from conception to delivery\r\n-Construct user flows, wireframes, and prototypes that effectively communicate design concepts for validation\r\n-Develop and deliver well-documented, product design that accurately reflect HOT’s mission\r\n-Mentor and guide team members, helping them develop and grow\r\n-Creatively guide the team’s design culture through collaboration, feedback, and iteration.\r\n-Additional graphic/visual design assistance and tasks as required"
 how_to_apply:

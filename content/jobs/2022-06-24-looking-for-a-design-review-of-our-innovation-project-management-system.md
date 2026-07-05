@@ -7,7 +7,7 @@ organization: Design Feedback for Innovation Management System
 org_url: 'https://leantime.io'
 title: Looking for a design review of our innovation/project management system
 slug: looking-for-a-design-review-of-our-innovation-project-management-system
-role: 'Interaction Design,'
+role: 'Interaction Design'
 compensation: gratis
 deliverables: ''
 how_to_apply:

@@ -1,13 +1,6 @@
 ---
 title: "Resources"
-description: "Openly licensed tools, icons, fonts, images, and reading for designers working in open source."
+description: "Links, reading, and community-written guides for designers working in open source."
 ---
 
-**This is a showcase of the many websites and platforms where you can find openly licensed icons, fonts, images, tools, and other resources.** You can use them for any purpose, also commercial (some works have specific licenses, so always make sure it's fine to use).
-
-<!-- The directory below is rendered from data/resources.yaml — edit that file
-     to add or change resources. Reading & Research (data/bibliography.yaml)
-     and community articles live on their own sub-pages:
-     /resources/reading/ and /resources/articles/. -->
-
-{{< resources >}}
+Getting started as a designer in open source raises a lot of questions: where to find openly licensed assets, what to read, and how projects actually work. The pages below collect what the community has gathered — a directory of openly licensed tools and assets, a bibliography of research and writing on open source design, and articles written by community members.

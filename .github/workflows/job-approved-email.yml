@@ -1,10 +1,10 @@
 name: Email submitter when job or event is published
 
-# When a submission pull request (branch job/* or event/*, opened by the
-# job-submit Cloudflare Worker) is merged, look up the submitter's private
-# email — stored in Cloudflare KV by the Worker, keyed by PR number — and
-# notify them that their posting is live. The address is never committed to
-# the repo or shown in the PR; it is fetched at merge time over an
+# When a submission pull request (branch job/*, job-edit/* or event/*, opened
+# by the job-submit Cloudflare Worker) is merged, look up the submitter's
+# private email — stored in Cloudflare KV by the Worker, keyed by PR number —
+# and notify them that their posting is live. The address is never committed
+# to the repo or shown in the PR; it is fetched at merge time over an
 # authenticated endpoint.
 
 on:
@@ -20,6 +20,7 @@ jobs:
     if: >-
       github.event.pull_request.merged == true &&
       (startsWith(github.event.pull_request.head.ref, 'job/') ||
+       startsWith(github.event.pull_request.head.ref, 'job-edit/') ||
        startsWith(github.event.pull_request.head.ref, 'event/'))
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +53,10 @@ jobs:
             event/*)
               kind="event"
               url="https://opensourcedesign.net/events/"
+              ;;
+            job-edit/*)
+              kind="job posting update"
+              url="https://opensourcedesign.net/jobs/"
               ;;
             *)
               kind="job posting"

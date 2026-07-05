@@ -6,7 +6,7 @@ layout: jobs
 organization: AutSPACEs
 org_url: 'https://github.com/alan-turing-institute/AutSPACEs'
 title: Illustrator for AutSPACEs web plaform  - citizen science project on autism
-role: 'Logo, desing and illustration'
+role: 'Logo, design and illustration'
 compensation: paid
 deliverables: "5 illustrations for web use, including:\r\n- two front page graphics: main illustrations conveying the aim of the platform and related to sensory processing in day to day life\r\n- Logo for the project: simple logo as we currently just use text\r\n- Visual explainer or diagrams on: \"how to use the platform\" and of what happens to participants data"
 how_to_apply:
@@ -32,6 +32,7 @@ The images will also be used in presentations about AutSPACEs, as well as in oth
 We are UK based and looking for an established freelancer who is already able to produce invoices (it is not a requirement to be UK based, but to be able to send invoices to UK based organisations).
 
 If you'd like to apply please share:
-•	A CV or your preferred way of demonstrating your experience
-•	A short position statement, including an explanation of your interest in working with AutSPACEs.
-•	4-5 examples of your design work or a link to where we can look at your work.
+
+- A CV or your preferred way of demonstrating your experience
+- A short position statement, including an explanation of your interest in working with AutSPACEs.
+- 4-5 examples of your design work or a link to where we can look at your work.

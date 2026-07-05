@@ -7,7 +7,7 @@ organization: Time Tracking Reporting Integration
 org_url: >-
   https://www.hotosm.org/rfps/time-tracking-reporting-integration-request-for-proposals/
 title: Request for Proposals - Time Tracking Reporting Integration
-role: '''Quickbooks Time'' ''Gusto'' ''Papaya Global'' ''BambooHR'' ''integration'''
+role: Quickbooks Time, Gusto, Papaya Global, BambooHR, Integration
 compensation: paid
 deliverables: "1. Meet virtually and converse through email with HOT’s finance and operations team to understand what time tracking reporting elements are needed from (1) BambooHR (2) Gusto and (3) Papaya Global.\r\n2. Review and understand (1) BambooHR (2) Gusto (3) Papaya Global and (4) QuickBooks API requirements.\r\n3. Build (1) BambooHR (2) Gusto and (3) Papaya Global integrations with QuickBooks based on the time tracking reporting elements confirmed in step one."
 how_to_apply:

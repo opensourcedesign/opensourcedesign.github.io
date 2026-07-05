@@ -7,7 +7,7 @@ organization: ArcOS
 org_url: 'https://github.com/ArcOS-Official'
 license: 'https://www.gnu.org/licenses/gpl-3.0.en.html'
 title: The ArcOS project
-role: Ui design and Logo design
+role: UI design and Logo design
 compensation: gratis
 deliverables: >-
   the logo, the icons the Several interfaces, the design language, the themes

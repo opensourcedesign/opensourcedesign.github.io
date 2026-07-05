@@ -6,7 +6,7 @@ layout: jobs
 organization: GetTogether
 org_url: 'https://gettogether.community'
 title: Design lead
-role: '''Logo design'', ''Web design'''
+role: Logo design, Web design
 compensation: gratis
 deliverables: ''
 how_to_apply:

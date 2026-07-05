@@ -13,6 +13,11 @@
  * in KV keyed by the created PR number so the merge workflow can email them on
  * publish via an authenticated lookup.
  *
+ * Job edits: when a submission carries edit_path (set by the job form's edit
+ * mode, /jobs/job-form/?edit=<file>), the worker updates that existing file on
+ * a job-edit/* branch instead of adding a new one, preserving identity fields
+ * (date_posted, date, _id, slug, aliases) so URLs and ordering don't change.
+ *
  * Routes:
  *   POST /submit         -> { ok, pr_url }
  *   GET  /lookup?pr=<n>  -> { ok, found, email, title, kind }  (Bearer LOOKUP_SECRET)
@@ -76,6 +81,19 @@ async function handleSubmit(request, env) {
 
   const kind = data.kind === 'event' ? 'event' : 'job';
 
+  // Optional edit mode (jobs only): update an existing posting instead of
+  // adding a new file. The target must be a plain filename inside the jobs
+  // content dir; identity fields are preserved from the current file.
+  let edit = null;
+  if (kind === 'job' && data.edit_file) {
+    const file = String(data.edit_file).trim();
+    if (!isSafeFilename(file)) {
+      return json({ ok: false, error: 'Invalid edit target.' }, 400);
+    }
+    const dir = (env.CONTENT_DIR || 'content/jobs').replace(/\/+$/, '');
+    edit = { path: dir + '/' + file };
+  }
+
   // Required fields (mirror each form's client-side validation).
   const required = kind === 'event'
     ? ['title', 'location', 'start_date', 'description']
@@ -127,11 +145,41 @@ async function handleSubmit(request, env) {
     await env.RATE_LIMIT.put(key, String(cur + 1), { expirationTtl: 86400 });
   }
 
-  const built = kind === 'event' ? buildEventMarkdown(data, env) : buildMarkdown(data, env);
+  // For edits, load the current file so we can keep its identity fields
+  // (date_posted, date, _id, slug, aliases) and its blob SHA for the update.
+  if (edit) {
+    let existing;
+    try {
+      existing = await gh(
+        env,
+        'GET',
+        `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${encodeURIPath(edit.path)}?ref=${encodeURIComponent(env.GITHUB_BRANCH || 'main')}`
+      );
+    } catch (err) {
+      return json({ ok: false, error: 'The posting to edit could not be found.' }, 404);
+    }
+    edit.sha = existing.sha;
+    const fm = parseFrontMatter(b64decode(existing.content));
+    if (!fm) {
+      return json({ ok: false, error: 'The posting to edit could not be parsed.' }, 422);
+    }
+    edit.date_posted = fm.scalar('date_posted');
+    edit.date = fm.scalar('date');
+    edit.id = fm.scalar('_id');
+    edit.slug = fm.scalar('slug');
+    edit.aliases = fm.list('aliases');
+    // The poster may close their own job from the edit form.
+    const requested = String(data.status || '').trim();
+    edit.status = ['searching', 'solved', 'closed'].includes(requested)
+      ? requested
+      : (fm.scalar('status') || 'searching');
+  }
+
+  const built = kind === 'event' ? buildEventMarkdown(data, env) : buildMarkdown(data, env, edit);
 
   let pr;
   try {
-    pr = await createPullRequest(env, built, data, kind);
+    pr = await createPullRequest(env, built, data, kind, edit);
   } catch (err) {
     return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
   }
@@ -199,17 +247,20 @@ async function verifyTurnstile(secret, token, request) {
 /* Markdown generation (mirrors generateMarkdown in job-form.html)            */
 /* -------------------------------------------------------------------------- */
 
-function buildMarkdown(data, env) {
+function buildMarkdown(data, env, edit) {
   const now = new Date();
-  const datePosted =
+  const today =
     now.getUTCFullYear() +
     '-' + String(now.getUTCMonth() + 1).padStart(2, '0') +
     '-' + String(now.getUTCDate()).padStart(2, '0');
-  const isoNow = now.toISOString();
+  // Edits keep the original identity so the URL and list ordering don't change.
+  const datePosted = (edit && edit.date_posted) || today;
+  const isoDate = (edit && edit.date) || now.toISOString();
+  const status = (edit && edit.status) || 'searching';
 
   const slug = datePosted + '-' + slugify(data.title);
   const dir = (env.CONTENT_DIR || 'content/jobs').replace(/\/+$/, '');
-  const path = dir + '/' + slug + '.md';
+  const path = edit ? edit.path : dir + '/' + slug + '.md';
 
   const applyList = linesToList(data.how_to_apply);
   const linkList = linesToList(data.links);
@@ -218,9 +269,18 @@ function buildMarkdown(data, env) {
   const fm = [];
   fm.push('---');
   fm.push('title: ' + yq(data.title));
-  fm.push('status: searching');
+  fm.push('status: ' + status);
   fm.push('date_posted: ' + yq(datePosted));
-  fm.push('date: ' + yq(isoNow));
+  fm.push('date: ' + yq(isoDate));
+  if (edit) {
+    if (edit.id) fm.push('_id: ' + yq(edit.id));
+    if (edit.slug) fm.push('slug: ' + yq(edit.slug));
+    if (edit.aliases && edit.aliases.length) {
+      fm.push('aliases:');
+      edit.aliases.forEach((a) => fm.push('  - ' + yq(a)));
+    }
+    fm.push('last_updated: ' + yq(today));
+  }
   fm.push('organization: ' + yq(data.organization));
   fm.push('org_url: ' + yq(data.org_url));
   fm.push('license: ' + yq(data.license));
@@ -251,6 +311,37 @@ function buildMarkdown(data, env) {
   fm.push('');
 
   return { path, slug, markdown: fm.join('\n') };
+}
+
+/* Minimal front-matter reader used to preserve identity fields on edits.
+   Only handles the simple scalar / block-list shapes our job files use. */
+function parseFrontMatter(text) {
+  const m = String(text).match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!m) return null;
+  const fm = m[1];
+  const unquote = (s) => {
+    s = String(s).trim();
+    if (/^'.*'$/.test(s)) return s.slice(1, -1).replace(/''/g, "'");
+    if (/^".*"$/.test(s)) {
+      try { return JSON.parse(s); } catch (e) { return s.slice(1, -1); }
+    }
+    return s;
+  };
+  return {
+    scalar(key) {
+      const mm = fm.match(new RegExp('^' + key + ':[ \\t]*(.+)$', 'm'));
+      return mm ? unquote(mm[1]) : '';
+    },
+    list(key) {
+      const mm = fm.match(new RegExp('^' + key + ':[ \\t]*\\r?\\n((?:[ \\t]+-[ \\t]*.*(?:\\r?\\n|$))+)', 'm'));
+      if (!mm) return [];
+      return mm[1]
+        .split(/\r?\n/)
+        .map((l) => l.replace(/^[ \t]+-[ \t]*/, ''))
+        .map(unquote)
+        .filter(Boolean);
+    }
+  };
 }
 
 /* Mirrors generateMarkdown in event-form.html. */
@@ -330,7 +421,7 @@ function tagsToList(s) {
 /* GitHub REST API                                                            */
 /* -------------------------------------------------------------------------- */
 
-async function createPullRequest(env, built, data, kind) {
+async function createPullRequest(env, built, data, kind, edit) {
   const owner = env.GITHUB_OWNER;
   const repo = env.GITHUB_REPO;
   const base = env.GITHUB_BRANCH || 'main';
@@ -340,28 +431,31 @@ async function createPullRequest(env, built, data, kind) {
   const ref = await gh(env, 'GET', `/repos/${owner}/${repo}/git/ref/heads/${base}`);
   const baseSha = ref.object.sha;
 
-  // 2. Create a fresh branch off the base head. The prefix (job/ or event/)
-  //    is what the merge-time email workflow keys off.
-  const branch = kind + '/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
+  // 2. Create a fresh branch off the base head. The prefix (job/, job-edit/
+  //    or event/) is what the merge-time email workflow keys off.
+  const prefix = edit ? 'job-edit' : kind;
+  const branch = prefix + '/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
   await gh(env, 'POST', `/repos/${owner}/${repo}/git/refs`, {
     ref: 'refs/heads/' + branch,
     sha: baseSha
   });
 
-  // 3. Pick a path that doesn't collide with an existing file, then commit it.
-  const filePath = await uniquePath(env, owner, repo, base, built.path);
+  // 3. Commit the file. New submissions get a collision-free path; edits
+  //    update the existing file in place (the contents API needs its SHA).
+  const filePath = edit ? built.path : await uniquePath(env, owner, repo, base, built.path);
   await gh(env, 'PUT', `/repos/${owner}/${repo}/contents/${encodeURIPath(filePath)}`, {
-    message: (isEvent ? 'Add event: ' : 'Add job: ') + data.title,
+    message: (edit ? 'Update job: ' : isEvent ? 'Add event: ' : 'Add job: ') + data.title,
     content: b64encode(built.markdown),
-    branch
+    branch,
+    ...(edit ? { sha: edit.sha } : {})
   });
 
   // 4. Open the pull request.
   const pr = await gh(env, 'POST', `/repos/${owner}/${repo}/pulls`, {
-    title: (isEvent ? 'Event submission: ' : 'Job submission: ') + data.title,
+    title: (edit ? 'Job edit: ' : isEvent ? 'Event submission: ' : 'Job submission: ') + data.title,
     head: branch,
     base,
-    body: isEvent ? eventPrBody(data, filePath) : prBody(data, filePath)
+    body: isEvent ? eventPrBody(data, filePath) : prBody(data, filePath, edit)
   });
 
   // 5. Label it (best-effort; the merge workflow keys off the branch name, not the label).
@@ -416,9 +510,15 @@ async function uniquePath(env, owner, repo, base, path) {
   return path;
 }
 
-function prBody(data, filePath) {
+function prBody(data, filePath, edit) {
   const lines = [];
-  lines.push('Automated submission from the **Post a Job** form.');
+  if (edit) {
+    lines.push('Automated **edit** of an existing posting, submitted from the job edit form.');
+    lines.push('');
+    lines.push('Review the diff carefully: the whole file is regenerated from the form, so any hand-made tweaks to the original are replaced.');
+  } else {
+    lines.push('Automated submission from the **Post a Job** form.');
+  }
   lines.push('');
   lines.push('| Field | Value |');
   lines.push('| --- | --- |');
@@ -465,6 +565,19 @@ function b64encode(str) {
   let bin = '';
   for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
   return btoa(bin);
+}
+
+function b64decode(b64) {
+  const bin = atob(String(b64 || '').replace(/\s/g, ''));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+// A single .md filename — no path separators or traversal. The character set
+// covers the legacy filenames in content/jobs/ (spaces, parens, '&', '+', ',').
+function isSafeFilename(s) {
+  return /^[\w .,()&+'-]+\.md$/.test(s) && !s.includes('..');
 }
 
 function encodeURIPath(p) {

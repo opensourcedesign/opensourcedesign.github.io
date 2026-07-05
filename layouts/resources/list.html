@@ -7,30 +7,27 @@
       {{ end }}
     </header>
 
-    {{/* Sub-pages: Reading & Research (bibliography) and community articles
-         live on their own pages rather than inline on this one. */}}
-    {{ $reading := .GetPage "reading" }}
-    {{ $articles := .GetPage "articles" }}
-    {{ if or $reading $articles }}
-      <nav class="mt-8 grid gap-3 sm:grid-cols-2" aria-label="More in resources">
-        {{ range slice $reading $articles }}
-          {{ with . }}
-            <a class="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 transition hover:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
-              <span class="min-w-0">
-                <span class="block font-semibold text-slate-900">{{ .Title }}</span>
-                {{ with .Description }}<span class="mt-0.5 line-clamp-2 block text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
-              </span>
-              <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-            </a>
-          {{ end }}
-        {{ end }}
-      </nav>
-    {{ end }}
-
-    {{/* Page body: intro, then the filterable directory (`resources`
-         shortcode, backed by data/resources.yaml). */}}
+    {{/* Page body: a short intro on what resources are. The actual content
+         lives on the sub-pages below (issue #554). */}}
     {{ with .Content }}
       <div class="prose prose-slate mt-8 max-w-none">{{ . }}</div>
+    {{ end }}
+
+    {{/* Sub-pages, ordered by `weight` front matter: Links (the openly
+         licensed directory), Bibliography, Articles, and any future guide
+         pages added under content/resources/. */}}
+    {{ with .Pages.ByWeight }}
+      <nav class="mt-10 grid gap-3 sm:grid-cols-2" aria-label="Resource sub-pages">
+        {{ range . }}
+          <a class="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 transition hover:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+            <span class="min-w-0">
+              <span class="block font-semibold text-slate-900">{{ .Title }}</span>
+              {{ with .Description }}<span class="mt-0.5 line-clamp-2 block text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
+            </span>
+            <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        {{ end }}
+      </nav>
     {{ end }}
   </div>
 {{ end }}

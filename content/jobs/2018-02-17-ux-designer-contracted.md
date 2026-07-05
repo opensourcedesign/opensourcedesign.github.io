@@ -17,4 +17,3 @@ tags: [ux]
 date: '2018-02-17T17:19:11.694Z'
 slug: ux-designer-contracted
 ---
-undefined

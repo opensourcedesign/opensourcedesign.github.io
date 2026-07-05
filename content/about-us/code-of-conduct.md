@@ -73,19 +73,13 @@ If a participant engages in behavior violating this code of conduct, the core me
 
 ## Reporting violations
 
-If you are aware of a violation of our code of conduct. Please contact one of our core contributors such as:
-* Kriesse (`kristina at cssconf.eu`),  
-* Jan (`hey at jancborchardt.net`),
-* Simon (`contact at vansintjan.net`), or
-* Gilli (`gilli at axe.is`)
+If you are aware of a violation of our code of conduct, please report it by e-mailing our core contributors at `core at opensourcedesign.net`. They will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
 
-and they will investigate as soon as possible. If you would like to remain anonymous in the report, please note this.
-
-You can also reach out to our core contributors by e-mailing `core at opensourcedesign.net`. For the full list of who will receive that e-mail, check in [this issue discussing the core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577).
+For the list of who receives e-mail sent to that address, check [this issue discussing the core e-mail address](https://github.com/opensourcedesign/organization/issues/63#issuecomment-293839577).
 
 ## Decisions about consequences
 
-Decisions about consequences of violating this code of conduct are made by the community's core members as named above and will not be discussed with the person responsible for the violation until a decision has been reached.
+Decisions about consequences of violating this code of conduct are made by the community's core members and will not be discussed with the person responsible for the violation until a decision has been reached.
 
 ## Additions, amendments, and feedback
 

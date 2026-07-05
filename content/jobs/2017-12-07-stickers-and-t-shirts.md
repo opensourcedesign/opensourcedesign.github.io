@@ -16,4 +16,6 @@ tags: [graphic design, branding]
 date: '2017-12-07T11:56:01.242Z'
 slug: stickers-and-t-shirts
 ---
-We develop and manufacture an open-source mini drone called the Crazyflie 2.0. \r\nWe are passionate about hardware, software and technology in general and would like to have marketing material that reflects this better.
+We develop and manufacture an open-source mini drone called the Crazyflie 2.0.
+
+We are passionate about hardware, software and technology in general and would like to have marketing material that reflects this better.

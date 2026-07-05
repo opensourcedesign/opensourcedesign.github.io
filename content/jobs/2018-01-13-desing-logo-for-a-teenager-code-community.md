@@ -6,8 +6,10 @@ layout: jobs
 organization: CoderYouth
 org_url: 'https://coderyouth.club'
 github: coderyouth
-title: Desing logo for a teenager code community
+title: Design logo for a teenager code community
 role: Logo design & branding
+aliases:
+  - /jobs/desing-logo-for-a-teenager-code-community/
 compensation: gratis
 deliverables: >-
   The logo in PNG & SVG format. We'll give you push access to a GitHub repo in

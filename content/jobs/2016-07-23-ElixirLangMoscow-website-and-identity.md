@@ -17,7 +17,7 @@ how_to_apply:
 ---
 
 We are launching first [`Elixir`](http://elixir-lang.org/) meetups in Russia.
-And we really need help in desinging and branding.
+And we really need help in designing and branding.
 
 It is non-comercial project.
 
@@ -27,7 +27,7 @@ We are planing to host the first event in the end of september. And to promote i
 
 ## What do we need?
 
-We need the identity: logo, colors. We also need the website desing. And some email templates design as well.
+We need the identity: logo, colors. We also need the website design. And some email templates design as well.
 There's also a strict rule about technology: since we are working with the 'top-edge' technology on the backend, the frontend should also be cool.
 So we don't want to use Bootstrap or Foundation.
 

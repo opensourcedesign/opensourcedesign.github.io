@@ -7,7 +7,7 @@ organization: Zamphyr
 org_url: 'https://zamphyr.com'
 title: UX/UI Designer Internship
 slug: ux-ui-designer-internship
-role: '''UX'', ''UI'''
+role: UX, UI
 compensation: gratis
 deliverables: ''
 how_to_apply:

@@ -6,7 +6,7 @@ layout: jobs
 organization: Improve LibreLingo's design
 org_url: 'https://librelingo.app/'
 title: Improve LibreLingo's design
-role: '''Web design'''
+role: Web design
 compensation: gratis
 deliverables: ''
 how_to_apply:

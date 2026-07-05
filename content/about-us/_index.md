@@ -1,7 +1,6 @@
 ---
 title: About Us
 aliases:
-  - /goals/
   - /faq/
 ---
 

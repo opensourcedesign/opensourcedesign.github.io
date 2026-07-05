@@ -6,7 +6,7 @@ layout: jobs
 organization: Inkscape internship
 org_url: 'http://liviofania.com/'
 title: Inkscape internship
-role: 'Inkscape, vector, Design, Isometric,'
+role: 'Inkscape, Vector, Design, Isometric'
 compensation: paid
 deliverables: ''
 how_to_apply:

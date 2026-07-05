@@ -1,7 +1,7 @@
 ---
 _id: 994d11f0-de59-11e7-82cc-c9d7a0230569
 status: searching
-date_posted: '2021-06-22'
+date_posted: '2017-12-11'
 layout: jobs
 organization: Agorakit
 org_url: 'https://agorakit.org'
@@ -18,7 +18,7 @@ how_to_apply:
   - Philippe Jadin (main dev) <info@agorakit.org>
   - "Github : https://github.com/agorakit/agorakit\r\nHosted instance : https://app.agorakit.org/"
 tags: ''
-date: '2021-06-22T09:56:46.945Z'
+date: '2017-12-11T00:00:00.000Z'
 ---
 Agorakit is web-based, open source groupware for citizens. 
 By creating collaborative groups, people can discuss topics, organize events, store files and keep everyone updated as needed. 

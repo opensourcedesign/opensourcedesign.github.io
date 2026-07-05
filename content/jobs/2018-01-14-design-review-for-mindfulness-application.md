@@ -6,7 +6,7 @@ layout: jobs
 organization: Mindfulness at the Computer
 org_url: 'https://github.com/mindfulness-at-the-computer/mindfulness-at-the-computer'
 title: Design review for mindfulness application
-role: '''Interaction design'''
+role: Interaction design
 compensation: gratis
 deliverables: ''
 how_to_apply:

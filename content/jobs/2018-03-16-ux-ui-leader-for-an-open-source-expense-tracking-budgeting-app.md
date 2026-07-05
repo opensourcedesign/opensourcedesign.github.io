@@ -19,4 +19,3 @@ tags: ''
 date: '2018-03-17T00:56:22.850Z'
 slug: uxui-leader-for-an-open-source-expense-tracking-and-budgeting-app
 ---
-undefined

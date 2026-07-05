@@ -1,6 +1,6 @@
 ---
 _id: 9bdfaf00-6103-11f1-89c6-0f2c7446c01f
-status: searching
+status: solved
 date_posted: '2026-06-05'
 layout: jobs
 organization: Quire

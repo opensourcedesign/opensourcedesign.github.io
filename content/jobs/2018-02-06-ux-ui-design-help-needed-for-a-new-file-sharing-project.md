@@ -18,4 +18,3 @@ tags: [graphic design, ui, interaction design, ux]
 date: '2018-02-06T11:43:08.158Z'
 timestamp: 1517917388
 ---
-undefined

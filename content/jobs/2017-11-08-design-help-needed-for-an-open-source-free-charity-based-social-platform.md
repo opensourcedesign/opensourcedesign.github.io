@@ -6,7 +6,7 @@ layout: jobs
 organization: Trekking for Charity
 org_url: 'http://www.trekkingforcharity.org'
 title: 'Design help needed for an open source, free, charity based social platform'
-role: '''Logo design & branding'', ''Web design'', ''Interaction design'''
+role: Logo design & branding, Web design, Interaction design
 compensation: gratis
 deliverables: ''
 how_to_apply:

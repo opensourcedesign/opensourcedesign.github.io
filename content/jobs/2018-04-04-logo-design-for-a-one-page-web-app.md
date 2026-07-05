@@ -6,7 +6,7 @@ layout: post
 organization: CloudCover
 org_url: 'https://cloudcover.me/'
 title: Logo & design for a one-page web app
-role: '''Logo Design'', ''Web Design'''
+role: Logo Design, Web Design
 compensation: gratis
 description: >-
   We would love a pretty design for https://cloudcover.me it's 100% open source,
@@ -20,4 +20,3 @@ tags: [logo, branding, app design, web design, privacy]
 date: '2018-04-04T13:02:23.497Z'
 timestamp: 1522846943
 ---
-undefined

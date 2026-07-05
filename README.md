@@ -155,7 +155,7 @@ All content lives as Markdown in `content/`. The site uses the following section
 | About Us | `content/about-us/` | About page, manifesto, governance, by-laws, code of conduct, how to join |
 | Events | `content/events/` | Event announcements and write-ups |
 | Jobs | `content/jobs/` | Job listings (also accepts submissions via the online form) |
-| Resources | `content/resources/` | Curated tools/links directory; community articles live at `/resources/articles/` (`/articles/` redirects there) and the reading list at `/resources/reading/` |
+| Resources | `content/resources/` | Hub page with sub-pages: the curated links directory at `/resources/links/`, the bibliography at `/resources/bibliography/` (`/resources/reading/` redirects there), and community articles at `/resources/articles/` (`/articles/` redirects there) |
 | Standalone | `content/*.md` | `forum`, `imprint`, `brand`, and the homepage (`_index.md`) |
 
 ### Editing Process
@@ -175,6 +175,8 @@ The recommended workflow for any content change:
 2. Create a new `.md` file following the existing format (date-prefixed filename, e.g. `2025-03-15-role-title.md`)
 3. Or use the online form at [opensourcedesign.net/jobs/job-form/](https://opensourcedesign.net/jobs/job-form/)
 
+To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
+
 ### Adding an Event
 
 1. Navigate to `content/events/`
@@ -189,8 +191,9 @@ The recommended workflow for any content change:
 ### Updating Resources
 
 1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` — each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format.
-2. To add a talk, article, paper, or book to the **Reading & Research** list, add an entry to `data/bibliography.yaml`.
-3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/_index.md`) and `{{</* bibliography */>}}` for Reading & Research (in `content/resources/reading.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
+2. To add a talk, article, paper, or book to the **Bibliography**, add an entry to `data/bibliography.yaml`.
+3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/links.md`) and `{{</* bibliography */>}}` for the bibliography (in `content/resources/bibliography.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
+4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Four draft placeholders already exist — fill in the body and remove `draft: true` to publish.
 
 ### Editing an About Us Page
 
@@ -212,8 +215,8 @@ Content that appears on multiple pages is managed through YAML files in `data/`:
 | `conferences.yaml` | Conference partnerships |
 | `affiliates.yaml` | Affiliate organizations |
 | `tools.yaml` | Featured open source design tools (homepage) |
-| `resources.yaml` | Curated resources directory shown on `/resources/` |
-| `bibliography.yaml` | Reading & research list shown on `/resources/reading/` |
+| `resources.yaml` | Curated resources directory shown on `/resources/links/` |
+| `bibliography.yaml` | Bibliography shown on `/resources/bibliography/` |
 | `quicklinks.yaml` | Footer navigation links |
 | `summits.yaml` | Past summit event information |
 

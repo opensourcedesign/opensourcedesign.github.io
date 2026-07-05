@@ -10,7 +10,7 @@ org_url: https://twitter.com/awe_crypto_bot
 tags: [logo]
 status: solved
 compensation: gratis / twitter-account credit
-date_posted: 2016-06-11
+date_posted: '2016-07-06'
 description:
 how_to_apply:
 ---

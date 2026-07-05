@@ -22,4 +22,3 @@ tags: [opensuse]
 date: '2018-02-06T09:46:55.717Z'
 timestamp: 1517910415
 ---
-undefined

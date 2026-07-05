@@ -90,7 +90,7 @@
           </div>
           {{ $jobs := where $jobsAll "Params.status" "searching" }}
           <ul class="mt-5" role="list">
-            {{ range first 5 (sort $jobs "Params.date_posted" "desc") }}
+            {{ range first 5 $jobs.ByDate.Reverse }}
               {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
               {{ $isPaid := eq $comp "paid" }}
               <li class="border-b border-slate-200 last:border-0">

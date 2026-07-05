@@ -6,7 +6,7 @@ layout: jobs
 organization: UX Clinic poster design
 org_url: 'https://opensourcedesign.net/'
 title: UX Clinic poster design for Open Source Design
-role: 'poster design, graphic design, poster, sign making, typography,'
+role: 'Poster design, Graphic design, Sign making, Typography'
 compensation: gratis
 deliverables: >-
   A poster in A4 paper size format as a digital file able to be sent via email

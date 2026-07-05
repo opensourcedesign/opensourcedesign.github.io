@@ -59,7 +59,9 @@
 
     {{/* Archived job list */}}
     <ul class="mt-4 border-t border-slate-200" id="jobs-list" role="list" aria-label="Archived job listings">
-      {{ range (sort $jobs "Params.date_posted" "desc") }}
+      {{/* .Date falls back to date_posted via hugo.toml [frontmatter]; sorting
+           the raw param would mix strings with time.Time values. */}}
+      {{ range $jobs.ByDate.Reverse }}
         {{ $compRaw := (printf "%v" (.Params.compensation | default "")) | lower }}
         {{ $isPaid := eq $compRaw "paid" }}
         {{ $isVol := or (in $compRaw "gratis") (in $compRaw "volunteer") (eq $compRaw "free") }}
@@ -88,7 +90,8 @@
               </span>
             </span>
             <span class="mt-1 block text-sm text-slate-500">
-              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org .Params.date_posted }} · {{ end }}{{ with .Params.date_posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
+              {{ $posted := "" }}{{ with .Params.date_posted }}{{ $posted = (time.AsTime .).Format "2006-01-02" }}{{ end }}
+              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $posted }} · {{ end }}{{ with $posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
             </span>
           </a>
         </li>

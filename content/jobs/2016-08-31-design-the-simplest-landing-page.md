@@ -11,7 +11,7 @@ org_url: https://github.com/bdavidxyz/zee
 tags: [ui, branding, web design]
 status: solved
 compensation: gratis
-date_posted: 2016-04-20
+date_posted: '2016-08-31'
 description:
 how_to_apply:
 ---

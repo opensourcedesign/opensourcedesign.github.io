@@ -13,7 +13,7 @@ org_url: http://iotstack.io
 tags: [ui, branding, logo]
 status: solved
 compensation: gratis
-date_posted: 2016-03-20
+date_posted: '2015-03-20'
 description:
 how_to_apply:
 ---

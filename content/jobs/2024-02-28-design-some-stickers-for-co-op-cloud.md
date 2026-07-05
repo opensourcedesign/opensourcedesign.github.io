@@ -6,7 +6,7 @@ layout: jobs
 organization: Stickers for Co-op Cloud
 org_url: 'https://coopcloud.tech/'
 title: Design some stickers for Co-op Cloud
-role: '''Sticker design'''
+role: Sticker design
 compensation: gratis
 deliverables: A set of flat images we can use to sent to our printers
 how_to_apply:
