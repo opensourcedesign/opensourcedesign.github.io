@@ -6,14 +6,11 @@ role: Logo Designer
 organization: crocodilejs
 github: niftylettuce
 contact: niftylettuce@gmail.com
-contributing_md:
 org_url: https://github.com/crocodilejs/crocodile-node-mvc-framework
 tags: [logo, design, mvc, javascript, framework, koa, crocodile, nunjucks, mongodb, redis]
 status: solved
 compensation: gratis
 date_posted: 2016-10-10
-description:
-how_to_apply:
 ---
 
 # CrocodileJS Node JS MVC Framework Logo

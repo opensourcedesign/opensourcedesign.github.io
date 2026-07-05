@@ -14,8 +14,6 @@ tags: [quebec, ux]
 status: solved
 compensation: full time
 date_posted: 2016-02-09
-description:
-how_to_apply:
 ---
 At Savoir-faire Linux design and free software go hand in hand, for we understand they are both basically collaborative, participatory and open processes.
 UX design in particular is a driving force of our projects. As a UX/UI designer we want you to get actively involved in the project and share your ideas.

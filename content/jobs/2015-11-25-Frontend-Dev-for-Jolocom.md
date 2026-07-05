@@ -12,8 +12,6 @@ tags: [ui, data visualization, javascript, react]
 status: solved
 compensation: part-time / 18hrs/week
 date_posted: 2015-11-25
-description:
-how_to_apply:
 ---
 FRONTEND DEVELOPER / DESIGNER (F/M)
 

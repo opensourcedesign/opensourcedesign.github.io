@@ -2,7 +2,10 @@
 layout: event
 title: "Designs and Hacks, Apr 25, 2015"
 date: 2015-04-25 19:37:47
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Sat, 25 April 2015
 location: bnvk Haus/online
 time: 14:00 – 18:00 CET (UTC +1:00)

@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A logo
 how_to_apply:
   - olivier@restqa.io
-  - ''
 github_handle: '@olivierodo'
 tags: [logo, branding]
 date: '2022-08-16T16:21:30.649Z'

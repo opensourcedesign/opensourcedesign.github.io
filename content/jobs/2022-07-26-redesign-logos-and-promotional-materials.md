@@ -13,7 +13,6 @@ deliverables: >-
   materials taken from the internet will not be allowed.
 how_to_apply:
   - William McGonagle (President) <mcgonaglew@fairfieldprogramming.org>
-  - ''
 github_handle: '@fairfield-programming'
 tags: [logo, branding, graphic design]
 date: '2022-07-26T11:31:50.030Z'

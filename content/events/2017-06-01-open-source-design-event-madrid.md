@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design Event Madrid 2017"
 date: 2017-06-01
-categories: design meetup community
+categories:
+  - "design"
+  - "meetup"
+  - "community"
 eventDate: Wed, 31 May 2017
 location: Madrid, Spain
 time: 19:00

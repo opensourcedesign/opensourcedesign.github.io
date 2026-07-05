@@ -10,8 +10,6 @@ tags: [frontend, ux, data visualization, javascript, css, html, ui, agile]
 status: closed
 compensation: competitive
 date_posted: 2015-02-13
-description:
-how_to_apply:
 ---
 
 ## Frontend Developer and UX Designer for Data-Driven Project

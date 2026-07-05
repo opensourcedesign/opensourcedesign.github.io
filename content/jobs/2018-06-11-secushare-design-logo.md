@@ -12,7 +12,6 @@ description: "To say even more than what is introduced on [our website](https://
 deliverables: 'a logo, or set of logos'
 how_to_apply:
   - dvn <secushare@dvn.me>
-  - ''
 tags: []
 date: '2018-06-11T11:55:03.348Z'
 timestamp: 1528718103

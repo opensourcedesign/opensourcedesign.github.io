@@ -1,6 +1,6 @@
 ---
 _id: 6ddfbed0-415c-11ed-8455-e5c6e12a593e
-status: completed
+status: solved
 date_posted: '2022-10-01'
 layout: jobs
 organization: OpenPrivacyTech

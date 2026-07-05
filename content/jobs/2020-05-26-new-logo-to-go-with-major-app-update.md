@@ -12,7 +12,6 @@ deliverables: "- logo / word-mark & accompanying icon\r\n- simple colour palette
 how_to_apply:
   - >-
     Reply below (or contact Keunes <keunes+antennapod-logo :at: mailbox.org>)
-  - ""
 github_handle: '@keunes'
 tags: [logo, branding]
 date: '2020-05-26T20:31:47.618Z'

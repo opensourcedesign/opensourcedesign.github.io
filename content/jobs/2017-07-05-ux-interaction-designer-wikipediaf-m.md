@@ -12,7 +12,6 @@ compensation: paid
 skills: ''
 how_to_apply:
   - sandra.muellrick@wikimedia.de
-  - ''
 tags: [interaction design, ux, usability]
 date: '2017-07-05T10:44:47.242Z'
 datum_inschrijving: '2017-07-05T10:44:47.242Z'

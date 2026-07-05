@@ -13,8 +13,6 @@ tags: [vue, decentralization, javascript, frontend, lead, basic income]
 status: closed
 compensation: paid, fulltime, negotiated
 date_posted: 2016-10-10
-description:
-how_to_apply:
 ---
 
 **This is a copy of [our official listing](https://groupincome.org/positions/). Please see that for most up-to-date info!**

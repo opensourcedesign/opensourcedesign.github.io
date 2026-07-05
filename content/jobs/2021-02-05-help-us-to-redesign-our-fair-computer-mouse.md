@@ -13,7 +13,6 @@ how_to_apply:
   - wettbewerb@fairityourself.de
   - "https://www.nager-it.de/\r\nhttps://fair-it-yourself.de/gehaeuse_en/"
 github_handle: ''
-tags: ''
 date: '2021-02-05T07:17:39.758Z'
 ---
 The computer mouse of the German association Nager IT is the one, with the fairest working conditions on the market.

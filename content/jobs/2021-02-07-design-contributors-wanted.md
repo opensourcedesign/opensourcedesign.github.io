@@ -14,7 +14,6 @@ how_to_apply:
   - Erioldoesdesign
   - "Contributors page: https://www.openfoodnetwork.org/become-a-contributor/\r\n\r\nSlack: https://openfoodnetwork.slack.com\r\n\r\nForum: https://community.openfoodnetwork.org/"
 github_handle: '@erioldoesdesign'
-tags: ''
 ---
 
 

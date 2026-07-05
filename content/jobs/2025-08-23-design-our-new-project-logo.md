@@ -14,7 +14,6 @@ deliverables: >-
   but rather not under a permissive license.
 how_to_apply:
   - pep <pep@bouah.net>
-  - ''
 github_handle: ''
 tags: [logo, design, xmpp, mushrooms]
 date: '2025-08-23T14:16:41.212Z'

@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - diversifyingopensource@gmail.com
-  - ''
 tags: [logo, graphic design]
 date: '2018-01-10T14:21:45.167Z'
 ---

@@ -12,7 +12,6 @@ compensation: gratis
 skills: ''
 how_to_apply:
   - "To apply, simply send your motivation letter including a link to your portfolio to drupal.designer.applications@gmail.com. Your application will be handled by the team. None of the materials from your portfolio will be published.\r\n\r\n**Applications are open until 17th of February 2017 12PM UTC.**"
-  - ''
 tags: [ui, drupal, visual design, web design]
 date: '2017-02-15T15:50:41.765Z'
 ---

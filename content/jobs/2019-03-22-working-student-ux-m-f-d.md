@@ -14,7 +14,6 @@ how_to_apply:
   - >-
     [Please contact us via our online
     platform](https://wikimedia-deutschland.softgarden.io/job/3696132/Working-Student-UX--m-f-d-?jobDbPVId=10049352&l=en)
-  - ''
 tags: [ux, working student, part-time]
 date: '2019-03-22T11:32:02.771Z'
 ---

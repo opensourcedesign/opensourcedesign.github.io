@@ -2,7 +2,10 @@
 layout: event
 title: "Call for Participation: Open Source Design Devroom at FOSDEM 2019"
 date: 2019-02-02
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Sat, 2 Feb 2019
 location: Room not yet confirmed, Solbosch campus - Université Libre Brussels, Brussels, Belgium
 time: full days

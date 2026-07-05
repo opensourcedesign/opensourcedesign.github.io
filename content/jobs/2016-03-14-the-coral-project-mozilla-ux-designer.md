@@ -11,8 +11,6 @@ tags: [ui, ux, mozilla foundation, internet communities]
 status: solved
 compensation: paid
 date_posted: 2016-03-14
-description:
-how_to_apply:
 ---
 
 Many online communities are fragile, toxic spaces. Some people have given up on engagement altogether. But we believe that healthy online communities can exist, given the right systems and tools.

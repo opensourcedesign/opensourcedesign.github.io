@@ -2,7 +2,10 @@
 layout: post
 title: "Open Source Design track at OpenTechSummit 2017"
 date: 2017-05-25
-categories: design conference track
+categories:
+  - "design"
+  - "conference"
+  - "track"
 eventDate: Thu, 25 May 2017
 location: freiLand, Berlin-Potsdam
 time: 10:00-18:30

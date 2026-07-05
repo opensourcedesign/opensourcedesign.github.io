@@ -6,8 +6,6 @@ role: UI Designer
 organization: dry-python
 github: dry-python
 contact: dry.python.org@gmail.com
-contributing_md:
-contributors_md:
 org_url: https://dry-python.org
 tags: [web design]
 status: closed

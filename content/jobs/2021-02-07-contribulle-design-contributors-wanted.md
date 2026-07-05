@@ -14,7 +14,6 @@ how_to_apply:
   - bonjour@contribulle.org
   - 'Code repository: https://framagit.org/participalibre/participalibre'
 github_handle: ''
-tags: ''
 date: '2021-02-07T17:07:04.861Z'
 ---
 Contribulle is a French resource that connects designers with free / libre / open source projects. If you would like to get involved with a project, would like to set up a version of Contribulle in your own language, or would like to help them in any other way, get in touch.

@@ -13,7 +13,6 @@ how_to_apply:
   - >-
     You can contact us on [Facebook](https://www.facebook.com/CaptainFact.io) or
     by email (contact@captainfact.io)
-  - ''
 tags: [graphic design, ui, ux, fun]
 date: '2017-11-05T22:17:53.521Z'
 ---

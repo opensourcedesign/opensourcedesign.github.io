@@ -12,7 +12,6 @@ compensation: gratis
 skills: ''
 how_to_apply:
   - Esteban <emanchado@demiurgo.org>
-  - ''
 tags: [graphic design, interaction design]
 date: '2017-05-26T18:30:03.003Z'
 ---

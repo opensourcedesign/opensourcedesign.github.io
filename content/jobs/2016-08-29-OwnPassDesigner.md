@@ -14,8 +14,6 @@ tags: [ui, branding, logo, ux, mobile]
 status: solved
 compensation: gratis
 date_posted: 2016-08-29
-description:
-how_to_apply:
 ---
 OwnPass is a self hosted, open source password management tool.
 It's an open source package of applications and browser extensions that make it possible to manage secure data across multiple devices.

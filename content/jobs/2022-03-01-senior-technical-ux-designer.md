@@ -11,7 +11,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - Yetunde Dada (Product Lead) <yetunde.dada@quantumblack.com>
-  - ''
 github_handle: '@yetudada'
 tags: [design, user research, prototyping, python]
 date: '2022-03-01T09:04:18.430Z'

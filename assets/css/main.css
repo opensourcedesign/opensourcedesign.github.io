@@ -1,18 +1,24 @@
 /* ==========================================================================
-   Custom site styles — compiled IN THE BROWSER by the Tailwind Play CDN
-   (@tailwindcss/browser), which baseof.html loads and which inlines this
-   file as <style type="text/tailwindcss">. There is no CSS build step:
-   utility classes used in layouts/ are compiled at runtime (issue #556).
+   Custom site styles, compiled one of two ways:
+
+   - Production (CI): the deploy workflows run the Tailwind CLI on this file
+     to produce assets/css/compiled.css (gitignored), which baseof.html links
+     as a small static stylesheet. The CLI scans layouts/, assets/ and
+     content/ for utility classes automatically.
+   - Local dev (issue #556 — no local build step): when compiled.css is
+     absent, baseof.html loads the Tailwind Play CDN (@tailwindcss/browser)
+     and inlines this file as <style type="text/tailwindcss">, compiling
+     utility classes in the browser at runtime.
 
    Notes:
-   - The framework import below is REQUIRED: the CDN only auto-injects it
-     when the stylesheet contains no import at-rule at all (it checks for
-     the literal substring, comments included). Without it no theme or
-     utilities are registered and every apply directive throws
+   - The framework import below is REQUIRED by both pipelines. The CDN only
+     auto-injects it when the stylesheet contains no import at-rule at all
+     (it checks for the literal substring, comments included); without it no
+     theme or utilities are registered and every apply directive throws
      "Cannot apply unknown utility class".
-   - No plugin/source directives: the CDN scans the DOM automatically and
-     cannot load plugins. The typography `prose` classes come from the
-     pre-compiled assets/css/typography.css (see typography.src.css).
+   - No plugin directives: the CDN cannot load plugins. The typography
+     `prose` classes come from the pre-compiled assets/css/typography.css
+     (see typography.src.css).
    ========================================================================== */
 
 @import "tailwindcss";

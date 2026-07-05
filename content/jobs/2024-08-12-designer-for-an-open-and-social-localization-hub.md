@@ -13,7 +13,6 @@ deliverables: >-
   we intend to have public on Figma or Penpot (when they support it).
 how_to_apply:
   - pedro@pepicrft.me
-  - ''
 github_handle: '@pepicrft.me'
 tags: [design, localization, open source]
 date: '2024-08-12T07:47:38.529Z'

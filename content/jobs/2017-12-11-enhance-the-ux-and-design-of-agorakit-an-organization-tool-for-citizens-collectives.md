@@ -17,7 +17,6 @@ deliverables: >-
 how_to_apply:
   - Philippe Jadin (main dev) <info@agorakit.org>
   - "Github : https://github.com/agorakit/agorakit\r\nHosted instance : https://app.agorakit.org/"
-tags: ''
 date: '2017-12-11T00:00:00.000Z'
 ---
 Agorakit is web-based, open source groupware for citizens. 

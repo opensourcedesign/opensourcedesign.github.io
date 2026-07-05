@@ -12,7 +12,6 @@ description: "Hubi is a tool to generate code based on ubiquitous language.\r\n\
 deliverables: A vectorized logo which can be embedded into the markdown.
 how_to_apply:
   - Marcos <marvinc.silva@gmail.com>
-  - ''
 tags:
   - comment-subscription
 date: '2018-05-08T01:05:22.577Z'

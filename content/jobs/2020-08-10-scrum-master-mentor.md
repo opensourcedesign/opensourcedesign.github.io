@@ -14,7 +14,6 @@ how_to_apply:
   - apply@hotosm.org
   - 'https://www.hotosm.org/jobs/scrum-master-slash-mentor/'
 github_handle: ''
-tags: ''
 date: '2020-08-10T11:36:55.450Z'
 ---
 Humanitarian OpenStreetMap Team (HOT) is a US-based NGO and global community of thousands of volunteers working together to use maps and open data for humanitarian response and the Sustainable Development Goals. The Scrum Master/Mentor will oversee the scrum and development teams and coach and mentor the HOT tech team as agile/scrum is adopted more broadly across the organisation. You will be an Agile advocate and scrum superstar, which will motivate those around you. The Scrum Master/Mentor will act as a buffer between the scrum teams and module owners and maintain a safe working environment for the team by helping with conflict resolution.

@@ -10,8 +10,6 @@ tags: [ui, ux, frontend, web]
 status: solved
 compensation: unspecified
 date_posted: 2015-03-22
-description:
-how_to_apply:
 ---
 
 This is a freelance gig for improving the user interface and experience of a

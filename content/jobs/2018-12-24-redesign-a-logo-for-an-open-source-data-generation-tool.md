@@ -11,7 +11,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - likid.geimfari@gmail.com
-  - ''
 tags: [logo, illustration, open source]
 date: '2018-12-24T15:15:23.064Z'
 ---

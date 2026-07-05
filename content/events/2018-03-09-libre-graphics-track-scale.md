@@ -2,7 +2,11 @@
 layout: event
 title: "Libre Graphics Track at Southern California Linux Expo (SCaLE) 2018"
 date: 2018-03-09
-categories: design hack meeting graphics
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
+  - "graphics"
 eventDate: Fri, 9 Mar 2018
 location: Pasadena Convention Center, Pasadena, CA USA
 time: full day

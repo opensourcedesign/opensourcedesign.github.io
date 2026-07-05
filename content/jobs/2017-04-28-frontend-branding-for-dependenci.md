@@ -12,7 +12,6 @@ description: "DependenCI is a Composer Continous Integration tool, that send a P
 skills: "Svg & png files for the logo, the font and main colors should be delivered."
 how_to_apply:
   - Send a mail to dependenci@miguelpiedrafita.com
-  - ''
 tags: [branding, logo, design, volunteer]
 date: '2017-04-28T13:28:04.234Z'
 ---

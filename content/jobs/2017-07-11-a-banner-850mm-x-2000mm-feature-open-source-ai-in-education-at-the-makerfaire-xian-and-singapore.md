@@ -13,8 +13,6 @@ compensation: gratis
 skills: "* we need it by Wed/Thurs this week if possible (sorry for the short notice) \r\n* would be great to have the banner in different formats: pdf, svg, eps"
 how_to_apply:
   - "hp@fossasia.org \r\ngitter: hpdang\r\n"
-  - ''
-tags: ''
 date: '2017-07-11T06:23:04.005Z'
 ---
 The banner should include: 

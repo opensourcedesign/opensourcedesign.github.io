@@ -16,7 +16,6 @@ how_to_apply:
     the corresponding GitHub
     issue](https://github.com/sinonjs/sinon/issues/1304). Thank you!
   - "Repository: https://github.com/sinonjs/sinon\r\nSinon.JS is hosted with GitHub pages. The Jekyll page can be found in the /docs directory."
-tags: ''
 date: '2017-02-28T09:04:20.067Z'
 ---
 

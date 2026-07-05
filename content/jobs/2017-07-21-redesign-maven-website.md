@@ -13,6 +13,5 @@ skills: "In the end we must work together to create a new skin (https://maven.ap
 how_to_apply:
   - "Robert Scholte <rfscholte@apache.org>\r\nHervé BOUTEMY <hboutemy@apache.org>\r\n"
   - "http://maven.apache.org\r\nhttp://maven.apache.org/skins/index.html\r\nhttps://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html (and other examples)\r\n"
-tags: ''
 date: '2017-07-25T19:37:55.672Z'
 ---

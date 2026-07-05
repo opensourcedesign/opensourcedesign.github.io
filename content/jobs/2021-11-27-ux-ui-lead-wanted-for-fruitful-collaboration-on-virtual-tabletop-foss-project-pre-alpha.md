@@ -16,7 +16,6 @@ how_to_apply:
   - jordancraw@riseup.net
   - 'https://dynastra-tabletop-docs.netlify.app/'
 github_handle: ''
-tags: ''
 date: '2021-11-27T17:32:03.524Z'
 ---
 I previously worked on a Virtual Tabletop project, but it just wasn't the kind of FOSS project that I think a Virtual Tabletop needed. I decided to start my own because I have the experience, but I want someone who is a UX/UI designer to come on board and help with the development and guidance of the project. The project aims to be professional, and already has defined releases, milestones, epics, user stories, and tasks, onboarding, developer documentation. 

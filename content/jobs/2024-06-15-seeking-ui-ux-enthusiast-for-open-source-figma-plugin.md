@@ -12,7 +12,6 @@ compensation: gratis
 deliverables: "- Suggestions for UI/UX improvements\r\n- Potential new feature ideas and designs"
 how_to_apply:
   - Jackson Kasi (creator/developer) jacksonkasipeacock@gmail.com
-  - ''
 github_handle: jacksonkasi1
 tags: [ui, ux, open source, figma, browser extension]
 date: '2024-06-15T15:02:23.230Z'

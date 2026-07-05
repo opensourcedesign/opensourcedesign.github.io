@@ -13,7 +13,6 @@ compensation: gratis
 deliverables: "Driver info widget\r\nConstructor info widget\r\nDrivers standing table widget \r\nConstructors standing table"
 how_to_apply:
   - Raztamim94@gmail.com
-  - ''
 github_handle: raztam
 tags: [mobile]
 date: '2026-05-03T07:39:37.388Z'

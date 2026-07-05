@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: The logo in a common vector format
 how_to_apply:
   - 'Gregor (project owner): https://github.com/gr2m/wip-bot/issues/67'
-  - ''
 tags: [logo]
 date: '2018-05-05T23:14:52.999Z'
 ---

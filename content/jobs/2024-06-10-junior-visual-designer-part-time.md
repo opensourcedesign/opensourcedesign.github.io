@@ -11,7 +11,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - Elio Qoshi
-  - ''
 github_handle: ''
 tags: [branding, visual design, ui]
 date: '2024-06-10T06:48:09.564Z'

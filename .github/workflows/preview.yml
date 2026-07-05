@@ -15,6 +15,7 @@ concurrency:
 env:
   # Keep in lockstep with hugo-build.yml so previews match production output.
   HUGO_VERSION: 0.163.2
+  TAILWIND_VERSION: 4.3.2
 
 jobs:
   build-preview:
@@ -32,8 +33,19 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      # No Node/CSS step: Tailwind runs in the browser via the Play CDN and
-      # the typography bundle is checked in (issue #556).
+      # Same Tailwind compile as hugo-build.yml so previews ship the static
+      # stylesheet exactly like production (baseof.html falls back to the
+      # Play CDN only when compiled.css is absent, i.e. for local dev).
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Compile Tailwind CSS
+        run: |
+          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
+          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+
       - name: Build site for preview
         run: hugo --minify --baseURL "https://opensourcedesign.net/pr-preview/pr-${{ github.event.pull_request.number }}/"
 

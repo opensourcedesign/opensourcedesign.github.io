@@ -14,8 +14,6 @@ tags: [ui, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-02-04
-description:
-how_to_apply:
 ---
 Hy,
 this is my hobby project, a fun little android game.

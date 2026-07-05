@@ -14,6 +14,9 @@ concurrency:
 
 env:
   HUGO_VERSION: 0.163.2
+  # Keep in lockstep with the @tailwindcss/browser version pinned in
+  # layouts/_default/baseof.html (the local-dev Play CDN fallback).
+  TAILWIND_VERSION: 4.3.2
   # Pagefind is a standalone Rust binary downloaded straight from GitHub
   # releases — no npm involved. Update the version and checksum together
   # (checksum from the .tar.gz.sha256 asset on the release page).
@@ -48,9 +51,21 @@ jobs:
           restore-keys: |
             hugo-resources-
 
-      # No CSS build step: Tailwind runs in the browser via the Play CDN and
-      # the typography bundle is checked in (issue #556). The Pagefind search
-      # indexer is fetched as a prebuilt binary, so no Node/npm is needed.
+      # Compile Tailwind to a small static stylesheet for production. Local
+      # contributors still need no build step (issue #556): when this file is
+      # absent, baseof.html falls back to the Tailwind Play CDN. The CLI scans
+      # layouts/, assets/ and content/ for utility classes automatically.
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Compile Tailwind CSS
+        run: |
+          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
+          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+
+      # The Pagefind search indexer is fetched as a prebuilt binary.
       - name: Install Pagefind
         run: |
           curl -fsSL -o pagefind.tar.gz \

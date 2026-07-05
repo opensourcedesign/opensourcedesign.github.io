@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design has a devroom at FOSDEM 2024!"
 date: 2023-11-15
-categories: design conference open-source
+categories:
+  - "design"
+  - "conference"
+  - "open-source"
 eventDate: Saturday & Sunday 3rd-4th February 2024
 location: université Libre Brussels, Belgium
 time: 13:00 to 17:00 CET

@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: "logos for the above use-cases\r\ncolor schemes that goe along\r\nbackground textures that goe along"
 how_to_apply:
   - Andrej Kliman <ak@lumi.education>
-  - ''
 tags: [logo, branding, interaction design, education, raspberry pi]
 date: '2017-11-09T18:36:57.578Z'
 ---

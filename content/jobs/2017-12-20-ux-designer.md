@@ -13,8 +13,6 @@ deliverables: ''
 how_to_apply:
   - >-
     https://www.seek.com.au/job/35109484?type=standout&userqueryid=1eb9fb9463131a7e5cbfc77ee52a16e4-9673835
-  - ''
-tags: ''
 date: '2017-12-20T03:20:45.304Z'
 ---
 Moodle with us!

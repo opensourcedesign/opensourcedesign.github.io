@@ -6,15 +6,11 @@ role: Visual Designer
 organization: Simply Secure for Tor Project
 github: ameellio
 contact: UX@simplysecure.org
-contributing_md:
-contributors_md:
 org_url: https://simplysecure.org/
 tags: [branding, visual design]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2016-04-19
-description:
-how_to_apply:
 ---
 The Tor Project is seeking to create a visual and typographic style guide to harmonize and professionalize the presentation of its various efforts.
 

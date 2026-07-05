@@ -7,15 +7,11 @@ role: UI Designer, UX Designer, Icon Designer
 organization: Navit
 github: navit-gps
 contact: github ( navit-gps ), #navit on Freenode
-contributing_md:
-contributors_md:
 org_url: http://www.navit-project.org
 tags: [ui, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-08-10
-description:
-how_to_apply:
 ---
 
 Navit is the opensource, vector based navigation software, running on almost any device, from Tomtom to the laster Android phone.

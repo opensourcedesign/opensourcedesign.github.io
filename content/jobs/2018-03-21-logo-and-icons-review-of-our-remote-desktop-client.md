@@ -12,7 +12,6 @@ deliverables: "A feature rich Remote Desktop Application for Linux and other Uni
 how_to_apply:
   - Antenore@simbiosi.org
   - 'http://github.com/FreeRDP/Remmina '
-tags: ''
 date: '2018-03-21T18:04:28.583Z'
 ---
 Remmina is

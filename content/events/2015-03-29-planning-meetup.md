@@ -2,7 +2,9 @@
 layout: event
 title: "Planning Meetup, Mar 29, 2015"
 date: 2015-03-29
-categories: planing meeting
+categories:
+  - "planing"
+  - "meeting"
 eventDate: Sun, 29 March 2015
 location: online
 time: 15:00–16:30 CET (UTC +1:00)

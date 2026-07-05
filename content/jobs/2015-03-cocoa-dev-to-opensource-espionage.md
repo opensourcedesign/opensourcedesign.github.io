@@ -10,8 +10,6 @@ tags: [macos, security]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2015-03-18
-description:
-how_to_apply:
 ---
 
 ## Toward Sustainable Open Source Development. Cocoa Developer Wanted.

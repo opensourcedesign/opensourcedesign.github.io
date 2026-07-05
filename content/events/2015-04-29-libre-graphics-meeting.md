@@ -2,7 +2,10 @@
 layout: event
 title: "Libre Graphics Meeting 2015"
 date: 2015-04-29
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Tue, 29 April 2015 – Sat, 2 May 2015
 location: Toronto, Canada
 time: full days

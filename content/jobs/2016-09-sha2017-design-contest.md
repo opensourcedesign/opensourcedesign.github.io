@@ -13,8 +13,6 @@ tags: [design, branding, logo, theming]
 status: closed
 compensation: gratis
 date_posted: 2016-09-13
-description:
-how_to_apply:
 ---
 
 The upcoming Dutch hacker camp SHA2017 is looking for a design and therefore we ask YOU to submit a proposal.

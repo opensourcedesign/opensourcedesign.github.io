@@ -13,6 +13,5 @@ how_to_apply:
 tags: [logo, prototyping, gnome, linux]
 date: 2017-01-02
 date_posted: 2017-01-02
-description:
 ---
 I'm working on a 2-factor authentication application for Gnome. The code source of the project can be found on the organization/project URL. I would love to improve the user experience and so the UI. Also the logo, might need some modifications.

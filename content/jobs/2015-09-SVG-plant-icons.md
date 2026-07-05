@@ -13,8 +13,6 @@ tags: [icons, agriculture, svg]
 status: solved
 compensation: gratis
 date_posted: 2015-09-26
-description:
-how_to_apply:
 ---
 
 Hi!

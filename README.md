@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed:
 - **Hugo** (extended version recommended)
 - **Git** - [Download Git](https://git-scm.com/)
 
-That's all — **no Node.js or npm**. There is no CSS build step (Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn)), and the two optional build tools are standalone binaries:
+That's all — **no Node.js or npm**. Local development needs no CSS build step: Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn). (Production deploys compile the same stylesheet ahead of time with the Tailwind CLI in CI, so visitors get a small static CSS file instead of the CDN — see `.github/workflows/hugo-build.yml`.) The two optional build tools are standalone binaries:
 
 - **[Pagefind](https://github.com/Pagefind/pagefind/releases)** (*optional*) - single binary that generates the search index; only needed to test search locally (CI downloads it automatically)
 - **[Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases)** (*optional*) - single binary; only needed to regenerate the vendored typography stylesheet, which is rare
@@ -85,7 +85,7 @@ For other platforms, download from the [Hugo releases page](https://github.com/g
    hugo server
    ```
 
-   That's it — styling works out of the box. Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser).
+   That's it — styling works out of the box. Locally, Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser). In CI the same `main.css` is compiled once into a static stylesheet (`assets/css/compiled.css`, gitignored) that the base template picks up automatically when present.
 
 3. **Open your browser** at `http://localhost:1313/`
 
@@ -257,9 +257,9 @@ Content that appears on multiple pages is managed through YAML files in `data/`:
 
 ## Styling Guidelines
 
-The site uses Tailwind CSS v4 with CSS-based configuration, compiled at runtime by the Play CDN — there is no CSS build step. To modify styles:
+The site uses Tailwind CSS v4 with CSS-based configuration. Locally it is compiled at runtime by the Play CDN (no build step); in CI the deploy workflows compile it once with the Tailwind CLI so production ships a static stylesheet. To modify styles:
 
-1. Edit `assets/css/main.css` for custom components and base styles (it is inlined into every page as `text/tailwindcss` and supports the full Tailwind syntax, including `@apply` and `@theme`)
+1. Edit `assets/css/main.css` for custom components and base styles (it supports the full Tailwind syntax, including `@apply` and `@theme`, and is the single source for both pipelines)
 2. Use Tailwind utility classes directly in HTML templates (`layouts/`)
 3. Run `hugo server` to see changes with live reload
 4. Only `prose-*` typography classes are pre-compiled — see *Working on styles* above if you need a new one

@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - Tord (lead dev) <tord@disroot.org>
-  - ''
 tags: [ux, ui, interaction design]
 commentDate: '2018-01-14T22:46:04.738Z'
 date: '2018-01-14T22:46:04.738Z'

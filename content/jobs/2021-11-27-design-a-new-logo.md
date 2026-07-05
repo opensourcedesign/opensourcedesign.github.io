@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A logo
 how_to_apply:
   - Bruno Miguel <bruno@fosshost.org)
-  - ''
 github_handle: ''
 tags: [logo, branding, open source]
 date: '2021-11-27T15:23:10.493Z'

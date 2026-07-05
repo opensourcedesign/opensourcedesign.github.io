@@ -14,7 +14,6 @@ compensation: paid
 deliverables: "To be discussed, but includes:\r\nMascot\r\nLogo/text treatment\r\nColor palette\r\nWebsite development and vector graphic creation"
 how_to_apply:
   - josh@githedgehog.com
-  - ''
 github_handle: ''
 tags: [logo, branding, web design]
 date: '2022-07-11T17:02:05.442Z'

@@ -14,7 +14,5 @@ tags: [ui, branding, logo]
 status: solved
 compensation: gratis
 date_posted: '2015-03-20'
-description:
-how_to_apply:
 ---
 I'm looking for logo design for the open source Internet Of Things Dashboard - IoT Dashboard (https://iotdashboard.io) and IoTStack.io organization. I would like to work closely with somebody for the future expansion of the product as icons for IoT devices are needed and etc.

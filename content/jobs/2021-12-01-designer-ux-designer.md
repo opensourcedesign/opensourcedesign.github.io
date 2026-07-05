@@ -12,9 +12,7 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - julia.hildebrand@correctiv.org
-  - ''
 github_handle: ''
-tags: ''
 date: '2021-12-01T14:39:44.661Z'
 ---
 CORRECITV is a non-profit investigative journalism organisation from Germany. 

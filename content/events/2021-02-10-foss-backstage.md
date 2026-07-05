@@ -2,7 +2,10 @@
 layout: event
 title: "FOSS Backstage 2021"
 date: 2021-02-10
-categories: design conference open-source
+categories:
+  - "design"
+  - "conference"
+  - "open-source"
 eventDate: Wed, 10 - 11 Feb 2021
 location: Online, Remote
 time: 1/2 days

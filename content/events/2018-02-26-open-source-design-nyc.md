@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design NYC: Feb 26 2018"
 date: 2018-02-26
-categories: design meetup community
+categories:
+  - "design"
+  - "meetup"
+  - "community"
 eventDate: Mon, 26 Feb 2018
 location: New York
 time: 6:00pm - 8.00pm (EDT)

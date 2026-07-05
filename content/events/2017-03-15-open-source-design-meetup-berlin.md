@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design Meetup Berlin, Mar 15, 2017"
 date: 2017-03-15
-categories: design meetup community
+categories:
+  - "design"
+  - "meetup"
+  - "community"
 eventDate: Fr, 15 March 2017
 location: Mozilla Berlin Community Space - Haus 12, Voltastr. 5, 13355 Berlin
 time: 19:00 - 22:00 (UTC +1:00)

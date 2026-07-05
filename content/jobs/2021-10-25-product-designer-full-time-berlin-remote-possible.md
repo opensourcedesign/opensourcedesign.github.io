@@ -15,7 +15,6 @@ how_to_apply:
   - 'Joachim, founder // joachim (at) jolocom.io'
   - 'https://jolocom.io/hiring-product-designer/'
 github_handle: 'https://github.com/jolocom'
-tags: ''
 date: '2021-10-25T11:10:51.302Z'
 ---
 Jolocom is for a talented Product Designer to join us in our journey of putting people, organizations, and machines in control of their data using decentralized identity management technology.

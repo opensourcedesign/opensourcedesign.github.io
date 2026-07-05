@@ -2,7 +2,9 @@
 layout: event
 title: "Berlin Open Source Design meetup, Mar 15, 2015"
 date: 2015-03-15 19:37:47
-categories: berlin meeting
+categories:
+  - "berlin"
+  - "meeting"
 eventDate: Sun, 15 March 2015
 location: bnvk Haus/online
 time: 13:00–18:00 CET (UTC +1:00)

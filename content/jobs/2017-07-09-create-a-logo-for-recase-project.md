@@ -11,7 +11,6 @@ compensation: gratis
 skills: Logo in HiRes.
 how_to_apply:
   - "Nikita Sobolev - mail@sobolevn.me\r\nOr github: https://github.com/sobolevn"
-  - ''
 tags: [logo, elixir]
 date: '2017-07-09T09:53:37.981Z'
 ---

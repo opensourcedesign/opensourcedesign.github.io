@@ -16,7 +16,6 @@ how_to_apply:
   - >-
     https://www.openappstack.net/2021/05/11/make-us-look-good-ux-design-call-for-proposals.html
 github_handle: ''
-tags: ''
 date: '2021-05-11T11:31:59.014Z'
 ---
 [OpenAppStack (OAS)](https://openappstack.net/) is looking for individuals or companies specialised in value-sensitive UX and design, for a full design of the administrative dashboard for OAS.

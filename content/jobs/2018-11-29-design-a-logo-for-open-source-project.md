@@ -12,7 +12,6 @@ compensation: gratis
 deliverables: Logo in SVG format
 how_to_apply:
   - Volodymyr (developer) klymenkodp@gmail.com
-  - ''
 tags: [logo, branding, graphic design]
 date: '2018-11-29T21:38:21.396Z'
 ---

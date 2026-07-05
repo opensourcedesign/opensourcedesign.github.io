@@ -12,7 +12,6 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - fs@aboutpolitics.co
-  - ''
 tags: [ux, ui]
 date: '2019-01-06T09:47:57.847Z'
 ---

@@ -212,20 +212,29 @@
       }
     </style>
 
-    {{/* Styling (issue #556 — no CSS build step):
+    {{/* Styling:
          1. typography.css — pre-compiled @tailwindcss/typography `prose`
             classes plus Tailwind preflight/theme, giving a readable no-JS
             baseline. The Play CDN cannot load plugins, hence vendored.
-         2. The Tailwind Play CDN (@tailwindcss/browser) — compiles utility
-            classes from the DOM at runtime; any standard Tailwind class used
-            in templates just works. Pinned + SRI for supply-chain safety.
-         3. main.css inlined as text/tailwindcss — custom theme (Inter),
-            components, and base styles, compiled by the CDN (supports @apply). */}}
+         2. Utilities + custom theme, one of two ways:
+            - Production (CI): deploy workflows compile assets/css/main.css
+              with the Tailwind CLI into assets/css/compiled.css (gitignored)
+              before running Hugo, and we ship that small static stylesheet.
+            - Local dev fallback (issue #556 — no local build step required):
+              when compiled.css is absent, the Tailwind Play CDN
+              (@tailwindcss/browser) compiles utility classes from the DOM at
+              runtime and main.css is inlined as text/tailwindcss (supports
+              @apply). Pinned + SRI for supply-chain safety. */}}
     {{ $typo := resources.Get "css/typography.css" | fingerprint }}
     <link rel="stylesheet" href="{{ $typo.RelPermalink }}" integrity="{{ $typo.Data.Integrity }}" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.2/dist/index.global.js" integrity="sha384-yzJGD2ZXURu6RaDFjaXOC6IrnZq1aEeldwvXw7Pec43Q2BnmHkys/fGPzvwEtojO" crossorigin="anonymous"></script>
-    {{ $tw := resources.Get "css/main.css" }}
-    <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
+    {{ with resources.Get "css/compiled.css" }}
+      {{ $css := . | fingerprint }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+    {{ else }}
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.2/dist/index.global.js" integrity="sha384-yzJGD2ZXURu6RaDFjaXOC6IrnZq1aEeldwvXw7Pec43Q2BnmHkys/fGPzvwEtojO" crossorigin="anonymous"></script>
+      {{ $tw := resources.Get "css/main.css" }}
+      <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
+    {{ end }}
 
     {{/* RSS Feed */}}
     {{ with .OutputFormats.Get "RSS" }}

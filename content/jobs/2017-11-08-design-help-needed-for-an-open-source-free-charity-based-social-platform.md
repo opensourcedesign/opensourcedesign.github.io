@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - andrew@trekkingforcharity.org
-  - ''
 tags: [logo, branding, ux]
 date: '2017-11-08T12:54:24.839Z'
 ---

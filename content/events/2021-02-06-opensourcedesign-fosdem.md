@@ -2,7 +2,10 @@
 layout: event
 title: "Call for Participation: Open Source Design Devroom at FOSDEM 2021"
 date: 2020-02-06
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Sat & Sun, 6 & 7 Feb 2021
 location: Fully online
 timezone: Brussels local time (Central European Time)

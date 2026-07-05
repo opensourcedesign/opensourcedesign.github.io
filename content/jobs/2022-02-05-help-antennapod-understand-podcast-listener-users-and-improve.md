@@ -16,7 +16,6 @@ how_to_apply:
   - 'https://forum.antennapod.org/'
   - "https://antennapod.org/\r\nhttps://github.com/AntennaPod/AntennaPod/labels/needs:%20mock-up%20or%20user%20story\r\nhttps://github.com/AntennaPod\r\nhttps://twitter.com/antennapod"
 github_handle: ''
-tags: ''
 date: '2022-02-05T18:46:20.797Z'
 ---
 Help Antennapod understand their varied user behaviours around managing podcast episodes and offer improvement suggestion based on user research and insight.

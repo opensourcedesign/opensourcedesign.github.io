@@ -13,9 +13,7 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - Björn <bjoern@privact.org>
-  - ''
 github_handle: ''
-tags: ''
 date: '2025-02-20T08:11:26.672Z'
 ---
 With the non-profit organization privact e.V. we aim to overcome surveillance capitalism and reclaim digital privacy for all.

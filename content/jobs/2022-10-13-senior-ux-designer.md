@@ -1,6 +1,6 @@
 ---
 _id: 69cc13b0-4b12-11ed-8bae-1db54011d474
-status: completed
+status: solved
 date_posted: '2022-10-13'
 layout: jobs
 organization: Open Collective

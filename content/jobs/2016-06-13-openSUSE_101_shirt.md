@@ -13,8 +13,6 @@ tags: [apparel]
 status: solved
 compensation: free shirt / swag / gratis
 date_posted: 2016-06-13
-description:
-how_to_apply:
 ---
 At openSUSE we participate every year in several open source mentoring programs like [Google Summer of Code](https://summerofcode.withgoogle.com/organizations/4794149198888960/)  or [Rails Girls Summer of Code](http://railsgirlssummerofcode.org/).
 To centralize and organize our efforts we created the [openSUSE 101](http://101.opensuse.org/) mentoring program.

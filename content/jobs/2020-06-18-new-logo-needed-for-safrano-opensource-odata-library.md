@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A logo
 how_to_apply:
   - dev@aithscel.eu
-  - ''
 github_handle: ''
 tags: [logo]
 date: '2020-06-18T18:50:24.242Z'

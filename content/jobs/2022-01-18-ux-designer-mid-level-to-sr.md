@@ -12,7 +12,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - 'Erik Moeller, jobs+ux@freedom.press'
-  - ''
 github_handle: ''
 tags: [ui, visual design, product design, user research, web design]
 date: '2022-01-18T22:19:08.305Z'

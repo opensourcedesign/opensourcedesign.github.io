@@ -12,9 +12,7 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - Adam (project coordinator) <adam.szopa@kde.org>
-  - ''
 github_handle: ''
-tags: ''
 date: '2020-06-30T11:03:41.488Z'
 ---
 Each year during Akademy we have training sessions that help our open source community grow their skills.

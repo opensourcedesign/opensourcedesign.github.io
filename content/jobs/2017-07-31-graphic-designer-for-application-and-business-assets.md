@@ -11,7 +11,6 @@ compensation: paid
 skills: ''
 how_to_apply:
   - design@peerio.com
-  - ''
 tags: [graphic design, security, privacy, startup, full-time, montreal, canada, remote]
 date: '2017-07-31T15:52:15.312Z'
 ---

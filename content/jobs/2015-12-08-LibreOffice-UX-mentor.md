@@ -9,8 +9,6 @@ tags: [ui, ux]
 status: closed
 compensation: unspecified
 date_posted: 2015-12-08
-description:
-how_to_apply:
 ---
 Taken from: https://blog.documentfoundation.org/blog/2015/12/08/tdf-freelance-job-opening-201512-01-user-experience-mentor/
 

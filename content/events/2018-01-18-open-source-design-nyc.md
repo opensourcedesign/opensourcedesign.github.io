@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design NYC: Jan 18 2018"
 date: 2018-01-18
-categories: design meetup community
+categories:
+  - "design"
+  - "meetup"
+  - "community"
 eventDate: Thurs, 18 Jan 2018
 location: New York
 time: 6:00pm - 8.00pm (EDT)

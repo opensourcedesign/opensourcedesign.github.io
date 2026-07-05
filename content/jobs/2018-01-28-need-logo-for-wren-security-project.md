@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A logo and a set of icons
 how_to_apply:
   - Kortanul <kortanul@protonmail.com>
-  - ''
 tags: [logo, branding, graphic design]
 date: '2018-01-28T07:19:22.427Z'
 ---

@@ -12,9 +12,7 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - Kushal Das (mail@kushaldas.in)
-  - ''
 github_handle: ''
-tags: ''
 date: '2021-02-07T16:56:58.985Z'
 ---
 Tumpa is looking for someone to help them with interface mockups.

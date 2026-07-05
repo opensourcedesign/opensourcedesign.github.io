@@ -14,9 +14,7 @@ how_to_apply:
   - >-
     dkozel@gnuradio.org or their matrix chat rooms (#gnuradio:gnuradio.org
     #website:gnuradio.org #grc-dev:gnuradio.org)
-  - ''
 github_handle: ''
-tags: ''
 date: '2021-02-07T17:11:50.370Z'
 ---
 GNU Radio have realised their tools are being used by many people who are not experts in software defined radio, as well as students and teachers. They would like to get a designer involved in the project to help them improve their existing graphical user interface and make it work for those non-expert users. 

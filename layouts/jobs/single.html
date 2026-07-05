@@ -423,8 +423,14 @@
     {{ with .File }}
       {{ $jp = merge $jp (dict "identifier" (dict "@type" "PropertyValue" "name" ($org | default site.Title) "value" .ContentBaseName)) }}
     {{ end }}
-    {{ with .Params.date_posted }}
-      {{ $jp = merge $jp (dict "validThrough" (((time.AsTime .).AddDate 0 6 0).Format "2006-01-02")) }}
+    {{/* The application deadline is the authoritative expiry; fall back to
+         posted + 6 months (matching the auto-expiry horizon) without one. */}}
+    {{ if $deadlineISO }}
+      {{ $jp = merge $jp (dict "validThrough" $deadlineISO) }}
+    {{ else }}
+      {{ with .Params.date_posted }}
+        {{ $jp = merge $jp (dict "validThrough" (((time.AsTime .).AddDate 0 6 0).Format "2006-01-02")) }}
+      {{ end }}
     {{ end }}
     <script type="application/ld+json">{{ $jp | jsonify | safeJS }}</script>
   {{ end }}

@@ -2,7 +2,10 @@
 layout: event
 title: "Open Design @ Open UP global summit: Taipei, Nov 30th - Dec 7th"
 date: 2019-11-30
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Sunday, 1st Dec 2019 & Saturday, 7th Dec 2019
 location: Taipei, Taiwan
 time: two half days

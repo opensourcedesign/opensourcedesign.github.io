@@ -12,7 +12,6 @@ compensation: gratis
 deliverables: A logo & a set of icons
 how_to_apply:
   - Veronika (volunteer) veronika.nad@gmail.com
-  - ''
 tags: [logo, graphic design, journalism]
 date: '2018-04-26T06:18:45.035Z'
 ---

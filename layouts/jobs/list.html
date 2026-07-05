@@ -18,6 +18,31 @@
   {{ $paidCount := $counts.Get "paid" }}
   {{ $gratisCount := $counts.Get "gratis" }}
 
+  {{/* Category chips: the `role` front matter is free text (70+ distinct
+       strings in the corpus), so jobs are keyword-matched into a small
+       canonical set. A job can belong to several categories. Keep the
+       patterns in sync with $jobCats consumers below. */}}
+  {{ $catDefs := slice
+    (dict "id" "logo-branding" "label" "Logo & branding" "re" `(?i)logo|brand|identity|badge|sticker`)
+    (dict "id" "web" "label" "Web design" "re" `(?i)web|website|homepage`)
+    (dict "id" "ui" "label" "UI design" "re" `(?i)\bui\b|user interface|interface design`)
+    (dict "id" "ux-research" "label" "UX & research" "re" `(?i)\bux\b|user experience|usability|user research|wireframe|user interview`)
+    (dict "id" "interaction" "label" "Interaction design" "re" `(?i)interaction`)
+    (dict "id" "icons-illustration" "label" "Icons & illustration" "re" `(?i)icon|illustrat|artwork|animation|concept art`)
+    (dict "id" "graphic" "label" "Graphic design" "re" `(?i)graphic|information design|print`)
+    (dict "id" "accessibility" "label" "Accessibility" "re" `(?i)accessib`)
+  }}
+  {{/* Count matches per category for the chip labels. */}}
+  {{ range $jobs }}
+    {{ $role := printf "%v" (.Params.role | default "") }}
+    {{ $tags := .Params.tags | default (slice) }}
+    {{ $tagsJoined := cond (reflect.IsSlice $tags) (delimit $tags " ") (printf "%v" $tags) }}
+    {{ $hay := printf "%s %s" $role $tagsJoined }}
+    {{ range $catDefs }}
+      {{ if findRE .re $hay 1 }}{{ $counts.Add (printf "cat-%s" .id) 1 }}{{ end }}
+    {{ end }}
+  {{ end }}
+
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     {{/* Editorial header */}}
     <header class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between" aria-labelledby="jobs-heading">
@@ -78,6 +103,19 @@
       </div>
     </div>
 
+    {{/* Category chips (multi-select; a job matches if it's in any selected
+         category). Only categories with at least one open job are shown. */}}
+    <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter by design category">
+      {{ range $catDefs }}
+        {{ $n := $counts.Get (printf "cat-%s" .id) | default 0 }}
+        {{ if gt $n 0 }}
+          <button class="osd-cat rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-cat="{{ .id }}" aria-pressed="false">
+            {{ .label }} <span class="opacity-60">{{ $n }}</span>
+          </button>
+        {{ end }}
+      {{ end }}
+    </div>
+
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
       <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/jobs/archive/" | relURL }}">browse {{ len $jobsAll }}+ archived jobs</a>
     </div>
@@ -104,7 +142,12 @@
         {{ else }}
           {{ $tagsStr = printf "%v" $tags }}
         {{ end }}
-        <li class="job-item border-b border-slate-200" data-comp="{{ $compType }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
+        {{ $hay := printf "%s %s" $role (replace $tagsStr "," " ") }}
+        {{ $cats := slice }}
+        {{ range $catDefs }}
+          {{ if findRE .re $hay 1 }}{{ $cats = $cats | append .id }}{{ end }}
+        {{ end }}
+        <li class="job-item border-b border-slate-200" data-comp="{{ $compType }}" data-cats="{{ delimit $cats " " }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
           {{/* Stale marker: visible at build time when already past the
                three-month threshold, otherwise revealed client-side by main.js
                (builds can be weeks apart, so build time alone undercounts). */}}
@@ -166,6 +209,7 @@
         var clearBtn = document.getElementById('jobs-clear');
         var emptyEl = document.getElementById('jobs-empty');
         var buttons = Array.prototype.slice.call(document.querySelectorAll('.osd-filter'));
+        var catButtons = Array.prototype.slice.call(document.querySelectorAll('.osd-cat'));
 
         function setPressed(activeComp) {
           buttons.forEach(function (btn) {
@@ -181,15 +225,35 @@
           });
         }
 
+        function setCatPressed(activeCats) {
+          catButtons.forEach(function (btn) {
+            var on = activeCats.indexOf(btn.getAttribute('data-cat')) !== -1;
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            if (on) {
+              btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
+              btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+            } else {
+              btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
+              btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+            }
+          });
+        }
+
         function getState() {
           var params = new URLSearchParams(window.location.search);
-          return { comp: params.get('comp') || 'all', q: params.get('q') || '' };
+          var cat = params.get('cat') || '';
+          return {
+            comp: params.get('comp') || 'all',
+            q: params.get('q') || '',
+            cats: cat ? cat.split(',').filter(Boolean) : []
+          };
         }
 
         function setState(next) {
           var params = new URLSearchParams(window.location.search);
           if (next.comp && next.comp !== 'all') params.set('comp', next.comp); else params.delete('comp');
           if (next.q) params.set('q', next.q); else params.delete('q');
+          if (next.cats && next.cats.length) params.set('cat', next.cats.join(',')); else params.delete('cat');
           var qs = params.toString();
           var url = window.location.pathname + (qs ? ('?' + qs) : '');
           window.history.replaceState({}, '', url);
@@ -199,15 +263,18 @@
           var state = getState();
           var q = (state.q || '').trim().toLowerCase();
           setPressed(state.comp);
+          setCatPressed(state.cats);
           if (input && input.value !== state.q) input.value = state.q;
 
           var shown = 0;
           items.forEach(function (li) {
             var comp = li.getAttribute('data-comp') || '';
+            var cats = (li.getAttribute('data-cats') || '').split(' ').filter(Boolean);
             var hay = (li.getAttribute('data-title') || '') + ' ' + (li.getAttribute('data-org') || '') + ' ' + (li.getAttribute('data-tags') || '');
             var okComp = state.comp === 'all' || comp === state.comp;
+            var okCat = !state.cats.length || state.cats.some(function (c) { return cats.indexOf(c) !== -1; });
             var okQ = !q || hay.indexOf(q) !== -1;
-            var show = okComp && okQ;
+            var show = okComp && okCat && okQ;
             li.style.display = show ? '' : 'none';
             if (show) shown++;
           });
@@ -220,6 +287,17 @@
           btn.addEventListener('click', function () {
             var next = getState();
             next.comp = btn.getAttribute('data-comp') || 'all';
+            setState(next);
+            apply();
+          });
+        });
+
+        catButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var next = getState();
+            var id = btn.getAttribute('data-cat');
+            var i = next.cats.indexOf(id);
+            if (i === -1) next.cats.push(id); else next.cats.splice(i, 1);
             setState(next);
             apply();
           });

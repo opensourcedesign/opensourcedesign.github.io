@@ -12,7 +12,6 @@ description: "Hello all, \r\n\r\nI'm working on an application on IPFS (https://
 deliverables: A logo for the application and sketch for pages.
 how_to_apply:
   - Josselin chevalay <josselin54.chevalay@gmail.com>
-tags: ''
 date: '2018-02-11T15:31:29.860Z'
 slug: uxui-desiger
 ---

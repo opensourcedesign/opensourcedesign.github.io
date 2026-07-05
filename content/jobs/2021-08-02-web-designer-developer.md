@@ -11,7 +11,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - jobs@nextcloud.com
-  - ''
 github_handle: ''
 tags: [web design, frontend, html, css, php]
 date: '2021-08-02T09:28:11.889Z'

@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A pencil based UX prototype.
 how_to_apply:
   - paulineleon@tutanota.com
-  - ''
 github_handle: ''
 tags: [ux]
 date: '2020-03-17T19:58:37.079Z'

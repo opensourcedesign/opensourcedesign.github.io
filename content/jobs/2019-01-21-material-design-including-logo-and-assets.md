@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: "A logo\r\nUX design and assets for various screens\r\n- Onboarding flow\r\n- Home/Dashboard\r\n- User profile\r\n- List of requests\r\n- Individual request\r\n- About/Contact"
 how_to_apply:
   - sriram.s@outlook.in
-  - ''
 tags: [logo, branding, material design]
 date: '2019-01-21T05:22:56.306Z'
 ---

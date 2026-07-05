@@ -13,7 +13,6 @@ deliverables: >-
   Web, IM, Mobile) and Level (Core, Advanced).
 how_to_apply:
   - Georg Lukas <georg@op-co.de>
-  - ''
 tags: [badges, logo, graphic design]
 date: '2019-03-19T15:35:03.473Z'
 ---

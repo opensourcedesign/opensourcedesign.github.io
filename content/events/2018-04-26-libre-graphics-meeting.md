@@ -2,7 +2,10 @@
 layout: event
 title: "Libre Graphics Meeting 2018"
 date: 2018-04-26
-categories: design hack meeting
+categories:
+  - "design"
+  - "hack"
+  - "meeting"
 eventDate: Thu, 26 April 2018 – Mon, 30 April 2018
 location: C / Pasaje Mallol 22, 41003, Seville, Spain
 time: full days

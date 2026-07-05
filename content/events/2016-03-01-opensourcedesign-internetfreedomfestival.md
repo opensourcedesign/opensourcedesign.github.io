@@ -2,7 +2,10 @@
 layout: event
 title: "Internet Freedom Festival 2016"
 date: 2016-03-01
-categories: design internet-freedom activism
+categories:
+  - "design"
+  - "internet-freedom"
+  - "activism"
 eventDate: 2016-03-01
 location: Calle de Juan Verdeguer 16, 46024 – Valencia, Spain
 time:

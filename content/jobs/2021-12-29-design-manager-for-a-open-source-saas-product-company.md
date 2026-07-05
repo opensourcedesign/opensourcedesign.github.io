@@ -13,7 +13,6 @@ how_to_apply:
   - vaishnavi@appsmith.com
   - 'Please submit your profile in this page - https://angel.co/l/2w4E8R'
 github_handle: ''
-tags: ''
 date: '2021-12-29T14:26:22.914Z'
 ---
 About Appsmith

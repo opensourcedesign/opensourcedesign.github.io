@@ -7,7 +7,6 @@ organization: subuser
 org_url: 'http://subuser.org'
 title: Polish look of website
 compensation: gratis
-description:
 skills: Tweeked website design
 how_to_apply:
   - >-

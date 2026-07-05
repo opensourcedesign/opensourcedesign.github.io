@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design is at FOSDEM 2023!"
 date: 2022-02-03
-categories: design conference open-source
+categories:
+  - "design"
+  - "conference"
+  - "open-source"
 eventDate: Sunday 5th February 2023 
 location: université Libre Brussels, Belgium 
 time: 13:00 to 17:00 CET 

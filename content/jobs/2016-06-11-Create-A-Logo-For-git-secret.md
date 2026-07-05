@@ -11,8 +11,6 @@ tags: [logo]
 status: solved
 compensation: gratis / in-app and website credit
 date_posted: 2016-06-11
-description:
-how_to_apply:
 ---
 
 `git-secret` is a bash-tool to store your private data inside a `git` repository.

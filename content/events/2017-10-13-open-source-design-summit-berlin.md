@@ -2,7 +2,10 @@
 layout: event
 title: "Open Source Design Summit: Berlin, Oct 13-18 2017"
 date: 2017-10-13
-categories: design meetup community
+categories:
+  - "design"
+  - "meetup"
+  - "community"
 eventDate: Fri, 13 Oct 2017 - Wed, 18 Oct 2017
 location: Berlin
 time: full days

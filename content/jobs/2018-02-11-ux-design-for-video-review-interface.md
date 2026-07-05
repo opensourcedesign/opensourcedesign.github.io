@@ -15,7 +15,6 @@ deliverables: >-
 how_to_apply:
   - Wouter Verhelst <w@uter.be>
   - 'github page: https://github.com/yoe/sreview'
-tags: ''
 date: '2018-02-11T11:11:58.905Z'
 slug: ux-design-for-video-review-interface
 ---

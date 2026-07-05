@@ -7,12 +7,9 @@ organization: coala
 org_url: 'https://coala.io/'
 title: Usability Testing with coala
 compensation: gratis
-description: ""
 skills: ''
 how_to_apply:
   - 'No need. Visit https://coala.io and get productive!'
-  - ''
-tags: ''
 date: '2017-02-05T15:44:26.626Z'
 ---
 

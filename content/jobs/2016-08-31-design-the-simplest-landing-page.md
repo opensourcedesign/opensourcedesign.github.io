@@ -6,14 +6,11 @@ role: UI Designer
 organization: bdavidxyz
 github: bdavidxyz
 contact: bdavidxyz@gmail.com
-contributing_md:
 org_url: https://github.com/bdavidxyz/zee
 tags: [ui, branding, web design]
 status: solved
 compensation: gratis
 date_posted: '2016-08-31'
-description:
-how_to_apply:
 ---
 
  I'm writing an open-source tool dedicated to landing-page : https://bdavidxyz.github.io/zee/

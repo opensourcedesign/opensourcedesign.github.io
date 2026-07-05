@@ -13,7 +13,6 @@ how_to_apply:
   - Lucas (sole dev) <lucas@gonze.com>
   - 'https://skratchpad.xyz/'
 github_handle: lucasgonze
-tags: ''
 date: '2024-01-31T17:21:51.773Z'
 ---
 The project is a minimalist editor for quickly writing something up. There's no privacy loss and no distraction. 

@@ -13,7 +13,6 @@ deliverables: >-
   a user's vault
 how_to_apply:
   - Hady Osman <hadyos@gmail.com>
-  - ''
 github_handle: '@hadynz'
 tags: [design, ux]
 date: '2022-07-16T11:23:36.365Z'

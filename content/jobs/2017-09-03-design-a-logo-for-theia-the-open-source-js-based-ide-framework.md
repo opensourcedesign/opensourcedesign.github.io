@@ -14,7 +14,6 @@ how_to_apply:
     Let's keep communications open on this issue:
     https://github.com/theia-ide/theia/issues/454. You can reference Anton by
     mentioning @akosyakov in the comment.
-  - ''
 tags: [logo, graphic design]
 date: '2017-09-03T13:26:21.096Z'
 ---

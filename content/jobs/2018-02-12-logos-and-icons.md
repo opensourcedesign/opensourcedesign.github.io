@@ -16,7 +16,6 @@ description: >-
 deliverables: 'A logo, brand image, and a set of icons ranging in size'
 how_to_apply:
   - Chris <topher.gates@gmail.com>
-  - ''
 tags: [logo, branding, graphic design]
 date: '2018-02-12T17:29:10.661Z'
 slug: logos-and-icons

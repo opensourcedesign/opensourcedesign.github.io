@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: "- Images of the new dialog.\r\n- Icon files in svg and png format (if new icons are introduced).\r\n- A description of the new layout, explaining why it's a good one."
 how_to_apply:
   - Ale Rimoldi <ale@graphicslab.org>
-  - ''
 github_handle: ''
 tags: [ui]
 date: '2019-12-06T09:09:57.781Z'

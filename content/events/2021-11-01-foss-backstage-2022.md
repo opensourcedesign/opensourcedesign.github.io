@@ -2,7 +2,10 @@
 layout: event
 title: "FOSS Backstage 2022"
 date: 2021-11-01
-categories: design conference open-source
+categories:
+  - "design"
+  - "conference"
+  - "open-source"
 eventDate: Wed, 17 - 18 March 2022
 location: Online, Remote and In person in Berlin (limited seats)
 time: 1/2 days

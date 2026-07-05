@@ -11,7 +11,6 @@ compensation: paid
 deliverables: tweaking branding / UX design on bubble.io
 how_to_apply:
   - aimee@ecohackerfarm.org
-  - ''
 github_handle: ''
 tags: [ux]
 date: '2022-02-21T11:34:30.393Z'

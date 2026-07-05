@@ -3,7 +3,6 @@ _id: 00000000-0000-0000-0000-000000000048
 layout: jobs
 title: Designer For Offline-First, Progressive Web App (Mobile Game)
 role: UI/UX Designer
-organization:
 github: morkro
 contact: write@moritz.berlin
 contributing_md: (optional) # A link to your contributing guidelines for newcomers
@@ -13,8 +12,6 @@ tags: [ui]
 status: solved
 compensation: gratis
 date_posted: 2016-09-02
-description:
-how_to_apply:
 ---
 
 I am looking for a designer to partner me for my currently in development progressive web app.

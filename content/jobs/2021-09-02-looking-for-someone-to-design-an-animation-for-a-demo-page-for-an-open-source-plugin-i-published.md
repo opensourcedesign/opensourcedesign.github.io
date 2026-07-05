@@ -14,7 +14,6 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - hello@baltcoda.com
-  - ''
 github_handle: ''
 tags: [graphic design]
 date: '2021-09-02T15:09:51.794Z'

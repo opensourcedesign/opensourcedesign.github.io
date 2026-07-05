@@ -11,8 +11,6 @@ tags: [logo, branding]
 status: solved
 compensation: gratis
 date_posted: 2015-09-02
-description:
-how_to_apply:
 ---
 
 Hi, Currently our logo is less than ideal and cannot be used easily with

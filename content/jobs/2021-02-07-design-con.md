@@ -12,9 +12,7 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - 'Jan (https://twitter.com/simulo)'
-  - ''
 github_handle: ''
-tags: ''
 date: '2021-02-07T17:01:58.613Z'
 ---
 The project is looking for design collaborators.

@@ -7,12 +7,9 @@ organization: GitMate
 org_url: 'https://gitmate.io'
 title: Repository configuration for code analysis as a service using coala
 compensation: gratis
-description: ""
 skills: ''
 how_to_apply:
   - 'No need, just try it out, give us feedback at coala.io/gitmate'
-  - ''
-tags: ''
 date: '2017-02-05T15:48:39.074Z'
 ---
 

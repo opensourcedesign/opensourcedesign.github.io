@@ -11,7 +11,6 @@ compensation: paid
 deliverables: ''
 how_to_apply:
   - fanialivio@gmail.com
-  - ''
 tags: [inkscape, svg, design, isometric]
 date: '2019-01-28T19:33:09.825Z'
 ---

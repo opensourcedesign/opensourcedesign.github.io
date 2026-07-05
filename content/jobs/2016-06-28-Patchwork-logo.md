@@ -3,7 +3,6 @@ _id: 00000000-0000-0000-0000-000000000040
 layout: jobs
 title: Patchwork logo
 role: Logo Designer
-organization:
 github: https://github.com/getpatchwork/patchwork
 contact: https://github.com/stephenfin,irc:sfinucan,mailto:stephenfinucane@hotmail.com
 org_url: http://jk.ozlabs.org/projects/patchwork/
@@ -11,7 +10,6 @@ tags: [branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-06-28
-description:
 ---
 Patchwork is a tool used for parse mails from a development mailing list, extract any patches, and display in a web UI. Patchwork is widely deployed around the internet: sites include [kernel.org](https://patchwork.kernel.org/), [ozlabs.org](https://patchwork.ozlabs.org/), [dpdk.org](http://dpdk.org/dev/patchwork/) and [linaro.org](https://patches.linaro.org/).
 

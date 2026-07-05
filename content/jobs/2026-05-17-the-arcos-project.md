@@ -14,7 +14,6 @@ deliverables: >-
   and the guidelines
 how_to_apply:
   - 'Eyad Ragheb, aka kernelstate (me the developer) <KernelState2012@gmail.com>'
-  - ''
 github_handle: my github is @KernelState
 tags: [desktop environment, icons, ui, ux, theming, design system]
 date: '2026-05-17T13:29:15.779Z'

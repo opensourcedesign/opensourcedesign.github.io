@@ -11,7 +11,6 @@ compensation: gratis
 deliverables: A logo and icon for application.
 how_to_apply:
   - Reinold (lead Dev) <oknolaz.freedom@protonmail.com>
-  - ''
 github_handle: GitHub @Oknolaz
 tags: [logo, icons, voice assistant, app design]
 date: '2021-08-22T11:56:32.661Z'
