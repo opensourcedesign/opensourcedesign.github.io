@@ -1,6 +1,8 @@
 {{ define "main" }}
   {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
-  {{ $jobs := where $jobsAll "Params.status" "searching" }}
+  {{/* Deadline-aware: searching jobs whose application deadline passed are
+       excluded here and surface on the archive page instead (issue #84). */}}
+  {{ $jobs := partial "functions/open-jobs.html" $jobsAll }}
   {{/* Robustly count compensation types (handles paid / gratis / volunteer / free / unspecified). */}}
   {{ $counts := newScratch }}
   {{ $counts.Set "paid" 0 }}
@@ -72,6 +74,7 @@
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
       <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/jobs/archive/" | relURL }}">browse {{ len $jobsAll }}+ archived jobs</a>
     </div>
+    <p class="mt-2 text-xs text-slate-400">Postings are archived automatically once their application deadline passes, or after a year without updates.</p>
 
     <p class="mt-6 hidden text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
 
@@ -122,8 +125,9 @@
                 {{ end }}
               </span>
             </span>
+            {{ $deadline := "" }}{{ with .Params.deadline }}{{ $deadline = (time.AsTime (printf "%v" .)).Format "2006-01-02" }}{{ end }}
             <span class="mt-1.5 block text-sm text-slate-500">
-              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) $posted }} · {{ end }}{{ with $posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}
+              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) $posted }} · {{ end }}{{ with $posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}{{ with $deadline }} · <span class="font-medium text-amber-700">apply by <time datetime="{{ . }}">{{ . }}</time></span>{{ end }}
             </span>
             {{ with .Summary }}
               <span class="mt-2 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</span>

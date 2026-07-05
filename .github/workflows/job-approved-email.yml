@@ -1,11 +1,11 @@
 name: Email submitter when job or event is published
 
-# When a submission pull request (branch job/*, job-edit/* or event/*, opened
-# by the job-submit Cloudflare Worker) is merged, look up the submitter's
-# private email — stored in Cloudflare KV by the Worker, keyed by PR number —
-# and notify them that their posting is live. The address is never committed
-# to the repo or shown in the PR; it is fetched at merge time over an
-# authenticated endpoint.
+# When a submission pull request (branch job/*, job-edit/*, event/* or
+# event-edit/*, opened by the job-submit Cloudflare Worker) is merged, look up
+# the submitter's private email — stored in Cloudflare KV by the Worker, keyed
+# by PR number — and notify them that their posting is live. The address is
+# never committed to the repo or shown in the PR; it is fetched at merge time
+# over an authenticated endpoint.
 
 on:
   pull_request:
@@ -21,7 +21,8 @@ jobs:
       github.event.pull_request.merged == true &&
       (startsWith(github.event.pull_request.head.ref, 'job/') ||
        startsWith(github.event.pull_request.head.ref, 'job-edit/') ||
-       startsWith(github.event.pull_request.head.ref, 'event/'))
+       startsWith(github.event.pull_request.head.ref, 'event/') ||
+       startsWith(github.event.pull_request.head.ref, 'event-edit/'))
     runs-on: ubuntu-latest
     steps:
       - name: Look up submitter email
@@ -50,6 +51,10 @@ jobs:
           title="$(printf '%s' "$resp" | jq -r '.title // ""' | tr -d '\r\n')"
           # The branch prefix decides the wording (job posting vs. event).
           case "$HEAD_REF" in
+            event-edit/*)
+              kind="event update"
+              url="https://opensourcedesign.net/events/"
+              ;;
             event/*)
               kind="event"
               url="https://opensourcedesign.net/events/"

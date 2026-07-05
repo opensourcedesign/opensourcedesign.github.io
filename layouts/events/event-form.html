@@ -5,11 +5,19 @@
         <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
           <a class="transition hover:text-slate-900" href="{{ "/events/" | relURL }}">Events</a>
           <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-          <span class="font-medium text-slate-700" aria-current="page">Submit an event</span>
+          <span class="font-medium text-slate-700" aria-current="page" id="osd-crumb">Submit an event</span>
         </nav>
-        <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Submit an Event</h1>
-        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">Add a meetup, conference track, workshop, or community gathering related to open source design. Submissions are reviewed by our community moderators before they appear on the events page and calendar.</p>
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl" id="osd-heading">Submit an Event</h1>
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600" id="osd-intro">Add a meetup, conference track, workshop, or community gathering related to open source design. Submissions are reviewed by our community moderators before they appear on the events page and calendar.</p>
       </header>
+
+      {{/* Edit-mode banner (filled in by JS when ?edit=<file> is present) */}}
+      <p class="mt-6 flex items-start gap-2 rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-800 ring-1 ring-inset ring-sky-200" id="osd-edit-banner" hidden>
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
+        </svg>
+        <span id="osd-edit-banner-text"></span>
+      </p>
 
       {{/* Guidelines */}}
       <p class="mt-6 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
@@ -66,6 +74,27 @@
               <p class="text-xs text-slate-500">Include the timezone.</p>
             </div>
           </div>
+
+          {{/* Status — only shown when editing an existing event */}}
+          <div class="space-y-3" id="statusWrap" hidden>
+            <div class="text-sm font-medium text-slate-700" id="status-label">Status</div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2" role="radiogroup" aria-labelledby="status-label">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50/50 has-[:checked]:ring-1 has-[:checked]:ring-violet-500">
+                <input type="radio" name="status" value="upcoming" class="mt-1 h-4 w-4 text-violet-600 focus:ring-violet-500" checked />
+                <div>
+                  <div class="font-semibold text-slate-900">Happening</div>
+                  <div class="text-sm text-slate-500">The event takes place as planned</div>
+                </div>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-slate-500 has-[:checked]:bg-slate-50 has-[:checked]:ring-1 has-[:checked]:ring-slate-500">
+                <input type="radio" name="status" value="cancelled" class="mt-1 h-4 w-4 text-slate-600 focus:ring-slate-500" />
+                <div>
+                  <div class="font-semibold text-slate-900">Cancelled</div>
+                  <div class="text-sm text-slate-500">The event will not take place</div>
+                </div>
+              </label>
+            </div>
+          </div>
         </fieldset>
 
         {{/* Details & Contact Section */}}
@@ -101,7 +130,7 @@
         <div class="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
           <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="submit" id="osd-submit">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
-            Submit event
+            <span id="osd-submit-label">Submit event</span>
           </button>
           <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="reset" id="osd-reset">Reset</button>
           <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
@@ -127,9 +156,21 @@
       (function () {
         {{/* Hugo's JS-context autoescaper already emits strings as JSON — no jsonify. */}}
         var endpoint = {{ site.Params.eventSubmitEndpoint | default "" }};
+        var repoURL = {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }};
+        var repoBranch = {{ site.Params.repoBranch | default "master" }};
 
         var form = document.getElementById('osd-event-form');
         if (!form) return;
+
+        // Edit mode: ?edit=<file>.md prefills the form from the existing
+        // event and submits an update to that file instead of a new one.
+        var editFile = '';
+        try {
+          var editParam = new URLSearchParams(window.location.search).get('edit') || '';
+          if (/^[\w .,()&+'-]+\.md$/.test(editParam) && editParam.indexOf('..') === -1) editFile = editParam;
+        } catch (e) { /* no URLSearchParams: edit mode unavailable */ }
+        var editMeta = null;        // identity fields parsed from the original file
+        var editSendStatus = false; // only offer/send status for non-past events
 
         var note = document.getElementById('osd-form-note');
         var out = document.getElementById('osd-result');
@@ -176,16 +217,134 @@
           out.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
+        function getRadio(name) {
+          var el = form.querySelector('input[name="' + name + '"]:checked');
+          return el ? el.value : '';
+        }
+
+        // Minimal front-matter reader for prefilling the edit form. Handles the
+        // scalar / block-list shapes used across content/events/.
+        function parseEventFile(text) {
+          var m = String(text).match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+          if (!m) return null;
+          var fm = m[1];
+          function unquote(s) {
+            s = String(s).trim();
+            if (/^'[\s\S]*'$/.test(s)) return s.slice(1, -1).replace(/''/g, "'");
+            if (/^"[\s\S]*"$/.test(s)) {
+              try { return JSON.parse(s); } catch (e) { return s.slice(1, -1); }
+            }
+            return s;
+          }
+          function scalar(key) {
+            var mm = fm.match(new RegExp('^' + key + ':[ \\t]*(.+)$', 'm'));
+            return mm ? unquote(mm[1]) : '';
+          }
+          return { scalar: scalar, body: m[2].trim() };
+        }
+
+        function setVal(name, v) {
+          if (form[name] && v) form[name].value = v;
+        }
+
+        function setRadio(name, v) {
+          var el = form.querySelector('input[name="' + name + '"][value="' + v + '"]');
+          if (el) el.checked = true;
+        }
+
+        function applyPrefill(parsed) {
+          setVal('title', parsed.scalar('title'));
+          setVal('location', parsed.scalar('location'));
+          setVal('time', parsed.scalar('time'));
+          var isIso = function (s) { return /^\d{4}-\d{2}-\d{2}$/.test(s); };
+          var start = parsed.scalar('eventStart');
+          var end = parsed.scalar('endDate');
+          if (isIso(start)) {
+            setVal('start_date', start);
+            if (isIso(end) && end !== start) setVal('end_date', end);
+          }
+          // Pull a trailing "More information: <url>" line back into the
+          // website field so it isn't duplicated on resubmit.
+          var body = parsed.body;
+          var mm = body.match(/\n*More information: <(https?:\/\/[^>\s]+)>\s*$/);
+          if (mm) {
+            setVal('website', mm[1]);
+            body = body.slice(0, mm.index).trim();
+          }
+          setVal('description', body);
+          var st = parsed.scalar('status').toLowerCase();
+          if (st === 'past') {
+            // Historical event: keep its status untouched and hide the picker.
+            var statusWrap = document.getElementById('statusWrap');
+            if (statusWrap) statusWrap.hidden = true;
+            editSendStatus = false;
+          } else {
+            setRadio('status', st === 'cancelled' ? 'cancelled' : 'upcoming');
+            editSendStatus = true;
+          }
+        }
+
+        function enterEditMode() {
+          var heading = document.getElementById('osd-heading');
+          var intro = document.getElementById('osd-intro');
+          var crumb = document.getElementById('osd-crumb');
+          var submitLabel = document.getElementById('osd-submit-label');
+          var banner = document.getElementById('osd-edit-banner');
+          var bannerText = document.getElementById('osd-edit-banner-text');
+          var statusWrap = document.getElementById('statusWrap');
+
+          if (heading) heading.textContent = 'Edit Event';
+          if (intro) intro.textContent = 'Update the details of an existing event, or mark it as cancelled. Changes are reviewed by our community moderators before they go live.';
+          if (crumb) crumb.textContent = 'Edit event';
+          if (submitLabel) submitLabel.textContent = 'Submit changes';
+          if (statusWrap) statusWrap.hidden = false;
+          if (banner && bannerText) {
+            bannerText.textContent = 'You are editing ' + editFile + '. The live event stays unchanged until the update is approved.';
+            banner.hidden = false;
+          }
+          document.title = document.title.replace(/^Submit an Event/, 'Edit Event');
+
+          if (note) note.textContent = 'Loading current event\u2026';
+          var rawURL = repoURL.replace('https://github.com/', 'https://raw.githubusercontent.com/') +
+            '/' + repoBranch + '/content/events/' + encodeURIComponent(editFile);
+          fetch(rawURL)
+            .then(function (r) { return r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)); })
+            .then(function (text) {
+              var parsed = parseEventFile(text);
+              if (!parsed) throw new Error('unparseable');
+              editMeta = {
+                date: parsed.scalar('date'),
+                status: parsed.scalar('status'),
+                // URL-critical legacy fields, kept in the manual-PR fallback
+                // markdown (the worker preserves these server-side anyway).
+                url: parsed.scalar('url'),
+                permalink: parsed.scalar('permalink'),
+                categories: parsed.scalar('categories')
+              };
+              applyPrefill(parsed);
+              if (note) note.textContent = '';
+            })
+            .catch(function () {
+              if (note) note.textContent = 'Could not load the current event; the form starts blank, but submitting will still update the existing file.';
+            });
+        }
+
         function generateMarkdown(data, isoNow) {
+          if (editFile && editMeta && editMeta.date) isoNow = editMeta.date;
           var slug = data.start_date + '-' + slugify(data.title);
-          var path = 'content/events/' + slug + '.md';
+          var path = editFile ? 'content/events/' + editFile : 'content/events/' + slug + '.md';
 
           var fm = [];
           fm.push('---');
           fm.push('layout: event');
           fm.push('title: ' + yq(data.title));
-          fm.push('status: upcoming');
+          fm.push('status: ' + (editFile ? (data.status || (editMeta && editMeta.status) || 'upcoming') : 'upcoming'));
           fm.push('date: ' + yq(isoNow));
+          if (editFile && editMeta) {
+            if (editMeta.url) fm.push('url: ' + yq(editMeta.url));
+            if (editMeta.permalink) fm.push('permalink: ' + yq(editMeta.permalink));
+            if (editMeta.categories) fm.push('categories: ' + editMeta.categories);
+          }
           fm.push('eventDate: ' + yq(formatEventDate(data.start_date, data.end_date)));
           fm.push('eventStart: ' + yq(data.start_date));
           fm.push('endDate: ' + yq(data.end_date || data.start_date));
@@ -209,19 +368,26 @@
         // Returns '' when the encoded URL would exceed GitHub's ~8K URL limit,
         // in which case the copy-paste flow is the only option.
         function githubNewFileURL(gen) {
-          var repoURL = '{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}';
-          var url = repoURL + '/new/main?filename=' + encodeURIComponent(gen.path) + '&value=' + encodeURIComponent(gen.markdown);
+          var url = repoURL + '/new/' + repoBranch + '?filename=' + encodeURIComponent(gen.path) + '&value=' + encodeURIComponent(gen.markdown);
           return url.length <= 7500 ? url : '';
         }
 
         function fallbackBodyHTML(gen) {
-          var gh = githubNewFileURL(gen);
           var html = '';
-          if (gh) {
-            html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
-            html += '<p class="mt-3 text-slate-700">The file name and contents are already filled in. GitHub will fork the repository if needed; press <strong>Propose new file</strong>, then <strong>Create pull request</strong>. Prefer to do it by hand? The markdown is below.</p>';
+          if (editFile) {
+            // GitHub's file editor can't be pre-filled via URL, so for edits the
+            // fallback is: open the editor, paste the regenerated markdown over it.
+            var editURL = repoURL + '/edit/' + repoBranch + '/content/events/' + encodeURIComponent(editFile);
+            html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + editURL + '" target="_blank" rel="noopener noreferrer">Edit the file on GitHub</a></p>';
+            html += '<p class="mt-3 text-slate-700">GitHub will fork the repository if needed. Replace the file contents with the markdown below, then press <strong>Propose changes</strong> and <strong>Create pull request</strong>.</p>';
           } else {
-            html += '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline underline-offset-4" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }}/new/main?filename=' + encodeURIComponent(gen.path) + '" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a> (the event is too long for a fully pre-filled link, so paste the contents into the editor).</p>';
+            var gh = githubNewFileURL(gen);
+            if (gh) {
+              html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
+              html += '<p class="mt-3 text-slate-700">The file name and contents are already filled in. GitHub will fork the repository if needed; press <strong>Propose new file</strong>, then <strong>Create pull request</strong>. Prefer to do it by hand? The markdown is below.</p>';
+            } else {
+              html += '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline underline-offset-4" href="' + repoURL + '/new/' + repoBranch + '?filename=' + encodeURIComponent(gen.path) + '" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a> (the event is too long for a fully pre-filled link, so paste the contents into the editor).</p>';
+            }
           }
           html += '<p class="mt-2 text-slate-700">Suggested path: <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs">' + gen.path + '</code></p>';
           return html;
@@ -252,6 +418,12 @@
             description: form.description.value.trim(),
             email: (form.email || {}).value ? form.email.value.trim() : ''
           };
+          if (editFile) {
+            data.edit_file = editFile;
+            // Only send a status when the original loaded and isn't a past
+            // event; otherwise the worker keeps the current value.
+            if (editMeta && editSendStatus) data.status = getRadio('status') || 'upcoming';
+          }
 
           if (!data.title || !data.location || !data.start_date || !data.description) {
             if (note) note.textContent = 'Please fill in all required fields.';
@@ -292,11 +464,11 @@
               if (resp.ok && json && json.ok && json.pr_url) {
                 if (note) note.textContent = 'Submitted.';
                 showResult(
-                  'Thanks — submission received',
+                  editFile ? 'Thanks — your changes were received' : 'Thanks — submission received',
                   'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
                   ''
                 );
-                form.reset();
+                if (!editFile) form.reset();
                 return;
               }
 
@@ -329,6 +501,8 @@
             '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated event markdown" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
           );
         });
+
+        if (editFile) enterEditMode();
       })();
     </script>
   </div>

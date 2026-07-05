@@ -24,12 +24,20 @@ Our website needs significant changes and some build fixing before we can proper
 
 This requires skills using PagesCMS, Github Repository, Cloudflare; with the following stack:
 
-Static site generator 	Jekyll 4.4
-Templating 	Liquid
-Styling 	Vanilla CSS with custom properties
-JavaScript 	Vanilla ES6 (accordion, nav, fade-in, forms)
-CMS 	Pages CMS
-Forms 	Formspree
-Analytics 	Plausible (privacy-friendly)
-Hosting 	Cloudflare Pages
-Build tool 	Wrangler
+**Static site generator** -> Jekyll 4.4
+
+**Templating** -> Liquid
+
+**Styling** -> Vanilla CSS with custom properties
+
+**JavaScript** -> Vanilla ES6 (accordion, nav, fade-in, forms)
+
+**CMS** -> Pages CMS
+
+**Forms** -> Formspree
+
+**Analytics** -> Plausible (privacy-friendly)
+
+**Hosting** -> Cloudflare Pages
+
+**Build tool** -> Wrangler

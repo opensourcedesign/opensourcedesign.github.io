@@ -19,14 +19,14 @@ date: '2026-02-05T14:35:35.613Z'
 ---
 Please apply through: https://www.linkedin.com/jobs/view/4262272853/
 
-###We are hiring a UX designer for our Design System Team. 
+### We are hiring a UX designer for our Design System Team. 
 You will play a key role making open source software available to the world. Our Design function ensures the experience of the software and infrastructure we build is true to our intentions, and delivers the tools our community and customers need. The Design System UX designer makes that possible by defining, evolving and advocating for a consistent use of design system that scales across our products.
 
 This role sits in the design system team reporting to Design Systems Management
 
 Location: This role will be based remotely in the EMEA region.
 
-###The role entails
+### The role entails
 - Building and evolving Canonical’s design system, ensuring measurable adoption, consistency, scalability and accessibility across our products
 - Collaborating with designers, engineers and stakeholders to translate user needs and brand principles into reusable components, patterns and guidelines
 - Championing design system best practices, advocating for cohesive user experience and design, providing documentation and support for cross-functional teams
@@ -36,7 +36,7 @@ Location: This role will be based remotely in the EMEA region.
 - Advocating for accessibility, performance, and scalability in design system decisions and iterating based on data and technological advancements
 - Staying ahead of industry trends, ensuring innovation and balancing it with system coherence and performance
 
-###What we are looking for in you
+### What we are looking for in you
 - Relevant experience in UX/product design, with a strong focus on design systems in complex environments
 - A portfolio demonstrating strong expertise in design systems, including component libraries, documentation and handling complex environments
 - Exceptional educational achievements in design or related behavioral science discipline

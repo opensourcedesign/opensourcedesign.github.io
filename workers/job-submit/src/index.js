@@ -13,10 +13,12 @@
  * in KV keyed by the created PR number so the merge workflow can email them on
  * publish via an authenticated lookup.
  *
- * Job edits: when a submission carries edit_path (set by the job form's edit
- * mode, /jobs/job-form/?edit=<file>), the worker updates that existing file on
- * a job-edit/* branch instead of adding a new one, preserving identity fields
- * (date_posted, date, _id, slug, aliases) so URLs and ordering don't change.
+ * Edits: when a submission carries edit_file (set by a form's edit mode,
+ * /jobs/job-form/?edit=<file> or /events/event-form/?edit=<file>), the worker
+ * updates that existing file on a job-edit/* or event-edit/* branch instead of
+ * adding a new one, preserving identity fields (date_posted, date, _id, slug,
+ * url, permalink, aliases, categories, author) so URLs and ordering don't
+ * change.
  *
  * Routes:
  *   POST /submit         -> { ok, pr_url }
@@ -81,16 +83,18 @@ async function handleSubmit(request, env) {
 
   const kind = data.kind === 'event' ? 'event' : 'job';
 
-  // Optional edit mode (jobs only): update an existing posting instead of
-  // adding a new file. The target must be a plain filename inside the jobs
-  // content dir; identity fields are preserved from the current file.
+  // Optional edit mode: update an existing posting instead of adding a new
+  // file. The target must be a plain filename inside the kind's content dir;
+  // identity fields are preserved from the current file.
   let edit = null;
-  if (kind === 'job' && data.edit_file) {
+  if (data.edit_file) {
     const file = String(data.edit_file).trim();
     if (!isSafeFilename(file)) {
       return json({ ok: false, error: 'Invalid edit target.' }, 400);
     }
-    const dir = (env.CONTENT_DIR || 'content/jobs').replace(/\/+$/, '');
+    const dir = (kind === 'event'
+      ? (env.CONTENT_DIR_EVENTS || 'content/events')
+      : (env.CONTENT_DIR || 'content/jobs')).replace(/\/+$/, '');
     edit = { path: dir + '/' + file };
   }
 
@@ -127,6 +131,15 @@ async function handleSubmit(request, env) {
     if (!isHttpUrl(data.license)) {
       return json({ ok: false, error: 'Project license must be a valid http(s) URL.' }, 400);
     }
+    if (data.deadline) {
+      if (!isIsoDate(data.deadline)) {
+        return json({ ok: false, error: 'Application deadline must be a valid YYYY-MM-DD date.' }, 400);
+      }
+      // New postings can't already be expired; edits may keep a past deadline.
+      if (!edit && String(data.deadline) < new Date().toISOString().slice(0, 10)) {
+        return json({ ok: false, error: 'The application deadline cannot be in the past.' }, 400);
+      }
+    }
   }
   if (data.email && !isEmail(data.email)) {
     return json({ ok: false, error: 'Please provide a valid email address (or leave it blank).' }, 400);
@@ -146,7 +159,7 @@ async function handleSubmit(request, env) {
   }
 
   // For edits, load the current file so we can keep its identity fields
-  // (date_posted, date, _id, slug, aliases) and its blob SHA for the update.
+  // (dates, ids, slugs, URL overrides) and its blob SHA for the update.
   if (edit) {
     let existing;
     try {
@@ -167,15 +180,29 @@ async function handleSubmit(request, env) {
     edit.date = fm.scalar('date');
     edit.id = fm.scalar('_id');
     edit.slug = fm.scalar('slug');
+    edit.url = fm.scalar('url');
+    edit.permalink = fm.scalar('permalink');
     edit.aliases = fm.list('aliases');
-    // The poster may close their own job from the edit form.
+    edit.categories = fm.list('categories');
+    if (!edit.categories.length) {
+      // Legacy Jekyll files use a space-separated scalar: "design hack meeting".
+      const rawCats = fm.scalar('categories');
+      if (rawCats) edit.categories = rawCats.split(/[,\s]+/).filter(Boolean);
+    }
+    edit.author = fm.scalar('author');
+    edit.recurrence = fm.scalar('recurrence'); // e.g. the monthly community call
+    // The poster may change the status from the edit form (close a job,
+    // cancel an event); anything not on the whitelist keeps the current value.
     const requested = String(data.status || '').trim();
-    edit.status = ['searching', 'solved', 'closed'].includes(requested)
+    const allowed = kind === 'event'
+      ? ['upcoming', 'started', 'past', 'cancelled']
+      : ['searching', 'solved', 'closed'];
+    edit.status = allowed.includes(requested)
       ? requested
-      : (fm.scalar('status') || 'searching');
+      : (fm.scalar('status') || (kind === 'event' ? 'upcoming' : 'searching'));
   }
 
-  const built = kind === 'event' ? buildEventMarkdown(data, env) : buildMarkdown(data, env, edit);
+  const built = kind === 'event' ? buildEventMarkdown(data, env, edit) : buildMarkdown(data, env, edit);
 
   let pr;
   try {
@@ -273,12 +300,7 @@ function buildMarkdown(data, env, edit) {
   fm.push('date_posted: ' + yq(datePosted));
   fm.push('date: ' + yq(isoDate));
   if (edit) {
-    if (edit.id) fm.push('_id: ' + yq(edit.id));
-    if (edit.slug) fm.push('slug: ' + yq(edit.slug));
-    if (edit.aliases && edit.aliases.length) {
-      fm.push('aliases:');
-      edit.aliases.forEach((a) => fm.push('  - ' + yq(a)));
-    }
+    pushPreservedIdentity(fm, edit);
     fm.push('last_updated: ' + yq(today));
   }
   fm.push('organization: ' + yq(data.organization));
@@ -287,6 +309,7 @@ function buildMarkdown(data, env, edit) {
   fm.push('role: ' + yq(data.role));
   fm.push('compensation: ' + yq(data.compensation || 'gratis'));
   if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+  if (data.deadline) fm.push('deadline: ' + yq(String(data.deadline).trim()));
   if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
 
   if (tagList.length) {
@@ -311,6 +334,25 @@ function buildMarkdown(data, env, edit) {
   fm.push('');
 
   return { path, slug, markdown: fm.join('\n') };
+}
+
+/* Fields that must survive an edit so the page keeps its URL, taxonomy and
+   attribution (legacy files use url/permalink overrides and categories). */
+function pushPreservedIdentity(fm, edit) {
+  if (edit.id) fm.push('_id: ' + yq(edit.id));
+  if (edit.slug) fm.push('slug: ' + yq(edit.slug));
+  if (edit.url) fm.push('url: ' + yq(edit.url));
+  if (edit.permalink) fm.push('permalink: ' + yq(edit.permalink));
+  if (edit.aliases && edit.aliases.length) {
+    fm.push('aliases:');
+    edit.aliases.forEach((a) => fm.push('  - ' + yq(a)));
+  }
+  if (edit.categories && edit.categories.length) {
+    fm.push('categories:');
+    edit.categories.forEach((c) => fm.push('  - ' + yq(c)));
+  }
+  if (edit.author) fm.push('author: ' + yq(edit.author));
+  if (edit.recurrence) fm.push('recurrence: ' + yq(edit.recurrence));
 }
 
 /* Minimal front-matter reader used to preserve identity fields on edits.
@@ -345,21 +387,24 @@ function parseFrontMatter(text) {
 }
 
 /* Mirrors generateMarkdown in event-form.html. */
-function buildEventMarkdown(data, env) {
-  const isoNow = new Date().toISOString();
+function buildEventMarkdown(data, env, edit) {
+  // Edits keep the original submission date and identity so URLs don't change.
+  const isoDate = (edit && edit.date) || new Date().toISOString();
+  const status = (edit && edit.status) || 'upcoming';
   const start = String(data.start_date).trim();
   const end = data.end_date ? String(data.end_date).trim() : '';
 
   const slug = start + '-' + slugify(data.title);
   const dir = (env.CONTENT_DIR_EVENTS || 'content/events').replace(/\/+$/, '');
-  const path = dir + '/' + slug + '.md';
+  const path = edit ? edit.path : dir + '/' + slug + '.md';
 
   const fm = [];
   fm.push('---');
   fm.push('layout: event');
   fm.push('title: ' + yq(data.title));
-  fm.push('status: upcoming');
-  fm.push('date: ' + yq(isoNow));
+  fm.push('status: ' + status);
+  fm.push('date: ' + yq(isoDate));
+  if (edit) pushPreservedIdentity(fm, edit);
   fm.push('eventDate: ' + yq(formatEventDate(start, end)));
   fm.push('eventStart: ' + yq(start));
   fm.push('endDate: ' + yq(end || start));
@@ -431,9 +476,9 @@ async function createPullRequest(env, built, data, kind, edit) {
   const ref = await gh(env, 'GET', `/repos/${owner}/${repo}/git/ref/heads/${base}`);
   const baseSha = ref.object.sha;
 
-  // 2. Create a fresh branch off the base head. The prefix (job/, job-edit/
-  //    or event/) is what the merge-time email workflow keys off.
-  const prefix = edit ? 'job-edit' : kind;
+  // 2. Create a fresh branch off the base head. The prefix (job/, event/,
+  //    job-edit/ or event-edit/) is what the merge-time email workflow keys off.
+  const prefix = edit ? kind + '-edit' : kind;
   const branch = prefix + '/' + built.slug + '-' + Math.random().toString(36).slice(2, 8);
   await gh(env, 'POST', `/repos/${owner}/${repo}/git/refs`, {
     ref: 'refs/heads/' + branch,
@@ -442,20 +487,24 @@ async function createPullRequest(env, built, data, kind, edit) {
 
   // 3. Commit the file. New submissions get a collision-free path; edits
   //    update the existing file in place (the contents API needs its SHA).
+  const noun = isEvent ? 'event' : 'job';
   const filePath = edit ? built.path : await uniquePath(env, owner, repo, base, built.path);
   await gh(env, 'PUT', `/repos/${owner}/${repo}/contents/${encodeURIPath(filePath)}`, {
-    message: (edit ? 'Update job: ' : isEvent ? 'Add event: ' : 'Add job: ') + data.title,
+    message: (edit ? 'Update ' + noun + ': ' : 'Add ' + noun + ': ') + data.title,
     content: b64encode(built.markdown),
     branch,
     ...(edit ? { sha: edit.sha } : {})
   });
 
   // 4. Open the pull request.
+  const prTitle = edit
+    ? (isEvent ? 'Event edit: ' : 'Job edit: ')
+    : (isEvent ? 'Event submission: ' : 'Job submission: ');
   const pr = await gh(env, 'POST', `/repos/${owner}/${repo}/pulls`, {
-    title: (edit ? 'Job edit: ' : isEvent ? 'Event submission: ' : 'Job submission: ') + data.title,
+    title: prTitle + data.title,
     head: branch,
     base,
-    body: isEvent ? eventPrBody(data, filePath) : prBody(data, filePath, edit)
+    body: isEvent ? eventPrBody(data, filePath, edit) : prBody(data, filePath, edit)
   });
 
   // 5. Label it (best-effort; the merge workflow keys off the branch name, not the label).
@@ -527,6 +576,7 @@ function prBody(data, filePath, edit) {
   lines.push('| License | ' + cell(data.license) + ' |');
   lines.push('| Role | ' + cell(data.role) + ' |');
   lines.push('| Compensation | ' + cell(data.compensation) + (data.paid_details ? ' (' + cell(data.paid_details) + ')' : '') + ' |');
+  if (data.deadline) lines.push('| Apply by | ' + cell(data.deadline) + ' |');
   if (data.github_handle) lines.push('| Submitter GitHub | ' + cell(data.github_handle) + ' |');
   lines.push('| File | `' + filePath + '` |');
   lines.push('');
@@ -534,9 +584,15 @@ function prBody(data, filePath, edit) {
   return lines.join('\n');
 }
 
-function eventPrBody(data, filePath) {
+function eventPrBody(data, filePath, edit) {
   const lines = [];
-  lines.push('Automated submission from the **Submit an Event** form.');
+  if (edit) {
+    lines.push('Automated **edit** of an existing event, submitted from the event edit form.');
+    lines.push('');
+    lines.push('Review the diff carefully: the whole file is regenerated from the form, so any hand-made tweaks to the original are replaced.');
+  } else {
+    lines.push('Automated submission from the **Submit an Event** form.');
+  }
   lines.push('');
   lines.push('| Field | Value |');
   lines.push('| --- | --- |');

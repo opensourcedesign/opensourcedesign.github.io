@@ -18,10 +18,10 @@
 {{ $jobPages := where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive" "how-to-post") }}
 {{ $allJobs := where $jobPages ".RelPermalink" "!=" $current.RelPermalink }}
 
-{{/* Filter to only open jobs. Only "searching" is open; every other status
-     (solved/closed/resolved/completed/filled) is a finished posting and must
-     not be recommended. */}}
-{{ $openJobs := where $allJobs ".Params.status" "searching" }}
+{{/* Filter to only open jobs. Only "searching" without a passed application
+     deadline is open; every other status (solved/closed/resolved/completed/
+     filled/expired) is a finished posting and must not be recommended. */}}
+{{ $openJobs := partial "functions/open-jobs.html" $allJobs }}
 
 {{/* Score and sort jobs by relevance */}}
 {{ $scored := slice }}

@@ -501,4 +501,20 @@
       if (now - posted > days * 86400000) el.hidden = false;
     });
   })();
+
+  // ── Expired job notices (issue #84) ───────────────────────────────────────
+  // Same idea as stale markers: Hugo pre-shows notices whose application
+  // deadline had already passed at build time; here we reveal the ones whose
+  // deadline crossed since the last build. The deadline day itself still
+  // counts as open (expiry starts the following day).
+  (function () {
+    var markers = document.querySelectorAll('[data-deadline-check][data-deadline]');
+    if (!markers.length) return;
+    var now = Date.now();
+    markers.forEach(function (el) {
+      var deadline = Date.parse(el.getAttribute('data-deadline'));
+      if (isNaN(deadline)) return;
+      if (now - deadline > 86400000) el.hidden = false;
+    });
+  })();
 })();

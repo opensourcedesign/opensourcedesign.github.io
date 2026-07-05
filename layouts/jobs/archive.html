@@ -1,7 +1,13 @@
 {{ define "main" }}
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
-    {{ $jobs := where $jobsAll "Params.status" "in" (slice "closed" "solved" "resolved" "completed" "filled") }}
+    {{/* Finished statuses, plus "searching" jobs whose application deadline
+         already passed — those are excluded from the open list, and the
+         job-expire workflow flips their status to "expired" within a day.
+         Complement keeps this in sync with the open-jobs partial. */}}
+    {{ $finished := where $jobsAll "Params.status" "in" (slice "closed" "solved" "resolved" "completed" "filled" "expired") }}
+    {{ $deadlinePassed := where $jobsAll "Params.status" "searching" | complement (partial "functions/open-jobs.html" $jobsAll) }}
+    {{ $jobs := $finished | union $deadlinePassed }}
     {{ $scratch := newScratch }}
     {{ $scratch.Set "paid" 0 }}
     {{ $scratch.Set "gratis" 0 }}
@@ -19,7 +25,7 @@
     <header class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
       <div class="max-w-2xl">
         <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Job Archive</h1>
-        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">Past job listings that have been filled, closed, or completed.</p>
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">Past job listings that have been filled, closed, completed, or expired.</p>
       </div>
       <div class="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-3">
         <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/jobs/job-form/" | relURL }}">Post a job</a>
@@ -84,7 +90,11 @@
                 {{ else if $isVol }}
                   <span class="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-medium text-violet-800">Volunteer</span>
                 {{ end }}
-                {{ with .Params.status }}
+                {{/* A "searching" job only lands here when its deadline has
+                     passed; label it as expired ahead of the status flip. */}}
+                {{ $displayStatus := printf "%v" (.Params.status | default "") }}
+                {{ if eq (lower $displayStatus) "searching" }}{{ $displayStatus = "expired" }}{{ end }}
+                {{ with $displayStatus }}
                   <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">{{ . }}</span>
                 {{ end }}
               </span>

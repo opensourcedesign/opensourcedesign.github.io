@@ -22,6 +22,20 @@
     {{ if and $isOpen (gt $days 90) }}{{ $stale = true }}{{ end }}
   {{ end }}
 
+  {{/* Application deadline (issue #84). Build time is the no-JS baseline;
+       main.js also reveals the expired notice client-side once the deadline
+       crosses, since builds may be days apart. */}}
+  {{ $deadlineISO := "" }}
+  {{ $deadlineHuman := "" }}
+  {{ $deadlinePassed := false }}
+  {{ with .Params.deadline }}
+    {{ $t := time.AsTime (printf "%v" .) }}
+    {{ $deadlineISO = $t.Format "2006-01-02" }}
+    {{ $deadlineHuman = $t.Format "2 January 2006" }}
+    {{ if lt $deadlineISO (now.Format "2006-01-02") }}{{ $deadlinePassed = true }}{{ end }}
+  {{ end }}
+  {{ $isExpired := or (eq $status "expired") (and $isOpen $deadlinePassed) }}
+
   <article class="mx-auto max-w-5xl px-4 py-10" data-pagefind-body>
     {{/* Breadcrumb */}}
     <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb" data-pagefind-ignore>
@@ -41,7 +55,11 @@
           {{/* Header */}}
           <header>
             <div class="flex flex-wrap items-center gap-2">
-              {{ if $isOpen }}
+              {{ if $isExpired }}
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-600/20">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Expired
+                </span>
+              {{ else if $isOpen }}
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Open
                 </span>
@@ -76,9 +94,29 @@
                   Posted <time datetime="{{ $postedISO }}">{{ . }}</time>
                 </span>
               {{ end }}
+              {{ with $deadlineHuman }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Apply by <time datetime="{{ $deadlineISO }}">{{ . }}</time>
+                </span>
+              {{ end }}
             </div>
 
-            {{ if and $isOpen $postedISO }}
+            {{ if and $isOpen $deadlineISO }}
+              {{/* Expired notice: pre-shown when already past at build time,
+                   otherwise revealed client-side by main.js. */}}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200" data-deadline-check data-deadline="{{ $deadlineISO }}" {{ if not $deadlinePassed }}hidden{{ end }}>
+                <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                The application deadline ({{ $deadlineHuman }}) has passed — this posting has expired.
+              </p>
+            {{ else if eq $status "expired" }}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200">
+                <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                This posting has expired{{ with $deadlineHuman }} (application deadline was {{ . }}){{ end }}. It may no longer be accepting applications.
+              </p>
+            {{ end }}
+
+            {{ if and $isOpen $postedISO (not $isExpired) }}
               <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200" data-stale-check data-posted="{{ $postedISO }}" {{ if not $stale }}hidden{{ end }}>
                 <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 This posting is over three months old and may no longer be active.
@@ -209,6 +247,12 @@
                 <div>
                   <dt class="text-slate-500">Budget / rate</dt>
                   <dd class="mt-1 font-medium text-slate-900">{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with $deadlineHuman }}
+                <div>
+                  <dt class="text-slate-500">Apply by</dt>
+                  <dd class="mt-1 font-medium {{ if $deadlinePassed }}text-amber-700 line-through{{ else }}text-slate-900{{ end }}"><time datetime="{{ $deadlineISO }}">{{ . }}</time></dd>
                 </div>
               {{ end }}
               {{ with $org }}

@@ -10,7 +10,8 @@
     {{ $heroWebp = ($b.Process "webp q60").RelPermalink }}
   {{ end }}
   {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
-  {{ $jobsOpen := len (where $jobsAll "Params.status" "searching") }}
+  {{ $openJobs := partial "functions/open-jobs.html" $jobsAll }}
+  {{ $jobsOpen := len $openJobs }}
   {{ $jobsTotal := len $jobsAll }}
   <section class="relative overflow-hidden bg-slate-950 text-white">
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" {{ if $heroJpg }}style="background-image: url('{{ $heroJpg }}'); background-image: image-set(url('{{ $heroWebp }}') type('image/webp'), url('{{ $heroJpg }}') type('image/jpeg'));"{{ else }}style="background-image: url('{{ "/images/2017-fosdem-picture-compressed-blur30px.jpg" | relURL }}');"{{ end }}></div>
@@ -88,7 +89,7 @@
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Open jobs</h2>
             <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ "/jobs/" | relURL }}">All jobs →</a>
           </div>
-          {{ $jobs := where $jobsAll "Params.status" "searching" }}
+          {{ $jobs := $openJobs }}
           <ul class="mt-5" role="list">
             {{ range first 5 $jobs.ByDate.Reverse }}
               {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}

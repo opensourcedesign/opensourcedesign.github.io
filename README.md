@@ -104,6 +104,10 @@ tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --mini
 
 ```
 opensourcedesign.github.io/
+├── .github/
+│   ├── scripts/      # announce-jobs.mjs — posts new jobs to Mastodon & Bluesky
+│   └── workflows/    # hugo-build (deploy), job-approved-email (submitter notification),
+│                     # job-expire (daily auto-expiry), job-announce (social media)
 ├── archetypes/       # Hugo content templates for new pages
 ├── assets/
 │   └── css/
@@ -175,7 +179,24 @@ The recommended workflow for any content change:
 2. Create a new `.md` file following the existing format (date-prefixed filename, e.g. `2025-03-15-role-title.md`)
 3. Or use the online form at [opensourcedesign.net/jobs/job-form/](https://opensourcedesign.net/jobs/job-form/)
 
+Links in `how_to_apply` automatically get a recognisable service icon on the job page (GitHub, GitLab, Codeberg, F-Droid, Figma, Matrix, LinkedIn, app stores, …) based on the URL's host; unknown hosts fall back to a generic link icon and emails get an envelope. To support another service, add a host rule and its SVG path to `layouts/partials/apply-icon.html`.
+
 To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
+
+**Expiration:** postings can carry an optional `deadline: YYYY-MM-DD` (application deadline, settable from the form). Once the deadline passes, the posting shows an "expired" notice and moves from `/jobs/` to `/jobs/archive/`. A daily GitHub Action (`job-expire.yml`) also flips `status: searching` to `status: expired` when the deadline has passed, or when a posting is over a year old with no update — so the front matter catches up with what the site already shows. Re-open an expired posting by editing it and selecting "Still searching" (clear or move the deadline first).
+
+### Social Media Announcements
+
+When a push to `master` adds a new file under `content/jobs/` (i.e. a submission PR was merged, or a maintainer committed a posting directly), the `job-announce.yml` workflow posts it to Mastodon and Bluesky using `.github/scripts/announce-jobs.mjs` — no third-party services involved. It waits for the job page to be live (the Hugo deploy runs in parallel), announces only fresh `status: searching` postings (dated within 14 days, so bulk imports and renames never spam the feeds), and caps posts per run.
+
+Each platform is optional — configure its repo secrets to enable it:
+
+| Platform | Secrets | Where to get them |
+| -------- | ------- | ----------------- |
+| Mastodon | `MASTODON_URL`, `MASTODON_ACCESS_TOKEN` | On the account's instance: Preferences → Development → New application, scope `write:statuses`. `MASTODON_URL` is the instance base URL, e.g. `https://fosstodon.org`. |
+| Bluesky | `BLUESKY_IDENTIFIER`, `BLUESKY_APP_PASSWORD` (optional `BLUESKY_SERVICE`) | `BLUESKY_IDENTIFIER` is the handle (e.g. `opensourcedesign.bsky.social`); create the app password under Settings → Privacy and Security → App Passwords. Don't use the account password. |
+
+To announce a posting manually (retry, or one that predates the workflow), run *Announce new jobs on social media* from the Actions tab with the file path — there's also a dry-run option that composes the posts without publishing. Missed announcements never block a merge: the workflow only reads the repo and fails loudly in the Actions log.
 
 ### Adding an Event
 
@@ -183,6 +204,8 @@ To update an existing posting (fix details, mark it as solved or closed), use th
 2. Create a new `.md` file (date-prefixed for announcements, or a short slug for write-ups, e.g. `fosdem-2026.md`)
 3. Fill in the front matter with event details (`title`, `eventDate`, `status`, location, etc.)
 4. Or use the online form at [opensourcedesign.net/events/event-form/](https://opensourcedesign.net/events/event-form/), which opens a moderated pull request for you (handled by the same Cloudflare Worker as the job form)
+
+To update an existing event (fix details, mark it as cancelled), use the "Edit this event" link at the bottom of the event's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
 > **Announcements vs. write-ups:** add an `author` to the front matter to mark a page as a **write-up / recap**. Those entries get a "Recap" card (with a thumbnail pulled from the first image in the body) in the *Write-ups & Recaps* column on `/events/` and surface on the homepage. Pages without an `author` are treated as plain listings. Set `status` to `upcoming`/`started` to appear in the *Upcoming* list, or `past`/`cancelled` to move into the archive.
 >

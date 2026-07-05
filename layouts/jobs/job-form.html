@@ -67,6 +67,12 @@
               <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="role" name="role" placeholder="e.g., UX Design" required />
               <p class="text-xs text-slate-500">e.g., Web design, UX review, Branding</p>
             </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="deadline">Application deadline <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="deadline" name="deadline" type="date" />
+              <p class="text-xs text-slate-500">The posting is automatically marked as expired after this date. Postings older than a year are closed automatically.</p>
+            </div>
           </div>
 
           <div class="space-y-3">
@@ -343,6 +349,8 @@
           setVal('role', parsed.scalar('role'));
           setRadio('compensation', parsed.scalar('compensation') === 'paid' ? 'paid' : 'gratis');
           setVal('paid_details', parsed.scalar('paid_details'));
+          var dl = parsed.scalar('deadline');
+          if (/^\d{4}-\d{2}-\d{2}$/.test(dl)) setVal('deadline', dl);
           setVal('github_handle', parsed.scalar('github_handle'));
           setVal('tags', parsed.list('tags').join(', '));
           var apply = parsed.list('how_to_apply');
@@ -432,6 +440,7 @@
           fm.push('role: ' + yq(data.role));
           fm.push('compensation: ' + yq(data.compensation));
           if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+          if (data.deadline) fm.push('deadline: ' + yq(data.deadline));
           if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
 
           if (tagList.length) {
@@ -525,6 +534,7 @@
             role: form.role.value.trim(),
             compensation: getRadio('compensation'),
             paid_details: (form.paid_details || {}).value ? form.paid_details.value.trim() : '',
+            deadline: (form.deadline || {}).value || '',
             description: form.description.value.trim(),
             deliverables: form.deliverables.value.trim(),
             how_to_apply: form.how_to_apply.value.trim(),
@@ -536,7 +546,9 @@
           };
           if (editFile) {
             data.edit_file = editFile;
-            data.status = getRadio('status') || 'searching';
+            // Only send a status when the original loaded; otherwise the worker
+            // keeps the current one (prevents accidentally reopening a solved job).
+            if (editMeta) data.status = getRadio('status') || 'searching';
           }
 
           if (!data.organization || !data.org_url || !data.license || !data.title || !data.role || !data.description || !data.how_to_apply) {
@@ -546,6 +558,16 @@
 
           if (data.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
             if (note) note.textContent = 'Please enter a valid email address, or leave it blank.';
+            return;
+          }
+
+          // A posting that is (or stays) open can't have a past deadline —
+          // it would expire again immediately.
+          var willBeOpen = editFile ? getRadio('status') === 'searching' : true;
+          if (willBeOpen && data.deadline && data.deadline < datePosted) {
+            if (note) note.textContent = editFile
+              ? 'This job is still marked as searching, but the application deadline is in the past. Update or clear the deadline first.'
+              : 'The application deadline cannot be in the past.';
             return;
           }
 

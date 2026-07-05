@@ -52,9 +52,7 @@ Initially, we will simply focus on addressing Challenge #1 above. Later on we ca
 
 ### Contact
 
-Send your resumé, along with the answer to the questions below to:
-
-    contact at taoeffect dot com
+Send your resumé, along with the answer to the questions below to: `contact at taoeffect dot com`
 
 1. Why we should hire you.
 2. What interests you about this project.

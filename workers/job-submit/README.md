@@ -9,14 +9,20 @@ Cloudflare KV (keyed by PR number) so the
 [`job-approved-email`](../../.github/workflows/job-approved-email.yml)
 workflow can notify them when the posting is merged and published.
 
-The same `/submit` route also powers **job edits**: when the payload carries
-`edit_file` (set by the job form's edit mode, reached via the "Edit this
-posting" link on every job page, `/jobs/job-form/?edit=<file>.md`), the Worker
-updates that existing file on a `job-edit/*` branch instead of adding a new
-one. Identity fields (`date_posted`, `date`, `_id`, `slug`, `aliases`) are
-preserved from the current file so URLs and list ordering don't change, and
-the submitter can also set the posting's `status` (searching / solved /
-closed).
+The same `/submit` route also powers **edits**: when the payload carries
+`edit_file` (set by a form's edit mode, reached via the "Edit this posting" /
+"Edit this event" links — `/jobs/job-form/?edit=<file>.md` or
+`/events/event-form/?edit=<file>.md`), the Worker updates that existing file
+on a `job-edit/*` or `event-edit/*` branch instead of adding a new one.
+Identity fields (`date_posted`, `date`, `_id`, `slug`, `url`, `permalink`,
+`aliases`, `categories`, `author`) are preserved from the current file so URLs
+and list ordering don't change, and the submitter can also set the status
+(jobs: searching / solved / closed; events: upcoming / cancelled).
+
+Jobs may carry an optional `deadline` (application deadline, `YYYY-MM-DD`).
+The Worker validates the format and rejects past dates on new submissions
+(edits may keep a historical deadline). Postings past their deadline expire
+on the site — see the `job-expire.yml` workflow.
 
 ```
 Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/ or content/events/

@@ -41,11 +41,8 @@ Our project is yet to draw any start-up money or make any income, and the work o
 
 We have tried to raise funds but are now waylaid by a recruitment push due to the loss of one member following bereavements.
 
-    
-
-    www.therapy.coop
-
-    https://www.baatn.org.uk/job/common-ground-therapy-worker-cooperative-south-east-london-part-time-join-londons-only-therapy-cooperative-common-ground-therapy-is-a-worker-cooperative-social-enterprise-which-is-seeking/
+- <https://www.therapy.coop>
+- [Job listing on baatn.org.uk](https://www.baatn.org.uk/job/common-ground-therapy-worker-cooperative-south-east-london-part-time-join-londons-only-therapy-cooperative-common-ground-therapy-is-a-worker-cooperative-social-enterprise-which-is-seeking/)
 
 Best wishes,
 
