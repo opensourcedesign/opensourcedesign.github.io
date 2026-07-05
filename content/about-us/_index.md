@@ -4,19 +4,28 @@ aliases:
   - /faq/
 ---
 
-We are a community of designers and developers pushing for more open design processes and better user experience in open source software.
+We are a community of designers and developers who want to improve the usability and  design of open-source software and learn from each other.
 
-## What we do
+## Software should be designed well
 
-Open source projects are built in the open, but their design processes often aren't. We work to change that — by aggregating knowledge, connecting people, and making it easier for designers to participate in open source.
+Software that is difficult to use causes inefficiency, limits user expression, is a security risks and is plainly not fun. Thoughtful designers can prevent these problems, whether done by a professional designer or an interested amateur. This is particularly important in open source software which often has been created by programmers for programmers.
 
-We maintain a curated [resources](/resources/) library of openly licensed icons, fonts, images, tools, and design reading. We run a [job board](/jobs/) where open source projects can find design help. We show up at conferences — FOSDEM, Libre Graphics Meeting, and others — to make the case that design belongs in open source.
+## Connecting people and help them grow
 
-## How we work
+We connect people who are interested in design in open source projects with each other to  exchange experiences, practices and advice. To do this, we run a forum, post on social media, organize events and provide a job board. An important part of developing expertise is  how we work and the artifacts we create. No work is perfect and always context-dependent. This is not about finding the right way to work, but finding a way that works by learning from each other.
 
-Designers and developers don't always speak the same language. We work on bridging that gap: through documentation, workshops, events, and a [community forum](https://discourse.opensourcedesign.net) where both can ask questions and collaborate.
+## Valuing mutual respect and learning from each other
 
-We organise meetups and contribute to open source projects directly — with UX reviews, mockups, and design consulting. We also think about the structural side: how to write issues and documentation that non-technical contributors can work with, and how communities can give constructive design feedback.
+We value knowledge and experience in all it’s forms. For example you might be:
+
+* a new designer exploring opportunities, skills and finding community, 
+* a highly technical engineer that has questions and thoughts about usability and users of Open Source Software you use or build 
+* an established designers with decades of experience looking to make an impact in an under-served technology space. 
+
+We want all these people to come together to share, learn and make Design in Open Source Software sustainable, actionable and valued. 
+Respect is essential. We do not assume everyone is familiar with  the terminologies of  design, tech or Open Source Software and we want to hold space for people to ask questions, critique, agree and disagree thoughtfully and with care. Try to listen more than you speak and ensure you are sharing equal space with others in discussions and do not try to force your ideas or views on others. We wrote the essential ground rules in our Code of Conduct. 
+
+If you want to participate in the community, go to How to Join Open Source Design, where we show the different platforms we use for communicating, building this website and services like the job board and how the community is governed. 
 
 ## Our community
 
