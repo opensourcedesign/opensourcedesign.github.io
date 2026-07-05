@@ -50,6 +50,12 @@ Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR int
 Maintainer merges PR → GitHub Action → GET /lookup?pr=<n> → email submitter via SMTP
 ```
 
+The notification is a branded HTML email (plain-text alternative included) and
+links directly to the published page: the workflow resolves the job/event
+permalink — or the resource's category anchor on `/resources/links/` — from
+the merged PR's files via `.github/scripts/published-url.mjs`, falling back to
+the section list URL if resolution fails.
+
 Everything fits comfortably in the free tiers (Workers 100k req/day, KV 100k
 reads + 1k writes/day, Turnstile unlimited, Actions free on public repos) for the
 expected ~10 submissions/month. **Cost: $0.**

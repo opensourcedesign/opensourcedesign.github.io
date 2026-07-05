@@ -121,6 +121,13 @@ for (const name of fs.readdirSync('content/jobs').filter((f) => f.endsWith('.md'
     include.push({
       email,
       title,
+      // Escaped copy for the html_body: the title is submitter-provided and
+      // must not inject markup into the email.
+      title_html: title
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;'),
       file: name,
       job_url: `${SITE}/jobs/${slug}/`,
       edit_url: `${SITE}/jobs/job-form/?edit=${encodeURIComponent(name)}`,

@@ -246,8 +246,10 @@
            classes are mirrored 1:1 — if single.html changes, update this too. */}}
       <div class="fixed inset-0 z-50 overflow-y-auto bg-white" id="osd-preview" hidden role="dialog" aria-modal="true" aria-label="Preview of your job posting">
         <div class="sticky top-0 z-10 border-b border-amber-200 bg-amber-50/95 backdrop-blur">
-          <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
-            <p class="flex items-center gap-2 text-sm font-medium text-amber-900">
+          {{/* Stacks on mobile (message row, then the button centered on its
+               own row); single row with the button on the right from sm up. */}}
+          <div class="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-3 text-center sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
+            <p class="flex items-center justify-center gap-2 text-sm font-medium text-amber-900 sm:justify-start">
               <svg class="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               Preview — this is how your posting will look once published. Links are inactive.
             </p>
