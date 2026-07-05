@@ -22,7 +22,8 @@ jobs:
       (startsWith(github.event.pull_request.head.ref, 'job/') ||
        startsWith(github.event.pull_request.head.ref, 'job-edit/') ||
        startsWith(github.event.pull_request.head.ref, 'event/') ||
-       startsWith(github.event.pull_request.head.ref, 'event-edit/'))
+       startsWith(github.event.pull_request.head.ref, 'event-edit/') ||
+       startsWith(github.event.pull_request.head.ref, 'resource/'))
     runs-on: ubuntu-latest
     steps:
       - name: Look up submitter email
@@ -62,6 +63,10 @@ jobs:
             job-edit/*)
               kind="job posting update"
               url="https://opensourcedesign.net/jobs/"
+              ;;
+            resource/*)
+              kind="resource suggestion"
+              url="https://opensourcedesign.net/resources/links/"
               ;;
             *)
               kind="job posting"

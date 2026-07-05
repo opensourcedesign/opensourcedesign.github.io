@@ -243,9 +243,20 @@
                   {{ end }}
                 </dd>
               </div>
+              {{ with .Params.rate_min }}
+                {{ $cur := printf "%v" ($.Params.rate_currency | default "USD") }}
+                {{ $sym := index (dict "USD" "$" "EUR" "€" "GBP" "£" "INR" "₹") $cur }}
+                <div>
+                  <dt class="text-slate-500">Rate</dt>
+                  <dd class="mt-1 font-medium text-slate-900">
+                    {{ if $sym }}{{ $sym }}{{ end }}{{ . }}{{ with $.Params.rate_max }}–{{ . }}{{ end }}{{ if not $sym }}&nbsp;{{ $cur }}{{ end }}
+                    <span class="font-normal text-slate-500">per {{ $.Params.rate_period | default "hour" }}</span>
+                  </dd>
+                </div>
+              {{ end }}
               {{ with .Params.paid_details }}
                 <div>
-                  <dt class="text-slate-500">Budget / rate</dt>
+                  <dt class="text-slate-500">{{ if $.Params.rate_min }}Notes{{ else }}Budget / rate{{ end }}</dt>
                   <dd class="mt-1 font-medium text-slate-900">{{ . }}</dd>
                 </div>
               {{ end }}

@@ -1,0 +1,11 @@
+{{- /* Volunteer/gratis jobs feed: /jobs/feed-volunteer.xml. */ -}}
+{{- $pages := slice -}}
+{{- range .RegularPages.ByDate.Reverse -}}
+  {{- $c := (printf "%v" (.Params.compensation | default "")) | lower -}}
+  {{- if or (in $c "gratis") (in $c "volunteer") (eq $c "free") -}}
+    {{- $pages = $pages | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 }}{{ $pages = $pages | first $limit }}{{ end -}}
+{{- partial "rss-channel.xml" (dict "page" . "pages" $pages "self" (printf "%sfeed-volunteer.xml" .Permalink)) -}}

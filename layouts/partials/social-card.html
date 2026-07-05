@@ -1,0 +1,57 @@
+{{/*
+  Generates a 1200x630 Open Graph card for a job posting: dark branded
+  background (assets/images/og-card-base.png) with the job title, organization,
+  compensation, and deadline rendered via images.Text. Returns the published
+  image resource, or nothing when the base assets are missing. Results are
+  cached by Hugo's image cache, so only new/changed titles cost build time.
+*/}}
+{{ $card := "" }}
+{{ $page := . }}
+{{ $base := resources.Get "images/og-card-base.png" }}
+{{ $bold := resources.Get "fonts/og/Inter-Bold.ttf" }}
+{{ $med := resources.Get "fonts/og/Inter-Medium.ttf" }}
+{{ if and $base $bold $med }}
+  {{/* Manual word-wrap (~30 chars/line, max 4 lines) since images.Text only
+       wraps at the image edge, which would leave no right margin. */}}
+  {{ $lines := slice }}
+  {{ $cur := "" }}
+  {{ range split $page.Title " " }}
+    {{ if and $cur (gt (add (len $cur) (len .)) 29) }}
+      {{ $lines = $lines | append $cur }}
+      {{ $cur = . }}
+    {{ else }}
+      {{ $cur = trim (printf "%s %s" $cur .) " " }}
+    {{ end }}
+  {{ end }}
+  {{ if $cur }}{{ $lines = $lines | append $cur }}{{ end }}
+  {{ if gt (len $lines) 4 }}
+    {{ $lines = first 4 $lines }}
+    {{ $lines = (first 3 $lines) | append (printf "%s…" (index $lines 3)) }}
+  {{ end }}
+  {{ $title := delimit $lines "\n" }}
+
+  {{ $meta := slice }}
+  {{ with $page.Params.organization }}
+    {{ $org := printf "%v" . }}
+    {{ if gt (len $org) 40 }}{{ $org = printf "%s…" (substr $org 0 39) }}{{ end }}
+    {{ $meta = $meta | append $org }}
+  {{ end }}
+  {{ $comp := (printf "%v" ($page.Params.compensation | default "")) | lower }}
+  {{ if eq $comp "paid" }}
+    {{ $meta = $meta | append "Paid" }}
+  {{ else if $comp }}
+    {{ $meta = $meta | append "Volunteer" }}
+  {{ end }}
+  {{ with $page.Params.deadline }}
+    {{ $meta = $meta | append (printf "Apply by %s" ((time.AsTime (printf "%v" .)).Format "2 Jan 2006")) }}
+  {{ end }}
+
+  {{ $img := $base.Filter
+       (images.Text "OPEN SOURCE DESIGN · JOBS" (dict "color" "#34d399" "size" 30 "x" 80 "y" 84 "font" $med))
+       (images.Text $title (dict "color" "#ffffff" "size" 62 "linespacing" 16 "x" 80 "y" 156 "font" $bold))
+       (images.Text (delimit $meta "  ·  ") (dict "color" "#cbd5e1" "size" 32 "x" 80 "y" 496 "font" $med))
+       (images.Text "opensourcedesign.net/jobs" (dict "color" "#64748b" "size" 26 "x" 80 "y" 556 "font" $med))
+  }}
+  {{ $card = $img | resources.Copy (printf "og/jobs/%s.png" ($page.File.ContentBaseName | urlize)) }}
+{{ end }}
+{{ return $card }}

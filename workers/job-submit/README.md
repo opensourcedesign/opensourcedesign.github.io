@@ -24,6 +24,26 @@ The Worker validates the format and rejects past dates on new submissions
 (edits may keep a historical deadline). Postings past their deadline expire
 on the site — see the `job-expire.yml` workflow.
 
+Jobs may also carry a structured rate (`rate_min`, optional `rate_max`,
+`rate_currency`, `rate_period`): numbers are validated (`max >= min >= 0`),
+the currency must be a 3-letter code, and the period one of
+hour/day/month/year/project.
+
+New job submissions run a **duplicate check** against the site's machine-readable
+index (`<SITE_BASE_URL>/jobs/index.json`): if an open (`searching`) posting has
+the same normalized title — or a near-identical title from the same
+organization — the Worker answers `409` with the match, and the form asks the
+submitter to confirm (re-submitting with `force_duplicate: true`). The check
+fails open, so an unreachable site never blocks a legitimate posting.
+
+A third kind, `kind: "resource"`, powers the **Suggest a resource** form
+(`/resources/suggest/`): the Worker inserts the suggested entry (name, URL,
+optional description) at the end of the chosen category in
+`data/resources.yaml` — editing the YAML textually so comments and formatting
+survive — and opens a PR on a `resource/*` branch. Unknown categories are
+rejected. The same KV email flow applies (the approval workflow recognizes
+`resource/*` branches).
+
 ```
 Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/ or content/events/
                                  → KV: pr:<n> = { email, title, kind }
@@ -40,7 +60,19 @@ expected ~10 submissions/month. **Cost: $0.**
 | ------ | ---------------- | -------------------------- | ----------------------------------------- |
 | `POST` | `/submit`        | Turnstile token in body    | Verify + open a PR, store email in KV      |
 | `GET`  | `/lookup?pr=<n>` | `Authorization: Bearer …`  | Return the stored email (workflow only)    |
+| `GET`  | `/forum`         | none                       | Trimmed Discourse latest-topics list (CORS proxy, cached 10 min) |
 | `GET`  | `/` or `/health` | none                       | Health check (`{ ok: true }`)              |
+
+### `GET /forum`
+
+The homepage "From the forum" section refreshes itself on page load, but the
+Discourse instance (`FORUM_URL`) sends no `Access-Control-Allow-Origin`
+header, so browsers can't fetch `latest.json` directly. This route proxies it
+with CORS enabled, trims the payload to the six newest non-pinned topics
+(`id`, `slug`, `title`, `posts_count`, `last_posted_at`), and caches for 10
+minutes both at the Cloudflare edge (`cf.cacheTtl`) and in the browser
+(`Cache-Control: public, max-age=600`), so site traffic never hammers the
+forum. The build-time list rendered by Hugo remains the no-JS fallback.
 
 ## Prerequisites (provided by the maintainer)
 

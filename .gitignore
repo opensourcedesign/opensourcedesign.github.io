@@ -36,3 +36,4 @@ Thumbs.db
 # Scratch build output (local verification builds)
 /tmp/
 /.verify-build/
+/.tmp-*

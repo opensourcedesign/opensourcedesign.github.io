@@ -26,6 +26,17 @@ capitalizeListTitles = false
     mediaType = "application/rss+xml"
     baseName = "feed"
     isPlainText = false
+  # Filtered job feeds (enabled via `outputs` in content/jobs/_index.md).
+  [outputFormats.PaidRSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed-paid"
+    isPlainText = false
+    rel = "alternate"
+  [outputFormats.VolunteerRSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed-volunteer"
+    isPlainText = false
+    rel = "alternate"
   [outputFormats.Calendar]
     mediaType = "text/calendar"
     baseName = "calendar"

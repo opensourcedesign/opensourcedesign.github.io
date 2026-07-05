@@ -1,0 +1,38 @@
+# Lint job and event content changed by a pull request (submission PRs from
+# the Worker as well as manual ones). Validates front matter and catches the
+# Markdown pitfalls that render broken pages (4-space indents becoming code
+# blocks, `###Heading` without a space, pseudo-bullets). Errors fail the
+# check so moderators see problems before merging.
+name: Lint changed content
+
+on:
+  pull_request:
+    paths:
+      - "content/jobs/**.md"
+      - "content/events/**.md"
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Lint changed job/event files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          files="$(git diff --diff-filter=AM --name-only "$BASE_SHA" "$HEAD_SHA" -- 'content/jobs/*.md' 'content/events/*.md')"
+          if [ -z "$files" ]; then
+            echo "No job/event content changed."
+            exit 0
+          fi
+          # shellcheck disable=SC2086
+          node .github/scripts/lint-content.mjs $files

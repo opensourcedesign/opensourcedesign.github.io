@@ -52,6 +52,13 @@ export default {
       return handleLookup(request, env, url);
     }
 
+    // CORS proxy for the Discourse "latest topics" list (the forum sends no
+    // Access-Control-Allow-Origin, so browsers can't fetch it directly).
+    // Cached at the Cloudflare edge and in the browser for 10 minutes.
+    if (url.pathname === '/forum' && request.method === 'GET') {
+      return withCors(env, request, await handleForum(env));
+    }
+
     return withCors(env, request, json({ ok: false, error: 'Not found' }, 404));
   }
 };
@@ -81,13 +88,13 @@ async function handleSubmit(request, env) {
     }
   }
 
-  const kind = data.kind === 'event' ? 'event' : 'job';
+  const kind = data.kind === 'event' ? 'event' : data.kind === 'resource' ? 'resource' : 'job';
 
   // Optional edit mode: update an existing posting instead of adding a new
   // file. The target must be a plain filename inside the kind's content dir;
   // identity fields are preserved from the current file.
   let edit = null;
-  if (data.edit_file) {
+  if (data.edit_file && kind !== 'resource') {
     const file = String(data.edit_file).trim();
     if (!isSafeFilename(file)) {
       return json({ ok: false, error: 'Invalid edit target.' }, 400);
@@ -101,7 +108,9 @@ async function handleSubmit(request, env) {
   // Required fields (mirror each form's client-side validation).
   const required = kind === 'event'
     ? ['title', 'location', 'start_date', 'description']
-    : ['title', 'organization', 'org_url', 'license', 'role', 'description', 'how_to_apply'];
+    : kind === 'resource'
+      ? ['name', 'url', 'category']
+      : ['title', 'organization', 'org_url', 'license', 'role', 'description', 'how_to_apply'];
   for (const f of required) {
     if (!data[f] || !String(data[f]).trim()) {
       return json({ ok: false, error: 'Missing required field: ' + f }, 400);
@@ -124,6 +133,13 @@ async function handleSubmit(request, env) {
     if (data.website && !isHttpUrl(data.website)) {
       return json({ ok: false, error: 'Event website must be a valid http(s) URL.' }, 400);
     }
+  } else if (kind === 'resource') {
+    if (!isHttpUrl(data.url)) {
+      return json({ ok: false, error: 'The resource URL must be a valid http(s) URL.' }, 400);
+    }
+    if (!/^[a-z0-9-]{1,50}$/.test(String(data.category))) {
+      return json({ ok: false, error: 'Invalid category.' }, 400);
+    }
   } else {
     if (!isHttpUrl(data.org_url)) {
       return json({ ok: false, error: 'Project website must be a valid http(s) URL.' }, 400);
@@ -138,6 +154,20 @@ async function handleSubmit(request, env) {
       // New postings can't already be expired; edits may keep a past deadline.
       if (!edit && String(data.deadline) < new Date().toISOString().slice(0, 10)) {
         return json({ ok: false, error: 'The application deadline cannot be in the past.' }, 400);
+      }
+    }
+    // Structured rate (optional): sane numbers plus whitelisted currency/period.
+    if (data.rate_min) {
+      const min = Number(data.rate_min);
+      const max = data.rate_max ? Number(data.rate_max) : null;
+      if (!isFinite(min) || min < 0 || (max !== null && (!isFinite(max) || max < min))) {
+        return json({ ok: false, error: 'The rate must be a valid number range.' }, 400);
+      }
+      if (data.rate_currency && !/^[A-Z]{3}$/.test(String(data.rate_currency))) {
+        return json({ ok: false, error: 'The rate currency must be a 3-letter code.' }, 400);
+      }
+      if (data.rate_period && !['hour', 'day', 'month', 'year', 'project'].includes(String(data.rate_period))) {
+        return json({ ok: false, error: 'The rate period is not recognized.' }, 400);
       }
     }
   }
@@ -156,6 +186,43 @@ async function handleSubmit(request, env) {
       return json({ ok: false, error: 'Too many submissions today. Please try again tomorrow.' }, 429);
     }
     await env.RATE_LIMIT.put(key, String(cur + 1), { expirationTtl: 86400 });
+  }
+
+  // Resource suggestions edit data/resources.yaml instead of adding a
+  // content file; they take their own PR path.
+  if (kind === 'resource') {
+    let pr;
+    try {
+      pr = await createResourcePullRequest(env, data);
+    } catch (err) {
+      return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
+    }
+    if (data.email && String(data.email).trim() && env.EMAILS) {
+      const days = parseInt(env.EMAIL_TTL_DAYS || '90', 10) || 90;
+      try {
+        await env.EMAILS.put(
+          'pr:' + pr.number,
+          JSON.stringify({ email: String(data.email).trim(), title: data.name, kind }),
+          { expirationTtl: days * 86400 }
+        );
+      } catch (e) {
+        // Non-fatal: the PR still exists, only the auto-email would be skipped.
+      }
+    }
+    return json({ ok: true, pr_url: pr.html_url });
+  }
+
+  // Duplicate detection for new jobs: compare against the live job index and
+  // ask for confirmation (the form re-submits with force_duplicate).
+  if (kind === 'job' && !edit && !data.force_duplicate) {
+    const dup = await findDuplicateJob(env, data);
+    if (dup) {
+      return json({
+        ok: false,
+        duplicate: { title: dup.title, url: dup.url, organization: dup.organization || '' },
+        error: 'A very similar posting is already open: "' + dup.title + '".',
+      }, 409);
+    }
   }
 
   // For edits, load the current file so we can keep its identity fields
@@ -309,6 +376,12 @@ function buildMarkdown(data, env, edit) {
   fm.push('role: ' + yq(data.role));
   fm.push('compensation: ' + yq(data.compensation || 'gratis'));
   if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+  if (data.rate_min && data.compensation === 'paid') {
+    fm.push('rate_min: ' + Number(data.rate_min));
+    if (data.rate_max) fm.push('rate_max: ' + Number(data.rate_max));
+    fm.push('rate_currency: ' + yq(data.rate_currency || 'USD'));
+    fm.push('rate_period: ' + yq(data.rate_period || 'hour'));
+  }
   if (data.deadline) fm.push('deadline: ' + yq(String(data.deadline).trim()));
   if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
 
@@ -449,6 +522,56 @@ function slugify(str) {
     .replace(/-+/g, '-');
 }
 
+/** Bigram Dice similarity of two slugs (0..1). */
+function diceSimilarity(a, b) {
+  if (a === b) return 1;
+  if (a.length < 2 || b.length < 2) return 0;
+  const bigrams = (s) => {
+    const m = new Map();
+    for (let i = 0; i < s.length - 1; i++) {
+      const g = s.slice(i, i + 2);
+      m.set(g, (m.get(g) || 0) + 1);
+    }
+    return m;
+  };
+  const ma = bigrams(a);
+  const mb = bigrams(b);
+  let hits = 0;
+  for (const [g, n] of ma) hits += Math.min(n, mb.get(g) || 0);
+  return (2 * hits) / (a.length - 1 + b.length - 1);
+}
+
+/**
+ * Best-effort duplicate check for new job submissions against the site's
+ * machine-readable index (/jobs/index.json, built by Hugo). Only open
+ * (`searching`) postings count — reposting a solved job is legitimate.
+ * Fails open: a network hiccup must never block a real submission.
+ */
+async function findDuplicateJob(env, data) {
+  try {
+    const base = (env.SITE_BASE_URL || 'https://opensourcedesign.net').replace(/\/+$/, '');
+    const res = await fetch(base + '/jobs/index.json', {
+      headers: { accept: 'application/json' },
+      cf: { cacheTtl: 300, cacheEverything: true },
+    });
+    if (!res.ok) return null;
+    const index = await res.json();
+    const newTitle = slugify(data.title);
+    const newOrg = slugify(data.organization || '');
+    for (const job of index.jobs || []) {
+      if (String(job.status || '').toLowerCase() !== 'searching') continue;
+      const title = slugify(job.title || '');
+      if (!title || !newTitle) continue;
+      if (title === newTitle) return job;
+      const sameOrg = newOrg && slugify(job.organization || '') === newOrg;
+      if (sameOrg && diceSimilarity(title, newTitle) >= 0.8) return job;
+    }
+  } catch (e) {
+    // Fail open.
+  }
+  return null;
+}
+
 function yq(v) {
   const s = String(v == null ? '' : v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
   return '"' + s + '"';
@@ -465,6 +588,96 @@ function tagsToList(s) {
 /* -------------------------------------------------------------------------- */
 /* GitHub REST API                                                            */
 /* -------------------------------------------------------------------------- */
+
+/**
+ * Insert a suggested resource into data/resources.yaml (at the end of the
+ * chosen category's items) and open a PR. The category must be an existing
+ * `- id:` in the file; the YAML is edited textually to keep the file's
+ * comments and formatting intact.
+ */
+async function createResourcePullRequest(env, data) {
+  const owner = env.GITHUB_OWNER;
+  const repo = env.GITHUB_REPO;
+  const base = env.GITHUB_BRANCH || 'main';
+  const path = env.RESOURCES_FILE || 'data/resources.yaml';
+
+  const existing = await gh(
+    env,
+    'GET',
+    `/repos/${owner}/${repo}/contents/${encodeURIPath(path)}?ref=${encodeURIComponent(base)}`
+  );
+  const text = b64decode(existing.content);
+
+  const catId = String(data.category).trim();
+  const catRe = new RegExp('^- id: ' + catId.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&') + '\\s*$', 'm');
+  const catMatch = text.match(catRe);
+  if (!catMatch) throw new Error('Unknown category: ' + catId);
+
+  // Insert just before the next category block (or at end of file).
+  const nextRe = /^- id: /gm;
+  nextRe.lastIndex = catMatch.index + catMatch[0].length;
+  const next = nextRe.exec(text);
+  const insertAt = next ? next.index : text.length;
+
+  const yq1 = (v) => "'" + String(v).replace(/'/g, "''") + "'";
+  const entryLines = [
+    '    - name: ' + yq1(String(data.name).trim()),
+    '      url: ' + yq1(String(data.url).trim()),
+  ];
+  if (data.description && String(data.description).trim()) {
+    entryLines.push('      description: ' + yq1(String(data.description).trim().replace(/\s+/g, ' ')));
+  }
+
+  const head = text.slice(0, insertAt).replace(/\n+$/, '\n');
+  const tail = text.slice(insertAt);
+  const updated = head + entryLines.join('\n') + '\n' + (tail ? '\n' + tail : '');
+
+  const ref = await gh(env, 'GET', `/repos/${owner}/${repo}/git/ref/heads/${base}`);
+  const branch = 'resource/' + (slugify(data.name).slice(0, 40) || 'suggestion') + '-' + Math.random().toString(36).slice(2, 8);
+  await gh(env, 'POST', `/repos/${owner}/${repo}/git/refs`, {
+    ref: 'refs/heads/' + branch,
+    sha: ref.object.sha,
+  });
+
+  await gh(env, 'PUT', `/repos/${owner}/${repo}/contents/${encodeURIPath(path)}`, {
+    message: 'Suggest resource: ' + data.name,
+    content: b64encode(updated),
+    branch,
+    sha: existing.sha,
+  });
+
+  const cell = (v) => String(v == null ? '' : v).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
+  const body = [
+    'Automated resource suggestion from the [suggest form](https://opensourcedesign.net/resources/suggest/).',
+    '',
+    '| Field | Value |',
+    '| ----- | ----- |',
+    '| Name | ' + cell(data.name) + ' |',
+    '| URL | ' + cell(data.url) + ' |',
+    '| Category | ' + cell(catId) + ' |',
+    ...(data.description ? ['| Description | ' + cell(data.description) + ' |'] : []),
+    '',
+    'Review the link before merging (relevance, licensing, no dead/spam URL).',
+  ].join('\n');
+
+  const pr = await gh(env, 'POST', `/repos/${owner}/${repo}/pulls`, {
+    title: 'Resource suggestion: ' + data.name,
+    head: branch,
+    base,
+    body,
+  });
+
+  const label = env.PR_LABEL_RESOURCE || 'resource-suggestion';
+  if (label) {
+    try {
+      await gh(env, 'POST', `/repos/${owner}/${repo}/issues/${pr.number}/labels`, { labels: [label] });
+    } catch (e) {
+      // Label may not exist or token lacks Issues scope; non-fatal.
+    }
+  }
+
+  return pr;
+}
 
 async function createPullRequest(env, built, data, kind, edit) {
   const owner = env.GITHUB_OWNER;
@@ -576,6 +789,10 @@ function prBody(data, filePath, edit) {
   lines.push('| License | ' + cell(data.license) + ' |');
   lines.push('| Role | ' + cell(data.role) + ' |');
   lines.push('| Compensation | ' + cell(data.compensation) + (data.paid_details ? ' (' + cell(data.paid_details) + ')' : '') + ' |');
+  if (data.rate_min) {
+    const range = data.rate_max ? data.rate_min + '\u2013' + data.rate_max : data.rate_min;
+    lines.push('| Rate | ' + cell(range + ' ' + (data.rate_currency || 'USD') + ' per ' + (data.rate_period || 'hour')) + ' |');
+  }
   if (data.deadline) lines.push('| Apply by | ' + cell(data.deadline) + ' |');
   if (data.github_handle) lines.push('| Submitter GitHub | ' + cell(data.github_handle) + ' |');
   lines.push('| File | `' + filePath + '` |');
@@ -680,6 +897,39 @@ function isIsoDate(s) {
 
 function errMsg(err) {
   return err && err.message ? err.message : 'unknown error';
+}
+
+/**
+ * GET /forum — trimmed Discourse latest-topics list for the homepage forum
+ * pulse. Proxied because Discourse doesn't send CORS headers; cached at the
+ * edge (cf.cacheTtl) and in the browser (Cache-Control) for 10 minutes so a
+ * traffic spike on the site never hammers the forum.
+ */
+async function handleForum(env) {
+  const base = (env.FORUM_URL || 'https://discourse.opensourcedesign.net').replace(/\/+$/, '');
+  try {
+    const res = await fetch(base + '/latest.json', {
+      headers: { accept: 'application/json' },
+      cf: { cacheTtl: 600, cacheEverything: true },
+    });
+    if (!res.ok) return json({ ok: false, error: 'Forum unavailable.' }, 502);
+    const data = await res.json();
+    const topics = (data.topic_list && data.topic_list.topics ? data.topic_list.topics : [])
+      .filter((t) => !t.pinned)
+      .slice(0, 6)
+      .map((t) => ({
+        id: t.id,
+        slug: t.slug,
+        title: t.title,
+        posts_count: t.posts_count,
+        last_posted_at: t.last_posted_at,
+      }));
+    const resp = json({ ok: true, topics });
+    resp.headers.set('Cache-Control', 'public, max-age=600');
+    return resp;
+  } catch (e) {
+    return json({ ok: false, error: 'Forum unavailable.' }, 502);
+  }
 }
 
 function json(obj, status = 200) {

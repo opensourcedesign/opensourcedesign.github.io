@@ -16,6 +16,13 @@ CONTENT_DIR_EVENTS = "content/events"
 ALLOWED_ORIGIN = "https://opensourcedesign.net"
 PR_LABEL = "job-submission"
 PR_LABEL_EVENT = "event-submission"
+PR_LABEL_RESOURCE = "resource-suggestion"
+# Where resource suggestions (kind: "resource") are inserted.
+RESOURCES_FILE = "data/resources.yaml"
+# Live site base URL; used for the new-job duplicate check (/jobs/index.json).
+SITE_BASE_URL = "https://opensourcedesign.net"
+# Discourse instance proxied by GET /forum (homepage forum pulse).
+FORUM_URL = "https://discourse.opensourcedesign.net"
 EMAIL_TTL_DAYS = "90"
 # Optional per-IP daily cap; only enforced if a RATE_LIMIT KV namespace is bound.
 RATE_LIMIT_MAX = "5"

@@ -1,0 +1,80 @@
+# Ask posters of ~45-day-old open job postings whether they're still
+# searching. Runs weekly; find-reminder-jobs.mjs selects `searching` postings
+# whose date_posted falls in the 42-48 day window (so each job is caught
+# exactly once), maps each file to its submission PR, and resolves the
+# submitter's email from Cloudflare KV via the Worker's authenticated lookup
+# (same mechanism as job-approved-email.yml). Manually committed postings
+# have no stored email and are skipped.
+name: Remind posters of ageing job posts
+
+on:
+  schedule:
+    # Mondays 06:00 UTC.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    outputs:
+      found: ${{ steps.scan.outputs.found }}
+      matrix: ${{ steps.scan.outputs.matrix }}
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+
+      - name: Find jobs due a reminder
+        id: scan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          LOOKUP_URL: ${{ secrets.JOB_LOOKUP_URL }}
+          LOOKUP_SECRET: ${{ secrets.JOB_LOOKUP_SECRET }}
+        run: node .github/scripts/find-reminder-jobs.mjs
+
+  send:
+    needs: find
+    if: needs.find.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.find.outputs.matrix) }}
+      max-parallel: 1
+    steps:
+      - name: Send reminder email
+        # Pinned to a full commit SHA (supply-chain hardening); comment records the version.
+        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          secure: ${{ secrets.SMTP_SECURE || 'false' }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Open Source Design <${{ secrets.SMTP_FROM }}>
+          to: ${{ matrix.email }}
+          subject: Is your job posting "${{ matrix.title }}" still open?
+          body: |
+            Hi,
+
+            Your job posting "${{ matrix.title }}" has been live on Open Source Design
+            for about six weeks:
+
+            ${{ matrix.job_url }}
+
+            If the position has been filled or is no longer available, please close it
+            so applicants don't keep reaching out — open the edit form and set the
+            status to "solved" or "closed":
+
+            ${{ matrix.edit_url }}
+
+            If you're still searching, no action is needed. The posting stays open
+            until its application deadline passes or it reaches one year, at which
+            point it's archived automatically.
+
+            Thanks for posting with Open Source Design!
+
+            — The Open Source Design community

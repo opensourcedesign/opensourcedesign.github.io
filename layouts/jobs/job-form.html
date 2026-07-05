@@ -95,9 +95,47 @@
             </div>
           </div>
 
-          <div class="space-y-2" id="paidDetailsWrap" hidden>
-            <label class="text-sm font-medium text-slate-700" for="paid_details">Budget / rate <span class="text-slate-400">(optional)</span></label>
-            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="paid_details" name="paid_details" placeholder="e.g., $500 fixed, $50/hour, negotiable" />
+          <div class="space-y-4" id="paidDetailsWrap" hidden>
+            <fieldset class="space-y-2">
+              <legend class="text-sm font-medium text-slate-700">Rate or budget <span class="text-slate-400">(optional, helps applicants decide)</span></legend>
+              <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div>
+                  <label class="text-xs font-medium text-slate-500" for="rate_min">From</label>
+                  <input class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="rate_min" name="rate_min" type="number" min="0" step="any" inputmode="decimal" placeholder="50" />
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500" for="rate_max">To <span class="text-slate-400">(optional)</span></label>
+                  <input class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="rate_max" name="rate_max" type="number" min="0" step="any" inputmode="decimal" placeholder="75" />
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500" for="rate_currency">Currency</label>
+                  <select class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="rate_currency" name="rate_currency">
+                    <option value="USD">USD $</option>
+                    <option value="EUR">EUR €</option>
+                    <option value="GBP">GBP £</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CAD">CAD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="INR">INR ₹</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500" for="rate_period">Per</label>
+                  <select class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="rate_period" name="rate_period">
+                    <option value="hour">hour</option>
+                    <option value="day">day</option>
+                    <option value="month">month</option>
+                    <option value="year">year</option>
+                    <option value="project">project</option>
+                  </select>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500">Leave "From" empty if you'd rather not state a figure.</p>
+            </fieldset>
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700" for="paid_details">Compensation notes <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="paid_details" name="paid_details" placeholder="e.g., negotiable, equity possible, fixed budget" />
+            </div>
           </div>
 
           {{/* Status — only shown when editing an existing posting */}}
@@ -194,10 +232,171 @@
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
             <span id="osd-submit-label">Submit job</span>
           </button>
+          <button class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="button" id="osd-preview-btn" aria-expanded="false" aria-controls="osd-preview">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Preview
+          </button>
           <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="reset" id="osd-reset">Reset</button>
           <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
         </div>
       </form>
+
+      {{/* Live preview: a full-screen, pixel-faithful replica of the job page
+           (layouts/jobs/single.html) filled from the form fields. Structure and
+           classes are mirrored 1:1 — if single.html changes, update this too. */}}
+      <div class="fixed inset-0 z-50 overflow-y-auto bg-white" id="osd-preview" hidden role="dialog" aria-modal="true" aria-label="Preview of your job posting">
+        <div class="sticky top-0 z-10 border-b border-amber-200 bg-amber-50/95 backdrop-blur">
+          <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+            <p class="flex items-center gap-2 text-sm font-medium text-amber-900">
+              <svg class="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Preview — this is how your posting will look once published. Links are inactive.
+            </p>
+            <button class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="osd-preview-close">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+              Back to editing
+            </button>
+          </div>
+        </div>
+
+        <article class="mx-auto max-w-5xl px-4 py-10">
+          {{/* Breadcrumb (replica) */}}
+          <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
+            <span>Home</span>
+            <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            <span>Jobs</span>
+            <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            <span class="truncate font-medium text-slate-700" aria-current="page" id="osd-pv-crumb"></span>
+          </nav>
+
+          <div class="mt-8 grid gap-10 lg:grid-cols-3">
+            {{/* ───── Main column (replica) ───── */}}
+            <div class="min-w-0 lg:col-span-2">
+              <header>
+                <div class="flex flex-wrap items-center gap-2" id="osd-pv-badges"></div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl" id="osd-pv-title"></h1>
+                <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-500">
+                  <span class="inline-flex items-center gap-1.5 font-medium text-slate-700" id="osd-pv-m-org" hidden>
+                    <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+                    <span></span>
+                  </span>
+                  <span class="inline-flex items-center gap-1.5" id="osd-pv-m-role" hidden>
+                    <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+                    <span></span>
+                  </span>
+                  <span class="inline-flex items-center gap-1.5" id="osd-pv-m-posted" hidden>
+                    <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                    <span></span>
+                  </span>
+                  <span class="inline-flex items-center gap-1.5" id="osd-pv-m-deadline" hidden>
+                    <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span></span>
+                  </span>
+                </div>
+              </header>
+
+              <div class="mt-8 space-y-8 border-t border-slate-200 pt-8">
+                <div class="prose prose-slate max-w-none break-words prose-headings:font-semibold prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-600" id="osd-pv-content"></div>
+
+                {{/* Deliverables card (replica) */}}
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-5" id="osd-pv-deliverables-wrap" hidden>
+                  <h2 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                    <svg class="h-5 w-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+                    Deliverables
+                  </h2>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-700" role="list" id="osd-pv-deliverables"></ul>
+                </div>
+
+                {{/* Related links (replica) */}}
+                <div id="osd-pv-links-wrap" hidden>
+                  <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+                    Related links
+                  </h2>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-700" id="osd-pv-links"></ul>
+                </div>
+
+                {{/* Tags (replica) */}}
+                <div id="osd-pv-tags-wrap" hidden>
+                  <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg>
+                    Tags
+                  </h2>
+                  <div class="mt-3 flex flex-wrap gap-2" id="osd-pv-tags"></div>
+                </div>
+              </div>
+            </div>
+
+            {{/* ───── Sidebar (replica) ───── */}}
+            <aside class="min-w-0 lg:col-span-1">
+              <div class="space-y-4 lg:sticky lg:top-24">
+                {{/* How to apply */}}
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <div class="border-b border-slate-100 bg-slate-900 px-5 py-4">
+                    <h2 class="flex items-center gap-2 text-base font-semibold text-white">
+                      <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                      How to apply
+                    </h2>
+                  </div>
+                  <div class="p-5">
+                    <ul class="space-y-2.5" role="list" id="osd-pv-apply" hidden></ul>
+                    <div class="space-y-2 text-sm leading-relaxed text-slate-600" id="osd-pv-apply-notes" hidden></div>
+                    <p class="text-sm leading-relaxed text-slate-600" id="osd-pv-apply-fallback" hidden>See the job description for instructions on how to apply.</p>
+                  </div>
+                </div>
+
+                {{/* Details */}}
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Details</h2>
+                  <dl class="mt-4 space-y-4 text-sm" id="osd-pv-details"></dl>
+                </div>
+
+                {{/* Share (replica, inert) */}}
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Share this job</h2>
+                  <div class="mt-3 flex flex-wrap items-center gap-3">
+                    <span class="text-sm font-medium text-slate-500">Share:</span>
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600" title="Share on LinkedIn (available after publishing)">
+                      <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </span>
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600" title="Share on Mastodon (available after publishing)">
+                      <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/></svg>
+                    </span>
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600" title="Share via Email (available after publishing)">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                    </span>
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600" title="Copy link (available after publishing)">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+                    </span>
+                  </div>
+                </div>
+
+                {{/* Something changed? (replica) */}}
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Something changed?</h2>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600">Update the details or mark this job as solved. Changes are reviewed by moderators before publishing.</p>
+                  <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+                    Edit this posting
+                  </span>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          {{/* Similar jobs placeholder */}}
+          <div class="mt-10 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-sm text-slate-500">
+            Similar job recommendations appear here once the posting is published.
+          </div>
+
+          {{/* Back link (replica, inert) */}}
+          <div class="mt-12 border-t border-slate-200 pt-6">
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+              Back to jobs
+            </span>
+          </div>
+        </article>
+      </div>
     </div>
 
     {{/* Result panel */}}
@@ -232,6 +431,7 @@
           if (/^[\w .,()&+'-]+\.md$/.test(editParam) && editParam.indexOf('..') === -1) editFile = editParam;
         } catch (e) { /* no URLSearchParams: edit mode unavailable */ }
         var editMeta = null; // identity fields parsed from the original file
+        var allowDuplicate = false; // set by "Post anyway" after a 409 duplicate warning
 
         var paidWrap = document.getElementById('paidDetailsWrap');
         var note = document.getElementById('osd-form-note');
@@ -349,6 +549,10 @@
           setVal('role', parsed.scalar('role'));
           setRadio('compensation', parsed.scalar('compensation') === 'paid' ? 'paid' : 'gratis');
           setVal('paid_details', parsed.scalar('paid_details'));
+          setVal('rate_min', parsed.scalar('rate_min'));
+          setVal('rate_max', parsed.scalar('rate_max'));
+          if (parsed.scalar('rate_currency')) setVal('rate_currency', parsed.scalar('rate_currency'));
+          if (parsed.scalar('rate_period')) setVal('rate_period', parsed.scalar('rate_period'));
           var dl = parsed.scalar('deadline');
           if (/^\d{4}-\d{2}-\d{2}$/.test(dl)) setVal('deadline', dl);
           setVal('github_handle', parsed.scalar('github_handle'));
@@ -440,6 +644,12 @@
           fm.push('role: ' + yq(data.role));
           fm.push('compensation: ' + yq(data.compensation));
           if (data.paid_details && data.compensation === 'paid') fm.push('paid_details: ' + yq(data.paid_details));
+          if (data.rate_min && data.compensation === 'paid') {
+            fm.push('rate_min: ' + Number(data.rate_min));
+            if (data.rate_max) fm.push('rate_max: ' + Number(data.rate_max));
+            fm.push('rate_currency: ' + yq(data.rate_currency || 'USD'));
+            fm.push('rate_period: ' + yq(data.rate_period || 'hour'));
+          }
           if (data.deadline) fm.push('deadline: ' + yq(data.deadline));
           if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
 
@@ -534,6 +744,10 @@
             role: form.role.value.trim(),
             compensation: getRadio('compensation'),
             paid_details: (form.paid_details || {}).value ? form.paid_details.value.trim() : '',
+            rate_min: (form.rate_min || {}).value ? form.rate_min.value.trim() : '',
+            rate_max: (form.rate_max || {}).value ? form.rate_max.value.trim() : '',
+            rate_currency: (form.rate_currency || {}).value || 'USD',
+            rate_period: (form.rate_period || {}).value || 'hour',
             deadline: (form.deadline || {}).value || '',
             description: form.description.value.trim(),
             deliverables: form.deliverables.value.trim(),
@@ -550,6 +764,7 @@
             // keeps the current one (prevents accidentally reopening a solved job).
             if (editMeta) data.status = getRadio('status') || 'searching';
           }
+          if (allowDuplicate) data.force_duplicate = true;
 
           if (!data.organization || !data.org_url || !data.license || !data.title || !data.role || !data.description || !data.how_to_apply) {
             if (note) note.textContent = 'Please fill in all required fields.';
@@ -568,6 +783,11 @@
             if (note) note.textContent = editFile
               ? 'This job is still marked as searching, but the application deadline is in the past. Update or clear the deadline first.'
               : 'The application deadline cannot be in the past.';
+            return;
+          }
+
+          if (data.rate_min && data.rate_max && Number(data.rate_max) < Number(data.rate_min)) {
+            if (note) note.textContent = 'The "To" rate cannot be lower than the "From" rate.';
             return;
           }
 
@@ -592,8 +812,33 @@
 
               var json = await resp.json().catch(function () { return null; });
 
+              // Possible duplicate: the worker found a very similar open
+              // posting. Show it and let the submitter confirm.
+              if (resp.status === 409 && json && json.duplicate) {
+                if (note) note.textContent = 'Possible duplicate found — please check below.';
+                out.classList.remove('border-emerald-200', 'bg-emerald-50', 'border-slate-200', 'bg-white');
+                out.classList.add('border-amber-300', 'bg-amber-50');
+                var dupTitle = String(json.duplicate.title || '').replace(/</g, '&lt;');
+                var dupOrg = String(json.duplicate.organization || '').replace(/</g, '&lt;');
+                showResult(
+                  'Is this the same job?',
+                  'A very similar posting is already open: <a class="font-medium underline underline-offset-4" href="' + encodeURI(String(json.duplicate.url || '')) + '" target="_blank" rel="noopener noreferrer">' + dupTitle + '</a>' + (dupOrg ? ' — ' + dupOrg : '') + '. If you want to update that posting instead, use its "Suggest an edit" link. If yours is genuinely a different job, post it anyway.',
+                  '<button type="button" id="osd-dup-anyway" class="mt-3 inline-flex items-center rounded-lg border border-amber-400 bg-white px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-100">Post anyway</button>'
+                );
+                var dupBtn = document.getElementById('osd-dup-anyway');
+                if (dupBtn) dupBtn.addEventListener('click', function () {
+                  allowDuplicate = true;
+                  out.hidden = true;
+                  out.classList.remove('border-amber-300', 'bg-amber-50');
+                  form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
+                });
+                return;
+              }
+
               if (resp.ok && json && json.ok && json.pr_url) {
                 if (note) note.textContent = 'Submitted.';
+                out.classList.remove('border-amber-300', 'bg-amber-50', 'border-slate-200', 'bg-white');
+                out.classList.add('border-emerald-200', 'bg-emerald-50');
                 showResult(
                   editFile ? 'Thanks — your changes were received' : 'Thanks — submission received',
                   'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
@@ -632,6 +877,252 @@
             '<textarea class="mt-3 min-h-64 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 font-mono text-xs outline-none focus:ring-2 focus:ring-slate-900/20" aria-label="Generated job posting markdown" readonly>' + gen2.markdown.replace(/</g,'&lt;') + '</textarea>'
           );
         });
+
+        // ── Live preview ────────────────────────────────────────────────────
+        var pv = document.getElementById('osd-preview');
+        var pvBtn = document.getElementById('osd-preview-btn');
+        var pvClose = document.getElementById('osd-preview-close');
+
+        function esc(s) {
+          return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        // Inline markdown: code, bold, italic, [text](url), bare URLs.
+        function mdInline(s) {
+          return s
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>')
+            .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+            .replace(/(^|[\s(])((https?:\/\/)[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
+        }
+
+        // Block-level markdown subset matching what job descriptions use:
+        // headings, unordered/ordered lists, paragraphs. Input is escaped
+        // first, so only markup we generate reaches innerHTML.
+        function mdToHtml(md) {
+          var lines = esc(md).split(/\r?\n/);
+          var html = [];
+          var list = null; // 'ul' | 'ol'
+          var para = [];
+          function flushPara() {
+            if (para.length) { html.push('<p>' + mdInline(para.join(' ')) + '</p>'); para = []; }
+          }
+          function flushList() {
+            if (list) { html.push('</' + list + '>'); list = null; }
+          }
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+            var h = line.match(/^(#{1,6})\s+(.*)$/);
+            var ul = line.match(/^\s*[-*+]\s+(.*)$/);
+            var ol = line.match(/^\s*\d+[.)]\s+(.*)$/);
+            if (h) {
+              flushPara(); flushList();
+              var level = Math.min(h[1].length + 2, 6); // # -> h3 inside the card
+              html.push('<h' + level + '>' + mdInline(h[2]) + '</h' + level + '>');
+            } else if (ul || ol) {
+              flushPara();
+              var want = ul ? 'ul' : 'ol';
+              if (list !== want) { flushList(); html.push('<' + want + '>'); list = want; }
+              html.push('<li>' + mdInline((ul || ol)[1]) + '</li>');
+            } else if (!line.trim()) {
+              flushPara(); flushList();
+            } else {
+              flushList();
+              para.push(line.trim());
+            }
+          }
+          flushPara(); flushList();
+          return html.join('\n');
+        }
+
+        function humanDate(iso) {
+          return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function setMeta(id, text) {
+          var el = document.getElementById(id);
+          el.hidden = !text;
+          if (text) el.querySelector('span').textContent = text;
+        }
+
+        // Icons reused across the sidebar replica.
+        var ICON_EXT = '<svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>';
+        var ICON_MAIL = '<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>';
+        var ICON_GH = '<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>';
+        var ICON_LINK = '<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>';
+        var ICON_CHECK = '<svg class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+
+        function hostOf(url) {
+          return url.replace(/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//, '').replace(/[/?#].*$/, '').replace(/^www\./, '');
+        }
+
+        // Mirrors the contact classification in partials/job-apply.html.
+        function classifyApply(lines) {
+          var contacts = [];
+          var notes = [];
+          lines.forEach(function (line) {
+            var emails = line.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+            if (emails) {
+              var email = emails[0];
+              var label = line.replace(/<[^>]*>/g, '').replace(email, '').replace(/^[\s:<>\-(),]+|[\s:<>\-(),]+$/g, '');
+              if (label.length > 48) { notes.push(line); label = ''; }
+              if (!label) label = email;
+              contacts.push({ icon: ICON_MAIL, label: label, sub: label === email ? 'Email' : email });
+            } else if (/^(https?:\/\/|www\.)/.test(line)) {
+              var url = line.split(/\s/)[0].replace(/[).,;:!?>'"]+$/, '');
+              if (/^www\./.test(url)) url = 'https://' + url;
+              contacts.push({ icon: /(^|\.)github\.com$/.test(hostOf(url)) ? ICON_GH : ICON_LINK, label: hostOf(url), sub: line });
+            } else if (/^@[A-Za-z0-9][A-Za-z0-9-]{0,38}$/.test(line)) {
+              contacts.push({ icon: ICON_GH, label: line, sub: 'GitHub' });
+            } else if (/github/i.test(line) && /@[A-Za-z0-9][A-Za-z0-9-]{0,38}/.test(line) && line.length < 60) {
+              contacts.push({ icon: ICON_GH, label: line.match(/@[A-Za-z0-9][A-Za-z0-9-]{0,38}/)[0], sub: 'GitHub' });
+            } else {
+              notes.push(line);
+            }
+          });
+          return { contacts: contacts, notes: notes };
+        }
+
+        function detailRow(dt, ddHtml) {
+          return '<div><dt class="text-slate-500">' + dt + '</dt>' + ddHtml + '</div>';
+        }
+
+        function renderPreview() {
+          var title = form.title.value.trim() || 'Your job title';
+          var org = form.organization.value.trim();
+          var role = form.role ? String(form.role.value || '').trim() : '';
+          var comp = getRadio('compensation');
+          var isPaid = comp === 'paid';
+          var deadline = (form.deadline || {}).value || '';
+          var postedISO = (editMeta && editMeta.date_posted) || new Date().toISOString().slice(0, 10);
+          var status = editFile ? (getRadio('status') || 'searching') : 'searching';
+
+          document.getElementById('osd-pv-crumb').textContent = title;
+          document.getElementById('osd-pv-title').textContent = title;
+
+          // Status + compensation badges (classes copied from single.html / badge.html).
+          var badges = [];
+          if (status === 'searching') {
+            badges.push('<span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Open</span>');
+          } else {
+            badges.push('<span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold capitalize text-slate-600 ring-1 ring-inset ring-slate-500/20">' + esc(status) + '</span>');
+          }
+          badges.push(isPaid
+            ? '<span class="inline-flex shrink-0 items-center gap-1 rounded-full font-medium px-2.5 py-1 text-xs bg-emerald-100 text-emerald-800"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>Paid</span>'
+            : '<span class="inline-flex shrink-0 items-center gap-1 rounded-full font-medium px-2.5 py-1 text-xs bg-violet-100 text-violet-800"><span class="h-1.5 w-1.5 rounded-full bg-violet-500" aria-hidden="true"></span>Volunteer</span>');
+          document.getElementById('osd-pv-badges').innerHTML = badges.join('');
+
+          setMeta('osd-pv-m-org', org);
+          setMeta('osd-pv-m-role', role);
+          setMeta('osd-pv-m-posted', 'Posted ' + humanDate(postedISO));
+          setMeta('osd-pv-m-deadline', deadline ? 'Apply by ' + humanDate(deadline) : '');
+
+          document.getElementById('osd-pv-content').innerHTML =
+            mdToHtml(form.description.value.trim() || '*The job description will appear here.*');
+
+          // Deliverables card (checkmark list, like single.html).
+          var dels = linesToList(form.deliverables.value).map(function (x) { return x.replace(/^[-•\s]+/, ''); }).filter(Boolean);
+          document.getElementById('osd-pv-deliverables-wrap').hidden = !dels.length;
+          document.getElementById('osd-pv-deliverables').innerHTML = dels.map(function (x) {
+            return '<li class="flex items-start gap-2.5">' + ICON_CHECK + '<span>' + mdInline(esc(x)) + '</span></li>';
+          }).join('');
+
+          // Related links.
+          var links = linesToList(form.links.value);
+          document.getElementById('osd-pv-links-wrap').hidden = !links.length;
+          document.getElementById('osd-pv-links').innerHTML = links.map(function (x) {
+            return '<li class="break-words">' + mdInline(esc(x)) + '</li>';
+          }).join('');
+
+          // Tags chips.
+          var tags = tagsToList(form.tags.value);
+          document.getElementById('osd-pv-tags-wrap').hidden = !tags.length;
+          document.getElementById('osd-pv-tags').innerHTML = tags.map(function (t) {
+            return '<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">' + esc(t) + '</span>';
+          }).join('');
+
+          // How to apply: contact buttons + prose notes, like job-apply.html.
+          var parsed = classifyApply(linesToList(form.how_to_apply.value));
+          var applyList = document.getElementById('osd-pv-apply');
+          var applyNotes = document.getElementById('osd-pv-apply-notes');
+          var applyFallback = document.getElementById('osd-pv-apply-fallback');
+          applyList.hidden = !parsed.contacts.length;
+          applyList.innerHTML = parsed.contacts.map(function (c) {
+            return '<li><span class="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3.5 py-3">'
+              + '<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600">' + c.icon + '</span>'
+              + '<span class="min-w-0 flex-1">'
+              + '<span class="block truncate font-semibold text-slate-900 underline decoration-slate-300 decoration-1 underline-offset-2">' + esc(c.label) + '</span>'
+              + (c.sub ? '<span class="block truncate text-xs text-slate-500">' + esc(c.sub) + '</span>' : '')
+              + '</span>'
+              + '<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>'
+              + '</span></li>';
+          }).join('');
+          applyNotes.hidden = !parsed.notes.length;
+          applyNotes.className = (parsed.contacts.length ? 'mt-4 border-t border-slate-100 pt-4 ' : '') + 'space-y-2 text-sm leading-relaxed text-slate-600';
+          applyNotes.innerHTML = parsed.notes.map(function (n) { return '<p>' + mdInline(esc(n)) + '</p>'; }).join('');
+          applyFallback.hidden = !!(parsed.contacts.length || parsed.notes.length);
+
+          // Details card rows (mirrors the dl in single.html).
+          var rows = [];
+          rows.push(detailRow('Compensation',
+            '<dd class="mt-1 inline-flex items-center gap-1.5 font-medium text-slate-900"><span class="h-2 w-2 rounded-full ' + (isPaid ? 'bg-emerald-500' : 'bg-violet-500') + '"></span>' + (isPaid ? 'Paid' : 'Volunteer') + '</dd>'));
+          var rmin = (form.rate_min || {}).value;
+          var rmax = (form.rate_max || {}).value;
+          if (isPaid && rmin) {
+            var cur = (form.rate_currency || {}).value || 'USD';
+            var sym = { USD: '$', EUR: '\u20ac', GBP: '\u00a3', INR: '\u20b9' }[cur] || '';
+            rows.push(detailRow('Rate',
+              '<dd class="mt-1 font-medium text-slate-900">' + (sym || '') + esc(rmin) + (rmax ? '\u2013' + esc(rmax) : '') + (sym ? '' : '\u00a0' + cur)
+              + ' <span class="font-normal text-slate-500">per ' + esc((form.rate_period || {}).value || 'hour') + '</span></dd>'));
+          }
+          var pd = (form.paid_details || {}).value ? form.paid_details.value.trim() : '';
+          if (isPaid && pd) {
+            rows.push(detailRow(rmin ? 'Notes' : 'Budget / rate', '<dd class="mt-1 font-medium text-slate-900">' + esc(pd) + '</dd>'));
+          }
+          if (deadline) {
+            rows.push(detailRow('Apply by', '<dd class="mt-1 font-medium text-slate-900"><time datetime="' + esc(deadline) + '">' + humanDate(deadline) + '</time></dd>'));
+          }
+          if (org) {
+            var orgUrl = form.org_url.value.trim().split(/[\s,]/)[0];
+            var orgLink = orgUrl ? '<dd class="mt-1"><span class="inline-flex items-center gap-1 text-slate-600 underline decoration-slate-300 underline-offset-4 break-all">' + esc(hostOf(orgUrl)) + ICON_EXT + '</span></dd>' : '';
+            rows.push(detailRow('Project', '<dd class="mt-1 font-medium text-slate-900">' + esc(org) + '</dd>' + orgLink));
+          }
+          if (form.license.value.trim()) {
+            rows.push(detailRow('License', '<dd class="mt-1"><span class="inline-flex items-center gap-1 text-slate-600 underline decoration-slate-300 underline-offset-4">View license' + ICON_EXT + '</span></dd>'));
+          }
+          if (role) rows.push(detailRow('Category', '<dd class="mt-1 font-medium text-slate-900">' + esc(role) + '</dd>'));
+          rows.push(detailRow('Posted', '<dd class="mt-1 font-medium text-slate-900"><time datetime="' + esc(postedISO) + '">' + humanDate(postedISO) + '</time></dd>'));
+          var gh = form.github_handle.value.trim();
+          if (gh) {
+            var handle = (gh.match(/@?([A-Za-z0-9][A-Za-z0-9-]{0,38})/) || [])[1] || gh;
+            rows.push(detailRow('Posted by', '<dd class="mt-1"><span class="inline-flex items-center gap-1.5 font-medium text-slate-700">' + ICON_GH + '@' + esc(handle) + '</span></dd>'));
+          }
+          document.getElementById('osd-pv-details').innerHTML = rows.join('');
+        }
+
+        if (pvBtn && pv) {
+          // Re-parent to <body>: an ancestor of the form creates a stacking
+          // context, so left in place the overlay would paint below the sticky
+          // site header regardless of its own z-index.
+          document.body.appendChild(pv);
+          pvBtn.addEventListener('click', function () {
+            renderPreview();
+            pv.hidden = false;
+            pv.scrollTop = 0;
+            pvBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+          });
+          function closePreview() {
+            pv.hidden = true;
+            pvBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+          if (pvClose) pvClose.addEventListener('click', closePreview);
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !pv.hidden) closePreview();
+          });
+        }
 
         syncPaid();
         if (editFile) enterEditMode();

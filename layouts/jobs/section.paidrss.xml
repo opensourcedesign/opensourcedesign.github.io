@@ -1,0 +1,11 @@
+{{- /* Paid jobs feed: /jobs/feed-paid.xml (issue-driven: filtered
+     subscriptions for people waiting for the right gig). */ -}}
+{{- $pages := slice -}}
+{{- range .RegularPages.ByDate.Reverse -}}
+  {{- if eq ((printf "%v" (.Params.compensation | default "")) | lower) "paid" -}}
+    {{- $pages = $pages | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 }}{{ $pages = $pages | first $limit }}{{ end -}}
+{{- partial "rss-channel.xml" (dict "page" . "pages" $pages "self" (printf "%sfeed-paid.xml" .Permalink)) -}}

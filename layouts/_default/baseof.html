@@ -48,6 +48,14 @@
 
     {{/* Determine OG image - try page image, page bundle, content image, or fallback */}}
     {{ $ogImage := "" }}
+    {{/* Job postings without an explicit image get a generated social card
+         (title/org/deadline on a branded background). */}}
+    {{ if and .IsPage (eq .Section "jobs") (not .Params.image) }}
+      {{ with partial "social-card.html" . }}
+        {{ $ogImage = .Permalink }}
+      {{ end }}
+    {{ end }}
+    {{ if not $ogImage }}
     {{ with .Params.image }}
       {{ $ogImage = . | absURL }}
     {{ else }}
@@ -67,6 +75,7 @@
           {{ $ogImage = "/images/opensourcedesign-logo.svg" | absURL }}
         {{ end }}
       {{ end }}
+    {{ end }}
     {{ end }}
 
     {{/* Open Graph */}}

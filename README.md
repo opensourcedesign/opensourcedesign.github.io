@@ -181,9 +181,21 @@ The recommended workflow for any content change:
 
 Links in `how_to_apply` automatically get a recognisable service icon on the job page (GitHub, GitLab, Codeberg, F-Droid, Figma, Matrix, LinkedIn, app stores, …) based on the URL's host; unknown hosts fall back to a generic link icon and emails get an envelope. To support another service, add a host rule and its SVG path to `layouts/partials/apply-icon.html`.
 
+The form has a **Preview** button that renders the posting client-side (badges, description Markdown, deliverables, apply links) exactly as it will appear, updating live while you type. Paid postings can also carry a **structured rate** (`rate_min`, optional `rate_max`, `rate_currency`, `rate_period` front matter) which renders as e.g. "€50–75 per hour" in the job page's Details card; the free-text `paid_details` remains for notes like "negotiable".
+
+On submission the Worker runs a **duplicate check** against the live job index (`/jobs/index.json`, built by Hugo from `layouts/jobs/section.json.json`): if an open posting with the same or a very similar title exists, the form shows it and asks for confirmation before creating the PR.
+
 To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
+Around six weeks after publication, posters of still-open jobs get a **reminder email** asking whether the position is still open (`job-reminder.yml`, weekly; it maps each file back to its submission PR and pulls the email from the Worker's KV store — manually committed postings are skipped).
+
 **Expiration:** postings can carry an optional `deadline: YYYY-MM-DD` (application deadline, settable from the form). Once the deadline passes, the posting shows an "expired" notice and moves from `/jobs/` to `/jobs/archive/`. A daily GitHub Action (`job-expire.yml`) also flips `status: searching` to `status: expired` when the deadline has passed, or when a posting is over a year old with no update — so the front matter catches up with what the site already shows. Re-open an expired posting by editing it and selecting "Still searching" (clear or move the deadline first).
+
+**Feeds:** besides the main `/jobs/feed.xml`, filtered feeds exist at `/jobs/feed-paid.xml` and `/jobs/feed-volunteer.xml` (linked from the jobs page) so people can subscribe only to the postings they care about.
+
+**Social cards:** every job page gets a generated 1200×630 Open Graph image (title, organization, paid/volunteer, deadline on a branded background) so shared links unfurl nicely. They're built by `layouts/partials/social-card.html` from `assets/images/og-card-base.png` + the Inter fonts in `assets/fonts/og/`; a posting with an explicit `image` front matter keeps that image instead.
+
+**Content lint:** pull requests touching `content/jobs/` or `content/events/` run `content-lint.yml`, which validates front matter (required fields, status enums, ISO dates) and catches the classic Markdown pitfalls (4-space indents rendering as code blocks, `###Heading` without a space, `•` pseudo-bullets) before a broken page can be merged.
 
 ### Social Media Announcements
 
@@ -213,10 +225,10 @@ To update an existing event (fix details, mark it as cancelled), use the "Edit t
 
 ### Updating Resources
 
-1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` — each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format.
+1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` — each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format. Non-Git users can use the [suggest form](https://opensourcedesign.net/resources/suggest/) instead (linked from the `/resources/` hub) — it opens a moderated pull request that inserts the entry into the right category, via the same Cloudflare Worker as the job form.
 2. To add a talk, article, paper, or book to the **Bibliography**, add an entry to `data/bibliography.yaml`.
 3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/links.md`) and `{{</* bibliography */>}}` for the bibliography (in `content/resources/bibliography.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
-4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Four draft placeholders already exist — fill in the body and remove `draft: true` to publish.
+4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Two of the four proposed guides are still draft placeholders — fill in the body and remove `draft: true` to publish.
 
 ### Editing an About Us Page
 
