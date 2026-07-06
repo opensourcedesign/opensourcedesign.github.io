@@ -3,6 +3,10 @@ layout: post
 title: Resources
 permalink: /resources/
 ---
+> **⚠️ This page is no longer actively maintained.**
+>
+> Links may be outdated or broken. We're keeping this page live so existing links don't break, but we recommend checking each resource's own site for the latest information.
+
 
 **This is a showcase of the many websites and platforms where you can find openly licensed icons, fonts, image, tools and other resources.** You can use them for any purpose, also commercial (some works have specific licenses, so always make sure it’s fine to use).
 

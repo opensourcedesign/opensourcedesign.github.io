@@ -3,8 +3,6 @@ header_links:
     url: /goals/
   - name: Articles
     url: /articles/
-  - name: Resources
-    url: /resources/
   - name: Jobs
     url: https://opensourcedesign.net/jobs/
   - name: Events
