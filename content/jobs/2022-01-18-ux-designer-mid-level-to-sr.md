@@ -27,7 +27,7 @@ As the designer working with a small software development team, you will be resp
 - Imagine you’re blowing the whistle on government abuse. How do you get in touch with a news organization? How do you stay safe and anonymous?
 - Imagine you’re a journalist receiving a stash of documents. How do you protect yourself against malware? How do you protect your source while examining these documents?
 
-You’ll work on interaction design, visual design, prototyping, user research—all in close collaboration with the development team. While SecureDrop will be your focus, you will also partner with our web development team on improving our websites, including freedom.press and our second flagship project, the US Press Freedom Tracker.
+You’ll work on interaction design, visual design, prototyping, user research - all in close collaboration with the development team. While SecureDrop will be your focus, you will also partner with our web development team on improving our websites, including freedom.press and our second flagship project, the US Press Freedom Tracker.
 
 You have…
 

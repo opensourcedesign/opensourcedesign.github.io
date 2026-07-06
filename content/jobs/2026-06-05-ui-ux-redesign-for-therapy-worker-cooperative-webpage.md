@@ -18,7 +18,7 @@ github_handle: '@Common-Ground-Therapy'
 tags: [ui, ux, redesign, web design, enhance, upgrade, cooperative, healthcare]
 date: '2026-06-06T00:45:55.066Z'
 ---
-A not-for-profit social enterprise for local communities in south-east London, UK — owned and run by the therapists who work here.
+A not-for-profit social enterprise for local communities in south-east London, UK - owned and run by the therapists who work here.
 
 Our website needs significant changes and some build fixing before we can properly launch and promote it. 
 

@@ -1,4 +1,4 @@
-# Test Plan — IA migration (Hugo branch)
+# Test Plan - IA migration (Hugo branch)
 # opensourcedesign.net
 
 > **Purpose:** Verify that after the IA migration, all old Jekyll URLs
@@ -51,7 +51,7 @@ bash docs/test-redirects.sh http://localhost:1313
 **Do not run the test script against a GitHub Pages URL.** On GitHub
 Pages, Hugo alias stubs are served as HTTP 200 with a
 `<meta http-equiv="refresh">` tag. `curl -L` follows HTTP 3xx headers
-but does not parse HTML meta-refresh — it would stop at the 200 and
+but does not parse HTML meta-refresh - it would stop at the 200 and
 report every redirect as broken.
 
 Instead, verify the built output directly:
@@ -78,7 +78,7 @@ grep -o 'URL=.*"' public/summit/index.html          # should contain /events/
 
 ## Pre-flight: known issue to fix before testing
 
-### URL collision in `content/articles/` — fix before Phase 3
+### URL collision in `content/articles/` - fix before Phase 3
 
 Two article files produce the same Hugo URL `/articles/osd-meetup-recap/`:
 - `2017-12-14-OSD-meetup-recap.md`
@@ -121,7 +121,7 @@ Save as `docs/test-redirects.sh`. Usage: `bash docs/test-redirects.sh BASE_URL`
 #!/usr/bin/env bash
 # Usage: bash test-redirects.sh http://localhost:1313
 # Requires: hugo server running at the given BASE URL.
-# Do NOT use against a GitHub Pages URL — see "Build output check" above.
+# Do NOT use against a GitHub Pages URL - see "Build output check" above.
 
 BASE="${1:-http://localhost:1313}"
 PASS=0
@@ -266,7 +266,7 @@ echo ""
 echo "=== Summary ==="
 echo "  Passed: $PASS"
 echo "  Failed: $FAIL"
-[[ $FAIL -eq 0 ]] && echo "  All checks passed." || echo "  FAILURES DETECTED — review output above."
+[[ $FAIL -eq 0 ]] && echo "  All checks passed." || echo "  FAILURES DETECTED - review output above."
 ```
 
 ---
@@ -283,7 +283,7 @@ Run these by hand in a browser or with `hugo server`.
 - [ ] Mobile nav (hamburger) shows the same 5 items
 
 ### Footer
-- [ ] Social icons: GitHub, Mastodon, Open Collective, Forum — **no Twitter**
+- [ ] Social icons: GitHub, Mastodon, Open Collective, Forum - **no Twitter**
 - [ ] Mastodon links to `https://fosstodon.org/@opensourcedesign` (not `mastodon.social`)
 - [ ] Imprint link present and resolves
 - [ ] "Brand Assets" link present and resolves to `/brand/`
@@ -326,7 +326,7 @@ need the one alias shown.
 | `2025-02-05-FOSDEM-2025-*.md` | `fosdem-2025` | `/articles/fosdem-2025-open-source-design-devroom-wrap-up/` | `/2025/02/05/FOSDEM-2025-Open-Source-Design-Devroom-wrap-up/` |
 | `2025-05-13-FOSSBACKSTAGE-2025-wrap-up.md` | `foss-backstage-2025` | `/articles/fossbackstage-2025-wrap-up/` | `/2025/05/13/FOSSBACKSTAGE-2025-wrap-up/` |
 
-⚠️ These two files currently generate the same Hugo URL — a collision.
+⚠️ These two files currently generate the same Hugo URL - a collision.
 Fix by adding explicit `permalink:` to each before moving (see Pre-flight
 section above). The "Alias 1" slugs above reflect the corrected state
 after adding distinct permalinks.
@@ -335,8 +335,8 @@ after adding distinct permalinks.
 
 | File | New slug | Alias 1 (current Hugo or explicit permalink) | Alias 2 (old Jekyll, if different) |
 |------|----------|----------------------------------------------|-------------------------------------|
-| `2015-05-24-TextbasedToolsForDesigners.md` | `text-based-tools-for-designers` | `/2015/05/23/text-based-tools-for-designers/` *(has permalink)* | — |
-| `2015-11-21-5-steps-to-design-a-ux-that-people-love.md` | `5-steps-to-design-a-ux-that-people-love` | `/2015/11/21/5-steps-to-design-a-ux-that-people-love/` *(has permalink)* | — |
+| `2015-05-24-TextbasedToolsForDesigners.md` | `text-based-tools-for-designers` | `/2015/05/23/text-based-tools-for-designers/` *(has permalink)* | - |
+| `2015-11-21-5-steps-to-design-a-ux-that-people-love.md` | `5-steps-to-design-a-ux-that-people-love` | `/2015/11/21/5-steps-to-design-a-ux-that-people-love/` *(has permalink)* | - |
 | `2017-03-27-osd-needs-better-collaboration-tools.md` | `osd-needs-better-collaboration-tools` | `/articles/osd-needs-better-collaboration-tools/` | `/2017/03/27/osd-needs-better-collaboration-tools/` |
 | `2020-08-13-Use-your-artistic-skills-to-help-open-source.md` | `use-your-artistic-skills-to-help-open-source` | `/articles/use-your-artistic-skills-to-help-open-source/` | `/2020/08/13/Use-your-artistic-skills-to-help-open-source/` |
 | `2020-08-13-beginners-guide-to-open-source-design-by-Victory-Brown.md` | `beginners-guide` | `/articles/beginners-guide-to-open-source-design-by-victory-brown/` | `/2020/08/13/beginners-guide-to-open-source-design-by-Victory-Brown/` |

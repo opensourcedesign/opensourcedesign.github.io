@@ -1,4 +1,4 @@
-# Proposed Sitemap — opensourcedesign.net
+# Proposed Sitemap - opensourcedesign.net
 
 > **Status: READY for migration proposal**
 >
@@ -43,23 +43,23 @@ For every page in the current or proposed site, record its disposition.
 | Current URL | Proposed URL | Change Type | Content changes | Notes |
 |-------------|--------------|-------------|-----------------|-------|
 | /goals/ | /about-us/ | merged | Goals content folded into /about-us/ | |
-| /manifesto/ | /about-us/manifesto/ | moved | — | Moved under /about-us/ |
-| /code-of-conduct/ | /about-us/code-of-conduct/ | moved | — | Moved under /about-us/ |
-| /governance/ | /about-us/governance/ | moved | — | Stays unlisted; linked from /about-us/ |
-| /by-laws/ | /about-us/by-laws/ | moved | — | Moved under /about-us/ |
-| /processes/ | — | removed | — | Thin content; not present in proposed structure |
+| /manifesto/ | /about-us/manifesto/ | moved | - | Moved under /about-us/ |
+| /code-of-conduct/ | /about-us/code-of-conduct/ | moved | - | Moved under /about-us/ |
+| /governance/ | /about-us/governance/ | moved | - | Stays unlisted; linked from /about-us/ |
+| /by-laws/ | /about-us/by-laws/ | moved | - | Moved under /about-us/ |
+| /processes/ | - | removed | - | Thin content; not present in proposed structure |
 | /faq/ | /about-us/ | merged | FAQ content folded into /about-us/ | |
-| /articles/ | — | removed | Content redistributed: event write-ups move to /events/:slug/; rest feeds /resources/ (Getting Started) | Each post URL redirects to its new home |
+| /articles/ | - | removed | Content redistributed: event write-ups move to /events/:slug/; rest feeds /resources/ (Getting Started) | Each post URL redirects to its new home |
 | /events/ | /events/ | restructured | Redesigned as ticker list; some items get write-up sub-pages; dates drive homepage upcoming section | |
 | /resources/ | /resources/ | restructured | Becomes "Getting Started" page; aggregates old articles, old resources, new external list | URL and nav label stays "/resources/" / "Resources" for now; can rename later |
-| /people/ | — | removed | — | Removed entirely; no replacement planned |
-| /contribute/ | — | removed | — | /about-us/how-to-join/ may replace this |
-| /contributing/ | — | removed | — | Already overlapped /contribute/ |
-| /people-form/ | — | removed | — | Staticman API broken anyway (issue #2) |
-| /logos/ | — | removed | — | Not present in proposed structure |
-| /summit/ | — | removed | — | Stale; last documented summit was 2018 |
-| /summit/2017 | — | removed | — | Stale |
-| /jobs/ | /jobs/ | unchanged | — | |
+| /people/ | - | removed | - | Removed entirely; no replacement planned |
+| /contribute/ | - | removed | - | /about-us/how-to-join/ may replace this |
+| /contributing/ | - | removed | - | Already overlapped /contribute/ |
+| /people-form/ | - | removed | - | Staticman API broken anyway (issue #2) |
+| /logos/ | - | removed | - | Not present in proposed structure |
+| /summit/ | - | removed | - | Stale; last documented summit was 2018 |
+| /summit/2017 | - | removed | - | Stale |
+| /jobs/ | /jobs/ | unchanged | - | |
 
 **Change types:** `unchanged` · `renamed` · `moved` · `new` · `merged` · `removed` · `restructured`
 
@@ -159,11 +159,11 @@ List any pages that should not exist in the new site.
 | /faq/ | merged into /about-us/ | /about-us/ | |
 | /processes/ | removed | /about-us/governance/ | Thin content; governance is closest match |
 | /articles/ | removed | per post | Each post URL redirects to its new home: event write-ups → /events/:slug/; rest → /resources/:slug/ |
-| /people/ | removed entirely | — | No replacement |
+| /people/ | removed entirely | - | No replacement |
 | /contribute/ | removed | /about-us/how-to-join/ | |
 | /contributing/ | removed | /about-us/how-to-join/ | |
-| /people-form/ | removed | — | Staticman API broken; no replacement form planned |
-| /logos/ | removed | — | No redirect |
+| /people-form/ | removed | - | Staticman API broken; no replacement form planned |
+| /logos/ | removed | - | No redirect |
 | /summit/ | removed | /events/ | Redirect to events listing |
 | /summit/2017 | removed | /events/ | Redirect to events listing |
 

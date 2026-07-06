@@ -11,7 +11,7 @@
  *     the added line in data/resources.yaml)
  *
  * Env: GITHUB_TOKEN, REPO (owner/name), PR_NUMBER, HEAD_REF, MERGE_SHA.
- * Writes `url=<...>` to $GITHUB_OUTPUT; always succeeds — on any error it
+ * Writes `url=<...>` to $GITHUB_OUTPUT; always succeeds - on any error it
  * falls back to the section list URL for the submission kind.
  */
 

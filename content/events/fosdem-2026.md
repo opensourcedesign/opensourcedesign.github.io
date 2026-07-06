@@ -57,7 +57,7 @@ Parts of the talk focuses on how open source design can be a part of the solutio
 [Watch this talk: https://fosdem.org/2026/schedule/event/UKTJ3V-gephi-lite-redesign/](https://fosdem.org/2026/schedule/event/UKTJ3V-gephi-lite-redesign/)
 
 The speakers talk about Gephi Lite which is a web-based open-source network visualization tool built by a three-person engineering team. After two years of development and a functional application the team had a nagging feeling that the user interface wasn't working for users. After bringing in Arthur Desaintjan, a design intern the Gephi Lite team were able to address the needs for usable interface fro users.
-The speakers share how they approached design at a pivotal moment in Gephi Lite's life—first by stepping back to clarify what Gephi Lite should really be, then by running user interviews that revealed just how far our assumptions were from reality.
+The speakers share how they approached design at a pivotal moment in Gephi Lite's life - first by stepping back to clarify what Gephi Lite should really be, then by running user interviews that revealed just how far our assumptions were from reality.
 
 ### Design Systems in Open Source - Andres Betts
 

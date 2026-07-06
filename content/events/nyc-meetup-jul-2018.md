@@ -1,6 +1,6 @@
 ---
 layout: event
-title: Open Source Design NYC meetup recap — July 2018
+title: Open Source Design NYC meetup recap - July 2018
 date: 2018-07-12
 author: Dinamichl, Eliheuer
 status: past

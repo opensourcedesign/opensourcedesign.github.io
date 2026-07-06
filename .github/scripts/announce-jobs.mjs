@@ -108,7 +108,7 @@ function headline(job, maxTitle) {
   let title = job.title;
   if (graphemes(title) > maxTitle) title = [...title].slice(0, maxTitle - 1).join('').trimEnd() + '…';
   let head = 'New on the Open Source Design job board: ' + title;
-  if (job.organization) head += ' — ' + job.organization;
+  if (job.organization) head += ' - ' + job.organization;
   const extras = [];
   if (job.paid === true) extras.push('paid');
   if (job.paid === false) extras.push('volunteer');
@@ -128,7 +128,7 @@ function composeMastodon(job) {
 }
 
 // Bluesky needs rich-text facets (byte ranges) for links and hashtags, and
-// counts real graphemes against its 300 limit — so the link gets a short
+// counts real graphemes against its 300 limit - so the link gets a short
 // display text with the full URL in the facet.
 function composeBluesky(job) {
   const display = job.url.replace(/^https?:\/\//, '');
@@ -266,7 +266,7 @@ for (const file of files) {
     continue;
   }
   if (posted >= MAX_POSTS) {
-    console.log('skip: MAX_POSTS=' + MAX_POSTS + ' reached (flood guard) — announce manually via workflow_dispatch');
+    console.log('skip: MAX_POSTS=' + MAX_POSTS + ' reached (flood guard) - announce manually via workflow_dispatch');
     continue;
   }
   if (process.env.WAIT_FOR_URL === '1' && !DRY_RUN) {

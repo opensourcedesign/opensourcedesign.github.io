@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed:
 - **Hugo** (extended version recommended)
 - **Git** - [Download Git](https://git-scm.com/)
 
-That's all — **no Node.js or npm**. Local development needs no CSS build step: Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn). (Production deploys compile the same stylesheet ahead of time with the Tailwind CLI in CI, so visitors get a small static CSS file instead of the CDN — see `.github/workflows/hugo-build.yml`.) The two optional build tools are standalone binaries:
+That's all - **no Node.js or npm**. Local development needs no CSS build step: Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn). (Production deploys compile the same stylesheet ahead of time with the Tailwind CLI in CI, so visitors get a small static CSS file instead of the CDN - see `.github/workflows/hugo-build.yml`.) The two optional build tools are standalone binaries:
 
 - **[Pagefind](https://github.com/Pagefind/pagefind/releases)** (*optional*) - single binary that generates the search index; only needed to test search locally (CI downloads it automatically)
 - **[Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases)** (*optional*) - single binary; only needed to regenerate the vendored typography stylesheet, which is rare
@@ -85,19 +85,19 @@ For other platforms, download from the [Hugo releases page](https://github.com/g
    hugo server
    ```
 
-   That's it — styling works out of the box. Locally, Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser). In CI the same `main.css` is compiled once into a static stylesheet (`assets/css/compiled.css`, gitignored) that the base template picks up automatically when present.
+   That's it - styling works out of the box. Locally, Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser). In CI the same `main.css` is compiled once into a static stylesheet (`assets/css/compiled.css`, gitignored) that the base template picks up automatically when present.
 
 3. **Open your browser** at `http://localhost:1313/`
 
 #### Working on styles
 
-No build step: edit `assets/css/main.css` (custom theme, components, base styles) or add any standard Tailwind utility class to templates in `layouts/` — both take effect on the next reload with plain `hugo server`.
+No build step: edit `assets/css/main.css` (custom theme, components, base styles) or add any standard Tailwind utility class to templates in `layouts/` - both take effect on the next reload with plain `hugo server`.
 
-The only exception is `prose-*` typography classes: since the Play CDN cannot load Tailwind plugins, the `@tailwindcss/typography` styles are pre-compiled into the checked-in `assets/css/typography.css`. If you need a `prose-*` class that isn't in there yet, add it to `assets/css/typography.src.css` and regenerate with the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) (a single executable — it bundles the typography plugin, so no Node.js or npm is required):
+The only exception is `prose-*` typography classes: since the Play CDN cannot load Tailwind plugins, the `@tailwindcss/typography` styles are pre-compiled into the checked-in `assets/css/typography.css`. If you need a `prose-*` class that isn't in there yet, add it to `assets/css/typography.src.css` and regenerate with the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) (a single executable - it bundles the typography plugin, so no Node.js or npm is required):
 
 ```bash
 tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify
-# rebuilds assets/css/typography.css — commit it
+# rebuilds assets/css/typography.css - commit it
 ```
 
 ## Project Structure
@@ -105,13 +105,13 @@ tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --mini
 ```
 opensourcedesign.github.io/
 ├── .github/
-│   ├── scripts/      # announce-jobs.mjs — posts new jobs to Mastodon & Bluesky
+│   ├── scripts/      # announce-jobs.mjs - posts new jobs to Mastodon & Bluesky
 │   └── workflows/    # hugo-build (deploy), job-approved-email (submitter notification),
 │                     # job-expire (daily auto-expiry), job-announce (social media)
 ├── archetypes/       # Hugo content templates for new pages
 ├── assets/
 │   └── css/
-│       ├── main.css            # Custom styles (edit this!) — compiled in the browser by the Play CDN
+│       ├── main.css            # Custom styles (edit this!) - compiled in the browser by the Play CDN
 │       ├── typography.src.css  # Source/safelist for the typography (prose) bundle
 │       └── typography.css      # Pre-compiled prose styles (regenerate via the Tailwind standalone CLI, don't edit)
 ├── content/          # All website content in Markdown
@@ -169,7 +169,7 @@ The recommended workflow for any content change:
 1. **Edit the Markdown** in the relevant `content/` folder (see the table above). For quick fixes use GitHub's pencil icon; for larger work, set up the project locally and run `hugo server` to preview.
 2. **Preview locally** at `http://localhost:1313/` to confirm formatting, front matter, and links render correctly.
 3. **Open a pull request.** Content PRs are reviewed by two Open Source Design community members before they are merged and published.
-4. **Cross-team content edits** (copy rewrites, page merges) are coordinated by the community — major restructuring is tracked in the project's GitHub issues before landing on a branch.
+4. **Cross-team content edits** (copy rewrites, page merges) are coordinated by the community - major restructuring is tracked in the project's GitHub issues before landing on a branch.
 
 > Note: the `articles/` and `people/` sections were removed in the IA overhaul. Article-style content now lives under **Resources**, and contributor profiles are handled on the forum and the *How to Join* page.
 
@@ -185,11 +185,11 @@ The form has a **Preview** button that renders the posting client-side (badges, 
 
 On submission the Worker runs a **duplicate check** against the live job index (`/jobs/index.json`, built by Hugo from `layouts/jobs/section.json.json`): if an open posting with the same or a very similar title exists, the form shows it and asks for confirmation before creating the PR.
 
-To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
+To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page - it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
-Around six weeks after publication, posters of still-open jobs get a **reminder email** asking whether the position is still open (`job-reminder.yml`, weekly; it maps each file back to its submission PR and pulls the email from the Worker's KV store — manually committed postings are skipped).
+Around six weeks after publication, posters of still-open jobs get a **reminder email** asking whether the position is still open (`job-reminder.yml`, weekly; it maps each file back to its submission PR and pulls the email from the Worker's KV store - manually committed postings are skipped).
 
-**Expiration:** postings can carry an optional `deadline: YYYY-MM-DD` (application deadline, settable from the form). Once the deadline passes, the posting shows an "expired" notice and moves from `/jobs/` to `/jobs/archive/`. A daily GitHub Action (`job-expire.yml`) also flips `status: searching` to `status: expired` when the deadline has passed, or when a posting is over a year old with no update — so the front matter catches up with what the site already shows. Re-open an expired posting by editing it and selecting "Still searching" (clear or move the deadline first).
+**Expiration:** postings can carry an optional `deadline: YYYY-MM-DD` (application deadline, settable from the form). Once the deadline passes, the posting shows an "expired" notice and moves from `/jobs/` to `/jobs/archive/`. A daily GitHub Action (`job-expire.yml`) also flips `status: searching` to `status: expired` when the deadline has passed, or when a posting is over a year old with no update - so the front matter catches up with what the site already shows. Re-open an expired posting by editing it and selecting "Still searching" (clear or move the deadline first).
 
 **Feeds:** besides the main `/jobs/feed.xml`, filtered feeds exist at `/jobs/feed-paid.xml` and `/jobs/feed-volunteer.xml` (linked from the jobs page) so people can subscribe only to the postings they care about.
 
@@ -199,16 +199,16 @@ Around six weeks after publication, posters of still-open jobs get a **reminder 
 
 ### Social Media Announcements
 
-When a push to `master` adds a new file under `content/jobs/` (i.e. a submission PR was merged, or a maintainer committed a posting directly), the `job-announce.yml` workflow posts it to Mastodon and Bluesky using `.github/scripts/announce-jobs.mjs` — no third-party services involved. It waits for the job page to be live (the Hugo deploy runs in parallel), announces only fresh `status: searching` postings (dated within 14 days, so bulk imports and renames never spam the feeds), and caps posts per run.
+When a push to `master` adds a new file under `content/jobs/` (i.e. a submission PR was merged, or a maintainer committed a posting directly), the `job-announce.yml` workflow posts it to Mastodon and Bluesky using `.github/scripts/announce-jobs.mjs` - no third-party services involved. It waits for the job page to be live (the Hugo deploy runs in parallel), announces only fresh `status: searching` postings (dated within 14 days, so bulk imports and renames never spam the feeds), and caps posts per run.
 
-Each platform is optional — configure its repo secrets to enable it:
+Each platform is optional - configure its repo secrets to enable it:
 
 | Platform | Secrets | Where to get them |
 | -------- | ------- | ----------------- |
 | Mastodon | `MASTODON_URL`, `MASTODON_ACCESS_TOKEN` | On the account's instance: Preferences → Development → New application, scope `write:statuses`. `MASTODON_URL` is the instance base URL, e.g. `https://fosstodon.org`. |
 | Bluesky | `BLUESKY_IDENTIFIER`, `BLUESKY_APP_PASSWORD` (optional `BLUESKY_SERVICE`) | `BLUESKY_IDENTIFIER` is the handle (e.g. `opensourcedesign.bsky.social`); create the app password under Settings → Privacy and Security → App Passwords. Don't use the account password. |
 
-To announce a posting manually (retry, or one that predates the workflow), run *Announce new jobs on social media* from the Actions tab with the file path — there's also a dry-run option that composes the posts without publishing. Missed announcements never block a merge: the workflow only reads the repo and fails loudly in the Actions log.
+To announce a posting manually (retry, or one that predates the workflow), run *Announce new jobs on social media* from the Actions tab with the file path - there's also a dry-run option that composes the posts without publishing. Missed announcements never block a merge: the workflow only reads the repo and fails loudly in the Actions log.
 
 ### Adding an Event
 
@@ -217,27 +217,27 @@ To announce a posting manually (retry, or one that predates the workflow), run *
 3. Fill in the front matter with event details (`title`, `eventDate`, `status`, location, etc.)
 4. Or use the online form at [opensourcedesign.net/events/event-form/](https://opensourcedesign.net/events/event-form/), which opens a moderated pull request for you (handled by the same Cloudflare Worker as the job form)
 
-To update an existing event (fix details, mark it as cancelled), use the "Edit this event" link at the bottom of the event's page — it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
+To update an existing event (fix details, mark it as cancelled), use the "Edit this event" link at the bottom of the event's page - it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
 > **Announcements vs. write-ups:** add an `author` to the front matter to mark a page as a **write-up / recap**. Those entries get a "Recap" card (with a thumbnail pulled from the first image in the body) in the *Write-ups & Recaps* column on `/events/` and surface on the homepage. Pages without an `author` are treated as plain listings. Set `status` to `upcoming`/`started` to appear in the *Upcoming* list, or `past`/`cancelled` to move into the archive.
 >
-> **Add an `endDate` (a machine-readable date, e.g. `endDate: 2026-02-01`) to dated events.** Once that date passes, the event is automatically dropped from *Upcoming* and moved into *Past Events* even if its `status` still says `upcoming` — so a forgotten status never leaves a finished event sitting at the top of the page.
+> **Add an `endDate` (a machine-readable date, e.g. `endDate: 2026-02-01`) to dated events.** Once that date passes, the event is automatically dropped from *Upcoming* and moved into *Past Events* even if its `status` still says `upcoming` - so a forgotten status never leaves a finished event sitting at the top of the page.
 
 ### Updating Resources
 
-1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` — each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format. Non-Git users can use the [suggest form](https://opensourcedesign.net/resources/suggest/) instead (linked from the `/resources/` hub) — it opens a moderated pull request that inserts the entry into the right category, via the same Cloudflare Worker as the job form.
+1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` - each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format. Non-Git users can use the [suggest form](https://opensourcedesign.net/resources/suggest/) instead (linked from the `/resources/` hub) - it opens a moderated pull request that inserts the entry into the right category, via the same Cloudflare Worker as the job form.
 2. To add a talk, article, paper, or book to the **Bibliography**, add an entry to `data/bibliography.yaml`.
 3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/links.md`) and `{{</* bibliography */>}}` for the bibliography (in `content/resources/bibliography.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
-4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Two of the four proposed guides are still draft placeholders — fill in the body and remove `draft: true` to publish.
+4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Two of the four proposed guides are still draft placeholders - fill in the body and remove `draft: true` to publish.
 
 ### Editing an About Us Page
 
 1. Navigate to `content/about-us/`
-2. Edit the relevant Markdown file (`_index.md`, `manifesto.md`, `governance.md`, `by-laws.md`, `code-of-conduct.md`, `how-to-join.md`)
+2. Edit the relevant Markdown file (`_index.md`, `manifesto.md`, `governance.md`, `by-laws.md`, `code-of-conduct.md`)
 
 ### Further Documentation
 
-Additional contributor guides live in the [`docs/`](docs/) folder.
+Additional contributor guides live in the [`docs/`](docs/) folder - including the [moderation guide](docs/moderation-guide.md) for maintainers reviewing job, event, and resource submissions.
 
 ## Data Files
 
@@ -262,7 +262,7 @@ The site uses Tailwind CSS v4 with CSS-based configuration. Locally it is compil
 1. Edit `assets/css/main.css` for custom components and base styles (it supports the full Tailwind syntax, including `@apply` and `@theme`, and is the single source for both pipelines)
 2. Use Tailwind utility classes directly in HTML templates (`layouts/`)
 3. Run `hugo server` to see changes with live reload
-4. Only `prose-*` typography classes are pre-compiled — see *Working on styles* above if you need a new one
+4. Only `prose-*` typography classes are pre-compiled - see *Working on styles* above if you need a new one
 
 Custom component classes (prefixed with `osd-`) are defined in `main.css`:
 - `.osd-card` - Card component styling

@@ -71,10 +71,10 @@ function lintFile(file) {
     errors.push('front matter: `date_posted` is required for jobs');
   }
   if (isJob && scalar(fm, 'compensation') === null) {
-    warnings.push('front matter: no `compensation` (paid/gratis) — the posting will show "Unspecified"');
+    warnings.push('front matter: no `compensation` (paid/gratis) - the posting will show "Unspecified"');
   }
   if (isJob && !/^how_to_apply:/m.test(fm)) {
-    warnings.push('front matter: no `how_to_apply` — the page will fall back to "see the description"');
+    warnings.push('front matter: no `how_to_apply` - the page will fall back to "see the description"');
   }
 
   // Duplicate top-level keys silently override each other.
@@ -104,14 +104,14 @@ function lintFile(file) {
     if (/^ {4,}\S/.test(line) && !isListItem(line)) {
       const prevOk = isListItem(prevNonEmpty) || /^ {2,}\S/.test(prevNonEmpty);
       if (!prevOk) {
-        errors.push(`line ${n}: text indented ${line.match(/^ +/)[0].length} spaces renders as a code block — remove the indentation or use a \`- \` list`);
+        errors.push(`line ${n}: text indented ${line.match(/^ +/)[0].length} spaces renders as a code block - remove the indentation or use a \`- \` list`);
       }
     }
     if (/^#{1,6}[^#\s]/.test(line)) {
-      errors.push(`line ${n}: \`${line.slice(0, 20)}…\` — headings need a space after the # marks`);
+      errors.push(`line ${n}: \`${line.slice(0, 20)}…\` - headings need a space after the # marks`);
     }
     if (/^\s*[•·▪]\s/.test(line)) {
-      errors.push(`line ${n}: \`•\` pseudo-bullet — use a Markdown \`- \` list marker instead`);
+      errors.push(`line ${n}: \`•\` pseudo-bullet - use a Markdown \`- \` list marker instead`);
     }
     if (line.trim()) prevNonEmpty = line;
   }

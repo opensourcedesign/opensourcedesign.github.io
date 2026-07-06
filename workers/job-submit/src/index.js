@@ -544,7 +544,7 @@ function diceSimilarity(a, b) {
 /**
  * Best-effort duplicate check for new job submissions against the site's
  * machine-readable index (/jobs/index.json, built by Hugo). Only open
- * (`searching`) postings count — reposting a solved job is legitimate.
+ * (`searching`) postings count - reposting a solved job is legitimate.
  * Fails open: a network hiccup must never block a real submission.
  */
 async function findDuplicateJob(env, data) {
@@ -847,7 +847,7 @@ function b64decode(b64) {
   return new TextDecoder().decode(bytes);
 }
 
-// A single .md filename — no path separators or traversal. The character set
+// A single .md filename - no path separators or traversal. The character set
 // covers the legacy filenames in content/jobs/ (spaces, parens, '&', '+', ',').
 function isSafeFilename(s) {
   return /^[\w .,()&+'-]+\.md$/.test(s) && !s.includes('..');
@@ -900,7 +900,7 @@ function errMsg(err) {
 }
 
 /**
- * GET /forum — trimmed Discourse latest-topics list for the homepage forum
+ * GET /forum - trimmed Discourse latest-topics list for the homepage forum
  * pulse. Proxied because Discourse doesn't send CORS headers; cached at the
  * edge (cf.cacheTtl) and in the browser (Cache-Control) for 10 minutes so a
  * traffic spike on the site never hammers the forum.

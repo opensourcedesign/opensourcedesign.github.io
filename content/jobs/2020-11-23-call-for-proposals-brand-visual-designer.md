@@ -5,7 +5,7 @@ date_posted: '2020-11-23'
 layout: jobs
 organization: Anti-phishing tool
 org_url: 'https://simplysecure.org/hiring/brand-designer-cfp.html'
-title: Call for Proposals — Brand/Visual Designer
+title: Call for Proposals - Brand/Visual Designer
 slug: call-for-proposals-brand-visual-designer
 role: Branding Identity
 compensation: paid
@@ -45,10 +45,10 @@ This is a time-limited contract, from approximately November 2020 to February 20
 
 We are inspired by work like:
 
-- Tunnelbear — Consistent branding with expressive and approachable metaphors
-- Signal — Breezy confidence and straight-talking makes the tool approachable to a mainstream audience
-- Tails — Strong graphical metaphor for communicating complex functionality, in a human, emotional way
-- Mailvelope — Meaningful logo design and integrated, clear concept.
+- Tunnelbear - Consistent branding with expressive and approachable metaphors
+- Signal - Breezy confidence and straight-talking makes the tool approachable to a mainstream audience
+- Tails - Strong graphical metaphor for communicating complex functionality, in a human, emotional way
+- Mailvelope - Meaningful logo design and integrated, clear concept.
 
 ## About us
 

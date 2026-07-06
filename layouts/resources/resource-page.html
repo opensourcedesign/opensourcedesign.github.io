@@ -10,6 +10,15 @@
       {{ with .Description }}
         <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
       {{ end }}
+      {{/* Same byline fallback as _default/single.html: named authors when
+           set, the organization itself otherwise. */}}
+      {{ $author := .Params.author }}
+      {{ if not $author }}{{ with .Params.authors }}{{ $author = delimit . ", " }}{{ end }}{{ end }}
+      {{ if not $author }}{{ $author = "Open Source Design" }}{{ end }}
+      <p class="mt-4 text-sm text-slate-500">
+        <span class="font-medium text-slate-700">{{ $author }}</span>
+        {{ with .Date }}<span aria-hidden="true"> · </span><time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+      </p>
     </header>
 
     {{/* Shared layout for resource sub-pages (Links, Bibliography, guides).

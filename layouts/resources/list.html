@@ -19,16 +19,76 @@
       <div class="prose prose-slate mt-8 max-w-none">{{ . }}</div>
     {{ end }}
 
-    {{/* Sub-pages, ordered by `weight` front matter: Links (the openly
-         licensed directory), Bibliography, Articles, and any future guide
-         pages added under content/resources/. */}}
-    {{ with .Pages.ByWeight }}
-      <nav class="mt-10 grid gap-3 sm:grid-cols-2" aria-label="Resource sub-pages">
+    {{/* "How to Join" gets a featured banner above the grid - the most
+         requested page by newcomers (issues #150, #506, #549). */}}
+    {{ $join := .GetPage "how-to-join" }}
+    {{ with $join }}
+      <a class="group mt-10 flex items-center justify-between gap-4 rounded-xl bg-slate-950 px-6 py-6 text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+        <span class="min-w-0">
+          <span class="block text-xs font-semibold uppercase tracking-widest text-slate-400">New to the community?</span>
+          <span class="mt-1.5 block text-lg font-bold">{{ .Title }}</span>
+          {{ with .Description }}<span class="mt-1 block max-w-prose text-sm leading-relaxed text-slate-300">{{ . }}</span>{{ end }}
+        </span>
+        <svg class="h-5 w-5 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    {{ end }}
+
+    {{/* Sub-pages fall into two kinds and get different treatments:
+         - Collections (`resourceKind: collection` in front matter - Links,
+           Bibliography, Articles): browsable directories backed by data
+           files or a section - rendered as cards with item counts.
+         - Guides (everything else): single community-written texts -
+           rendered as a plain typographic list (cards are not the right
+           affordance for a one-page read; see PRODUCT.md). */}}
+    {{ $collections := slice }}
+    {{ $guides := slice }}
+    {{ range .Pages.ByWeight }}
+      {{ if eq . $join }}{{ continue }}{{ end }}
+      {{ if eq (.Params.resourceKind | default "") "collection" }}
+        {{ $collections = $collections | append . }}
+      {{ else }}
+        {{ $guides = $guides | append . }}
+      {{ end }}
+    {{ end }}
+
+    {{ with $collections }}
+      <h2 class="mt-12 text-xs font-semibold uppercase tracking-widest text-slate-500">Browse the collections</h2>
+      <nav class="mt-4 grid gap-3 sm:grid-cols-3" aria-label="Resource collections">
         {{ range . }}
-          <a class="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 transition hover:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
-            <span class="min-w-0">
+          {{/* Item count from the page's backing source: the two data-file
+               directories are counted from their YAML, sections from their
+               regular pages. */}}
+          {{ $count := "" }}
+          {{ if .IsSection }}
+            {{ $count = printf "%d articles" (len .RegularPages) }}
+          {{ else if eq .File.ContentBaseName "links" }}
+            {{ $n := 0 }}{{ range hugo.Data.resources }}{{ $n = add $n (len .items) }}{{ end }}
+            {{ $count = printf "%d links in %d categories" $n (len hugo.Data.resources) }}
+          {{ else if eq .File.ContentBaseName "bibliography" }}
+            {{ $count = printf "%d entries" (len hugo.Data.bibliography) }}
+          {{ end }}
+          <a class="group flex flex-col justify-between gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ .RelPermalink }}">
+            <span>
               <span class="block font-semibold text-slate-900">{{ .Title }}</span>
-              {{ with .Description }}<span class="mt-0.5 line-clamp-2 block text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
+              {{ with .Description }}<span class="mt-1 line-clamp-3 block text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
+            </span>
+            <span class="flex items-center justify-between text-sm text-slate-500">
+              {{ with $count }}<span>{{ . }}</span>{{ end }}
+              <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </span>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+
+    {{ with $guides }}
+      <h2 class="mt-12 text-xs font-semibold uppercase tracking-widest text-slate-500">Guides from the community</h2>
+      <nav class="mt-2 border-t border-slate-200" aria-label="Community guides">
+        {{ range . }}
+          <a class="group flex items-center justify-between gap-4 border-b border-slate-200 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+            <span class="min-w-0">
+              <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              {{ with .Description }}<span class="mt-1 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . }}</span>{{ end }}
             </span>
             <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </a>

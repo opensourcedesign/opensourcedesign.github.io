@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
     {{/* Finished statuses, plus "searching" jobs whose application deadline
-         already passed — those are excluded from the open list, and the
+         already passed - those are excluded from the open list, and the
          job-expire workflow flips their status to "expired" within a day.
          Complement keeps this in sync with the open-jobs partial. */}}
     {{ $finished := where $jobsAll "Params.status" "in" (slice "closed" "solved" "resolved" "completed" "filled" "expired") }}

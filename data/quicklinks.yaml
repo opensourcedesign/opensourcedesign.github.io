@@ -33,7 +33,7 @@ contribute:
   - name: Post a Job
     url: /jobs/job-form/
   - name: How to Join
-    url: /about-us/how-to-join/
+    url: /resources/how-to-join/
   - name: Contribute on GitHub
     url: https://github.com/opensourcedesign/opensourcedesign.github.io
     external: true

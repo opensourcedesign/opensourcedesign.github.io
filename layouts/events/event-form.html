@@ -47,7 +47,7 @@
 
             <div class="space-y-2">
               <label class="text-sm font-medium text-slate-700" for="location">Location <span class="text-red-500">*</span></label>
-              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="location" name="location" placeholder="e.g., Brussels, Belgium — or Online" required />
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="location" name="location" placeholder="e.g., Brussels, Belgium - or Online" required />
             </div>
           </div>
         </fieldset>
@@ -75,7 +75,7 @@
             </div>
           </div>
 
-          {{/* Status — only shown when editing an existing event */}}
+          {{/* Status - only shown when editing an existing event */}}
           <div class="space-y-3" id="statusWrap" hidden>
             <div class="text-sm font-medium text-slate-700" id="status-label">Status</div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2" role="radiogroup" aria-labelledby="status-label">
@@ -154,7 +154,7 @@
 
     <script>
       (function () {
-        {{/* Hugo's JS-context autoescaper already emits strings as JSON — no jsonify. */}}
+        {{/* Hugo's JS-context autoescaper already emits strings as JSON - no jsonify. */}}
         var endpoint = {{ site.Params.eventSubmitEndpoint | default "" }};
         var repoURL = {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }};
         var repoBranch = {{ site.Params.repoBranch | default "master" }};
@@ -464,7 +464,7 @@
               if (resp.ok && json && json.ok && json.pr_url) {
                 if (note) note.textContent = 'Submitted.';
                 showResult(
-                  editFile ? 'Thanks — your changes were received' : 'Thanks — submission received',
+                  editFile ? 'Thanks - your changes were received' : 'Thanks - submission received',
                   'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
                   ''
                 );

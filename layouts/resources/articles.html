@@ -29,6 +29,9 @@
               <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
               {{ $byline := .Params.author }}
               {{ if not $byline }}{{ with .Params.authors }}{{ $byline = delimit . ", " }}{{ end }}{{ end }}
+              {{/* Community articles without a named author are credited to
+                   the organization itself. */}}
+              {{ if not $byline }}{{ $byline = "Open Source Design" }}{{ end }}
               {{ with $byline }}<span class="mt-0.5 block text-sm text-slate-500">By {{ . }}</span>{{ end }}
               {{ with .Summary }}
                 <span class="mt-1.5 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 160 }}</span>

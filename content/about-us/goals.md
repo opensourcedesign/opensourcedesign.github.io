@@ -2,14 +2,14 @@
 title: "Goals"
 description: "A historical archive of the Open Source Design community's original goals."
 # Keep the original URL so old links keep working (issue #500), but exclude
-# the page from menus, section listings, and feeds — it is a historical
+# the page from menus, section listings, and feeds - it is a historical
 # document, not a reflection of current activities.
 url: /goals/
 build:
   list: never
 ---
 
-> **Historical document** — this page archives the community's original goals and is no longer actively maintained. For what we are working on today, see [About Us](/about-us/) and [How to Join](/about-us/how-to-join/).
+> **Historical document** - this page archives the community's original goals and is no longer actively maintained. For what we are working on today, see [About Us](/about-us/) and [How to Join](/resources/how-to-join/).
 
 ## What We Want to Achieve
 
@@ -60,4 +60,4 @@ We plan to achieve this by creating an awesome and inclusive community that attr
 
 ---
 
-*You may also like to have a look at the Open Design Foundation — the fine folks there were doing awesome work similar to our goals. Their website has gone down, but there is an [archive of the site](https://web.archive.org/web/20210125021057/http://opendesign.foundation/) on the Wayback Machine, and their [GitHub repository](https://github.com/DesignOpen/designopen.github.io) is still available.*
+*You may also like to have a look at the Open Design Foundation - the fine folks there were doing awesome work similar to our goals. Their website has gone down, but there is an [archive of the site](https://web.archive.org/web/20210125021057/http://opendesign.foundation/) on the Wayback Machine, and their [GitHub repository](https://github.com/DesignOpen/designopen.github.io) is still available.*

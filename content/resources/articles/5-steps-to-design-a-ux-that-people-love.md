@@ -35,7 +35,7 @@ In this case, Matt created [a little video](https://youtu.be/LtT0_zjNyAk) to dis
 
 ## 3. Make an interactive prototype based on what you’ve learnt.
 
-Looking at a single screen won’t tell you much — you need to consider the whole workflow in context: all the steps that the user goes through to complete the task. It’s called a workflow because it should flow.
+Looking at a single screen won’t tell you much  -  you need to consider the whole workflow in context: all the steps that the user goes through to complete the task. It’s called a workflow because it should flow.
 
 We use Sketch for drawing mockups and InVision to stitch them together into interactive prototypes. (You can learn about how we use these tools in [this talk I gave recently](https://www.loomio.com/blog/2015/07/07/design-for-developers/).)
 

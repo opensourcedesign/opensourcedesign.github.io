@@ -9,7 +9,7 @@ node_modules/
 
 # NOTE: there is no CSS build step (issue #556). Tailwind utilities compile
 # in the browser via the Play CDN, and assets/css/typography.css (the prose
-# classes) is a checked-in, pre-compiled bundle — regenerate it with the
+# classes) is a checked-in, pre-compiled bundle - regenerate it with the
 # Tailwind standalone CLI only when typography.src.css changes (see the
 # header comment in assets/css/typography.src.css).
 

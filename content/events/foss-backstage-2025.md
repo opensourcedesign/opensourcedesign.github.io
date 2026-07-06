@@ -52,7 +52,7 @@ Miruna shares the story behind [Commit Global's](https://www.commitglobal.org/en
 
 
 Nina, Leia and Kola explore the challenges of design contribution in open source projects and the issues faced by designers and maintainers. They conducted a survey with both designers and open source maintainers, as well as in-depth interviews with several designers to get a closer look at their experiences.
-In the talk they share key findings, including the biggest obstacles designers face—like the intimidating nature of contribution platforms, confusing documentation, and a lack of clear entry points. They then move onto practical strategies to overcome these challenges. These findings then inform work that the team hopes to share widely with the OSS community in order to alleviate some of the challenges identified in the surveys and interviews across the research.
+In the talk they share key findings, including the biggest obstacles designers face - like the intimidating nature of contribution platforms, confusing documentation, and a lack of clear entry points. They then move onto practical strategies to overcome these challenges. These findings then inform work that the team hopes to share widely with the OSS community in order to alleviate some of the challenges identified in the surveys and interviews across the research.
 
 [Watch Nina, Leia and Kola’s talk here](https://www.youtube.com/watch?v=5kq2emKppSc&list=PLq-odUc2x7i-vFcBUZoDxTz9Vyu0Joq0X&index=47)
 

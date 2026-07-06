@@ -1,4 +1,4 @@
-# Migration Plan — Hugo branch adaptation
+# Migration Plan - Hugo branch adaptation
 # opensourcedesign.net IA overhaul
 
 > **Status: READY TO EXECUTE**
@@ -34,9 +34,9 @@
 
 ---
 
-## Decisions — resolved
+## Decisions - resolved
 
-### Decision A — Archive section → **Remove** ✓
+### Decision A - Archive section → **Remove** ✓
 
 `content/archive/` was created by the Hugo migration but is not part of
 the agreed IA. The content has been accounted for elsewhere.
@@ -47,7 +47,7 @@ the agreed IA. The content has been accounted for elsewhere.
   so old summit URLs redirect to the events listing.
 - `milestones.md` content: discard (duplicated in articles).
 
-### Decision B — Brand page → **Keep at `/brand/`** ✓
+### Decision B - Brand page → **Keep at `/brand/`** ✓
 
 `content/brand.md` stays at its current URL, unlisted from the main nav.
 Keep in the footer quicklinks as "Brand Assets".
@@ -55,15 +55,15 @@ Keep in the footer quicklinks as "Brand Assets".
 > Future note: the team may want to rename this to "Press Kit" or move
 > it under `/about-us/brand/` once the About Us section is built out.
 
-### Decision C — People → **Remove entirely** ✓
+### Decision C - People → **Remove entirely** ✓
 
-The entire people database is removed — not just the join form. This
+The entire people database is removed - not just the join form. This
 was unused and will not be continued.
 
 Scope of removal:
 - All `content/people/*.md` profile files
 - `content/people/_index.md`
-- `content/people/join.md` — note: this file is empty; all content was
+- `content/people/join.md` - note: this file is empty; all content was
   in the layout template. No written content to salvage here.
 - `layouts/people/` templates (including `people-form.html`)
 - All `data/quicklinks.yaml` entries pointing into `/people/`
@@ -71,18 +71,18 @@ Scope of removal:
 No redirect needed. `/people/` and `/people/:slug/` will return 404.
 
 > **Note for Task 3.2:** `content/contribute.md` (not the join page)
-> contains the substantive "how to contribute" content — pathways for
+> contains the substantive "how to contribute" content - pathways for
 > website, jobs, events, organization, and Open Collective contributions.
 > Use this as source material for `/about-us/how-to-join/`.
 
-### Decision D — New content tracking → **Backlog section added** ✓
+### Decision D - New content tracking → **Backlog section added** ✓
 
 A **New content backlog** section at the bottom of this plan tracks
-content that should be added to the Hugo branch — either merged to
+content that should be added to the Hugo branch - either merged to
 `master` after the branch diverged, or new content not yet written.
 See that section before starting Phase 3.
 
-### Decision E — `content/goals/` directory conflict → **Delete directory** ✓
+### Decision E - `content/goals/` directory conflict → **Delete directory** ✓
 
 Both `content/goals.md` and `content/goals/_index.md` exist, creating
 a URL conflict.
@@ -103,7 +103,7 @@ Before starting Phase 1, ensure:
 - [x] Decisions A–E resolved (see above)
 - [ ] The repo builds locally (`hugo server`)
 - [ ] You have write access to the repo
-- [ ] No prerequisite gems or plugins needed — Hugo `aliases` are built-in
+- [ ] No prerequisite gems or plugins needed - Hugo `aliases` are built-in
 
 ---
 
@@ -125,32 +125,32 @@ Labels: `[dev]` = code/config change · `[content]` = writing/editing required �
 
 ---
 
-## Phase 0 — Preparation (no site changes)
+## Phase 0 - Preparation (no site changes)
 
 These tasks clean up known issues and prepare content before touching structure.
 
-### ~~Task 0.1 — Classify all blog posts~~ `[content]` — DONE
+### ~~Task 0.1 - Classify all blog posts~~ `[content]` - DONE
 Result: All posts classified in `docs/post-redirect-map.md`.
 9 events, 6 resources, 9 removes (+ 3 undated files resolved).
 
-### ~~Task 0.2 — Resolve the `content/goals/` conflict~~ `[dev]` — DONE
+### ~~Task 0.2 - Resolve the `content/goals/` conflict~~ `[dev]` - DONE
 Deleted `content/goals/_index.md` and `content/goals/` directory. `content/goals.md` kept as canonical. Build clean, no warnings.
 
-### ~~Task 0.3 — Delete `content/archive/`~~ `[dev]` — DONE
+### ~~Task 0.3 - Delete `content/archive/`~~ `[dev]` - DONE
 Deleted `content/archive/summit.md`, `milestones.md`, `_index.md` and directory. Added `aliases: [/summit/, /summit/2017]` to `content/events/_index.md`. Build clean, 2 aliases registered.
 
-### ~~Task 0.4 — Resolve undated / duplicate article files~~ `[dev]` — DONE
+### ~~Task 0.4 - Resolve undated / duplicate article files~~ `[dev]` - DONE
 Moved `How-to-add-an-article-to-open-source-design.md` → `docs/how-to-add-an-article.md`. Deleted `successful-open-source-design-jobs-kitspace-*.md` and `2021-07-11-Open-Source-Design-milestones-over-the-years.md`. All remaining `content/articles/` files have `YYYY-MM-DD-` prefixes. Build clean.
 
-### ~~Task 0.5 — Remove Twitter links and fix Mastodon URL~~ `[dev]` — DONE
+### ~~Task 0.5 - Remove Twitter links and fix Mastodon URL~~ `[dev]` - DONE
 Removed Twitter entry from `data/social.yaml` and `[[params.social]]` in `hugo.toml`. Removed `twitterHandle` param from `hugo.toml`. Removed `{{ else if eq .icon "twitter" }}` block from `layouts/partials/footer.html`. No Twitter links in `404.html`. Mastodon URL kept at `mastodon.social/@opensourcedesign` (confirmed correct). Build clean.
 
-### ~~Task 0.6 — Check jobs data for front matter errors~~ `[dev]` — DONE
+### ~~Task 0.6 - Check jobs data for front matter errors~~ `[dev]` - DONE
 Verified `hugo build --logLevel debug` produces zero front matter or YAML errors in `content/jobs/`. Build clean. (Note: `content/jobs/-.md` has an unusual filename but valid front matter; no action required.)
 
 ---
 
-## Phase 1 — Structure: new pages and redirects
+## Phase 1 - Structure: new pages and redirects
 
 Create all new pages and configure `aliases` for moved/removed pages.
 
@@ -158,10 +158,10 @@ Create all new pages and configure `aliases` for moved/removed pages.
 > `redirect_from:`). Hugo generates a redirect HTML stub at each alias
 > URL automatically. No plugin required.
 
-> **Hugo note — delete source files atomically with alias creation.**
+> **Hugo note - delete source files atomically with alias creation.**
 > Unlike Jekyll's `redirect_from`, Hugo aliases create static files at
 > the alias URL. If the old source page still exists at the same URL,
-> both will try to write to the same output file — Hugo warns and the
+> both will try to write to the same output file - Hugo warns and the
 > result is unpredictable. **Each task below that moves or merges a page
 > must delete the old source file in the same git commit as it creates
 > the new file with the alias.** Do not defer deletions to a later step.
@@ -170,62 +170,62 @@ Create all new pages and configure `aliases` for moved/removed pages.
 > `content/about-us/_index.md` → `/about-us/`
 > `content/about-us/manifesto.md` → `/about-us/manifesto/`
 
-### ~~Task 1.1 — Create `/about-us/` and retire `/goals/`, `/faq/`~~ `[dev]` — DONE
+### ~~Task 1.1 - Create `/about-us/` and retire `/goals/`, `/faq/`~~ `[dev]` - DONE
 Created `content/about-us/_index.md` with aliases `/goals/` and `/faq/`. Deleted `content/goals.md` and `content/faq.md`. Build clean, 4 aliases.
 
-### ~~Task 1.2 — Move manifesto to `/about-us/manifesto/`~~ `[dev]` — DONE
+### ~~Task 1.2 - Move manifesto to `/about-us/manifesto/`~~ `[dev]` - DONE
 
-### ~~Task 1.3 — Move code of conduct to `/about-us/code-of-conduct/`~~ `[dev]` — DONE
+### ~~Task 1.3 - Move code of conduct to `/about-us/code-of-conduct/`~~ `[dev]` - DONE
 Twitter reference in body replaced with Mastodon.
 
-### ~~Task 1.4 — Move governance to `/about-us/governance/`~~ `[dev]` — DONE
+### ~~Task 1.4 - Move governance to `/about-us/governance/`~~ `[dev]` - DONE
 `processes.md` deleted; aliases `/governance/` and `/processes/` added.
 
-### ~~Task 1.5 — Move by-laws to `/about-us/by-laws/`~~ `[dev]` — DONE
+### ~~Task 1.5 - Move by-laws to `/about-us/by-laws/`~~ `[dev]` - DONE
 
-### ~~Task 1.6 — Create `/about-us/how-to-join/`~~ `[dev]` — DONE
+### ~~Task 1.6 - Create `/about-us/how-to-join/`~~ `[dev]` - DONE
 Created with aliases `/contribute/`, `/contributing/`, `/people/join/`. Deleted `contribute.md` and `people/join.md`.
 
-### ~~Task 1.7 — Create `/forum/`~~ `[dev]` — SKIPPED
+### ~~Task 1.7 - Create `/forum/`~~ `[dev]` - SKIPPED
 Decision: no dedicated `/forum/` page needed. Forum link will go directly to Discourse in the nav.
 
-### ~~Task 1.8 — Create `/imprint/`~~ `[dev]` — SKIPPED
+### ~~Task 1.8 - Create `/imprint/`~~ `[dev]` - SKIPPED
 Decision: no imprint page needed at this time.
 
-### ~~Task 1.9 — Add `/articles/` redirect~~ `[dev]` — DONE
+### ~~Task 1.9 - Add `/articles/` redirect~~ `[dev]` - DONE
 Added `aliases: [/articles/]` to `content/resources.md` front matter.
 
-### Task 1.10 — Verify structure `[dev]`
+### Task 1.10 - Verify structure `[dev]`
 - **Command:** `hugo build` then spot-check key URLs
 - **Acceptance criteria:** Site builds without errors; all URLs in
   `sitemap-proposed.md` are present; all aliases redirect correctly.
 
-### Task 1.11 — *(absorbed into Task 3.9)*
+### Task 1.11 - *(absorbed into Task 3.9)*
 
 All content deletions were done atomically in Tasks 1.1–1.6. The one
-remaining cleanup — `layouts/people/` — cannot be deleted while
+remaining cleanup - `layouts/people/` - cannot be deleted while
 `content/people/` still exists (Hugo would warn about missing layout).
 It is deleted together with the people content in **Task 3.9**.
 
 ---
 
-## Phase 2 — Navigation
+## Phase 2 - Navigation
 
 Update header and footer once new pages from Phase 1 are live and verified.
 
-### ~~Task 2.1 — Update header nav~~ `[dev]` — DONE
+### ~~Task 2.1 - Update header nav~~ `[dev]` - DONE
 Replaced Goals/Articles/Archive with About Us (weight 10). Reordered to: About Us, Events, Resources, Jobs, Forum (weights 10–50). Forum kept as external Discourse URL (Task 1.7 was skipped).
 
-### ~~Task 2.2 — Update footer~~ `[dev]` — DONE
+### ~~Task 2.2 - Update footer~~ `[dev]` - DONE
 `data/social.yaml`: already done in Task 0.5. `data/quicklinks.yaml`: removed Goals, "Join as Designer", "Write an Article"; updated all About Us sub-page URLs; added "How to Join". `layouts/partials/footer.html`: removed Source Code link. No Imprint link (Task 1.8 skipped).
 
 ---
 
-## Phase 3 — Content migration
+## Phase 3 - Content migration
 
 Fill in content for new and restructured pages.
 
-### Task 3.1 — Write `/about-us/` `[content]`
+### Task 3.1 - Write `/about-us/` `[content]`
 - **File:** `content/about-us/_index.md`
 - **Source material:** `content/goals.md` (7 goals), `content/faq.md`
 - **Requirements:**
@@ -236,33 +236,33 @@ Fill in content for new and restructured pages.
 - **Acceptance criteria:** Page is coherent; TOC links resolve; no
   placeholder comments.
 
-### Task 3.2 — Write `/about-us/how-to-join/` `[content]`
+### Task 3.2 - Write `/about-us/how-to-join/` `[content]`
 - **File:** `content/about-us/how-to-join.md`
 - **Source material:**
-  - `content/contribute.md` — has usable structured content: pathways
+  - `content/contribute.md` - has usable structured content: pathways
     for contributing via website, jobs, events, organization participation,
     and Open Collective financial contributions. Adapt and expand this.
-  - Issue #506 — additional new content
+  - Issue #506 - additional new content
 - **Requirements:** Explain how to join and participate in OSD;
   practical and welcoming. No form (per Decision C).
 - **Acceptance criteria:** Substantive written content; no placeholder
   comments.
 
-### Task 3.3 — Write `/forum/` `[content]`
+### Task 3.3 - Write `/forum/` `[content]`
 - **File:** `content/forum.md`
 - **Requirements:** Short page describing the Discourse forum; links
-  to `https://discourse.opensourcedesign.net`. Not a redirect — a page
+  to `https://discourse.opensourcedesign.net`. Not a redirect - a page
   with context about what the forum is for.
 - **Acceptance criteria:** Page has description and working link.
 
-### Task 3.4 — Write `/imprint/` `[content]`
+### Task 3.4 - Write `/imprint/` `[content]`
 - **File:** `content/imprint.md`
 - **Requirements:** Legal/fiscal information; reference Open Collective
   as fiscal sponsor.
 - **Acceptance criteria:** Accurate fiscal/legal information; no
   placeholder comments.
 
-### Task 3.5 — Convert `/resources/` to a section and restructure content `[content]` `[dev]`
+### Task 3.5 - Convert `/resources/` to a section and restructure content `[content]` `[dev]`
 - **Convert flat page to section first:**
   ```bash
   mkdir -p content/resources
@@ -280,8 +280,8 @@ Fill in content for new and restructured pages.
   resource list is current; `/articles/` alias still redirects to
   `/resources/`; no placeholder comments.
 
-### Task 3.6 — Move event write-ups into `/events/` `[dev]` `[content]`
-These posts are currently mislaid in `content/articles/` — they are
+### Task 3.6 - Move event write-ups into `/events/` `[dev]` `[content]`
+These posts are currently mislaid in `content/articles/` - they are
 event write-ups and belong under `/events/`.
 
 - **Source:** `docs/post-redirect-map.md`, posts classified as `event`
@@ -310,12 +310,12 @@ event write-ups and belong under `/events/`.
 - **Acceptance criteria:** All event write-ups accessible under `/events/`;
   old URLs redirect.
 
-### Task 3.7 — Move resources into `/resources/` `[dev]` `[content]`
-These posts are currently mislaid in `content/articles/` — they are
+### Task 3.7 - Move resources into `/resources/` `[dev]` `[content]`
+These posts are currently mislaid in `content/articles/` - they are
 resources and belong under `/resources/`.
 
 - **Source:** `docs/post-redirect-map.md`, posts classified as `resource`
-- **Prerequisite:** Task 3.5 must be complete — `content/resources/`
+- **Prerequisite:** Task 3.5 must be complete - `content/resources/`
   must already be a section with `_index.md`.
 - **For each post:**
   1. Move: `git mv content/articles/FILENAME.md content/resources/NEW-SLUG.md`
@@ -334,7 +334,7 @@ resources and belong under `/resources/`.
 - **Acceptance criteria:** All resource posts accessible under
   `/resources/`; old URLs redirect.
 
-### Task 3.8 — Delete remaining posts in `content/articles/` `[dev]`
+### Task 3.8 - Delete remaining posts in `content/articles/` `[dev]`
 After Tasks 3.6 and 3.7, only posts classified as `remove` remain.
 From `docs/post-redirect-map.md`:
 
@@ -354,29 +354,29 @@ Once all posts are gone, delete:
 The `/articles/` listing URL is already covered by the alias on
 `content/resources/_index.md` (added in Task 1.9, preserved in Task 3.7).
 
-### Task 3.9 — Remove `/people/` collection and layouts `[dev]`
+### Task 3.9 - Remove `/people/` collection and layouts `[dev]`
 Per Decision C. Includes the `layouts/people/` deletion deferred from
-Task 1.11 — do both in the same commit.
+Task 1.11 - do both in the same commit.
 - Delete `content/people/_index.md`
 - Delete all `content/people/*.md` profile files
 - Delete `layouts/people/` directory and all templates within it
 - Verify no remaining internal links point to `/people/` or
-  `/people/:slug/` (check `data/quicklinks.yaml` — handled in Task 2.2,
+  `/people/:slug/` (check `data/quicklinks.yaml` - handled in Task 2.2,
   and `content/_index.md` homepage)
 - **Acceptance criteria:** `/people/` returns 404; no orphaned internal
   links; `hugo` builds without missing layout warnings.
 
 ---
 
-## Phase 4 — Design and layout
+## Phase 4 - Design and layout
 
 Template and layout changes. These should happen after content structure
 is stable.
 
-### Task 4.1 — Redesign events listing `[design]` `[dev]`
+### Task 4.1 - Redesign events listing `[design]` `[dev]`
 - **File:** `layouts/events/list.html`
 - **Requirements:**
-  - Ticker/list style — not a blog post feel
+  - Ticker/list style - not a blog post feel
   - Items with write-ups are visually distinguished from those without
   - Date is hard-coded in event front matter (already the case:
     `eventDate`, `location`, `time`, `status` fields exist in current events)
@@ -386,7 +386,7 @@ is stable.
 - **Acceptance criteria:** Events listing renders as a dated list;
   upcoming events appear on homepage; write-up links work.
 
-### Task 4.2 — Homepage redesign `[design]` `[dev]` `[content]`
+### Task 4.2 - Homepage redesign `[design]` `[dev]` `[content]`
 - **File:** `layouts/index.html`
 - **Checklist** (from `sitemap-proposed.md`):
   - [ ] Remove filler header image
@@ -399,10 +399,10 @@ is stable.
   - [ ] Conferences → remove section; add affiliate logos to sidebar as mini cards
   - [ ] Remove Contact us / socials section (duplicate of footer)
 - **Note:** `data/affiliates.yaml`, `data/conferences.yaml`, and
-  `data/supporters.yaml` already exist — use as data sources.
+  `data/supporters.yaml` already exist - use as data sources.
 - **Acceptance criteria:** All checklist items complete; no broken links.
 
-### Task 4.3 — Footer template cleanup `[dev]`
+### Task 4.3 - Footer template cleanup `[dev]`
 - After Tasks 0.5 and 2.2, remove dead code: unused Twitter icon block,
   unused Source Code link block.
 - **Acceptance criteria:** `layouts/partials/footer.html` contains no
@@ -410,9 +410,9 @@ is stable.
 
 ---
 
-## Phase 5 — Validation and launch
+## Phase 5 - Validation and launch
 
-### Task 5.1 — Run link checker `[dev]`
+### Task 5.1 - Run link checker `[dev]`
 ```bash
 hugo build
 npx broken-link-checker http://localhost:1313
@@ -420,7 +420,7 @@ npx broken-link-checker http://localhost:1313
 - **Acceptance criteria:** Zero broken internal links; all aliased old
   URLs return redirects; no 404s for URLs that should exist.
 
-### Task 5.2 — Review checklist `[dev]` `[content]`
+### Task 5.2 - Review checklist `[dev]` `[content]`
 - [ ] All pages in `sitemap-proposed.md` → Proposed URL Structure are live
 - [ ] All redirects in the Complete Redirect Map below are working
 - [ ] No placeholder `<!-- TODO -->` comments remain on live pages
@@ -432,13 +432,13 @@ npx broken-link-checker http://localhost:1313
 - [ ] `/people/` returns 404
 - [ ] `/archive/` returns 404
 
-### Task 5.3 — Update documentation `[dev]`
+### Task 5.3 - Update documentation `[dev]`
 - Archive `docs/sitemap-current.md` as `docs/sitemap-pre-2026-02.md`
 - Update `docs/sitemap-current.md` to reflect the new live state
 
-### Task 5.4 — Merge to master and deploy `[dev]`
+### Task 5.4 - Merge to master and deploy `[dev]`
 - Final review by at least one maintainer
-- Merge to `master` — GitHub Actions Hugo build will deploy automatically
+- Merge to `master` - GitHub Actions Hugo build will deploy automatically
 - **Acceptance criteria:** Live site at `opensourcedesign.net` reflects
   all changes.
 
@@ -461,10 +461,10 @@ npx broken-link-checker http://localhost:1313
 | /articles/ | /resources/ | `content/resources/_index.md` (after Task 3.7 rename; `content/resources.md` before) |
 | /summit/ | /events/ | `content/events/_index.md` |
 | /summit/2017 | /events/ | `content/events/_index.md` |
-| /people/ | — | 404, no redirect |
-| /people/:slug/ | — | 404, no redirect |
-| /logos/ | — | already absent in Hugo branch |
-| /archive/ | — | 404 after Task 0.3 |
+| /people/ | - | 404, no redirect |
+| /people/:slug/ | - | 404, no redirect |
+| /logos/ | - | already absent in Hugo branch |
+| /archive/ | - | 404 after Task 0.3 |
 | /articles/:slug/ → event write-up | /events/:slug/ | `aliases:` on each file, added in Task 3.6 |
 | /articles/:slug/ → resource | /resources/:slug/ | `aliases:` on each file, added in Task 3.7 |
 

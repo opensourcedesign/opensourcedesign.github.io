@@ -2,8 +2,8 @@ name: Email submitter when job or event is published
 
 # When a submission pull request (branch job/*, job-edit/*, event/* or
 # event-edit/*, opened by the job-submit Cloudflare Worker) is merged, look up
-# the submitter's private email — stored in Cloudflare KV by the Worker, keyed
-# by PR number — and notify them that their posting is live. The address is
+# the submitter's private email - stored in Cloudflare KV by the Worker, keyed
+# by PR number - and notify them that their posting is live. The address is
 # never committed to the repo or shown in the PR; it is fetched at merge time
 # over an authenticated endpoint.
 
@@ -108,14 +108,14 @@ jobs:
           body: |
             Hi,
 
-            Good news — your ${{ steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" has been
+            Good news - your ${{ steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" has been
             reviewed and is now published on Open Source Design:
 
             ${{ steps.resolve.outputs.url }}
 
             Thanks for supporting open source design!
 
-            — The Open Source Design community
+            - The Open Source Design community
           html_body: |
             <!DOCTYPE html>
             <html lang="en">
@@ -150,7 +150,7 @@ jobs:
                       <td style="background-color:#ffffff;padding:36px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
                         <h1 style="margin:0 0 20px;font-size:22px;line-height:1.3;color:#0f172a;">Your ${{ steps.lookup.outputs.kind }} is live</h1>
                         <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Hi,</p>
-                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Good news &mdash; your ${{ steps.lookup.outputs.kind }} <strong style="color:#0f172a;">&ldquo;${{ steps.lookup.outputs.title_html }}&rdquo;</strong> has been reviewed and is now published on Open Source Design.</p>
+                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Good news - your ${{ steps.lookup.outputs.kind }} <strong style="color:#0f172a;">&ldquo;${{ steps.lookup.outputs.title_html }}&rdquo;</strong> has been reviewed and is now published on Open Source Design.</p>
                         <table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0;"><tr>
                           <td style="border-radius:8px;background-color:#0f172a;">
                             <a href="${{ steps.resolve.outputs.url }}" style="display:inline-block;padding:13px 28px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;">View it on the site &rarr;</a>
@@ -162,7 +162,7 @@ jobs:
                     </tr>
                     <tr>
                       <td style="background-color:#f8fafc;border-radius:0 0 12px 12px;border-top:1px solid #e2e8f0;padding:20px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.7;color:#64748b;">
-                        <strong style="color:#475569;">Open Source Design</strong> &mdash; a community of designers and developers improving the usability of open source software.<br />
+                        <strong style="color:#475569;">Open Source Design</strong> - a community of designers and developers improving the usability of open source software.<br />
                         <a href="https://opensourcedesign.net" style="color:#64748b;">opensourcedesign.net</a> &nbsp;&middot;&nbsp; <a href="https://discourse.opensourcedesign.net" style="color:#64748b;">Forum</a> &nbsp;&middot;&nbsp; <a href="https://opensourcedesign.net/jobs/" style="color:#64748b;">Job board</a>
                       </td>
                     </tr>

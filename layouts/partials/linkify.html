@@ -3,8 +3,8 @@
   HTML, turning URLs, "www." hosts, and email addresses into links.
 
   Lines are processed independently and joined with <br>. Within a line,
-  tokens are whitespace-delimited; leading/trailing punctuation — including
-  escaped <, >, and quotes — is peeled off and kept as plain text around the
+  tokens are whitespace-delimited; leading/trailing punctuation - including
+  escaped <, >, and quotes - is peeled off and kept as plain text around the
   generated anchor, so an href never swallows a closing ")." or ">".
   "Name <email>" contact lines become mailto links; spaces inside the angle
   brackets (obfuscated addresses like "<mail @ example.com>") are removed
@@ -18,7 +18,7 @@
 {{- range $lines -}}
   {{- $line := trim . " \t" -}}
   {{- if $line -}}
-    {{- /* "Name <email@example.com>" — link the email, show the (escaped) name */ -}}
+    {{- /* "Name <email@example.com>" - link the email, show the (escaped) name */ -}}
     {{- $angleEmail := "" -}}
     {{- with findRE `<[^<>]+@[^<>]+>` $line 1 -}}
       {{- $candidate := replace (trim (index . 0) "<>") " " "" -}}

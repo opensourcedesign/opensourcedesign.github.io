@@ -1,4 +1,4 @@
-# Current Sitemap — opensourcedesign.net
+# Current Sitemap - opensourcedesign.net
 
 > Generated from repository audit, February 2026.
 > This documents the site as it exists today, before any proposed restructuring.

@@ -28,7 +28,7 @@ QUALIFICATIONS:
 * A strong understanding of typography, colour, and layout
 * Skills in motion design and/or animation
 * Skills in illustration
-* Approachable, friendly team player — no rock stars!
+* Approachable, friendly team player - no rock stars!
 
 ASSETS:
 * Experience in brand development

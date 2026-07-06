@@ -18,7 +18,7 @@ There is no shortage of pleas and instructions for designers to learn to code. I
 
 To use code as a tool for design, ideation, communication, and adjustments is a process that creates a lot of friction. It demands constant switching between the definition space – the code – and the outcome – the resulting appearance and structure.
 
-Empirical research shows that feedback loops play a crucial role in creative tasks [1]. For designers this involves evaluating how a preliminary design looks, is structured, or behaves and then apply changes and see if the result is satisfying [2]. Look at sketching: You can quickly draw what a product or a website may look like. You evaluate what is good or bad about the drawing, think it through and iteratively make changes The feedback is instant: if you slip and the crooked line messes up the design you see it right away. If the slip actually adds something good, you see it too.
+Empirical research shows that feedback loops play a crucial role in creative tasks.[^1] For designers this involves evaluating how a preliminary design looks, is structured, or behaves and then apply changes and see if the result is satisfying.[^2] Look at sketching: You can quickly draw what a product or a website may look like. You evaluate what is good or bad about the drawing, think it through and iteratively make changes The feedback is instant: if you slip and the crooked line messes up the design you see it right away. If the slip actually adds something good, you see it too.
 
 This instant feedback is what's to lose if we always design in code.
 
@@ -38,7 +38,5 @@ To enable designers to contribute to open projects it is not enough that they le
 
 _If you like to support the creation of libre tools for (open source) designers, have a look at [some of our ideas](https://github.com/opensourcedesign/resources/issues/16)._
 
-**Sources:**
-
-- **[1]** Designing as reflective conversation with the materials of a design situation, Donald Schön, 1992
-- **[2]** »sketching provides a temporary, external store for tentative ideas, and supports the ‘dialogue’ that the designer has between problem and solution.« (Chapter 1, ›Design Ability‹) »…Drawing…gives the flex­i­bil­ity to shift lev­els of de­tail in­stan­ta­neously; al­lows par­tial, dif­fer­ent views at dif­fer­ent lev­els of de­tail to be de­vel­oped side by side« (Chapter 4, ›How Designers Think‹) in Design Thinking – Understanding how designers think and work. Nigel Cross, 2011
+[^1]: Donald Schön: *Designing as reflective conversation with the materials of a design situation*, 1992.
+[^2]: »sketching provides a temporary, external store for tentative ideas, and supports the ‘dialogue’ that the designer has between problem and solution.« (Chapter 1, ›Design Ability‹) »…Drawing…gives the flexibility to shift levels of detail instantaneously; allows partial, different views at different levels of detail to be developed side by side« (Chapter 4, ›How Designers Think‹) in Nigel Cross: *Design Thinking – Understanding how designers think and work*, 2011.

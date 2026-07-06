@@ -22,7 +22,7 @@ If you think that the fight for good design is a fight for an equal, open, and m
 
 **Responsibilities**
 
-You are probably expecting a work description here but this is not what we are looking at. We want to create this job around your desire and your skills — a kind of tailor-made job, just as the expected output of your work. So the question is rather: what do *you* want to do everyday? And how do you intend to collaborate with Savoir-faire linux and our customers?
+You are probably expecting a work description here but this is not what we are looking at. We want to create this job around your desire and your skills - a kind of tailor-made job, just as the expected output of your work. So the question is rather: what do *you* want to do everyday? And how do you intend to collaborate with Savoir-faire linux and our customers?
 
 
 **Assets**

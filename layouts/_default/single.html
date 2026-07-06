@@ -2,13 +2,22 @@
   <article class="mx-auto max-w-4xl px-4 py-14 sm:py-20" itemscope itemtype="https://schema.org/Article" data-pagefind-body>
     <header>
       <h1 class="text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl" itemprop="headline">{{ .Title }}</h1>
-      {{ if or .Date .Params.author .ReadingTime }}
-        <p class="mt-4 text-sm text-slate-500">
-          {{ with .Params.author }}<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span class="font-medium text-slate-700" itemprop="name">{{ . }}</span></span><span aria-hidden="true"> · </span>{{ end }}
-          {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}" itemprop="datePublished">{{ .Format "January 2, 2006" }}</time>{{ end }}
-          {{ with .ReadingTime }}<span aria-hidden="true"> · </span><span>{{ . }} min read</span>{{ end }}
-        </p>
+      {{/* Byline: `author` scalar, `authors` list, or - for any page
+           without either - "Open Source Design" itself, so community-
+           maintained pages (about-us, guides, articles) always carry a
+           credit. */}}
+      {{ $author := .Params.author }}
+      {{ if not $author }}{{ with .Params.authors }}{{ $author = delimit . ", " }}{{ end }}{{ end }}
+      {{ $isOrg := false }}
+      {{ if not $author }}
+        {{ $author = "Open Source Design" }}
+        {{ $isOrg = true }}
       {{ end }}
+      <p class="mt-4 text-sm text-slate-500">
+        <span itemprop="author" itemscope itemtype="https://schema.org/{{ if $isOrg }}Organization{{ else }}Person{{ end }}"><span class="font-medium text-slate-700" itemprop="name">{{ $author }}</span></span>
+        {{ with .Date }}<span aria-hidden="true"> · </span><time datetime="{{ .Format "2006-01-02" }}" itemprop="datePublished">{{ .Format "January 2, 2006" }}</time>{{ end }}
+        {{ with .ReadingTime }}<span aria-hidden="true"> · </span><span>{{ . }} min read</span>{{ end }}
+      </p>
     </header>
 
     <div class="mt-10 border-t border-slate-200 pt-10">

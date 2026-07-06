@@ -10,11 +10,11 @@ brand
 - **Open source maintainers and developers**: posting design jobs, seeking design help for their projects. Context: task-driven, want to post/find quickly and trust the venue.
 - **Community members**: returning for events, meeting notes, resources, and the forum. Context: habitual, low-friction visits.
 
-The job to be done: connect designers with open source work, and prove — through the site itself — that open source and good design belong together.
+The job to be done: connect designers with open source work, and prove - through the site itself - that open source and good design belong together.
 
 ## Product Purpose
 
-Open Source Design (opensourcedesign.net) is the home of a community of designers and developers pushing more open design processes and improving the user experience of open source software. The site hosts the manifesto, a jobs board, events, curated resources, and community governance documents. Success: a designer lands here and thinks "these people take design seriously" — then joins, posts, or contributes.
+Open Source Design (opensourcedesign.net) is the home of a community of designers and developers pushing more open design processes and improving the user experience of open source software. The site hosts the manifesto, a jobs board, events, curated resources, and community governance documents. Success: a designer lands here and thinks "these people take design seriously" - then joins, posts, or contributes.
 
 ## Brand Personality
 
@@ -39,5 +39,5 @@ Editorial, confident, principled. The site of a design community must itself be 
 
 - Target WCAG 2.1 AA throughout (contrast, focus visibility, keyboard navigation, skip links).
 - Honors OS-level preferences already wired in code: `prefers-reduced-motion` (animations disabled), `prefers-contrast: more` (darkened muted text, stronger borders).
-- Single H1 per page, proper heading outline, descriptive link text, `alt` text on content images — maintained by render hooks and prior audits; do not regress.
+- Single H1 per page, proper heading outline, descriptive link text, `alt` text on content images - maintained by render hooks and prior audits; do not regress.
 - Touch targets ≥ 44px on interactive controls.

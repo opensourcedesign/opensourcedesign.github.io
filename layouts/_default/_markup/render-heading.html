@@ -1,9 +1,9 @@
 {{- /*
-  Heading render hook — keep a single <h1> and a contiguous outline.
+  Heading render hook - keep a single <h1> and a contiguous outline.
 
   Templates always emit the page title as the one <h1>, so markdown bodies must
   start at <h2>. Imported content often starts deeper (e.g. its first visible
-  heading is "###"), which would skip from the title straight to h3 — a
+  heading is "###"), which would skip from the title straight to h3 - a
   heading-order violation. We compute an offset from the first rendered content
   heading so the shallowest content heading becomes <h2>, apply it uniformly to
   preserve the author's relative depth, and clamp to h2–h6 (never a second h1).

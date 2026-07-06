@@ -1,6 +1,6 @@
 # Announce new job postings on social media (Mastodon + Bluesky).
 #
-# Fires when a push to master adds files under content/jobs/ — which is what a
+# Fires when a push to master adds files under content/jobs/ - which is what a
 # merged submission PR (job/* branch from the Cloudflare Worker) or a manually
 # authored posting lands as. The script only announces `status: searching`
 # postings dated within the last 14 days (bulk-import guard), caps posts per

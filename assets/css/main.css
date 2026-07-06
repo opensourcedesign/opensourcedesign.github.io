@@ -5,7 +5,7 @@
      to produce assets/css/compiled.css (gitignored), which baseof.html links
      as a small static stylesheet. The CLI scans layouts/, assets/ and
      content/ for utility classes automatically.
-   - Local dev (issue #556 — no local build step): when compiled.css is
+   - Local dev (issue #556 - no local build step): when compiled.css is
      absent, baseof.html loads the Tailwind Play CDN (@tailwindcss/browser)
      and inlines this file as <style type="text/tailwindcss">, compiling
      utility classes in the browser at runtime.
@@ -40,7 +40,7 @@
   }
 
   ::selection {
-    background: #334155;   /* slate-700 — stays visible on light and dark surfaces */
+    background: #334155;   /* slate-700 - stays visible on light and dark surfaces */
     color: #f8fafc;        /* slate-50 */
   }
 
@@ -264,7 +264,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     Image lightbox — a native <dialog> opened with showModal() (focus trap,
+     Image lightbox - a native <dialog> opened with showModal() (focus trap,
      Escape, inert page and top layer come from the platform). JS wraps each
      content image in an .osd-lightbox-trigger button.
      ------------------------------------------------------------------------ */
@@ -359,7 +359,7 @@
   }
 
   .osd-lightbox__btn:focus-visible {
-    outline: 2px solid #f8fafc;        /* light ring — the dark scrim behind */
+    outline: 2px solid #f8fafc;        /* light ring - the dark scrim behind */
     outline-offset: 2px;
   }
 
@@ -407,7 +407,7 @@
 }
 
 /* ==========================================================================
-   Site search — a custom UI built on the Pagefind JS API.
+   Site search - a custom UI built on the Pagefind JS API.
    Uses the site's slate palette, inherits the body font, and mirrors the
    card / radius / spacing language used elsewhere on the site.
    ========================================================================== */
@@ -650,7 +650,7 @@
 
 /* ==========================================================================
    Automatic accessibility preferences
-   These honor the user's OS/browser settings directly — there are no manual
+   These honor the user's OS/browser settings directly - there are no manual
    controls. High-contrast styling kicks in under prefers-contrast: more, and
    reduced motion is handled by the prefers-reduced-motion block in @layer base
    above. Rules here are intentionally unlayered so they win over Tailwind
@@ -671,7 +671,7 @@
   :is(.border-slate-100, .border-slate-200):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
     border-color: #94a3b8;   /* slate-400 */
   }
-  /* Rich content (Tailwind Typography) — remap its CSS variables for legibility. */
+  /* Rich content (Tailwind Typography) - remap its CSS variables for legibility. */
   .prose {
     --tw-prose-body: #0f172a;
     --tw-prose-headings: #000000;

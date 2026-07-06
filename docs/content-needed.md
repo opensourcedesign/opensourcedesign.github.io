@@ -1,4 +1,4 @@
-# Content needed — IA migration
+# Content needed - IA migration
 # opensourcedesign.net
 
 > This is the content brief for the IA migration. It covers everything
@@ -14,7 +14,7 @@
 
 ## Pages to write from scratch
 
-### 1. About Us — `/about-us/` `[new]`
+### 1. About Us - `/about-us/` `[new]`
 **File:** `content/about-us/_index.md` (created as placeholder in Task 1.1)
 **Migration task:** 3.1
 
@@ -28,8 +28,8 @@ The main landing page for the About Us section. Currently a placeholder.
   How to Join, Code of Conduct, Governance, By-laws
 
 **Source material to draw from:**
-- `content/goals.md` — 7 goals in bullet form; needs to become prose
-- `content/faq.md` — covers membership, what involvement means, "open
+- `content/goals.md` - 7 goals in bullet form; needs to become prose
+- `content/faq.md` - covers membership, what involvement means, "open
   source vs free software"; some of this belongs here, some in How to Join
 - The existing first paragraph on the homepage (`content/_index.md`) is
   a good orientation sentence: *"We are a community of designers and
@@ -38,7 +38,7 @@ The main landing page for the About Us section. Currently a placeholder.
 
 ---
 
-### 2. How to Join — `/about-us/how-to-join/` `[new]`
+### 2. How to Join - `/about-us/how-to-join/` `[new]`
 **File:** `content/about-us/how-to-join.md` (placeholder in Task 1.6)
 **Migration task:** 3.2 · See also: issue #506
 
@@ -49,24 +49,24 @@ Practical guide for new people. Currently a placeholder. This replaces
 - How to get involved (multiple pathways: forum, events, GitHub, jobs,
   financial support)
 - Tone: welcoming, low-barrier, "start anywhere"
-- No form — written content only (form was broken and removed)
+- No form - written content only (form was broken and removed)
 
 **Source material to draw from:**
-- `content/contribute.md` — has a solid structure of pathways (Website,
+- `content/contribute.md` - has a solid structure of pathways (Website,
   Jobs, Events, Organisation, Financial contributions). Adapt and expand;
-  don't copy verbatim — the tone needs freshening and some links need
+  don't copy verbatim - the tone needs freshening and some links need
   updating (e.g. the "Add an Event" link points to a wrong path)
-- `content/faq.md` — the "What Does Involvement In OSD Mean", "Who Can
+- `content/faq.md` - the "What Does Involvement In OSD Mean", "Who Can
   Join", and "What Does Being a Member Mean" sections belong here more
   than in About Us
 
 ---
 
-### 3. Forum — `/forum/` `[new]`
+### 3. Forum - `/forum/` `[new]`
 **File:** `content/forum.md` (placeholder in Task 1.7)
 **Migration task:** 3.3
 
-Short page. Not a redirect — a proper page that explains what the forum
+Short page. Not a redirect - a proper page that explains what the forum
 is before sending people there.
 
 **What it needs:**
@@ -77,7 +77,7 @@ is before sending people there.
 
 ---
 
-### 4. Imprint — `/imprint/` `[new]`
+### 4. Imprint - `/imprint/` `[new]`
 **File:** `content/imprint.md` (placeholder in Task 1.8)
 **Migration task:** 3.4
 
@@ -93,7 +93,7 @@ Legal/fiscal page required for compliance (particularly for European visitors).
 
 ## Pages to substantially rewrite
 
-### 5. Resources — `/resources/` `[rewrite]`
+### 5. Resources - `/resources/` `[rewrite]`
 **File:** `content/resources.md` → becomes `content/resources/_index.md`
 **Migration task:** 3.5
 
@@ -102,17 +102,17 @@ been maintained. It needs a complete restructure.
 
 **What it needs:**
 - **Lead section:** the article "Being a designer in open source" as the
-  featured/hero piece (see issue #505 — this article may need to be
+  featured/hero piece (see issue #505 - this article may need to be
   written or sourced first)
 - **Resource database:** a curated list replacing the current flat list.
   Sources to merge:
-  - Current `content/resources.md` list (prune stale links — many URLs
+  - Current `content/resources.md` list (prune stale links - many URLs
     are likely dead)
   - The 6 resource posts being moved from `content/articles/` (see
     migration plan Task 3.7)
   - A new externally-created resource list (referenced in
     `sitemap-proposed.md`; needs to be provided by the team)
-- Organised by category or audience — not a flat alphabetical dump
+- Organised by category or audience - not a flat alphabetical dump
 
 **Note:** The lead article "Being a designer in open source" (#505) may
 itself need to be written or commissioned before this page can be
@@ -120,7 +120,7 @@ completed.
 
 ---
 
-### 6. Homepage — `/` `[rewrite]`
+### 6. Homepage - `/` `[rewrite]`
 **File:** `content/_index.md` + `layouts/index.html`
 **Migration task:** 4.2 (design + dev + content)
 
@@ -128,7 +128,7 @@ The homepage needs both structural/layout changes (dev/design work) and
 content changes. This list covers the content side.
 
 **What needs to change:**
-- The first paragraph becomes the hero — it's already good, may just
+- The first paragraph becomes the hero - it's already good, may just
   need slight polish for weight and clarity
 - The 2nd and 3rd paragraphs need to stand on their own as distinct
   sections with more presence
@@ -137,7 +137,7 @@ content changes. This list covers the content side.
 - Remove Twitter references
 - The Supporters and Contributors/Backers sections need new CTA copy
   (current text is passive; needs a clear ask)
-- Conference/affiliate logos move to a sidebar — labels and layout are
+- Conference/affiliate logos move to a sidebar - labels and layout are
   a design decision but the list itself comes from `data/conferences.yaml`
   and `data/affiliates.yaml`
 
@@ -168,7 +168,7 @@ needs to be manually ported from:
     - /2026/03/09/FOSDEM-2026-wrap-up/
   ---
   ```
-- No content edits needed — the post is already written
+- No content edits needed - the post is already written
 
 ---
 
@@ -220,15 +220,15 @@ be updated to the new URLs.
 
 | # | Page | Type | Effort |
 |---|------|------|--------|
-| 1 | `/about-us/` | New | High — needs original writing |
-| 2 | `/about-us/how-to-join/` | New | Medium — source material exists |
-| 3 | `/forum/` | New | Low — 2–3 paragraphs |
-| 4 | `/imprint/` | New | Low — factual, brief |
-| 5 | `/resources/` | Rewrite | High — needs curation + external list |
-| 6 | Homepage | Rewrite | High — structural + copy changes |
-| 7 | FOSDEM 2026 wrap-up | Missing | Low — port from master, no editing |
-| 8–19 | Event write-ups (12 posts) | Adapt | Low per post — front matter + link check |
-| 20–25 | Resource posts (6 posts) | Adapt | Low per post — front matter + link check |
+| 1 | `/about-us/` | New | High - needs original writing |
+| 2 | `/about-us/how-to-join/` | New | Medium - source material exists |
+| 3 | `/forum/` | New | Low - 2–3 paragraphs |
+| 4 | `/imprint/` | New | Low - factual, brief |
+| 5 | `/resources/` | Rewrite | High - needs curation + external list |
+| 6 | Homepage | Rewrite | High - structural + copy changes |
+| 7 | FOSDEM 2026 wrap-up | Missing | Low - port from master, no editing |
+| 8–19 | Event write-ups (12 posts) | Adapt | Low per post - front matter + link check |
+| 20–25 | Resource posts (6 posts) | Adapt | Low per post - front matter + link check |
 
 **Blockers:**
 - Resources page (#5) depends on the external resource list being

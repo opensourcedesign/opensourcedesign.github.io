@@ -23,7 +23,7 @@ date: '2025-01-31T00:11:24.861Z'
 
 Hey all, I'm rewriting this post because the game design document wasn't working properly.
 
-Something also came up with the new project name—it’s going to be slightly different! The current project name **PySeas** will officially change to **PyCeas**. This clever nod to **Pisces**, the zodiac sign of the fish, connects the **sea to the stars**, symbolizing both **adventure and mystery**. The alternate spelling makes it unique while keeping its pronunciation and meaning intact. *(Fun fact: It’s also my constellation!)* My brother came up with the name.
+Something also came up with the new project name - it’s going to be slightly different! The current project name **PySeas** will officially change to **PyCeas**. This clever nod to **Pisces**, the zodiac sign of the fish, connects the **sea to the stars**, symbolizing both **adventure and mystery**. The alternate spelling makes it unique while keeping its pronunciation and meaning intact. *(Fun fact: It’s also my constellation!)* My brother came up with the name.
 
 **Skills:**
 - Experience in **pixel art & branding**.

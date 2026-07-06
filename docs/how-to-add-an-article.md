@@ -1,6 +1,6 @@
 # How to add content to Open Source Design
 
-> The website moved from Jekyll to Hugo and the standalone *Articles* section was retired during the information-architecture overhaul. Article-style writing now lives under **Resources**, and event write-ups live under **Events**. This guide explains how to contribute content using the GitHub web interface — no local setup required.
+> The website moved from Jekyll to Hugo and the standalone *Articles* section was retired during the information-architecture overhaul. Article-style writing now lives under **Resources**, and event write-ups live under **Events**. This guide explains how to contribute content using the GitHub web interface - no local setup required.
 
 ## Where content lives
 
@@ -34,4 +34,4 @@
 
 ## Previewing locally (optional)
 
-For larger contributions, clone the repository and run `hugo server` to preview your changes at `http://localhost:1313/` with live reload — styling is compiled in the browser, so only [Hugo](https://gohugo.io/) is needed. See the main [README](../README.md) for full setup instructions.
+For larger contributions, clone the repository and run `hugo server` to preview your changes at `http://localhost:1313/` with live reload - styling is compiled in the browser, so only [Hugo](https://gohugo.io/) is needed. See the main [README](../README.md) for full setup instructions.

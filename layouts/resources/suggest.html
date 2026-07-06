@@ -135,16 +135,16 @@
             var json = await resp.json().catch(function () { return null; });
             if (resp.ok && json && json.ok && json.pr_url) {
               if (note) note.textContent = 'Submitted.';
-              if (outTitle) outTitle.textContent = 'Thanks — suggestion received';
+              if (outTitle) outTitle.textContent = 'Thanks - suggestion received';
               if (outBody) outBody.innerHTML = 'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>';
               if (out) out.hidden = false;
               out.scrollIntoView({ behavior: 'smooth', block: 'start' });
               form.reset();
               return;
             }
-            if (note) note.textContent = (json && json.error) ? String(json.error) : 'Submission failed — please use the GitHub link below.';
+            if (note) note.textContent = (json && json.error) ? String(json.error) : 'Submission failed - please use the GitHub link below.';
           } catch (err) {
-            if (note) note.textContent = 'Could not submit — please use the GitHub link below.';
+            if (note) note.textContent = 'Could not submit - please use the GitHub link below.';
           } finally {
             if (submitBtn) submitBtn.disabled = false;
           }

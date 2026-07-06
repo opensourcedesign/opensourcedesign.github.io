@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Source for assets/css/typography.css — DO NOT edit typography.css by hand.
+   Source for assets/css/typography.css - DO NOT edit typography.css by hand.
 
    The site compiles Tailwind at runtime via the Play CDN (@tailwindcss/browser),
    which cannot load plugins. The @tailwindcss/typography `prose` classes (and
@@ -8,7 +8,7 @@
    and the base theme, giving pages a readable baseline even before/without JS.
 
    Regenerate after adding NEW prose-* classes to templates (standard utilities
-   never need this — the CDN compiles them in the browser). Use the Tailwind
+   never need this - the CDN compiles them in the browser). Use the Tailwind
    STANDALONE CLI (a single binary, no Node/npm; it bundles the typography
    plugin): download it from
    https://github.com/tailwindlabs/tailwindcss/releases (e.g.
@@ -25,7 +25,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Keep in sync with assets/css/main.css — makes the self-hosted Inter
+  /* Keep in sync with assets/css/main.css - makes the self-hosted Inter
      variable font apply even before the Play CDN compiles (or without JS). */
   --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

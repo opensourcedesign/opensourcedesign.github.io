@@ -1,4 +1,4 @@
-# Blog Post Classification — redirect map
+# Blog Post Classification - redirect map
 
 > **Task 0.1** from `migration-plan.md`
 >
@@ -39,13 +39,13 @@
 
 ---
 
-## Undated posts — action required (Task 0.2)
+## Undated posts - action required (Task 0.2)
 
 These three files have no date-prefix and won't be published correctly by Jekyll.
 Suggested action is noted; override as needed.
 
 | File | Title | Suggested action | Classification | Notes |
 |------|-------|-----------------|---------------|-------|
-| `How-to-add-an-article-to-open-source-design.md` | *(front matter title is wrong — body content is a contributor how-to guide)* | Move to `docs/` as contributor guide, not a post | — | Not user-facing content |
-| `open-source-design-milestones.md` | Open Source Design milestones over the years | Remove — exact duplicate of 2021-07-11 post | — | |
-| `successful-open-source-design-jobs-kitspace-and-user-research-in-their-internet-of-production-report.md` | Successful Open Source Design jobs: Kitspace and User research in their Internet of production report | Remove | — | Was never properly published (no date); remove |
+| `How-to-add-an-article-to-open-source-design.md` | *(front matter title is wrong - body content is a contributor how-to guide)* | Move to `docs/` as contributor guide, not a post | - | Not user-facing content |
+| `open-source-design-milestones.md` | Open Source Design milestones over the years | Remove - exact duplicate of 2021-07-11 post | - | |
+| `successful-open-source-design-jobs-kitspace-and-user-research-in-their-internet-of-production-report.md` | Successful Open Source Design jobs: Kitspace and User research in their Internet of production report | Remove | - | Was never properly published (no date); remove |

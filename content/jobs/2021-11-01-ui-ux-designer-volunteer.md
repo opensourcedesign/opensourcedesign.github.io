@@ -19,11 +19,11 @@ date: '2021-11-01T10:01:05.804Z'
 ---
 UI/UX DESIGNER
 
-Volunteer Recruitment — Remote Volunteer
+Volunteer Recruitment - Remote Volunteer
 
 ZAKKI is a social startup focusing on creating an inclusive community for the elderly and people with disabilities. Our mission is to facilitate alms and donations collection and deployment to help elderly people who still working in the informal sector to get better livelihood through micro-business management helps and giving them the exposure of greater market.
 
-Currently, ZAKKI is developing a ramification project; reporting platforms of sexual misconduct (sexual harassment, sexual assault, rape), human trafficking, and bullying, SaveMe. And we also have an on-going anti-corruption and a lost-found project named Naon. MAHA EduGame of anti-discrimination and anti-violence for toddlers to pre-teens. We also have a funeral service project named Agni. The volunteer networking and community learning hub, named Rekan. The Kimar (ZAKKI on the spot marketplace) intended to cater to the beneficiaries (the elderly and people with disability) micro-business market exposure. And last but not least, ZAKKI — #ForYou — crowd sharing giveaways stuff (goods, pet, food donation) to other people for free.
+Currently, ZAKKI is developing a ramification project; reporting platforms of sexual misconduct (sexual harassment, sexual assault, rape), human trafficking, and bullying, SaveMe. And we also have an on-going anti-corruption and a lost-found project named Naon. MAHA EduGame of anti-discrimination and anti-violence for toddlers to pre-teens. We also have a funeral service project named Agni. The volunteer networking and community learning hub, named Rekan. The Kimar (ZAKKI on the spot marketplace) intended to cater to the beneficiaries (the elderly and people with disability) micro-business market exposure. And last but not least, ZAKKI - #ForYou - crowd sharing giveaways stuff (goods, pet, food donation) to other people for free.
 
  This candidate will build a clean and effective user experience platform. By working cross-functional, this candidate will understand needs from the product management, engineering, and business stakeholders and will build solutions that fit those needs. 
 

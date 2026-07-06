@@ -91,8 +91,16 @@
       <meta property="og:image:height" content="630" />
     {{ end }}
     {{ if .IsPage }}
+      {{/* Scalar `author`, each entry of an `authors` list, or the
+           organization itself as the site-wide fallback. */}}
       {{ with .Params.author }}
         <meta property="article:author" content="{{ . }}" />
+      {{ else }}
+        {{ with .Params.authors }}
+          {{ range . }}<meta property="article:author" content="{{ . }}" />{{ end }}
+        {{ else }}
+          <meta property="article:author" content="Open Source Design" />
+        {{ end }}
       {{ end }}
       <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
       <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
@@ -163,7 +171,7 @@
         {{ with .Params.location }}{{ $event = merge $event (dict "location" (dict "@type" "Place" "name" .)) }}{{ end }}
         <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
       {{ end }}
-    {{ else if eq .Section "articles" }}
+    {{ else if hasPrefix .RelPermalink "/resources/articles/" }}
       {{ if .IsPage }}
         {{ $article := dict
           "@context" "https://schema.org"
@@ -174,7 +182,20 @@
           "dateModified" (.Lastmod.Format "2006-01-02")
           "publisher" (dict "@type" "Organization" "name" "Open Source Design" "logo" (dict "@type" "ImageObject" "url" (absURL "/images/opensourcedesign-logo.svg")))
         }}
-        {{ with .Params.author }}{{ $article = merge $article (dict "author" (dict "@type" "Person" "name" .)) }}{{ end }}
+        {{/* Named people when set (scalar or list), the organization
+             otherwise - mirroring the visible byline fallback. */}}
+        {{ $people := slice }}
+        {{ with .Params.author }}{{ $people = $people | append . }}{{ end }}
+        {{ if not $people }}{{ with .Params.authors }}{{ $people = . }}{{ end }}{{ end }}
+        {{ $jsonAuthor := dict "@type" "Organization" "name" "Open Source Design" }}
+        {{ if eq (len $people) 1 }}
+          {{ $jsonAuthor = dict "@type" "Person" "name" (index $people 0) }}
+        {{ else if gt (len $people) 1 }}
+          {{ $list := slice }}
+          {{ range $people }}{{ $list = $list | append (dict "@type" "Person" "name" .) }}{{ end }}
+          {{ $jsonAuthor = $list }}
+        {{ end }}
+        {{ $article = merge $article (dict "author" $jsonAuthor) }}
         <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
       {{ end }}
     {{ else if eq .Section "people" }}
@@ -191,7 +212,7 @@
       {{ end }}
     {{ end }}
 
-    {{/* Self-hosted Inter variable font (woff2 only — universally supported).
+    {{/* Self-hosted Inter variable font (woff2 only - universally supported).
          Only the roman face is preloaded; italic is rare enough to load on
          demand. crossorigin is required for font preloads even same-origin. */}}
     <link rel="preload" href="{{ "/fonts/InterVariable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
@@ -213,14 +234,14 @@
     </style>
 
     {{/* Styling:
-         1. typography.css — pre-compiled @tailwindcss/typography `prose`
+         1. typography.css - pre-compiled @tailwindcss/typography `prose`
             classes plus Tailwind preflight/theme, giving a readable no-JS
             baseline. The Play CDN cannot load plugins, hence vendored.
          2. Utilities + custom theme, one of two ways:
             - Production (CI): deploy workflows compile assets/css/main.css
               with the Tailwind CLI into assets/css/compiled.css (gitignored)
               before running Hugo, and we ship that small static stylesheet.
-            - Local dev fallback (issue #556 — no local build step required):
+            - Local dev fallback (issue #556 - no local build step required):
               when compiled.css is absent, the Tailwind Play CDN
               (@tailwindcss/browser) compiles utility classes from the DOM at
               runtime and main.css is inlined as text/tailwindcss (supports
@@ -246,7 +267,7 @@
          app); html/template's URL filter only trusts http/https/mailto and would
          otherwise rewrite our own permalink to "#ZgotmplZ", so mark it safe. */}}
     {{ with .OutputFormats.Get "Calendar" }}
-      <link rel="alternate" type="text/calendar" title="{{ site.Title }} — Events" href="{{ .Permalink | safeURL }}" />
+      <link rel="alternate" type="text/calendar" title="{{ site.Title }} - Events" href="{{ .Permalink | safeURL }}" />
     {{ end }}
 
     <style>

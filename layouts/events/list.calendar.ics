@@ -17,7 +17,7 @@ X-WR-CALDESC:Meetups, online calls, conference tracks, and community gatherings 
 {{- $url := .Permalink }}
 {{- /* Prefer an explicit machine-readable start (eventStart, ISO YYYY-MM-DD).
        Fall back to eventDate when it is already ISO, then to the page date.
-       Never emit "now" — that misdates every human-worded eventDate. */ -}}
+       Never emit "now" - that misdates every human-worded eventDate. */ -}}
 {{- $eventDate := printf "%v" (.Params.eventDate | default "") -}}
 {{- $iso := "" -}}
 {{- with .Params.eventStart }}{{ $iso = printf "%v" . }}{{ end -}}

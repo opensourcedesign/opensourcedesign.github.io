@@ -126,7 +126,7 @@
     {{/* Job list */}}
     <ul class="mt-4 border-t border-slate-200" id="jobs-list" role="list" aria-label="Job listings">
       {{/* Sort on .Date (front matter `date`, falling back to `date_posted`
-           via hugo.toml [frontmatter]) — sorting the raw param would mix
+           via hugo.toml [frontmatter]) - sorting the raw param would mix
            strings with time.Time values on posts that lack a `date` field. */}}
       {{ range $jobs.ByDate.Reverse }}
         {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}

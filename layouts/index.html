@@ -21,9 +21,11 @@
       <p class="text-xs font-semibold uppercase tracking-widest text-slate-300">A community of designers and developers</p>
       <h1 class="mt-5 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">Bringing great design to open&nbsp;source software.</h1>
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">We push for open design processes and better user experience in open source, through a job board, events, and an open community.</p>
+      {{/* Primary CTAs: joining and resources - the two things newcomers
+           who want to do something for/with open source design ask for. */}}
       <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/jobs/" | relURL }}">Browse open jobs</a>
-        <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/about-us/manifesto/" | relURL }}">Read the manifesto</a>
+        <a class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">Join us</a>
+        <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/resources/" | relURL }}">Resources</a>
       </div>
       <p class="mt-8 text-sm text-slate-400">{{ $jobsOpen }} design jobs open right now, {{ $jobsTotal }}+ posted by open source projects over the years.</p>
     </div>
@@ -36,7 +38,7 @@
         <h2 class="text-2xl font-bold leading-snug tracking-tight text-slate-950 sm:text-3xl lg:col-span-5">Good design should be as open as good code.</h2>
         <div class="space-y-5 text-base leading-relaxed text-slate-600 lg:col-span-7 lg:max-w-prose">
           <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/jobs/" | relURL }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/events/" | relURL }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/resources/" | relURL }}">resources</a>.</p>
-          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/" | relURL }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/manifesto/" | relURL }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/how-to-join/" | relURL }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
+          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/" | relURL }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/manifesto/" | relURL }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
         </div>
       </div>
     </div>
@@ -119,7 +121,7 @@
           {{/* Forum pulse: recent topics fetched at build time from the
                Discourse API (no client-side JS, no third-party requests for
                visitors). try/getRemote fails soft so an unreachable forum
-               never breaks the build — the intro text is the fallback. */}}
+               never breaks the build - the intro text is the fallback. */}}
           {{ $topics := slice }}
           {{ $forumURL := site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}
           {{ with try (resources.GetRemote (printf "%s/latest.json" $forumURL)) }}
@@ -199,7 +201,7 @@
           {{ end }}
           <div class="mt-5 space-y-2 text-sm">
             <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $forumURL }}" target="_blank" rel="noopener noreferrer">Visit the forum</a>
-            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ "/about-us/how-to-join/" | relURL }}">How to get involved →</a></p>
+            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">How to get involved →</a></p>
           </div>
         </div>
       </div>

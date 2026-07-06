@@ -11,7 +11,7 @@ workflow can notify them when the posting is merged and published.
 
 The same `/submit` route also powers **edits**: when the payload carries
 `edit_file` (set by a form's edit mode, reached via the "Edit this posting" /
-"Edit this event" links — `/jobs/job-form/?edit=<file>.md` or
+"Edit this event" links - `/jobs/job-form/?edit=<file>.md` or
 `/events/event-form/?edit=<file>.md`), the Worker updates that existing file
 on a `job-edit/*` or `event-edit/*` branch instead of adding a new one.
 Identity fields (`date_posted`, `date`, `_id`, `slug`, `url`, `permalink`,
@@ -22,7 +22,7 @@ and list ordering don't change, and the submitter can also set the status
 Jobs may carry an optional `deadline` (application deadline, `YYYY-MM-DD`).
 The Worker validates the format and rejects past dates on new submissions
 (edits may keep a historical deadline). Postings past their deadline expire
-on the site — see the `job-expire.yml` workflow.
+on the site - see the `job-expire.yml` workflow.
 
 Jobs may also carry a structured rate (`rate_min`, optional `rate_max`,
 `rate_currency`, `rate_period`): numbers are validated (`max >= min >= 0`),
@@ -31,16 +31,16 @@ hour/day/month/year/project.
 
 New job submissions run a **duplicate check** against the site's machine-readable
 index (`<SITE_BASE_URL>/jobs/index.json`): if an open (`searching`) posting has
-the same normalized title — or a near-identical title from the same
-organization — the Worker answers `409` with the match, and the form asks the
+the same normalized title - or a near-identical title from the same
+organization - the Worker answers `409` with the match, and the form asks the
 submitter to confirm (re-submitting with `force_duplicate: true`). The check
 fails open, so an unreachable site never blocks a legitimate posting.
 
 A third kind, `kind: "resource"`, powers the **Suggest a resource** form
 (`/resources/suggest/`): the Worker inserts the suggested entry (name, URL,
 optional description) at the end of the chosen category in
-`data/resources.yaml` — editing the YAML textually so comments and formatting
-survive — and opens a PR on a `resource/*` branch. Unknown categories are
+`data/resources.yaml` - editing the YAML textually so comments and formatting
+survive - and opens a PR on a `resource/*` branch. Unknown categories are
 rejected. The same KV email flow applies (the approval workflow recognizes
 `resource/*` branches).
 
@@ -52,7 +52,7 @@ Maintainer merges PR → GitHub Action → GET /lookup?pr=<n> → email submitte
 
 The notification is a branded HTML email (plain-text alternative included) and
 links directly to the published page: the workflow resolves the job/event
-permalink — or the resource's category anchor on `/resources/links/` — from
+permalink - or the resource's category anchor on `/resources/links/` - from
 the merged PR's files via `.github/scripts/published-url.mjs`, falling back to
 the section list URL if resolution fails.
 
@@ -86,7 +86,7 @@ forum. The build-time list rendered by Hugo remains the no-JS fallback.
 2. A **GitHub fine-grained PAT** scoped to `opensourcedesign/opensourcedesign.github.io` with:
    - **Contents: Read and write**
    - **Pull requests: Read and write**
-   - *(optional)* **Issues: Read and write** — only needed if you want the Worker to add the `job-submission` label; labeling is best-effort and the email workflow does not depend on it.
+   - *(optional)* **Issues: Read and write** - only needed if you want the Worker to add the `job-submission` label; labeling is best-effort and the email workflow does not depend on it.
 3. **Cloudflare Turnstile** site + secret keys ([dashboard](https://dash.cloudflare.com/?to=/:account/turnstile)).
 4. **SMTP** credentials (host, port, user, password, from address) for the approval email.
 
@@ -126,7 +126,7 @@ simply skipped.
 ## Wire it into the site (`hugo.toml`)
 
 Set the params under `[params]`, then commit. Both forms talk to the same
-`/submit` route — the Worker tells them apart by the `kind` field:
+`/submit` route - the Worker tells them apart by the `kind` field:
 
 ```toml
 jobSubmitEndpoint   = "https://osd-job-submit.<account>.workers.dev/submit"
@@ -134,7 +134,7 @@ eventSubmitEndpoint = "https://osd-job-submit.<account>.workers.dev/submit"
 turnstileSiteKey    = "<your-turnstile-site-key>"
 ```
 
-When an endpoint param is empty the corresponding form still works — it falls
+When an endpoint param is empty the corresponding form still works - it falls
 back to showing the generated Markdown for a manual PR.
 
 ## GitHub repo secrets (for the approval email)
@@ -163,13 +163,13 @@ npx wrangler dev
 ```
 
 Turnstile verification is skipped when `TURNSTILE_SECRET` is unset, and the email
-write is skipped when no `EMAILS` KV is bound — handy for local testing. Use
+write is skipped when no `EMAILS` KV is bound - handy for local testing. Use
 `--local` for an offline KV, or `npx wrangler kv namespace create EMAILS --preview`
 for a preview namespace.
 
 ## Security notes
 
-- The submitter email is **never** written to the repo or the PR body — only to KV,
+- The submitter email is **never** written to the repo or the PR body - only to KV,
   with a ~90-day TTL (`EMAIL_TTL_DAYS`).
 - `/lookup` is bearer-protected with a constant-time comparison and used only
   server-to-server by the merge workflow (no CORS headers).

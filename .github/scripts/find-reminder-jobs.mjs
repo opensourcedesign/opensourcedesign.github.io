@@ -4,7 +4,7 @@
  * submitter's email (run weekly by job-reminder.yml).
  *
  * A posting qualifies when its status is `searching` and date_posted falls
- * 42-48 days ago — a 7-day window, so the weekly run catches each job exactly
+ * 42-48 days ago - a 7-day window, so the weekly run catches each job exactly
  * once, around the 45-day mark. Jobs edited in the last two weeks are
  * skipped (the poster is clearly still around).
  *

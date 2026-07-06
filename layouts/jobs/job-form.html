@@ -60,6 +60,8 @@
             <div class="space-y-2 sm:col-span-2">
               <label class="text-sm font-medium text-slate-700" for="title">Job title <span class="text-red-500">*</span></label>
               <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="title" name="title" placeholder="e.g., UX Designer needed for mobile app redesign" required />
+              <p class="text-xs text-slate-500">Say what the task is and name your project - the title stands alone in lists, feeds, and search results.</p>
+              <p class="hidden text-xs font-medium text-amber-700" id="title-hint" aria-live="polite"></p>
             </div>
 
             <div class="space-y-2">
@@ -138,7 +140,7 @@
             </div>
           </div>
 
-          {{/* Status — only shown when editing an existing posting */}}
+          {{/* Status - only shown when editing an existing posting */}}
           <div class="space-y-3" id="statusWrap" hidden>
             <div class="text-sm font-medium text-slate-700" id="status-label">Status</div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3" role="radiogroup" aria-labelledby="status-label">
@@ -243,7 +245,7 @@
 
       {{/* Live preview: a full-screen, pixel-faithful replica of the job page
            (layouts/jobs/single.html) filled from the form fields. Structure and
-           classes are mirrored 1:1 — if single.html changes, update this too. */}}
+           classes are mirrored 1:1 - if single.html changes, update this too. */}}
       <div class="fixed inset-0 z-50 overflow-y-auto bg-white" id="osd-preview" hidden role="dialog" aria-modal="true" aria-label="Preview of your job posting">
         <div class="sticky top-0 z-10 border-b border-amber-200 bg-amber-50/95 backdrop-blur">
           {{/* Stacks on mobile (message row, then the button centered on its
@@ -251,7 +253,7 @@
           <div class="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-3 text-center sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
             <p class="flex items-center justify-center gap-2 text-sm font-medium text-amber-900 sm:justify-start">
               <svg class="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              Preview — this is how your posting will look once published. Links are inactive.
+              Preview - this is how your posting will look once published. Links are inactive.
             </p>
             <button class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="osd-preview-close">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
@@ -417,7 +419,7 @@
 
     <script>
       (function () {
-        {{/* Hugo's JS-context autoescaper already emits strings as JSON — no jsonify. */}}
+        {{/* Hugo's JS-context autoescaper already emits strings as JSON - no jsonify. */}}
         var endpoint = {{ site.Params.jobSubmitEndpoint | default "" }};
         var repoURL = {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }};
         var repoBranch = {{ site.Params.repoBranch | default "master" }};
@@ -450,6 +452,49 @@
           str = str.replace(/\s+/g, '-').replace(/-+/g, '-');
           return str;
         }
+
+        // Title-quality nudges (issue #152): live, non-blocking hints that
+        // steer posters toward titles which stand alone in lists and feeds.
+        // One hint at a time, in priority order; never prevents submission.
+        (function () {
+          var titleEl = document.getElementById('title');
+          var orgEl = document.getElementById('organization');
+          var hintEl = document.getElementById('title-hint');
+          if (!titleEl || !hintEl) return;
+
+          var GENERIC = /^(designers?|developers?|logo|logos|design|ux|ui|ux\/ui|ui\/ux|help|help needed|job|volunteer|designer needed|designers wanted|design help|logo design|web design|graphic designer?|ux designer?|ui designer?)[.!?]*$/i;
+
+          function titleHint() {
+            var t = (titleEl.value || '').trim();
+            if (!t) return '';
+            var words = t.split(/\s+/).filter(Boolean);
+            if (GENERIC.test(t) || words.length < 3) {
+              return 'Vague titles get fewer responses - say what the task is, e.g. \u201cLogo design for ' + ((orgEl && orgEl.value.trim()) || 'YourProject') + '\u201d.';
+            }
+            var letters = t.replace(/[^a-zA-Z]/g, '');
+            if (letters.length > 8 && letters === letters.toUpperCase()) {
+              return 'All-caps titles are hard to read in lists - normal casing works better.';
+            }
+            var org = orgEl ? orgEl.value.trim() : '';
+            if (org.length > 2 && t.toLowerCase().indexOf(org.toLowerCase()) === -1) {
+              return 'Tip: mention \u201c' + org + '\u201d in the title so readers know the project at a glance.';
+            }
+            return '';
+          }
+
+          var timer = null;
+          function refresh() {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+              var msg = titleHint();
+              hintEl.textContent = msg;
+              hintEl.classList.toggle('hidden', !msg);
+            }, 400);
+          }
+          titleEl.addEventListener('input', refresh);
+          titleEl.addEventListener('blur', refresh);
+          if (orgEl) orgEl.addEventListener('input', refresh);
+        })();
 
         function yq(v) {
           var s = String(v == null ? '' : v);
@@ -778,7 +823,7 @@
             return;
           }
 
-          // A posting that is (or stays) open can't have a past deadline —
+          // A posting that is (or stays) open can't have a past deadline -
           // it would expire again immediately.
           var willBeOpen = editFile ? getRadio('status') === 'searching' : true;
           if (willBeOpen && data.deadline && data.deadline < datePosted) {
@@ -817,14 +862,14 @@
               // Possible duplicate: the worker found a very similar open
               // posting. Show it and let the submitter confirm.
               if (resp.status === 409 && json && json.duplicate) {
-                if (note) note.textContent = 'Possible duplicate found — please check below.';
+                if (note) note.textContent = 'Possible duplicate found - please check below.';
                 out.classList.remove('border-emerald-200', 'bg-emerald-50', 'border-slate-200', 'bg-white');
                 out.classList.add('border-amber-300', 'bg-amber-50');
                 var dupTitle = String(json.duplicate.title || '').replace(/</g, '&lt;');
                 var dupOrg = String(json.duplicate.organization || '').replace(/</g, '&lt;');
                 showResult(
                   'Is this the same job?',
-                  'A very similar posting is already open: <a class="font-medium underline underline-offset-4" href="' + encodeURI(String(json.duplicate.url || '')) + '" target="_blank" rel="noopener noreferrer">' + dupTitle + '</a>' + (dupOrg ? ' — ' + dupOrg : '') + '. If you want to update that posting instead, use its "Suggest an edit" link. If yours is genuinely a different job, post it anyway.',
+                  'A very similar posting is already open: <a class="font-medium underline underline-offset-4" href="' + encodeURI(String(json.duplicate.url || '')) + '" target="_blank" rel="noopener noreferrer">' + dupTitle + '</a>' + (dupOrg ? ' - ' + dupOrg : '') + '. If you want to update that posting instead, use its "Suggest an edit" link. If yours is genuinely a different job, post it anyway.',
                   '<button type="button" id="osd-dup-anyway" class="mt-3 inline-flex items-center rounded-lg border border-amber-400 bg-white px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-100">Post anyway</button>'
                 );
                 var dupBtn = document.getElementById('osd-dup-anyway');
@@ -842,7 +887,7 @@
                 out.classList.remove('border-amber-300', 'bg-amber-50', 'border-slate-200', 'bg-white');
                 out.classList.add('border-emerald-200', 'bg-emerald-50');
                 showResult(
-                  editFile ? 'Thanks — your changes were received' : 'Thanks — submission received',
+                  editFile ? 'Thanks - your changes were received' : 'Thanks - submission received',
                   'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
                   ''
                 );

@@ -43,7 +43,7 @@
     });
   });
 
-  // Copy-link buttons (share partial) — delegated so there is no inline JS (CSP-friendly).
+  // Copy-link buttons (share partial) - delegated so there is no inline JS (CSP-friendly).
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-copy-link]');
     if (!btn || btn.dataset.copied === '1') return;
@@ -74,7 +74,7 @@
     }
   });
 
-  // Global search modal — custom UI on top of the Pagefind JS API.
+  // Global search modal - custom UI on top of the Pagefind JS API.
   (function () {
     var dialog = document.getElementById('osd-search-dialog');
     var openers = document.querySelectorAll('[data-search-open]');
@@ -228,7 +228,7 @@
         });
       }).catch(function () {
         clearResults();
-        setStatus('Search isn\u2019t available yet \u2014 it is generated when the site is built.');
+        setStatus('Search isn\u2019t available yet - it is generated when the site is built.');
       });
     }
 
@@ -267,7 +267,7 @@
       loadPagefind().then(function (pf) {
         try { if (pf.preload) pf.preload(''); } catch (e) {}
       }).catch(function () {
-        setStatus('Search isn\u2019t available yet \u2014 it is generated when the site is built.');
+        setStatus('Search isn\u2019t available yet - it is generated when the site is built.');
       });
       if (input.value.trim()) runSearch(input.value);
       else setStatus('Type to search events, resources, jobs, and pages.');
@@ -352,7 +352,7 @@
 
   // Image lightbox for rich content, built on the native <dialog> element:
   // showModal() provides the top layer, an inert page behind the dialog, a real
-  // focus trap, and Escape-to-close — none of which the old div overlay had.
+  // focus trap, and Escape-to-close - none of which the old div overlay had.
   (function () {
     // Skip images inside links (they navigate) and require <dialog> support;
     // without it images simply stay plain images (progressive enhancement).
