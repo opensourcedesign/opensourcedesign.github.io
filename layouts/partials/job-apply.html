@@ -108,8 +108,8 @@
                 {{ end }}
               </span>
               <span class="min-w-0 flex-1">
-                <span class="block truncate font-semibold text-slate-900 underline decoration-slate-300 decoration-1 underline-offset-2 group-hover:decoration-slate-900">{{ .label }}</span>
-                {{ with .sub }}<span class="block truncate text-xs text-slate-500">{{ . }}</span>{{ end }}
+                <span class="block break-words font-semibold text-slate-900 underline decoration-slate-300 decoration-1 underline-offset-2 group-hover:decoration-slate-900">{{ .label }}</span>
+                {{ with .sub }}<span class="mt-0.5 block break-all text-xs text-slate-500">{{ . }}</span>{{ end }}
               </span>
               <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </a>

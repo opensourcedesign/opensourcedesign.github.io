@@ -36,7 +36,7 @@
   {{ end }}
   {{ $isExpired := or (eq $status "expired") (and $isOpen $deadlinePassed) }}
 
-  <article class="mx-auto max-w-5xl px-4 py-10" data-pagefind-body>
+  <article class="mx-auto max-w-5xl overflow-x-clip px-4 py-10" data-pagefind-body>
     {{/* Breadcrumb */}}
     <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb" data-pagefind-ignore>
       <a class="transition hover:text-slate-900" href="{{ "/" | relURL }}">Home</a>
@@ -135,33 +135,22 @@
               </div>
             {{ end }}
 
-            {{/* Deliverables */}}
+            {{/* Deliverables - corpus mixes plain sentences, bullet lists, and
+                 full markdown (## headings, [label](url) links). Render as
+                 markdown instead of line-splitting + linkify. */}}
             {{ with .Params.deliverables }}
               {{ $val := printf "%v" . }}
               {{ $val = replace (replace $val "\r\n" "\n") "\r" "\n" }}
-              {{ $lines := slice }}
-              {{ range split $val "\n" }}
-                {{ $l := trim . " -•\t" }}
-                {{ if $l }}{{ $lines = $lines | append $l }}{{ end }}
-              {{ end }}
-              {{ if $lines }}
-                <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+              {{ $val = trim $val " \t\n" }}
+              {{ if $val }}
+                <div class="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-5">
                   <h2 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
-                    <svg class="h-5 w-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+                    <svg class="h-5 w-5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
                     Deliverables
                   </h2>
-                  {{ if gt (len $lines) 1 }}
-                    <ul class="mt-3 space-y-2 text-sm text-slate-700" role="list">
-                      {{ range $lines }}
-                        <li class="flex items-start gap-2.5">
-                          <svg class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                          <span>{{ partial "linkify" (dict "text" .) }}</span>
-                        </li>
-                      {{ end }}
-                    </ul>
-                  {{ else }}
-                    <p class="mt-2 text-sm leading-relaxed text-slate-700">{{ partial "linkify" (dict "text" (index $lines 0)) }}</p>
-                  {{ end }}
+                  <div class="prose prose-sm prose-slate mt-3 max-w-none break-words prose-headings:font-semibold prose-headings:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-600 prose-ul:my-2 prose-li:my-0.5">
+                    {{ $.Page.RenderString $val }}
+                  </div>
                 </div>
               {{ end }}
             {{ end }}

@@ -8,12 +8,12 @@ workers_dev = true
 [vars]
 GITHUB_OWNER = "opensourcedesign"
 GITHUB_REPO = "opensourcedesign.github.io"
-GITHUB_BRANCH = "main"
+GITHUB_BRANCH = "master"
 CONTENT_DIR = "content/jobs"
 CONTENT_DIR_EVENTS = "content/events"
 # Comma-separated list of allowed browser origins for CORS. The first entry is
 # used as the default; a request whose Origin matches any entry is echoed back.
-ALLOWED_ORIGIN = "https://opensourcedesign.net"
+ALLOWED_ORIGIN = "https://opensourcedesign.net,http://localhost:1313"
 PR_LABEL = "job-submission"
 PR_LABEL_EVENT = "event-submission"
 PR_LABEL_RESOURCE = "resource-suggestion"
@@ -32,7 +32,7 @@ RATE_LIMIT_MAX = "5"
 #   npx wrangler kv namespace create EMAILS
 [[kv_namespaces]]
 binding = "EMAILS"
-id = "REPLACE_WITH_EMAILS_KV_NAMESPACE_ID"
+id = "a1b92469f51c4677a252d77f58561109"
 
 # --- Optional: per-IP rate limiting (uncomment + create to enable) ----------
 #   npx wrangler kv namespace create RATE_LIMIT
