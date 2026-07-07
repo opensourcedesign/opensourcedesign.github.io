@@ -43,11 +43,13 @@ Before the PR reaches you:
 - **PR preview** (`preview.yml`) - every PR gets a live preview deployment;
   the link appears as a PR comment. Always look at the rendered page, not
   just the diff. Previews deploy to the `gh-pages` branch under
-  `pr-preview/pr-<number>/`, so **Settings → Pages → Build and deployment →
-  Deploy from branch → `gh-pages` / `/`** must be set (not `master`). Until
-  the Hugo migration merges, switching the Pages source is a maintainer step
-  when you want live PR previews; production deploys from `hugo-build.yml`
-  also target `gh-pages` and preserve the `pr-preview/` folder.
+  `pr-preview/pr-<number>/` and are served at
+  `https://opensourcedesign.net/pr-preview/pr-<number>/` (same custom domain
+  as production). **Settings → Pages → Build and deployment → Deploy from
+  branch → `gh-pages` / `/`** must be set, and the custom domain
+  `opensourcedesign.net` must be verified for the organization and active on
+  this repo. Production deploys from `hugo-build.yml` also target `gh-pages`
+  (site root) and preserve the `pr-preview/` folder.
 
 ## What a human must still judge
 
@@ -102,7 +104,8 @@ Automatically, in order:
    branded email with the exact live URL of their posting (resolved from the
    merged PR's files).
 3. **Social announce** (`job-announce.yml`) - new jobs are posted to Mastodon
-   and Bluesky (skipped for edits).
+   and Bluesky (skipped for edits and when the poster opted out via
+   `announce_social: false` on the job form).
 
 And later, on schedules:
 

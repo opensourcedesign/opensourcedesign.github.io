@@ -18,6 +18,8 @@ env:
   TAILWIND_VERSION: 4.3.2
   PAGEFIND_VERSION: 1.5.2
   PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
+  # Public host for PR previews (must match hugo.toml baseURL and the Pages custom domain).
+  PREVIEW_SITE_URL: https://opensourcedesign.net
 
 jobs:
   build-preview:
@@ -74,7 +76,7 @@ jobs:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: https://opensourcedesign.github.io
+          pages-base-url: ${{ env.PREVIEW_SITE_URL }}
           wait-for-pages-deployment: true
           action: deploy
 
@@ -83,8 +85,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           branch=$(gh api "repos/${{ github.repository }}/pages" --jq '.source.branch')
+          cname=$(gh api "repos/${{ github.repository }}/pages" --jq '.cname // empty')
           if [ "$branch" != "gh-pages" ]; then
-            echo "::warning::GitHub Pages publishes from '$branch', but PR previews deploy to the gh-pages branch. Previews will 404 until a maintainer sets Settings → Pages → Deploy from branch → gh-pages (see docs/moderation-guide.md)."
+            echo "::warning::GitHub Pages publishes from '$branch', but PR previews deploy to gh-pages. Previews will 404 at ${{ env.PREVIEW_SITE_URL }}/pr-preview/… until Settings → Pages → Deploy from branch → gh-pages (see docs/moderation-guide.md)."
+          fi
+          if [ "$cname" != "opensourcedesign.net" ]; then
+            echo "::warning::Custom domain is '${cname:-not set}' (expected opensourcedesign.net). Previews may only work on github.io until the domain is verified and attached (see docs/moderation-guide.md)."
           fi
 
   cleanup-preview:

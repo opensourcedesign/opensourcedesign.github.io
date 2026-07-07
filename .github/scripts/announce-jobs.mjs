@@ -22,7 +22,8 @@
  * A platform whose secrets are missing is skipped with a log line, so either
  * network can be enabled independently. Guards against announcing the wrong
  * thing: only `status: searching` postings dated within the last 14 days are
- * announced (protects against bulk imports and file renames).
+ * announced (protects against bulk imports and file renames). Skips postings
+ * with `announce_social: false` (poster opted out on the job form).
  */
 
 import fs from 'node:fs';
@@ -86,12 +87,14 @@ function jobFromFile(file) {
     organization: scalar(fm, 'organization'),
     paid: comp === 'paid' ? true : comp && comp !== 'paid' ? false : null,
     deadline: (scalar(fm, 'deadline').match(/^\d{4}-\d{2}-\d{2}/) || [''])[0],
+    announceSocial: scalar(fm, 'announce_social').toLowerCase() !== 'false',
   };
 }
 
 function eligible(job) {
   if (!job) return 'no front matter/title';
   if (job.status !== 'searching') return `status "${job.status}" (only searching postings are announced)`;
+  if (job.announceSocial === false) return 'announce_social: false (poster opted out)';
   if (!job.datePosted) return 'missing date_posted';
   const age = (Date.now() - Date.parse(job.datePosted)) / 86400000;
   if (!(age < FRESH_DAYS)) return `posted ${job.datePosted}, older than ${FRESH_DAYS} days (bulk import guard)`;

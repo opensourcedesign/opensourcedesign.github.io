@@ -384,6 +384,9 @@ function buildMarkdown(data, env, edit) {
   }
   if (data.deadline) fm.push('deadline: ' + yq(String(data.deadline).trim()));
   if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
+  if (data.announce_social === false || String(data.announce_social || '').toLowerCase() === 'false') {
+    fm.push('announce_social: false');
+  }
 
   if (tagList.length) {
     fm.push('tags:');

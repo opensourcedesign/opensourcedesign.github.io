@@ -215,6 +215,16 @@
             </div>
           </div>
 
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <label class="flex cursor-pointer items-start gap-3" for="announce_social">
+              <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900/20" id="announce_social" name="announce_social" checked />
+              <span>
+                <span class="text-sm font-medium text-slate-900">Share on Open Source Design social accounts</span>
+                <span class="mt-1 block text-sm leading-relaxed text-slate-600">When your posting is published, we'll share a short notice on our Mastodon and Bluesky accounts to help designers find it. Uncheck to opt out.</span>
+              </span>
+            </label>
+          </div>
+
           {{ with site.Params.turnstileSiteKey }}
             <div class="pt-2">
               <div class="cf-turnstile" data-sitekey="{{ . }}"></div>
@@ -588,6 +598,11 @@
           if (el) el.checked = true;
         }
 
+        function setCheckbox(name, checked) {
+          var el = form[name];
+          if (el) el.checked = !!checked;
+        }
+
         function applyPrefill(parsed) {
           setVal('title', parsed.scalar('title'));
           setVal('organization', parsed.scalar('organization'));
@@ -613,6 +628,7 @@
           var st = parsed.scalar('status').toLowerCase();
           if (st === 'resolved' || st === 'completed') st = 'solved'; // legacy values
           setRadio('status', ['searching', 'solved', 'closed'].indexOf(st) >= 0 ? st : 'searching');
+          setCheckbox('announce_social', parsed.scalar('announce_social').toLowerCase() !== 'false');
           syncPaid();
         }
 
@@ -699,6 +715,7 @@
           }
           if (data.deadline) fm.push('deadline: ' + yq(data.deadline));
           if (data.github_handle) fm.push('github_handle: ' + yq(data.github_handle));
+          if (data.announce_social === false) fm.push('announce_social: false');
 
           if (tagList.length) {
             fm.push('tags:');
@@ -803,6 +820,7 @@
             github_handle: form.github_handle.value.trim(),
             email: (form.email || {}).value ? form.email.value.trim() : '',
             tags: form.tags.value.trim(),
+            announce_social: !!(form.announce_social && form.announce_social.checked),
             date_posted: datePosted
           };
           if (editFile) {
