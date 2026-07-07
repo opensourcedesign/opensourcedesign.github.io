@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://opensourcedesign.net/pr-preview/pr-563/sitemap.xml
+Sitemap: https://opensourcedesign.github.io/pr-preview/pr-563/sitemap.xml
