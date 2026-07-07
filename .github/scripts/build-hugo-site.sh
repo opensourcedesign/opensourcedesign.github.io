@@ -48,7 +48,6 @@ case "$MODE" in
   preview)
     PREVIEW_NUM="${2:-}"
     [[ -n "$PREVIEW_NUM" ]] || usage
-    export HUGO_RELATIVEURLS=true
     BASE="https://opensourcedesign.github.io/pr-preview/pr-${PREVIEW_NUM}/"
     hugo --minify --gc --baseURL "${BASE}"
     build_pagefind
