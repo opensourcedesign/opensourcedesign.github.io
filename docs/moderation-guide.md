@@ -42,7 +42,12 @@ Before the PR reaches you:
   broken: fix or ask the poster to resubmit.
 - **PR preview** (`preview.yml`) - every PR gets a live preview deployment;
   the link appears as a PR comment. Always look at the rendered page, not
-  just the diff.
+  just the diff. Previews deploy to the `gh-pages` branch under
+  `pr-preview/pr-<number>/`, so **Settings → Pages → Build and deployment →
+  Deploy from branch → `gh-pages` / `/`** must be set (not `master`). Until
+  the Hugo migration merges, switching the Pages source is a maintainer step
+  when you want live PR previews; production deploys from `hugo-build.yml`
+  also target `gh-pages` and preserve the `pr-preview/` folder.
 
 ## What a human must still judge
 

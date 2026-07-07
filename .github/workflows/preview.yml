@@ -14,8 +14,10 @@ concurrency:
 
 env:
   # Keep in lockstep with hugo-build.yml so previews match production output.
-  HUGO_VERSION: 0.163.2
+  HUGO_VERSION: 0.164.0
   TAILWIND_VERSION: 4.3.2
+  PAGEFIND_VERSION: 1.5.2
+  PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
 
 jobs:
   build-preview:
@@ -33,6 +35,14 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Cache Hugo resources
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
+          restore-keys: |
+            hugo-resources-
+
       # Same Tailwind compile as hugo-build.yml so previews ship the static
       # stylesheet exactly like production (baseof.html falls back to the
       # Play CDN only when compiled.css is absent, i.e. for local dev).
@@ -46,8 +56,22 @@ jobs:
           npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
           npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
 
+      - name: Install Pagefind
+        run: |
+          curl -fsSL -o pagefind.tar.gz \
+            "https://github.com/Pagefind/pagefind/releases/download/v${PAGEFIND_VERSION}/pagefind-v${PAGEFIND_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+          echo "${PAGEFIND_SHA256}  pagefind.tar.gz" | sha256sum --check
+          tar -xzf pagefind.tar.gz
+          rm pagefind.tar.gz
+          chmod +x pagefind
+
       - name: Build site for preview
-        run: hugo --minify --baseURL "https://opensourcedesign.net/pr-preview/pr-${{ github.event.pull_request.number }}/"
+        run: |
+          hugo --minify --baseURL "https://opensourcedesign.net/pr-preview/pr-${{ github.event.pull_request.number }}/"
+          ./pagefind --site public
+          # CNAME belongs at the gh-pages root for production only; including it
+          # in a preview subfolder can confuse GitHub Pages routing.
+          rm -f public/CNAME
 
       - name: Deploy PR preview
         uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
@@ -55,7 +79,18 @@ jobs:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
+          pages-base-url: https://opensourcedesign.net
+          wait-for-pages-deployment: true
           action: deploy
+
+      - name: Verify GitHub Pages source branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          branch=$(gh api "repos/${{ github.repository }}/pages" --jq '.source.branch')
+          if [ "$branch" != "gh-pages" ]; then
+            echo "::warning::GitHub Pages publishes from '$branch', but PR previews deploy to the gh-pages branch. Previews will 404 until a maintainer sets Settings → Pages → Deploy from branch → gh-pages (see docs/moderation-guide.md)."
+          fi
 
   cleanup-preview:
     if: github.event.action == 'closed'
