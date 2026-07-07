@@ -11,7 +11,7 @@
   in CI - no npm); in `hugo server` dev mode it is absent and the dialog
   shows a friendly notice.
 */}}
-<dialog id="osd-search-dialog" class="osd-search-dialog" aria-label="Search the site" data-pagefind-base="{{ "/pagefind/" | relURL }}" data-pagefind-ignore>
+<dialog id="osd-search-dialog" class="osd-search-dialog" aria-label="Search the site" data-pagefind-base="{{ partial "site-path.html" "/pagefind/" }}" data-pagefind-ignore>
   <div class="osd-search">
     <form class="osd-search__bar" role="search" data-search-form>
       <svg class="osd-search__bar-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>

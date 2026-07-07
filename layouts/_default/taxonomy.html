@@ -3,7 +3,7 @@
     {{/* Single term ("/tags/<tag>/") listing tagged content */}}
     <header data-pagefind-ignore>
       <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
-        <a class="transition hover:text-slate-950" href="{{ "/tags/" | relURL }}">Topics</a>
+        <a class="transition hover:text-slate-950" href="{{ partial "site-path.html" "/tags/" }}">Topics</a>
         <span aria-hidden="true"> / </span>
         <span class="text-slate-700">{{ .Title }}</span>
       </nav>

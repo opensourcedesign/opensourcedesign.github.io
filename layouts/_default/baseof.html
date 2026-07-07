@@ -42,9 +42,9 @@
     <link rel="canonical" href="{{ .Permalink }}" />
     {{/* Single theme-aware SVG favicon (adapts to system light/dark via an
          internal prefers-color-scheme media query); .ico is a legacy fallback. */}}
-    <link rel="icon" href="{{ "/images/favicon.svg" | relURL }}" type="image/svg+xml" />
-    <link rel="icon" href="{{ "/images/favicon.ico" | relURL }}" sizes="32x32" />
-    <link rel="apple-touch-icon" href="{{ "/images/favicons/apple-touch-icon.png" | relURL }}" />
+    <link rel="icon" href="{{ partial "site-path.html" "/images/favicon.svg" }}" type="image/svg+xml" />
+    <link rel="icon" href="{{ partial "site-path.html" "/images/favicon.ico" }}" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ partial "site-path.html" "/images/favicons/apple-touch-icon.png" }}" />
 
     {{/* Determine OG image - try page image, page bundle, content image, or fallback */}}
     {{ $ogImage := "" }}
@@ -57,7 +57,7 @@
     {{ end }}
     {{ if not $ogImage }}
     {{ with .Params.image }}
-      {{ $ogImage = . | absURL }}
+      {{ $ogImage = partial "site-abs-path.html" . }}
     {{ else }}
       {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
       {{ if $res }}
@@ -69,10 +69,10 @@
           {{ if hasPrefix $src "http" }}
             {{ $ogImage = $src }}
           {{ else }}
-            {{ $ogImage = $src | absURL }}
+            {{ $ogImage = partial "site-abs-path.html" $src }}
           {{ end }}
         {{ else }}
-          {{ $ogImage = "/images/opensourcedesign-logo.svg" | absURL }}
+          {{ $ogImage = partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -136,12 +136,13 @@
          single string). One jsonify pass + safeJS is the correct, safe idiom. */}}
     {{ $socials := slice }}
     {{ range site.Params.social }}{{ $socials = $socials | append .url }}{{ end }}
+    {{ $orgLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
     {{ $org := dict
       "@context" "https://schema.org"
       "@type" "Organization"
       "name" site.Title
       "url" site.BaseURL
-      "logo" (absURL "/images/opensourcedesign-logo.svg")
+      "logo" $orgLogo
       "description" site.Params.description
       "sameAs" $socials
       "contactPoint" (dict
@@ -173,6 +174,7 @@
       {{ end }}
     {{ else if hasPrefix .RelPermalink "/resources/articles/" }}
       {{ if .IsPage }}
+        {{ $publisherLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
         {{ $article := dict
           "@context" "https://schema.org"
           "@type" "Article"
@@ -180,7 +182,7 @@
           "description" (.Summary | plainify)
           "datePublished" (.Date.Format "2006-01-02")
           "dateModified" (.Lastmod.Format "2006-01-02")
-          "publisher" (dict "@type" "Organization" "name" "Open Source Design" "logo" (dict "@type" "ImageObject" "url" (absURL "/images/opensourcedesign-logo.svg")))
+          "publisher" (dict "@type" "Organization" "name" "Open Source Design" "logo" (dict "@type" "ImageObject" "url" $publisherLogo))
         }}
         {{/* Named people when set (scalar or list), the organization
              otherwise - mirroring the visible byline fallback. */}}
@@ -215,21 +217,21 @@
     {{/* Self-hosted Inter variable font (woff2 only - universally supported).
          Only the roman face is preloaded; italic is rare enough to load on
          demand. crossorigin is required for font preloads even same-origin. */}}
-    <link rel="preload" href="{{ "/fonts/InterVariable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="{{ partial "site-path.html" "/fonts/InterVariable.woff2" }}" as="font" type="font/woff2" crossorigin />
     <style>
       @font-face {
         font-family: "InterVariable";
         font-style: normal;
         font-weight: 100 900;
         font-display: swap;
-        src: url("{{ "/fonts/InterVariable.woff2" | relURL }}") format("woff2");
+        src: url("{{ partial "site-path.html" "/fonts/InterVariable.woff2" }}") format("woff2");
       }
       @font-face {
         font-family: "InterVariable";
         font-style: italic;
         font-weight: 100 900;
         font-display: swap;
-        src: url("{{ "/fonts/InterVariable-Italic.woff2" | relURL }}") format("woff2");
+        src: url("{{ partial "site-path.html" "/fonts/InterVariable-Italic.woff2" }}") format("woff2");
       }
     </style>
 

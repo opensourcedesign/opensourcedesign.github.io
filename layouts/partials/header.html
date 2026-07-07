@@ -1,8 +1,8 @@
 {{ $current := .RelPermalink }}
 <header class="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/85 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-    <a class="flex items-center gap-2 rounded-md font-semibold tracking-tight text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" href="{{ "/" | relURL }}">
-      <img src="{{ "/images/opensourcedesign-logo.svg" | relURL }}" alt="Open Source Design" class="h-8 w-8" width="32" height="32" />
+    <a class="flex items-center gap-2 rounded-md font-semibold tracking-tight text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50" href="{{ partial "site-path.html" "/" }}">
+      <img src="{{ partial "site-path.html" "/images/opensourcedesign-logo.svg" }}" alt="Open Source Design" class="h-8 w-8" width="32" height="32" />
       <span class="sm:inline">Open Source Design</span>
     </a>
 

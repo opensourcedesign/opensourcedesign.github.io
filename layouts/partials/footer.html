@@ -4,7 +4,7 @@
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
       {{/* Brand column */}}
       <div class="sm:col-span-2 lg:col-span-1">
-        <a class="inline-flex items-center gap-2 font-semibold text-slate-900" href="{{ "/" | relURL }}">
+        <a class="inline-flex items-center gap-2 font-semibold text-slate-900" href="{{ partial "site-path.html" "/" }}">
             <span aria-hidden="true" class="h-8 w-8">{{ partial "icons/osd-logo.svg" . }}</span>
           Open Source Design
         </a>
@@ -50,7 +50,7 @@
           <ul class="mt-3 space-y-2">
             {{ range .resources }}
               <li>
-                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ .url | relURL }}">{{ .name }}</a>
+                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ partial "site-path.html" .url }}">{{ .name }}</a>
               </li>
             {{ end }}
           </ul>
@@ -61,7 +61,7 @@
           <ul class="mt-3 space-y-2">
             {{ range .contribute }}
               <li>
-                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ if .external }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .name }}</a>
+                <a class="text-sm text-slate-600 hover:text-slate-900" href="{{ if .external }}{{ .url }}{{ else }}{{ partial "site-path.html" .url }}{{ end }}" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .name }}</a>
               </li>
             {{ end }}
           </ul>
@@ -74,8 +74,8 @@
       <div class="flex flex-col gap-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; {{ now.Format "2006" }} Open Source Design. Content licensed under <a class="underline underline-offset-2 hover:text-slate-700" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</p>
         <div class="flex items-center gap-4">
-          <a class="hover:text-slate-700" href="{{ "/imprint/" | relURL }}">Imprint</a>
-          <a class="hover:text-slate-700" href="{{ "/feed.xml" | relURL }}">RSS Feed</a>
+          <a class="hover:text-slate-700" href="{{ partial "site-path.html" "/imprint/" }}">Imprint</a>
+          <a class="hover:text-slate-700" href="{{ partial "site-path.html" "/feed.xml" }}">RSS Feed</a>
         </div>
       </div>
     </div>

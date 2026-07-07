@@ -14,7 +14,7 @@
   {{ $jobsOpen := len $openJobs }}
   {{ $jobsTotal := len $jobsAll }}
   <section class="relative overflow-hidden bg-slate-950 text-white">
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" {{ if $heroJpg }}style="background-image: url('{{ $heroJpg }}'); background-image: image-set(url('{{ $heroWebp }}') type('image/webp'), url('{{ $heroJpg }}') type('image/jpeg'));"{{ else }}style="background-image: url('{{ "/images/2017-fosdem-picture-compressed-blur30px.jpg" | relURL }}');"{{ end }}></div>
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" {{ if $heroJpg }}style="background-image: url('{{ $heroJpg }}'); background-image: image-set(url('{{ $heroWebp }}') type('image/webp'), url('{{ $heroJpg }}') type('image/jpeg'));"{{ else }}style="background-image: url('{{ partial "site-path.html" "/images/2017-fosdem-picture-compressed-blur30px.jpg" }}');"{{ end }}></div>
     {{/* Directional scrim keeps the left-set type legible over the photo. */}}
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-950/40"></div>
     <div class="relative mx-auto max-w-6xl px-4 py-24 sm:py-32 lg:py-40">
@@ -24,8 +24,8 @@
       {{/* Primary CTAs: joining and resources - the two things newcomers
            who want to do something for/with open source design ask for. */}}
       <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">Join us</a>
-        <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ "/resources/" | relURL }}">Resources</a>
+        <a class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">Join us</a>
+        <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/" }}">Resources</a>
       </div>
       <p class="mt-8 text-sm text-slate-400">{{ $jobsOpen }} design jobs open right now, {{ $jobsTotal }}+ posted by open source projects over the years.</p>
     </div>
@@ -37,8 +37,8 @@
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <h2 class="text-2xl font-bold leading-snug tracking-tight text-slate-950 sm:text-3xl lg:col-span-5">Good design should be as open as good code.</h2>
         <div class="space-y-5 text-base leading-relaxed text-slate-600 lg:col-span-7 lg:max-w-prose">
-          <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/jobs/" | relURL }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/events/" | relURL }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/resources/" | relURL }}">resources</a>.</p>
-          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/" | relURL }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/about-us/manifesto/" | relURL }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
+          <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/" }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/" }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/resources/" }}">resources</a>.</p>
+          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/about-us/" }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/about-us/manifesto/" }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
         <div class="lg:pr-10">
           <div class="flex items-baseline justify-between">
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Upcoming events</h2>
-            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ "/events/" | relURL }}">All events →</a>
+            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/events/" }}">All events →</a>
           </div>
           {{ $upcomingEvents := where (where site.RegularPages "Section" "events") "Params.status" "in" (slice "upcoming" "started") }}
           {{ $nowUnix := now.Unix }}
@@ -89,7 +89,7 @@
         <div class="lg:px-10">
           <div class="flex items-baseline justify-between">
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Open jobs</h2>
-            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ "/jobs/" | relURL }}">All jobs →</a>
+            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/jobs/" }}">All jobs →</a>
           </div>
           {{ $jobs := $openJobs }}
           <ul class="mt-5" role="list">
@@ -107,8 +107,8 @@
             {{ end }}
           </ul>
           <div class="mt-5 space-y-2 text-sm">
-            <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/jobs/job-form/" | relURL }}">Post a job</a>
-            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ "/jobs/archive/" | relURL }}">Browse {{ $jobsTotal }}+ archived jobs →</a></p>
+            <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
+            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">Browse {{ $jobsTotal }}+ archived jobs →</a></p>
           </div>
         </div>
 
@@ -201,7 +201,7 @@
           {{ end }}
           <div class="mt-5 space-y-2 text-sm">
             <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $forumURL }}" target="_blank" rel="noopener noreferrer">Visit the forum</a>
-            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ "/resources/how-to-join/" | relURL }}">How to get involved →</a></p>
+            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">How to get involved →</a></p>
           </div>
         </div>
       </div>
@@ -214,12 +214,12 @@
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
       <div class="flex items-baseline justify-between">
         <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Open source design tools</h2>
-        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ "/resources/" | relURL }}">All resources →</a>
+        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/resources/" }}">All resources →</a>
       </div>
       <div class="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4 md:grid-cols-8">
         {{ range hugo.Data.tools }}
           <a class="group flex flex-col items-center gap-2 rounded-lg p-2 opacity-80 transition hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .description }}">
-            <img src="{{ .logo | relURL }}" alt="" class="h-10 w-10" aria-hidden="true" loading="lazy" />
+            <img src="{{ partial "site-path.html" .logo }}" alt="" class="h-10 w-10" aria-hidden="true" loading="lazy" />
             <span class="text-xs font-medium text-slate-600 transition group-hover:text-slate-950">{{ .name }}</span>
           </a>
         {{ end }}
@@ -235,7 +235,7 @@
       <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.supporters }}
           <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+            <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>
@@ -247,7 +247,7 @@
       <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.conferences }}
           <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+            <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>
@@ -256,7 +256,7 @@
       <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.affiliates }}
           <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            <img class="{{ .height }}" src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy" />
+            <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>

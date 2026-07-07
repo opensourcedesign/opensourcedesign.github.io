@@ -33,9 +33,9 @@
         {{ end }}
       </div>
       <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ "/events/event-form/" | relURL }}">Add an event</a>
-        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/calendar.ics" | relURL }}" aria-label="Subscribe to events calendar">iCal</a>
-        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/feed.xml" | relURL }}" aria-label="Subscribe to events RSS feed">RSS</a>
+        <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ partial "site-path.html" "/events/event-form/" }}">Add an event</a>
+        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/calendar.ics" }}" aria-label="Subscribe to events calendar">iCal</a>
+        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/feed.xml" }}" aria-label="Subscribe to events RSS feed">RSS</a>
       </div>
     </header>
 
@@ -98,7 +98,7 @@
           {{ else }}
             <p class="mt-4 text-sm leading-relaxed text-slate-600">
               No one-off events scheduled right now. Join our monthly call below, or
-              <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ "/events/calendar.ics" | relURL }}">subscribe to the calendar</a>.
+              <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/calendar.ics" }}">subscribe to the calendar</a>.
             </p>
           {{ end }}
         </section>
@@ -140,7 +140,7 @@
     <section class="mt-16" aria-labelledby="past-heading">
       <div class="flex flex-wrap items-baseline justify-between gap-4 border-b border-slate-200 pb-3">
         <h2 id="past-heading" class="text-xs font-semibold uppercase tracking-widest text-slate-500">Past events</h2>
-        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ "/events/archive/" | relURL }}">Browse all {{ len $pastAll }} →</a>
+        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/events/archive/" }}">Browse all {{ len $pastAll }} →</a>
       </div>
 
       <ul class="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3" role="list">

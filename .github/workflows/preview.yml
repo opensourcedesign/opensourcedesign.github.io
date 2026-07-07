@@ -66,11 +66,13 @@ jobs:
           chmod +x pagefind
 
       - name: Build site for preview
+        env:
+          HUGO_RELATIVEURLS: "true"
         run: |
-          hugo --minify --baseURL "https://opensourcedesign.net/pr-preview/pr-${{ github.event.pull_request.number }}/"
-          ./pagefind --site public
-          # CNAME belongs at the gh-pages root for production only; including it
-          # in a preview subfolder can confuse GitHub Pages routing.
+          PREVIEW_NUM="${{ github.event.pull_request.number }}"
+          BASE="https://opensourcedesign.github.io/pr-preview/pr-${PREVIEW_NUM}/"
+          hugo --minify --baseURL "${BASE}"
+          ./pagefind --site public --base-url "/pr-preview/pr-${PREVIEW_NUM}/"
           rm -f public/CNAME
 
       - name: Deploy PR preview

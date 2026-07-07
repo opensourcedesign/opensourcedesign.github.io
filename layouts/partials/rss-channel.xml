@@ -25,7 +25,7 @@
 <webMaster>{{ . }}</webMaster>
 {{- end }}
 <image>
-<url>{{ "images/opensourcedesign-logo-icon.png" | absURL }}</url>
+<url>{{ partial "site-abs-path.html" "images/opensourcedesign-logo-icon.png" }}</url>
 <title>{{ $page.Site.Title }}</title>
 <link>{{ $page.Site.BaseURL }}</link>
 <width>144</width>
@@ -34,7 +34,7 @@
 {{- range $pages }}
 {{- $fullContent := "" -}}
 {{- with .Params.image -}}
-{{- $fullContent = printf "%s<figure><img src=\"%s\" alt=\"%s\"/></figure>" $fullContent (. | absURL) ($page.Title | htmlEscape) -}}
+{{- $fullContent = printf "%s<figure><img src=\"%s\" alt=\"%s\"/></figure>" $fullContent (partial "site-abs-path.html" .) ($page.Title | htmlEscape) -}}
 {{- end -}}
 {{- if eq .Section "jobs" -}}
 {{- $fullContent = printf "%s<div style=\"margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;\">" $fullContent -}}
@@ -107,8 +107,8 @@
 <category>{{ . | title }}</category>
 {{- end }}
 {{- with .Params.image }}
-<media:content url="{{ . | absURL }}" medium="image"/>
-<enclosure url="{{ . | absURL }}" type="image/jpeg"/>
+<media:content url="{{ partial "site-abs-path.html" . }}" medium="image"/>
+<enclosure url="{{ partial "site-abs-path.html" . }}" type="image/jpeg"/>
 {{- end }}
 </item>
 {{- end }}

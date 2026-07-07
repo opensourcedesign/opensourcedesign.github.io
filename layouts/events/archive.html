@@ -11,8 +11,8 @@
         {{ end }}
       </div>
       <div class="flex shrink-0 flex-wrap gap-4 text-sm font-medium">
-        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/" | relURL }}">Back to events</a>
-        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ "/events/feed.xml" | relURL }}">RSS</a>
+        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/" }}">Back to events</a>
+        <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/feed.xml" }}">RSS</a>
       </div>
     </header>
 

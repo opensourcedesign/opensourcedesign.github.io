@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     <header>
       <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
-        <a class="transition hover:text-slate-900" href="{{ "/resources/" | relURL }}">Resources</a>
+        <a class="transition hover:text-slate-900" href="{{ partial "site-path.html" "/resources/" }}">Resources</a>
         <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
         <span class="font-medium text-slate-700" aria-current="page">Suggest a resource</span>
       </nav>
@@ -29,7 +29,7 @@
             <option value="{{ .id }}">{{ .title }}</option>
           {{ end }}
         </select>
-        <p class="text-xs text-slate-500">Where on the <a class="underline underline-offset-4" href="{{ "/resources/links/" | relURL }}">resources page</a> the entry should appear.</p>
+        <p class="text-xs text-slate-500">Where on the <a class="underline underline-offset-4" href="{{ partial "site-path.html" "/resources/links/" }}">resources page</a> the entry should appear.</p>
       </div>
 
       <div class="space-y-2">

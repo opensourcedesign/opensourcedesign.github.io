@@ -33,12 +33,12 @@
     {{ end }}
 
     <footer class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-6" data-pagefind-ignore>
-      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ "/events/" | relURL }}">
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ partial "site-path.html" "/events/" }}">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
         Back to events
       </a>
       {{ with .File }}
-        <a class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ printf "%s?edit=%s" ("/events/event-form/" | relURL) (.LogicalName | urlquery) | safeURL }}">
+        <a class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ printf "%s?edit=%s" (partial "site-path.html" "/events/event-form/") (.LogicalName | urlquery) | safeURL }}">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
           Edit this event
         </a>

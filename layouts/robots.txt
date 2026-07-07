@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ partial "site-abs-path.html" "sitemap.xml" }}

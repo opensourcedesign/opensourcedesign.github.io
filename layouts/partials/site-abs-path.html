@@ -1,0 +1,13 @@
+{{- /*
+  Root-safe absURL for internal paths (OG images, JSON-LD, RSS).
+  See site-path.html for why leading slashes are stripped.
+*/ -}}
+{{- $path := printf "%v" . -}}
+{{- if or (hasPrefix $path "http://") (hasPrefix $path "https://") (hasPrefix $path "//") -}}
+{{- $path -}}
+{{- else -}}
+{{- if hasPrefix $path "/" -}}
+{{- $path = strings.TrimPrefix "/" $path -}}
+{{- end -}}
+{{- $path | absURL -}}
+{{- end -}}
