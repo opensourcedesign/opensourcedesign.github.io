@@ -39,6 +39,13 @@
     }
   }
 
+  /* Native selects often ignore inherited fonts (especially on Windows). */
+  select,
+  optgroup,
+  option {
+    font-family: var(--font-sans);
+  }
+
   ::selection {
     background: #334155;   /* slate-700 - stays visible on light and dark surfaces */
     color: #f8fafc;        /* slate-50 */
