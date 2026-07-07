@@ -66,14 +66,7 @@ jobs:
           chmod +x pagefind
 
       - name: Build site for preview
-        env:
-          HUGO_RELATIVEURLS: "true"
-        run: |
-          PREVIEW_NUM="${{ github.event.pull_request.number }}"
-          BASE="https://opensourcedesign.github.io/pr-preview/pr-${PREVIEW_NUM}/"
-          hugo --minify --baseURL "${BASE}"
-          ./pagefind --site public --base-url "/pr-preview/pr-${PREVIEW_NUM}/"
-          rm -f public/CNAME
+        run: bash .github/scripts/build-hugo-site.sh preview "${{ github.event.pull_request.number }}"
 
       - name: Deploy PR preview
         uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1

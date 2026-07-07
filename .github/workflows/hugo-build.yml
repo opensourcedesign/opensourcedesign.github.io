@@ -76,10 +76,7 @@ jobs:
           chmod +x pagefind
 
       - name: Build site
-        run: hugo --minify --gc
-
-      - name: Build search index (Pagefind)
-        run: ./pagefind --site public
+        run: bash .github/scripts/build-hugo-site.sh production
 
       # Mirror public/ to gh-pages root but keep pr-preview/ so production
       # deploys do not wipe open PR previews (see pr-preview-action docs).

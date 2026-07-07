@@ -155,7 +155,7 @@
       if (importPromise) return importPromise;
       importPromise = import(base() + 'pagefind.js').then(function (mod) {
         pagefind = mod;
-        if (pagefind.options) pagefind.options({ excerptLength: 24 });
+        if (pagefind.options) pagefind.options({ excerptLength: 24, bundlePath: base() });
         return pagefind;
       }).catch(function (err) {
         importPromise = null;
@@ -401,7 +401,7 @@
       if (importPromise) return importPromise;
       var base = root.getAttribute('data-pagefind-base') || '/pagefind/';
       importPromise = import(base + 'pagefind.js').then(function (mod) {
-        if (mod.options) mod.options({ excerptLength: 24 });
+        if (mod.options) mod.options({ excerptLength: 24, bundlePath: base });
         return mod;
       });
       return importPromise;
