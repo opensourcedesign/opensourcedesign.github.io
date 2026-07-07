@@ -79,7 +79,7 @@ jobs:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: https://opensourcedesign.net
+          pages-base-url: https://opensourcedesign.github.io
           wait-for-pages-deployment: true
           action: deploy
 
