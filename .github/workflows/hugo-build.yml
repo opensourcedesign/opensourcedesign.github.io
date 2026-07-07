@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  HUGO_VERSION: 0.163.2
+  HUGO_VERSION: 0.164.0
   # Keep in lockstep with the @tailwindcss/browser version pinned in
   # layouts/_default/baseof.html (the local-dev Play CDN fallback).
   TAILWIND_VERSION: 4.3.2

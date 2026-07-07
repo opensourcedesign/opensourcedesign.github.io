@@ -25,12 +25,9 @@ Please consider donating what you can to help Plain Schwartz recover the costs t
 
 [https://opencollective.com/opensourcedesign/projects/foss-backstage-design](https://opencollective.com/opensourcedesign/projects/foss-backstage-design)
 
-You can look forward to seeing the excellent talks about open source software and design related topics, from Blender, Mastodon, AWS and KDE in the coming weeks on their YouTube channel soon as well as an article write up here on Open Source Design too!: [https://www.youtube.com/@PlainSchwarzUG](https://www.youtube.com/@PlainSchwarzUG)
+You can look forward to seeing the excellent talks about open source software and design related topics, from Blender, Mastodon, AWS and KDE in the coming weeks on their YouTube channel soon as well as an article write up here on Open Source Design's articles section too!: [https://www.youtube.com/@PlainSchwarzUG](https://www.youtube.com/@PlainSchwarzUG)
 
 ![dalai and pablo speaking at foss backstage 2026](/images/events/dalai-and-pablo-blender-2026.jpg "dalai and pablo speaking at foss backstage 2026")
-
 ![lauwri speaking at foss backstage 2026](/images/events/lauwrie-aws-2026.jpg "lauwri speaking at foss backstage 2026")
-
 ![imani speaking at foss backstage 2026](/images/events/imani-mastodon-2026.jpg "imani speaking at foss backstage 2026")
-
 ![andy speaking at foss backstage 2026](/images/events/andy-kde-2026.jpg "andy speaking at foss backstage 2026")
