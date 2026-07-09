@@ -10,9 +10,9 @@ There are several ways to edit content on [opensourcedesign.net](https://opensou
 
 1. **Using GitHub's file editor** - Quick edits directly in your browser. Navigate to any file, click the pencil icon, and submit a pull request.
 
-2. **Using Gitpod** - A preconfigured cloud IDE with live preview. Click the button below to get started instantly:
+2. **Using GitHub Codespaces** - A cloud development environment in your browser with Hugo preconfigured and a live preview. From the repo menu choose **Code → Codespaces → Create codespace**, or click:
 
-   [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/opensourcedesign/opensourcedesign.github.io)
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/opensourcedesign/opensourcedesign.github.io)
 
 3. **Setting up locally** - For more extensive development work. See the instructions below.
 
@@ -104,6 +104,7 @@ tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --mini
 
 ```
 opensourcedesign.github.io/
+├── .devcontainer/    # GitHub Codespaces config (Hugo + preview on port 1313)
 ├── .github/
 │   ├── scripts/      # announce-jobs.mjs - posts new jobs to Mastodon & Bluesky
 │   └── workflows/    # hugo-build (deploy), job-approved-email (submitter notification),
