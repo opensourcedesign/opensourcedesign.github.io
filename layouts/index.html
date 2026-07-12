@@ -24,7 +24,7 @@
       {{/* Primary CTAs: joining and resources - the two things newcomers
            who want to do something for/with open source design ask for. */}}
       <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">Join us</a>
+        <a class="osd-hero-cta rounded-lg px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">Join us</a>
         <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/" }}">Resources</a>
       </div>
       <p class="mt-8 text-sm text-slate-400">{{ $jobsOpen }} design jobs open right now, {{ $jobsTotal }}+ posted by open source projects over the years.</p>
@@ -32,13 +32,13 @@
   </section>
 
   {{/* Editorial introduction: one statement, one column of prose. No cards. */}}
-  <section class="bg-white">
+  <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-4 py-20 sm:py-24">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-        <h2 class="text-2xl font-bold leading-snug tracking-tight text-slate-950 sm:text-3xl lg:col-span-5">Good design should be as open as good code.</h2>
-        <div class="space-y-5 text-base leading-relaxed text-slate-600 lg:col-span-7 lg:max-w-prose">
-          <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/" }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/" }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/resources/" }}">resources</a>.</p>
-          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/about-us/" }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/about-us/manifesto/" }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
+        <h2 class="text-2xl font-bold leading-snug tracking-tight text-slate-950 sm:text-3xl lg:col-span-5 dark:text-slate-50">Good design should be as open as good code.</h2>
+        <div class="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 lg:col-span-7 lg:max-w-prose dark:text-slate-400">
+          <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/events/" }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/resources/" }}">resources</a>.</p>
+          <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/about-us/" }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/about-us/manifesto/" }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
         </div>
       </div>
     </div>
@@ -46,14 +46,14 @@
 
   {{/* Around the community: events, jobs, forum. Unboxed columns divided by
        rules; typographic list rows instead of nested cards. */}}
-  <section class="border-y border-slate-200 bg-slate-50" aria-label="Community activity">
+  <section class="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900" aria-label="Community activity">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-slate-200">
+      <div class="grid grid-cols-1 gap-0 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-slate-200 dark:lg:divide-slate-700">
         {{/* Events */}}
-        <div class="lg:pr-10">
+        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 dark:border-slate-700 lg:border-b-0 lg:py-0 lg:pr-10">
           <div class="flex items-baseline justify-between">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Upcoming events</h2>
-            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/events/" }}">All events →</a>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Upcoming events</h2>
+            <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/events/" }}">All events →</a>
           </div>
           {{ $upcomingEvents := where (where site.RegularPages "Section" "events") "Params.status" "in" (slice "upcoming" "started") }}
           {{ $nowUnix := now.Unix }}
@@ -66,57 +66,57 @@
           {{ if $liveUpcoming }}
             <ul class="mt-5" role="list">
               {{ range first 3 (sort $liveUpcoming "Date" "desc") }}
-                <li class="border-b border-slate-200 last:border-0">
+                <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
                   <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
-                    <span class="font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 transition group-hover:text-slate-950 group-hover:underline">{{ .Title }}</span>
-                    {{ with .Params.eventDate }}<span class="mt-1 block text-sm text-slate-500">{{ . }}</span>{{ end }}
+                    <span class="font-semibold leading-snug text-slate-900 dark:text-slate-100 decoration-slate-300 underline-offset-4 transition group-hover:text-slate-950 dark:hover:text-slate-100 group-hover:underline">{{ .Title }}</span>
+                    {{ with .Params.eventDate }}<span class="mt-1 block text-sm text-slate-500 dark:text-slate-400">{{ . }}</span>{{ end }}
                   </a>
                 </li>
               {{ end }}
             </ul>
           {{ else }}
-            <p class="mt-5 text-sm text-slate-500">No upcoming events scheduled.</p>
+            <p class="mt-5 text-sm text-slate-500 dark:text-slate-400">No upcoming events scheduled.</p>
           {{ end }}
           {{/* Latest write-up/recap, fed from the events section */}}
           {{ $recaps := (where (where site.RegularPages "Section" "events") "Params.author" "!=" nil).ByDate.Reverse }}
           {{ range first 1 $recaps }}
-            <p class="mt-4 text-sm text-slate-600">Latest recap: <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+            <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">Latest recap: <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ .RelPermalink }}">{{ .Title }}</a></p>
           {{ end }}
-          <p class="mt-4 text-sm text-slate-600">Monthly community calls, on the <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ site.Params.calendarURL | default "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now" }}" target="_blank" rel="noopener noreferrer">community calendar</a>.</p>
+          <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">Monthly community calls, on the <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ site.Params.calendarURL | default "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now" }}" target="_blank" rel="noopener noreferrer">community calendar</a>.</p>
         </div>
 
         {{/* Jobs */}}
-        <div class="lg:px-10">
+        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 dark:border-slate-700 lg:border-b-0 lg:px-10 lg:py-0">
           <div class="flex items-baseline justify-between">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Open jobs</h2>
-            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/jobs/" }}">All jobs →</a>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Open jobs</h2>
+            <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">All jobs →</a>
           </div>
           {{ $jobs := $openJobs }}
           <ul class="mt-5" role="list">
             {{ range first 5 $jobs.ByDate.Reverse }}
               {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
               {{ $isPaid := eq $comp "paid" }}
-              <li class="border-b border-slate-200 last:border-0">
+              <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
                 <a class="group flex items-baseline gap-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
                   <span class="h-2 w-2 shrink-0 self-center rounded-full {{ cond $isPaid "bg-emerald-500" "bg-violet-500" }}" title="{{ cond $isPaid "Paid" "Volunteer" }}" aria-hidden="true"></span>
-                  <span class="line-clamp-2 text-sm leading-snug text-slate-700 transition group-hover:text-slate-950">{{ .Title }}</span>
+                  <span class="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-slate-300 transition group-hover:text-slate-950 dark:hover:text-slate-100">{{ .Title }}</span>
                 </a>
               </li>
             {{ else }}
-              <li class="py-3 text-sm text-slate-500">No open jobs yet.</li>
+              <li class="py-3 text-sm text-slate-500 dark:text-slate-400">No open jobs yet.</li>
             {{ end }}
           </ul>
           <div class="mt-5 space-y-2 text-sm">
-            <a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
-            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">Browse {{ $jobsTotal }}+ archived jobs →</a></p>
+            <a class="osd-btn-primary" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
+            <p><a class="text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/archive/" }}">Browse {{ $jobsTotal }}+ archived jobs →</a></p>
           </div>
         </div>
 
         {{/* Forum */}}
-        <div class="lg:pl-10">
+        <div class="py-10 lg:border-b-0 lg:py-0 lg:pl-10">
           <div class="flex items-baseline justify-between">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Forum</h2>
-            <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">Visit →</a>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Forum</h2>
+            <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">Visit →</a>
           </div>
           {{/* Forum pulse: recent topics fetched at build time from the
                Discourse API (no client-side JS, no third-party requests for
@@ -139,13 +139,13 @@
             {{ range $topics }}
               <li>
                 <a class="group block" href="{{ $forumURL }}/t/{{ .slug }}/{{ .id }}" target="_blank" rel="noopener noreferrer">
-                  <span class="block text-sm font-medium leading-snug text-slate-900 transition group-hover:text-emerald-700">{{ .title }}</span>
-                  <span class="mt-0.5 block text-xs text-slate-500">{{ sub .posts_count 1 }} {{ cond (eq (sub .posts_count 1) 1) "reply" "replies" }}{{ with .last_posted_at }} · {{ (time.AsTime .).Format "2 Jan 2006" }}{{ end }}</span>
+                  <span class="block text-sm font-medium leading-snug text-slate-900 dark:text-slate-100 transition group-hover:text-emerald-700">{{ .title }}</span>
+                  <span class="mt-0.5 block text-xs text-slate-500 dark:text-slate-400">{{ sub .posts_count 1 }} {{ cond (eq (sub .posts_count 1) 1) "reply" "replies" }}{{ with .last_posted_at }} · {{ (time.AsTime .).Format "2 Jan 2006" }}{{ end }}</span>
                 </a>
               </li>
             {{ end }}
           </ul>
-          <p class="mt-5 text-sm leading-relaxed text-slate-600" id="osd-forum-fallback" {{ if $topics }}hidden{{ end }}>Our Discourse forum is where design discussions, project feedback, and community conversations happen. Everyone is welcome to read along; joining takes a minute.</p>
+          <p class="mt-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400" id="osd-forum-fallback" {{ if $topics }}hidden{{ end }}>Our Discourse forum is where design discussions, project feedback, and community conversations happen. Everyone is welcome to read along; joining takes a minute.</p>
           {{ with site.Params.jobSubmitEndpoint }}
             {{/* Client-side refresh on page load: the Worker proxies Discourse
                  (which sends no CORS headers) at /forum with 10-minute edge +
@@ -172,8 +172,8 @@
                       ? ' · ' + new Date(t.last_posted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
                       : '';
                     return '<li><a class="group block" href="' + forumBase + '/t/' + encodeURIComponent(t.slug) + '/' + t.id + '" target="_blank" rel="noopener noreferrer">'
-                      + '<span class="block text-sm font-medium leading-snug text-slate-900 transition group-hover:text-emerald-700">' + esc(t.title) + '</span>'
-                      + '<span class="mt-0.5 block text-xs text-slate-500">' + replies + (replies === 1 ? ' reply' : ' replies') + when + '</span>'
+                      + '<span class="block text-sm font-medium leading-snug text-slate-900 dark:text-slate-100 transition group-hover:text-emerald-700">' + esc(t.title) + '</span>'
+                      + '<span class="mt-0.5 block text-xs text-slate-500 dark:text-slate-400">' + replies + (replies === 1 ? ' reply' : ' replies') + when + '</span>'
                       + '</a></li>';
                   }).join('');
                   list.hidden = false;
@@ -200,8 +200,8 @@
             </script>
           {{ end }}
           <div class="mt-5 space-y-2 text-sm">
-            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-900 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $forumURL }}" target="_blank" rel="noopener noreferrer">Visit the forum</a>
-            <p><a class="text-slate-500 transition hover:text-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">How to get involved →</a></p>
+            <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 font-semibold text-slate-900 dark:text-slate-100 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $forumURL }}" target="_blank" rel="noopener noreferrer">Visit the forum</a>
+            <p><a class="text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">How to get involved →</a></p>
           </div>
         </div>
       </div>
@@ -210,17 +210,17 @@
 
   {{/* Open source design tools, data driven from data/tools.yaml. Plain logo
        grid; the tools speak for themselves without card chrome. */}}
-  <section class="bg-white">
+  <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
       <div class="flex items-baseline justify-between">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Open source design tools</h2>
-        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/resources/" }}">All resources →</a>
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Open source design tools</h2>
+        <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/resources/" }}">All resources →</a>
       </div>
       <div class="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4 md:grid-cols-8">
         {{ range hugo.Data.tools }}
-          <a class="group flex flex-col items-center gap-2 rounded-lg p-2 opacity-80 transition hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .description }}">
-            <img src="{{ partial "site-path.html" .logo }}" alt="" class="h-10 w-10" aria-hidden="true" loading="lazy" />
-            <span class="text-xs font-medium text-slate-600 transition group-hover:text-slate-950">{{ .name }}</span>
+          <a class="group flex flex-col items-center gap-2 rounded-lg p-2 opacity-80 transition hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:focus-visible:ring-slate-100/30" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .description }}">
+            <img src="{{ partial "site-path.html" .logo }}" alt="" class="osd-brand-icon h-10 w-10" aria-hidden="true" loading="lazy" />
+            <span class="text-xs font-medium text-slate-600 dark:text-slate-400 transition group-hover:text-slate-950 dark:hover:text-slate-100">{{ .name }}</span>
           </a>
         {{ end }}
       </div>
@@ -229,43 +229,43 @@
 
   {{/* Friends of the community: supporters, conferences, affiliates, backers.
        One quiet region, kicker headings, logo walls without boxes. */}}
-  <section class="border-t border-slate-200 bg-slate-50">
+  <section class="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <h2 class="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">Supported by</h2>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+      <h2 class="text-center text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Supported by</h2>
+      <div class="osd-logo-wall mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.supporters }}
-          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <a class="transition" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
             <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>
       <p class="mt-8 text-center">
-        <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}/contribute" target="_blank" rel="noopener noreferrer">Become a sponsor</a>
+        <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-500 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-100 transition hover:bg-slate-100 dark:hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:focus-visible:ring-slate-100 dark:focus-visible:ring-offset-slate-900" href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}/contribute" target="_blank" rel="noopener noreferrer">Become a sponsor</a>
       </p>
 
-      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500">Conferences we organize design tracks at</h2>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Conferences we organize design tracks at</h2>
+      <div class="osd-logo-wall mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.conferences }}
-          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <a class="transition" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
             <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>
 
-      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500">Affiliates</h2>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Affiliates</h2>
+      <div class="osd-logo-wall mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
         {{ range hugo.Data.affiliates }}
-          <a class="opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <a class="transition" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
             <img class="{{ .height }}" src="{{ partial "site-path.html" .logo }}" alt="{{ .name }}" loading="lazy" />
           </a>
         {{ end }}
       </div>
 
-      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500">Contributors &amp; backers</h2>
-      <p class="mt-3 text-center text-sm text-slate-600">The people and organizations who make our work possible.</p>
+      <h2 class="mt-16 text-center text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Contributors &amp; backers</h2>
+      <p class="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">The people and organizations who make our work possible.</p>
       <div class="mt-6 flex justify-center">
-        <a href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}" target="_blank" rel="noopener noreferrer" aria-label="View backers and contributors on Open Collective">
-          <img class="mx-auto h-auto max-w-full" src="https://opencollective.com/opensourcedesign/backers.svg?width=880&avatarHeight=48&button=false" alt="Open Source Design backers and contributors on Open Collective" loading="lazy" />
+        <a class="osd-oc-backers-wrap" href="{{ site.Params.openCollectiveURL | default "https://opencollective.com/opensourcedesign" }}" target="_blank" rel="noopener noreferrer" aria-label="View backers and contributors on Open Collective">
+          <img class="osd-oc-backers mx-auto h-auto max-w-full" src="https://opencollective.com/opensourcedesign/backers.svg?width=880&avatarHeight=48&button=false" alt="Open Source Design backers and contributors on Open Collective" loading="lazy" />
         </a>
       </div>
     </div>

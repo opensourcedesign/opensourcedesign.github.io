@@ -24,6 +24,8 @@
 @import "tailwindcss" source(none);
 @plugin "@tailwindcss/typography";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Keep in sync with assets/css/main.css - makes the self-hosted Inter
      variable font apply even before the Play CDN compiles (or without JS). */
@@ -33,15 +35,19 @@
 /* prose containers, color themes, and sizes (incl. responsive prefixes) */
 @source inline("{sm:,md:,lg:,}prose");
 @source inline("prose-{sm,base,lg,xl,invert,slate,gray,zinc,neutral,stone}");
+@source inline("dark:prose-invert");
 @source inline("not-prose");
 
 /* prose-* variant utilities used in layouts/ (plus close variations) */
 @source inline("prose-a:{underline,no-underline,underline-offset-2,underline-offset-4}");
 @source inline("prose-a:text-{slate-900,slate-950,white}");
+@source inline("dark:prose-a:text-{slate-100,white}");
 /* Per-link hover: `prose-a:hover:` targets a:hover. `hover:prose-a:` would
    style ALL links whenever the container is hovered (v4 variants stack
    left-to-right), which is broken; never safelist that order. */
 @source inline("prose-a:decoration-{slate-300,slate-600,slate-900,slate-950,white,white/50}");
+@source inline("dark:prose-a:decoration-{slate-600,white,white/50}");
 @source inline("prose-a:hover:decoration-{slate-300,slate-600,slate-900,slate-950,white,white/50}");
+@source inline("dark:prose-a:hover:decoration-{slate-100,white,white/50}");
 @source inline("prose-headings:{font-semibold,scroll-mt-20}");
 @source inline("prose-img:{cursor-zoom-in,rounded-lg,rounded-xl}");

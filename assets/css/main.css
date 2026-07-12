@@ -23,6 +23,10 @@
 
 @import "tailwindcss";
 
+/* System dark mode follows prefers-color-scheme via the .dark class on
+   <html> (set synchronously in baseof.html before styles load). */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Self-hosted Inter variable font (see @font-face in baseof.html). */
   --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -31,6 +35,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -214,12 +223,59 @@
     @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow;
   }
 
+  .osd-surface {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  }
+
   .osd-card-link {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50;
   }
 
   .osd-pill {
     @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+
+  .osd-tag {
+    @apply rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700;
+  }
+
+  .osd-tag--link {
+    @apply px-3 py-1 transition hover:bg-slate-200 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-1;
+  }
+
+  .osd-btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2;
+  }
+
+  .osd-btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20;
+  }
+
+  .toc-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .toc-content li {
+    margin-top: 0.5rem;
+  }
+
+  .toc-content li:first-child {
+    margin-top: 0;
+  }
+
+  .toc-content ul ul {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .toc-content a {
+    @apply text-slate-600 no-underline transition-colors hover:text-slate-950;
+  }
+
+  .toc-content li.active > a {
+    @apply font-medium text-slate-950;
   }
 
   .osd-prose {
@@ -654,6 +710,71 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.dark .osd-search-dialog {
+  border-color: #334155;              /* slate-700 */
+  background: #0f172a;                /* slate-900 */
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.65);
+}
+
+.dark .osd-search {
+  color: #f1f5f9;                     /* slate-100 */
+}
+
+.dark .osd-search__bar {
+  border-bottom-color: #334155;
+}
+
+.dark .osd-search__bar-icon { color: #64748b; }
+
+.dark .osd-search__field { color: #f1f5f9; }
+.dark .osd-search__field::placeholder { color: #64748b; }
+
+.dark .osd-search__close { color: #94a3b8; }
+.dark .osd-search__close:hover { background: #1e293b; color: #f8fafc; }
+.dark .osd-search__close:focus-visible { outline-color: #f8fafc; }
+
+.dark .osd-search__status { color: #94a3b8; }
+
+.dark .osd-search__result.is-active { background: #1e293b; }
+
+.dark .osd-search__result-title { color: #f8fafc; }
+
+.dark .osd-search__badge {
+  border-color: #475569;
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.dark .osd-search__result.is-active .osd-search__badge { background: #0f172a; }
+
+.dark .osd-search__result-excerpt { color: #94a3b8; }
+
+.dark .osd-search__result-excerpt mark,
+.dark .osd-search__sub mark {
+  background: rgba(248, 250, 252, 0.15);
+  color: #f8fafc;
+}
+
+.dark .osd-search__subs { border-left-color: #334155; }
+
+.dark .osd-search__sub { color: #94a3b8; }
+.dark .osd-search__sub svg { color: #64748b; }
+.dark .osd-search__sub:hover { background: #1e293b; color: #f8fafc; }
+.dark .osd-search__sub:hover svg { color: #94a3b8; }
+
+.dark .osd-search__footer {
+  border-top-color: #334155;
+  color: #64748b;
+}
+
+.dark .osd-search__footer kbd {
+  border-color: #475569;
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+/* Dark theme rules live in assets/css/dark-theme.css (always linked from baseof.html after Tailwind). */
 
 /* ==========================================================================
    Automatic accessibility preferences

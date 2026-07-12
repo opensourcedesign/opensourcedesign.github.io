@@ -4,6 +4,13 @@ Website of the Open Source Design community, built with [Hugo](https://gohugo.io
 
 [![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Follow on Mastodon](https://img.shields.io/badge/Mastodon-Follow-6364FF?logo=mastodon&logoColor=white)](https://mastodon.social/@opensourcedesign) [![Follow on Bluesky](https://img.shields.io/badge/bluesky-OpenSourceDesign-blue?logo=bluesky)](https://bsky.app/profile/opensourcedesign.net)
 
+- Read our [Contributor Code of Conduct](https://opensourcedesign.net/about-us/code-of-conduct/). By participating in this project online or at events you agree to abide by its terms.
+- Before submitting a pull request, it is best to [open an issue first](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) to describe the suggestion and to get feedback (except it is a fix for obvious bugs or spelling mistakes).
+- Please do not submit AI-generated code changes, issues, documentation, or code reviews.
+- You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.
+  - Code: [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html)
+  - Content: [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
 ## How to Contribute
 
 There are several ways to edit content on [opensourcedesign.net](https://opensourcedesign.net), all of which require a GitHub account:

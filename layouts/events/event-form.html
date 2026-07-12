@@ -128,11 +128,11 @@
 
         {{/* Submit */}}
         <div class="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
-          <button class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="submit" id="osd-submit">
+          <button class="osd-btn-primary text-sm" type="submit" id="osd-submit">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
             <span id="osd-submit-label">Submit event</span>
           </button>
-          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" type="reset" id="osd-reset">Reset</button>
+          <button class="osd-btn-secondary" type="reset" id="osd-reset">Reset</button>
           <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
         </div>
       </form>
@@ -378,12 +378,12 @@
             // GitHub's file editor can't be pre-filled via URL, so for edits the
             // fallback is: open the editor, paste the regenerated markdown over it.
             var editURL = repoURL + '/edit/' + repoBranch + '/content/events/' + encodeURIComponent(editFile);
-            html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + editURL + '" target="_blank" rel="noopener noreferrer">Edit the file on GitHub</a></p>';
+            html += '<p><a class="osd-btn-primary text-sm" href="' + editURL + '" target="_blank" rel="noopener noreferrer">Edit the file on GitHub</a></p>';
             html += '<p class="mt-3 text-slate-700">GitHub will fork the repository if needed. Replace the file contents with the markdown below, then press <strong>Propose changes</strong> and <strong>Create pull request</strong>.</p>';
           } else {
             var gh = githubNewFileURL(gen);
             if (gh) {
-              html += '<p><a class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
+              html += '<p><a class="osd-btn-primary text-sm" href="' + gh + '" target="_blank" rel="noopener noreferrer">Open a pre-filled pull request on GitHub</a></p>';
               html += '<p class="mt-3 text-slate-700">The file name and contents are already filled in. GitHub will fork the repository if needed; press <strong>Propose new file</strong>, then <strong>Create pull request</strong>. Prefer to do it by hand? The markdown is below.</p>';
             } else {
               html += '<p class="text-slate-700">Copy the markdown below and <a class="font-medium underline underline-offset-4" href="' + repoURL + '/new/' + repoBranch + '?filename=' + encodeURIComponent(gen.path) + '" target="_blank" rel="noopener noreferrer">create a new file on GitHub</a> (the event is too long for a fully pre-filled link, so paste the contents into the editor).</p>';

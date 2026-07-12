@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {{/* Sync Tailwind's `dark:` variant with the OS/browser colour scheme.
+         The Play CDN (local dev without compiled.css) does not honour a
+         custom `@variant dark (@media …)` definition, so we drive dark mode
+         via a root class instead - same pattern as Tailwind's default. */}}
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        function sync() { root.classList.toggle("dark", mq.matches); }
+        sync();
+        mq.addEventListener("change", sync);
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="view-transition" content="same-origin" />
@@ -26,8 +39,9 @@
 
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $desc }}" />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="{{ .Params.author | default site.Title }}" />
     <meta name="generator" content="Hugo {{ hugo.Version }}" />
@@ -258,6 +272,8 @@
       {{ $tw := resources.Get "css/main.css" }}
       <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
     {{ end }}
+    {{ $darkTheme := resources.Get "css/dark-theme.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ $darkTheme.RelPermalink }}" integrity="{{ $darkTheme.Data.Integrity }}" />
 
     {{/* RSS Feed */}}
     {{ with .OutputFormats.Get "RSS" }}
@@ -335,7 +351,7 @@
       }
     </style>
   </head>
-  <body class="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-950 antialiased">
+  <body class="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-100">
     <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg" href="#main">Skip to content</a>
 
     {{/* Header varies only by active nav section, so cache per-section. */}}
@@ -352,7 +368,7 @@
 
     {{/* Scroll to top button */}}
     <button
-      class="scroll-to-top fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/50 focus-visible:ring-offset-2"
+      class="scroll-to-top fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/50 focus-visible:ring-offset-2 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white dark:focus-visible:ring-slate-100/50 dark:focus-visible:ring-offset-slate-950"
       type="button"
       aria-label="Scroll to top of page"
       id="scroll-to-top"

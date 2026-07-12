@@ -17,14 +17,14 @@
   <div class="flex flex-wrap gap-1.5 {{ $wrapperClass }}">
     {{ if (reflect.IsSlice $tags) }}
       {{ range first $limit $tags }}
-        <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">{{ . }}</span>
+        <span class="osd-tag">{{ . }}</span>
       {{ end }}
     {{ else }}
       {{ $raw := printf "%v" $tags }}
       {{ range first $limit (split $raw ",") }}
         {{ $t := trim . " " }}
         {{ if $t }}
-          <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">{{ $t }}</span>
+          <span class="osd-tag">{{ $t }}</span>
         {{ end }}
       {{ end }}
     {{ end }}

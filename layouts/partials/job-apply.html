@@ -83,8 +83,8 @@
   {{ end }}
 {{ end }}
 
-<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-  <div class="border-b border-slate-100 bg-slate-900 px-5 py-4">
+<div class="osd-surface overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+  <div class="border-b border-slate-100 bg-slate-900 osd-dark-panel px-5 py-4">
     <h2 class="flex items-center gap-2 text-base font-semibold text-white">
       <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
       How to apply
@@ -96,7 +96,7 @@
       <ul class="space-y-2.5" role="list">
         {{ range $contacts }}
           <li>
-            <a class="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3.5 py-3 transition hover:border-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+            <a class="osd-apply-link group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3.5 py-3 transition hover:border-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
                href="{{ .href }}"{{ if ne .type "email" }} target="_blank" rel="noopener noreferrer"{{ end }}>
               <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-slate-900 group-hover:text-white">
                 {{ if eq .type "email" }}
