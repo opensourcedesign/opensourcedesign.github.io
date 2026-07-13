@@ -251,6 +251,26 @@
     @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20;
   }
 
+  .osd-muted {
+    @apply text-slate-600;
+  }
+
+  .osd-section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-slate-500;
+  }
+
+  .osd-brand-dl {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2;
+  }
+
+  .osd-brand-dl--sm {
+    @apply gap-1 px-2.5 py-1 text-xs;
+  }
+
+  .osd-brand-dl--on-dark {
+    @apply border-slate-600 bg-slate-700 text-slate-100 hover:bg-slate-600 focus-visible:ring-white/30 focus-visible:ring-offset-slate-900;
+  }
+
   .toc-content ul {
     list-style: none;
     padding-left: 0;

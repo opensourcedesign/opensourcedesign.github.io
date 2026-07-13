@@ -10,7 +10,21 @@ title: UI/UX Redesign for Therapy Worker Cooperative webpage
 slug: ui-ux-redesign-for-therapy-worker-cooperative-webpage
 role: UI/UX Redesign
 compensation: gratis
-deliverables: "As a minimum, prior to properly launching the website when it is ready to be search engine indexed and promoted so we can recruit fellow therapists in order to incorporate the coop, we need immediate help completing the following:\r\n\r\n*      add profile cards with photos for each therapist and include same photo on the Therapists Profiles page\r\n\r\n*      enter more sidebar fields (e.g. each therapist's location) in the side categories of the therapist profile pages \r\n\r\n*      update the links which footer logos direct to as there are errors there currently\r\n\r\n*      add additional footer logos\r\n\r\n*      reorder the therapist cards to be sorted with the most recently edited appearing first (top left corner)\r\n\r\n*      reorder the Services Cards to be sorted with the most recently edited appearing first (top left corner)\r\n\r\n*      embedded field/link to the Newsletter / mailing list on GET IN TOUCH page\r\n\r\n*      newsletter sign-up also present in the global footer\r\n\r\n*      adding text to GET IN TOUCH page with links to therapist survey and mailing list\r\n\r\n*      adding link in About page  to News / posts page and mailing‑list signup page\r\n\r\n*      fix the faulty logo in global header to be visible on all devices/browsers\r\n\r\n*      edit the coop location in the global footer"
+deliverables: |-
+  As a minimum, prior to properly launching the website when it is ready to be search engine indexed and promoted so we can recruit fellow therapists in order to incorporate the coop, we need immediate help completing the following:
+
+  * add profile cards with photos for each therapist and include same photo on the Therapists Profiles page
+  * enter more sidebar fields (e.g. each therapist's location) in the side categories of the therapist profile pages
+  * update the links which footer logos direct to as there are errors there currently
+  * add additional footer logos
+  * reorder the therapist cards to be sorted with the most recently edited appearing first (top left corner)
+  * reorder the Services Cards to be sorted with the most recently edited appearing first (top left corner)
+  * embedded field/link to the Newsletter / mailing list on GET IN TOUCH page
+  * newsletter sign-up also present in the global footer
+  * adding text to GET IN TOUCH page with links to therapist survey and mailing list
+  * adding link in About page to News / posts page and mailing-list signup page
+  * fix the faulty logo in global header to be visible on all devices/browsers
+  * edit the coop location in the global footer
 how_to_apply:
   - commonground@therapy.coop
   - "https://www.therapy.coop/\r\nhttps://www.loomio.com/commongroundtherapy/"

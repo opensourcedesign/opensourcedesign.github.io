@@ -142,6 +142,9 @@
               {{ $val := printf "%v" . }}
               {{ $val = replace (replace $val "\r\n" "\n") "\r" "\n" }}
               {{ $val = trim $val " \t\n" }}
+              {{/* Extra spaces after list markers (*      foo) make Goldmark treat
+                   each item as an indented code block — normalize to "* foo". */}}
+              {{ $val = replaceRE `(?m)^([ \t]*[-*+])\s{2,}` `$1 ` $val }}
               {{ if $val }}
                 <div class="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-5">
                   <h2 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
