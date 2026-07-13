@@ -32,10 +32,10 @@ Before you begin, ensure you have the following installed:
 - **Hugo** (extended version recommended)
 - **Git** - [Download Git](https://git-scm.com/)
 
-That's all - **no Node.js or npm**. Local development needs no CSS build step: Tailwind utility classes are compiled in the browser by the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn). (Production deploys compile the same stylesheet ahead of time with the Tailwind CLI in CI, so visitors get a small static CSS file instead of the CDN - see `.github/workflows/hugo-build.yml`.) The two optional build tools are standalone binaries:
+That's all — **no Node.js or npm** required for everyday work. See [How the CSS Works](#how-the-css-works) for how styling is built locally vs on the live site. Two optional standalone binaries:
 
-- **[Pagefind](https://github.com/Pagefind/pagefind/releases)** (*optional*) - single binary that generates the search index; only needed to test search locally (CI downloads it automatically)
-- **[Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases)** (*optional*) - single binary; only needed to regenerate the vendored typography stylesheet, which is rare
+- **[Pagefind](https://github.com/Pagefind/pagefind/releases)** (*optional*) - generates the search index; only needed to test search locally (CI downloads it automatically)
+- **[Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases)** (*optional*) - only needed to regenerate `compiled.css` or the vendored typography stylesheet locally
 
 #### Installing Hugo
 
@@ -92,20 +92,38 @@ For other platforms, download from the [Hugo releases page](https://github.com/g
    hugo server
    ```
 
-   That's it - styling works out of the box. Locally, Tailwind classes in templates are compiled at runtime by the Play CDN, and custom styles live in `assets/css/main.css` (inlined into every page and also compiled in the browser). In CI the same `main.css` is compiled once into a static stylesheet (`assets/css/compiled.css`, gitignored) that the base template picks up automatically when present.
+   That's it — styling works out of the box. See [How the CSS Works](#how-the-css-works) for what happens behind the scenes.
 
 3. **Open your browser** at `http://localhost:1313/`
 
 #### Working on styles
 
-No build step: edit `assets/css/main.css` (custom theme, components, base styles) or add any standard Tailwind utility class to templates in `layouts/` - both take effect on the next reload with plain `hugo server`.
+No build step: edit `assets/css/main.css` (custom theme, components, base styles) or add any standard Tailwind utility class to templates in `layouts/` — both take effect on the next reload with plain `hugo server`.
 
-The only exception is `prose-*` typography classes: since the Play CDN cannot load Tailwind plugins, the `@tailwindcss/typography` styles are pre-compiled into the checked-in `assets/css/typography.css`. If you need a `prose-*` class that isn't in there yet, add it to `assets/css/typography.src.css` and regenerate with the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) (a single executable - it bundles the typography plugin, so no Node.js or npm is required):
+The only exception is `prose-*` typography classes: since the Play CDN cannot load Tailwind plugins, the `@tailwindcss/typography` styles are pre-compiled into the checked-in `assets/css/typography.css`. If you need a `prose-*` class that isn't in there yet, add it to `assets/css/typography.src.css` and regenerate with the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) (a single executable — it bundles the typography plugin, so no Node.js or npm is required):
 
 ```bash
 tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify
 # rebuilds assets/css/typography.css - commit it
 ```
+
+## How the CSS Works
+
+The site's look-and-feel comes from Tailwind utility classes in the HTML templates (`layouts/`) plus custom rules in `assets/css/main.css`. Together they are compiled into **`assets/css/compiled.css`**. That file is **not checked into Git** (it is in `.gitignore`) and must be generated before a production build.
+
+**On the deployed website**, [GitHub Actions](.github/workflows/hugo-build.yml) generate it on every deploy.
+
+**For local testing**, you have two options:
+
+1. **Just run Hugo** (`hugo server`) — no CSS build needed. If `compiled.css` is missing, [`layouts/_default/baseof.html`](layouts/_default/baseof.html) falls back to the [Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn) (loaded from [jsDelivr](https://www.jsdelivr.com/)): your browser builds the styles on the fly from the page markup and inlined `main.css`.
+2. **Match production** — compile the CSS yourself, then run Hugo:
+   ```bash
+   npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+   hugo server
+   ```
+   (Or use the [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) — no Node.js needed.)
+
+`assets/css/dark-theme.css` is always loaded as a separate file (dark-mode overrides). Article typography (`prose` classes) uses the checked-in `assets/css/typography.css` — see *Working on styles* above to regenerate it.
 
 ## Project Structure
 
@@ -119,9 +137,11 @@ opensourcedesign.github.io/
 ├── archetypes/       # Hugo content templates for new pages
 ├── assets/
 │   └── css/
-│       ├── main.css            # Custom styles (edit this!) - compiled in the browser by the Play CDN
+│       ├── main.css            # Custom styles + Tailwind theme (source for compiled.css)
+│       ├── dark-theme.css      # Dark-mode overrides (always loaded)
+│       ├── compiled.css        # Generated at build time (gitignored — see “How the CSS Works”)
 │       ├── typography.src.css  # Source/safelist for the typography (prose) bundle
-│       └── typography.css      # Pre-compiled prose styles (regenerate via the Tailwind standalone CLI, don't edit)
+│       └── typography.css      # Pre-compiled prose styles (regenerate via Tailwind CLI, don't edit)
 ├── content/          # All website content in Markdown
 │   ├── about-us/     # About, manifesto, governance, by-laws, code of conduct, how to join
 │   ├── events/       # Event announcements and write-ups
@@ -144,6 +164,7 @@ opensourcedesign.github.io/
 | `hugo server` | Start the development server with live reload |
 | `hugo --minify --gc` | Build the site for production into `public/` |
 | `pagefind --site public` | Generate the Pagefind search index (standalone binary, runs after the Hugo build) |
+| `npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify` | Build production CSS (optional locally; CI does this automatically) |
 | `tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify` | Regenerate the vendored `prose` stylesheet (standalone binary) |
 
 > **Search:** Search is a site-wide modal (opened from the header search button, or with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> or <kbd>/</kbd>), powered by [Pagefind](https://pagefind.app/). The index lives in `public/pagefind/` and is generated by running the `pagefind` binary against the built site; the Pagefind assets are lazy-loaded the first time the dialog is opened. During `hugo server` the index is not built, so the modal only returns results after a production build followed by `pagefind --site public`.
@@ -153,7 +174,7 @@ opensourcedesign.github.io/
 ## Technology Stack
 
 - **[Hugo](https://gohugo.io/)** - Fast static site generator written in Go
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework, compiled in the browser via the [Play CDN](https://tailwindcss.com/docs/installation/play-cdn) (no build step)
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework; compiled in the browser via the [Play CDN](https://tailwindcss.com/docs/installation/play-cdn) locally, or ahead of time by GitHub Actions in production (see [How the CSS Works](#how-the-css-works))
 - **[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)** - Beautiful typographic defaults for Markdown content (pre-compiled into `assets/css/typography.css`)
 - **[Inter](https://rsms.me/inter/)** - Self-hosted variable font (woff2, in `static/fonts/`)
 - **[Pagefind](https://pagefind.app/)** - Static, client-side search index generated at build time
@@ -165,8 +186,8 @@ All content lives as Markdown in `content/`. The site uses the following section
 | Section | Path | What it holds |
 |---------|------|---------------|
 | About Us | `content/about-us/` | About page, manifesto, governance, by-laws, code of conduct, how to join |
-| Events | `content/events/` | Event announcements and write-ups |
-| Jobs | `content/jobs/` | Job listings (also accepts submissions via the online form) |
+| Events | `content/events/` | Event announcements and write-ups — or use the [event form](https://opensourcedesign.net/events/event-form/) |
+| Jobs | `content/jobs/` | Job listings — or use the [job form](https://opensourcedesign.net/jobs/job-form/) |
 | Resources | `content/resources/` | Hub page with sub-pages: the curated links directory at `/resources/links/`, the bibliography at `/resources/bibliography/` (`/resources/reading/` redirects there), and community articles at `/resources/articles/` (`/articles/` redirects there) |
 | Standalone | `content/*.md` | `forum`, `imprint`, `brand`, and the homepage (`_index.md`) |
 
@@ -265,16 +286,18 @@ Content that appears on multiple pages is managed through YAML files in `data/`:
 
 ## Styling Guidelines
 
-The site uses Tailwind CSS v4 with CSS-based configuration. Locally it is compiled at runtime by the Play CDN (no build step); in CI the deploy workflows compile it once with the Tailwind CLI so production ships a static stylesheet. To modify styles:
+The site uses Tailwind CSS v4 with CSS-based configuration. See [How the CSS Works](#how-the-css-works) for the full compile/fallback pipeline. To modify styles:
 
 1. Edit `assets/css/main.css` for custom components and base styles (it supports the full Tailwind syntax, including `@apply` and `@theme`, and is the single source for both pipelines)
-2. Use Tailwind utility classes directly in HTML templates (`layouts/`)
-3. Run `hugo server` to see changes with live reload
-4. Only `prose-*` typography classes are pre-compiled - see *Working on styles* above if you need a new one
+2. Edit `assets/css/dark-theme.css` for dark-mode overrides
+3. Use Tailwind utility classes directly in HTML templates (`layouts/`)
+4. Run `hugo server` to see changes with live reload
+5. Only `prose-*` typography classes are pre-compiled - see *Working on styles* above if you need a new one
 
 Custom component classes (prefixed with `osd-`) are defined in `main.css`:
 - `.osd-card` - Card component styling
 - `.osd-pill` - Tag/badge styling
+- `.osd-btn-primary` - Primary call-to-action button
 - `.osd-prose` - Article content styling
 - `.osd-lightbox-*` - Image lightbox components
 
