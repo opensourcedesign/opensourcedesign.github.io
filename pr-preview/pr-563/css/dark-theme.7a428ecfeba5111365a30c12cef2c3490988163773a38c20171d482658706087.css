@@ -1,17 +1,17 @@
 /* Dark theme overrides — always loaded after Tailwind (see baseof.html).
    Unlayered rules with html.dark + !important so light-only utilities cannot win. */
 
-/* Light mode: slate-500 → slate-600 */
-.text-slate-500:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
+/* Light mode only: slate-500 → slate-600 */
+html:not(.dark) .text-slate-500:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
   color: var(--color-slate-600);
 }
 
 /* Surfaces */
-html.dark :is(.bg-white, .bg-slate-50):not(.osd-hero-cta):not(.osd-on-light) {
+html.dark :is(.bg-white, .bg-slate-50):not(.osd-hero-cta):not(.osd-on-light):not(:where(.osd-on-light *)) {
   background-color: var(--color-slate-900) !important;
 }
 
-html.dark .bg-slate-100:not(.osd-on-light) {
+html.dark .bg-slate-100:not(.osd-on-light):not(:where(.osd-on-light *)) {
   background-color: var(--color-slate-800) !important;
 }
 
@@ -34,20 +34,78 @@ html.dark .osd-hero-cta:hover {
 }
 
 /* Text */
-html.dark .text-slate-500:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
-  color: var(--color-slate-300);
+html.dark .text-slate-500:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]):not(:is(.osd-on-light *)) {
+  color: var(--color-slate-400) !important;
 }
 
-html.dark .text-slate-600:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
-  color: var(--color-slate-300);
+html.dark .text-slate-600:not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]):not(:is(.osd-on-light *)) {
+  color: var(--color-slate-300) !important;
 }
 
-html.dark :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-slate-700):not(.osd-hero-cta):not(.osd-on-light):not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
-  color: var(--color-slate-100);
+html.dark :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-slate-700):not(.osd-hero-cta):not(.osd-on-light):not(:is(.osd-on-light *)):not(.text-white):not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-violet"]):not([class*="text-sky"]):not([class*="text-red"]):not([class*="text-blue"]) {
+  color: var(--color-slate-100) !important;
 }
 
-html.dark .text-slate-400:not(.text-white) {
-  color: var(--color-slate-300);
+html.dark .text-slate-400:not(.text-white):not(:is(.osd-on-light *)) {
+  color: var(--color-slate-400) !important;
+}
+
+/* White preview tiles — preserve light surfaces and dark-on-light text */
+html.dark .osd-on-light {
+  background-color: #ffffff !important;
+  border-color: var(--color-slate-200) !important;
+}
+
+html.dark .osd-on-light :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-slate-700) {
+  color: var(--color-slate-900) !important;
+}
+
+html.dark .osd-on-light .text-slate-600 {
+  color: var(--color-slate-600) !important;
+}
+
+html.dark .osd-on-light :is(.text-slate-500, .text-slate-400) {
+  color: var(--color-slate-600) !important;
+}
+
+html.dark .osd-on-light .osd-muted {
+  color: var(--color-slate-600) !important;
+}
+
+html.dark .osd-on-light .bg-slate-100 {
+  background-color: var(--color-slate-100) !important;
+}
+
+html.dark .osd-on-light .osd-brand-dl:not(.osd-brand-dl--on-dark) {
+  background-color: #ffffff !important;
+  border-color: var(--color-slate-300) !important;
+  color: var(--color-slate-700) !important;
+}
+
+html.dark .osd-on-light .osd-brand-dl:not(.osd-brand-dl--on-dark):hover {
+  background-color: var(--color-slate-100) !important;
+  color: var(--color-slate-900) !important;
+}
+
+html.dark .osd-dark-panel {
+  background-color: var(--color-slate-900) !important;
+  border-color: var(--color-slate-700) !important;
+  color: var(--color-slate-50);
+}
+
+html.dark .osd-dark-panel :is(.text-slate-400, .text-slate-500) {
+  color: var(--color-slate-400) !important;
+}
+
+html.dark .osd-dark-panel .osd-brand-dl--on-dark {
+  background-color: var(--color-slate-600) !important;
+  border-color: var(--color-slate-500) !important;
+  color: var(--color-slate-50) !important;
+}
+
+html.dark .osd-dark-panel .osd-brand-dl--on-dark:hover {
+  background-color: var(--color-slate-500) !important;
+  border-color: var(--color-slate-400) !important;
 }
 
 html.dark :is(.bg-white, .bg-slate-50):not(.osd-hero-cta):not(.osd-on-light) :is(.text-slate-950, .text-slate-900, .text-slate-800, .text-slate-700) {
@@ -90,7 +148,7 @@ html.dark :is(.hover\:decoration-slate-950, .hover\:decoration-slate-900):hover 
   text-decoration-color: var(--color-slate-100);
 }
 
-html.dark :is(.border-slate-100, .border-slate-200, .border-slate-300):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+html.dark :is(.border-slate-100, .border-slate-200, .border-slate-300):not(.osd-on-light):not(:where(.osd-on-light *)):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
   border-color: var(--color-slate-700) !important;
 }
 
@@ -162,11 +220,6 @@ html.dark .toc-content a {
 html.dark .toc-content a:hover,
 html.dark .toc-content li.active > a {
   color: var(--color-slate-100) !important;
-}
-
-html.dark .osd-dark-panel {
-  background-color: var(--color-slate-900) !important;
-  color: var(--color-slate-50);
 }
 
 /* Forms */
@@ -294,7 +347,7 @@ html.dark .text-amber-700 {
   color: var(--color-amber-300);
 }
 
-html.dark .text-slate-300:not(.text-white) {
+html.dark .text-slate-300:not(.text-white):not(.osd-muted):not(:is(.osd-on-light *)) {
   color: var(--color-slate-400);
 }
 
@@ -444,4 +497,26 @@ html.dark .osd-apply-link .text-slate-400 {
 html.dark .osd-apply-link:hover .bg-slate-100 {
   background-color: var(--color-slate-900) !important;
   color: var(--color-white) !important;
+}
+
+/* Semantic text — avoids utility-class remap fights */
+html.dark .osd-muted {
+  color: var(--color-slate-300) !important;
+}
+
+html.dark .osd-section-label {
+  color: var(--color-slate-400) !important;
+}
+
+/* Brand download chips — explicit contrast on light preview tiles */
+html.dark .osd-brand-dl:not(.osd-brand-dl--on-dark) {
+  background-color: #ffffff !important;
+  border-color: var(--color-slate-400) !important;
+  color: var(--color-slate-800) !important;
+}
+
+html.dark .osd-brand-dl:not(.osd-brand-dl--on-dark):hover {
+  background-color: var(--color-slate-100) !important;
+  border-color: var(--color-slate-500) !important;
+  color: var(--color-slate-900) !important;
 }
