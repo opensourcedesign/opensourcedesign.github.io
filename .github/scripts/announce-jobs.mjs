@@ -10,7 +10,7 @@
  * Environment:
  *   MASTODON_URL           Instance base URL (e.g. https://mastodon.social).
  *   MASTODON_ACCESS_TOKEN  App token with the write:statuses scope.
- *   BLUESKY_IDENTIFIER     Account handle (e.g. opensourcedesign.bsky.social).
+ *   BLUESKY_IDENTIFIER     Account handle (e.g. opensourcedesign.net).
  *   BLUESKY_APP_PASSWORD   App password (Settings -> App passwords).
  *   BLUESKY_SERVICE        PDS base URL (default https://bsky.social).
  *   SITE_BASE_URL          Default https://opensourcedesign.net

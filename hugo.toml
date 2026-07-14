@@ -129,7 +129,7 @@ capitalizeListTitles = false
   rel = "me noopener noreferrer"
 [[params.social]]
   name = "Bluesky"
-  url = "https://bsky.app/profile/opensourcedesign.bsky.social"
+  url = "https://bsky.app/profile/opensourcedesign.net"
   rel = "noopener noreferrer"
 [[params.social]]
   name = "Open Collective"

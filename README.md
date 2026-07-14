@@ -235,7 +235,7 @@ Each platform is optional - configure its repo secrets to enable it:
 | Platform | Secrets | Where to get them |
 | -------- | ------- | ----------------- |
 | Mastodon | `MASTODON_URL`, `MASTODON_ACCESS_TOKEN` | On the account's instance: Preferences → Development → New application, scope `write:statuses`. `MASTODON_URL` is the instance base URL, e.g. `https://fosstodon.org`. |
-| Bluesky | `BLUESKY_IDENTIFIER`, `BLUESKY_APP_PASSWORD` (optional `BLUESKY_SERVICE`) | `BLUESKY_IDENTIFIER` is the handle (e.g. `opensourcedesign.bsky.social`); create the app password under Settings → Privacy and Security → App Passwords. Don't use the account password. |
+| Bluesky | `BLUESKY_IDENTIFIER`, `BLUESKY_APP_PASSWORD` (optional `BLUESKY_SERVICE`) | `BLUESKY_IDENTIFIER` is the handle (e.g. `opensourcedesign.net`); create the app password under Settings → Privacy and Security → App Passwords. Don't use the account password. |
 
 To announce a posting manually (retry, or one that predates the workflow), run *Announce new jobs on social media* from the Actions tab with the file path - there's also a dry-run option that composes the posts without publishing. Missed announcements never block a merge: the workflow only reads the repo and fails loudly in the Actions log.
 
