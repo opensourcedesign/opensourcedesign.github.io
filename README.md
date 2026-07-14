@@ -222,7 +222,7 @@ Around six weeks after publication, posters of still-open jobs get a **reminder 
 
 **Feeds:** besides the main `/jobs/feed.xml`, filtered feeds exist at `/jobs/feed-paid.xml` and `/jobs/feed-volunteer.xml` (linked from the jobs page) so people can subscribe only to the postings they care about.
 
-**Social cards:** every job page gets a generated 1200×630 Open Graph image (title, organization, paid/volunteer, deadline on a branded background) so shared links unfurl nicely. They're built by `layouts/partials/social-card.html` from `assets/images/og-card-base.png` + the Inter fonts in `assets/fonts/og/`; a posting with an explicit `image` front matter keeps that image instead.
+**Social cards:** every job page gets a generated 1200×630 Open Graph image (horizontal brand logo, title, organization, paid/volunteer, deadline on a light slate-50 background) so shared links unfurl nicely. They're built by `layouts/partials/social-card.html` from the committed `assets/images/og-card-base.png` plus the Inter fonts in `assets/fonts/og/`; Hugo composites the job-specific text at build time. A posting with an explicit `image` front matter keeps that image instead.
 
 **Content lint:** pull requests touching `content/jobs/` or `content/events/` run `content-lint.yml`, which validates front matter (required fields, status enums, ISO dates) and catches the classic Markdown pitfalls (4-space indents rendering as code blocks, `###Heading` without a space, `•` pseudo-bullets) before a broken page can be merged.
 
