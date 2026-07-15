@@ -3,9 +3,10 @@
 
   Resolves Markdown images through the assets pipeline (see resolve-image.html)
   so local raster images are served as AVIF/WebP with an original fallback,
-  carry intrinsic width/height (no layout shift) and content-hashed URLs.
-  External images and SVGs fall back gracefully. Also adds lazy loading and
-  LCP-aware priority for the first image on the page.
+  responsive srcset variants (phones don't download 1600px images), intrinsic
+  width/height (no layout shift) and content-hashed URLs. External images and
+  SVGs fall back gracefully. Also adds lazy loading and LCP-aware priority for
+  the first image on the page.
 */}}
 
 {{ $src := .Destination }}
@@ -16,15 +17,20 @@
      with a high fetch priority, and lazy-load every image after it. */}}
 {{ $isFirst := eq .Ordinal 0 }}
 
-{{ $r := partial "resolve-image.html" (dict "src" $src) }}
+{{ $r := partial "resolve-image.html" (dict "src" $src "page" .Page) }}
+
+{{/* Content columns cap at max-w-4xl (56rem); images never render wider. */}}
+{{ $sizes := "(min-width: 56rem) 56rem, 100vw" }}
 
 {{/* A <figure> is only meaningful with a caption; without a title we emit the
      <picture> directly so we don't litter the DOM with captionless figures. */}}
 {{ if $title }}
   <figure class="my-6">
     <picture>
-      {{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}
-      {{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}
+      {{ if $r.avifSet }}<source type="image/avif" srcset="{{ $r.avifSet }}" sizes="{{ $sizes }}" />
+      {{ else }}{{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}{{ end }}
+      {{ if $r.webpSet }}<source type="image/webp" srcset="{{ $r.webpSet }}" sizes="{{ $sizes }}" />
+      {{ else }}{{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}{{ end }}
       <img
         src="{{ $r.src }}"
         alt="{{ $alt }}"
@@ -41,8 +47,10 @@
   </figure>
 {{ else }}
   <picture>
-    {{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}
-    {{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}
+    {{ if $r.avifSet }}<source type="image/avif" srcset="{{ $r.avifSet }}" sizes="{{ $sizes }}" />
+    {{ else }}{{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}{{ end }}
+    {{ if $r.webpSet }}<source type="image/webp" srcset="{{ $r.webpSet }}" sizes="{{ $sizes }}" />
+    {{ else }}{{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}{{ end }}
     <img
       src="{{ $r.src }}"
       alt="{{ $alt }}"

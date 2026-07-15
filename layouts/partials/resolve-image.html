@@ -1,15 +1,17 @@
 {{- /*
   resolve-image.html - Resolve an image reference to processed asset(s).
 
-  Looks the path up in the assets pipeline first. For processable raster
-  stills (JPEG/PNG) it emits modern AVIF + WebP derivatives plus a resized
-  original as the universal fallback, all with intrinsic dimensions and
-  content-hashed URLs for long-term caching. Animated GIFs keep their single
-  source (no re-encode). SVGs, externals and anything not found fall back to
-  the original reference untouched, so nothing ever breaks.
+  Looks the path up in the assets pipeline first (then in the owning page's
+  bundle when a page is given). For processable raster stills (JPEG/PNG) it
+  emits modern AVIF + WebP derivatives at several widths (responsive srcset)
+  plus a resized original as the universal fallback, all with intrinsic
+  dimensions and content-hashed URLs for long-term caching. Animated GIFs
+  keep their single source (no re-encode). SVGs, externals and anything not
+  found fall back to the original reference untouched, so nothing ever breaks.
 
   Input  (dict):
     src      – the image reference (required)
+    page     – owning page; enables page-bundle resource lookup (optional)
     maxWidth – max width in px before down-scaling raster images (default 1600)
 
   Returns (dict):
@@ -18,16 +20,25 @@
     height   – intrinsic height (int) or "" when unknown
     webp     – WebP source URL  ("" when not applicable)
     avif     – AVIF source URL  ("" when not applicable)
+    webpSet  – WebP srcset with width descriptors ("" when single-width)
+    avifSet  – AVIF srcset with width descriptors ("" when single-width)
     external – true for http(s)/protocol-relative/data URIs
 */ -}}
 {{- $src := .src -}}
+{{- $page := .page -}}
 {{- $maxWidth := .maxWidth | default 1600 -}}
+{{- $variantWidths := slice 480 960 1600 -}}
 {{- $external := or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "data:") -}}
-{{- $out := dict "src" $src "width" "" "height" "" "webp" "" "avif" "" "external" $external -}}
+{{- $out := dict "src" $src "width" "" "height" "" "webp" "" "avif" "" "webpSet" "" "avifSet" "" "external" $external -}}
 {{- if not $external -}}
-  {{- with resources.Get (strings.TrimPrefix "/" $src) -}}
+  {{- $res := resources.Get (strings.TrimPrefix "/" $src) -}}
+  {{- if and (not $res) $page -}}
+    {{- with $page.Resources -}}{{- $res = .GetMatch (strings.TrimPrefix "./" $src) -}}{{- end -}}
+  {{- end -}}
+  {{- with $res -}}
     {{- if reflect.IsImageResourceProcessable . -}}
       {{- if in (slice "jpeg" "png") .MediaType.SubType -}}
+        {{- $orig := . -}}
         {{- $resize := gt .Width $maxWidth -}}
         {{- $base := . -}}
         {{- $pfx := "" -}}
@@ -37,14 +48,32 @@
         {{- end -}}
         {{- $webp := .Process (printf "%swebp q80" $pfx) -}}
         {{- $avif := .Process (printf "%savif q55" $pfx) -}}
-        {{- $out = dict "src" $base.RelPermalink "width" $base.Width "height" $base.Height "webp" $webp.RelPermalink "avif" $avif.RelPermalink "external" false -}}
+        {{- /* Responsive variants: each listed width strictly below the
+               fallback width, plus the fallback itself as the largest. */ -}}
+        {{- $webpSet := slice -}}
+        {{- $avifSet := slice -}}
+        {{- range $w := $variantWidths -}}
+          {{- if lt $w $base.Width -}}
+            {{- $vw := $orig.Process (printf "resize %dx webp q80" $w) -}}
+            {{- $va := $orig.Process (printf "resize %dx avif q55" $w) -}}
+            {{- $webpSet = $webpSet | append (printf "%s %dw" $vw.RelPermalink $vw.Width) -}}
+            {{- $avifSet = $avifSet | append (printf "%s %dw" $va.RelPermalink $va.Width) -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $webpSetStr := "" -}}
+        {{- $avifSetStr := "" -}}
+        {{- if $webpSet -}}
+          {{- $webpSetStr = delimit ($webpSet | append (printf "%s %dw" $webp.RelPermalink $base.Width)) ", " -}}
+          {{- $avifSetStr = delimit ($avifSet | append (printf "%s %dw" $avif.RelPermalink $base.Width)) ", " -}}
+        {{- end -}}
+        {{- $out = dict "src" $base.RelPermalink "width" $base.Width "height" $base.Height "webp" $webp.RelPermalink "avif" $avif.RelPermalink "webpSet" $webpSetStr "avifSet" $avifSetStr "external" false -}}
       {{- else -}}
         {{- /* Processable but not JPEG/PNG (e.g. animated GIF): keep as-is, just expose dimensions */ -}}
-        {{- $out = dict "src" .RelPermalink "width" .Width "height" .Height "webp" "" "avif" "" "external" false -}}
+        {{- $out = dict "src" .RelPermalink "width" .Width "height" .Height "webp" "" "avif" "" "webpSet" "" "avifSet" "" "external" false -}}
       {{- end -}}
     {{- else -}}
       {{- /* SVG / ICO / non-processable: publish as-is, dimensions unknown */ -}}
-      {{- $out = dict "src" .RelPermalink "width" "" "height" "" "webp" "" "avif" "" "external" false -}}
+      {{- $out = dict "src" .RelPermalink "width" "" "height" "" "webp" "" "avif" "" "webpSet" "" "avifSet" "" "external" false -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
