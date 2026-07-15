@@ -13,6 +13,7 @@ tags: [vue, decentralization, javascript, frontend, lead, basic income]
 status: closed
 compensation: paid, fulltime, negotiated
 date_posted: 2016-10-10
+how_to_apply: Email hi@okturtles.com with your technical background, why you are applying, and links to at least two software projects (one in JavaScript).
 ---
 
 **This is a copy of [our official listing](https://groupincome.org/positions/). Please see that for most up-to-date info!**
@@ -50,7 +51,6 @@ You'll work with a team of experts to finish [the prototype](https://github.com/
 
 Negotiated hourly rate, based on experience.
 
-<a name="GIG"></a>
 #### Perk: Membership in the Group Income Developers Group
 
 After receiving the position and making at least one successful pull request, you'll be granted membership in a Group Income Group (GIG) that's specially purposed for Group Income contributors and is sustained by voluntary contributions from other GIGs. Members retain membership for one year after their most recent contribution, unless voted out ("disowned") by the existing members. Any funds you receive from this group are entirely separate and unrelated to any compensation you receive for contract work.
@@ -72,7 +72,6 @@ Finally, **we recommend** (but don't require) sending a DM to [@Group_Income](ht
 
 --------
 
-<a name="volunteer"></a>
 ### Volunteer
 
 Most of the people who work on Group Income do so as volunteers. If you'd like to join our volunteer team, [get in touch with us](https://groupincome.org/). We're looking for designers, developers, and writers.

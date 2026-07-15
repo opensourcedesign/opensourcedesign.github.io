@@ -13,6 +13,7 @@ tags: [icons, agriculture, svg]
 status: solved
 compensation: gratis
 date_posted: 2015-09-26
+how_to_apply: Contact rory@openfarm.cc, roryaronson, http://slack.openfarm.cc
 ---
 
 Hi!

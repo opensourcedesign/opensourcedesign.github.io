@@ -12,6 +12,7 @@ tags: [ui, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-08-10
+how_to_apply: Contact via GitHub (navit-gps) — github ( navit-gps ), #navit on Freenode
 ---
 
 Navit is the opensource, vector based navigation software, running on almost any device, from Tomtom to the laster Android phone.

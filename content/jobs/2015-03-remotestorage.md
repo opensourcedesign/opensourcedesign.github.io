@@ -10,6 +10,7 @@ tags: [ui, ux, frontend, web]
 status: solved
 compensation: unspecified
 date_posted: 2015-03-22
+how_to_apply: Email mail@5apps.com
 ---
 
 This is a freelance gig for improving the user interface and experience of a

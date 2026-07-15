@@ -17,7 +17,7 @@ date: '2017-02-27T13:44:21.012Z'
 The project is an culinary APP, where the users can post and serch culinary
 recipes. The differential in this APP is that the user can search recipes by
 the ingredients they have at home.  Some like: "What can I cook with
-<this things...>".
+these ingredients...".
 
 We already have screen prototypes (are just six screens), but we want someone
 who let this beautiful :)

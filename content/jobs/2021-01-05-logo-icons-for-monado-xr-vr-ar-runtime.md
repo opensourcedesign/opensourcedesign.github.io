@@ -21,11 +21,11 @@ Right now we're using a variety of placeholders for the logo (in some places a s
 
 It should stand out, look sleek/futuristic, and also not be tied to a specific tech (head-mounted displays, etc) since wide-ranging hardware support and future development is anticipated. The payment is being funded by Collabora's marketing department, so it should be marketing-friendly and appealing, of course.
 
-Of course, as part of the Monado project, involvement is subject to the FreeDesktop.org code of conduct: <https://gitlab.freedesktop.org/monado/monado#contributing-code-of-conduct>
+Of course, as part of the Monado project, involvement is subject to the FreeDesktop.org code of conduct: [gitlab.freedesktop.org/monado/monado#contributing-code-of-conduct](https://gitlab.freedesktop.org/monado/monado#contributing-code-of-conduct)
 
 Links:
-  - Repo: <https://gitlab.freedesktop.org/monado/monado>
-  - Tracking issue, with our existing sketches - feel free to build on them: <https://gitlab.freedesktop.org/monado/monado/-/issues/110>
+  - Repo: [gitlab.freedesktop.org/monado/monado](https://gitlab.freedesktop.org/monado/monado)
+  - Tracking issue, with our existing sketches - feel free to build on them: [gitlab.freedesktop.org/monado/monado/-/issues/110](https://gitlab.freedesktop.org/monado/monado/-/issues/110)
 
 I brain-dumped some key points the logo might flow from below.
 

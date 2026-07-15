@@ -22,7 +22,8 @@ The app’s current main developer is currently working on **AntennaPod version 
 
 The AntennaPod lead developer ByteHamster & long-standing active community member Keunes will be involved in the process. Together they developed the [design brief](https://antennapod.org/designbrief) - check it out if you're interested!
 
-**Relevant links**<br>
-Twitter: [@AntennaPod](https://twitter.com/antennapod)<br>
-GitHub: [github.com/antennapod/AntennaPod](https://www.github.com/antennapod/AntennaPod)<br>
-Design brief: [antennapod.org/designbrief](https://antennapod.org/designbrief)
+**Relevant links**
+
+- Twitter: [@AntennaPod](https://twitter.com/antennapod)
+- GitHub: [github.com/antennapod/AntennaPod](https://www.github.com/antennapod/AntennaPod)
+- Design brief: [antennapod.org/designbrief](https://antennapod.org/designbrief)

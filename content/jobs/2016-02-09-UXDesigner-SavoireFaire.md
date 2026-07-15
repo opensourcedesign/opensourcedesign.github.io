@@ -14,6 +14,7 @@ tags: [quebec, ux]
 status: solved
 compensation: full time
 date_posted: 2016-02-09
+how_to_apply: Contact via GitHub (savoirfairelinux) — https://jobs.savoirfairelinux.com/#uxui-designer
 ---
 At Savoir-faire Linux design and free software go hand in hand, for we understand they are both basically collaborative, participatory and open processes.
 UX design in particular is a driving force of our projects. As a UX/UI designer we want you to get actively involved in the project and share your ideas.

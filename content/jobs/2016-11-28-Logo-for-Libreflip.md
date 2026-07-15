@@ -11,6 +11,7 @@ tags: [logo]
 status: solved
 compensation: gratis / maybe some money later on when funding has been secured.
 date_posted: 2016-11-28
+how_to_apply: Contact ijon@c-base.org, hanging out on freenode, usually in #c-base
 ---
 I need a Logo for an opensource pageturning  Bookscanner that I will be building.
 The name of the project is "Libreflip"

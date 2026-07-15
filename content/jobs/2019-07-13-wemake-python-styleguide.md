@@ -11,15 +11,17 @@ tags: [logo]
 status: closed
 compensation: gratis
 date_posted: 2019-07-13
+how_to_apply: Contact github, @sobolevn
 ---
 
 We are working on the strictest `python` linter ever.
 And we already have a good logo:
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/docs/_static/logo.png"
-       alt="wemake-python-styleguide logo">
-</p>
+
+
+![wemake-python-styleguide logo](https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/docs/_static/logo.png)
+
+
 
 But, there are some things that I dislike in it:
 1. Quality. It is low

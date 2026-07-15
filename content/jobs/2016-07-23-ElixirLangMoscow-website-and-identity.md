@@ -12,6 +12,7 @@ tags: [ui, branding, logo]
 status: solved
 compensation: gratis
 date_posted: 2016-07-23
+how_to_apply: Contact mail@sobolevn.me
 ---
 
 We are launching first [`Elixir`](http://elixir-lang.org/) meetups in Russia.

@@ -12,6 +12,7 @@ tags: [branding, logo]
 status: closed
 compensation: gratis or $120 total
 date_posted: 2016-07-29
+how_to_apply: Contact rhodey@anhonesteffort.org, @NotRhodey
 ---
 The Radio Witness Project began in 2015 with the goal of making police radio broadcasts more accessible to journalists.
 On July 20th the site was made public but we're avoiding media attention for 2 more weeks to allow for some final polishing.

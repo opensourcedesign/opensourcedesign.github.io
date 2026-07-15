@@ -12,6 +12,7 @@ tags: [ui, data visualization, javascript, react]
 status: solved
 compensation: part-time / 18hrs/week
 date_posted: 2015-11-25
+how_to_apply: Contact joachim@jolocom.com
 ---
 FRONTEND DEVELOPER / DESIGNER (F/M)
 

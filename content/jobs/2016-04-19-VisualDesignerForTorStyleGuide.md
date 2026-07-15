@@ -11,6 +11,7 @@ tags: [branding, visual design]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2016-04-19
+how_to_apply: Contact UX@simplysecure.org
 ---
 The Tor Project is seeking to create a visual and typographic style guide to harmonize and professionalize the presentation of its various efforts.
 

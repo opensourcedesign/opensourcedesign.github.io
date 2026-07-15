@@ -11,6 +11,7 @@ org_url: https://github.com/emilyhorsman/codeofconductlink
 tags: [ui, branding, logo]
 status: solved
 compensation: gratis
+how_to_apply: See https://github.com/emilyhorsman/codeofconductlink or the description below
 ---
 
 Code of Conduct Link is a way of creating and monitoring a list of projects that have a Code of Conduct, and check for a series of diversity related facts on the project.

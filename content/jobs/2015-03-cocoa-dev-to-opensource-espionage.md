@@ -10,6 +10,7 @@ tags: [macos, security]
 status: solved
 compensation: negotiated hourly rate
 date_posted: 2015-03-18
+how_to_apply: Contact contact at taoeffect dot com
 ---
 
 ## Toward Sustainable Open Source Development. Cocoa Developer Wanted.

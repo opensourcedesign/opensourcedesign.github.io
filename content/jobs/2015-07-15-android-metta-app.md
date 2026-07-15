@@ -11,6 +11,7 @@ tags: [ui, branding, typography]
 status: solved
 compensation: gratis
 date_posted: 2015-07-15
+how_to_apply: Contact tord.dellsen@gmail.com
 ---
 
 The Metta Center for Nonviolence is looking for a designer who want to help out with a free open source software app project for Android

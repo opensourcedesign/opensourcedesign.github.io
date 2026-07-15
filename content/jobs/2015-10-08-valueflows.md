@@ -12,6 +12,7 @@ tags: [visual design, economic flows, data visualization, icons]
 status: solved
 compensation: gratis
 date_posted: 2015-10-08
+how_to_apply: Contact via GitHub (valueflows) — ahdinosaur on github
 ---
 
 Hey. =^.^=

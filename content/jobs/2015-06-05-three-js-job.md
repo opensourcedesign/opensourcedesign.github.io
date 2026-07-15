@@ -11,6 +11,7 @@ tags: [three.js, 3d, webgl, design, branding, architecture]
 status: solved
 compensation: salary depending on skill level and experience
 date_posted: '2015-06-05'
+how_to_apply: Contact via GitHub (CrasHog) — email, github
 ---
 
 We are looking to bring a developer who specializes WebGL/Three.js on board to help us build out our new project. It's a great opportunity to work in a new and exciting space, where art, design, technology and fashion meet.

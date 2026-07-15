@@ -10,6 +10,7 @@ tags: [ui]
 status: solved
 compensation: 5k - 10k fixed bid
 date_posted: 2016-10-13
+how_to_apply: See the GitHub repository (TheTorProject) or description below
 ---
 
 The [Open Observatory of Network Interference (OONI)](https://ooni.torproject.org),

@@ -13,6 +13,7 @@ tags: [illustration]
 status: solved
 compensation: Billable hours paid up to 2 000€, including meetings.
 date_posted: 2019-09-27
+how_to_apply: Contact sajolida@pimienta.org
 ---
 
 Tails, a portable operating system that protects your privacy and avoids

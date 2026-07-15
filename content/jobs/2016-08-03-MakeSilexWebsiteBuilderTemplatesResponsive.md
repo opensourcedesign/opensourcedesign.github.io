@@ -11,6 +11,7 @@ tags: [web design, design]
 status: solved
 compensation: gratis / we provide 1 to 1 support
 date_posted: 2016-08-03
+how_to_apply: Contact via GitHub (silexlabs) — contact at silexlabs.org
 ---
 [Silex](http://www.silex.me/) is a free and open source website builder (community driven), that can be used directly in a browser. It is an alternative to Wix, Squarespace, etc.
 

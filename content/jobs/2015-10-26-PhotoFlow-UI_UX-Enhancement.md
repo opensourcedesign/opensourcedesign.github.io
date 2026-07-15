@@ -12,6 +12,7 @@ tags: [ui, usability]
 status: solved
 compensation: gratis
 date_posted: 2015-10-26
+how_to_apply: Contact photofloweditor@gmail.com
 ---
 PhotoFlow is a quite recent image editor project, still in its early phases of development.
 

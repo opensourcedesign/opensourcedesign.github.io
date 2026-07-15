@@ -14,6 +14,7 @@ tags: [web design, ux, ui, design]
 status: solved
 compensation: gratis
 date_posted: 2017-01-14
+how_to_apply: Contact xaviju@gmail.com
 ---
 
 Inkscape Open Symbols are open source SVG symbol sets that can be used as Inkscape symbols.

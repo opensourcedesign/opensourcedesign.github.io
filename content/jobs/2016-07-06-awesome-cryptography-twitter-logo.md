@@ -11,6 +11,7 @@ tags: [logo]
 status: solved
 compensation: gratis / twitter-account credit
 date_posted: '2016-07-06'
+how_to_apply: Contact via GitHub (https://github.com/sobolevn/awesome-cryptography) — https://github.com/sobolevn
 ---
 
 [`awesome-cryptography`](https://github.com/sobolevn/awesome-cryptography) is a curated list of cryptography resources and links.
