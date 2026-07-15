@@ -77,7 +77,7 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           pages-base-url: ${{ env.PREVIEW_SITE_URL }}
-          wait-for-pages-deployment: true
+          wait-for-pages-deployment: false
           action: deploy
 
       - name: Verify GitHub Pages source branch

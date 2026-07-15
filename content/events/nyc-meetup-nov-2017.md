@@ -76,7 +76,7 @@ To contribute to the project, join the #opendesignkit channel on the [Open Desig
 
 Slides:
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRLa8NmIL2nBtDBJpu3oud_zdEcZlrBIYVHrxrxP7bEEJWEPYM4jsP_WGKDvG788DbMcw6SU4f2MyCJ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[View the Open Design Kit presentation on Google Slides](https://docs.google.com/presentation/d/e/2PACX-1vRLa8NmIL2nBtDBJpu3oud_zdEcZlrBIYVHrxrxP7bEEJWEPYM4jsP_WGKDvG788DbMcw6SU4f2MyCJ/pub?start=false&loop=false&delayms=3000)
 
 ## Next meetup
 
