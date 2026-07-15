@@ -19,12 +19,42 @@
 
 {{ $r := partial "resolve-image.html" (dict "src" $src "page" .Page) }}
 
+{{/* Animated GIFs with pre-transcoded video siblings (same path, .webm/.mp4)
+     are served as a muted looping <video> - a fraction of the GIF's bytes.
+     autoplay is skipped for prefers-reduced-motion users via main.js;
+     controls stay available either way. The GIF remains the <img> for
+     no-sibling GIFs and RSS readers. */}}
+{{ $gifVideo := dict }}
+{{ if and (not $r.external) (strings.HasSuffix (lower $src) ".gif") }}
+  {{ $stem := strings.TrimSuffix ".gif" (strings.TrimPrefix "/" (lower $src)) }}
+  {{ $webm := resources.Get (printf "%s.webm" $stem) }}
+  {{ $mp4 := resources.Get (printf "%s.mp4" $stem) }}
+  {{ if or $webm $mp4 }}
+    {{ $gifVideo = dict "webm" $webm "mp4" $mp4 }}
+  {{ end }}
+{{ end }}
+
 {{/* Content columns cap at max-w-4xl (56rem); images never render wider. */}}
 {{ $sizes := "(min-width: 56rem) 56rem, 100vw" }}
 
-{{/* A <figure> is only meaningful with a caption; without a title we emit the
-     <picture> directly so we don't litter the DOM with captionless figures. */}}
-{{ if $title }}
+{{ if $gifVideo }}
+  <figure class="my-6">
+    <video
+      class="mx-auto block rounded-lg shadow-sm"
+      autoplay loop muted playsinline
+      preload="metadata"
+      data-gif-video
+      {{ with $r.width }}width="{{ . }}"{{ end }}
+      {{ with $r.height }}height="{{ . }}"{{ end }}
+      aria-label="{{ $alt }}"
+    >
+      {{ with $gifVideo.webm }}<source src="{{ .RelPermalink }}" type="video/webm" />{{ end }}
+      {{ with $gifVideo.mp4 }}<source src="{{ .RelPermalink }}" type="video/mp4" />{{ end }}
+      <img src="{{ $r.src }}" alt="{{ $alt }}" loading="lazy" decoding="async" {{ with $r.width }}width="{{ . }}"{{ end }} {{ with $r.height }}height="{{ . }}"{{ end }} />
+    </video>
+    {{ with $title }}<figcaption class="mt-2 text-center text-sm text-slate-500">{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ else if $title }}
   <figure class="my-6">
     <picture>
       {{ if $r.avifSet }}<source type="image/avif" srcset="{{ $r.avifSet }}" sizes="{{ $sizes }}" />
