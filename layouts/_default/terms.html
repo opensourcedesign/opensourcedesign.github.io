@@ -36,7 +36,7 @@
               <li class="topic-item" data-name="{{ .Page.Title | lower }}">
                 <a class="inline-flex items-baseline gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .Page.RelPermalink }}">
                   {{ .Page.Title }}
-                  <span class="text-xs tabular-nums text-slate-400">{{ .Count }}</span>
+                  <span class="text-xs tabular-nums text-slate-500">{{ .Count }}</span>
                 </a>
               </li>
             {{ end }}
@@ -58,13 +58,13 @@
         <div id="topics-directory">
           {{ range $letter, $entries := $groups }}
             <section class="topic-group mt-8" aria-label="Topics starting with {{ $letter }}">
-              <h3 class="text-sm font-bold text-slate-400" aria-hidden="true">{{ $letter }}</h3>
+              <p class="text-sm font-bold text-slate-400" aria-hidden="true">{{ $letter }}</p>
               <ul class="mt-2 gap-x-10 sm:columns-2 lg:columns-3" role="list">
                 {{ range $entries }}
                   <li class="topic-item break-inside-avoid py-1 text-sm" data-name="{{ .Page.Title | lower }}">
                     <a class="group inline-flex items-baseline gap-1.5 font-medium text-slate-700 transition hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .Page.RelPermalink }}">
                       <span class="underline decoration-slate-300 underline-offset-4 transition group-hover:decoration-slate-950">{{ .Page.Title }}</span>
-                      <span class="text-xs tabular-nums text-slate-400">{{ .Count }}</span>
+                      <span class="text-xs tabular-nums text-slate-500">{{ .Count }}</span>
                     </a>
                   </li>
                 {{ end }}

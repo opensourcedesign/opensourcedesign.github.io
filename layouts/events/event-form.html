@@ -27,6 +27,16 @@
         <span>Please read our <a class="font-semibold underline decoration-amber-400 underline-offset-4 transition hover:decoration-amber-800" href="{{ partial "site-path.html" "/about-us/code-of-conduct/" }}">Code of Conduct</a> before submitting.</span>
       </p>
 
+      {{/* The form is fully JS-driven; give no-JS visitors a working path. */}}
+      <noscript>
+        <p class="mt-10 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          This form needs JavaScript. Without it, you can still submit an event by
+          <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.repoURL }}/new/{{ .Site.Params.repoBranch | default "master" }}/content/events" rel="noopener noreferrer">adding a Markdown file to <code>content/events/</code> on GitHub</a>
+          (copy an existing event as a template)
+          or by asking for help on <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.forumURL }}" rel="noopener noreferrer">the forum</a>.
+        </p>
+      </noscript>
+
       {{/* Form */}}
       <form id="osd-event-form" class="mt-10 space-y-12 border-t border-slate-200 pt-10" novalidate>
         {{/* Event Section */}}
@@ -218,7 +228,7 @@
           if (outBody) outBody.innerHTML = bodyHtml || '';
           if (outExtra) outExtra.innerHTML = extraHtml || '';
           if (out) out.hidden = false;
-          out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          out.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         }
 
         function getRadio(name) {

@@ -27,6 +27,16 @@
         <span>Please read our <a class="font-semibold underline decoration-amber-400 underline-offset-4 transition hover:decoration-amber-800" href="{{ partial "site-path.html" "/about-us/code-of-conduct/" }}">Code of Conduct</a> before submitting.</span>
       </p>
 
+      {{/* The form is fully JS-driven; give no-JS visitors a working path. */}}
+      <noscript>
+        <p class="mt-10 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          This form needs JavaScript. Without it, you can still post a job by
+          <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.repoURL }}/new/{{ .Site.Params.repoBranch | default "master" }}/content/jobs" rel="noopener noreferrer">adding a Markdown file to <code>content/jobs/</code> on GitHub</a>
+          (copy an <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.jobsRepoURL }}" rel="noopener noreferrer">existing posting</a> as a template)
+          or by asking for help on <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.forumURL }}" rel="noopener noreferrer">the forum</a>.
+        </p>
+      </noscript>
+
       {{/* Form */}}
       <form id="osd-job-form" class="mt-10 space-y-12 border-t border-slate-200 pt-10" novalidate>
         {{/* Project Section */}}
@@ -542,7 +552,7 @@
           if (outBody) outBody.innerHTML = bodyHtml || '';
           if (outExtra) outExtra.innerHTML = extraHtml || '';
           if (out) out.hidden = false;
-          out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          out.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         }
 
         // Minimal front-matter reader for prefilling the edit form. Handles the
@@ -1171,17 +1181,30 @@
           // context, so left in place the overlay would paint below the sticky
           // site header regardless of its own z-index.
           document.body.appendChild(pv);
+          // Everything else on the page is made inert while the dialog is
+          // open, so Tab and screen-reader navigation stay inside it.
+          function setBackgroundInert(on) {
+            Array.prototype.forEach.call(document.body.children, function (el) {
+              if (el === pv || /^(script|style|link)$/i.test(el.tagName)) return;
+              if (on) el.setAttribute('inert', '');
+              else el.removeAttribute('inert');
+            });
+          }
           pvBtn.addEventListener('click', function () {
             renderPreview();
             pv.hidden = false;
             pv.scrollTop = 0;
             pvBtn.setAttribute('aria-expanded', 'true');
             document.body.style.overflow = 'hidden';
+            setBackgroundInert(true);
+            if (pvClose) pvClose.focus();
           });
           function closePreview() {
             pv.hidden = true;
             pvBtn.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
+            setBackgroundInert(false);
+            pvBtn.focus();
           }
           if (pvClose) pvClose.addEventListener('click', closePreview);
           document.addEventListener('keydown', function (e) {

@@ -24,18 +24,22 @@
   var btn = document.getElementById('scroll-to-top');
   if (btn) {
     var threshold = 400;
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
     function updateBtn() {
       btn.classList.toggle('visible', window.scrollY > threshold);
     }
     window.addEventListener('scroll', updateBtn, { passive: true });
     btn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // CSS `scroll-behavior` doesn't govern programmatic scrolls, so honor
+      // prefers-reduced-motion here explicitly.
+      window.scrollTo({ top: 0, behavior: reducedMotion && reducedMotion.matches ? 'auto' : 'smooth' });
     });
     updateBtn();
   }
 
-  // Close mobile menu on navigation
-  document.querySelectorAll('details').forEach(function (d) {
+  // Close the mobile menu on navigation. Scoped to the header so <details>
+  // used for content disclosure (FAQs etc.) don't collapse on link clicks.
+  document.querySelectorAll('header details').forEach(function (d) {
     d.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         d.removeAttribute('open');

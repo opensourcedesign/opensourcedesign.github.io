@@ -109,16 +109,20 @@
 }
 
 @layer components {
-  /* Scroll-to-top button visibility (toggled via JS) */
+  /* Scroll-to-top button visibility (toggled via JS). `visibility` keeps the
+     hidden button out of the tab order, delayed so the fade-out still runs. */
   .scroll-to-top {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 200ms ease-in-out;
+    visibility: hidden;
+    transition: opacity 200ms ease-in-out, visibility 0s linear 200ms;
   }
 
   .scroll-to-top.visible {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
   }
 }
 
