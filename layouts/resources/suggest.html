@@ -4,7 +4,7 @@
       <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
         <a class="transition hover:text-slate-900" href="{{ partial "site-path.html" "/resources/" }}">Resources</a>
         <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-        <span class="font-medium text-slate-700" aria-current="page">Suggest a resource</span>
+        <span class="font-medium text-slate-700 dark:text-slate-300" aria-current="page">Suggest a resource</span>
       </nav>
       <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
       <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ .Description }} Suggestions are reviewed by our community moderators before they appear on the site.</p>
@@ -13,17 +13,17 @@
     <form id="osd-resource-form" class="mt-10 space-y-6 border-t border-slate-200 pt-10" novalidate>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div class="space-y-2">
-          <label class="text-sm font-medium text-slate-700" for="name">Name <span class="text-red-500">*</span></label>
+          <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="name">Name <span class="text-red-500">*</span></label>
           <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="name" name="name" placeholder="e.g., Penpot" required />
         </div>
         <div class="space-y-2">
-          <label class="text-sm font-medium text-slate-700" for="url">URL <span class="text-red-500">*</span></label>
+          <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="url">URL <span class="text-red-500">*</span></label>
           <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="url" name="url" type="url" placeholder="https://…" required />
         </div>
       </div>
 
       <div class="space-y-2">
-        <label class="text-sm font-medium text-slate-700" for="category">Category <span class="text-red-500">*</span></label>
+        <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="category">Category <span class="text-red-500">*</span></label>
         <select class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="category" name="category" required>
           {{ range hugo.Data.resources }}
             <option value="{{ .id }}">{{ .title }}</option>
@@ -33,12 +33,12 @@
       </div>
 
       <div class="space-y-2">
-        <label class="text-sm font-medium text-slate-700" for="description">Short description <span class="text-slate-400">(optional)</span></label>
+        <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="description">Short description <span class="text-slate-400">(optional)</span></label>
         <textarea class="min-h-24 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="description" name="description" maxlength="300" placeholder="One or two sentences on what it is and why it's useful."></textarea>
       </div>
 
       <div class="space-y-2">
-        <label class="text-sm font-medium text-slate-700" for="email">Your email <span class="text-slate-400">(optional, never published)</span></label>
+        <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="email">Your email <span class="text-slate-400">(optional, never published)</span></label>
         <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="email" name="email" type="email" placeholder="you@example.org" />
         <p class="text-xs text-slate-500">We'll let you know when your suggestion is published.</p>
       </div>
@@ -85,6 +85,10 @@
         var outBody = document.getElementById('osd-result-body');
         var submitBtn = document.getElementById('osd-submit');
         if (!form) return;
+
+        function escHTML(s) {
+          return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
 
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
@@ -136,7 +140,7 @@
             if (resp.ok && json && json.ok && json.pr_url) {
               if (note) note.textContent = 'Submitted.';
               if (outTitle) outTitle.textContent = 'Thanks - suggestion received';
-              if (outBody) outBody.innerHTML = 'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>';
+              if (outBody) outBody.innerHTML = 'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + escHTML(json.pr_url) + '" target="_blank" rel="noopener noreferrer">' + escHTML(json.pr_url) + '</a>';
               if (out) out.hidden = false;
               out.scrollIntoView({ behavior: 'smooth', block: 'start' });
               form.reset();

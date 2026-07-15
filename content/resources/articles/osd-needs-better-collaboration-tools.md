@@ -31,7 +31,7 @@ Let's have a look at some other characteristics of open source software:
 This raises thought-provoking questions often overlooked in discussions about open source design: is design even needed in open source software? If the end user and creator are the same kind of person, then the design is already user-centric. And should design follow the same model as open source development, in which anyone can make a pull request? As we all know, on the internet, nobody knows that you are a dog! This can be a problem because design is harder to judge than code.
 
 <figure>
-  <a href="https://www.publicdomainpictures.net/view-image.php?image=174322&picture=dog-using-laptop-computer"><img src="/images/articles/dog.png"></a>
+  <a href="https://www.publicdomainpictures.net/view-image.php?image=174322&picture=dog-using-laptop-computer"><img src="/images/articles/dog.png" alt="Dog using a laptop computer"></a>
   <figcaption>Photo credits: Derivative of photo by <a href="https://www.zazzle.com/roughcollie*">Karen Arnold.</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Public Domain.</a></figcaption>
 </figure>
 

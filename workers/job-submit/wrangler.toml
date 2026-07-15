@@ -11,9 +11,9 @@ GITHUB_REPO = "opensourcedesign.github.io"
 GITHUB_BRANCH = "master"
 CONTENT_DIR = "content/jobs"
 CONTENT_DIR_EVENTS = "content/events"
-# Comma-separated list of allowed browser origins for CORS. The first entry is
-# used as the default; a request whose Origin matches any entry is echoed back.
-ALLOWED_ORIGIN = "https://opensourcedesign.net,https://opensourcedesign.github.io,http://localhost:1313"
+# Comma-separated browser origins allowed for CORS on POST /submit and GET /forum.
+# PR previews live under https://opensourcedesign.net/pr-preview/… (same origin).
+ALLOWED_ORIGIN = "https://opensourcedesign.net,https://opensourcedesign.github.io,http://localhost:1313,http://127.0.0.1:1313"
 PR_LABEL = "job-submission"
 PR_LABEL_EVENT = "event-submission"
 PR_LABEL_RESOURCE = "resource-suggestion"

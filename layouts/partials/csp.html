@@ -1,0 +1,23 @@
+{{- /*
+  Content-Security-Policy for the static site. GitHub Pages does not support
+  custom HTTP response headers, so we emit an http-equiv meta tag (enforced by
+  modern browsers). static/_headers mirrors this for hosts that honour it
+  (e.g. Cloudflare Pages). Tune script-src when adding third-party widgets.
+*/ -}}
+{{- $endpoint := site.Params.jobSubmitEndpoint | default "" -}}
+{{- $workerOrigin := "" -}}
+{{- with $endpoint -}}
+  {{- $u := urls.Parse . -}}
+  {{- with $u -}}{{- $workerOrigin = printf "%s://%s" $u.Scheme $u.Host -}}{{- end -}}
+{{- end -}}
+{{- $connectSrc := "'self'" -}}
+{{- if $workerOrigin -}}
+  {{- $connectSrc = printf "%s %s" $connectSrc $workerOrigin -}}
+{{- end -}}
+{{- $isDevCdn := not (resources.Get "css/compiled.css") -}}
+{{- $scriptSrc := "'self' 'unsafe-inline' https://challenges.cloudflare.com" -}}
+{{- if $isDevCdn -}}
+  {{- $scriptSrc = printf "%s https://cdn.jsdelivr.net" $scriptSrc -}}
+{{- end -}}
+{{- $policy := printf "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests; script-src %s; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src %s; frame-src https://challenges.cloudflare.com" $scriptSrc $connectSrc -}}
+<meta http-equiv="Content-Security-Policy" content="{{ $policy }}" />

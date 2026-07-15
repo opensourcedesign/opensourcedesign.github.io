@@ -7,6 +7,6 @@ draft: true
 ---
 
 <!-- Draft placeholder for the community text proposed in issue #554
-     (https://github.com/opensourcedesign/opensourcedesign.github.io/issues/554).
-     Replace this comment with the article body and remove `draft: true`
-     from the front matter to publish. -->
+(https://github.com/opensourcedesign/opensourcedesign.github.io/issues/554).
+Replace this comment with the article body and remove `draft: true`
+from the front matter to publish. -->

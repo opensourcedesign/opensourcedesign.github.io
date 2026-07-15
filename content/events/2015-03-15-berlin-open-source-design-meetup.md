@@ -18,12 +18,12 @@ Let’s meet and work on driving the Open Soure Design movement forward! Everyon
 
 We discussed via conference call and [etherpad](http://piratepad.net/fBoG0xwOiQ) what we want to achieve with this movement. These are the next steps for everyone who attended to make that real:
 
-- [ ] Brennan: get the IRC web chat (Matrix) set up so others can join
-- [ ] Danila: aggregate existing open source design projects and their processes
-- [ ] Jan: put the "what we want to achieve" up as a first opensourcedesign.net frontpage
-- [ ] Kriesse: collect resources for how to make designers contributors
-- [ ] Gilli: create guidelines on how designers and developers can communicate better
-- [ ] Implement a Code of Conduct, e.g. like http://hood.ie/code-of-conduct/ (talk to Jan Lehnardt about forking this, also see: https://adainitiative.org/2014/02/howto-design-a-code-of-conduct-for-your-community/)
+- Brennan: get the IRC web chat (Matrix) set up so others can join
+- Danila: aggregate existing open source design projects and their processes
+- Jan: put the "what we want to achieve" up as a first opensourcedesign.net frontpage
+- Kriesse: collect resources for how to make designers contributors
+- Gilli: create guidelines on how designers and developers can communicate better
+- Implement a Code of Conduct, e.g. like http://hood.ie/code-of-conduct/ (talk to Jan Lehnardt about forking this, also see: https://adainitiative.org/2014/02/howto-design-a-code-of-conduct-for-your-community/)
       If you want to join, just pick a task from the pad or do something you are interested in to drive the initiative forward! :)
 
 **What we want to achieve with Open Source Design**

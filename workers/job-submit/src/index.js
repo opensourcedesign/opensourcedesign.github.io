@@ -966,6 +966,9 @@ function json(obj, status = 200) {
 function withCors(env, request, resp) {
   const allowed = String(env.ALLOWED_ORIGIN || '*').split(',').map((s) => s.trim()).filter(Boolean);
   const reqOrigin = request.headers.get('Origin') || '';
+  if (allowed[0] !== '*' && reqOrigin && !allowed.includes(reqOrigin)) {
+    return new Response('Forbidden', { status: 403 });
+  }
   let allow = allowed[0] || '*';
   if (allow !== '*' && allowed.includes(reqOrigin)) allow = reqOrigin;
 

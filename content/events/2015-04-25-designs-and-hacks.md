@@ -17,14 +17,14 @@ Lots of things that we've talking about for the last couple months. Time to push
 
 ## Results & ToDos
 
-- [x] Got a basic homepage up @jancborchardt
-- [x] Got a Jobs page up @simonv3
-- [x] Made progress on [Shout IRC](https://github.com/bnvk/shout) theming @bnvk
-- [x] Made progress on customizing Shout backend @tOkeshu
-- [x] Recruited a new fan potential contributor @tthew
-- [x] Explored using [prose.io](http://prose.io) @mayarichman
-- [ ] Finish up IRC theme
-- [ ] Keep polishing and refining site and such
+- Done: Got a basic homepage up @jancborchardt
+- Done: Got a Jobs page up @simonv3
+- Done: Made progress on [Shout IRC](https://github.com/bnvk/shout) theming @bnvk
+- Done: Made progress on customizing Shout backend @tOkeshu
+- Done: Recruited a new fan potential contributor @tthew
+- Done: Explored using [prose.io](http://prose.io) @mayarichman
+- Finish up IRC theme
+- Keep polishing and refining site and such
 
 ## Date & Location
 

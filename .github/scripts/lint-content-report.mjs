@@ -5,16 +5,37 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const ROOT = process.cwd();
-const NOT_POSTINGS = new Set(['_index.md', 'archive.md', 'how-to-post.md', 'job-form.md', 'event-form.md']);
+const NOT_POSTINGS = new Set([
+  '_index.md',
+  'archive.md',
+  'how-to-post.md',
+  'job-form.md',
+  'event-form.md',
+  'suggest.md',
+  'links.md',
+  'bibliography.md',
+  'tools-and-code.md',
+]);
 
 function listMarkdown(dir) {
+  if (!fs.existsSync(path.join(ROOT, dir))) return [];
   return fs
     .readdirSync(path.join(ROOT, dir))
     .filter((f) => f.endsWith('.md') && !NOT_POSTINGS.has(f))
     .map((f) => path.join(dir, f).replace(/\\/g, '/'));
 }
 
-const files = [...listMarkdown('content/jobs'), ...listMarkdown('content/events')];
+function listResourceMarkdown() {
+  const top = listMarkdown('content/resources');
+  const articles = listMarkdown('content/resources/articles');
+  return [...top, ...articles];
+}
+
+const files = [
+  ...listMarkdown('content/jobs'),
+  ...listMarkdown('content/events'),
+  ...listResourceMarkdown(),
+];
 const BATCH = 80;
 
 for (let i = 0; i < files.length; i += BATCH) {
