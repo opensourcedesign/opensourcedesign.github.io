@@ -26,6 +26,9 @@ FORUM_URL = "https://discourse.opensourcedesign.net"
 EMAIL_TTL_DAYS = "90"
 # Optional per-IP daily cap; only enforced if a RATE_LIMIT KV namespace is bound.
 RATE_LIMIT_MAX = "5"
+# Turnstile fails CLOSED: submissions are rejected (503) if TURNSTILE_SECRET is
+# not set. For local dev only, set DISABLE_TURNSTILE = "true" to skip the check.
+# DISABLE_TURNSTILE = "true"
 
 # --- KV: maps a created PR number -> submitter email (kept private) ---------
 # Create it once, then paste the returned id below:
@@ -34,7 +37,8 @@ RATE_LIMIT_MAX = "5"
 binding = "EMAILS"
 id = "a1b92469f51c4677a252d77f58561109"
 
-# --- Optional: per-IP rate limiting (uncomment + create to enable) ----------
+# --- Per-IP rate limiting (recommended). Create the namespace, paste the id,
+# then uncomment:
 #   npx wrangler kv namespace create RATE_LIMIT
 # [[kv_namespaces]]
 # binding = "RATE_LIMIT"

@@ -80,8 +80,13 @@ async function handleSubmit(request, env) {
     return json({ ok: true, pr_url: '' });
   }
 
-  // Cloudflare Turnstile (skipped only when no secret is configured, e.g. dev).
-  if (env.TURNSTILE_SECRET) {
+  // Cloudflare Turnstile. Fails closed: a missing secret rejects submissions
+  // instead of silently waving everything through. Local dev can opt out
+  // explicitly with DISABLE_TURNSTILE = "true" in wrangler.toml / dashboard.
+  if (String(env.DISABLE_TURNSTILE || '').toLowerCase() !== 'true') {
+    if (!env.TURNSTILE_SECRET) {
+      return json({ ok: false, error: 'Submissions are temporarily unavailable (captcha is not configured).' }, 503);
+    }
     const ok = await verifyTurnstile(env.TURNSTILE_SECRET, data.turnstile_token, request);
     if (!ok) {
       return json({ ok: false, error: 'Captcha verification failed. Please try again.' }, 400);
@@ -402,11 +407,11 @@ function buildMarkdown(data, env, edit) {
   }
   if (data.deliverables) {
     fm.push('deliverables: |-');
-    linesToList(data.deliverables).forEach((t) => fm.push('  ' + t));
+    linesToList(sanitizeMarkdown(data.deliverables)).forEach((t) => fm.push('  ' + t));
   }
   fm.push('---');
   fm.push('');
-  fm.push(String(data.description || '').trim());
+  fm.push(sanitizeMarkdown(String(data.description || '').trim()));
   fm.push('');
 
   return { path, slug, markdown: fm.join('\n') };
@@ -488,10 +493,12 @@ function buildEventMarkdown(data, env, edit) {
   fm.push('location: ' + yq(data.location));
   fm.push('---');
   fm.push('');
-  fm.push(String(data.description || '').trim());
+  fm.push(sanitizeMarkdown(String(data.description || '').trim()));
   if (data.website) {
     fm.push('');
-    fm.push('More information: <' + String(data.website).trim() + '>');
+    // encodeURI keeps the URL working but percent-encodes <, >, " and
+    // whitespace so the value can't break out of the Markdown autolink.
+    fm.push('More information: <' + encodeURI(String(data.website).trim()) + '>');
   }
   fm.push('');
 
@@ -576,8 +583,22 @@ async function findDuplicateJob(env, data) {
 }
 
 function yq(v) {
-  const s = String(v == null ? '' : v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const s = String(v == null ? '' : v)
+    // Strip control characters (including \n / \r): every yq() value is a
+    // single-line double-quoted YAML scalar, and an embedded newline would
+    // break out of the quotes and inject front-matter keys.
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x1f\x7f]/g, ' ')
+    .replace(/\\/g, '\\\\').replace(/"/g, '\\"');
   return '"' + s + '"';
+}
+
+// The site renders Markdown with goldmark's `unsafe` renderer, so raw HTML in
+// a submission would go live on merge. Escape tag-openers (<script, </div,
+// <!--, <?) while keeping Markdown autolinks (<https://…>, <mailto:…>) intact.
+function sanitizeMarkdown(v) {
+  return String(v == null ? '' : v)
+    .replace(/<(?=[a-zA-Z/!?])(?!(?:https?:\/\/|mailto:)[^\s<>]*>)/g, '&lt;');
 }
 
 function linesToList(s) {

@@ -883,8 +883,8 @@
                 if (note) note.textContent = 'Possible duplicate found - please check below.';
                 out.classList.remove('border-emerald-200', 'bg-emerald-50', 'border-slate-200', 'bg-white');
                 out.classList.add('border-amber-300', 'bg-amber-50');
-                var dupTitle = String(json.duplicate.title || '').replace(/</g, '&lt;');
-                var dupOrg = String(json.duplicate.organization || '').replace(/</g, '&lt;');
+                var dupTitle = esc(String(json.duplicate.title || ''));
+                var dupOrg = esc(String(json.duplicate.organization || ''));
                 showResult(
                   'Is this the same job?',
                   'A very similar posting is already open: <a class="font-medium underline underline-offset-4" href="' + encodeURI(String(json.duplicate.url || '')) + '" target="_blank" rel="noopener noreferrer">' + dupTitle + '</a>' + (dupOrg ? ' - ' + dupOrg : '') + '. If you want to update that posting instead, use its "Suggest an edit" link. If yours is genuinely a different job, post it anyway.',
@@ -906,7 +906,7 @@
                 out.classList.add('border-emerald-200', 'bg-emerald-50');
                 showResult(
                   editFile ? 'Thanks - your changes were received' : 'Thanks - submission received',
-                  'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + json.pr_url + '" target="_blank" rel="noopener noreferrer">' + json.pr_url + '</a>',
+                  'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + esc(json.pr_url) + '" target="_blank" rel="noopener noreferrer">' + esc(json.pr_url) + '</a>',
                   ''
                 );
                 if (!editFile) form.reset();

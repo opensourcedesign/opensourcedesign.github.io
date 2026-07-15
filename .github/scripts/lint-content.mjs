@@ -113,6 +113,20 @@ function lintFile(file) {
     if (/^\s*[•·▪]\s/.test(line)) {
       errors.push(`line ${n}: \`•\` pseudo-bullet - use a Markdown \`- \` list marker instead`);
     }
+    // goldmark runs with `unsafe: true`, so raw HTML in a posting goes live
+    // verbatim. Script-capable tags are an error; other raw tags a warning
+    // (some legacy postings legitimately use <br> or <a>).
+    const rawTags = [...line.matchAll(/<\/?([a-zA-Z][a-zA-Z0-9-]*)[^>]*>/g)].map((m) => m[1].toLowerCase());
+    for (const tag of rawTags) {
+      if (['script', 'iframe', 'object', 'embed', 'form', 'style', 'link', 'meta', 'base'].includes(tag)) {
+        errors.push(`line ${n}: raw \`<${tag}>\` HTML is not allowed in postings`);
+      } else {
+        warnings.push(`line ${n}: raw \`<${tag}>\` HTML - prefer plain Markdown`);
+      }
+    }
+    if (/on[a-z]+\s*=|javascript:/i.test(line) && rawTags.length) {
+      errors.push(`line ${n}: inline event handler or javascript: URL in raw HTML`);
+    }
     if (line.trim()) prevNonEmpty = line;
   }
 
