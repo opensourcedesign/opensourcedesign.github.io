@@ -1,17 +1,28 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {{/* Sync Tailwind's `dark:` variant with the OS/browser colour scheme.
-         The Play CDN (local dev without compiled.css) does not honour a
-         custom `@variant dark (@media …)` definition, so we drive dark mode
-         via a root class instead - same pattern as Tailwind's default. */}}
+    {{/* Sync Tailwind's `dark:` variant with the OS/browser colour scheme,
+         with a manual override persisted in localStorage ("light" | "dark";
+         absent = follow the system). Runs synchronously before first paint
+         so there is no flash of the wrong theme. The Play CDN (local dev
+         without compiled.css) does not honour a custom `@variant dark
+         (@media …)` definition, so we drive dark mode via a root class
+         instead - same pattern as Tailwind's default. */}}
     <script>
       (function () {
         var root = document.documentElement;
         var mq = window.matchMedia("(prefers-color-scheme: dark)");
-        function sync() { root.classList.toggle("dark", mq.matches); }
+        function stored() {
+          try { return localStorage.getItem("osd-theme"); } catch (e) { return null; }
+        }
+        function sync() {
+          var pref = stored();
+          root.classList.toggle("dark", pref === "dark" || (pref !== "light" && mq.matches));
+        }
         sync();
         mq.addEventListener("change", sync);
+        // The header toggle (main.js) re-runs this after writing the choice.
+        window.osdSyncTheme = sync;
       })();
     </script>
     <meta charset="utf-8" />

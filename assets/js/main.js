@@ -47,6 +47,47 @@
     });
   });
 
+  // Theme toggle (header): cycles light -> system -> dark. The stored choice
+  // ("osd-theme") is applied before first paint by the head script in
+  // baseof.html; buttons ship hidden and are revealed here (no dead control
+  // without JS).
+  (function () {
+    var buttons = document.querySelectorAll('[data-theme-toggle]');
+    if (!buttons.length) return;
+    var ORDER = ['light', 'system', 'dark'];
+    var LABELS = { light: 'Light', system: 'System', dark: 'Dark' };
+    function current() {
+      try {
+        var v = localStorage.getItem('osd-theme');
+        return v === 'light' || v === 'dark' ? v : 'system';
+      } catch (e) { return 'system'; }
+    }
+    function render() {
+      var state = current();
+      var next = ORDER[(ORDER.indexOf(state) + 1) % ORDER.length];
+      buttons.forEach(function (b) {
+        b.hidden = false;
+        b.setAttribute('data-theme-state', state);
+        b.setAttribute('aria-label', 'Colour theme: ' + LABELS[state] + '. Switch to ' + LABELS[next].toLowerCase() + '.');
+        b.title = 'Theme: ' + LABELS[state];
+        var label = b.querySelector('[data-theme-label]');
+        if (label) label.textContent = 'Theme: ' + LABELS[state];
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var next = ORDER[(ORDER.indexOf(current()) + 1) % ORDER.length];
+        try {
+          if (next === 'system') localStorage.removeItem('osd-theme');
+          else localStorage.setItem('osd-theme', next);
+        } catch (e) { /* private mode: theme just won't persist */ }
+        if (window.osdSyncTheme) window.osdSyncTheme();
+        render();
+      });
+    });
+    render();
+  })();
+
   // Copy-link buttons (share partial) - delegated so there is no inline JS (CSP-friendly).
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-copy-link]');
