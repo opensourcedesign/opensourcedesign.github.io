@@ -10,10 +10,10 @@
   The auto-generated anchor (table of contents, scroll-margin) and explicit
   heading attributes are preserved.
 */ -}}
-{{- $offset := .Page.Scratch.Get "osdHeadingOffset" -}}
+{{- $offset := .Page.Store.Get "osdHeadingOffset" -}}
 {{- if eq $offset nil -}}
   {{- $offset = sub 2 .Level -}}
-  {{- .Page.Scratch.Set "osdHeadingOffset" $offset -}}
+  {{- .Page.Store.Set "osdHeadingOffset" $offset -}}
 {{- end -}}
 {{- $level := add .Level $offset -}}
 {{- if lt $level 2 }}{{ $level = 2 }}{{ end -}}

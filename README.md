@@ -133,7 +133,8 @@ opensourcedesign.github.io/
 ├── .github/
 │   ├── scripts/      # announce-jobs.mjs - posts new jobs to Mastodon & Bluesky
 │   └── workflows/    # hugo-build (deploy), job-approved-email (submitter notification),
-│                     # job-expire (daily auto-expiry), job-announce (social media)
+│                     # job-expire (daily auto-expiry), job-announce (social media),
+│                     # content-lint (PR checks), preview (PR previews), link-check (weekly)
 ├── archetypes/       # Hugo content templates for new pages
 ├── assets/
 │   └── css/

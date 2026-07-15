@@ -1,6 +1,6 @@
 {{ define "main" }}
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
-    {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
+    {{ $jobsAll := partial "functions/job-postings.html" . }}
     {{/* Finished statuses, plus "searching" jobs whose application deadline
          already passed - those are excluded from the open list, and the
          job-expire workflow flips their status to "expired" within a day.

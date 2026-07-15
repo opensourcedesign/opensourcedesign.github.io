@@ -9,7 +9,7 @@
     {{ $heroJpg = ($b.Process "jpeg q68").RelPermalink }}
     {{ $heroWebp = ($b.Process "webp q60").RelPermalink }}
   {{ end }}
-  {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
+  {{ $jobsAll := partial "functions/job-postings.html" . }}
   {{ $openJobs := partial "functions/open-jobs.html" $jobsAll }}
   {{ $jobsOpen := len $openJobs }}
   {{ $jobsTotal := len $jobsAll }}
@@ -36,7 +36,7 @@
     <div class="mx-auto max-w-6xl px-4 py-20 sm:py-24">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <h2 class="text-2xl font-bold leading-snug tracking-tight text-slate-950 sm:text-3xl lg:col-span-5 dark:text-slate-50">Good design should be as open as good code.</h2>
-        <div class="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 lg:col-span-7 lg:max-w-prose dark:text-slate-400">
+        <div class="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 lg:col-span-7 lg:max-w-prose">
           <p>We are a global community of designers, developers, and advocates improving the usability of open source software. We run a <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">job board</a> connecting designers with projects that need them, organize <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/events/" }}">events</a> and conference design tracks, and share openly licensed <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/resources/" }}">resources</a>.</p>
           <p>New here? Read <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/about-us/" }}">about the community</a>, our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/about-us/manifesto/" }}">manifesto</a>, and <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">how to join</a>. Conversations happen in the open, on our <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-100" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">forum</a>.</p>
         </div>
@@ -50,7 +50,7 @@
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
       <div class="grid grid-cols-1 gap-0 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-slate-200 dark:lg:divide-slate-700">
         {{/* Events */}}
-        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 dark:border-slate-700 lg:border-b-0 lg:py-0 lg:pr-10">
+        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 lg:border-b-0 lg:py-0 lg:pr-10">
           <div class="flex items-baseline justify-between">
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Upcoming events</h2>
             <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/events/" }}">All events →</a>
@@ -68,7 +68,7 @@
               {{ range first 3 (sort $liveUpcoming "Date" "desc") }}
                 <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
                   <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
-                    <span class="font-semibold leading-snug text-slate-900 dark:text-slate-100 decoration-slate-300 underline-offset-4 transition group-hover:text-slate-950 dark:hover:text-slate-100 group-hover:underline">{{ .Title }}</span>
+                    <span class="font-semibold leading-snug text-slate-900 dark:text-slate-100 decoration-slate-300 underline-offset-4 transition group-hover:text-slate-950 dark:group-hover:text-slate-100 group-hover:underline">{{ .Title }}</span>
                     {{ with .Params.eventDate }}<span class="mt-1 block text-sm text-slate-500 dark:text-slate-400">{{ . }}</span>{{ end }}
                   </a>
                 </li>
@@ -86,7 +86,7 @@
         </div>
 
         {{/* Jobs */}}
-        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 dark:border-slate-700 lg:border-b-0 lg:px-10 lg:py-0">
+        <div class="border-b border-slate-200 dark:border-slate-700 py-10 last:border-b-0 lg:border-b-0 lg:px-10 lg:py-0">
           <div class="flex items-baseline justify-between">
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Open jobs</h2>
             <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">All jobs →</a>
@@ -99,7 +99,7 @@
               <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
                 <a class="group flex items-baseline gap-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
                   <span class="h-2 w-2 shrink-0 self-center rounded-full {{ cond $isPaid "bg-emerald-500" "bg-violet-500" }}" title="{{ cond $isPaid "Paid" "Volunteer" }}" aria-hidden="true"></span>
-                  <span class="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-slate-300 transition group-hover:text-slate-950 dark:hover:text-slate-100">{{ .Title }}</span>
+                  <span class="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-slate-300 transition group-hover:text-slate-950 dark:group-hover:text-slate-100">{{ .Title }}</span>
                 </a>
               </li>
             {{ else }}
@@ -220,7 +220,7 @@
         {{ range hugo.Data.tools }}
           <a class="group flex flex-col items-center gap-2 rounded-lg p-2 opacity-80 transition hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:focus-visible:ring-slate-100/30" href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .description }}">
             <img src="{{ partial "site-path.html" .logo }}" alt="" class="osd-brand-icon h-10 w-10" aria-hidden="true" loading="lazy" />
-            <span class="text-xs font-medium text-slate-600 dark:text-slate-400 transition group-hover:text-slate-950 dark:hover:text-slate-100">{{ .name }}</span>
+            <span class="text-xs font-medium text-slate-600 dark:text-slate-400 transition group-hover:text-slate-950 dark:group-hover:text-slate-100">{{ .name }}</span>
           </a>
         {{ end }}
       </div>

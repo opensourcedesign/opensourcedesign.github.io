@@ -15,7 +15,7 @@
 {{ $limit := 3 }}
 
 {{/* Get all jobs except current (exclude non-listing pages: form, archive, how-to) */}}
-{{ $jobPages := where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive" "how-to-post") }}
+{{ $jobPages := partial "functions/job-postings.html" . }}
 {{ $allJobs := where $jobPages ".RelPermalink" "!=" $current.RelPermalink }}
 
 {{/* Filter to only open jobs. Only "searching" without a passed application

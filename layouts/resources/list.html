@@ -60,7 +60,7 @@
                regular pages. */}}
           {{ $count := "" }}
           {{ if .IsSection }}
-            {{ $count = printf "%d articles" (len .RegularPages) }}
+            {{ $count = printf "%d %s" (len .RegularPages) (.Params.itemNoun | default "articles") }}
           {{ else if eq .File.ContentBaseName "links" }}
             {{ $n := 0 }}{{ range hugo.Data.resources }}{{ $n = add $n (len .items) }}{{ end }}
             {{ $count = printf "%d links in %d categories" $n (len hugo.Data.resources) }}

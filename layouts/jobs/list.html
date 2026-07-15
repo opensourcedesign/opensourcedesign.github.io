@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ $jobsAll := (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive")) }}
+  {{ $jobsAll := partial "functions/job-postings.html" . }}
   {{/* Deadline-aware: searching jobs whose application deadline passed are
        excluded here and surface on the archive page instead (issue #84). */}}
   {{ $jobs := partial "functions/open-jobs.html" $jobsAll }}
