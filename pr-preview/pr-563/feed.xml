@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><description>Connecting open source &amp; design.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Tue, 14 Jul 2026 15:57:17 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/pr-preview/pr-563/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/pr-preview/pr-563/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/pr-preview/pr-563/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><description>Connecting open source &amp; design.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Wed, 15 Jul 2026 16:39:22 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/pr-preview/pr-563/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/pr-preview/pr-563/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/pr-preview/pr-563/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
 &lt;p&gt;Often, people who join the community are designers working on open source software, developers interested in design or people from other professional backgrounds.&lt;/p&gt;
 &lt;p&gt;There are no formal requirements to take part in the community other than following the code of conduct.&lt;/p&gt;
 &lt;h2 id="communicating-well"&gt;Communicating well&lt;/h2&gt;
@@ -54,7 +54,7 @@ to add or change resources. --&gt;
 &lt;p class="mt-6 hidden text-sm text-slate-600" id="resources-empty" role="status"&gt;No resources match your filters. Try a different category or search term.&lt;/p&gt;
 &lt;div id="resources-directory"&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="projects" data-cat="projects" aria-labelledby="cat-projects"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-projects"&gt;Projects &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;20&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-projects"&gt;Projects &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;20&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Open source projects with active design teams, blogs, and processes: good places to see open design in practice or to start contributing.&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="projects mozilla makers of the firefox browser. ux blog"&gt;
@@ -181,7 +181,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="icons" data-cat="icons" aria-labelledby="cat-icons"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-icons"&gt;Icons &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;16&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-icons"&gt;Icons &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;16&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="icons bitcoin icons open source icons made for bitcoin applications, free to use. mit licensed."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://bitcoinicons.com/" target="_blank" rel="noopener noreferrer"&gt;Bitcoin Icons&lt;/a&gt;
@@ -271,7 +271,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="fonts" data-cat="fonts" aria-labelledby="cat-fonts"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-fonts"&gt;Fonts &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;11&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-fonts"&gt;Fonts &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;11&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Some of these platforms also take submissions, so if you designed a font with an open license, submit it there!&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="fonts the league of moveable type "&gt;
@@ -313,7 +313,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="images" data-cat="images" aria-labelledby="cat-images"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-images"&gt;Images &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;11&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-images"&gt;Images &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;11&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="images pixabay "&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://pixabay.com/" target="_blank" rel="noopener noreferrer"&gt;Pixabay&lt;/a&gt;
@@ -354,7 +354,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="cc-media" data-cat="cc-media" aria-labelledby="cat-cc-media"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-cc-media"&gt;Creative Commons media &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;4&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-cc-media"&gt;Creative Commons media &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;4&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Media from big platforms published under Creative Commons licenses.&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="creative commons media openverse search over 800 million openly licensed images and audio files (formerly cc search)."&gt;
@@ -375,7 +375,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="tools" data-cat="tools" aria-labelledby="cat-tools"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-tools"&gt;Design tools &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;18&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-tools"&gt;Design tools &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;18&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Design discussion also happens right on a project&amp;rsquo;s issue tracker, for example at &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;: get an account, identify design issues, participate, and open new ones. A »Design« label groups them, like in the &lt;a href="https://github.com/nextcloud/core/issues?labels=Design"&gt;Nextcloud issues&lt;/a&gt;.&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="design tools pen &amp;amp; paper mockups and prototypes without hi-fi photoshop work."&gt;
@@ -453,7 +453,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="color" data-cat="color" aria-labelledby="cat-color"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-color"&gt;Color &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;5&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-color"&gt;Color &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;5&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="color blend css gradient generator."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://www.colinkeany.com/blend/" target="_blank" rel="noopener noreferrer"&gt;Blend&lt;/a&gt;
@@ -478,7 +478,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="css" data-cat="css" aria-labelledby="cat-css"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-css"&gt;CSS frameworks &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;8&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-css"&gt;CSS frameworks &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;8&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="css frameworks bootstrap fully featured, mature html, css (less), and javascript."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer"&gt;Bootstrap&lt;/a&gt;
@@ -515,7 +515,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="design-reads" data-cat="design-reads" aria-labelledby="cat-design-reads"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-design-reads"&gt;Design reads &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;11&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-design-reads"&gt;Design reads &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;11&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="design reads first rule of usability? don&amp;#39;t listen to users jakob nielsen, 2001."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://www.nngroup.com/articles/first-rule-of-usability-dont-listen-to-users/" target="_blank" rel="noopener noreferrer"&gt;First Rule of Usability? Don&amp;#39;t Listen to Users&lt;/a&gt;
@@ -560,7 +560,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="osd-reads" data-cat="osd-reads" aria-labelledby="cat-osd-reads"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-osd-reads"&gt;Open source design reads &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;6&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-osd-reads"&gt;Open source design reads &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;6&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="open source design reads free software ui havoc pennington, 2002."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://ometer.com/free-software-ui.html" target="_blank" rel="noopener noreferrer"&gt;Free Software UI&lt;/a&gt;
@@ -588,7 +588,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="community" data-cat="community" aria-labelledby="cat-community"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-community"&gt;Community &amp;amp; inspiration &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;10&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-community"&gt;Community &amp;amp; inspiration &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;10&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Other nice stuff in the design and open source space.&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="community &amp;amp; inspiration libre graphics magazine print magazine."&gt;
@@ -637,7 +637,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="learn-code" data-cat="learn-code" aria-labelledby="cat-learn-code"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-learn-code"&gt;Learn to code &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;9&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-learn-code"&gt;Learn to code &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;9&lt;/span&gt;&lt;/h3&gt;
 &lt;div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&amp;_a]:font-medium [&amp;_a]:text-slate-900 [&amp;_a]:underline [&amp;_a]:decoration-slate-300 [&amp;_a]:underline-offset-4 hover:[&amp;_a]:decoration-slate-900"&gt;Focused on HTML, CSS, and JavaScript. Ideally to implement your own suggestions, but also to better discuss with developers and understand why and how certain things work and don&amp;rsquo;t work.&lt;/div&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="learn to code mozilla developer network great web dev documentation."&gt;
@@ -676,7 +676,7 @@ to add or change resources. --&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section class="resource-cat mt-10 scroll-mt-24" id="learn-design" data-cat="learn-design" aria-labelledby="cat-learn-design"&gt;
-&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-learn-design"&gt;Learn to design &lt;span class="font-normal normal-case tracking-normal text-slate-400"&gt;3&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-learn-design"&gt;Learn to design &lt;span class="font-normal normal-case tracking-normal text-slate-500"&gt;3&lt;/span&gt;&lt;/h3&gt;
 &lt;ul class="mt-2 gap-x-10 sm:columns-2" role="list"&gt;
 &lt;li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="learn to design hack design free design lessons by inspirational designers."&gt;
 &lt;a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="https://hackdesign.org/" target="_blank" rel="noopener noreferrer"&gt;Hack Design&lt;/a&gt;
@@ -1527,12 +1527,11 @@ OSD received funding to explore and evolve the governance, decision making and o
 &lt;div style="margin-top:1.5em;padding:1em;background:#e8f5e9;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;How to Apply:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;**erioldoesdesign@gmail.com** OSD Governance Advisory committee chat group (access given once a individual has been selected) The selected candidate will ‘report’ to the wider community of open source design. There are no management ‘approval’ processes where a specific member will ‘sign off’ on the work. The work will reach a state that the OSD community can continue with and meets as reasonable an amount of ‘approval’ as feasible in the current decision making processes.&lt;/li&gt;&lt;li&gt;https://archive.fosdem.org/2022/schedule/event/osd_introduction_to_open_source_design/
 https://opensourcedesign.net/ (Specifically the goals and manifesto pages)
 https://opencollective.com/opensourcedesign
-https://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/pr-preview/pr-563/jobs/open-source-design-governance-research-and-documentation-project/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>governance</category><category>design</category><category>community building</category><category>support</category><category>documentation</category><category>user research</category><category>Jobs</category></item><item><title>Help fund the recordings of talks for FOSS Backstage Design 2026</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</guid><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox &amp; Core Open Source Design team</dc:creator><author>Eriol Fox &amp; Core Open Source Design team</author><description> a photo of the speakers podium from FOSS Backstage Design 2026 FOSS Backstage Design took place for the 3rd year in a row to bring together people working on the user experience of open source software.
-FOSS Backstage Design is the place to meet designers, UX-experts, OpenSource enthusiasts, product managers and people generally interested in UX, accessible design and usability.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Berlin, Germany&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
+https://github.com/Erioldoesdesign/open-source-design-community-governance/blob/main/the-state-of-open-source-designs-community-and-governance.md&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/pr-preview/pr-563/jobs/open-source-design-governance-research-and-documentation-project/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>governance</category><category>design</category><category>community building</category><category>support</category><category>documentation</category><category>user research</category><category>Jobs</category></item><item><title>Help fund the recordings of talks for FOSS Backstage Design 2026</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</guid><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox &amp; Core Open Source Design team</dc:creator><author>Eriol Fox &amp; Core Open Source Design team</author><description> a photo of the speakers podium from FOSS Backstage Design 2026 FOSS Backstage Design took place for the 3rd year in a row to bring together people working on the user experience of open source software.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Berlin, Germany&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_786a252964e6281c.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_d10b128a81c0dd74.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_4c36f1c16eb4c2b1.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_786a252964e6281c.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_f8c429b7cbb46629.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_d10b128a81c0dd74.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026.jpg"
 alt="a photo of the speakers podium from FOSS Backstage Design 2026"
@@ -1559,8 +1558,8 @@ height="534"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_9749fc220d3564f0.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_fed9293b3909f7a5.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_3eb04a30047452b6.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_9749fc220d3564f0.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_ad6beea143cd2826.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_fed9293b3909f7a5.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026.jpg"
 alt="dalai and pablo speaking at foss backstage 2026"
@@ -1576,8 +1575,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1dcc4c2558a80d4.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_f9cbfc406e4bde58.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_413b955c03abb9d.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1dcc4c2558a80d4.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1ae17ddfd1be150d.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_f9cbfc406e4bde58.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026.jpg"
 alt="lauwri speaking at foss backstage 2026"
@@ -1593,8 +1592,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_9c9ae65ce4d60fbe.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_8683dba714cff9b8.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_44800e5477a2e40d.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_9c9ae65ce4d60fbe.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_48fe31df32f46caf.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_8683dba714cff9b8.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026.jpg"
 alt="imani speaking at foss backstage 2026"
@@ -1610,8 +1609,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_d2128ac756a6f55a.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_da1ed5cfb5d7746c.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_c7e828c1cc818a03.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_d2128ac756a6f55a.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_156e769ab18c11fc.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_da1ed5cfb5d7746c.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026.jpg"
 alt="andy speaking at foss backstage 2026"
@@ -1630,8 +1629,8 @@ height="534"
 &lt;div style="margin-top:1.5em;padding:1em;background:#e8f5e9;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;How to Apply:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;asernasr@figranium.dev&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/pr-preview/pr-563/jobs/homepage-redesign/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Jobs</category></item><item><title>FOSDEM 2026: Open Source Design Devroom wrap up</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/fosdem-2026/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/fosdem-2026/</guid><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox</dc:creator><author>Eriol Fox</author><description> A photo from towards the end of the open source design devroom day Introduction The 12th edition Open Source Design devroom in 2026 ran for a half a day on Sunday 1st of February from 13.00pm until the end of the conference at 17.00pm with 8 talks. Most talks had a good/full turn out of audience numbers in the room, even right up until the end of the day on Sunday, which is typically when many folks start travel home from Brussels.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; 1 February 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Université Libre Brussels, Belgium&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_888a4049c28c6a7d.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_400b6f34d026a932.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_9d87496222eeb776.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_334279f8069994af.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_888a4049c28c6a7d.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_53ae80f2438750be.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_8735cc30d064fc20.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_400b6f34d026a932.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_13c8c47022ce255d.jpeg"
 alt="A photo from towards the end of the open source design devroom day"
@@ -1918,8 +1917,8 @@ We’re looking for general design support for the development of the platform. 
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_77dbc121ccda0534.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4551a4051f892214.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4ae6f1acd30636b7.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_29cb246573fa4991.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_77dbc121ccda0534.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_3507cc1ab2ffed52.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_881fc7eff812ef96.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4551a4051f892214.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_2380125e8298c01e.jpg"
 alt="signs outside of FOSS Backstage&amp;rsquo;s venue entrance"
@@ -1943,10 +1942,10 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_3444595b862f1238.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_2f175ca9d06b8cd6.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_a066ab3bf92eb0fe.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_ac696f481d38ea4b.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_6eb71449bc50496f.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_acfc2ffd6a45e913.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_c4354abc289ded60.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_5bdcce2fe24b6384.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_433b79978f24840a.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_9c3304f5793be0ef.jpg"
 alt="a speaker and the tech behind the speaker"
 title="a speaker and the tech behind the speaker"
 loading="lazy"
@@ -1964,8 +1963,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e86fe01e2653986c.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7523637dda808bcb.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_28c3bf97fd8c7e7a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7041fb88918ce005.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e86fe01e2653986c.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e428af7781268f89.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_23ac9e92ad8af343.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7523637dda808bcb.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_d070991c0d9db561.jpg"
 alt="Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan"
@@ -1986,8 +1985,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_431d545b1c64697a.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_8abb413416553e88.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_c780c0227682a2a2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_3ec360fe397c9e62.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_431d545b1c64697a.avif 1366w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_a5dd3e354a5db94f.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_26750415ab86f793.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_8abb413416553e88.webp 1366w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola.jpg"
 alt="Bridging the Gap Between Designers &amp;amp; Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide"
@@ -2009,8 +2008,8 @@ In the talk they share key findings, including the biggest obstacles designers f
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1ae2329e6c263436.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_65bb65538f9e90d0.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_993acf47f77ae32f.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_ea5b806235a10156.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1ae2329e6c263436.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_9a02f3f8f2c9658.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_97238398d8d2f314.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_65bb65538f9e90d0.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1214eb031d1c8917.jpg"
 alt="Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno"
@@ -2031,8 +2030,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_d2439749497d23ac.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_f42ea085cd81fff7.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_59e9cb29b79bb9ac.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_82af913ad9c7b0ca.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_d2439749497d23ac.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_a31ef95459296d5b.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_3fa0a2332fc9c2db.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_f42ea085cd81fff7.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_25b2100bd618d036.jpg"
 alt="Open Design Guide by Christoph Ono, Eriol Fox"
@@ -2053,8 +2052,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_9b9edc36d17ee6d0.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_91611565d6263dd8.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_a08f24de386a192c.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_173509ad8daf237.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_9b9edc36d17ee6d0.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_43df4cc3f684bca8.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_459f89c08b233e72.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_91611565d6263dd8.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_cd3635c57b1f89b0.jpg"
 alt="Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf"
@@ -2076,8 +2075,8 @@ In this talk, Hartmut goes into depth about how information architecture and con
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_587d086927a0207.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_66851e844da1acc3.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_ac2087e4451d4f3a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_20fb408fa6f36a3f.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_587d086927a0207.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_174248cb7bf41f3c.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_60f6754258cf40fe.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_66851e844da1acc3.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_7bbeda39c9264158.png"
 alt="Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok"
@@ -2098,8 +2097,8 @@ height="789"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c0d5aafcfa9dc1d2.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_7ece78fd8ee26056.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_af49f017871fbbfc.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_d495d3d421dec1f.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c0d5aafcfa9dc1d2.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_25e9735dd5c024bb.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c1562432554c6b16.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_7ece78fd8ee26056.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_8b26c8566a221019.jpg"
 alt="FOSS Backstage Design signed, sign"
@@ -2119,10 +2118,10 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_f5f1bbe2e7113ad3.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_4878153da4e74090.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_e4dd534d1b96eb6a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_e34c033ff48117c0.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_2881c58ecb758c3a.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_c6425e9b7d849988.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_d15f61fe8a52ca1e.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_25eadaf17d31f880.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_d690d27a0f12070.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_8654cae59342547b.jpg"
 alt="Achieving Excellence in Open Source Software Design by Martin Keary"
 title="Achieving Excellence in Open Source Software Design by Martin Keary"
 loading="lazy"
@@ -2141,8 +2140,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_b8c72078aac792b9.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_bf120152b1141225.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_df4b7c4a1c3d36ec.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_3c81a571a960957e.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_b8c72078aac792b9.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_be38697b6ea47e98.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_e9111307e363d724.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_bf120152b1141225.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_a89c48e1fc198525.jpg"
 alt="Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka"
@@ -2163,8 +2162,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_17986c35f497e3eb.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_81b83d87ee0e7c04.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_30279f93f74f9772.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_705ac80a30b50929.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_17986c35f497e3eb.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_b251ad587c4db6b2.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_f916a590dbe6e01f.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_81b83d87ee0e7c04.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_459f36aebe580512.jpg"
 alt="GNOME Design: A Report From the Trenches by Tobias Bernard"
@@ -2185,8 +2184,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_b968a6d74a28ad78.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_5be36ed83b3a576f.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_da59b5ef7dfa5acd.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_e023c9df6309ad05.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_b968a6d74a28ad78.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_ae8ee56fe243ee25.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_131b37e096a8382f.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_5be36ed83b3a576f.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_81506cbf2d059ef6.jpg"
 alt="A circle of people discussing open source design topics at the barcamp"
@@ -2206,8 +2205,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_afa23de2933b4917.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_c9bcdcf3083a84b9.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_398dfedc5eb6a0a7.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_f9cfa10ce6200731.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_afa23de2933b4917.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_698f7608704908f4.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_3ac896f96c897679.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_c9bcdcf3083a84b9.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_77e1945a74d2d407.jpeg"
 alt="The schedule written on a whiteboard"
@@ -2256,8 +2255,8 @@ Private discussion centering on how to be supportive, collaborative and kind in 
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_bd737d95c25cc20e.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_385b75e5a0385603.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_77eabf5928d34324.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_b58bd02d15a4e473.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_bd737d95c25cc20e.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_13ec19cd796fbb5a.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_b69878a68c196128.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_385b75e5a0385603.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_6a791825249e4c63.jpg"
 alt="All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones"
@@ -2277,8 +2276,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_6f19818a07c47dbb.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_427d8a1d00ef90f5.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_ddfa4783e286f095.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_7333e7ad4b88be70.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_6f19818a07c47dbb.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_127e087ab78a2d5d.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_fd9b9bf6c2d99d30.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_427d8a1d00ef90f5.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_e6c77600739d9032.jpg"
 alt="A sticky note that reads &amp;lsquo;developers and designers, a match made in heaven/hell?"

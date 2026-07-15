@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Events | Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/</link><description>We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Tue, 14 Jul 2026 15:57:17 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/pr-preview/pr-563/events/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/pr-preview/pr-563/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><width>144</width><height>144</height></image><item><title>Help fund the recordings of talks for FOSS Backstage Design 2026</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</guid><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox &amp; Core Open Source Design team</dc:creator><author>Eriol Fox &amp; Core Open Source Design team</author><description> a photo of the speakers podium from FOSS Backstage Design 2026 FOSS Backstage Design took place for the 3rd year in a row to bring together people working on the user experience of open source software.
-FOSS Backstage Design is the place to meet designers, UX-experts, OpenSource enthusiasts, product managers and people generally interested in UX, accessible design and usability.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Berlin, Germany&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Events | Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/</link><description>We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Wed, 15 Jul 2026 16:39:22 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/pr-preview/pr-563/events/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/pr-preview/pr-563/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/pr-preview/pr-563/</link><width>144</width><height>144</height></image><item><title>Help fund the recordings of talks for FOSS Backstage Design 2026</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/</guid><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox &amp; Core Open Source Design team</dc:creator><author>Eriol Fox &amp; Core Open Source Design team</author><description> a photo of the speakers podium from FOSS Backstage Design 2026 FOSS Backstage Design took place for the 3rd year in a row to bring together people working on the user experience of open source software.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Berlin, Germany&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_786a252964e6281c.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_d10b128a81c0dd74.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_4c36f1c16eb4c2b1.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_786a252964e6281c.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_f8c429b7cbb46629.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026_hu_d10b128a81c0dd74.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/foss-backstage-design-2026.jpg"
 alt="a photo of the speakers podium from FOSS Backstage Design 2026"
@@ -30,8 +29,8 @@ height="534"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_9749fc220d3564f0.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_fed9293b3909f7a5.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_3eb04a30047452b6.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_9749fc220d3564f0.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_ad6beea143cd2826.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026_hu_fed9293b3909f7a5.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/dalai-and-pablo-blender-2026.jpg"
 alt="dalai and pablo speaking at foss backstage 2026"
@@ -47,8 +46,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1dcc4c2558a80d4.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_f9cbfc406e4bde58.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_413b955c03abb9d.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1dcc4c2558a80d4.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_1ae17ddfd1be150d.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026_hu_f9cbfc406e4bde58.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/lauwrie-aws-2026.jpg"
 alt="lauwri speaking at foss backstage 2026"
@@ -64,8 +63,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_9c9ae65ce4d60fbe.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_8683dba714cff9b8.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_44800e5477a2e40d.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_9c9ae65ce4d60fbe.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_48fe31df32f46caf.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026_hu_8683dba714cff9b8.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/imani-mastodon-2026.jpg"
 alt="imani speaking at foss backstage 2026"
@@ -81,8 +80,8 @@ height="534"
 &lt;/figure&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_d2128ac756a6f55a.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_da1ed5cfb5d7746c.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_c7e828c1cc818a03.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_d2128ac756a6f55a.avif 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_156e769ab18c11fc.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026_hu_da1ed5cfb5d7746c.webp 800w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/andy-kde-2026.jpg"
 alt="andy speaking at foss backstage 2026"
@@ -100,8 +99,8 @@ height="534"
 &lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/pr-preview/pr-563/events/2026-03-31-foss-backstage-donation-support/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Events</category></item><item><title>FOSDEM 2026: Open Source Design Devroom wrap up</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/fosdem-2026/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/fosdem-2026/</guid><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><dc:creator>Eriol Fox</dc:creator><author>Eriol Fox</author><description> A photo from towards the end of the open source design devroom day Introduction The 12th edition Open Source Design devroom in 2026 ran for a half a day on Sunday 1st of February from 13.00pm until the end of the conference at 17.00pm with 8 talks. Most talks had a good/full turn out of audience numbers in the room, even right up until the end of the day on Sunday, which is typically when many folks start travel home from Brussels.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; 1 February 2026&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Université Libre Brussels, Belgium&lt;/p&gt;&lt;/div&gt;&lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_888a4049c28c6a7d.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_400b6f34d026a932.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_9d87496222eeb776.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_334279f8069994af.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_888a4049c28c6a7d.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_53ae80f2438750be.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_8735cc30d064fc20.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_400b6f34d026a932.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/OSD-FOSDEM-devroom-2026-2_hu_13c8c47022ce255d.jpeg"
 alt="A photo from towards the end of the open source design devroom day"
@@ -231,8 +230,8 @@ Every year, thousands of free and open source software contributors from all ove
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_77dbc121ccda0534.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4551a4051f892214.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4ae6f1acd30636b7.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_29cb246573fa4991.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_77dbc121ccda0534.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_3507cc1ab2ffed52.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_881fc7eff812ef96.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_4551a4051f892214.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-signs_hu_2380125e8298c01e.jpg"
 alt="signs outside of FOSS Backstage&amp;rsquo;s venue entrance"
@@ -256,10 +255,10 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_3444595b862f1238.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_2f175ca9d06b8cd6.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_a066ab3bf92eb0fe.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_ac696f481d38ea4b.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_6eb71449bc50496f.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_acfc2ffd6a45e913.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_c4354abc289ded60.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_5bdcce2fe24b6384.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_433b79978f24840a.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tobias-and-the-tech_hu_9c3304f5793be0ef.jpg"
 alt="a speaker and the tech behind the speaker"
 title="a speaker and the tech behind the speaker"
 loading="lazy"
@@ -277,8 +276,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e86fe01e2653986c.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7523637dda808bcb.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_28c3bf97fd8c7e7a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7041fb88918ce005.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e86fe01e2653986c.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_e428af7781268f89.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_23ac9e92ad8af343.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_7523637dda808bcb.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Miruna_hu_d070991c0d9db561.jpg"
 alt="Building Resilience:UX Strategies for Crisis-Responsive Tech by Miruna Muscan"
@@ -299,8 +298,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_431d545b1c64697a.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_8abb413416553e88.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_c780c0227682a2a2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_3ec360fe397c9e62.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_431d545b1c64697a.avif 1366w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_a5dd3e354a5db94f.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_26750415ab86f793.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola_hu_8abb413416553e88.webp 1366w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-nina-leia-kola.jpg"
 alt="Bridging the Gap Between Designers &amp;amp; Open Source Communities by Nina Rojc, Leia Ruffini, Kola Ojoodide"
@@ -322,8 +321,8 @@ In the talk they share key findings, including the biggest obstacles designers f
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1ae2329e6c263436.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_65bb65538f9e90d0.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_993acf47f77ae32f.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_ea5b806235a10156.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1ae2329e6c263436.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_9a02f3f8f2c9658.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_97238398d8d2f314.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_65bb65538f9e90d0.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Batool-Goodnews-Ritchie_hu_1214eb031d1c8917.jpg"
 alt="Right-to-Left, Left-to-Right: Rethinking Multilingual Design by Batool Almarzouq, Goodnews Sunday Sandy, Richie Moluno"
@@ -344,8 +343,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_d2439749497d23ac.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_f42ea085cd81fff7.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_59e9cb29b79bb9ac.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_82af913ad9c7b0ca.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_d2439749497d23ac.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_a31ef95459296d5b.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_3fa0a2332fc9c2db.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_f42ea085cd81fff7.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Christoph-Eriol_hu_25b2100bd618d036.jpg"
 alt="Open Design Guide by Christoph Ono, Eriol Fox"
@@ -366,8 +365,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_9b9edc36d17ee6d0.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_91611565d6263dd8.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_a08f24de386a192c.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_173509ad8daf237.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_9b9edc36d17ee6d0.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_43df4cc3f684bca8.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_459f89c08b233e72.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_91611565d6263dd8.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Hartmut_hu_cd3635c57b1f89b0.jpg"
 alt="Designing is for GUIs only? CLI Design as a shared practice by Hartmut Obendorf"
@@ -389,8 +388,8 @@ In this talk, Hartmut goes into depth about how information architecture and con
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_587d086927a0207.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_66851e844da1acc3.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_ac2087e4451d4f3a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_20fb408fa6f36a3f.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_587d086927a0207.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_174248cb7bf41f3c.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_60f6754258cf40fe.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_66851e844da1acc3.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Oluwadunsin-Kingsley_hu_7bbeda39c9264158.png"
 alt="Onboarding Designers into Open Source Projects by Oluwadunsin Emmanuel Omole and Kingsley Mkpandiok"
@@ -411,8 +410,8 @@ height="789"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c0d5aafcfa9dc1d2.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_7ece78fd8ee26056.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_af49f017871fbbfc.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_d495d3d421dec1f.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c0d5aafcfa9dc1d2.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_25e9735dd5c024bb.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_c1562432554c6b16.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_7ece78fd8ee26056.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-design-sign_hu_8b26c8566a221019.jpg"
 alt="FOSS Backstage Design signed, sign"
@@ -432,10 +431,10 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_f5f1bbe2e7113ad3.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_4878153da4e74090.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_e4dd534d1b96eb6a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_e34c033ff48117c0.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_2881c58ecb758c3a.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_c6425e9b7d849988.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_d15f61fe8a52ca1e.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_25eadaf17d31f880.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_d690d27a0f12070.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-tantacrul_hu_8654cae59342547b.jpg"
 alt="Achieving Excellence in Open Source Software Design by Martin Keary"
 title="Achieving Excellence in Open Source Software Design by Martin Keary"
 loading="lazy"
@@ -454,8 +453,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_b8c72078aac792b9.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_bf120152b1141225.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_df4b7c4a1c3d36ec.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_3c81a571a960957e.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_b8c72078aac792b9.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_be38697b6ea47e98.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_e9111307e363d724.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_bf120152b1141225.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Marta_hu_a89c48e1fc198525.jpg"
 alt="Beyond Looking Good: How To Talk To Developers About Design by Marta Marczykowska-Górecka"
@@ -476,8 +475,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_17986c35f497e3eb.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_81b83d87ee0e7c04.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_30279f93f74f9772.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_705ac80a30b50929.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_17986c35f497e3eb.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_b251ad587c4db6b2.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_f916a590dbe6e01f.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_81b83d87ee0e7c04.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-Tobias_hu_459f36aebe580512.jpg"
 alt="GNOME Design: A Report From the Trenches by Tobias Bernard"
@@ -498,8 +497,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_b968a6d74a28ad78.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_5be36ed83b3a576f.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_da59b5ef7dfa5acd.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_e023c9df6309ad05.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_b968a6d74a28ad78.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_ae8ee56fe243ee25.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_131b37e096a8382f.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_5be36ed83b3a576f.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp_hu_81506cbf2d059ef6.jpg"
 alt="A circle of people discussing open source design topics at the barcamp"
@@ -519,8 +518,8 @@ height="1067"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_afa23de2933b4917.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_c9bcdcf3083a84b9.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_398dfedc5eb6a0a7.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_f9cfa10ce6200731.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_afa23de2933b4917.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_698f7608704908f4.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_3ac896f96c897679.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_c9bcdcf3083a84b9.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-barcamp-sessions_hu_77e1945a74d2d407.jpeg"
 alt="The schedule written on a whiteboard"
@@ -569,8 +568,8 @@ Private discussion centering on how to be supportive, collaborative and kind in 
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_bd737d95c25cc20e.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_385b75e5a0385603.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_77eabf5928d34324.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_b58bd02d15a4e473.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_bd737d95c25cc20e.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_13ec19cd796fbb5a.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_b69878a68c196128.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_385b75e5a0385603.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-stickies_hu_6a791825249e4c63.jpg"
 alt="All the sticky note topics stuck on the whiteboard with dots to vote on the popular ones"
@@ -590,8 +589,8 @@ height="1066"
 &lt;p&gt;
 &lt;figure class="my-6"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_6f19818a07c47dbb.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_427d8a1d00ef90f5.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_ddfa4783e286f095.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_7333e7ad4b88be70.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_6f19818a07c47dbb.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_127e087ab78a2d5d.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_fd9b9bf6c2d99d30.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_427d8a1d00ef90f5.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/foss-backstage-2025/foss-backstage-devs-and-designers_hu_e6c77600739d9032.jpg"
 alt="A sticky note that reads &amp;lsquo;developers and designers, a match made in heaven/hell?"
@@ -1168,8 +1167,8 @@ As Open Source Design we&amp;rsquo;ve discovered over the years, that FLOSS proj
 &lt;p&gt;And finally, here&amp;rsquo;s a screenshot of the Open Source Design team and attendees at the end of FOSDEM 2021!
 Add the lovely screenshot here.
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_34934890825ef9f4.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_2571981e99095af1.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_22c89e046eeac578.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_6e87e02a2fd7abc3.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_34934890825ef9f4.avif 1406w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_7b0b8cf7091c6f21.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_2259c295cd5a3657.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot_hu_2571981e99095af1.webp 1406w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/fosdem-2021-devroom-screenshot.png"
 alt="Screenshot of the open source design dev room at the end of FOSDEM 2021"
@@ -1451,8 +1450,8 @@ Open Source Design (short OSD) is a community of designers and developers pushin
 &lt;p&gt;&lt;a href="https://opensourcedesign.net/"&gt;Open Source Design&lt;/a&gt; (short OSD) is a community of designers and developers pushing more open design processes and improving the user experience and interface design of open source software. The community writes articles, runs a &lt;a href="https://opensourcedesign.net/jobs"&gt;job board&lt;/a&gt;, puts on events, provides resources, and presents talks targeted at developers and designers interested in working and designing in Open Source.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_bb44619ff798e141.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_85320b1ee64138.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_6489fdea46b13d16.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_bb44619ff798e141.avif 760w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_8e86efe500015a62.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo_hu_85320b1ee64138.webp 760w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-logo.png"
 alt="Open Source Design logo"
@@ -1475,8 +1474,8 @@ In the following months, we coordinated our efforts through monthly calls and &l
 &lt;p&gt;During the rather informal gathering we spontaneously put up a circle of chairs in the area outside. Did we mention that the weather was fantastic? We even ended up doing many sessions out in the open.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_8387abc69aa823fc.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_cd0aa59e4ea685de.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_7289b035427f02e0.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_c5a0770eb569960a.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_8387abc69aa823fc.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_b359df9205f99d19.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_ab65ba7493451c85.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat_hu_cd0aa59e4ea685de.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sat.jpg"
 alt="Saturday agenda"
@@ -1493,8 +1492,8 @@ height="853"
 &lt;p&gt;We officially started the Summit by welcoming everyone and giving an intro to Open Source Design for newcomers that decided to join us in the Summit. Unlike the past Summit, we had a good mix of core contributors and newcomers, so it only made sense to adapt, following up with a short talk by &lt;a href="https://twitter.com/halaszdavid"&gt;David&lt;/a&gt; and &lt;a href="https://twitter.com/terezanovotna_"&gt;Tereza&lt;/a&gt; from &lt;a href="https://redhat.com"&gt;Red Hat&lt;/a&gt; about &lt;a href="https://en.wikipedia.org/wiki/Systems_design"&gt;Design Systems&lt;/a&gt;, and specifically about &lt;a href="https://www.patternfly.org/"&gt;PatternFly&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://upload.wikimedia.org/wikipedia/commons/0/0a/Open_Source_Design_Summit_2018_-_79.jpg"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_c3bda315b7703668.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_5d80232430b820e.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_3a58e928099e7ba2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_fa508111e7984e7a.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_c3bda315b7703668.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_9321a1a642ea158a.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_b2926204b85572b6.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza_hu_5d80232430b820e.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-david-tereza.jpg"
 alt="David and Tereza talk"
@@ -1509,8 +1508,8 @@ height="853"
 &lt;p&gt;Next up we had a very interesting and involving workshop about Cut, Copy &amp;amp; Paste from &lt;a href="https://cameralibre.cc"&gt;Sam&lt;/a&gt;. The workshop was there to teach beginners about the concept of git as a version control system (as designers usually have to work with git too, which is a showstopper for many at first).&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_e33032f3ef9cba34.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_121206f1ac66b836.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_e08b0a5fb0d1835a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_c54ce33fa2fa69e3.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_e33032f3ef9cba34.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_cf9cf8af51fdcd76.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_f4844786e8071b3.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop_hu_121206f1ac66b836.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-sam-workshop.jpg"
 alt="Sam&amp;rsquo;s workshop"
@@ -1526,8 +1525,8 @@ height="853"
 &lt;p&gt;The following topic was about our upcoming events and where should Open Source Design focus on more, a nice discussion that happened outside, in the warm weather (really, Albania is warm even in November).&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_9183114c6ef7bb50.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_3fcbb719e95c196a.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_676881ee5fd53a0c.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_47ac7003018c721b.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_9183114c6ef7bb50.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_dce2a01b19140c19.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_417052aa93b5d9c5.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events_hu_3fcbb719e95c196a.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-events.jpg"
 alt="Discussing about events"
@@ -1543,8 +1542,8 @@ height="853"
 &lt;h3 id="november-4th-last-meeting-day"&gt;November 4th (Last Meeting Day)&lt;/h3&gt;
 &lt;p&gt;The last day started a bit later, which is expected of a Sunday morning
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_8d619ef883bdc739.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_50d778447af06aa2.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_efe8e93333ec7e63.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_354ed4b610fd1a4d.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_8d619ef883bdc739.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_4fd2bb717a893b82.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_6f4615e18701e209.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun_hu_50d778447af06aa2.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-agenda-sun.jpg"
 alt="Last day agenda"
@@ -1559,8 +1558,8 @@ height="960"
 &lt;p&gt;We firstly discussed about the Summit itself and how we could build upon community building intiatives (via local meetups for example). Afterwards we split into two groups, where one worked on the new draft of the Manifesto while the other one discussed about the State of Open Source Design tools.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_6e12ba755c681d04.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_ffd0e20aad98c447.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_e3b82288dc540a2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_9ea69f69046eaf41.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_6e12ba755c681d04.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_a259f015b7c9d697.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_b1656e651d3f8245.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun_hu_ffd0e20aad98c447.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-whiteboard-sun.jpg"
 alt="Whiteboard"
@@ -1576,8 +1575,8 @@ height="960"
 &lt;p&gt;Of course we didn&amp;rsquo;t forget to take a group photo from the Summit!&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://upload.wikimedia.org/wikipedia/commons/5/54/Open_Source_Design_Summit_2018_-_95.jpg"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_b898ee9f6a2fea00.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_b4db19134986a0a5.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_1f86535045860011.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_426e7315635f51a6.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_b898ee9f6a2fea00.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_fafa732c64f47cad.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_fb4cf8680008272a.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo_hu_b4db19134986a0a5.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/osd-group-photo.jpg"
 alt="OSD Summit group photo"
@@ -1607,17 +1606,17 @@ This event page is preserved for historical reference.&lt;/p&gt;
 &lt;p&gt;Eli is a libre graphics focused designer and software developer who has worked with clients such as Jacobin Magazine, EA Games, and Ruffeo Hearts Lil&amp;rsquo; Snotty. His blog and links to social media profiles can be found at: &lt;a href="https://elih.blog"&gt;Eli.blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_db3883bae6dc467c.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_59b9445ffa9fb4.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_72299ff77ba809c2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_7478fbbd71382c34.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_d5f02e19a8361f3a.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_215711f2668fcf8c.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_4abf5f89d4bbaf9d.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_5c38b3ad572aee7a.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_ca7a259baf3d4301.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2470_hu_a9a4cd88b977e8b0.jpg"
 alt="Eliheuer"
 loading="eager"
 fetchpriority="high"
 decoding="async"
 class="mx-auto my-6 block rounded-lg shadow-sm"
 width="1600"
-height="2133"
+height="2134"
 /&gt;
 &lt;/picture&gt;
 Eli Heuer about to dive into the world of font editors.&lt;/p&gt;
@@ -1625,8 +1624,8 @@ Eli Heuer about to dive into the world of font editors.&lt;/p&gt;
 &lt;p&gt;Eli became interested in Fonts due to a teaching opportunity in Bushwick NY in 2013. Working with local kids that did not have access to expensive computers helped spark his determination to teach them about the world of free software. Among other projects he worked with local artists that had either little or no budget for their art shows and provided them with design work or tool kits to help them create events posters and collateral.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_460999021cc4cff9.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_f48e41cbb37f2f16.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_4a299dd674c9f1eb.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_9f76a702e218c342.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_460999021cc4cff9.avif 1005w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_949ee18fb8fc17c0.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_b84a00810be6bfbb.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw_hu_f48e41cbb37f2f16.webp 1005w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_thaw.png"
 alt="&amp;ldquo;thaw&amp;rdquo; spelled in melting ice"
@@ -1641,8 +1640,8 @@ Example of some of his past work&lt;/p&gt;
 &lt;p&gt;Eli’s love of fonts and type only grew as began to dig deeper into the world of software development. Here is his presentation on the history and future of free software font editors:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=5GrlPIHN57Y"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_f6d9d6262ce456a0.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_20751dd53b86743.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_e782313ff22e6445.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_c4ce0a59a5b09399.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_f6d9d6262ce456a0.avif 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_2a027e56cda48730.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_7e6d43d0bb3adaba.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube_hu_20751dd53b86743.webp 1280w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_youtube.png"
 alt="Youtube presentation on history of font editors"
@@ -1661,8 +1660,8 @@ height="724"
 There is a podcast interview with Zusanna Lithgow of EMIGRE Magazine (1984-1994) where she talks about how she pioneered the whole concept of selling digital fonts. She Started by sending fonts typeset on paper and mailed to people that requested/paid for them. Eventually they were sold on on floppy disks.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_6795222888a310fe.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_a9136c6796415e93.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_de15ecb931fae6a2.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_6795222888a310fe.avif 960w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_b11ed4d981e05a1b.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover_hu_a9136c6796415e93.webp 960w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_Emigre1Cover.png"
 alt="EMIGRE magazine cover"
@@ -1680,8 +1679,8 @@ The Magazine That Ignores Boundaries (1984)&lt;/p&gt;
 &lt;p&gt;He covered FontForge which he ported over onto the PocketChip he brought with him to the presentation.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_454ca9b5e66a4fb2.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_9c975d99ad04ced7.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_f957657b94c9deda.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_821b8e8279847bcb.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_454ca9b5e66a4fb2.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_7878d74a5314f10c.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_8a736d3bd61339ae.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_9c975d99ad04ced7.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_fontforge_chip_hu_66cae0221e5e2bb9.jpg"
 alt="FontForge running on a PocketChip"
@@ -1695,16 +1694,16 @@ height="1600"
 Eli’s PocketChip that runs Linux and FontForge and let’s you use a pen!&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_121cd6a59d7643c6.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_8facee95f1882167.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_8695702bcb08d954.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_cb4ae1f73271664.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_9ac97078d77ca214.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_6f10672f86253509.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_e65feca94314401e.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_59d915575b697c81.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_f1a48108e1e928ff.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/articles/nyc_IMG_2479_hu_f1689f38ee262fd3.jpg"
 alt="PocketChip pen demo"
 loading="lazy"
 decoding="async"
 class="mx-auto my-6 block rounded-lg shadow-sm"
 width="1600"
-height="2133"
+height="2134"
 /&gt;
 &lt;/picture&gt;
 Dave Crossland playing with the PocketChip&lt;/p&gt;
@@ -1887,10 +1886,10 @@ Top row: Julien Deswaef, Aaron Hymoff, Dina Michl, Atul Varma, Stephanie Daher, 
 &lt;p&gt;Open source communities push collaboration, sharing and transparency throughout various industries. While design and creativity have never been more important, we often wonder, “where can designers who focus on open source projects share what they do, push their designs further and encourage other designers to join the community?” Come to our meetup to learn more.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_289906b6d3f4993b.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_ff4921152f3b07fd.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_5eb0f84e42e87b90.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_6c6a2327711d5e22.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_4ae3c020b70c1b69.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_843adf5b5b1eb693.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_c5a3c97c8ed312bd.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_68df280023f6d445.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_7ec1e9b5a5d33a30.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_20171214_205528_hu_fe6f8fb76e0af80d.jpg"
 alt="nycgroup"
 loading="eager"
 fetchpriority="high"
@@ -1907,10 +1906,10 @@ Not pictured: Jess Klein&lt;/p&gt;
 &lt;p&gt;This talk was given by Atul Varma, who is known for building bridges of understanding between humans and machines. He has written illuminating software that’s been used as the centerpiece of TED Talks, in maker events around the world, and by individuals who are just trying to have a less frustrating time using their computer. But his favorite moments are very personal: understanding where another person is coming from, constructing a metaphor they can relate to, and using it to explain technology in a way that liberates, excites, and empowers.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_c151dc22313c6a36.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_2f557fc2d9fe6f85.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_8f974d3693e12ec.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_cf88a4256100bd49.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_537ebd62ec4918c9.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_ac79df82666e35d3.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_a3f003ab514bd541.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_af1e23f64cd20c1.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_cf8dbfb9d5cb3c14.jpg"
+src="https://opensourcedesign.net/pr-preview/pr-563/images/IMG_0298_hu_249a9dcc42565e6.jpg"
 alt="nycgroup"
 loading="lazy"
 decoding="async"
@@ -1966,8 +1965,8 @@ Who are we and where did we contribute last? We are a collective of designers an
 &lt;p&gt;We are a collective of designers and design advocates who contribute to open source projects. Julien Deswaef, Jessica Klein and Dina Michl opened a chapter in NYC to meet regularly and grow the open source design community. In September, we held our first meeting to collaborate on defining what shape the meetups should take.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_e1789fd1721180c1.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_cece20bf122694ce.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_9bab13c37d5adfba.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_e4f0f1afb4f121d8.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_e1789fd1721180c1.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_dbf744049c84384d.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_2ab3740688eea285.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_cece20bf122694ce.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image3_hu_d302cb4074cc66af.jpg"
 alt="nycgroup"
@@ -1984,17 +1983,21 @@ Bottom row: Erika Enlund, Jess Klein, Stacy Cheng
 Not pictured: Stephanie Weber, Shandy Tsai, Tess (Thematizer)&lt;/p&gt;
 &lt;h2 id="open-design-kit---presentation-by-jess-klein"&gt;Open Design Kit - Presentation by Jess Klein&lt;/h2&gt;
 &lt;p&gt;
-&lt;picture&gt;
-&lt;img
-src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image1.gif"
-alt="nycgroup"
-loading="lazy"
-decoding="async"
-class="mx-auto my-6 block rounded-lg shadow-sm"
+&lt;figure class="my-6"&gt;
+&lt;video
+class="mx-auto block rounded-lg shadow-sm"
+autoplay loop muted playsinline
+preload="metadata"
+data-gif-video
 width="320"
 height="320"
-/&gt;
-&lt;/picture&gt;
+aria-label="nycgroup"
+&gt;
+&lt;source src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image1.webm" type="video/webm" /&gt;
+&lt;source src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image1.mp4" type="video/mp4" /&gt;
+&lt;img src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image1.gif" alt="nycgroup" loading="lazy" decoding="async" width="320" height="320" /&gt;
+&lt;/video&gt;
+&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Jess Klein presented &lt;a href="http://opendesignkit.org/"&gt;Open Design Kit&lt;/a&gt; at our meetup this November.&lt;/p&gt;
 &lt;p&gt;Teaching people how to integrate design into their workflows has been a secondary focus of &lt;a href="http://jessklein.is/"&gt;Jess Klein’s&lt;/a&gt; career. Her experience while working in the design community is nothing but interesting and diverse. Having led and contributed to many open source education and civic projects, she’s had to learn to work with her teams all over the world.&lt;/p&gt;
@@ -2003,8 +2006,8 @@ height="320"
 &lt;p&gt;The project was incubated with the design team at &lt;a href="https://bocoup.com/"&gt;Bocoup&lt;/a&gt; (where she was the Principal Designer), and since this Summer has been a completely community managed initiative. There are many active contributors (all who are mentioned by name in the &lt;a href="https://github.com/open-design-kit/opendesignkit"&gt;GitHub README file&lt;/a&gt;) to the project and she is inviting more community participation to generate a more accessible and inclusive resource.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_774ee7b22f57d218.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_a04cab674427cf67.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_9a56cd3f0cd05021.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_5a5260480281875a.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_774ee7b22f57d218.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_45296f681c058ad5.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_b12072a1b48fe3d3.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_a04cab674427cf67.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image4_hu_458d76ef492e39e7.png"
 alt="nycgroup"
@@ -2020,8 +2023,8 @@ So, why is another kit needed? Jess was quick to point out that there are many g
 &lt;p&gt;“It’s unique because it’s not associated with a specific organization, so teams can use the kit freely on projects and take ownership of the content and interpretation.”&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_118b568280a242af.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_15b9c7d4a89a7dcf.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_75a62fd8d2528241.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_249c99d38c5c09d8.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_118b568280a242af.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_17f5dfe066d850e4.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_7035ecc8b4f4ce5b.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_15b9c7d4a89a7dcf.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image2_hu_4ca245c8971c9442.png"
 alt="nycgroup"
@@ -2036,8 +2039,8 @@ The minimum loveable product was defined as a combination of creating a few meth
 &lt;p&gt;The initial release of the Kit has focused on highlighting “remote - first” methods for collaboration. As can be seen in the Affinity Diagram method, the Kit is not prescriptive but shows how you might approach problem solving.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_24472a6da754ddfb.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_de9e06e94a938da6.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_8e5724cf9c423b7a.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_21a3298a00fb0a00.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_24472a6da754ddfb.avif 1452w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_7af857cdfe8a6a3f.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_546fe2d1b3c0ddae.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5_hu_de9e06e94a938da6.webp 1452w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/nyc_image5.png"
 alt="nycgroup"
@@ -2100,8 +2103,8 @@ Open source communities pushed collaboration, sharing and transparency (in regar
 We are a collective of designers and design advocates who contribute to open source projects. Julien Deswaef, Jessica Klein and Dina Michl opened a chapter in NYC to meet regularly and grow the open source design community. In September, we held our first meeting to collaborate on defining what shape the meetups should take.&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_6464723ab3ae6af7.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_ae66b26c59af4495.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_eb050179de9d7771.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_6464723ab3ae6af7.avif 723w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_c09d1315e8d3da63.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup_hu_ae66b26c59af4495.webp 723w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/nycgroup.jpg"
 alt="nycgroup"
@@ -2126,8 +2129,8 @@ At the first meetup, we got to know one another through a series of design exerc
 &lt;/ul&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_e42915947d34bdbc.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_b8b5b08987d10271.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_eac56342f2802af0.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_14badcb4ca8f4026.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_e42915947d34bdbc.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_5bfb8f0e3e3d8232.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_a5006059e7441ec2.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_b8b5b08987d10271.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting1_hu_b1f5ffeae409234f.jpg"
 alt="Sticky clustering exercise in progress"
@@ -2141,8 +2144,8 @@ height="1201"
 &lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_a4d243227c8b94e3.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_f47f4edf451a38db.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_980a25b9fe3b3aff.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_6a1c6117632c6670.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_a4d243227c8b94e3.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_16c8703587bfebf5.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_b64d34edcb710950.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_f47f4edf451a38db.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting2_hu_cc09472934235f8c.jpg"
 alt="Sticky clustering results grouped into themes"
@@ -2158,8 +2161,8 @@ height="1201"
 &lt;p&gt;&lt;strong&gt;Themes&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_4f7ee7cffd615a.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_77a43737424770d6.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_c7118e5cab274924.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_6af5b1e5188fe975.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_4f7ee7cffd615a.avif 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_db1528892b3b60bf.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_e8f35448d08b3f86.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_77a43737424770d6.webp 1600w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/cardsorting3_hu_339f7122e1bf2fd.jpg"
 alt="cardsorting"
@@ -2248,8 +2251,8 @@ What can we do together? Bring more designers Bring more projects Teach about op
 &lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/pr-preview/pr-563/events/2017-06-01-open-source-design-event-madrid/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Events</category></item><item><title>Open Source Design track at OpenTechSummit 2017</title><link>https://opensourcedesign.net/pr-preview/pr-563/events/2017-05-25-opentechsummit/</link><guid isPermaLink="true">https://opensourcedesign.net/pr-preview/pr-563/events/2017-05-25-opentechsummit/</guid><pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate><description> OpenTechSummit had its first Open Source Design track this year, which we organized!
 You can see some pictures on Twitter searching for ‘opensourcedesign opentechsummit’.</description><content:encoded>&lt;div style="margin-bottom:1.5em;padding:1em;background:#f8f9fa;border-radius:8px;"&gt;&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; Thu, 25 May 2017&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 10:00-18:30&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; freiLand, Berlin-Potsdam&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="https://twitter.com/opensrcdesign/status/865185759246077952"&gt;
 &lt;picture&gt;
-&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_d461870ae4a1a7ec.avif" /&gt;
-&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_1d75b0ceebb07cbe.webp" /&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_7331f286a9b10272.avif 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_d9de67aba141514c.avif 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_d461870ae4a1a7ec.avif 1200w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_f3048fede5cba0ff.webp 480w, https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_9761c7c146539be7.webp 960w, https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017_hu_1d75b0ceebb07cbe.webp 1200w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
 &lt;img
 src="https://opensourcedesign.net/pr-preview/pr-563/images/events/opentechsummit-2017.jpg"
 alt="Open Source Design track at OpenTechSummit 2017"
