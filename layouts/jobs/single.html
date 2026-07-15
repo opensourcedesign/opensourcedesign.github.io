@@ -424,6 +424,21 @@
         {{ $jp = merge $jp (dict "validThrough" (((time.AsTime .).AddDate 0 6 0).Format "2006-01-02")) }}
       {{ end }}
     {{ end }}
+    {{/* baseSalary from the structured rate fields (Google Jobs richness).
+         rate_period "project" has no schema.org unit; omit the unit there. */}}
+    {{ if and $isPaid .Params.rate_min }}
+      {{ $units := dict "hour" "HOUR" "day" "DAY" "month" "MONTH" "year" "YEAR" }}
+      {{ $value := dict "@type" "QuantitativeValue" "minValue" .Params.rate_min }}
+      {{ with .Params.rate_max }}{{ $value = merge $value (dict "maxValue" .) }}{{ end }}
+      {{ with index $units (printf "%v" (.Params.rate_period | default "hour")) }}
+        {{ $value = merge $value (dict "unitText" .) }}
+      {{ end }}
+      {{ $jp = merge $jp (dict "baseSalary" (dict
+        "@type" "MonetaryAmount"
+        "currency" (printf "%v" (.Params.rate_currency | default "USD"))
+        "value" $value
+      )) }}
+    {{ end }}
     <script type="application/ld+json">{{ $jp | jsonify | safeJS }}</script>
   {{ end }}
 {{ end }}

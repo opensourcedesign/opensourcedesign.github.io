@@ -60,22 +60,37 @@
     <link rel="icon" href="{{ partial "site-path.html" "/images/favicon.ico" }}" sizes="32x32" />
     <link rel="apple-touch-icon" href="{{ partial "site-path.html" "/images/favicons/apple-touch-icon.png" }}" />
 
-    {{/* Determine OG image - try page image, page bundle, content image, or fallback */}}
+    {{/* Determine OG image - try page image, page bundle, content image, or fallback.
+         $ogW/$ogH are only set when the real pixel size is known (generated
+         cards, bundle/asset images) - wrong declared dimensions are worse
+         than none for link unfurls. */}}
     {{ $ogImage := "" }}
+    {{ $ogW := 0 }}
+    {{ $ogH := 0 }}
     {{/* Job postings without an explicit image get a generated social card
          (title/org/deadline on a branded background). */}}
     {{ if and .IsPage (eq .Section "jobs") (not .Params.image) }}
       {{ with partial "social-card.html" . }}
         {{ $ogImage = .Permalink }}
+        {{ $ogW = .Width }}
+        {{ $ogH = .Height }}
       {{ end }}
     {{ end }}
     {{ if not $ogImage }}
     {{ with .Params.image }}
       {{ $ogImage = partial "site-abs-path.html" . }}
+      {{ with resources.Get (strings.TrimPrefix "/" .) }}
+        {{ if reflect.IsImageResourceProcessable . }}
+          {{ $ogW = .Width }}
+          {{ $ogH = .Height }}
+        {{ end }}
+      {{ end }}
     {{ else }}
       {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
       {{ if $res }}
         {{ $ogImage = $res.Permalink }}
+        {{ $ogW = $res.Width }}
+        {{ $ogH = $res.Height }}
       {{ else }}
         {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
         {{ if $matches }}
@@ -86,7 +101,11 @@
             {{ $ogImage = partial "site-abs-path.html" $src }}
           {{ end }}
         {{ else }}
-          {{ $ogImage = partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
+          {{ with partialCached "og-default-card.html" . }}
+            {{ $ogImage = .Permalink }}
+            {{ $ogW = .Width }}
+            {{ $ogH = .Height }}
+          {{ end }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -101,8 +120,10 @@
     <meta property="og:locale" content="en_US" />
     {{ if $ogImage }}
       <meta property="og:image" content="{{ $ogImage }}" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      {{ if and $ogW $ogH }}
+        <meta property="og:image:width" content="{{ $ogW }}" />
+        <meta property="og:image:height" content="{{ $ogH }}" />
+      {{ end }}
     {{ end }}
     {{ if .IsPage }}
       {{/* Scalar `author`, each entry of an `authors` list, or the
@@ -171,22 +192,26 @@
          (only for open listings) to avoid duplication and advertising filled jobs. */}}
     {{ if eq .Section "events" }}
       {{ if .IsPage }}
-        {{ $event := dict
-          "@context" "https://schema.org"
-          "@type" "Event"
-          "name" .Title
-          "description" (.Summary | plainify)
-          "organizer" (dict "@type" "Organization" "name" "Open Source Design" "url" site.BaseURL)
-        }}
-        {{/* startDate must be ISO 8601; prefer eventStart, else an ISO eventDate. */}}
+        {{/* startDate must be ISO 8601; prefer eventStart, else an ISO
+             eventDate. Without a valid start date the Event is invalid per
+             schema.org, so skip the block entirely. */}}
         {{ $start := "" }}
         {{ with .Params.eventStart }}{{ $start = printf "%v" . }}{{ end }}
         {{ if not $start }}{{ $ed := printf "%v" (.Params.eventDate | default "") }}{{ if findRE `^\d{4}-\d{2}-\d{2}` $ed }}{{ $start = $ed }}{{ end }}{{ end }}
-        {{ with $start }}{{ $event = merge $event (dict "startDate" .) }}{{ end }}
-        {{ with .Params.location }}{{ $event = merge $event (dict "location" (dict "@type" "Place" "name" .)) }}{{ end }}
-        <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
+        {{ with $start }}
+          {{ $event := dict
+            "@context" "https://schema.org"
+            "@type" "Event"
+            "name" $.Title
+            "description" ($.Summary | plainify)
+            "startDate" .
+            "organizer" (dict "@type" "Organization" "name" "Open Source Design" "url" site.BaseURL)
+          }}
+          {{ with $.Params.location }}{{ $event = merge $event (dict "location" (dict "@type" "Place" "name" .)) }}{{ end }}
+          <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
+        {{ end }}
       {{ end }}
-    {{ else if hasPrefix .RelPermalink "/resources/articles/" }}
+    {{ else if and .IsPage (eq .Section "resources") .CurrentSection .CurrentSection.File (eq .CurrentSection.File.ContentBaseName "articles") }}
       {{ if .IsPage }}
         {{ $publisherLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
         {{ $article := dict

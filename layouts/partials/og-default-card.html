@@ -1,0 +1,19 @@
+{{/*
+  Site-wide default Open Graph card (1200x630): the branded og-card-base
+  background with the site name and tagline. Used for pages with no image of
+  their own - crawlers (Facebook/LinkedIn/X) don't render SVG og:images, so
+  this replaces the old SVG-logo fallback. Built once per site (cached copy).
+*/}}
+{{ $card := "" }}
+{{ $base := resources.Get "images/og-card-base.png" }}
+{{ $bold := resources.Get "fonts/og/Inter-Bold.ttf" }}
+{{ $med := resources.Get "fonts/og/Inter-Medium.ttf" }}
+{{ if and $base $bold $med }}
+  {{ $img := $base.Filter
+    (images.Text "Open Source Design" (dict "color" "#0f172a" "size" 64 "x" 80 "y" 240 "font" $bold))
+    (images.Text "Designers and developers pushing more open design\nprocesses and improving the UX of open source software." (dict "color" "#475569" "size" 26 "linespacing" 12 "x" 80 "y" 340 "font" $med))
+    (images.Text "opensourcedesign.net" (dict "color" "#94a3b8" "size" 18 "x" 80 "y" 588 "font" $med))
+  }}
+  {{ $card = $img | resources.Copy "og/default.png" }}
+{{ end }}
+{{ return $card }}
