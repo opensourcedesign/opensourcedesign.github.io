@@ -126,7 +126,7 @@
   }
 
   /* Theme toggle: show only the icon for the active state (set by main.js). */
-  [data-theme-toggle] svg {
+  [data-theme-toggle] :is(.osd-theme-icon-light, .osd-theme-icon-system, .osd-theme-icon-dark) {
     display: none;
   }
   [data-theme-toggle][data-theme-state="light"] .osd-theme-icon-light,

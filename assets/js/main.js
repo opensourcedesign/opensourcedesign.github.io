@@ -47,13 +47,27 @@
     });
   });
 
-  // Theme toggle (header): cycles light -> system -> dark. The stored choice
-  // ("osd-theme") is applied before first paint by the head script in
-  // baseof.html; buttons ship hidden and are revealed here (no dead control
-  // without JS).
+  // GIF-replacement videos (render-image hook): honor prefers-reduced-motion
+  // by stopping the autoplayed loop and exposing controls instead.
   (function () {
-    var buttons = document.querySelectorAll('[data-theme-toggle]');
-    if (!buttons.length) return;
+    if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    document.querySelectorAll('video[data-gif-video]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+      v.controls = true;
+    });
+  })();
+
+  // Theme controls (header): the desktop icon button cycles
+  // light -> system -> dark; the mobile-menu segmented control sets a state
+  // directly. The stored choice ("osd-theme") is applied before first paint
+  // by the head script in baseof.html; controls ship hidden and are revealed
+  // here (no dead control without JS).
+  (function () {
+    var cycleButtons = document.querySelectorAll('[data-theme-toggle]');
+    var setButtons = document.querySelectorAll('[data-theme-set]');
+    var groups = document.querySelectorAll('[data-theme-group]');
+    if (!cycleButtons.length && !setButtons.length) return;
     var ORDER = ['light', 'system', 'dark'];
     var LABELS = { light: 'Light', system: 'System', dark: 'Dark' };
     function current() {
@@ -62,27 +76,36 @@
         return v === 'light' || v === 'dark' ? v : 'system';
       } catch (e) { return 'system'; }
     }
+    function apply(state) {
+      try {
+        if (state === 'system') localStorage.removeItem('osd-theme');
+        else localStorage.setItem('osd-theme', state);
+      } catch (e) { /* private mode: theme just won't persist */ }
+      if (window.osdSyncTheme) window.osdSyncTheme();
+      render();
+    }
     function render() {
       var state = current();
       var next = ORDER[(ORDER.indexOf(state) + 1) % ORDER.length];
-      buttons.forEach(function (b) {
+      cycleButtons.forEach(function (b) {
         b.hidden = false;
         b.setAttribute('data-theme-state', state);
         b.setAttribute('aria-label', 'Colour theme: ' + LABELS[state] + '. Switch to ' + LABELS[next].toLowerCase() + '.');
         b.title = 'Theme: ' + LABELS[state];
-        var label = b.querySelector('[data-theme-label]');
-        if (label) label.textContent = 'Theme: ' + LABELS[state];
       });
+      setButtons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-theme-set') === state ? 'true' : 'false');
+      });
+      groups.forEach(function (g) { g.hidden = false; });
     }
-    buttons.forEach(function (b) {
+    cycleButtons.forEach(function (b) {
       b.addEventListener('click', function () {
-        var next = ORDER[(ORDER.indexOf(current()) + 1) % ORDER.length];
-        try {
-          if (next === 'system') localStorage.removeItem('osd-theme');
-          else localStorage.setItem('osd-theme', next);
-        } catch (e) { /* private mode: theme just won't persist */ }
-        if (window.osdSyncTheme) window.osdSyncTheme();
-        render();
+        apply(ORDER[(ORDER.indexOf(current()) + 1) % ORDER.length]);
+      });
+    });
+    setButtons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        apply(b.getAttribute('data-theme-set'));
       });
     });
     render();
