@@ -14,6 +14,9 @@ how_to_apply:
 tags: [ux, user research, usability, internship]
 date: '2017-02-09T10:55:05.972Z'
 skills: "- See features through from idea on paper through implementation and evaluation.\r\n- Distill complex concepts into easy to understand talking points, graphics or prototypes to effectively articulate and discuss ideas with Product Managers, Engineers and the community.\r\n- Understand the community, their needs and the usability of our products by gathering, analysing and discussing qualitative and quantitative data\r\n- Iteratively improve features by consulting and exchanging with Product managers and Engineers."
+aliases:
+  - /jobs/2017-02-09-Intern UX-Design -Research/
+
 ---
 
 In the software development department, we are building open source software that impacts one of the most visited websites in the world. Your work will help to improve our products’ usability and usefulness for readers and editors in the Wikimedia communities.

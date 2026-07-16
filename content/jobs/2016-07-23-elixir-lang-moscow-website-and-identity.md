@@ -13,6 +13,9 @@ status: filled
 compensation: gratis
 date_posted: 2016-07-23
 how_to_apply: Contact mail@sobolevn.me
+aliases:
+  - /jobs/2016-07-23-ElixirLangMoscow-website-and-identity/
+
 ---
 
 We are launching first [`Elixir`](http://elixir-lang.org/) meetups in Russia.

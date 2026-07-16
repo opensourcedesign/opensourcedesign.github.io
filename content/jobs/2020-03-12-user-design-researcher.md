@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [user research, python, open source]
 date: '2020-03-12T11:44:23.842Z'
+aliases:
+  - /jobs/2020-03-12-/
+
 ---
 [Kedro](https://github.com/quantumblacklabs/kedro) is an open-source Python libary helps data scientists and data engineers apply software engineering principles to their code so that it's easier to move it into production. 
 

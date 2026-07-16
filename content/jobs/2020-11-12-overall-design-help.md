@@ -15,5 +15,8 @@ how_to_apply:
 github_handle: ''
 tags: [logo, branding, design, web design, ux, ui, illustration, open source]
 date: '2020-11-12T12:16:59.602Z'
+aliases:
+  - /jobs/2020-11-12-/
+
 ---
 We're looking for designers who want to get involved in a open design process for a tool and service that is 100% open source.

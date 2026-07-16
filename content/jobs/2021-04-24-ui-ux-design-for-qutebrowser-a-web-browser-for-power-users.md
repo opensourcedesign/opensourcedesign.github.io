@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [ui, ux]
 date: '2021-04-24T08:46:31.423Z'
+aliases:
+  - /jobs/2021-04-24-/
+
 ---
 The qutebrowser project is a web browser for power users, focused on keyboard usage. Its inspired by the vim editor and similar to projects like Tridactyl, Vimperator or Vimium.
 

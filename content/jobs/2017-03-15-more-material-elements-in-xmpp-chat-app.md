@@ -15,6 +15,9 @@ how_to_apply:
   - 'https://github.com/siacs/Conversations/issues/2327'
 tags: [ui, material design, android, xmpp, chat]
 date: '2017-03-15'
+aliases:
+  - /jobs/2017-03-15-Enhance-UI-Aspects-in-Conversations-app/
+
 ---
 
 Conversations is a modern XMPP chat client for android. It already has some nice

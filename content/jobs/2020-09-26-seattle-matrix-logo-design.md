@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo, privacy]
 date: '2020-09-26T18:32:23.648Z'
+aliases:
+  - /jobs/-/
+
 ---
 The team at Seattle Matrix is looking for a designer to collaborate with the team on creating our first logo. Maybe even designing the new website down the road. 
 

@@ -13,6 +13,9 @@ status: filled
 compensation: part-time / 18hrs/week
 date_posted: 2015-11-25
 how_to_apply: Contact joachim@jolocom.com
+aliases:
+  - /jobs/2015-11-25-Frontend-Dev-for-Jolocom/
+
 ---
 FRONTEND DEVELOPER / DESIGNER (F/M)
 

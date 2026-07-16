@@ -12,6 +12,9 @@ status: filled
 compensation: gratis / in-app and website credit
 date_posted: 2016-06-11
 how_to_apply: Contact via GitHub (https://github.com/sobolevn/git-secret) — https://github.com/sobolevn
+aliases:
+  - /jobs/2016-06-11-Create-A-Logo-For-git-secret/
+
 ---
 
 `git-secret` is a bash-tool to store your private data inside a `git` repository.

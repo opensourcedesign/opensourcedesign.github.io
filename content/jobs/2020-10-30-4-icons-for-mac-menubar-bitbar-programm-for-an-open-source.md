@@ -20,5 +20,8 @@ how_to_apply:
 github_handle: ''
 tags: [icons, logo, macos]
 date: '2020-10-30T10:34:14.883Z'
+aliases:
+  - /jobs/2020-10-30-/
+
 ---
 So here is what i would need. I need an Icon in SVG for an SD Card in the menubar of macos. It should look similar to the Battery icon of macos. So if the SD-Card is in the Laptop: The SD-Card Icon would be full like the full battery indicator. If the SD-Card is missing it would be just the outline of the SD-Card, like an empy battery. The outline should clearly make it visible as sd-card. I have two design choices in mind. I would also need this for the dark and the light theme. Please see the Github Issue for more details:

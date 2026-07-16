@@ -4,6 +4,8 @@ How submissions reach this repository, what automation already checks, and
 what a human reviewer still needs to judge before merging. Written for
 maintainers and moderators (issue #550).
 
+**At-a-glance board health:** [Moderation dashboard](https://opensourcedesign.net/about-us/moderation/) (open/stale counts and review-queue links).
+
 ## How submissions arrive
 
 Almost all submissions come from the website forms and are turned into pull
@@ -39,7 +41,12 @@ Before the PR reaches you:
 - **Content lint** (`content-lint.yml`) - front matter validity plus the
   Markdown pitfalls that break rendering (4-space indents, `###Heading`
   without a space, pseudo-bullets). A red check means the page will render
-  broken: fix or ask the poster to resubmit.
+  broken: fix or ask the poster to resubmit. On the default branch this runs
+  on **every push** (full job/event corpus), not only changed files.
+- **Repository checks** (`ci-checks.yml`) - canonical job filenames and
+  statuses, form-module hashes, redirect aliases, and data YAML schema.
+- **Accessibility** (`a11y.yml`) - full-site pa11y against the Hugo sitemap on
+  every push to the default branch and on pull requests.
 - **PR preview** (`preview.yml`) - every PR gets a live preview deployment;
   the link appears as a PR comment. Always look at the rendered page, not
   just the diff. Previews deploy to the `gh-pages` branch under
@@ -50,6 +57,10 @@ Before the PR reaches you:
   `opensourcedesign.net` must be verified for the organization and active on
   this repo. Production deploys from `hugo-build.yml` also target `gh-pages`
   (site root) and preserve the `pr-preview/` folder.
+
+Repo admins: enable branch protection on `master`/`main` with required status
+checks **Content lint**, **Repository checks**, **Accessibility**, and
+**Hugo build** (or your fork’s equivalents) so these cannot be skipped.
 
 ## What a human must still judge
 

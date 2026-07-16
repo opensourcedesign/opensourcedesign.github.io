@@ -10,6 +10,7 @@
  */
 
 import fs from 'node:fs';
+import { isBadJobFilename } from './job-filename-rules.mjs';
 
 const JOB_STATUSES = ['searching', 'filled', 'closed', 'expired'];
 const JOB_STATUS_ALIASES = { solved: 'filled', resolved: 'filled', completed: 'filled', filled: 'filled' };
@@ -108,6 +109,13 @@ function lintFile(file) {
   const body = text.slice(fmMatch[0].length);
 
   if (!scalar(fm, 'title')) errors.push('front matter: `title` is required');
+
+  if (isJob) {
+    const base = file.replace(/\\/g, '/').split('/').pop();
+    if (isBadJobFilename(base)) {
+      errors.push(`filename "${base}" is non-canonical (use lowercase date-slug.md — see normalize-jobs.mjs)`);
+    }
+  }
 
   if (isJob || isEvent) {
     const status = (scalar(fm, 'status') || '').toLowerCase();

@@ -1,0 +1,108 @@
+{{ define "main" }}
+  {{ $all := partial "functions/job-postings.html" . }}
+  {{ $open := partial "functions/open-jobs.html" $all }}
+  {{ $today := now.Format "2006-01-02" }}
+  {{ $filled := where $all "Params.status" "in" (slice "filled" "solved" "resolved" "completed") }}
+  {{ $closed := where $all "Params.status" "closed" }}
+  {{ $expired := where $all "Params.status" "expired" }}
+  {{ $searching := where $all "Params.status" "searching" }}
+  {{ $stale := slice }}
+  {{ $deadlinePassed := slice }}
+  {{ $reminderWindow := slice }}
+  {{ range $p := $searching }}
+    {{ with $p.Params.date_posted }}
+      {{ $days := int (div (now.Sub (time.AsTime .)).Hours 24) }}
+      {{ if gt $days 90 }}{{ $stale = $stale | append $p }}{{ end }}
+      {{ if and (ge $days 42) (le $days 48) }}{{ $reminderWindow = $reminderWindow | append $p }}{{ end }}
+    {{ end }}
+    {{ with $p.Params.deadline }}
+      {{ $d := (time.AsTime (printf "%v" .)).Format "2006-01-02" }}
+      {{ if lt $d $today }}{{ $deadlinePassed = $deadlinePassed | append $p }}{{ end }}
+    {{ end }}
+  {{ end }}
+
+  <article class="mx-auto max-w-5xl px-4 py-10">
+    <header class="mb-10">
+      <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Maintainers</p>
+      <h1 class="mt-1 text-3xl font-bold tracking-tight text-slate-950 dark:text-slate-50">{{ .Title }}</h1>
+      <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+        Snapshot of the job board as of this site build ({{ now.Format "2 January 2006" }}).
+        Open counts exclude filled, closed, and expired listings, plus searching posts past their deadline.
+      </p>
+    </header>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="osd-card p-5">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Open listings</p>
+        <p class="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-400">{{ len $open }}</p>
+        <a class="mt-3 inline-block text-sm font-medium text-slate-700 underline decoration-slate-300 underline-offset-2 hover:text-slate-950 dark:text-slate-300 dark:hover:text-slate-50" href="{{ partial "site-path.html" "/jobs/" }}">View job board</a>
+      </div>
+      <div class="osd-card p-5">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Filled</p>
+        <p class="mt-2 text-3xl font-bold text-slate-900 dark:text-slate-100">{{ len $filled }}</p>
+      </div>
+      <div class="osd-card p-5">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Closed / expired</p>
+        <p class="mt-2 text-3xl font-bold text-slate-900 dark:text-slate-100">{{ add (len $closed) (len $expired) }}</p>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">{{ len $closed }} closed · {{ len $expired }} expired</p>
+      </div>
+      <div class="osd-card p-5">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total postings</p>
+        <p class="mt-2 text-3xl font-bold text-slate-900 dark:text-slate-100">{{ len $all }}</p>
+      </div>
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Needs attention</h2>
+      <div class="mt-4 grid gap-4 lg:grid-cols-3">
+        <div class="osd-card p-5">
+          <p class="font-medium text-slate-900 dark:text-slate-100">Stale (&gt; 90 days, still searching)</p>
+          <p class="mt-2 text-2xl font-bold text-amber-700 dark:text-amber-400">{{ len $stale }}</p>
+          {{ if gt (len $stale) 0 }}
+            <ul class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+              {{ range first 5 $stale }}
+                <li><a class="underline decoration-slate-300 underline-offset-2 hover:text-slate-900 dark:hover:text-slate-50" href="{{ .RelPermalink }}">{{ .Title | truncate 60 }}</a></li>
+              {{ end }}
+              {{ if gt (len $stale) 5 }}<li class="text-slate-500">…and {{ sub (len $stale) 5 }} more</li>{{ end }}
+            </ul>
+          {{ else }}
+            <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">None right now.</p>
+          {{ end }}
+        </div>
+        <div class="osd-card p-5">
+          <p class="font-medium text-slate-900 dark:text-slate-100">Deadline passed (still searching)</p>
+          <p class="mt-2 text-2xl font-bold text-amber-700 dark:text-amber-400">{{ len $deadlinePassed }}</p>
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">The weekly expire workflow should flip these to <code class="rounded bg-slate-100 px-1 dark:bg-slate-800">expired</code> within a day.</p>
+          {{ if gt (len $deadlinePassed) 0 }}
+            <ul class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+              {{ range first 5 $deadlinePassed }}
+                <li><a class="underline decoration-slate-300 underline-offset-2 hover:text-slate-900 dark:hover:text-slate-50" href="{{ .RelPermalink }}">{{ .Title | truncate 60 }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+        <div class="osd-card p-5">
+          <p class="font-medium text-slate-900 dark:text-slate-100">Reminder window (42–48 days)</p>
+          <p class="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">{{ len $reminderWindow }}</p>
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">Matched by the weekly reminder workflow on the next Monday run.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10 osd-card p-6">
+      <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Review queue</h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+        Submission pull requests are opened by the job-submit Worker. Filter open PRs on GitHub:
+      </p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Ajob-submission">Job submissions</a></li>
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Aevent-submission">Event submissions</a></li>
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Aresource-suggestion">Resource suggestions</a></li>
+      </ul>
+      <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">
+        Full moderation checklist:
+        <a class="font-medium underline decoration-slate-300 underline-offset-2 hover:text-slate-900 dark:hover:text-slate-50" href="https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/docs/moderation-guide.md">moderation guide (GitHub)</a>.
+      </p>
+    </section>
+  </article>
+{{ end }}

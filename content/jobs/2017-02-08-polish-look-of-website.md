@@ -16,6 +16,9 @@ how_to_apply:
 tags: [logo]
 date: '2017-02-08T17:03:35.589Z'
 timestamp: 1486573415
+aliases:
+  - /jobs/2017-02-08-Polish look of website/
+
 ---
 
 We need someone creative to figure out how best to tweak the colors/change the formatting on the website so that the logo shows up well and who knows enough css/html wizardry to figure out how to get it to center properly.

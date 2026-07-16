@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [ux, design, branding, web design, open source, illustration, information architecture]
 date: '2020-06-15T13:14:20.660Z'
+aliases:
+  - /jobs/2020-06-15-/
+
 ---
 Foss responders is a community initiative that started out to support Foss organisations and projects in the face of coronavirus when events and conferences were being cancelled and Foss orgs were struggling to meet fundraising target. Foss responders started out to support those needs.
 

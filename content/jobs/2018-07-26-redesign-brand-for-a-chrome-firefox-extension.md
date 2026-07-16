@@ -16,6 +16,9 @@ how_to_apply:
   - "Source code: https://github.com/tabwrangler/tabwrangler\r\nTask for tracking the redesign: https://github.com/tabwrangler/tabwrangler/issues/168\r\nFirefox version: https://addons.mozilla.org/en-US/firefox/addon/tabwrangler/"
 tags: [logo, branding, browser, firefox]
 date: '2018-07-26T02:25:04.943Z'
+aliases:
+  - /jobs/2018-07-26-/
+
 ---
 Tab Wrangler is a browser extension that automatically closes tabs you haven't used in a while so you can focus on the ones that matter.
 

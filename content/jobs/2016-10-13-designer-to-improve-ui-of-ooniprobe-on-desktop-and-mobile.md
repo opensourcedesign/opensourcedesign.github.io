@@ -11,6 +11,9 @@ status: filled
 compensation: 5k - 10k fixed bid
 date_posted: 2016-10-13
 how_to_apply: See the GitHub repository (TheTorProject) or description below
+aliases:
+  - /jobs/2016-10-13-OONI-UX-Designer/
+
 ---
 
 The [Open Observatory of Network Interference (OONI)](https://ooni.torproject.org),

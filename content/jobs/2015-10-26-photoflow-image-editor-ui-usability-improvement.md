@@ -13,6 +13,9 @@ status: filled
 compensation: gratis
 date_posted: 2015-10-26
 how_to_apply: Contact photofloweditor@gmail.com
+aliases:
+  - /jobs/2015-10-26-PhotoFlow-UI_UX-Enhancement/
+
 ---
 PhotoFlow is a quite recent image editor project, still in its early phases of development.
 

@@ -13,6 +13,8 @@ on:
       - "content/resources/**.md"
       - "data/resources.yaml"
       - "data/bibliography.yaml"
+  push:
+    branches: [master, main]
 
 permissions:
   contents: read
@@ -28,6 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Lint changed content files
+        if: github.event_name == 'pull_request'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -44,3 +47,12 @@ jobs:
             npm install --no-save yaml@2
             node .github/scripts/lint-data-yaml.mjs
           fi
+
+      - name: Lint all job and event postings
+        if: github.event_name == 'push'
+        run: |
+          files="$(find content/jobs content/events -name '*.md' ! -name '_index.md' ! -name 'archive.md' ! -name 'how-to-post.md' ! -name 'job-form.md' ! -name 'event-form.md' ! -name 'suggest.md' ! -name 'links.md' ! -name 'bibliography.md' ! -name 'tools-and-code.md')"
+          # shellcheck disable=SC2086
+          node .github/scripts/lint-content.mjs $files
+          npm install --no-save yaml@2
+          node .github/scripts/lint-data-yaml.mjs

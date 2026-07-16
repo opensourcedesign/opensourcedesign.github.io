@@ -15,6 +15,9 @@ how_to_apply:
   - 'https://github.com/astroidmail/'
 tags: [logo, graphic design, email]
 date: '2017-01-25T16:40:42.751Z'
+aliases:
+  - /jobs/2017-01-25-Logo design for the Astroid Mail User Agent/
+
 ---
 Astroid is a lightweight and fast Mail User Agent that provides a graphical interface to searching, display and composing email, organized in thread and tags. Astorid uses the notmuch backend for blazingly fast searches through tons of email. Astroid searches, displays and compose emails - and rely on other programs for fetching, syncing and sending email.
 

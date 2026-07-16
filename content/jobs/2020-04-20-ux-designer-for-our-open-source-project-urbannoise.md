@@ -14,6 +14,9 @@ how_to_apply:
 github_handle: ''
 tags: [graphic design, ux, ui, prototyping]
 date: '2020-04-20T18:29:53.825Z'
+aliases:
+  - /jobs/2020-04-20-/
+
 ---
 Hello everyone,
 

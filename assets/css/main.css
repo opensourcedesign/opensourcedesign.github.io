@@ -234,7 +234,7 @@
 
 @layer components {
   .osd-card {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow;
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600;
   }
 
   .osd-surface {
@@ -250,19 +250,19 @@
   }
 
   .osd-tag {
-    @apply rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700;
+    @apply rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700 dark:border dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100;
   }
 
   .osd-tag--link {
-    @apply px-3 py-1 transition hover:bg-slate-200 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-1;
+    @apply px-3 py-1 transition hover:bg-slate-200 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-1 dark:hover:border-slate-500 dark:hover:bg-slate-600 dark:hover:text-slate-50;
   }
 
   .osd-btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2;
+    @apply inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white dark:focus-visible:ring-slate-100 dark:focus-visible:ring-offset-slate-950;
   }
 
   .osd-btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20;
+    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 dark:focus-visible:ring-slate-100/25 dark:focus-visible:ring-offset-slate-950;
   }
 
   .osd-muted {

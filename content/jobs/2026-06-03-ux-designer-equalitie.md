@@ -17,6 +17,9 @@ how_to_apply:
 github_handle: ''
 tags: [ux, research]
 date: '2026-06-03T08:16:54.128Z'
+aliases:
+  - /jobs/2026-06-03-/
+
 ---
 eQualitie is looking for an experienced UX Designer to join our team. We’re looking for a person who can help us design usable, accessible and trustworthy experiences in technically complex and often constrained environments. This is an interesting opportunity to shape the usability of tools that are often built technology-first; i.e. this is a chance to take exciting technologies and turn them into meaningful, solutions that people want to use.
 

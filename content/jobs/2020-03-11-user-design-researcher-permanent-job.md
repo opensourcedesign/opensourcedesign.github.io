@@ -18,6 +18,9 @@ how_to_apply:
 github_handle: ''
 tags: [user research, python, library]
 date: '2020-03-11T18:00:54.752Z'
+aliases:
+  - /jobs/2020-03-11-/
+
 ---
 Kedro is a Python development framework that implements software engineering best-practice to help data engineers and data scientists develop data pipelines and machine learning models that are production-ready.
 

@@ -13,6 +13,9 @@ how_to_apply:
   - "https://git.taler.net/ has slide decks in _incompatible_ styles (for RMS) in the 'marketing.git' repository. \r\n$ git clone git://taler.net/marketing\r\n\r\nNote that you will need pdflatex to generate PDFs..."
 tags: [slides, education, illustration]
 date: '2017-02-07T09:46:09.006Z'
+aliases:
+  - /jobs/2017-02-07-slide about GNU Taler for RMS's deck/
+
 ---
 
 [GNU Taler](https://taler.net/) is a new electronic payment system, and RMS would like to have 1-3 slides to show while he is talking about it when giving talks.

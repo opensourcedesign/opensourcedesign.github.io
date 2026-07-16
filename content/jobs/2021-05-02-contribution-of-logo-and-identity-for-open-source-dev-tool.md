@@ -14,6 +14,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo, branding, devtool]
 date: '2021-05-03T01:49:43.271Z'
+aliases:
+  - /jobs/2021-05-02-/
+
 ---
 It's been a while since I started developing OpenAPI Mocker.
 It all started as a personal side-project, then we started to use it at work and recently caught the attention of many people as users and as contributors.

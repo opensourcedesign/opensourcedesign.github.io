@@ -14,6 +14,9 @@ how_to_apply:
   - "current banner can be seen here: https://github.com/symonk/sylenium/blob/master/.github/.images/sylenium2.png\r\n"
 tags: [logo, branding, banner]
 date: '2018-10-29T20:09:28.874Z'
+aliases:
+  - /jobs/2018-10-29-/
+
 ---
 Sylenium needs some updated art! Would be highly appreciate if you could help out! 
 Sylenium is an open source test automation framework written in java for web application test automation.

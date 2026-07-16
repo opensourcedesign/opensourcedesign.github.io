@@ -17,5 +17,8 @@ how_to_apply:
 github_handle: ''
 tags: [graphic design, logo, icons, usability]
 date: '2020-12-05T20:05:21.242Z'
+aliases:
+  - /jobs/2020-12-05-/
+
 ---
 Need help with designing the cross platform mobile app. Looking for someone to help refresh the UX. Mockups, logos/icons would be helpful

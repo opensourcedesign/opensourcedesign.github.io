@@ -11,6 +11,9 @@ status: closed
 compensation: competitive
 date_posted: 2015-02-13
 how_to_apply: See the GitHub repository (okfn) or description below
+aliases:
+  - /jobs/2015-02-okfn-frontend-developer-UX-designer/
+
 ---
 
 ## Frontend Developer and UX Designer for Data-Driven Project

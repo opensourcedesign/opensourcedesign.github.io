@@ -15,6 +15,9 @@ how_to_apply:
 tags: [frontend, design, web design, views, bootstrap, laravel]
 date: '2017-02-14T19:46:39.746Z'
 timestamp: 1487101599
+aliases:
+  - /jobs/2017-02-14-Frontend redesign for Orgmanager/
+
 ---
 Orgmanager is an open-source platform where users can generate invites for github organizations.
 The website design in very bad rigth now (basic bootstrap) and that'd need to improve...

@@ -39,6 +39,13 @@ Thumbs.db
 /.tmp-*
 .cache/
 
+# Local pa11y runs (CI regenerates .pa11yci.generated.json)
+.pa11yci.generated.json
+.pa11yci.json
+pa11y-results.txt
+pa11y-summary.json
+social-card-previews/
+
 # Compiled by the Tailwind CLI in the deploy workflows (see baseof.html);
 # local dev falls back to the Play CDN when this file is absent.
 /assets/css/compiled.css

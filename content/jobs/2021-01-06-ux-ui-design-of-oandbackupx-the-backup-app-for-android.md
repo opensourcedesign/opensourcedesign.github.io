@@ -15,6 +15,9 @@ how_to_apply:
 github_handle: ''
 tags: [design, ui, ux, android]
 date: '2021-01-05T23:54:31.338Z'
+aliases:
+  - /jobs/2021-01-06-/
+
 ---
 OAndBackupX (Shortly OABX) is a fork of OAndBackupX, the only open-source backup app for android in the last 4-5 years. The apps itself has already adopted a new design, that differs from the older one. Me having no previous experiences in the field of usability design, I still question the quality of the app in this matter.
 The community and I would be glad having a UX/UI designer on board.

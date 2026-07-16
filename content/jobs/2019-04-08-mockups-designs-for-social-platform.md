@@ -18,6 +18,9 @@ how_to_apply:
   - 'https://github.com/codeuino/Social-Platform-Donut'
 tags: [prototyping, ui, ux, social platform, open source]
 date: '2019-04-08T12:01:25.571Z'
+aliases:
+  - /jobs/2019-04-08-/
+
 ---
 Codeuino which is a volunteer-driven non-profit open source Social networking organisation that provides various robust frameworks solutions which could span the entire world through building all kinds of social environments, discussion portals and collaboration platforms, giving prospectus to various other organisations, users and outreachers to use social media in a custom way. DONUT is a major member project of codeuino which is an open source social networking platform like Facebook which allow individual users and organisations to setup their own social platform along with multi integrated system.
 

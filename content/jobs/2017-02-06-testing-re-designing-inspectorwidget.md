@@ -15,6 +15,9 @@ status: filled
 compensation: gratis (free beers if and whenever we meet in Brussels or Lille)
 date_posted: 2017-02-06
 how_to_apply: Contact via GitHub (ChristianFrisson) — https://github.com/InspectorWidget
+aliases:
+  - /jobs/2017-02-06-InspectorWidget/
+
 ---
 
 InspectorWidget is an opensource suite to track and analyze users behaviors in their applications.

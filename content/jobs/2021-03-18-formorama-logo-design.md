@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo]
 date: '2021-03-18T14:19:57.105Z'
+aliases:
+  - /jobs/2021-03-18-/
+
 ---
 Formorama is a React library for managing forms. Currently, I made a rather ugly logo and design for the documentation. I want to make it a little bit more public and attractive to use, so hopefully the community might pick up on this. 
 I still have to complete the documentation and I have to make the coverage 100%.

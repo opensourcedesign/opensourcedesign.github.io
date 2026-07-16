@@ -15,6 +15,9 @@ how_to_apply:
     by email (contact@captainfact.io)
 tags: [graphic design, ui, ux, fun]
 date: '2017-11-05T22:17:53.521Z'
+aliases:
+  - /jobs/2017-11-06-help-fight-misinformation-with-your-design-/
+
 ---
 # The project
 

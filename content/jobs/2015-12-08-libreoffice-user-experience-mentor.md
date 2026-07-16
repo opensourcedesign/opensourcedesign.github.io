@@ -10,6 +10,9 @@ status: closed
 compensation: unspecified
 date_posted: 2015-12-08
 how_to_apply: See http://www.documentfoundation.org/ or the description below
+aliases:
+  - /jobs/2015-12-08-LibreOffice-UX-mentor/
+
 ---
 Taken from: https://blog.documentfoundation.org/blog/2015/12/08/tdf-freelance-job-opening-201512-01-user-experience-mentor/
 

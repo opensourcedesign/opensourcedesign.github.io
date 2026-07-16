@@ -10,6 +10,47 @@ import fs from 'node:fs';
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
 const { GITHUB_TOKEN, REPO, PR_NUMBER, HEAD_REF, PR_AUTHOR } = process.env;
 
+function submissionMeta(ref) {
+  if (ref.startsWith('event-edit/')) {
+    return {
+      kind: 'event update',
+      label: 'event listing update',
+      formName: 'event form',
+      boardName: 'events calendar',
+    };
+  }
+  if (ref.startsWith('event/')) {
+    return {
+      kind: 'event',
+      label: 'event listing',
+      formName: 'event form',
+      boardName: 'events calendar',
+    };
+  }
+  if (ref.startsWith('job-edit/')) {
+    return {
+      kind: 'job posting update',
+      label: 'job posting update',
+      formName: 'job form',
+      boardName: 'job board',
+    };
+  }
+  if (ref.startsWith('resource/')) {
+    return {
+      kind: 'resource suggestion',
+      label: 'resource suggestion',
+      formName: 'resource suggestion form',
+      boardName: 'resources library',
+    };
+  }
+  return {
+    kind: 'job posting',
+    label: 'job posting',
+    formName: 'job form',
+    boardName: 'job board',
+  };
+}
+
 function formUrl(ref) {
   if (ref.startsWith('event')) return `${SITE}/events/event-form/`;
   if (ref.startsWith('resource')) return `${SITE}/resources/suggest/`;
@@ -68,7 +109,9 @@ async function api(path) {
 
 async function main() {
   const prUrl = `https://github.com/${REPO}/pull/${PR_NUMBER}`;
-  const form = formUrl(HEAD_REF || '');
+  const ref = HEAD_REF || '';
+  const form = formUrl(ref);
+  const meta = submissionMeta(ref);
 
   let feedback = '';
   try {
@@ -93,15 +136,24 @@ async function main() {
   writeOutput({
     pr_url: prUrl,
     form_url: form,
+    submission_kind: meta.kind,
+    submission_label: meta.label,
+    form_name: meta.formName,
+    board_name: meta.boardName,
     feedback_plain: feedbackPlain,
     feedback_html_block: feedbackHtmlBlock,
   });
 }
 
 main().catch(() => {
+  const meta = submissionMeta(HEAD_REF || '');
   writeOutput({
     pr_url: `https://github.com/${REPO}/pull/${PR_NUMBER}`,
     form_url: formUrl(HEAD_REF || ''),
+    submission_kind: meta.kind,
+    submission_label: meta.label,
+    form_name: meta.formName,
+    board_name: meta.boardName,
     feedback_plain: 'See the pull request for any comments from the moderation team.\n',
     feedback_html_block: '<p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">See the pull request for any comments from the moderation team.</p>',
   });

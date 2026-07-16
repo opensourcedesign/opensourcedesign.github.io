@@ -15,6 +15,9 @@ status: filled
 compensation: gratis
 date_posted: 2016-08-29
 how_to_apply: Contact via GitHub (ownpass) — https://github.com/ownpass/ownpass, Freenode #ownpass
+aliases:
+  - /jobs/2016-08-29-OwnPassDesigner/
+
 ---
 OwnPass is a self hosted, open source password management tool.
 It's an open source package of applications and browser extensions that make it possible to manage secure data across multiple devices.

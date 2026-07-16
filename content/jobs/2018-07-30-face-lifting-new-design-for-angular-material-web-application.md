@@ -14,6 +14,9 @@ how_to_apply:
   - "Github repo: https://github.com/forCrowd/Backbone\r\n"
 tags: [web design, usability]
 date: '2018-07-30T09:05:14.109Z'
+aliases:
+  - /jobs/2018-07-30-/
+
 ---
 Backbone is an experimental public web api application. Users can create a backend application (database / web api) through Backbone. It aims to help developers to create app prototypes for their front-end applications.
 

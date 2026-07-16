@@ -15,6 +15,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo, graphic design, branding]
 date: '2019-07-05T09:54:17.282Z'
+aliases:
+  - /jobs/2019-07-05-/
+
 ---
 We have an existing logo that we love. It looks like this: 
 

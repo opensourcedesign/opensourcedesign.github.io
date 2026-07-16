@@ -15,6 +15,9 @@ status: filled
 compensation: gratis
 date_posted: 2016-07-05
 how_to_apply: Contact via GitHub (guitarheroua) — https://github.com/Guitarheroua
+aliases:
+  - /jobs/2016-07-05-PPS2-UI-Design/
+
 ---
 We need some professional help from designer, to create UI for our open source presentation editor-viewer project.
 

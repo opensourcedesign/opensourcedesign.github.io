@@ -16,6 +16,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo]
 date: '2019-07-04T14:32:38.512Z'
+aliases:
+  - /jobs/2019-07-04-/
+
 ---
 Hi! I’m Sergi from Coopdevs.org (not for profit association)
 

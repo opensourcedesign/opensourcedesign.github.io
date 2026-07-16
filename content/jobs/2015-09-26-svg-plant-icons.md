@@ -14,6 +14,9 @@ status: filled
 compensation: gratis
 date_posted: 2015-09-26
 how_to_apply: Contact rory@openfarm.cc, roryaronson, http://slack.openfarm.cc
+aliases:
+  - /jobs/2015-09-SVG-plant-icons/
+
 ---
 
 Hi!

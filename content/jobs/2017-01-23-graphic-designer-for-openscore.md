@@ -11,6 +11,9 @@ skills: "OpenScore logo\r\nGraphics for communications (videos, presentations, b
 how_to_apply: Email openscore@musescore.com with links to CV and portfolio.
 tags: [music, open data, creative commons, crowdfunding, accessibility]
 date: '2017-01-24T12:20:58.454Z'
+aliases:
+  - /jobs/2017-01-23-Graphic designer for OpenScore/
+
 ---
 OpenScore is a collaboration between [MuseScore](https://musescore.org/), [IMSLP](http://imslp.org/), and various other partners across the music and tech industries. The aim is to unite MuseScore’s millions of users in a crowdsource effort digitise and liberate the works of Mozart, Beethoven and other famous classical composers.
 

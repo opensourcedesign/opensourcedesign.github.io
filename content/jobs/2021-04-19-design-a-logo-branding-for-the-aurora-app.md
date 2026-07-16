@@ -15,6 +15,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo, branding, social]
 date: '2021-04-19T18:15:12.332Z'
+aliases:
+  - /jobs/2021-04-19-/
+
 ---
 I have built this open-source project to implement the analytics in a website, and I need simple branding in order to keep the repo clean & beautiful.
 

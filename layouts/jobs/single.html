@@ -39,12 +39,12 @@
 
   <article class="mx-auto max-w-5xl overflow-x-clip px-4 py-10" data-pagefind-body>
     {{/* Breadcrumb */}}
-    <nav class="flex items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb" data-pagefind-ignore>
-      <a class="transition hover:text-slate-900" href="{{ partial "site-path.html" "/" }}">Home</a>
-      <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-      <a class="transition hover:text-slate-900" href="{{ partial "site-path.html" "/jobs/" }}">Jobs</a>
-      <svg class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
-      <span class="truncate font-medium text-slate-700" aria-current="page">{{ .Title }}</span>
+    <nav class="flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb" data-pagefind-ignore>
+      <a class="transition hover:text-slate-900 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/" }}">Home</a>
+      <svg class="h-4 w-4 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+      <a class="transition hover:text-slate-900 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">Jobs</a>
+      <svg class="h-4 w-4 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+      <span class="truncate font-medium text-slate-700 dark:text-slate-300" aria-current="page">{{ .Title }}</span>
     </nav>
 
     {{/* min-w-0 on both grid columns: grid items default to min-width auto, so a
@@ -392,8 +392,8 @@
     </div>
   </article>
 
-  {{/* JobPosting structured data - only for open listings */}}
-  {{ if $isOpen }}
+  {{/* JobPosting structured data - only for genuinely open listings */}}
+  {{ if and $isOpen (not $isExpired) }}
     {{ $desc := .Content | plainify | htmlUnescape | chomp }}
     {{ $jp := dict
       "@context" "https://schema.org/"

@@ -13,6 +13,9 @@ how_to_apply:
   - James Mills
 github_handle: ''
 date: '2020-07-24T03:08:52.274Z'
+aliases:
+  - /jobs/2020-07-24-/
+
 ---
 Hello fellow OSS devs :)
 

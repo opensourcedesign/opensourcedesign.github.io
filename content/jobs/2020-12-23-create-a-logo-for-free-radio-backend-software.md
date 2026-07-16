@@ -15,6 +15,9 @@ how_to_apply:
 github_handle: ''
 tags: [logo, branding, open source, radio]
 date: '2020-12-24T06:47:34.720Z'
+aliases:
+  - /jobs/2020-12-23-/
+
 ---
 Crazy Arms Radio Backend is a flexible and fully featured Internet radio back-end written from the ground up. We're looking for a logo for the project that's nearing it's initial launch. It's an alternative to free and open source projects like AzuraCast or Librecast with some unique features that support fully decentralized stations -- particularly useful at this time when most stations are functioning that way.
 

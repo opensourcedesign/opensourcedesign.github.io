@@ -14,6 +14,9 @@ how_to_apply:
   - "To apply, simply send your motivation letter including a link to your portfolio to drupal.designer.applications@gmail.com. Your application will be handled by the team. None of the materials from your portfolio will be published.\r\n\r\n**Applications are open until 17th of February 2017 12PM UTC.**"
 tags: [ui, drupal, visual design, web design]
 date: '2017-02-15T15:50:41.765Z'
+aliases:
+  - /jobs/2017-02-15-Designer - Art Director needed for a new demo included in Drupal core/
+
 ---
 ## What are we looking for?
 A person willing to contribute work as a designer and art director for a new demo website being created for inclusion in Drupal core. Having prior experience with any open source project is certainly a bonus, but is not a necessary requirement. You will be working alongside a team of experienced Drupal contributors who will help you get started working with an open source community.
