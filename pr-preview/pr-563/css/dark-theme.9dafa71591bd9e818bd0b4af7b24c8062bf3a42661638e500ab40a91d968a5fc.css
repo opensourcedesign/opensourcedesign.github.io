@@ -112,18 +112,6 @@ html.dark :is(.bg-white, .bg-slate-50):not(.osd-hero-cta):not(.osd-on-light) .te
   color: var(--color-slate-300) !important;
 }
 
-html.dark nav[aria-label="Breadcrumb"] a {
-  color: var(--color-slate-400);
-}
-
-html.dark nav[aria-label="Breadcrumb"] a:hover {
-  color: var(--color-slate-100);
-}
-
-html.dark nav[aria-label="Breadcrumb"] .text-slate-300 {
-  color: var(--color-slate-600);
-}
-
 html.dark .hover\:text-slate-950:hover,
 html.dark .hover\:text-slate-900:hover,
 html.dark .group:hover .group-hover\:text-slate-950,
@@ -166,46 +154,6 @@ html.dark .focus-visible\:ring-slate-900\/20:focus-visible {
 html.dark .focus-visible\:ring-offset-slate-50:focus-visible,
 html.dark .focus-visible\:ring-offset-white:focus-visible {
   --tw-ring-offset-color: var(--color-slate-950);
-}
-
-html.dark .osd-card {
-  border-color: var(--color-slate-700);
-  background-color: var(--color-slate-900) !important;
-}
-
-html.dark .osd-card:hover {
-  border-color: var(--color-slate-600);
-}
-
-html.dark .osd-tag {
-  border: 1px solid var(--color-slate-600);
-  background-color: var(--color-slate-700) !important;
-  color: var(--color-slate-100) !important;
-}
-
-html.dark .osd-tag--link:hover {
-  border-color: var(--color-slate-500);
-  background-color: var(--color-slate-600) !important;
-  color: var(--color-slate-50) !important;
-}
-
-html.dark .osd-btn-primary {
-  background-color: var(--color-slate-100) !important;
-  color: var(--color-slate-900) !important;
-}
-
-html.dark .osd-btn-primary:hover {
-  background-color: var(--color-white) !important;
-}
-
-html.dark .osd-btn-secondary {
-  background-color: var(--color-slate-800) !important;
-  border-color: var(--color-slate-600) !important;
-  color: var(--color-slate-100) !important;
-}
-
-html.dark .osd-btn-secondary:hover {
-  background-color: var(--color-slate-700) !important;
 }
 
 html.dark .toc-content a {
