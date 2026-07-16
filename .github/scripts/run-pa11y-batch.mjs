@@ -95,6 +95,8 @@ for (let i = startFrom; i < urls.length; i++) {
     summary.pagesWithErrors.push({ url, errors: n });
     line = ` > ${url} - ${n} errors`;
     console.log(`${n} errors`);
+    const detail = (result.stdout + result.stderr).trim();
+    if (detail) console.log(detail);
   } else if (result.status === 'timeout') {
     summary.failed++;
     summary.failures.push({ url, reason: 'timeout' });
