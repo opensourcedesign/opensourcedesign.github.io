@@ -13,7 +13,7 @@
  *   SITEMAP_ORIGIN    - production origin in <loc> URLs (default https://opensourcedesign.net)
  *   PA11Y_BASE_URL    - local server base (default http://127.0.0.1:4321)
  *   PA11Y_CONFIG_OUT  - output path (default .pa11yci.generated.json)
- *   PA11Y_CONCURRENCY - parallel Chrome tabs (default 8)
+ *   PA11Y_CONCURRENCY - parallel Chrome tabs when using pa11y-ci (default 1)
  *   PA11Y_SAMPLE_SIZE - content pages per section when sampling (default 3)
  *   PA11Y_FULL        - set to 1 for every sitemap URL
  */
@@ -26,7 +26,7 @@ const sitemapPath = path.join(ROOT, process.env.SITEMAP_PATH || 'public/sitemap.
 const origin = (process.env.SITEMAP_ORIGIN || 'https://opensourcedesign.net').replace(/\/$/, '');
 const baseUrl = (process.env.PA11Y_BASE_URL || 'http://127.0.0.1:4321').replace(/\/$/, '');
 const outPath = path.join(ROOT, process.env.PA11Y_CONFIG_OUT || '.pa11yci.generated.json');
-const concurrency = Number(process.env.PA11Y_CONCURRENCY || 8);
+const concurrency = Number(process.env.PA11Y_CONCURRENCY || 1);
 const sampleSize = Number(process.env.PA11Y_SAMPLE_SIZE || 3);
 const fullScan = process.env.PA11Y_FULL === '1' || process.env.PA11Y_FULL === 'true';
 
@@ -123,7 +123,7 @@ const config = {
     timeout: 30000,
     concurrency,
     chromeLaunchConfig: {
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
     },
   },
   urls,

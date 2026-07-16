@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * Run pa11y sequentially with a hard per-URL timeout (more reliable than pa11y-ci on Windows).
+ * Run pa11y sequentially with a hard per-URL timeout (used in CI; more reliable
+ * than pa11y-ci with parallel Chrome tabs on GitHub Actions).
  *
  *   node .github/scripts/run-pa11y-batch.mjs [.pa11yci.generated.json]
  */
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 
@@ -19,6 +21,17 @@ const startFrom = Number(process.env.PA11Y_START_FROM || 0);
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const urls = config.urls;
 const standard = config.defaults?.standard || 'WCAG2AA';
+const pa11yDefaultsPath = path.join(os.tmpdir(), 'osd-pa11y-defaults.json');
+fs.writeFileSync(
+  pa11yDefaultsPath,
+  JSON.stringify({
+    standard,
+    timeout: config.defaults?.timeout || 30000,
+    chromeLaunchConfig: config.defaults?.chromeLaunchConfig || {
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    },
+  }),
+);
 
 const summary = {
   total: urls.length,
@@ -34,7 +47,7 @@ function runPa11y(url) {
   return new Promise((resolve) => {
     const child = spawn(
       process.platform === 'win32' ? 'npx.cmd' : 'npx',
-      ['pa11y', url, '--standard', standard, '--timeout', String(config.defaults?.timeout || 30000)],
+      ['pa11y', url, '--config', pa11yDefaultsPath],
       { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'], shell: process.platform === 'win32' },
     );
 
@@ -104,3 +117,6 @@ fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
 const footer = `\nDone: ${summary.passed} passed, ${summary.pagesWithErrors.length} with a11y issues, ${summary.failed} failed to run\n`;
 fs.appendFileSync(outPath, footer);
 console.log(footer.trim());
+
+if (summary.failed > 0) process.exit(1);
+if (summary.pagesWithErrors.length > 0) process.exit(2);

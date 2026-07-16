@@ -13,7 +13,6 @@ permissions:
 env:
   HUGO_VERSION: 0.164.0
   TAILWIND_VERSION: 4.3.2
-  PA11Y_CONCURRENCY: 8
 
 jobs:
   a11y:
@@ -53,8 +52,8 @@ jobs:
       - name: Generate pa11y URL list
         run: node .github/scripts/generate-pa11yci-config.mjs
 
-      - name: Install pa11y-ci
-        run: npm install --no-save pa11y-ci@3 serve@14
+      - name: Install pa11y
+        run: npm install --no-save pa11y@6 serve@14
 
       - name: Run accessibility checks
         run: |
@@ -65,4 +64,4 @@ jobs:
             fi
             sleep 1
           done
-          npx pa11y-ci --config .pa11yci.generated.json
+          node .github/scripts/run-pa11y-batch.mjs
