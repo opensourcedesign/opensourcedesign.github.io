@@ -1,6 +1,6 @@
 ---
 _id: ed2b0060-9ac3-11ea-b588-39aae9709255
-status: solved
+status: filled
 date_posted: '2020-05-20'
 layout: jobs
 organization: Open Collective

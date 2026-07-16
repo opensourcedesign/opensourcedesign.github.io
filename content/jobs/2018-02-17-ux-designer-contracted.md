@@ -1,6 +1,6 @@
 ---
 _id: ab6432f0-1406-11e8-bad5-27d0ae215d77
-status: solved
+status: filled
 date_posted: '2018-02-17'
 layout: jobs
 organization: Kiwix

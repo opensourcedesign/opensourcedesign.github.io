@@ -1,6 +1,6 @@
 ---
 _id: 54f41800-4241-11e7-9e19-0b2b6cbebe8d
-status: solved
+status: filled
 date_posted: '2017-05-26'
 layout: jobs
 organization: NARROWS

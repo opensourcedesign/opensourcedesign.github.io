@@ -1,6 +1,6 @@
 ---
 _id: 79498c40-90ab-11e7-88e7-079c73580266
-status: solved
+status: filled
 date_posted: '2017-09-03'
 layout: jobs
 organization: Theia

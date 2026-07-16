@@ -1,6 +1,6 @@
 ---
 _id: 8fbaac70-4c93-11e9-90b3-4f11e1a86850
-status: solved
+status: filled
 date_posted: '2019-03-22'
 layout: jobs
 organization: Wikimedia Germany e. V.

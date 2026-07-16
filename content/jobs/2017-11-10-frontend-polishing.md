@@ -1,6 +1,6 @@
 ---
 _id: 75cc8230-c65b-11e7-986b-05a46a6fa5e8
-status: solved
+status: filled
 date_posted: '2017-11-10'
 layout: jobs
 organization: Identihub

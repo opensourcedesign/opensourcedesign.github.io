@@ -11,7 +11,7 @@ contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://fallenritemonk.github.io/ludus/
 tags: [ui, branding, logo]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2016-02-04
 how_to_apply: Contact fallenritemonk@gmail.com, FallenRitemonk

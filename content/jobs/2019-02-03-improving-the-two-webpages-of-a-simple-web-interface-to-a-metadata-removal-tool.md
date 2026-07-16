@@ -1,6 +1,6 @@
 ---
 _id: 9b960aa0-27bb-11e9-a42f-438734cf6c7a
-status: solved
+status: filled
 date_posted: '2019-02-03'
 layout: jobs
 organization: mat2-web

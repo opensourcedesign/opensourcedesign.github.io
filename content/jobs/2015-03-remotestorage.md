@@ -7,7 +7,7 @@ organization: 5apps
 github: remotestorage,5apps
 org_url: https://remotestorage.io
 tags: [ui, ux, frontend, web]
-status: solved
+status: filled
 compensation: unspecified
 date_posted: 2015-03-22
 how_to_apply: Email mail@5apps.com

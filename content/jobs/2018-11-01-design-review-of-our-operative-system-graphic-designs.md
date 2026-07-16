@@ -1,6 +1,6 @@
 ---
 _id: 87fd4e90-ddc9-11e8-8f05-8de24e64c09b
-status: solved
+status: filled
 date_posted: '2018-11-01'
 layout: jobs
 organization: Sabayon Linux

@@ -1,6 +1,6 @@
 ---
 _id: 0a483180-dc4f-11e7-a59d-c98360741d2d
-status: solved
+status: filled
 date_posted: '2017-12-08'
 layout: jobs
 organization: Muonium

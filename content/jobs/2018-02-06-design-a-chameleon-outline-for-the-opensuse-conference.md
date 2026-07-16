@@ -1,6 +1,6 @@
 ---
 _id: aa895280-0b22-11e8-b84f-75476b51bc09
-status: solved
+status: filled
 date_posted: '2018-02-06'
 layout: jobs
 organization: openSUSE Conference

@@ -1,6 +1,6 @@
 ---
 _id: ce95a750-0231-11ec-b9db-4d9b24724e69
-status: solved
+status: filled
 date_posted: '2021-08-20'
 layout: jobs
 organization: RestQA

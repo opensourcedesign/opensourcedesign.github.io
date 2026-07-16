@@ -8,6 +8,9 @@ payload carries `kind: "event"`). The submitter's email is kept private in
 Cloudflare KV (keyed by PR number) so the
 [`job-approved-email`](../../.github/workflows/job-approved-email.yml)
 workflow can notify them when the posting is merged and published.
+[`job-rejected-email`](../../.github/workflows/job-rejected-email.yml) emails
+them when a submission PR is closed without merging (with moderator feedback
+when a comment was left).
 
 The same `/submit` route also powers **edits**: when the payload carries
 `edit_file` (set by a form's edit mode, reached via the "Edit this posting" /
@@ -17,7 +20,7 @@ on a `job-edit/*` or `event-edit/*` branch instead of adding a new one.
 Identity fields (`date_posted`, `date`, `_id`, `slug`, `url`, `permalink`,
 `aliases`, `categories`, `author`) are preserved from the current file so URLs
 and list ordering don't change, and the submitter can also set the status
-(jobs: searching / solved / closed; events: upcoming / cancelled).
+(jobs: searching / filled / closed / expired; events: upcoming / cancelled).
 
 Jobs may carry an optional `deadline` (application deadline, `YYYY-MM-DD`).
 The Worker validates the format and rejects past dates on new submissions
@@ -48,6 +51,7 @@ rejected. The same KV email flow applies (the approval workflow recognizes
 Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/ or content/events/
                                  → KV: pr:<n> = { email, title, kind }
 Maintainer merges PR → GitHub Action → GET /lookup?pr=<n> → email submitter via SMTP
+Maintainer closes PR  → GitHub Action → GET /lookup?pr=<n> → rejection email → POST /rejection-sent?pr=<n>
 ```
 
 The notification is a branded HTML email (plain-text alternative included) and
@@ -66,6 +70,8 @@ expected ~10 submissions/month. **Cost: $0.**
 | ------ | ---------------- | -------------------------- | ----------------------------------------- |
 | `POST` | `/submit`        | Turnstile token in body    | Verify + open a PR, store email in KV      |
 | `GET`  | `/lookup?pr=<n>` | `Authorization: Bearer …`  | Return the stored email (workflow only)    |
+| `GET`  | `/rejection-sent?pr=<n>` | `Authorization: Bearer …` | Whether a rejection email was already sent |
+| `POST` | `/rejection-sent?pr=<n>` | `Authorization: Bearer …` | Mark rejection email sent (idempotent)     |
 | `GET`  | `/forum`         | none                       | Trimmed Discourse latest-topics list (CORS proxy, cached 10 min) |
 | `GET`  | `/` or `/health` | none                       | Health check (`{ ok: true }`)              |
 
@@ -88,7 +94,7 @@ forum. The build-time list rendered by Hugo remains the no-JS fallback.
    - **Pull requests: Read and write**
    - *(optional)* **Issues: Read and write** - only needed if you want the Worker to add the `job-submission` label; labeling is best-effort and the email workflow does not depend on it.
 3. **Cloudflare Turnstile** site + secret keys ([dashboard](https://dash.cloudflare.com/?to=/:account/turnstile)).
-4. **SMTP** credentials (host, port, user, password, from address) for the approval email.
+4. **SMTP** credentials (host, port, user, password, from address) for the approval and rejection emails.
 
 ## Deploy
 
@@ -141,7 +147,7 @@ turnstileSiteKey    = "<your-turnstile-site-key>"
 When an endpoint param is empty the corresponding form still works - it falls
 back to showing the generated Markdown for a manual PR.
 
-## GitHub repo secrets (for the approval email)
+## GitHub repo secrets (for submission emails)
 
 In the site repo: **Settings → Secrets and variables → Actions → New repository secret**.
 
@@ -156,9 +162,9 @@ In the site repo: **Settings → Secrets and variables → Actions → New repos
 | `SMTP_FROM`         | from address, e.g. `hello@opensourcedesign.net`                 |
 | `SMTP_SECURE`       | *(optional)* `true` for port 465; omit/`false` for 587          |
 
-The workflow triggers on any merged PR whose branch starts with `job/` or
-`event/` (which the Worker always uses), so the `job-submission` and
-`event-submission` labels are informational only.
+The workflows trigger on merged or closed submission PRs whose branch starts
+with `job/`, `event/`, or `resource/` (which the Worker always uses), so the
+`job-submission` and `event-submission` labels are informational only.
 
 ## Local development
 
@@ -175,8 +181,11 @@ for a preview namespace.
 
 - The submitter email is **never** written to the repo or the PR body - only to KV,
   with a ~90-day TTL (`EMAIL_TTL_DAYS`).
-- `/lookup` is bearer-protected with a constant-time comparison and used only
-  server-to-server by the merge workflow (no CORS headers).
+- `/lookup` and `/rejection-sent` are bearer-protected with a constant-time
+  comparison and used only server-to-server by the merge/rejection workflows
+  (no CORS headers). The email KV entry is kept until TTL so a reopened and
+  merged PR can still trigger the approval email; `rejected:pr:<n>` only
+  prevents duplicate rejection notices.
 - `/submit` is CORS-restricted to `ALLOWED_ORIGIN` and the Markdown is rebuilt
   server-side, so a malicious client cannot craft arbitrary file contents/paths.
 - All input is validated server-side (required fields, http(s) URLs, email format)

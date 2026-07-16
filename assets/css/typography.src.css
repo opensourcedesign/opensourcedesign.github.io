@@ -32,9 +32,9 @@
   --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* prose containers, color themes, and sizes (incl. responsive prefixes) */
-@source inline("{sm:,md:,lg:,}prose");
-@source inline("prose-{sm,base,lg,xl,invert,slate,gray,zinc,neutral,stone}");
+/* prose containers and modifiers used in layouts/ */
+@source inline("prose");
+@source inline("prose-{sm,slate,invert}");
 @source inline("dark:prose-invert");
 @source inline("not-prose");
 

@@ -1,6 +1,6 @@
 ---
 _id: 1d9cdab0-0d01-11ec-99ac-d52206301d8e
-status: solved
+status: filled
 date_posted: '2021-09-03'
 layout: jobs
 organization: Heinous design of widely used open playlist tech

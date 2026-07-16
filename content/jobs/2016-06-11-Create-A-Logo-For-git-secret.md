@@ -8,7 +8,7 @@ github: https://github.com/sobolevn/git-secret
 contact: https://github.com/sobolevn
 org_url: https://sobolevn.github.io/git-secret/
 tags: [logo]
-status: solved
+status: filled
 compensation: gratis / in-app and website credit
 date_posted: 2016-06-11
 how_to_apply: Contact via GitHub (https://github.com/sobolevn/git-secret) — https://github.com/sobolevn

@@ -1,6 +1,6 @@
 ---
 _id: f7298740-c57c-11e7-b632-cf088a114575
-status: solved
+status: filled
 date_posted: '2017-11-09'
 layout: jobs
 organization: Lumi

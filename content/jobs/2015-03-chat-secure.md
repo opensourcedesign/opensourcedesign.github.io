@@ -7,7 +7,7 @@ organization: The Guardian Project
 github: guardianproject
 org_url: https://guardianproject.info/apps/chatsecure/
 tags: [ui, branding, logo]
-status: solved
+status: filled
 submited_by: bvnk
 compensation: unspecified
 date_posted: 2015-03-11

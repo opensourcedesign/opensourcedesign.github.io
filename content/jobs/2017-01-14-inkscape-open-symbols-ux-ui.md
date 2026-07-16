@@ -11,7 +11,7 @@ contributing_md: https://github.com/Xaviju/inkscape-open-symbols/blob/master/CON
 contributors_md: https://github.com/Xaviju/inkscape-open-symbols/blob/master/AUTHORS.md
 org_url: https://github.com/Xaviju/inkscape-open-symbols/
 tags: [web design, ux, ui, design]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2017-01-14
 how_to_apply: Contact xaviju@gmail.com

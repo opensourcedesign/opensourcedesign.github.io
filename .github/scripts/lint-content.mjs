@@ -11,7 +11,8 @@
 
 import fs from 'node:fs';
 
-const JOB_STATUSES = ['searching', 'solved', 'closed', 'expired', 'resolved', 'completed', 'filled'];
+const JOB_STATUSES = ['searching', 'filled', 'closed', 'expired'];
+const JOB_STATUS_ALIASES = { solved: 'filled', resolved: 'filled', completed: 'filled', filled: 'filled' };
 const EVENT_STATUSES = ['upcoming', 'started', 'past', 'cancelled'];
 
 // Section/utility pages that live in content folders but aren't linted as postings.
@@ -113,7 +114,9 @@ function lintFile(file) {
     const statuses = isJob ? JOB_STATUSES : EVENT_STATUSES;
     if (!status) {
       errors.push('front matter: `status` is required');
-    } else if (!statuses.includes(status)) {
+    } else if (isJob && JOB_STATUS_ALIASES[status] && !statuses.includes(status)) {
+      warnings.push(`front matter: status "${status}" is legacy - use "${JOB_STATUS_ALIASES[status]}"`);
+    } else if (!statuses.includes(status) && !(isJob && JOB_STATUS_ALIASES[status])) {
       errors.push(`front matter: status "${status}" is not one of: ${statuses.join(', ')}`);
     }
 

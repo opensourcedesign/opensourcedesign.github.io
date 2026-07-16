@@ -1,6 +1,6 @@
 ---
 _id: f13e07b0-e33b-11e8-91f9-bb038b5d85dc
-status: solved
+status: filled
 date_posted: '2018-11-08'
 layout: jobs
 organization: CMintS

@@ -1,6 +1,6 @@
 ---
 _id: b080c9e0-6889-11ea-85ce-67c4e28c4763
-status: solved
+status: filled
 date_posted: '2020-03-17'
 layout: jobs
 organization: tricoteuses

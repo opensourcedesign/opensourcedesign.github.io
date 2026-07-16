@@ -1,6 +1,6 @@
 ---
 _id: eef540a0-b34f-11ea-96ce-3b89bddfa37c
-status: solved
+status: filled
 date_posted: '2020-06-21'
 layout: jobs
 organization: Hungarian AURA Service Dog Foundation

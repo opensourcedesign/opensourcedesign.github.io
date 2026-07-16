@@ -1,6 +1,6 @@
 ---
 _id: 686205a0-edfe-11e7-a6b5-bba135a28abe
-status: solved
+status: filled
 date_posted: '2017-12-30'
 layout: jobs
 organization: OpenEMR

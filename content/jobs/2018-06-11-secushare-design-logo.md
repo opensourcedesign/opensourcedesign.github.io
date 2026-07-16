@@ -1,6 +1,6 @@
 ---
 _id: 465dc260-6d6e-11e8-a340-0b3e32e47a80
-status: solved
+status: filled
 date_posted: '2018-06-11'
 layout: jobs
 organization: secushare

@@ -1,6 +1,6 @@
 ---
 _id: 58bd7380-2d95-11eb-91d5-ede648636eae
-status: solved
+status: filled
 date_posted: '2020-11-23'
 layout: jobs
 organization: Anti-phishing tool

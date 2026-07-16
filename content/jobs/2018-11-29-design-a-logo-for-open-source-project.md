@@ -1,6 +1,6 @@
 ---
 _id: 177f43a0-f41f-11e8-9d7f-9d0ec159d85d
-status: solved
+status: filled
 date_posted: '2018-11-29'
 layout: jobs
 organization: React Cupertino

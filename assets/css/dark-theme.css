@@ -15,11 +15,6 @@ html.dark .bg-slate-100:not(.osd-on-light):not(:where(.osd-on-light *)) {
   background-color: var(--color-slate-800) !important;
 }
 
-html.dark .osd-surface {
-  background-color: var(--color-slate-900) !important;
-  border-color: var(--color-slate-700) !important;
-}
-
 /* Hero CTA — white pill on the dark photo, never remapped */
 .osd-hero-cta,
 html.dark .osd-hero-cta {

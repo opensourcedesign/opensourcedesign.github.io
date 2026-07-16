@@ -8,7 +8,7 @@ github: urigo/angular-meteor
 contact: simonv3 on github
 org_url: http://angularjs.meteor.com
 tags: [angular, meteor, branding, documentation, information architecture]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2015-04-28
 how_to_apply: Contact via GitHub (urigo/angular-meteor) — simonv3 on github

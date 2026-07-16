@@ -1,6 +1,6 @@
 ---
 _id: 936900c0-4959-11e9-9070-0d8466e89d64
-status: solved
+status: filled
 date_posted: '2019-03-18'
 layout: jobs
 organization: Protomorph-BG

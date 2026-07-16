@@ -1,6 +1,6 @@
 ---
 _id: 6b3c9bf0-def8-11e8-9a57-2f9842174f03
-status: solved
+status: filled
 date_posted: '2018-11-03'
 layout: jobs
 organization: AdonisJs

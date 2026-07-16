@@ -1,6 +1,6 @@
 ---
 _id: f25c8900-c483-11e7-a796-f9370fc17991
-status: solved
+status: filled
 date_posted: '2017-11-08'
 layout: jobs
 organization: Trekking for Charity

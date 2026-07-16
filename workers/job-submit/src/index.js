@@ -23,6 +23,9 @@
  * Routes:
  *   POST /submit         -> { ok, pr_url }
  *   GET  /lookup?pr=<n>  -> { ok, found, email, title, kind }  (Bearer LOOKUP_SECRET)
+ *   DELETE /lookup?pr=<n> -> { ok, deleted }  (Bearer LOOKUP_SECRET; legacy - prefer /rejection-sent)
+ *   GET  /rejection-sent?pr=<n> -> { ok, sent }  (Bearer LOOKUP_SECRET)
+ *   POST /rejection-sent?pr=<n> -> { ok, marked }  (Bearer LOOKUP_SECRET; idempotent)
  */
 
 const GH_API = 'https://api.github.com';
@@ -50,6 +53,15 @@ export default {
     // Server-to-server only (no CORS headers needed).
     if (url.pathname === '/lookup' && request.method === 'GET') {
       return handleLookup(request, env, url);
+    }
+    if (url.pathname === '/lookup' && request.method === 'DELETE') {
+      return handleForget(request, env, url);
+    }
+    if (url.pathname === '/rejection-sent' && request.method === 'GET') {
+      return handleRejectionSentGet(request, env, url);
+    }
+    if (url.pathname === '/rejection-sent' && request.method === 'POST') {
+      return handleRejectionSentMark(request, env, url);
     }
 
     // CORS proxy for the Discourse "latest topics" list (the forum sends no
@@ -268,9 +280,12 @@ async function handleSubmit(request, env) {
     const requested = String(data.status || '').trim();
     const allowed = kind === 'event'
       ? ['upcoming', 'started', 'past', 'cancelled']
-      : ['searching', 'solved', 'closed'];
-    edit.status = allowed.includes(requested)
-      ? requested
+      : ['searching', 'filled', 'closed', 'expired'];
+    const normalized = requested === 'solved' || requested === 'resolved' || requested === 'completed'
+      ? 'filled'
+      : requested;
+    edit.status = allowed.includes(normalized)
+      ? normalized
       : (fm.scalar('status') || (kind === 'event' ? 'upcoming' : 'searching'));
   }
 
@@ -317,6 +332,50 @@ async function handleLookup(request, env, url) {
   if (!rec || !rec.email) return json({ ok: true, found: false });
 
   return json({ ok: true, found: true, email: rec.email, title: rec.title || '', kind: rec.kind || 'job' });
+}
+
+async function handleForget(request, env, url) {
+  const auth = request.headers.get('Authorization') || '';
+  if (!env.LOOKUP_SECRET || !safeEqual(auth, 'Bearer ' + env.LOOKUP_SECRET)) {
+    return json({ ok: false, error: 'Unauthorized' }, 401);
+  }
+  const pr = url.searchParams.get('pr');
+  if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!env.EMAILS) return json({ ok: true, deleted: false });
+
+  await env.EMAILS.delete('pr:' + pr);
+  return json({ ok: true, deleted: true });
+}
+
+function authLookup(request, env) {
+  const auth = request.headers.get('Authorization') || '';
+  if (!env.LOOKUP_SECRET || !safeEqual(auth, 'Bearer ' + env.LOOKUP_SECRET)) {
+    return json({ ok: false, error: 'Unauthorized' }, 401);
+  }
+  return null;
+}
+
+async function handleRejectionSentGet(request, env, url) {
+  const denied = authLookup(request, env);
+  if (denied) return denied;
+  const pr = url.searchParams.get('pr');
+  if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!env.EMAILS) return json({ ok: true, sent: false });
+
+  const sent = !!(await env.EMAILS.get('rejected:' + pr));
+  return json({ ok: true, sent });
+}
+
+async function handleRejectionSentMark(request, env, url) {
+  const denied = authLookup(request, env);
+  if (denied) return denied;
+  const pr = url.searchParams.get('pr');
+  if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!env.EMAILS) return json({ ok: true, marked: false });
+
+  const days = parseInt(env.EMAIL_TTL_DAYS || '90', 10) || 90;
+  await env.EMAILS.put('rejected:' + pr, '1', { expirationTtl: days * 86400 });
+  return json({ ok: true, marked: true });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -821,7 +880,7 @@ function prBody(data, filePath, edit) {
   if (data.github_handle) lines.push('| Submitter GitHub | ' + cell(data.github_handle) + ' |');
   lines.push('| File | `' + filePath + '` |');
   lines.push('');
-  lines.push('Review the file, then merge to publish. The submitter is emailed automatically on merge (their address is stored privately and is not shown here).');
+  lines.push('Review the file, then merge to publish. The submitter is emailed on merge or if the PR is closed without merging (their address is stored privately and is not shown here).');
   return lines.join('\n');
 }
 
@@ -844,7 +903,7 @@ function eventPrBody(data, filePath, edit) {
   if (data.website) lines.push('| Website | ' + cell(data.website) + ' |');
   lines.push('| File | `' + filePath + '` |');
   lines.push('');
-  lines.push('Review the file, then merge to publish. The submitter is emailed automatically on merge (their address is stored privately and is not shown here).');
+  lines.push('Review the file, then merge to publish. The submitter is emailed on merge or if the PR is closed without merging (their address is stored privately and is not shown here).');
   return lines.join('\n');
 }
 

@@ -1,6 +1,6 @@
 ---
 _id: b3a315c0-f97c-11e7-89d4-e59a38d801c6
-status: solved
+status: filled
 date_posted: '2018-01-14'
 layout: jobs
 organization: Mindfulness at the Computer

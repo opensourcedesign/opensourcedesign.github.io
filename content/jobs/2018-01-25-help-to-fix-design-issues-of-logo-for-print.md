@@ -1,6 +1,6 @@
 ---
 _id: 31d52610-0164-11e8-9a84-7fd1a392669e
-status: solved
+status: filled
 date_posted: '2018-01-25'
 layout: jobs
 organization: loklak

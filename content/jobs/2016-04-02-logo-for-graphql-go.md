@@ -10,7 +10,7 @@ contributing_md: (optional)
 contributors_md: (optional)
 org_url: https://github.com/graphql-go/graphql
 tags: [logo, golang, graphql]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2016-04-02
 how_to_apply: Contact hafiz@wehavefaces.net, https://gitter.im/graphql-go/graphql

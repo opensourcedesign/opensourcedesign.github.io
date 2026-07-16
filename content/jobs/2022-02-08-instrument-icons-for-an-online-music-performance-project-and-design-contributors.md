@@ -1,6 +1,6 @@
 ---
 _id: f57e8820-88f8-11ec-b916-a555f8b4395a
-status: solved
+status: filled
 date_posted: '2022-02-08'
 layout: jobs
 organization: Jamulus

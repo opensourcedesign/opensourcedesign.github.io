@@ -8,7 +8,7 @@ github: bdavidxyz
 contact: bdavidxyz@gmail.com
 org_url: https://github.com/bdavidxyz/zee
 tags: [ui, branding, web design]
-status: solved
+status: filled
 compensation: gratis
 date_posted: '2016-08-31'
 how_to_apply: Contact bdavidxyz@gmail.com

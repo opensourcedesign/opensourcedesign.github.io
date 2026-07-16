@@ -1,6 +1,6 @@
 ---
 _id: c534f970-a4c4-11ea-a96a-0f3466be466a
-status: solved
+status: filled
 date_posted: '2020-06-02'
 layout: jobs
 organization: Pachno

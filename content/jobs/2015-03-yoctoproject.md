@@ -7,7 +7,7 @@ organization: Yocto Project
 github: belenbarrospena
 org_url: http://yoctoproject.org
 tags: [icons]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2015-02-06
 how_to_apply: See the GitHub repository (belenbarrospena) or description below

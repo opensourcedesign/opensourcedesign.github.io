@@ -1,6 +1,6 @@
 ---
 _id: 47fea940-ef62-11ef-8239-b1a48e1e0c23
-status: solved
+status: filled
 date_posted: '2025-02-20'
 layout: jobs
 organization: privact

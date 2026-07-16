@@ -1,6 +1,6 @@
 ---
 _id: 682abfb0-6012-11e8-bf3d-35969255318e
-status: solved
+status: filled
 date_posted: '2018-05-25'
 layout: jobs
 organization: Briar

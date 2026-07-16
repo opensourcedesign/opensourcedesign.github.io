@@ -1,6 +1,6 @@
 ---
 _id: 15e82cc0-518f-11e7-b5c8-4d3bff2c3dc8
-status: solved
+status: filled
 date_posted: '2017-06-15'
 layout: jobs
 organization: Apache ActiveMQ

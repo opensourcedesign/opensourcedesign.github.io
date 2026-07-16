@@ -1,6 +1,6 @@
 ---
 _id: 5828e130-3903-11e9-997a-819fd7be84ff
-status: solved
+status: filled
 date_posted: '2019-02-25'
 layout: jobs
 organization: 'c:geo Open Source Geocaching App for Android'

@@ -8,7 +8,7 @@ github: MettaCenter
 contact: tord.dellsen@gmail.com
 org_url: http://mettacenter.org
 tags: [ui, branding, typography]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2015-07-15
 how_to_apply: Contact tord.dellsen@gmail.com

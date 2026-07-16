@@ -7,7 +7,7 @@ organization: guitarix
 github: brummer10
 org_url: https://guitarix.sourceforge.net/
 tags: [ui, branding, logo]
-status: solved
+status: filled
 compensation: gratis, open source
 date_posted: 2015-02-15
 how_to_apply: See the GitHub repository (brummer10) or description below

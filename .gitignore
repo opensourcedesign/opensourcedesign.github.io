@@ -37,6 +37,7 @@ Thumbs.db
 /tmp/
 /.verify-build/
 /.tmp-*
+.cache/
 
 # Compiled by the Tailwind CLI in the deploy workflows (see baseof.html);
 # local dev falls back to the Play CDN when this file is absent.

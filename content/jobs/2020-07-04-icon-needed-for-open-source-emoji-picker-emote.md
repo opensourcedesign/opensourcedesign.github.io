@@ -1,6 +1,6 @@
 ---
 _id: c2885550-be05-11ea-966e-d9a1c2e7c783
-status: solved
+status: filled
 date_posted: '2020-07-04'
 layout: jobs
 organization: Emote

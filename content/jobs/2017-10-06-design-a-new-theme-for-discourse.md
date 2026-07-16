@@ -1,6 +1,6 @@
 ---
 _id: f719f8e0-aa8b-11e7-aa19-e5ac3cfee067
-status: solved
+status: filled
 date_posted: '2017-10-06'
 layout: jobs
 organization: Discourse

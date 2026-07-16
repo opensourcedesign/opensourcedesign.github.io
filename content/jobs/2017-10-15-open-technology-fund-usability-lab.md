@@ -1,6 +1,6 @@
 ---
 _id: e2c83250-b1b4-11e7-b553-d17830342549
-status: solved
+status: filled
 date_posted: '2017-10-15'
 layout: jobs
 organization: Open Technology Fund - Usability Lab

@@ -19,7 +19,7 @@
 {{ $allJobs := where $jobPages ".RelPermalink" "!=" $current.RelPermalink }}
 
 {{/* Filter to only open jobs. Only "searching" without a passed application
-     deadline is open; every other status (solved/closed/resolved/completed/
+     deadline is open; every other status (filled/closed/expired/
      filled/expired) is a finished posting and must not be recommended. */}}
 {{ $openJobs := partial "functions/open-jobs.html" $allJobs }}
 

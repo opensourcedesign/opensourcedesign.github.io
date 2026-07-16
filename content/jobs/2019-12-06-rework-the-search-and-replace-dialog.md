@@ -1,6 +1,6 @@
 ---
 _id: 2bca1390-1808-11ea-8501-b380feedf000
-status: solved
+status: filled
 date_posted: '2019-12-06'
 layout: jobs
 organization: Scribus

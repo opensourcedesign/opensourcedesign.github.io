@@ -1,6 +1,6 @@
 ---
 _id: ecf7b6b0-de4c-11eb-85d5-d5a0c3878ea8
-status: solved
+status: filled
 date_posted: '2021-07-06'
 layout: jobs
 organization: Simply Secure

@@ -1,6 +1,6 @@
 ---
 _id: 0abbf520-f514-11e6-99e7-05317750223b
-status: solved
+status: filled
 date_posted: '2017-02-17'
 layout: jobs
 organization: Labsquare

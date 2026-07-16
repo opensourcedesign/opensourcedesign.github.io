@@ -1,6 +1,6 @@
 ---
 _id: 5daef420-f8fd-11e6-9b83-8d0f1ec5628f
-status: solved
+status: filled
 date_posted: '2017-02-22'
 layout: jobs
 organization: Passman Android

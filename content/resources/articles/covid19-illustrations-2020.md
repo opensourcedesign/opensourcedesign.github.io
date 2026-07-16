@@ -28,7 +28,7 @@ Use them however you can in your signage, reports, sites, apps and projects. And
 
 BioRender envision a world where science is universally communicated and understood through visuals. Represent science with intuitive visuals that can be understood by everyone. ACCESSIBLE. Anyone can use the platform - no drawing or design skills required.
 
-<br><br>
+
 ## WHO guidelines against COVID-19 :)
 
 * To protect yourself and others against COVID-19, clean your hands frequently and thoroughly. 

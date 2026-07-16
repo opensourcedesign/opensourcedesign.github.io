@@ -1,6 +1,6 @@
 ---
 _id: 1daa9da0-50ba-11e8-ac87-87928077e3bf
-status: solved
+status: filled
 date_posted: '2018-05-05'
 layout: jobs
 organization: WIP GitHub App

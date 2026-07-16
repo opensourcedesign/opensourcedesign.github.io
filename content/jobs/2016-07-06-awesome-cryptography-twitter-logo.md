@@ -8,7 +8,7 @@ github: https://github.com/sobolevn/awesome-cryptography
 contact: https://github.com/sobolevn
 org_url: https://twitter.com/awe_crypto_bot
 tags: [logo]
-status: solved
+status: filled
 compensation: gratis / twitter-account credit
 date_posted: '2016-07-06'
 how_to_apply: Contact via GitHub (https://github.com/sobolevn/awesome-cryptography) — https://github.com/sobolevn

@@ -80,7 +80,7 @@ Before the PR reaches you:
 - The diff should touch **one existing file** - the poster's own. Verify the
   edit doesn't change identity fields in a way that hijacks someone else's
   posting (URL/permalink changes are preserved by the worker on purpose).
-- Status changes to `solved`/`closed` are normal and welcome - merge quickly
+- Status changes to `filled`/`closed`/`expired` are normal and welcome - merge quickly
   so the board stays accurate.
 
 ### Events
@@ -107,6 +107,11 @@ Automatically, in order:
    and Bluesky (skipped for edits and when the poster opted out via
    `announce_social: false` on the job form).
 
+If a submission is **closed without merging**, `job-rejected-email.yml` emails
+the submitter (same KV lookup), quotes the latest moderator comment on the PR
+when present, and records that a rejection notice was sent (so a later reopen
+and merge can still trigger the approval email).
+
 And later, on schedules:
 
 - **Reminders** (`job-reminder.yml`, Mondays 06:00 UTC) - posters of ageing
@@ -118,9 +123,14 @@ And later, on schedules:
 ## Rejecting a submission
 
 Close the PR with a short, kind comment explaining why (no license, not a
-design task, spam). **Closing does not email the submitter** - only merges
-trigger email - so the PR comment is the only feedback they get. If the
-submission is salvageable, say what to change and point them back to the
+design task, spam). **Closing emails the submitter automatically** (when they
+left an address on the form): `job-rejected-email.yml` looks up their email in
+KV, includes your PR comment if you left one, links to the pull request, and
+points them back to the form to resubmit. The workflow skips notification when
+the submitter closes their own PR. **Still leave a PR comment** - it is quoted
+in the email and remains the public record.
+
+If the submission is salvageable, say what to change and point them back to the
 form; edits to their own open PR branch also work.
 
 For guidance posters can be sent, link the

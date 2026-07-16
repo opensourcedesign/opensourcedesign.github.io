@@ -1,6 +1,6 @@
 ---
 _id: 4c28a6d0-68b3-11ec-8cc2-6566a9247cce
-status: solved
+status: filled
 date_posted: '2021-12-29'
 layout: jobs
 organization: Design Manager

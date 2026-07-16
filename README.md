@@ -132,7 +132,7 @@ opensourcedesign.github.io/
 ├── .devcontainer/    # GitHub Codespaces config (Hugo + preview on port 1313)
 ├── .github/
 │   ├── scripts/      # announce-jobs.mjs - posts new jobs to Mastodon & Bluesky
-│   └── workflows/    # hugo-build (deploy), job-approved-email (submitter notification),
+│   └── workflows/    # hugo-build (deploy), job-approved-email / job-rejected-email,
 │                     # job-expire (daily auto-expiry), job-announce (social media),
 │                     # content-lint (PR checks), preview (PR previews), link-check (weekly)
 ├── archetypes/       # Hugo content templates for new pages
@@ -215,7 +215,7 @@ The form has a **Preview** button that renders the posting client-side (badges, 
 
 On submission the Worker runs a **duplicate check** against the live job index (`/jobs/index.json`, built by Hugo from `layouts/jobs/section.json.json`): if an open posting with the same or a very similar title exists, the form shows it and asks for confirmation before creating the PR.
 
-To update an existing posting (fix details, mark it as solved or closed), use the "Edit this posting" link in the sidebar of the job's page - it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
+To update an existing posting (fix details, mark it as filled or closed), use the "Edit this posting" link in the sidebar of the job's page - it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
 Around six weeks after publication, posters of still-open jobs get a **reminder email** asking whether the position is still open (`job-reminder.yml`, weekly; it maps each file back to its submission PR and pulls the email from the Worker's KV store - manually committed postings are skipped).
 

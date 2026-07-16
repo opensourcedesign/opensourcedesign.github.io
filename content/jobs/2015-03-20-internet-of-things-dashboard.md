@@ -11,7 +11,7 @@ contributing_md: (optional)
 contributors_md: (optional)
 org_url: http://iotstack.io
 tags: [ui, branding, logo]
-status: solved
+status: filled
 compensation: gratis
 date_posted: '2015-03-20'
 how_to_apply: Contact jordan@iotstack.io

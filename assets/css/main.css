@@ -238,7 +238,7 @@
   }
 
   .osd-surface {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900;
   }
 
   .osd-card-link {

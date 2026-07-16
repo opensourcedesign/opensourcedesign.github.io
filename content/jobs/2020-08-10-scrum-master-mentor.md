@@ -1,6 +1,6 @@
 ---
 _id: cade2a80-dafd-11ea-b8cd-cd1613f8d943
-status: solved
+status: filled
 date_posted: '2020-08-10'
 layout: jobs
 organization: Humanitarian OpenStreetMap Team

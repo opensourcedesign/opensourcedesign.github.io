@@ -54,7 +54,7 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="{{ block "robots" . }}{{ partial "seo-robots.html" . }}{{ end }}" />
     <meta name="author" content="{{ .Params.author | default site.Title }}" />
     <meta name="generator" content="Hugo {{ hugo.Version }}" />
     
@@ -415,8 +415,20 @@
       </svg>
     </button>
 
+    {{ $searchJs := resources.Get "js/search-modal.js" | minify | fingerprint }}
+    {{ $notfoundJs := resources.Get "js/notfound-search.js" | minify | fingerprint }}
+    {{ $lightboxJs := resources.Get "js/lightbox.js" | minify | fingerprint }}
+    {{ $jobMarkersJs := resources.Get "js/job-markers.js" | minify | fingerprint }}
+    <script>
+      window.__OSD_MODULES = {
+        search: {{ $searchJs.RelPermalink | jsonify }},
+        notfound: {{ $notfoundJs.RelPermalink | jsonify }},
+        lightbox: {{ $lightboxJs.RelPermalink | jsonify }},
+        jobMarkers: {{ $jobMarkersJs.RelPermalink | jsonify }}
+      };
+    </script>
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
-    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+    <script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 
     {{/* instant.page: prefetches internal links on hover/touchstart, making
          navigation feel instant. Loaded as a module (deferred, and skipped by

@@ -1,6 +1,6 @@
 ---
 _id: c326f920-8ad1-11e9-99f3-bbbd6ce5252c
-status: solved
+status: filled
 date_posted: '2019-06-09'
 layout: jobs
 organization: Open Tech Fund

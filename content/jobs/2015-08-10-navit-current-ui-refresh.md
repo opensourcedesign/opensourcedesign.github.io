@@ -9,7 +9,7 @@ github: navit-gps
 contact: github ( navit-gps ), #navit on Freenode
 org_url: http://www.navit-project.org
 tags: [ui, icons]
-status: solved
+status: filled
 compensation: gratis
 date_posted: 2015-08-10
 how_to_apply: Contact via GitHub (navit-gps) — github ( navit-gps ), #navit on Freenode

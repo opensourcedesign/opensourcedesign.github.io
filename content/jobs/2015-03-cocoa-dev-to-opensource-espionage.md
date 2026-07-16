@@ -7,7 +7,7 @@ organization: Tao Effect LLC
 github: taoeffect
 org_url: https://www.espionageapp.com
 tags: [macos, security]
-status: solved
+status: filled
 compensation: negotiated hourly rate
 date_posted: 2015-03-18
 how_to_apply: Contact contact at taoeffect dot com

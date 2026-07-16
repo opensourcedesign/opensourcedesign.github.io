@@ -1,6 +1,6 @@
 ---
 _id: 4e509da0-41a8-11ec-bf91-09d837a7fa56
-status: solved
+status: filled
 date_posted: '2021-11-09'
 layout: jobs
 organization: Giga – Connect every school to the Internet

@@ -1,6 +1,6 @@
 ---
 _id: 651cb4b0-6601-11e7-9b06-05d55a32e74f
-status: solved
+status: filled
 date_posted: '2017-07-11'
 layout: jobs
 organization: SUSI.AI (a FOSSASIA's project)

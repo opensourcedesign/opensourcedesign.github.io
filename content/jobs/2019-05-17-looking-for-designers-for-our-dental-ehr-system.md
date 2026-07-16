@@ -1,6 +1,6 @@
 ---
 _id: 9b30c640-78a6-11e9-8fc4-5bfc95b35edf
-status: solved
+status: filled
 date_posted: '2019-05-17'
 layout: jobs
 organization: Clear Dental

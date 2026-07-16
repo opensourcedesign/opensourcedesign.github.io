@@ -11,6 +11,8 @@ on:
       - "content/jobs/**.md"
       - "content/events/**.md"
       - "content/resources/**.md"
+      - "data/resources.yaml"
+      - "data/bibliography.yaml"
 
 permissions:
   contents: read
@@ -31,9 +33,14 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           files="$(git diff --diff-filter=AM --name-only "$BASE_SHA" "$HEAD_SHA" -- 'content/jobs/*.md' 'content/events/*.md' 'content/resources/*.md' 'content/resources/articles/*.md')"
-          if [ -z "$files" ]; then
+          if [ -n "$files" ]; then
+            # shellcheck disable=SC2086
+            node .github/scripts/lint-content.mjs $files
+          else
             echo "No job/event/resource content changed."
-            exit 0
           fi
-          # shellcheck disable=SC2086
-          node .github/scripts/lint-content.mjs $files
+          data_files="$(git diff --diff-filter=AM --name-only "$BASE_SHA" "$HEAD_SHA" -- 'data/resources.yaml' 'data/bibliography.yaml')"
+          if [ -n "$data_files" ]; then
+            npm install --no-save yaml@2
+            node .github/scripts/lint-data-yaml.mjs
+          fi

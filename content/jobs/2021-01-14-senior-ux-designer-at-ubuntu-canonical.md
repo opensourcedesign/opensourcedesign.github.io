@@ -1,6 +1,6 @@
 ---
 _id: 2b723ba0-5693-11eb-a43a-19189f099184
-status: solved
+status: filled
 date_posted: '2021-01-14'
 layout: jobs
 organization: Ubuntu

@@ -1,6 +1,6 @@
 ---
 _id: 81d76890-2c16-11e7-860b-fdf540b260b5
-status: solved
+status: filled
 date_posted: '2017-04-28'
 layout: jobs
 organization: DependenCI

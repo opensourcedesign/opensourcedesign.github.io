@@ -8,7 +8,7 @@ organization: Ethereal Lifestyle
 github: CrasHog
 contact: email, github
 tags: [three.js, 3d, webgl, design, branding, architecture]
-status: solved
+status: filled
 compensation: salary depending on skill level and experience
 date_posted: '2015-06-05'
 how_to_apply: Contact via GitHub (CrasHog) — email, github

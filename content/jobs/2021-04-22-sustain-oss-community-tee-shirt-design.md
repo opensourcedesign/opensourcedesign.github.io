@@ -1,6 +1,6 @@
 ---
 _id: 8341ff60-a34a-11eb-81e5-11da0e66aed3
-status: solved
+status: filled
 date_posted: '2021-04-22'
 layout: jobs
 organization: Sustian OSS

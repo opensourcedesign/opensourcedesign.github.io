@@ -1,16 +1,17 @@
+{{ define "robots" }}noindex, follow{{ end }}
 {{ define "main" }}
   <div class="mx-auto max-w-3xl px-4 py-20 sm:py-28">
-    <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">404</p>
-    <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">This page doesn't exist.</h1>
-    <p class="mt-4 max-w-prose text-lg leading-relaxed text-slate-600">The link may be outdated - the site's structure changed over the years. Let's see if we can find what you were after.</p>
+    <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">404</p>
+    <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl dark:text-slate-50">This page doesn't exist.</h1>
+    <p class="mt-4 max-w-prose text-lg leading-relaxed text-slate-600 dark:text-slate-400">The link may be outdated - the site's structure changed over the years. Let's see if we can find what you were after.</p>
 
-    {{/* Slug-seeded search: assets/js/main.js derives a query from the broken
+    {{/* Slug-seeded search: assets/js/notfound-search.js derives a query from the broken
          URL (dates stripped, hyphens to spaces), pre-fills the box, and runs
          it against the Pagefind index on load. Pure enhancement - without JS
          or an index (hugo server) the box explains itself and the section
          links below still cover the common destinations. */}}
     <div id="osd-notfound-search" class="mt-10" data-pagefind-base="{{ partial "site-path.html" "/pagefind/" }}" data-pagefind-ignore>
-      <form class="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-3 transition focus-within:border-slate-900 focus-within:ring-2 focus-within:ring-slate-900/20" role="search" data-notfound-form>
+      <form class="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-3 transition focus-within:border-slate-900 focus-within:ring-2 focus-within:ring-slate-900/20 dark:border-slate-700 dark:bg-slate-900 dark:focus-within:border-slate-300" role="search" data-notfound-form>
         <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
         <input
           type="search"

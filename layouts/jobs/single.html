@@ -2,8 +2,9 @@
   {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
   {{ $isPaid := eq $comp "paid" }}
   {{ $isVolunteer := or (in $comp "gratis") (in $comp "volunteer") (eq $comp "free") }}
-  {{ $status := lower (printf "%v" (.Params.status | default "")) }}
-  {{ $isOpen := eq $status "searching" }}
+  {{ $jobMeta := partial "functions/job-status-meta.html" . }}
+  {{ $status := $jobMeta.status }}
+  {{ $isOpen := $jobMeta.open }}
   {{ $org := .Params.organization | default "" }}
   {{ $role := trim (printf "%v" (.Params.role | default "")) " '\"" }}
 
@@ -34,7 +35,7 @@
     {{ $deadlineHuman = $t.Format "2 January 2006" }}
     {{ if lt $deadlineISO (now.Format "2006-01-02") }}{{ $deadlinePassed = true }}{{ end }}
   {{ end }}
-  {{ $isExpired := or (eq $status "expired") (and $isOpen $deadlinePassed) }}
+  {{ $isExpired := $jobMeta.expired }}
 
   <article class="mx-auto max-w-5xl overflow-x-clip px-4 py-10" data-pagefind-body>
     {{/* Breadcrumb */}}
@@ -64,7 +65,7 @@
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Open
                 </span>
               {{ else if $status }}
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold capitalize text-slate-600 ring-1 ring-inset ring-slate-500/20">{{ $status }}</span>
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold capitalize text-slate-600 ring-1 ring-inset ring-slate-500/20 dark:bg-slate-800 dark:text-slate-300">{{ $status }}</span>
               {{ end }}
               {{ if $isPaid }}
                 {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
@@ -366,7 +367,7 @@
           {{ with .File }}
             <div class="osd-surface rounded-2xl border border-slate-200 p-6 shadow-sm">
               <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Something changed?</h2>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">Update the details or mark this job as solved. Changes are reviewed by moderators before publishing.</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Update the details or mark this job as filled or closed. Changes are reviewed by moderators before publishing.</p>
               <a class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ printf "%s?edit=%s" (partial "site-path.html" "/jobs/job-form/") (.LogicalName | urlquery) | safeURL }}">
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
                 Edit this posting

@@ -1,6 +1,6 @@
 ---
 _id: 452365b0-d5a2-11ee-85d6-e73c6ce01ba0
-status: solved
+status: filled
 date_posted: '2024-02-27'
 layout: jobs
 organization: Tapas

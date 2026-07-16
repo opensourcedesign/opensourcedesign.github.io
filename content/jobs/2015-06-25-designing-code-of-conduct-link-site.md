@@ -9,7 +9,7 @@ contributing_md: https://github.com/emilyhorsman/codeofconductlink/blob/develop/
 contributors_md: https://github.com/emilyhorsman/codeofconductlink/blob/develop/CONTRIBUTORS.md
 org_url: https://github.com/emilyhorsman/codeofconductlink
 tags: [ui, branding, logo]
-status: solved
+status: filled
 compensation: gratis
 how_to_apply: See https://github.com/emilyhorsman/codeofconductlink or the description below
 ---
