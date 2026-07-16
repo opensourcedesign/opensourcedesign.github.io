@@ -19,7 +19,9 @@ const FORMS = [
 ];
 
 function sha256(file) {
-  return createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+  // Normalize CRLF → LF so manifest hashes match Linux CI checkouts.
+  const content = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  return createHash('sha256').update(content, 'utf8').digest('hex');
 }
 
 function buildFromInline(layoutPath) {
