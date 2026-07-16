@@ -242,7 +242,27 @@
   }
 
   .osd-card-link {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-slate-100/25 dark:focus-visible:ring-offset-slate-950;
+  }
+
+  .osd-breadcrumb {
+    @apply flex flex-wrap items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400;
+  }
+
+  .osd-breadcrumb a {
+    @apply transition hover:text-slate-900 dark:hover:text-slate-100;
+  }
+
+  .osd-breadcrumb__sep {
+    @apply h-4 w-4 shrink-0 text-slate-300 dark:text-slate-600;
+  }
+
+  .osd-breadcrumb__current {
+    @apply font-medium text-slate-700 dark:text-slate-300;
+  }
+
+  .osd-sprite {
+    @apply absolute h-0 w-0 overflow-hidden;
   }
 
   .osd-pill {
@@ -266,11 +286,11 @@
   }
 
   .osd-muted {
-    @apply text-slate-600;
+    @apply text-slate-600 dark:text-slate-300;
   }
 
   .osd-section-label {
-    @apply text-xs font-semibold uppercase tracking-widest text-slate-500;
+    @apply text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400;
   }
 
   .osd-brand-dl {
@@ -305,11 +325,11 @@
   }
 
   .toc-content a {
-    @apply text-slate-600 no-underline transition-colors hover:text-slate-950;
+    @apply text-slate-600 no-underline transition-colors hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100;
   }
 
   .toc-content li.active > a {
-    @apply font-medium text-slate-950;
+    @apply font-medium text-slate-950 dark:text-slate-100;
   }
 
   .osd-prose {
@@ -806,6 +826,68 @@
   border-color: #475569;
   background: #1e293b;
   color: #94a3b8;
+}
+
+/* View Transitions API — cached via compiled.css instead of per-page inline styles */
+@view-transition {
+  navigation: auto;
+}
+
+body > header {
+  view-transition-name: site-header;
+}
+
+body > footer {
+  view-transition-name: site-footer;
+}
+
+body > main {
+  view-transition-name: main-content;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(main-content) {
+  animation: 250ms ease-out both osd-fade-out;
+}
+
+::view-transition-new(main-content) {
+  animation: 250ms ease-in both osd-fade-in;
+}
+
+@keyframes osd-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes osd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+}
+
+@supports not (view-transition-name: none) {
+  body > main {
+    transition: opacity 150ms ease;
+  }
 }
 
 /* Dark theme rules live in assets/css/dark-theme.css (always linked from baseof.html after Tailwind). */

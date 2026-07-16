@@ -10,6 +10,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 import {
   isBadJobFilename,
   scalarFromFm,
@@ -35,19 +36,51 @@ function pathsEqualIgnoreCase(a, b) {
 
 function renameJobFile(from, to) {
   if (pathsEqualIgnoreCase(from, to)) {
-    const temp = path.join(DIR, `.__normalize_${Date.now()}_${Math.random().toString(36).slice(2)}.md`);
-    fs.renameSync(from, temp);
-    fs.renameSync(temp, to);
-    return;
+    const relFrom = path.relative(ROOT, from).replace(/\\/g, '/');
+    const relTo = path.relative(ROOT, to).replace(/\\/g, '/');
+    const relTemp = relTo.replace(/[^/]+$/, `.__normalize_${Date.now()}.md`);
+    try {
+      execSync(`git mv ${JSON.stringify(relFrom)} ${JSON.stringify(relTemp)}`, {
+        cwd: ROOT,
+        stdio: 'ignore',
+      });
+      execSync(`git mv ${JSON.stringify(relTemp)} ${JSON.stringify(relTo)}`, {
+        cwd: ROOT,
+        stdio: 'ignore',
+      });
+      return;
+    } catch {
+      const temp = path.join(DIR, `.__normalize_${Date.now()}_${Math.random().toString(36).slice(2)}.md`);
+      fs.renameSync(from, temp);
+      fs.renameSync(temp, to);
+      return;
+    }
   }
   fs.renameSync(from, to);
+}
+
+function listJobFilenames() {
+  try {
+    const out = execSync('git ls-files -- content/jobs', {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    if (!out) throw new Error('no tracked jobs');
+    return out
+      .split(/\r?\n/)
+      .map((p) => path.basename(p))
+      .filter((f) => f.endsWith('.md') && !NOT_POSTINGS.has(f));
+  } catch {
+    return fs.readdirSync(DIR).filter((f) => f.endsWith('.md') && !NOT_POSTINGS.has(f));
+  }
 }
 
 const statusUpdates = [];
 const renames = [];
 const badNames = [];
 
-for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.md') && !NOT_POSTINGS.has(f))) {
+for (const file of listJobFilenames()) {
   const full = path.join(DIR, file);
   let text = fs.readFileSync(full, 'utf8');
   const fmMatch = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);

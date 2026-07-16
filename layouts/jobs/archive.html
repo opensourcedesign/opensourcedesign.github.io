@@ -86,9 +86,9 @@
               <span class="font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
               <span class="flex shrink-0 items-center gap-2">
                 {{ if $isPaid }}
-                  <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">Paid</span>
+                  {{ partial "badge.html" (dict "text" "Paid" "color" "emerald" "size" "sm" "dot" false) }}
                 {{ else if $isVol }}
-                  <span class="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-medium text-violet-800">Volunteer</span>
+                  {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet" "size" "sm" "dot" false) }}
                 {{ end }}
                 {{/* A "searching" job only lands here when its deadline has
                      passed; label it as expired ahead of the status flip. */}}
@@ -108,81 +108,7 @@
       {{ end }}
     </ul>
 
-    <script>
-      (function () {
-        var list = document.getElementById('jobs-list');
-        if (!list) return;
-
-        var items = Array.prototype.slice.call(list.querySelectorAll('.job-item'));
-        var countEl = document.getElementById('jobs-count');
-        var input = document.getElementById('jobs-q');
-        var clearBtn = document.getElementById('jobs-clear');
-        var emptyEl = document.getElementById('jobs-empty');
-        var buttons = Array.prototype.slice.call(document.querySelectorAll('.osd-filter'));
-
-        function setPressed(activeComp) {
-          buttons.forEach(function (btn) {
-            var on = btn.getAttribute('data-comp') === activeComp;
-            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-            if (on) {
-              btn.classList.add('bg-slate-900', 'text-white');
-              btn.classList.remove('bg-slate-100', 'text-slate-700');
-            } else {
-              btn.classList.remove('bg-slate-900', 'text-white');
-              btn.classList.add('bg-slate-100', 'text-slate-700');
-            }
-          });
-        }
-
-        function getState() {
-          var params = new URLSearchParams(window.location.search);
-          return { comp: params.get('comp') || 'all', q: params.get('q') || '' };
-        }
-
-        function setState(next) {
-          var params = new URLSearchParams(window.location.search);
-          if (next.comp && next.comp !== 'all') params.set('comp', next.comp); else params.delete('comp');
-          if (next.q) params.set('q', next.q); else params.delete('q');
-          var qs = params.toString();
-          var url = window.location.pathname + (qs ? ('?' + qs) : '');
-          window.history.replaceState({}, '', url);
-        }
-
-        function apply() {
-          var state = getState();
-          var q = (state.q || '').trim().toLowerCase();
-          setPressed(state.comp);
-          if (input && input.value !== state.q) input.value = state.q;
-
-          var shown = 0;
-          items.forEach(function (li) {
-            var comp = li.getAttribute('data-comp') || '';
-            var hay = (li.getAttribute('data-title') || '') + ' ' + (li.getAttribute('data-org') || '') + ' ' + (li.getAttribute('data-tags') || '');
-            var okComp = state.comp === 'all' || comp === state.comp;
-            var okQ = !q || hay.indexOf(q) !== -1;
-            var show = okComp && okQ;
-            li.style.display = show ? '' : 'none';
-            if (show) shown++;
-          });
-
-          if (countEl) countEl.textContent = String(shown);
-          if (emptyEl) emptyEl.classList.toggle('hidden', shown !== 0);
-        }
-
-        buttons.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var next = getState();
-            next.comp = btn.getAttribute('data-comp') || 'all';
-            setState(next);
-            apply();
-          });
-        });
-
-        if (input) input.addEventListener('input', function () { var next = getState(); next.q = input.value || ''; setState(next); apply(); });
-        if (clearBtn && input) clearBtn.addEventListener('click', function () { var next = getState(); next.q = ''; setState(next); input.value = ''; apply(); input.focus(); });
-
-        apply();
-      })();
-    </script>
+    {{ $filterJs := resources.Get "js/jobs-filter.js" | minify | fingerprint }}
+    <script src="{{ $filterJs.RelPermalink }}" integrity="{{ $filterJs.Data.Integrity }}" defer></script>
   </div>
 {{ end }}

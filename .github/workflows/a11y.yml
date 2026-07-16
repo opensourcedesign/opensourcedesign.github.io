@@ -29,6 +29,14 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Cache Hugo resources
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
+          restore-keys: |
+            hugo-resources-
+
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:

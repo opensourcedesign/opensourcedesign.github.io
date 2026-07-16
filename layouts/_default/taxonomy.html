@@ -2,10 +2,10 @@
   <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
     {{/* Single term ("/tags/<tag>/") listing tagged content */}}
     <header data-pagefind-ignore>
-      <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
-        <a class="transition hover:text-slate-950" href="{{ partial "site-path.html" "/tags/" }}">Topics</a>
-        <span aria-hidden="true"> / </span>
-        <span class="text-slate-700">{{ .Title }}</span>
+      <nav class="osd-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ partial "site-path.html" "/tags/" }}">Topics</a>
+        <span class="osd-breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="osd-breadcrumb__current" aria-current="page">{{ .Title }}</span>
       </nav>
       <h1 class="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
       <p class="mt-2 text-slate-600">{{ len .Pages }} item{{ if ne (len .Pages) 1 }}s{{ end }} tagged &ldquo;{{ .Title }}&rdquo;.</p>

@@ -6,50 +6,10 @@
  */
 
 import fs from 'node:fs';
+import { submissionMeta } from './submission-meta.mjs';
 
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
 const { GITHUB_TOKEN, REPO, PR_NUMBER, HEAD_REF, PR_AUTHOR } = process.env;
-
-function submissionMeta(ref) {
-  if (ref.startsWith('event-edit/')) {
-    return {
-      kind: 'event update',
-      label: 'event listing update',
-      formName: 'event form',
-      boardName: 'events calendar',
-    };
-  }
-  if (ref.startsWith('event/')) {
-    return {
-      kind: 'event',
-      label: 'event listing',
-      formName: 'event form',
-      boardName: 'events calendar',
-    };
-  }
-  if (ref.startsWith('job-edit/')) {
-    return {
-      kind: 'job posting update',
-      label: 'job posting update',
-      formName: 'job form',
-      boardName: 'job board',
-    };
-  }
-  if (ref.startsWith('resource/')) {
-    return {
-      kind: 'resource suggestion',
-      label: 'resource suggestion',
-      formName: 'resource suggestion form',
-      boardName: 'resources library',
-    };
-  }
-  return {
-    kind: 'job posting',
-    label: 'job posting',
-    formName: 'job form',
-    boardName: 'job board',
-  };
-}
 
 function formUrl(ref) {
   if (ref.startsWith('event')) return `${SITE}/events/event-form/`;

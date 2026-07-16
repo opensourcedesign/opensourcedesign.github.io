@@ -325,70 +325,9 @@
       <link rel="alternate" type="text/calendar" title="{{ site.Title }} - Events" href="{{ .Permalink | safeURL }}" />
     {{ end }}
 
-    <style>
-      /* View Transitions API - smooth page navigation */
-      @view-transition {
-        navigation: auto;
-      }
-
-      /* Named elements for transitions - use specific selectors to avoid duplicates */
-      /* view-transition-name must be unique per page, so we target direct children of body */
-      body > header { view-transition-name: site-header; }
-      body > footer { view-transition-name: site-footer; }
-      body > main { view-transition-name: main-content; }
-
-      /* Header and footer stay static during transitions */
-      ::view-transition-old(site-header),
-      ::view-transition-new(site-header),
-      ::view-transition-old(site-footer),
-      ::view-transition-new(site-footer) {
-        animation: none;
-        mix-blend-mode: normal;
-      }
-
-      /* Main content transition - crossfade */
-      ::view-transition-old(main-content) {
-        animation: 250ms ease-out both fade-out;
-      }
-      ::view-transition-new(main-content) {
-        animation: 250ms ease-in both fade-in;
-      }
-
-      @keyframes fade-out {
-        from { opacity: 1; }
-        to { opacity: 0; }
-      }
-
-      @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      /* Root transition - crossfade */
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: 250ms;
-      }
-
-      /* Reduce motion for accessibility */
-      @media (prefers-reduced-motion: reduce) {
-        ::view-transition-group(*),
-        ::view-transition-old(*),
-        ::view-transition-new(*) {
-          animation: none !important;
-          animation-duration: 0ms !important;
-        }
-      }
-
-      /* Browsers that don't support view transitions - subtle opacity hint */
-      @supports not (view-transition-name: none) {
-        body > main {
-          transition: opacity 150ms ease;
-        }
-      }
-    </style>
   </head>
   <body class="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-100">
+    {{ partialCached "svg-sprite.html" . }}
     <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg" href="#main">Skip to content</a>
 
     {{/* Header varies only by active nav section, so cache per-section. */}}
