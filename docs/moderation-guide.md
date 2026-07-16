@@ -45,8 +45,10 @@ Before the PR reaches you:
   on **every push** (full job/event corpus), not only changed files.
 - **Repository checks** (`ci-checks.yml`) - canonical job filenames and
   statuses, form-module hashes, redirect aliases, and data YAML schema.
-- **Accessibility** (`a11y.yml`) - full-site pa11y against the Hugo sitemap on
-  every push to the default branch and on pull requests.
+- **Accessibility** (`a11y.yml`) - pa11y WCAG 2 AA on a curated sample of pages
+  (section indexes, forms, and a few entries per jobs/events/resources/tags) on
+  every push to the default branch and on pull requests. Set `PA11Y_FULL=1` when
+  running `generate-pa11yci-config.mjs` locally for a full sitemap sweep.
 - **PR preview** (`preview.yml`) - every PR gets a live preview deployment;
   the link appears as a PR comment. Always look at the rendered page, not
   just the diff. Previews deploy to the `gh-pages` branch under

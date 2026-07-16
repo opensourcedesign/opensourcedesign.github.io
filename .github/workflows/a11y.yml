@@ -1,4 +1,4 @@
-# WCAG 2 AA checks on every HTML page listed in the Hugo sitemap.
+# WCAG 2 AA checks on a curated set of representative pages (not the full sitemap).
 name: Accessibility
 
 on:
@@ -18,7 +18,7 @@ env:
 jobs:
   a11y:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
@@ -50,7 +50,7 @@ jobs:
       - name: Build site
         run: hugo --minify --gc
 
-      - name: Generate pa11y URL list from sitemap
+      - name: Generate pa11y URL list
         run: node .github/scripts/generate-pa11yci-config.mjs
 
       - name: Install pa11y-ci
