@@ -156,15 +156,6 @@ html.dark .focus-visible\:ring-offset-white:focus-visible {
   --tw-ring-offset-color: var(--color-slate-950);
 }
 
-html.dark .toc-content a {
-  color: var(--color-slate-400) !important;
-}
-
-html.dark .toc-content a:hover,
-html.dark .toc-content li.active > a {
-  color: var(--color-slate-100) !important;
-}
-
 /* Forms */
 html.dark :is(
   input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="image"]),
@@ -440,15 +431,6 @@ html.dark .osd-apply-link .text-slate-400 {
 html.dark .osd-apply-link:hover .bg-slate-100 {
   background-color: var(--color-slate-900) !important;
   color: var(--color-white) !important;
-}
-
-/* Semantic text — avoids utility-class remap fights */
-html.dark .osd-muted {
-  color: var(--color-slate-300) !important;
-}
-
-html.dark .osd-section-label {
-  color: var(--color-slate-400) !important;
 }
 
 /* Brand download chips — explicit contrast on light preview tiles */
