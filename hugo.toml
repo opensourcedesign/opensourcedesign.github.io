@@ -48,7 +48,7 @@ capitalizeListTitles = false
   # Serverless job submission endpoint (POST) handled by the Cloudflare Worker in
   # workers/job-submit/. After `npx wrangler deploy`, set both to
   # "<worker-url>/submit" (e.g. "https://osd-job-submit.<account>.workers.dev/submit").
-  # The Worker targets the `master` branch until the repo default is renamed.
+  # The Worker targets the default branch (`main`).
   # When empty, the site gracefully falls back to generating Markdown for manual PRs.
   jobSubmitEndpoint = "https://osd-job-submit.anxhelo.workers.dev/submit"
   # Same Worker, event submissions (the Worker branches on the "kind" field), so
@@ -64,8 +64,8 @@ capitalizeListTitles = false
   repoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io"
   # Default branch of repoURL; used by the job form's edit mode to fetch the
   # current posting (raw.githubusercontent.com) and for GitHub fallback links.
-  repoBranch = "master"
-  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/content/jobs"
+  repoBranch = "main"
+  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/main/content/jobs"
   forumURL = "https://discourse.opensourcedesign.net"
   calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
   fossJobsURL = "https://www.fossjobs.net/"

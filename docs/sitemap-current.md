@@ -90,8 +90,8 @@ The footer has two distinct zones. Links are hardcoded in `_includes/footer.html
 
 | Label | URL pattern | Type |
 |-------|-------------|------|
-| Edit this page | `https://github.com/opensourcedesign/opensourcedesign.github.io/edit/master/{{ page.path }}` | External |
-| View source code | `https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/{{ page.path }}` | External |
+| Edit this page | `https://github.com/opensourcedesign/opensourcedesign.github.io/edit/main/{{ page.path }}` | External |
+| View source code | `https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/{{ page.path }}` | External |
 
 ---
 

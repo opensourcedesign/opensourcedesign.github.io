@@ -4,7 +4,7 @@
 > **Status: READY TO EXECUTE**
 >
 > This is the Hugo-adapted version of `docs/migration-plan.md`.
-> The original plan was written against the Jekyll `master` branch.
+> The original plan was written against the Jekyll `main` branch.
 > This version accounts for the SSG migration to Hugo already done in
 > `feat/hugo-monorepo-ia-overhaul`, and incorporates resolved decisions.
 >
@@ -79,7 +79,7 @@ No redirect needed. `/people/` and `/people/:slug/` will return 404.
 
 A **New content backlog** section at the bottom of this plan tracks
 content that should be added to the Hugo branch - either merged to
-`master` after the branch diverged, or new content not yet written.
+`main` after the branch diverged, or new content not yet written.
 See that section before starting Phase 3.
 
 ### Decision E - `content/goals/` directory conflict → **Delete directory** ✓
@@ -436,9 +436,9 @@ npx broken-link-checker http://localhost:1313
 - Archive `docs/sitemap-current.md` as `docs/sitemap-pre-2026-02.md`
 - Update `docs/sitemap-current.md` to reflect the new live state
 
-### Task 5.4 - Merge to master and deploy `[dev]`
+### Task 5.4 - Merge to main and deploy `[dev]`
 - Final review by at least one maintainer
-- Merge to `master` - GitHub Actions Hugo build will deploy automatically
+- Merge to `main` - GitHub Actions Hugo build will deploy automatically
 - **Acceptance criteria:** Live site at `opensourcedesign.net` reflects
   all changes.
 
@@ -477,14 +477,14 @@ Check this list before starting Phase 3.
 
 | Content | Source | Where it goes | Status |
 |---------|--------|---------------|--------|
-| FOSDEM 2026 wrap-up | `master` branch: `_posts/2026-03-09-FOSDEM-2026-wrap-up.md` | `content/events/2026-03-09-fosdem-2026-wrap-up.md` | ⬜ Not added |
+| FOSDEM 2026 wrap-up | `main` branch: `_posts/2026-03-09-FOSDEM-2026-wrap-up.md` | `content/events/2026-03-09-fosdem-2026-wrap-up.md` | ⬜ Not added |
 
 > When adding the FOSDEM 2026 post: adapt front matter for Hugo event
 > format (`eventDate`, `location`, `time`, `status`). Add
 > `aliases: ["/articles/2026/03/09/FOSDEM-2026-wrap-up/"]` in case any
 > external links use that URL pattern.
 
-_Keep this table updated as more content is merged to `master` or
+_Keep this table updated as more content is merged to `main` or
 identified as missing._
 
 ---
@@ -504,7 +504,7 @@ identified as missing._
 | 2026-03 | Decision A: `/archive/` removed | Not part of agreed IA |
 | 2026-03 | Decision B: `/brand/` kept at current URL | Work not wasted; rename TBD |
 | 2026-03 | Decision C: entire `/people/` database removed | Unused; not continuing |
-| 2026-03 | Decision D: new content backlog section added | Track master-diverged content |
+| 2026-03 | Decision D: new content backlog section added | Track main-diverged content |
 | 2026-03 | Decision E: `content/goals/` directory deleted | URL conflict; `goals.md` is canonical |
 
 ---

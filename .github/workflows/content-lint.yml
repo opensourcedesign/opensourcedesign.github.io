@@ -14,7 +14,7 @@ on:
       - "data/resources.yaml"
       - "data/bibliography.yaml"
   push:
-    branches: [master, main]
+    branches: [main]
 
 permissions:
   contents: read

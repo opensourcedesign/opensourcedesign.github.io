@@ -60,7 +60,7 @@ Before the PR reaches you:
   this repo. Production deploys from `hugo-build.yml` also target `gh-pages`
   (site root) and preserve the `pr-preview/` folder.
 
-Repo admins: enable branch protection on `master`/`main` with required status
+Repo admins: enable branch protection on `main` with required status
 checks **Content lint**, **Repository checks**, **Accessibility**, and
 **Hugo build** (or your fork’s equivalents) so these cannot be skipped.
 

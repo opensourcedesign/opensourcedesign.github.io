@@ -3,7 +3,7 @@ name: Repository checks
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
   pull_request:
 
 permissions:

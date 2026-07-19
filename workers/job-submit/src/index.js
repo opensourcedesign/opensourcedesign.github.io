@@ -250,7 +250,7 @@ async function handleSubmit(request, env) {
       existing = await gh(
         env,
         'GET',
-        `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${encodeURIPath(edit.path)}?ref=${encodeURIComponent(env.GITHUB_BRANCH || 'master')}`
+        `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${encodeURIPath(edit.path)}?ref=${encodeURIComponent(env.GITHUB_BRANCH || 'main')}`
       );
     } catch (err) {
       return json({ ok: false, error: 'The posting to edit could not be found.' }, 404);
@@ -681,7 +681,7 @@ function tagsToList(s) {
 async function createResourcePullRequest(env, data) {
   const owner = env.GITHUB_OWNER;
   const repo = env.GITHUB_REPO;
-  const base = env.GITHUB_BRANCH || 'master';
+  const base = env.GITHUB_BRANCH || 'main';
   const path = env.RESOURCES_FILE || 'data/resources.yaml';
 
   const existing = await gh(
@@ -765,7 +765,7 @@ async function createResourcePullRequest(env, data) {
 async function createPullRequest(env, built, data, kind, edit) {
   const owner = env.GITHUB_OWNER;
   const repo = env.GITHUB_REPO;
-  const base = env.GITHUB_BRANCH || 'master';
+  const base = env.GITHUB_BRANCH || 'main';
   const isEvent = kind === 'event';
 
   // 1. Resolve the base branch head SHA.

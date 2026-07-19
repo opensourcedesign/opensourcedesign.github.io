@@ -7,7 +7,7 @@
 >
 > Labels: `[new]` = written from scratch · `[rewrite]` = existing page
 > with substantially new content · `[adapt]` = existing content, mostly
-> front matter and light editing · `[missing]` = exists on master,
+> front matter and light editing · `[missing]` = exists on main,
 > not yet in this branch
 
 ---
@@ -149,9 +149,9 @@ content changes. This list covers the content side.
 **File:** `content/events/2026-03-09-fosdem-2026-wrap-up.md`
 **Migration task:** New content backlog (see `migration-plan-hugo.md`)
 
-This post was merged to `master` after the Hugo branch diverged. It
+This post was merged to `main` after the Hugo branch diverged. It
 needs to be manually ported from:
-`master` branch → `_posts/2026-03-09-FOSDEM-2026-wrap-up.md`
+`main` branch → `_posts/2026-03-09-FOSDEM-2026-wrap-up.md`
 
 **What to do:**
 - Copy the content
@@ -226,7 +226,7 @@ be updated to the new URLs.
 | 4 | `/imprint/` | New | Low - factual, brief |
 | 5 | `/resources/` | Rewrite | High - needs curation + external list |
 | 6 | Homepage | Rewrite | High - structural + copy changes |
-| 7 | FOSDEM 2026 wrap-up | Missing | Low - port from master, no editing |
+| 7 | FOSDEM 2026 wrap-up | Missing | Low - port from main, no editing |
 | 8–19 | Event write-ups (12 posts) | Adapt | Low per post - front matter + link check |
 | 20–25 | Resource posts (6 posts) | Adapt | Low per post - front matter + link check |
 

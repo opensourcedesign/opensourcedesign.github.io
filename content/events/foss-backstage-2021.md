@@ -16,7 +16,7 @@ aliases:
 
 As Open Source Design, we helped go through the talk submissions for the design track of FOSS backstage. We looked at talk pitches anononymusly to reduce bias and advised the conference organisers whether talks looked ready to the conference or if they needed further context or information based off of the attending open source design community members experience.
 
-Then then planned and agreed to run a ['UX clinic'](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/presentations/UX%20Clinic.pdf) for the attendees of FOSS Backstage 2021. Open Source Design had previously run a UX clinc at FOSS Backstage in 2020 (just before travel was restricted for Covid-19) and at other events including FOSDEM and Mozfest. 
+Then then planned and agreed to run a ['UX clinic'](https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/presentations/UX%20Clinic.pdf) for the attendees of FOSS Backstage 2021. Open Source Design had previously run a UX clinc at FOSS Backstage in 2020 (just before travel was restricted for Covid-19) and at other events including FOSDEM and Mozfest. 
 
 The format of a UX clinic is flexible depending on who attends and asks for clinic help and who is there to help but the basic set up is:
     

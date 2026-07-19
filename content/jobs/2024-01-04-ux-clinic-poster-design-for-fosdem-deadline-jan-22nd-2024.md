@@ -14,7 +14,7 @@ deliverables: >-
 how_to_apply:
   - eriolfox@hotmail.com
   - >-
-    https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/presentations/UX%20Clinic.pdf
+    https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/presentations/UX%20Clinic.pdf
 github_handle: ''
 tags: [poster, graphic design, sign making, typography]
 date: '2024-01-04T11:16:17.883Z'
@@ -33,4 +33,4 @@ Fake medicine boxes but it’s to do with UX and design
 
 anything else you think would be fun for the UX clinic!
 You can find some previous presentation content made about the UX Clinic here:
-https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/presentations/UX%20Clinic.pdf
+https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/presentations/UX%20Clinic.pdf

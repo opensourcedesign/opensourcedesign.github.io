@@ -8,7 +8,7 @@ workers_dev = true
 [vars]
 GITHUB_OWNER = "opensourcedesign"
 GITHUB_REPO = "opensourcedesign.github.io"
-GITHUB_BRANCH = "master"
+GITHUB_BRANCH = "main"
 CONTENT_DIR = "content/jobs"
 CONTENT_DIR_EVENTS = "content/events"
 # Comma-separated browser origins allowed for CORS on POST /submit and GET /forum.

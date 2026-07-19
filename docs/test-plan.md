@@ -3,7 +3,7 @@
 
 > **Purpose:** Verify that after the IA migration, all old Jekyll URLs
 > either redirect correctly or return the expected status in the Hugo
-> environment, before merging to `master`.
+> environment, before merging to `main`.
 >
 > Run this plan after Phase 1 of `migration-plan-hugo.md` is complete
 > and again as a full regression before Phase 5 (merge).

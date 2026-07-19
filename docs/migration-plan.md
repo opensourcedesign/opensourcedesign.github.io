@@ -334,9 +334,9 @@ Template and layout changes. These should happen after content structure is stab
 - Update `docs/sitemap-current.md` to reflect the new live state
 - **Acceptance criteria:** `sitemap-current.md` accurately describes the post-migration site.
 
-### Task 5.4 - Merge to master and deploy `[dev]`
+### Task 5.4 - Merge to main and deploy `[dev]`
 - Final review by at least one maintainer
-- Merge to `master` - GitHub Pages will deploy automatically
+- Merge to `main` - GitHub Pages will deploy automatically
 - **Acceptance criteria:** Live site at `opensourcedesign.net` reflects all changes.
 
 ---

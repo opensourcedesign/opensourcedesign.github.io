@@ -6,7 +6,7 @@ layout: jobs
 organization: Open Source Design – Governance and Organization project
 org_url: 'https://opensourcedesign.net/'
 license: >-
-  https://github.com/opensourcedesign/opensourcedesign.github.io/blob/master/LICENSE
+  https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/LICENSE
 title: 'Open Source Design: Governance research and documentation project'
 role: >-
   Governance, documentation, user/stakeholder interviews, research, project

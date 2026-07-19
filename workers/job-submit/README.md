@@ -98,7 +98,7 @@ forum. The build-time list rendered by Hugo remains the no-JS fallback.
 
 ## Deploy
 
-`wrangler.toml` sets `GITHUB_BRANCH = "master"` (the repo's default branch for
+`wrangler.toml` sets `GITHUB_BRANCH = "main"` (the repo's default branch for
 the first Hugo deployment). Change it to `main` later if the default is renamed.
 
 Run these from `workers/job-submit/` (or `npm install` from `workers/` - that

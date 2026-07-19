@@ -3,7 +3,7 @@ export function init(cfg) {
   cfg = cfg || {};
   var endpoint = cfg.endpoint || '';
   var repoURL = cfg.repoURL || '';
-  var repoBranch = cfg.repoBranch || 'master';
+  var repoBranch = cfg.repoBranch || 'main';
 var form = document.getElementById('osd-event-form');
         if (!form) return;
 

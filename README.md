@@ -228,7 +228,7 @@ Around six weeks after publication, posters of still-open jobs get a **reminder 
 
 ### Social Media Announcements
 
-When a push to `master` adds a new file under `content/jobs/` (i.e. a submission PR was merged, or a maintainer committed a posting directly), the `job-announce.yml` workflow posts it to Mastodon and Bluesky using `.github/scripts/announce-jobs.mjs` - no third-party services involved. It waits for the job page to be live (the Hugo deploy runs in parallel), announces only fresh `status: searching` postings (dated within 14 days, so bulk imports and renames never spam the feeds), and caps posts per run. Posters can opt out on the job form (`announce_social: false` in front matter); older postings without that field are announced as before.
+When a push to `main` adds a new file under `content/jobs/` (i.e. a submission PR was merged, or a maintainer committed a posting directly), the `job-announce.yml` workflow posts it to Mastodon and Bluesky using `.github/scripts/announce-jobs.mjs` - no third-party services involved. It waits for the job page to be live (the Hugo deploy runs in parallel), announces only fresh `status: searching` postings (dated within 14 days, so bulk imports and renames never spam the feeds), and caps posts per run. Posters can opt out on the job form (`announce_social: false` in front matter); older postings without that field are announced as before.
 
 Each platform is optional - configure its repo secrets to enable it:
 

@@ -31,7 +31,7 @@
       <noscript>
         <p class="mt-10 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
           This form needs JavaScript. Without it, you can still post a job by
-          <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.repoURL }}/new/{{ .Site.Params.repoBranch | default "master" }}/content/jobs" rel="noopener noreferrer">adding a Markdown file to <code>content/jobs/</code> on GitHub</a>
+          <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.repoURL }}/new/{{ .Site.Params.repoBranch | default "main" }}/content/jobs" rel="noopener noreferrer">adding a Markdown file to <code>content/jobs/</code> on GitHub</a>
           (copy an <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.jobsRepoURL }}" rel="noopener noreferrer">existing posting</a> as a template)
           or by asking for help on <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.forumURL }}" rel="noopener noreferrer">the forum</a>.
         </p>
@@ -445,7 +445,7 @@
       init({
         endpoint: {{ site.Params.jobSubmitEndpoint | default "" | jsonify | safeJS }},
         repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" | jsonify | safeJS }},
-        repoBranch: {{ site.Params.repoBranch | default "master" | jsonify | safeJS }}
+        repoBranch: {{ site.Params.repoBranch | default "main" | jsonify | safeJS }}
       });
     </script>
   </div>

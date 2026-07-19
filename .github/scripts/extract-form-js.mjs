@@ -38,7 +38,7 @@ function buildFromInline(layoutPath) {
     body = body.replace(new RegExp(`var ${key} = \\{\\{[\\s\\S]*?\\}\\};\\s*`, 'm'), '');
   }
 
-  return `/** Generated from ${layoutPath} — edit the layout or re-run extract-form-js.mjs. */\nexport function init(cfg) {\n  cfg = cfg || {};\n  var endpoint = cfg.endpoint || '';\n  var repoURL = cfg.repoURL || '';\n  var repoBranch = cfg.repoBranch || 'master';\n${body}\n}\n`;
+  return `/** Generated from ${layoutPath} — edit the layout or re-run extract-form-js.mjs. */\nexport function init(cfg) {\n  cfg = cfg || {};\n  var endpoint = cfg.endpoint || '';\n  var repoURL = cfg.repoURL || '';\n  var repoBranch = cfg.repoBranch || 'main';\n${body}\n}\n`;
 }
 
 function writeManifest() {
@@ -61,7 +61,7 @@ function extractOne({ layout, module, endpoint }) {
       init({
         endpoint: {{ site.Params.${endpoint} | default "" | jsonify | safeJS }},
         repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" | jsonify | safeJS }},
-        repoBranch: {{ site.Params.repoBranch | default "master" | jsonify | safeJS }}
+        repoBranch: {{ site.Params.repoBranch | default "main" | jsonify | safeJS }}
       });
     </script>`;
 
