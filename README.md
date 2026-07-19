@@ -29,7 +29,7 @@ There are several ways to edit content on [opensourcedesign.net](https://opensou
 
 Before you begin, ensure you have the following installed:
 
-- **Hugo** (extended version recommended)
+- **Hugo** (extended version; matches CI)
 - **Git** - [Download Git](https://git-scm.com/)
 
 That's all — **no Node.js or npm** required for everyday work. See [How the CSS Works](#how-the-css-works) for how styling is built locally vs on the live site. Two optional standalone binaries:
@@ -46,10 +46,9 @@ brew install hugo
 
 **Linux (Debian/Ubuntu):**
 ```bash
-# Download the latest extended .deb from GitHub releases
-# Check https://github.com/gohugoio/hugo/releases for the latest version
-wget https://github.com/gohugoio/hugo/releases/download/v0.163.3/hugo_extended_0.163.3_linux-amd64.deb
-sudo dpkg -i hugo_extended_0.163.3_linux-amd64.deb
+# Download the extended .deb (version pinned to match CI)
+wget https://github.com/gohugoio/hugo/releases/download/v0.164.0/hugo_extended_0.164.0_linux-amd64.deb
+sudo dpkg -i hugo_extended_0.164.0_linux-amd64.deb
 
 # Verify installation
 hugo version

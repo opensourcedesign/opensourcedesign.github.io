@@ -441,12 +441,11 @@
 
     {{ $formJs := resources.Get "js/job-form.js" | minify | fingerprint }}
     <script type="module">
-      import({{ $formJs.RelPermalink | jsonify }}).then(function (m) {
-        if (m && m.init) m.init({
-          endpoint: {{ site.Params.jobSubmitEndpoint | default "" }},
-          repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }},
-          repoBranch: {{ site.Params.repoBranch | default "master" }}
-        });
+      import { init } from {{ $formJs.RelPermalink | jsonify | safeJS }};
+      init({
+        endpoint: {{ site.Params.jobSubmitEndpoint | default "" | jsonify | safeJS }},
+        repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" | jsonify | safeJS }},
+        repoBranch: {{ site.Params.repoBranch | default "master" | jsonify | safeJS }}
       });
     </script>
   </div>

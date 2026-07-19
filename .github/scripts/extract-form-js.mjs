@@ -57,12 +57,11 @@ function extractOne({ layout, module, endpoint }) {
   const html = fs.readFileSync(path.join(ROOT, layout), 'utf8');
   const loader = `    {{ $formJs := resources.Get "js/${module}.js" | minify | fingerprint }}
     <script type="module">
-      import({{ $formJs.RelPermalink | jsonify }}).then(function (m) {
-        if (m && m.init) m.init({
-          endpoint: {{ site.Params.${endpoint} | default "" }},
-          repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }},
-          repoBranch: {{ site.Params.repoBranch | default "master" }}
-        });
+      import { init } from {{ $formJs.RelPermalink | jsonify | safeJS }};
+      init({
+        endpoint: {{ site.Params.${endpoint} | default "" | jsonify | safeJS }},
+        repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" | jsonify | safeJS }},
+        repoBranch: {{ site.Params.repoBranch | default "master" | jsonify | safeJS }}
       });
     </script>`;
 

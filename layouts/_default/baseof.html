@@ -360,10 +360,10 @@
     {{ $jobMarkersJs := resources.Get "js/job-markers.js" | minify | fingerprint }}
     <script>
       window.__OSD_MODULES = {
-        search: {{ $searchJs.RelPermalink | jsonify }},
-        notfound: {{ $notfoundJs.RelPermalink | jsonify }},
-        lightbox: {{ $lightboxJs.RelPermalink | jsonify }},
-        jobMarkers: {{ $jobMarkersJs.RelPermalink | jsonify }}
+        search: {{ $searchJs.RelPermalink | jsonify | safeJS }},
+        notfound: {{ $notfoundJs.RelPermalink | jsonify | safeJS }},
+        lightbox: {{ $lightboxJs.RelPermalink | jsonify | safeJS }},
+        jobMarkers: {{ $jobMarkersJs.RelPermalink | jsonify | safeJS }}
       };
     </script>
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
