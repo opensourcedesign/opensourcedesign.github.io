@@ -1,0 +1,204 @@
+{{ define "main" }}
+  {{ $jobsAll := partial "functions/job-postings.html" . }}
+  {{/* Deadline-aware: searching jobs whose application deadline passed are
+       excluded here and surface on the archive page instead (issue #84). */}}
+  {{ $jobs := partial "functions/open-jobs.html" $jobsAll }}
+  {{/* Robustly count compensation types (handles paid / gratis / volunteer / free / unspecified). */}}
+  {{ $counts := newScratch }}
+  {{ $counts.Set "paid" 0 }}
+  {{ $counts.Set "gratis" 0 }}
+  {{ range $jobs }}
+    {{ $c := (printf "%v" (.Params.compensation | default "")) | lower }}
+    {{ if eq $c "paid" }}
+      {{ $counts.Add "paid" 1 }}
+    {{ else if or (in $c "gratis") (in $c "volunteer") (eq $c "free") }}
+      {{ $counts.Add "gratis" 1 }}
+    {{ end }}
+  {{ end }}
+  {{ $paidCount := $counts.Get "paid" }}
+  {{ $gratisCount := $counts.Get "gratis" }}
+
+  {{/* Category chips: the `role` front matter is free text (70+ distinct
+       strings in the corpus), so jobs are keyword-matched into a small
+       canonical set. A job can belong to several categories. Keep the
+       patterns in sync with $jobCats consumers below. */}}
+  {{ $catDefs := slice
+    (dict "id" "logo-branding" "label" "Logo & branding" "re" `(?i)logo|brand|identity|badge|sticker`)
+    (dict "id" "web" "label" "Web design" "re" `(?i)web|website|homepage`)
+    (dict "id" "ui" "label" "UI design" "re" `(?i)\bui\b|user interface|interface design`)
+    (dict "id" "ux-research" "label" "UX & research" "re" `(?i)\bux\b|user experience|usability|user research|wireframe|user interview`)
+    (dict "id" "interaction" "label" "Interaction design" "re" `(?i)interaction`)
+    (dict "id" "icons-illustration" "label" "Icons & illustration" "re" `(?i)icon|illustrat|artwork|animation|concept art`)
+    (dict "id" "graphic" "label" "Graphic design" "re" `(?i)graphic|information design|print`)
+    (dict "id" "accessibility" "label" "Accessibility" "re" `(?i)accessib`)
+  }}
+  {{/* Count matches per category for the chip labels. */}}
+  {{ range $jobs }}
+    {{ $role := printf "%v" (.Params.role | default "") }}
+    {{ $tags := .Params.tags | default (slice) }}
+    {{ $tagsJoined := cond (reflect.IsSlice $tags) (delimit $tags " ") (printf "%v" $tags) }}
+    {{ $hay := printf "%s %s" $role $tagsJoined }}
+    {{ range $catDefs }}
+      {{ if findRE .re $hay 1 }}{{ $counts.Add (printf "cat-%s" .id) 1 }}{{ end }}
+    {{ end }}
+  {{ end }}
+
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
+    {{/* Editorial header */}}
+    <header class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between" aria-labelledby="jobs-heading">
+      <div class="max-w-2xl">
+        <h1 id="jobs-heading" class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-slate-50">{{ .Title }}</h1>
+        {{ with .Content }}
+          <div class="prose prose-slate dark:prose-invert mt-4 max-w-none text-lg">{{ . }}</div>
+        {{ else }}
+          {{ with $.Description }}
+            <p class="mt-4 max-w-prose text-lg leading-relaxed text-slate-600 dark:text-slate-400">{{ . }}</p>
+          {{ end }}
+        {{ end }}
+      </div>
+      <div class="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-3">
+        <a class="osd-btn-primary text-sm" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
+        <span class="text-sm font-medium text-slate-600">
+          RSS:
+          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed.xml" }}" aria-label="Subscribe to all jobs via RSS">All</a>
+          ·
+          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-paid.xml" }}" aria-label="Subscribe to paid jobs via RSS">Paid</a>
+          ·
+          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-volunteer.xml" }}" aria-label="Subscribe to volunteer jobs via RSS">Volunteer</a>
+        </span>
+      </div>
+    </header>
+
+    {{/* Response guidelines notice */}}
+    <aside class="mt-10 rounded-xl border border-amber-200 bg-amber-50 p-5" role="alert">
+      <p class="text-sm text-amber-900">
+        <span class="font-semibold">Before you reply:</span>
+        avoid generic copy-pasted responses. See our <a class="font-medium underline decoration-amber-400 underline-offset-2 transition hover:decoration-amber-700" href="{{ site.Params.jobGuidelinesURL | default "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925" }}" target="_blank" rel="noopener noreferrer">guidelines for responding to jobs</a> to avoid being banned from the community.
+      </p>
+    </aside>
+
+    {{/* Filters */}}
+    <div class="mt-10 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
+          All ({{ len $jobs }})
+        </button>
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="paid" aria-pressed="false">
+          <span class="inline-flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+            Paid ({{ $paidCount }})
+          </span>
+        </button>
+        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="gratis" aria-pressed="false">
+          <span class="inline-flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>
+            Volunteer ({{ $gratisCount }})
+          </span>
+        </button>
+      </div>
+      <div class="flex gap-2">
+        <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
+        <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
+        <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
+      </div>
+    </div>
+
+    {{/* Category chips (multi-select; a job matches if it's in any selected
+         category). Only categories with at least one open job are shown. */}}
+    <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter by design category">
+      {{ range $catDefs }}
+        {{ $n := $counts.Get (printf "cat-%s" .id) | default 0 }}
+        {{ if gt $n 0 }}
+          <button class="osd-cat rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-cat="{{ .id }}" aria-pressed="false">
+            {{ .label }} <span class="opacity-60">{{ $n }}</span>
+          </button>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
+      <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">browse {{ len $jobsAll }}+ archived jobs</a>
+    </div>
+    <p class="mt-2 text-xs text-slate-500">Postings are archived automatically once their application deadline passes, or after a year without updates.</p>
+
+    <p class="mt-6 hidden text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
+
+    {{/* Job list */}}
+    <ul class="mt-4 border-t border-slate-200" id="jobs-list" role="list" aria-label="Job listings">
+      {{/* Sort on .Date (front matter `date`, falling back to `date_posted`
+           via hugo.toml [frontmatter]) - sorting the raw param would mix
+           strings with time.Time values on posts that lack a `date` field. */}}
+      {{ range $jobs.ByDate.Reverse }}
+        {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+        {{ $isPaid := eq $comp "paid" }}
+        {{ $isVol := or (in $comp "gratis") (in $comp "volunteer") (eq $comp "free") }}
+        {{ $compType := cond $isPaid "paid" (cond $isVol "gratis" "other") }}
+        {{ $org := .Params.organization | default "" }}
+        {{ $role := trim (printf "%v" (.Params.role | default "")) " '\"" }}
+        {{ $tags := .Params.tags | default (slice) }}
+        {{ $tagsStr := "" }}
+        {{ if (reflect.IsSlice $tags) }}
+          {{ $tagsStr = delimit $tags "," }}
+        {{ else }}
+          {{ $tagsStr = printf "%v" $tags }}
+        {{ end }}
+        {{ $hay := printf "%s %s" $role (replace $tagsStr "," " ") }}
+        {{ $cats := slice }}
+        {{ range $catDefs }}
+          {{ if findRE .re $hay 1 }}{{ $cats = $cats | append .id }}{{ end }}
+        {{ end }}
+        <li class="job-item border-b border-slate-200" data-comp="{{ $compType }}" data-cats="{{ delimit $cats " " }}" data-title="{{ .Title | plainify | lower }}" data-org="{{ $org | plainify | lower }}" data-tags="{{ $tagsStr | plainify | lower }}">
+          {{/* Stale marker: visible at build time when already past the
+               three-month threshold, otherwise revealed client-side by main.js
+               (builds can be weeks apart, so build time alone undercounts). */}}
+          {{ $posted := "" }}
+          {{ $staleNow := false }}
+          {{ with .Params.date_posted }}
+            {{ $posted = (time.AsTime .).Format "2006-01-02" }}
+            {{ if gt (int (div (now.Sub (time.AsTime .)).Hours 24)) 90 }}{{ $staleNow = true }}{{ end }}
+          {{ end }}
+          <a class="group block py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}" aria-label="{{ .Title }}{{ if $org }} at {{ $org }}{{ end }}">
+            <span class="flex items-start justify-between gap-4">
+              <span class="text-lg font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              <span class="flex shrink-0 items-center gap-2">
+                {{ if $posted }}
+                  <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 sm:px-2.5 sm:py-1 sm:text-xs" data-stale-check data-posted="{{ $posted }}" {{ if not $staleNow }}hidden{{ end }}>
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true"></span>
+                    <span class="sm:hidden">Inactive?</span>
+                    <span class="hidden sm:inline">May be inactive</span>
+                  </span>
+                {{ end }}
+                {{ if $isPaid }}
+                  {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
+                {{ else if $isVol }}
+                  {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet") }}
+                {{ end }}
+              </span>
+            </span>
+            {{ $deadline := "" }}{{ with .Params.deadline }}{{ $deadline = (time.AsTime (printf "%v" .)).Format "2006-01-02" }}{{ end }}
+            <span class="mt-1.5 block text-sm text-slate-500">
+              {{ with $org }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $org $role }} · {{ end }}{{ with $role }}{{ . }}{{ end }}{{ if and (or $org $role) $posted }} · {{ end }}{{ with $posted }}<time datetime="{{ . }}">{{ . }}</time>{{ end }}{{ with $deadline }} · <span class="font-medium text-amber-700">apply by <time datetime="{{ . }}">{{ . }}</time></span>{{ end }}
+            </span>
+            {{ with .Summary }}
+              <span class="mt-2 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 150 }}</span>
+            {{ end }}
+            {{ if $tags }}
+              <span class="mt-3 block">
+                {{ partial "render-tags.html" (dict "tags" $tags "limit" 3) }}
+              </span>
+            {{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+
+    {{/* Footer Links */}}
+    {{ partial "section-footer.html" (dict "items" (slice
+      (dict "icon" "code" "text" "More comfortable with Git?" "linkText" "Use our git-based method" "href" (site.Params.jobsRepoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/content/jobs"))
+      (dict "text" "Checkout other places like:" "linkText" "FOSS Jobs" "href" (site.Params.fossJobsURL | default "https://www.fossjobs.net/"))
+    )) }}
+
+    {{ $filterJs := resources.Get "js/jobs-filter.js" | minify | fingerprint }}
+    <script src="{{ $filterJs.RelPermalink }}" integrity="{{ $filterJs.Data.Integrity }}" defer></script>
+  </div>
+{{ end }}

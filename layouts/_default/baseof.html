@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{/* Sync Tailwind's `dark:` variant with the OS/browser colour scheme,
+         with a manual override persisted in localStorage ("light" | "dark";
+         absent = follow the system). Runs synchronously before first paint
+         so there is no flash of the wrong theme. The Play CDN (local dev
+         without compiled.css) does not honour a custom `@variant dark
+         (@media …)` definition, so we drive dark mode via a root class
+         instead - same pattern as Tailwind's default. */}}
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        function stored() {
+          try { return localStorage.getItem("osd-theme"); } catch (e) { return null; }
+        }
+        function sync() {
+          var pref = stored();
+          root.classList.toggle("dark", pref === "dark" || (pref !== "light" && mq.matches));
+        }
+        sync();
+        mq.addEventListener("change", sync);
+        // The header toggle (main.js) re-runs this after writing the choice.
+        window.osdSyncTheme = sync;
+      })();
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {{ partial "csp.html" . }}
+    <meta name="view-transition" content="same-origin" />
+
+    {{/* Distinguish taxonomy term pages (e.g. /tags/governance/) from same-named
+         content pages so titles/OG tags stay unique for SEO. */}}
+    {{ $pageTitle := .Title }}
+    {{ if eq .Kind "term" }}{{ $pageTitle = printf "Posts tagged “%s”" .Title }}{{ end }}
+    {{/* Many job posts share generic titles ("Logo design"); append the org for
+         unique, descriptive <title>/OG tags. */}}
+    {{ if and .IsPage (eq .Section "jobs") .Params.organization }}{{ $pageTitle = printf "%s · %s" .Title .Params.organization }}{{ end }}
+    {{ $title := cond (ne $pageTitle "") (printf "%s | %s" $pageTitle site.Title) site.Title }}
+    {{ $desc := .Description | default .Summary }}
+    {{/* Taxonomy pages otherwise all inherit the generic site description, which
+         creates hundreds of duplicate meta descriptions. Generate a unique,
+         descriptive one per topic instead. */}}
+    {{ if not $desc }}
+      {{ if eq .Kind "term" }}{{ $desc = printf "Open Source Design jobs, events, and resources tagged “%s”." .Title }}
+      {{ else if eq .Kind "taxonomy" }}{{ $desc = "Browse Open Source Design jobs, events, and resources by topic." }}
+      {{ else }}{{ $desc = site.Params.description }}{{ end }}
+    {{ end }}
+    {{ $desc = $desc | default site.Title | plainify | truncate 160 }}
+
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $desc }}" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
+    <meta name="robots" content="{{ block "robots" . }}{{ partial "seo-robots.html" . }}{{ end }}" />
+    <meta name="author" content="{{ .Params.author | default site.Title }}" />
+    <meta name="generator" content="Hugo {{ hugo.Version }}" />
+    
+    {{/* Social verification links */}}
+    {{ range site.Params.social }}
+      {{ if eq .name "Mastodon" }}
+        <link rel="me" href="{{ .url }}" />
+      {{ end }}
+    {{ end }}
+
+    <link rel="canonical" href="{{ .Permalink }}" />
+    {{/* Single theme-aware SVG favicon (adapts to system light/dark via an
+         internal prefers-color-scheme media query); .ico is a legacy fallback. */}}
+    <link rel="icon" href="{{ partial "site-path.html" "/images/favicon.svg" }}" type="image/svg+xml" />
+    <link rel="icon" href="{{ partial "site-path.html" "/images/favicon.ico" }}" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ partial "site-path.html" "/images/favicons/apple-touch-icon.png" }}" />
+
+    {{/* Determine OG image - try page image, page bundle, content image, or fallback.
+         $ogW/$ogH are only set when the real pixel size is known (generated
+         cards, bundle/asset images) - wrong declared dimensions are worse
+         than none for link unfurls. */}}
+    {{ $ogImage := "" }}
+    {{ $ogW := 0 }}
+    {{ $ogH := 0 }}
+    {{/* Job postings without an explicit image get a generated social card
+         (title/org/deadline on a branded background). */}}
+    {{ if and .IsPage (eq .Section "jobs") (not .Params.image) }}
+      {{ with partial "social-card.html" . }}
+        {{ $ogImage = .Permalink }}
+        {{ $ogW = .Width }}
+        {{ $ogH = .Height }}
+      {{ end }}
+    {{ end }}
+    {{ if not $ogImage }}
+    {{ with .Params.image }}
+      {{ $ogImage = partial "site-abs-path.html" . }}
+      {{ with resources.Get (strings.TrimPrefix "/" .) }}
+        {{ if reflect.IsImageResourceProcessable . }}
+          {{ $ogW = .Width }}
+          {{ $ogH = .Height }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ $res := $.Resources.GetMatch "*.{jpg,jpeg,png,gif,webp}" }}
+      {{ if $res }}
+        {{ $ogImage = $res.Permalink }}
+        {{ $ogW = $res.Width }}
+        {{ $ogH = $res.Height }}
+      {{ else }}
+        {{ $matches := findRE `<img[^>]+src=["']([^"']+)["']` .Content 1 }}
+        {{ if $matches }}
+          {{ $src := index (findRE `src=["']([^"']+)["']` (index $matches 0) 1) 0 | replaceRE `src=["']` "" | replaceRE `["']$` "" }}
+          {{ if hasPrefix $src "http" }}
+            {{ $ogImage = $src }}
+          {{ else }}
+            {{ $ogImage = partial "site-abs-path.html" $src }}
+          {{ end }}
+        {{ else }}
+          {{ with partialCached "og-default-card.html" . }}
+            {{ $ogImage = .Permalink }}
+            {{ $ogW = .Width }}
+            {{ $ogH = .Height }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ end }}
+
+    {{/* Open Graph */}}
+    <meta property="og:site_name" content="{{ site.Title }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $desc }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+    <meta property="og:locale" content="en_US" />
+    {{ if $ogImage }}
+      <meta property="og:image" content="{{ $ogImage }}" />
+      {{ if and $ogW $ogH }}
+        <meta property="og:image:width" content="{{ $ogW }}" />
+        <meta property="og:image:height" content="{{ $ogH }}" />
+      {{ end }}
+    {{ end }}
+    {{ if .IsPage }}
+      {{/* Scalar `author`, each entry of an `authors` list, or the
+           organization itself as the site-wide fallback. */}}
+      {{ with .Params.author }}
+        <meta property="article:author" content="{{ . }}" />
+      {{ else }}
+        {{ with .Params.authors }}
+          {{ range . }}<meta property="article:author" content="{{ . }}" />{{ end }}
+        {{ else }}
+          <meta property="article:author" content="Open Source Design" />
+        {{ end }}
+      {{ end }}
+      <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
+      <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
+      {{ with .Params.tags }}
+        {{ if reflect.IsSlice . }}
+          {{ range . }}
+            <meta property="article:tag" content="{{ . }}" />
+          {{ end }}
+        {{ else }}
+          {{ range split (printf "%v" .) "," }}
+            {{ $t := trim . " " }}
+            {{ if $t }}
+              <meta property="article:tag" content="{{ $t }}" />
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Twitter / X */}}
+    <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}" />
+    <meta name="twitter:site" content="@{{ site.Params.twitterHandle | default "opensrcdesign" }}" />
+    <meta name="twitter:title" content="{{ $title }}" />
+    <meta name="twitter:description" content="{{ $desc }}" />
+    {{ if $ogImage }}
+      <meta name="twitter:image" content="{{ $ogImage }}" />
+    {{ end }}
+
+    {{/* JSON-LD structured data. Built as maps and emitted with `jsonify | safeJS`:
+         inside a <script> Go's html/template contextually re-encodes every
+         interpolated value, so hand-writing JSON with `| jsonify` per field
+         double-encodes it (strings gain literal quotes; arrays collapse into a
+         single string). One jsonify pass + safeJS is the correct, safe idiom. */}}
+    {{ $socials := slice }}
+    {{ range site.Params.social }}{{ $socials = $socials | append .url }}{{ end }}
+    {{ $orgLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
+    {{ $org := dict
+      "@context" "https://schema.org"
+      "@type" "Organization"
+      "name" site.Title
+      "url" site.BaseURL
+      "logo" $orgLogo
+      "description" site.Params.description
+      "sameAs" $socials
+      "contactPoint" (dict
+        "@type" "ContactPoint"
+        "contactType" "community"
+        "url" (printf "%s/" (site.Params.forumURL | default "https://discourse.opensourcedesign.net"))
+      )
+    }}
+    <script type="application/ld+json">{{ $org | jsonify | safeJS }}</script>
+
+    {{/* Page-specific schema. JobPosting is emitted by layouts/jobs/single.html
+         (only for open listings) to avoid duplication and advertising filled jobs. */}}
+    {{ if eq .Section "events" }}
+      {{ if .IsPage }}
+        {{/* startDate must be ISO 8601; prefer eventStart, else an ISO
+             eventDate. Without a valid start date the Event is invalid per
+             schema.org, so skip the block entirely. */}}
+        {{ $start := "" }}
+        {{ with .Params.eventStart }}{{ $start = printf "%v" . }}{{ end }}
+        {{ if not $start }}{{ $ed := printf "%v" (.Params.eventDate | default "") }}{{ if findRE `^\d{4}-\d{2}-\d{2}` $ed }}{{ $start = $ed }}{{ end }}{{ end }}
+        {{ with $start }}
+          {{ $event := dict
+            "@context" "https://schema.org"
+            "@type" "Event"
+            "name" $.Title
+            "description" ($.Summary | plainify)
+            "startDate" .
+            "organizer" (dict "@type" "Organization" "name" "Open Source Design" "url" site.BaseURL)
+          }}
+          {{ with $.Params.location }}{{ $event = merge $event (dict "location" (dict "@type" "Place" "name" .)) }}{{ end }}
+          <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
+        {{ end }}
+      {{ end }}
+    {{ else if and .IsPage (eq .Section "resources") .CurrentSection .CurrentSection.File (eq .CurrentSection.File.ContentBaseName "articles") }}
+      {{ if .IsPage }}
+        {{ $publisherLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
+        {{ $article := dict
+          "@context" "https://schema.org"
+          "@type" "Article"
+          "headline" .Title
+          "description" (.Summary | plainify)
+          "datePublished" (.Date.Format "2006-01-02")
+          "dateModified" (.Lastmod.Format "2006-01-02")
+          "publisher" (dict "@type" "Organization" "name" "Open Source Design" "logo" (dict "@type" "ImageObject" "url" $publisherLogo))
+        }}
+        {{/* Named people when set (scalar or list), the organization
+             otherwise - mirroring the visible byline fallback. */}}
+        {{ $people := slice }}
+        {{ with .Params.author }}{{ $people = $people | append . }}{{ end }}
+        {{ if not $people }}{{ with .Params.authors }}{{ $people = . }}{{ end }}{{ end }}
+        {{ $jsonAuthor := dict "@type" "Organization" "name" "Open Source Design" }}
+        {{ if eq (len $people) 1 }}
+          {{ $jsonAuthor = dict "@type" "Person" "name" (index $people 0) }}
+        {{ else if gt (len $people) 1 }}
+          {{ $list := slice }}
+          {{ range $people }}{{ $list = $list | append (dict "@type" "Person" "name" .) }}{{ end }}
+          {{ $jsonAuthor = $list }}
+        {{ end }}
+        {{ $article = merge $article (dict "author" $jsonAuthor) }}
+        <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+      {{ end }}
+    {{ else if eq .Section "people" }}
+      {{ if .IsPage }}
+        {{ $person := dict
+          "@context" "https://schema.org"
+          "@type" "Person"
+          "name" (.Params.name | default .Title)
+          "description" (.Summary | plainify)
+          "url" .Permalink
+        }}
+        {{ with .Params.website }}{{ $person = merge $person (dict "sameAs" .) }}{{ end }}
+        <script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+      {{ end }}
+    {{ end }}
+
+    {{/* Self-hosted Inter variable font (woff2 only - universally supported).
+         Only the roman face is preloaded; italic is rare enough to load on
+         demand. crossorigin is required for font preloads even same-origin. */}}
+    <link rel="preload" href="{{ partial "site-path.html" "/fonts/InterVariable.woff2" }}" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: "InterVariable";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("{{ partial "site-path.html" "/fonts/InterVariable.woff2" }}") format("woff2");
+      }
+      @font-face {
+        font-family: "InterVariable";
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("{{ partial "site-path.html" "/fonts/InterVariable-Italic.woff2" }}") format("woff2");
+      }
+    </style>
+
+    {{/* Styling:
+         1. typography.css - pre-compiled @tailwindcss/typography `prose`
+            classes plus Tailwind preflight/theme, giving a readable no-JS
+            baseline. The Play CDN cannot load plugins, hence vendored.
+         2. Utilities + custom theme, one of two ways:
+            - Production (CI): deploy workflows compile assets/css/main.css
+              with the Tailwind CLI into assets/css/compiled.css (gitignored)
+              before running Hugo, and we ship that small static stylesheet.
+            - Local dev fallback (issue #556 - no local build step required):
+              when compiled.css is absent, the Tailwind Play CDN
+              (@tailwindcss/browser) compiles utility classes from the DOM at
+              runtime and main.css is inlined as text/tailwindcss (supports
+              @apply). Pinned + SRI for supply-chain safety. */}}
+    {{ $typo := resources.Get "css/typography.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ $typo.RelPermalink }}" integrity="{{ $typo.Data.Integrity }}" />
+    {{ with resources.Get "css/compiled.css" }}
+      {{ $css := . | fingerprint }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+    {{ else }}
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.2/dist/index.global.js" integrity="sha384-yzJGD2ZXURu6RaDFjaXOC6IrnZq1aEeldwvXw7Pec43Q2BnmHkys/fGPzvwEtojO" crossorigin="anonymous"></script>
+      {{ $tw := resources.Get "css/main.css" }}
+      <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
+    {{ end }}
+    {{ $darkTheme := resources.Get "css/dark-theme.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ $darkTheme.RelPermalink }}" integrity="{{ $darkTheme.Data.Integrity }}" />
+
+    {{/* RSS Feed */}}
+    {{ with .OutputFormats.Get "RSS" }}
+      <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}" />
+    {{ end }}
+
+    {{/* iCal feed (events section) for calendar autodiscovery. Hugo gives the
+         text/calendar format a webcal:// permalink (so it opens in a calendar
+         app); html/template's URL filter only trusts http/https/mailto and would
+         otherwise rewrite our own permalink to "#ZgotmplZ", so mark it safe. */}}
+    {{ with .OutputFormats.Get "Calendar" }}
+      <link rel="alternate" type="text/calendar" title="{{ site.Title }} - Events" href="{{ .Permalink | safeURL }}" />
+    {{ end }}
+
+  </head>
+  <body class="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-100">
+    {{ partialCached "svg-sprite.html" . }}
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg" href="#main">Skip to content</a>
+
+    {{/* Header varies only by active nav section, so cache per-section. */}}
+    {{ partialCached "header.html" . .Section }}
+
+    <main id="main" class="flex-1">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{/* Footer and search dialog are identical on every page; cache once. */}}
+    {{ partialCached "footer.html" . }}
+
+    {{ partialCached "search-modal.html" . }}
+
+    {{/* Scroll to top button */}}
+    <button
+      class="scroll-to-top fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/50 focus-visible:ring-offset-2 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white dark:focus-visible:ring-slate-100/50 dark:focus-visible:ring-offset-slate-950"
+      type="button"
+      aria-label="Scroll to top of page"
+      id="scroll-to-top"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 17a.75.75 0 0 1-.75-.75V5.56l-3.47 3.47a.75.75 0 0 1-1.06-1.06l4.75-4.75a.75.75 0 0 1 1.06 0l4.75 4.75a.75.75 0 0 1-1.06 1.06l-3.47-3.47v10.69A.75.75 0 0 1 10 17Z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    {{ $searchJs := resources.Get "js/search-modal.js" | minify | fingerprint }}
+    {{ $notfoundJs := resources.Get "js/notfound-search.js" | minify | fingerprint }}
+    {{ $lightboxJs := resources.Get "js/lightbox.js" | minify | fingerprint }}
+    {{ $jobMarkersJs := resources.Get "js/job-markers.js" | minify | fingerprint }}
+    <script>
+      window.__OSD_MODULES = {
+        search: {{ $searchJs.RelPermalink | jsonify }},
+        notfound: {{ $notfoundJs.RelPermalink | jsonify }},
+        lightbox: {{ $lightboxJs.RelPermalink | jsonify }},
+        jobMarkers: {{ $jobMarkersJs.RelPermalink | jsonify }}
+      };
+    </script>
+    {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
+    <script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+    {{/* instant.page: prefetches internal links on hover/touchstart, making
+         navigation feel instant. Loaded as a module (deferred, and skipped by
+         legacy browsers that couldn't parse it). It reads its options from
+         document.body data attributes, hence end-of-body placement. */}}
+    {{ $instant := resources.Get "js/instantpage.js" | minify | fingerprint }}
+    <script src="{{ $instant.RelPermalink }}" integrity="{{ $instant.Data.Integrity }}" type="module"></script>
+  </body>
+</html>

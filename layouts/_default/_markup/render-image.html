@@ -1,0 +1,95 @@
+{{/*
+  Custom Image Render Hook
+
+  Resolves Markdown images through the assets pipeline (see resolve-image.html)
+  so local raster images are served as AVIF/WebP with an original fallback,
+  responsive srcset variants (phones don't download 1600px images), intrinsic
+  width/height (no layout shift) and content-hashed URLs. External images and
+  SVGs fall back gracefully. Also adds lazy loading and LCP-aware priority for
+  the first image on the page.
+*/}}
+
+{{ $src := .Destination }}
+{{ $alt := .Text }}
+{{ $title := .Title }}
+
+{{/* The first image on the page is the likely LCP element: load it eagerly
+     with a high fetch priority, and lazy-load every image after it. */}}
+{{ $isFirst := eq .Ordinal 0 }}
+
+{{ $r := partial "resolve-image.html" (dict "src" $src "page" .Page) }}
+
+{{/* Animated GIFs with pre-transcoded video siblings (same path, .webm/.mp4)
+     are served as a muted looping <video> - a fraction of the GIF's bytes.
+     autoplay is skipped for prefers-reduced-motion users via main.js;
+     controls stay available either way. The GIF remains the <img> for
+     no-sibling GIFs and RSS readers. */}}
+{{ $gifVideo := dict }}
+{{ if and (not $r.external) (strings.HasSuffix (lower $src) ".gif") }}
+  {{ $stem := strings.TrimSuffix ".gif" (strings.TrimPrefix "/" (lower $src)) }}
+  {{ $webm := resources.Get (printf "%s.webm" $stem) }}
+  {{ $mp4 := resources.Get (printf "%s.mp4" $stem) }}
+  {{ if or $webm $mp4 }}
+    {{ $gifVideo = dict "webm" $webm "mp4" $mp4 }}
+  {{ end }}
+{{ end }}
+
+{{/* Content columns cap at max-w-4xl (56rem); images never render wider. */}}
+{{ $sizes := "(min-width: 56rem) 56rem, 100vw" }}
+
+{{ if $gifVideo }}
+  <figure class="my-6">
+    <video
+      class="mx-auto block rounded-lg shadow-sm"
+      autoplay loop muted playsinline
+      preload="metadata"
+      data-gif-video
+      {{ with $r.width }}width="{{ . }}"{{ end }}
+      {{ with $r.height }}height="{{ . }}"{{ end }}
+      aria-label="{{ $alt }}"
+    >
+      {{ with $gifVideo.webm }}<source src="{{ .RelPermalink }}" type="video/webm" />{{ end }}
+      {{ with $gifVideo.mp4 }}<source src="{{ .RelPermalink }}" type="video/mp4" />{{ end }}
+      <img src="{{ $r.src }}" alt="{{ $alt }}" loading="lazy" decoding="async" {{ with $r.width }}width="{{ . }}"{{ end }} {{ with $r.height }}height="{{ . }}"{{ end }} />
+    </video>
+    {{ with $title }}<figcaption class="mt-2 text-center text-sm text-slate-500">{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ else if $title }}
+  <figure class="my-6">
+    <picture>
+      {{ if $r.avifSet }}<source type="image/avif" srcset="{{ $r.avifSet }}" sizes="{{ $sizes }}" />
+      {{ else }}{{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}{{ end }}
+      {{ if $r.webpSet }}<source type="image/webp" srcset="{{ $r.webpSet }}" sizes="{{ $sizes }}" />
+      {{ else }}{{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}{{ end }}
+      <img
+        src="{{ $r.src }}"
+        alt="{{ $alt }}"
+        title="{{ $title }}"
+        loading="{{ if $isFirst }}eager{{ else }}lazy{{ end }}"
+        {{ if $isFirst }}fetchpriority="high"{{ end }}
+        decoding="async"
+        class="mx-auto block rounded-lg shadow-sm"
+        {{ with $r.width }}width="{{ . }}"{{ end }}
+        {{ with $r.height }}height="{{ . }}"{{ end }}
+      />
+    </picture>
+    <figcaption class="mt-2 text-center text-sm text-slate-500">{{ $title }}</figcaption>
+  </figure>
+{{ else }}
+  <picture>
+    {{ if $r.avifSet }}<source type="image/avif" srcset="{{ $r.avifSet }}" sizes="{{ $sizes }}" />
+    {{ else }}{{ with $r.avif }}<source type="image/avif" srcset="{{ . }}" />{{ end }}{{ end }}
+    {{ if $r.webpSet }}<source type="image/webp" srcset="{{ $r.webpSet }}" sizes="{{ $sizes }}" />
+    {{ else }}{{ with $r.webp }}<source type="image/webp" srcset="{{ . }}" />{{ end }}{{ end }}
+    <img
+      src="{{ $r.src }}"
+      alt="{{ $alt }}"
+      loading="{{ if $isFirst }}eager{{ else }}lazy{{ end }}"
+      {{ if $isFirst }}fetchpriority="high"{{ end }}
+      decoding="async"
+      class="mx-auto my-6 block rounded-lg shadow-sm"
+      {{ with $r.width }}width="{{ . }}"{{ end }}
+      {{ with $r.height }}height="{{ . }}"{{ end }}
+    />
+  </picture>
+{{ end }}

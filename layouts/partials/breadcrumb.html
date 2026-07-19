@@ -1,0 +1,31 @@
+{{/*
+  Breadcrumb trail with dark-mode utilities.
+
+  Usage:
+    {{ partial "breadcrumb.html" (dict
+      "items" (slice (dict "label" "Jobs" "href" "/jobs/"))
+      "current" "Post a job"
+      "truncate" true
+      "pagefind_ignore" true
+      "current_id" "osd-crumb"
+    ) }}
+*/}}
+<nav
+  class="osd-breadcrumb"
+  aria-label="Breadcrumb"
+  {{ if .pagefind_ignore }}data-pagefind-ignore{{ end }}
+>
+  {{ range .items }}
+    {{ if .href }}
+      <a href="{{ .href }}">{{ .label }}</a>
+    {{ else }}
+      <span>{{ .label }}</span>
+    {{ end }}
+    {{ partial "svg-icon.html" (dict "name" "chevron-right" "class" "osd-breadcrumb__sep") }}
+  {{ end }}
+  <span
+    class="osd-breadcrumb__current{{ if .truncate }} truncate{{ end }}"
+    {{ with .current_id }}id="{{ . }}"{{ end }}
+    aria-current="page"
+  >{{ .current }}</span>
+</nav>

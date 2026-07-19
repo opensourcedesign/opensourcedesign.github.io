@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: {{ partial "site-abs-path.html" "sitemap.xml" }}

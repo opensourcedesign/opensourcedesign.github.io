@@ -1,0 +1,165 @@
+{{ define "main" }}
+  {{ $eventsAll := (where site.RegularPages "Section" "events") }}
+  {{ $pastStatus := where $eventsAll "Params.status" "in" (slice "past" "cancelled") }}
+  {{/* Non-recurring events flagged upcoming/started (the monthly call is handled on its own). */}}
+  {{ $upcomingStatus := where (where $eventsAll "Params.status" "in" (slice "upcoming" "started")) "File.ContentBaseName" "ne" "monthly-online-meeting" }}
+
+  {{/* Date-aware: an "upcoming" event whose endDate has passed is treated as past, so a */}}
+  {{/* stale status never leaves a finished event sitting in the Upcoming list. */}}
+  {{ $nowUnix := now.Unix }}
+  {{ $upcoming := slice }}
+  {{ $expired := slice }}
+  {{ range $upcomingStatus }}
+    {{ $end := .Params.endDate }}
+    {{ if and $end (lt (time.AsTime $end).Unix $nowUnix) }}
+      {{ $expired = $expired | append . }}
+    {{ else }}
+      {{ $upcoming = $upcoming | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ $pastAll := $pastStatus | append $expired }}
+  {{/* Write-ups are recaps that carry an author byline; plain entries do not. */}}
+  {{ $writeups := where $pastAll "Params.author" "!=" nil }}
+  {{ $pastPlain := where $pastAll "Params.author" "==" nil }}
+
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
+    {{/* Editorial header */}}
+    <header class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between" aria-labelledby="events-heading">
+      <div class="max-w-2xl">
+        <h1 id="events-heading" class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+        {{ with .Content }}
+          <div class="prose prose-slate mt-4 max-w-none text-lg">{{ . }}</div>
+        {{ end }}
+      </div>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+        <a class="osd-btn-primary text-sm" href="{{ partial "site-path.html" "/events/event-form/" }}">Add an event</a>
+        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/calendar.ics" }}" aria-label="Subscribe to events calendar">iCal</a>
+        <a class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/feed.xml" }}" aria-label="Subscribe to events RSS feed">RSS</a>
+      </div>
+    </header>
+
+    <div class="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
+      {{/* Main: Write-ups & Recaps */}}
+      <section class="lg:col-span-8" aria-labelledby="writeups-heading">
+        <h2 id="writeups-heading" class="border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">Write-ups &amp; recaps</h2>
+
+        {{ if $writeups }}
+          <div>
+            {{ range first 6 (sort $writeups "Date" "desc") }}
+              {{/* Pull the first image from the rendered content for a thumbnail */}}
+              {{ $img := "" }}
+              {{ with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 }}
+                {{ $img = index (index . 0) 1 }}
+              {{ end }}
+              <article class="group border-b border-slate-200">
+                <a class="flex flex-col gap-5 py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:flex-row" href="{{ .RelPermalink }}" aria-label="{{ .Title }} (recap)">
+                  {{ if $img }}
+                    <span class="block h-40 w-full shrink-0 overflow-hidden rounded-lg bg-slate-100 sm:h-28 sm:w-44">
+                      <img class="h-full w-full object-cover" src="{{ $img }}" alt="" loading="lazy" />
+                    </span>
+                  {{ end }}
+                  <span class="min-w-0">
+                    <span class="block text-sm text-slate-500">
+                      {{ with .Params.eventDate }}{{ . }}{{ end }}{{ if and .Params.eventDate .Params.location }} · {{ end }}{{ with .Params.location }}{{ . }}{{ end }}
+                    </span>
+                    <span class="mt-1 block text-lg font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+                    {{ with .Summary }}
+                      <span class="mt-2 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 160 }}</span>
+                    {{ end }}
+                    {{ with .Params.author }}
+                      <span class="mt-2 block text-sm font-medium text-slate-700">By {{ . }}</span>
+                    {{ end }}
+                  </span>
+                </a>
+              </article>
+            {{ end }}
+          </div>
+        {{ else }}
+          <p class="mt-6 text-sm text-slate-600">No write-ups yet.</p>
+        {{ end }}
+      </section>
+
+      {{/* Sidebar: Upcoming + Recurring */}}
+      <aside class="space-y-12 lg:col-span-4">
+        <section aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading" class="border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">Upcoming</h2>
+          {{ if $upcoming }}
+            <ul role="list">
+              {{ range first 5 (sort $upcoming "Date" "desc") }}
+                <li class="border-b border-slate-200">
+                  <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+                    <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+                    {{ with .Params.eventDate }}<span class="mt-1 block text-sm text-slate-500">{{ . }}</span>{{ end }}
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
+          {{ else }}
+            <p class="mt-4 text-sm leading-relaxed text-slate-600">
+              No one-off events scheduled right now. Join our monthly call below, or
+              <a class="font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-950" href="{{ partial "site-path.html" "/events/calendar.ics" }}">subscribe to the calendar</a>.
+            </p>
+          {{ end }}
+        </section>
+
+        {{/* Recurring: Monthly Meeting */}}
+        {{ with site.GetPage "/events/monthly-online-meeting/" }}
+          <section aria-labelledby="recurring-heading">
+            <h2 id="recurring-heading" class="border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">Every month</h2>
+            <h3 class="mt-4 text-base font-semibold text-slate-900">{{ .Title }}</h3>
+            <dl class="mt-3 space-y-1.5 text-sm">
+              {{ with .Params.eventDate }}
+                <div class="flex gap-3">
+                  <dt class="w-14 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Date</dt>
+                  <dd class="text-slate-800">{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with .Params.time }}
+                <div class="flex gap-3">
+                  <dt class="w-14 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Time</dt>
+                  <dd class="text-slate-800">{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with .Params.location }}
+                <div class="flex gap-3">
+                  <dt class="w-14 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Where</dt>
+                  <dd class="text-slate-800">{{ . }}</dd>
+                </div>
+              {{ end }}
+            </dl>
+            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+              How to join →
+            </a>
+          </section>
+        {{ end }}
+      </aside>
+    </div>
+
+    {{/* Past Events */}}
+    <section class="mt-16" aria-labelledby="past-heading">
+      <div class="flex flex-wrap items-baseline justify-between gap-4 border-b border-slate-200 pb-3">
+        <h2 id="past-heading" class="text-xs font-semibold uppercase tracking-widest text-slate-500">Past events</h2>
+        <a class="text-sm font-medium text-slate-600 transition hover:text-slate-950" href="{{ partial "site-path.html" "/events/archive/" }}">Browse all {{ len $pastAll }} →</a>
+      </div>
+
+      <ul class="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3" role="list">
+        {{ range first 9 (sort $pastPlain "Date" "desc") }}
+          <li class="border-b border-slate-200">
+            <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+              <span class="block font-medium leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              <span class="mt-1 block text-sm text-slate-500">
+                {{ with .Params.eventDate }}{{ . }}{{ end }}{{ if and .Params.eventDate .Params.location }} · {{ end }}{{ with .Params.location }}{{ . }}{{ end }}
+              </span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
+    {{/* Footer - How to Add Events */}}
+    {{ partial "section-footer.html" (dict "items" (slice
+      (dict "icon" "plus" "text" "To add an event," "linkText" "fork us on GitHub" "href" (site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io"))
+    )) }}
+  </div>
+{{ end }}

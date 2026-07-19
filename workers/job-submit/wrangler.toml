@@ -1,0 +1,50 @@
+name = "osd-job-submit"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+# --- Public, non-secret configuration -------------------------------------
+# Override any of these in the Cloudflare dashboard or here as needed.
+[vars]
+GITHUB_OWNER = "opensourcedesign"
+GITHUB_REPO = "opensourcedesign.github.io"
+GITHUB_BRANCH = "master"
+CONTENT_DIR = "content/jobs"
+CONTENT_DIR_EVENTS = "content/events"
+# Comma-separated browser origins allowed for CORS on POST /submit and GET /forum.
+# PR previews live under https://opensourcedesign.net/pr-preview/… (same origin).
+ALLOWED_ORIGIN = "https://opensourcedesign.net,https://opensourcedesign.github.io,http://localhost:1313,http://127.0.0.1:1313"
+PR_LABEL = "job-submission"
+PR_LABEL_EVENT = "event-submission"
+PR_LABEL_RESOURCE = "resource-suggestion"
+# Where resource suggestions (kind: "resource") are inserted.
+RESOURCES_FILE = "data/resources.yaml"
+# Live site base URL; used for the new-job duplicate check (/jobs/index.json).
+SITE_BASE_URL = "https://opensourcedesign.net"
+# Discourse instance proxied by GET /forum (homepage forum pulse).
+FORUM_URL = "https://discourse.opensourcedesign.net"
+EMAIL_TTL_DAYS = "90"
+# Optional per-IP daily cap; only enforced if a RATE_LIMIT KV namespace is bound.
+RATE_LIMIT_MAX = "5"
+# Turnstile fails CLOSED: submissions are rejected (503) if TURNSTILE_SECRET is
+# not set. For local dev only, set DISABLE_TURNSTILE = "true" to skip the check.
+# DISABLE_TURNSTILE = "true"
+
+# --- KV: maps a created PR number -> submitter email (kept private) ---------
+# Create it once, then paste the returned id below:
+#   npx wrangler kv namespace create EMAILS
+[[kv_namespaces]]
+binding = "EMAILS"
+id = "a1b92469f51c4677a252d77f58561109"
+
+# --- Per-IP rate limiting (recommended). Create the namespace, paste the id,
+# then uncomment:
+#   npx wrangler kv namespace create RATE_LIMIT
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "REPLACE_WITH_RATE_LIMIT_KV_NAMESPACE_ID"
+
+# --- Secrets (NEVER commit; set via `npx wrangler secret put <NAME>`) -------
+#   GITHUB_TOKEN      Fine-grained PAT: Contents RW + Pull requests RW on the repo
+#   TURNSTILE_SECRET  Cloudflare Turnstile secret key
+#   LOOKUP_SECRET     Shared bearer secret for GET /lookup (also a GitHub repo secret)

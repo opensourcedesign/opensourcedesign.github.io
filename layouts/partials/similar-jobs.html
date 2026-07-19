@@ -1,0 +1,108 @@
+{{/*
+  Similar Jobs Partial
+  
+  Usage: {{ partial "similar-jobs.html" . }}
+  
+  Shows up to 3 similar jobs based on:
+  1. Same compensation type (paid/volunteer)
+  2. Matching tags
+  3. Recent jobs as fallback
+*/}}
+
+{{ $current := . }}
+{{ $currentTags := .Params.tags | default (slice) }}
+{{ $currentComp := (printf "%v" (.Params.compensation | default "")) | lower }}
+{{ $limit := 3 }}
+
+{{/* Get all jobs except current (exclude non-listing pages: form, archive, how-to) */}}
+{{ $jobPages := partial "functions/job-postings.html" . }}
+{{ $allJobs := where $jobPages ".RelPermalink" "!=" $current.RelPermalink }}
+
+{{/* Filter to only open jobs. Only "searching" without a passed application
+     deadline is open; every other status (filled/closed/expired/
+     filled/expired) is a finished posting and must not be recommended. */}}
+{{ $openJobs := partial "functions/open-jobs.html" $allJobs }}
+
+{{/* Score and sort jobs by relevance */}}
+{{ $scored := slice }}
+{{ range $openJobs }}
+  {{ $score := 0 }}
+  {{ $jobTags := .Params.tags | default (slice) }}
+  {{ $jobComp := (printf "%v" (.Params.compensation | default "")) | lower }}
+  
+  {{/* Same compensation type = +5 points */}}
+  {{ if eq $jobComp $currentComp }}
+    {{ $score = add $score 5 }}
+  {{ end }}
+  
+  {{/* Matching tags = +2 points each */}}
+  {{ if reflect.IsSlice $currentTags }}
+    {{ if reflect.IsSlice $jobTags }}
+      {{ range $currentTags }}
+        {{ $tag := . }}
+        {{ if in $jobTags $tag }}
+          {{ $score = add $score 2 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Recent jobs get slight boost */}}
+  {{ with .Params.date_posted }}
+    {{ $posted := time . }}
+    {{ $daysSince := div (now.Sub $posted).Hours 24 | int }}
+    {{ if lt $daysSince 30 }}
+      {{ $score = add $score 1 }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if gt $score 0 }}
+    {{ $scored = $scored | append (dict "page" . "score" $score) }}
+  {{ end }}
+{{ end }}
+
+{{/* Sort by score descending, take top 3 */}}
+{{ $sorted := sort $scored "score" "desc" }}
+{{ $similar := slice }}
+{{ range first $limit $sorted }}
+  {{ $similar = $similar | append .page }}
+{{ end }}
+
+{{/* Fallback: if less than 3, add recent jobs */}}
+{{ if lt (len $similar) $limit }}
+  {{ $needed := sub $limit (len $similar) }}
+  {{ $recent := first (add $needed 5) (sort $openJobs ".Params.date_posted" "desc") }}
+  {{ range $recent }}
+    {{ if and (lt (len $similar) $limit) (not (in $similar .)) }}
+      {{ $similar = $similar | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $similar) 0 }}
+  <aside class="similar-jobs" aria-labelledby="similar-jobs-heading">
+    <h2 id="similar-jobs-heading" class="border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">Similar jobs</h2>
+    <ul role="list">
+      {{ range $similar }}
+        {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+        {{ $isPaid := eq $comp "paid" }}
+        <li class="border-b border-slate-200">
+          <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+            <span class="flex items-start justify-between gap-3">
+              <span class="line-clamp-1 font-medium text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              {{ if $isPaid }}
+                <span class="shrink-0 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">Paid</span>
+              {{ else if $comp }}
+                <span class="shrink-0 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-medium text-violet-800">Volunteer</span>
+              {{ end }}
+            </span>
+            <span class="mt-1 block text-sm text-slate-500">
+              {{ with .Params.organization }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and .Params.organization .Params.date_posted }} · {{ end }}{{ with .Params.date_posted }}Posted {{ . }}{{ end }}
+            </span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </aside>
+{{ end }}
+

@@ -1,0 +1,447 @@
+{{ define "main" }}
+  {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+  {{ $isPaid := eq $comp "paid" }}
+  {{ $isVolunteer := or (in $comp "gratis") (in $comp "volunteer") (eq $comp "free") }}
+  {{ $jobMeta := partial "functions/job-status-meta.html" . }}
+  {{ $status := $jobMeta.status }}
+  {{ $isOpen := $jobMeta.open }}
+  {{ $org := .Params.organization | default "" }}
+  {{ $role := trim (printf "%v" (.Params.role | default "")) " '\"" }}
+
+  {{/* Posted date + freshness */}}
+  {{ $postedHuman := "" }}
+  {{ $postedISO := "" }}
+  {{ $stale := false }}
+  {{ with .Params.date_posted }}
+    {{ $t := time.AsTime . }}
+    {{ $postedISO = $t.Format "2006-01-02" }}
+    {{ $postedHuman = $t.Format "2 January 2006" }}
+    {{/* Three-month threshold; keep in sync with data-stale-days default in
+         main.js. Build-time is only the no-JS baseline - the notice is also
+         revealed client-side, since builds may be weeks apart. */}}
+    {{ $days := int (div (now.Sub $t).Hours 24) }}
+    {{ if and $isOpen (gt $days 90) }}{{ $stale = true }}{{ end }}
+  {{ end }}
+
+  {{/* Application deadline (issue #84). Build time is the no-JS baseline;
+       main.js also reveals the expired notice client-side once the deadline
+       crosses, since builds may be days apart. */}}
+  {{ $deadlineISO := "" }}
+  {{ $deadlineHuman := "" }}
+  {{ $deadlinePassed := false }}
+  {{ with .Params.deadline }}
+    {{ $t := time.AsTime (printf "%v" .) }}
+    {{ $deadlineISO = $t.Format "2006-01-02" }}
+    {{ $deadlineHuman = $t.Format "2 January 2006" }}
+    {{ if lt $deadlineISO (now.Format "2006-01-02") }}{{ $deadlinePassed = true }}{{ end }}
+  {{ end }}
+  {{ $isExpired := $jobMeta.expired }}
+
+  <article class="mx-auto max-w-5xl overflow-x-clip px-4 py-10" data-pagefind-body>
+    {{/* Breadcrumb */}}
+    {{ partial "breadcrumb.html" (dict
+      "items" (slice
+        (dict "label" "Home" "href" (partial "site-path.html" "/"))
+        (dict "label" "Jobs" "href" (partial "site-path.html" "/jobs/"))
+      )
+      "current" .Title
+      "truncate" true
+      "pagefind_ignore" true
+    ) }}
+
+    {{/* min-w-0 on both grid columns: grid items default to min-width auto, so a
+         long unbroken URL in the content would otherwise widen the page beyond
+         the viewport on mobile. */}}
+    <div class="mt-8 grid gap-10 lg:grid-cols-3">
+      {{/* ───── Main column ───── */}}
+      <div class="min-w-0 lg:col-span-2">
+          {{/* Header */}}
+          <header>
+            <div class="flex flex-wrap items-center gap-2">
+              {{ if $isExpired }}
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 ring-1 ring-inset ring-amber-600/20">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Expired
+                </span>
+              {{ else if $isOpen }}
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Open
+                </span>
+              {{ else if $status }}
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold capitalize text-slate-600 ring-1 ring-inset ring-slate-500/20 dark:bg-slate-800 dark:text-slate-300">{{ $status }}</span>
+              {{ end }}
+              {{ if $isPaid }}
+                {{ partial "badge.html" (dict "text" "Paid" "color" "emerald") }}
+              {{ else if $isVolunteer }}
+                {{ partial "badge.html" (dict "text" "Volunteer" "color" "violet") }}
+              {{ end }}
+            </div>
+
+            <h1 class="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-500">
+              {{ with $org }}
+                <span class="inline-flex items-center gap-1.5 font-medium text-slate-700">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+                  {{ . }}
+                </span>
+              {{ end }}
+              {{ with $role }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+                  {{ . }}
+                </span>
+              {{ end }}
+              {{ with $postedHuman }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  Posted <time datetime="{{ $postedISO }}">{{ . }}</time>
+                </span>
+              {{ end }}
+              {{ with $deadlineHuman }}
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Apply by <time datetime="{{ $deadlineISO }}">{{ . }}</time>
+                </span>
+              {{ end }}
+            </div>
+
+            {{ if and $isOpen $deadlineISO }}
+              {{/* Expired notice: pre-shown when already past at build time,
+                   otherwise revealed client-side by main.js. */}}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200" data-deadline-check data-deadline="{{ $deadlineISO }}" {{ if not $deadlinePassed }}hidden{{ end }}>
+                <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                The application deadline ({{ $deadlineHuman }}) has passed - this posting has expired.
+              </p>
+            {{ else if eq $status "expired" }}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200">
+                <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                This posting has expired{{ with $deadlineHuman }} (application deadline was {{ . }}){{ end }}. It may no longer be accepting applications.
+              </p>
+            {{ end }}
+
+            {{ if and $isOpen $postedISO (not $isExpired) }}
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-200" data-stale-check data-posted="{{ $postedISO }}" {{ if not $stale }}hidden{{ end }}>
+                <svg class="mt-px h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                This posting is over three months old and may no longer be active.
+              </p>
+            {{ end }}
+          </header>
+
+          {{/* Body */}}
+          <div class="mt-8 space-y-8 border-t border-slate-200 pt-8">
+            {{ with .Content }}
+              {{/* break-words: job descriptions often contain very long URLs
+                   pasted as plain links; wrap them instead of overflowing on
+                   small screens. */}}
+              <div class="prose prose-slate dark:prose-invert max-w-none break-words prose-headings:font-semibold prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-600 dark:prose-a:text-slate-200">
+                {{ . }}
+              </div>
+            {{ end }}
+
+            {{/* Deliverables - corpus mixes plain sentences, bullet lists, and
+                 full markdown (## headings, [label](url) links). Render as
+                 markdown instead of line-splitting + linkify. */}}
+            {{ with .Params.deliverables }}
+              {{ $val := printf "%v" . }}
+              {{ $val = replace (replace $val "\r\n" "\n") "\r" "\n" }}
+              {{ $val = trim $val " \t\n" }}
+              {{/* Extra spaces after list markers (*      foo) make Goldmark treat
+                   each item as an indented code block — normalize to "* foo". */}}
+              {{ $val = replaceRE `(?m)^([ \t]*[-*+])\s{2,}` `$1 ` $val }}
+              {{ if $val }}
+                <div class="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                  <h2 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                    <svg class="h-5 w-5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+                    Deliverables
+                  </h2>
+                  <div class="prose prose-sm prose-slate dark:prose-invert mt-3 max-w-none break-words prose-headings:font-semibold prose-headings:text-slate-900 prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-600 prose-ul:my-2 prose-li:my-0.5 dark:prose-headings:text-slate-100 dark:prose-a:text-slate-200">
+                    {{ $.Page.RenderString $val }}
+                  </div>
+                </div>
+              {{ end }}
+            {{ end }}
+
+            {{/* Related links */}}
+            {{ with .Params.links }}
+              <div>
+                <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+                  Related links
+                </h2>
+                <ul class="mt-3 space-y-2 text-sm text-slate-700">
+                  {{ if (reflect.IsSlice .) }}
+                    {{ range . }}
+                      <li class="break-words">{{ partial "linkify" (dict "text" (printf "%v" .)) }}</li>
+                    {{ end }}
+                  {{ else }}
+                    {{ $text := replace (replace (printf "%v" .) "\r\n" "\n") "\r" "\n" }}
+                    {{ range split $text "\n" }}
+                      {{ $line := trim . " " }}
+                      {{ if $line }}<li class="break-words">{{ partial "linkify" (dict "text" $line) }}</li>{{ end }}
+                    {{ end }}
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+
+            {{/* Tags */}}
+            {{ with .Params.tags }}
+              {{ $tags := slice }}
+              {{ if (reflect.IsSlice .) }}
+                {{ $tags = . }}
+              {{ else }}
+                {{ range (split (printf "%v" .) ",") }}
+                  {{ $t := trim . " " }}
+                  {{ if $t }}{{ $tags = $tags | append $t }}{{ end }}
+                {{ end }}
+              {{ end }}
+              {{ if $tags }}
+                <div>
+                  <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg>
+                    Tags
+                  </h2>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {{ range $tags }}
+                      {{ $term := site.GetPage (printf "/tags/%s" (urlize .)) }}
+                      {{ if $term }}
+                        <a class="osd-tag osd-tag--link" href="{{ $term.RelPermalink }}">{{ . }}</a>
+                      {{ else }}
+                        <span class="osd-tag">{{ . }}</span>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+      </div>
+
+      {{/* ───── Sidebar ───── */}}
+      <aside class="min-w-0 lg:col-span-1" data-pagefind-ignore>
+        <div class="space-y-4 lg:sticky lg:top-24">
+          {{ partial "job-apply.html" . }}
+
+          {{/* Details */}}
+          <div class="osd-surface rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Details</h2>
+            <dl class="mt-4 space-y-4 text-sm">
+              <div>
+                <dt class="text-slate-500">Compensation</dt>
+                <dd class="mt-1 inline-flex items-center gap-1.5 font-medium text-slate-900">
+                  {{ if $isPaid }}
+                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>Paid
+                  {{ else if $isVolunteer }}
+                    <span class="h-2 w-2 rounded-full bg-violet-500"></span>Volunteer
+                  {{ else }}
+                    <span class="h-2 w-2 rounded-full bg-slate-400"></span>Unspecified
+                  {{ end }}
+                </dd>
+              </div>
+              {{ with .Params.rate_min }}
+                {{ $cur := printf "%v" ($.Params.rate_currency | default "USD") }}
+                {{ $sym := index (dict "USD" "$" "EUR" "€" "GBP" "£" "INR" "₹") $cur }}
+                <div>
+                  <dt class="text-slate-500">Rate</dt>
+                  <dd class="mt-1 font-medium text-slate-900">
+                    {{ if $sym }}{{ $sym }}{{ end }}{{ . }}{{ with $.Params.rate_max }}–{{ . }}{{ end }}{{ if not $sym }}&nbsp;{{ $cur }}{{ end }}
+                    <span class="font-normal text-slate-500">per {{ $.Params.rate_period | default "hour" }}</span>
+                  </dd>
+                </div>
+              {{ end }}
+              {{ with .Params.paid_details }}
+                <div>
+                  <dt class="text-slate-500">{{ if $.Params.rate_min }}Notes{{ else }}Budget / rate{{ end }}</dt>
+                  <dd class="mt-1 font-medium text-slate-900">{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with $deadlineHuman }}
+                <div>
+                  <dt class="text-slate-500">Apply by</dt>
+                  <dd class="mt-1 font-medium {{ if $deadlinePassed }}text-amber-700 line-through{{ else }}text-slate-900{{ end }}"><time datetime="{{ $deadlineISO }}">{{ . }}</time></dd>
+                </div>
+              {{ end }}
+              {{ with $org }}
+                <div>
+                  <dt class="text-slate-500">Project</dt>
+                  <dd class="mt-1 font-medium text-slate-900">{{ . }}</dd>
+                  {{ with $.Params.org_url }}
+                    {{/* Legacy data sometimes stores several comma-separated URLs; use the first and derive a clean host without urls.Parse (which errors on malformed input). */}}
+                    {{ $firstUrl := trim (replaceRE `[\s,].*$` "" .) " " }}
+                    {{ $host := replaceRE `^[a-zA-Z][a-zA-Z0-9+.-]*://` "" $firstUrl }}
+                    {{ $host = replaceRE `[/?#].*$` "" $host }}
+                    {{ $host = strings.TrimPrefix "www." $host }}
+                    {{ if not $host }}{{ $host = $firstUrl }}{{ end }}
+                    <dd class="mt-1">
+                      <a class="inline-flex items-center gap-1 text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-600 break-all" href="{{ $firstUrl }}" target="_blank" rel="noopener noreferrer">
+                        {{ $host }}
+                        <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                      </a>
+                    </dd>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ with .Params.license }}
+                <div>
+                  <dt class="text-slate-500">License</dt>
+                  <dd class="mt-1">
+                    <a class="inline-flex items-center gap-1 text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-600" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                      View license
+                      <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                    </a>
+                  </dd>
+                </div>
+              {{ end }}
+              {{ with $role }}
+                <div>
+                  <dt class="text-slate-500">Category</dt>
+                  <dd class="mt-1 font-medium text-slate-900">{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with $postedHuman }}
+                <div>
+                  <dt class="text-slate-500">Posted</dt>
+                  <dd class="mt-1 font-medium text-slate-900"><time datetime="{{ $postedISO }}">{{ . }}</time></dd>
+                </div>
+              {{ end }}
+              {{ with .Params.github_handle }}
+                {{/* The corpus stores this field in many shapes: "@handle",
+                     "handle", "https://github.com/handle", "GitHub @handle",
+                     "my github is @handle", "@one or @two" (several people),
+                     "github@handle", and even plain email addresses. Extract
+                     every valid GitHub username (max 39 chars, alphanumerics
+                     and hyphens); fall back to a mailto link for emails and to
+                     plain text when nothing parses. */}}
+                {{ $raw := trim (printf "%v" .) " " }}
+                {{ $handles := slice }}
+                {{ $email := "" }}
+                {{ range findRE `(?i)github\.com/([A-Za-z0-9][A-Za-z0-9-]{0,38})` $raw }}
+                  {{ $handles = $handles | append (replaceRE `(?i)^github\.com/` "" .) }}
+                {{ end }}
+                {{ if not $handles }}
+                  {{ if findRE `^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$` $raw }}
+                    {{ $email = $raw }}
+                  {{ else }}
+                    {{ range findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $raw }}
+                      {{ $handles = $handles | append (strings.TrimPrefix "@" .) }}
+                    {{ end }}
+                    {{ if and (not $handles) (findRE `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $raw) }}
+                      {{ $handles = slice $raw }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                {{ $handles = $handles | uniq }}
+                {{ if $raw }}
+                  <div>
+                    <dt class="text-slate-500">Posted by</dt>
+                    {{ range $handles }}
+                      <dd class="mt-1">
+                        <a class="inline-flex items-center gap-1.5 font-medium text-slate-700 transition hover:text-slate-900" href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">
+                          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
+                          @{{ . }}
+                        </a>
+                      </dd>
+                    {{ end }}
+                    {{ with $email }}
+                      <dd class="mt-1">
+                        <a class="inline-flex items-center gap-1.5 font-medium text-slate-700 transition hover:text-slate-900 break-all" href="mailto:{{ . }}">
+                          <svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                          {{ . }}
+                        </a>
+                      </dd>
+                    {{ end }}
+                    {{ if and (not $handles) (not $email) }}
+                      <dd class="mt-1 font-medium text-slate-700">{{ $raw }}</dd>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              {{ end }}
+            </dl>
+          </div>
+
+          {{/* Share */}}
+          <div class="osd-surface rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Share this job</h2>
+            <div class="mt-3">{{ partial "share.html" . }}</div>
+          </div>
+
+          {{/* Suggest an edit */}}
+          {{ with .File }}
+            <div class="osd-surface rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Something changed?</h2>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Update the details or mark this job as filled or closed. Changes are reviewed by moderators before publishing.</p>
+              <a class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ printf "%s?edit=%s" (partial "site-path.html" "/jobs/job-form/") (.LogicalName | urlquery) | safeURL }}">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+                Edit this posting
+              </a>
+            </div>
+          {{ end }}
+        </div>
+      </aside>
+    </div>
+
+    {{/* Similar jobs */}}
+    <div class="mt-10" data-pagefind-ignore>
+      {{ partial "similar-jobs.html" . }}
+    </div>
+
+    {{/* Back link */}}
+    <div class="mt-12 border-t border-slate-200 pt-6" data-pagefind-ignore>
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ partial "site-path.html" "/jobs/" }}">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Back to jobs
+      </a>
+    </div>
+  </article>
+
+  {{/* JobPosting structured data - only for genuinely open listings */}}
+  {{ if and $isOpen (not $isExpired) }}
+    {{ $desc := .Content | plainify | htmlUnescape | chomp }}
+    {{ $jp := dict
+      "@context" "https://schema.org/"
+      "@type" "JobPosting"
+      "title" (.Title | plainify)
+      "description" $desc
+      "datePosted" $postedISO
+      "employmentType" (cond $isPaid "CONTRACTOR" "VOLUNTEER")
+      "jobLocationType" "TELECOMMUTE"
+      "url" .Permalink
+    }}
+    {{/* hiringOrganization: legacy org_url can hold several comma/space-separated
+         URLs; reduce to the first and only emit sameAs when it is a usable URL
+         (an empty sameAs is invalid structured data). */}}
+    {{ $orgUrl := trim (replaceRE `[\s,].*$` "" (printf "%v" (.Params.org_url | default ""))) " " }}
+    {{ $hiring := dict "@type" "Organization" "name" ($org | default site.Title) }}
+    {{ if $orgUrl }}{{ $hiring = merge $hiring (dict "sameAs" $orgUrl) }}{{ end }}
+    {{ $jp = merge $jp (dict "hiringOrganization" $hiring) }}
+    {{/* Stable identifier helps search engines de-duplicate reposts of a role. */}}
+    {{ with .File }}
+      {{ $jp = merge $jp (dict "identifier" (dict "@type" "PropertyValue" "name" ($org | default site.Title) "value" .ContentBaseName)) }}
+    {{ end }}
+    {{/* The application deadline is the authoritative expiry; fall back to
+         posted + 6 months (matching the auto-expiry horizon) without one. */}}
+    {{ if $deadlineISO }}
+      {{ $jp = merge $jp (dict "validThrough" $deadlineISO) }}
+    {{ else }}
+      {{ with .Params.date_posted }}
+        {{ $jp = merge $jp (dict "validThrough" (((time.AsTime .).AddDate 0 6 0).Format "2006-01-02")) }}
+      {{ end }}
+    {{ end }}
+    {{/* baseSalary from the structured rate fields (Google Jobs richness).
+         rate_period "project" has no schema.org unit; omit the unit there. */}}
+    {{ if and $isPaid .Params.rate_min }}
+      {{ $units := dict "hour" "HOUR" "day" "DAY" "month" "MONTH" "year" "YEAR" }}
+      {{ $value := dict "@type" "QuantitativeValue" "minValue" .Params.rate_min }}
+      {{ with .Params.rate_max }}{{ $value = merge $value (dict "maxValue" .) }}{{ end }}
+      {{ with index $units (printf "%v" (.Params.rate_period | default "hour")) }}
+        {{ $value = merge $value (dict "unitText" .) }}
+      {{ end }}
+      {{ $jp = merge $jp (dict "baseSalary" (dict
+        "@type" "MonetaryAmount"
+        "currency" (printf "%v" (.Params.rate_currency | default "USD"))
+        "value" $value
+      )) }}
+    {{ end }}
+    <script type="application/ld+json">{{ $jp | jsonify | safeJS }}</script>
+  {{ end }}
+{{ end }}

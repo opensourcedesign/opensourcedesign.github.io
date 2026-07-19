@@ -1,0 +1,930 @@
+/* ==========================================================================
+   Custom site styles, compiled one of two ways:
+
+   - Production (CI): the deploy workflows run the Tailwind CLI on this file
+     to produce assets/css/compiled.css (gitignored), which baseof.html links
+     as a small static stylesheet. The CLI scans layouts/, assets/ and
+     content/ for utility classes automatically.
+   - Local dev (issue #556 - no local build step): when compiled.css is
+     absent, baseof.html loads the Tailwind Play CDN (@tailwindcss/browser)
+     and inlines this file as <style type="text/tailwindcss">, compiling
+     utility classes in the browser at runtime.
+
+   Notes:
+   - The framework import below is REQUIRED by both pipelines. The CDN only
+     auto-injects it when the stylesheet contains no import at-rule at all
+     (it checks for the literal substring, comments included); without it no
+     theme or utilities are registered and every apply directive throws
+     "Cannot apply unknown utility class".
+   - No plugin directives: the CDN cannot load plugins. The typography
+     `prose` classes come from the pre-compiled assets/css/typography.css
+     (see typography.src.css).
+   ========================================================================== */
+
+@import "tailwindcss";
+
+/* System dark mode follows prefers-color-scheme via the .dark class on
+   <html> (set synchronously in baseof.html before styles load). */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Self-hosted Inter variable font (see @font-face in baseof.html). */
+  --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Native selects often ignore inherited fonts (especially on Windows). */
+  select,
+  optgroup,
+  option {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: #334155;   /* slate-700 - stays visible on light and dark surfaces */
+    color: #f8fafc;        /* slate-50 */
+  }
+
+  /* Pagefind search-term highlighting on destination pages (arriving from a
+     search result). addStyles is disabled in JS so these on-brand styles win. */
+  mark.pagefind-highlight,
+  .pagefind-highlight {
+    background-color: #fde68a;   /* amber-200 */
+    color: #422006;              /* amber-950 */
+    border-radius: 2px;
+    padding: 0 0.12em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid rgb(15 23 42 / 0.9);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+
+  /* Catch-all focus ring for any other focusable element */
+  :focus-visible {
+    outline: 2px solid #0f172a;
+    outline-offset: 2px;
+  }
+
+  /* Respect reduced-motion preferences globally (honors the OS/browser setting). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Scroll-to-top button visibility (toggled via JS). `visibility` keeps the
+     hidden button out of the tab order, delayed so the fade-out still runs. */
+  .scroll-to-top {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 200ms ease-in-out, visibility 0s linear 200ms;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  /* Theme toggle: show only the icon for the active state (set by main.js). */
+  [data-theme-toggle] :is(.osd-theme-icon-light, .osd-theme-icon-system, .osd-theme-icon-dark) {
+    display: none;
+  }
+  [data-theme-toggle][data-theme-state="light"] .osd-theme-icon-light,
+  [data-theme-toggle][data-theme-state="system"] .osd-theme-icon-system,
+  [data-theme-toggle][data-theme-state="dark"] .osd-theme-icon-dark {
+    display: block;
+  }
+}
+
+@media print {
+  /* Hide non-essential elements */
+  header,
+  footer,
+  nav,
+  .scroll-to-top,
+  .breadcrumbs,
+  .share-buttons,
+  button,
+  .sr-only,
+  .toc,
+  [aria-label="Page navigation"],
+  [aria-label="Skip to content"] {
+    display: none !important;
+  }
+
+  /* Reset background colors */
+  body,
+  main,
+  article,
+  .prose {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure content fills page */
+  body {
+    min-height: auto;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Better link handling */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="/"]:after,
+  a[href^="#"]:after {
+    content: none;
+  }
+
+  /* Page breaks */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  img,
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  /* Better image handling */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Code blocks */
+  pre,
+  code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Remove shadows and borders */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Article specific */
+  article {
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+@layer components {
+  .osd-card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600;
+  }
+
+  .osd-surface {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900;
+  }
+
+  .osd-card-link {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-slate-100/25 dark:focus-visible:ring-offset-slate-950;
+  }
+
+  .osd-breadcrumb {
+    @apply flex flex-wrap items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400;
+  }
+
+  .osd-breadcrumb a {
+    @apply transition hover:text-slate-900 dark:hover:text-slate-100;
+  }
+
+  .osd-breadcrumb__sep {
+    @apply h-4 w-4 shrink-0 text-slate-300 dark:text-slate-600;
+  }
+
+  .osd-breadcrumb__current {
+    @apply font-medium text-slate-700 dark:text-slate-300;
+  }
+
+  .osd-sprite {
+    @apply absolute h-0 w-0 overflow-hidden;
+  }
+
+  .osd-pill {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+
+  .osd-tag {
+    @apply rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700 dark:border dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100;
+  }
+
+  .osd-tag--link {
+    @apply px-3 py-1 transition hover:bg-slate-200 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-1 dark:hover:border-slate-500 dark:hover:bg-slate-600 dark:hover:text-slate-50;
+  }
+
+  .osd-btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white dark:focus-visible:ring-slate-100 dark:focus-visible:ring-offset-slate-950;
+  }
+
+  .osd-btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 dark:focus-visible:ring-slate-100/25 dark:focus-visible:ring-offset-slate-950;
+  }
+
+  .osd-muted {
+    @apply text-slate-600 dark:text-slate-300;
+  }
+
+  .osd-section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400;
+  }
+
+  .osd-brand-dl {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2;
+  }
+
+  .osd-brand-dl--sm {
+    @apply gap-1 px-2.5 py-1 text-xs;
+  }
+
+  .osd-brand-dl--on-dark {
+    @apply border-slate-600 bg-slate-700 text-slate-100 hover:bg-slate-600 focus-visible:ring-white/30 focus-visible:ring-offset-slate-900;
+  }
+
+  .toc-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .toc-content li {
+    margin-top: 0.5rem;
+  }
+
+  .toc-content li:first-child {
+    margin-top: 0;
+  }
+
+  .toc-content ul ul {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .toc-content a {
+    @apply text-slate-600 no-underline transition-colors hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100;
+  }
+
+  .toc-content li.active > a {
+    @apply font-medium text-slate-950 dark:text-slate-100;
+  }
+
+  .osd-prose {
+    @apply text-slate-800 leading-relaxed;
+  }
+
+  .osd-prose > * + * {
+    @apply mt-4;
+  }
+
+  .osd-prose h2 {
+    @apply mt-10 text-2xl font-semibold tracking-tight text-slate-950;
+  }
+
+  .osd-prose h3 {
+    @apply mt-8 text-xl font-semibold tracking-tight text-slate-950;
+  }
+
+  .osd-prose a {
+    @apply font-medium text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950;
+  }
+
+  .osd-prose ul {
+    @apply list-disc pl-5;
+  }
+
+  .osd-prose ol {
+    @apply list-decimal pl-5;
+  }
+
+  .osd-prose li {
+    @apply mt-2;
+  }
+
+  .osd-prose code {
+    @apply rounded bg-slate-900/5 px-1 py-0.5 font-mono text-[0.9em] text-slate-900;
+  }
+
+  .osd-prose pre {
+    @apply overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 text-sm;
+  }
+
+  .osd-prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .osd-prose blockquote {
+    @apply border-l-2 border-slate-200 pl-4 text-slate-700;
+  }
+
+  /* ------------------------------------------------------------------------
+     Image lightbox - a native <dialog> opened with showModal() (focus trap,
+     Escape, inert page and top layer come from the platform). JS wraps each
+     content image in an .osd-lightbox-trigger button.
+     ------------------------------------------------------------------------ */
+
+  /* The wrapper button keeps the image's prose layout (margins stay on the
+     img/picture inside) and adds the zoom affordance + a visible focus ring.
+     fit-content + auto margins keep the hit area the size of the image and
+     preserve the render hook's mx-auto centering. */
+  .osd-lightbox-trigger {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+  }
+
+  .osd-lightbox-trigger:focus-visible {
+    outline: 2px solid rgb(15 23 42 / 0.9);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+
+  .osd-lightbox {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: none;
+    grid-template-rows: auto 1fr auto;
+    background: rgb(2 6 23 / 0.92);   /* slate-950 */
+    color: #f8fafc;                    /* slate-50 */
+  }
+
+  .osd-lightbox[open] {
+    display: grid;
+    animation: osd-lb-fade-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .osd-lightbox::backdrop {
+    background: transparent;           /* the dialog itself is the scrim */
+  }
+
+  @keyframes osd-lb-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .osd-lightbox__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .osd-lightbox__counter {
+    margin: 0;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    color: rgb(248 250 252 / 0.7);
+  }
+
+  .osd-lightbox__controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .osd-lightbox__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;                   /* WCAG touch target */
+    min-height: 44px;
+    border: 1px solid rgb(248 250 252 / 0.25);
+    border-radius: 0.5rem;
+    background: rgb(248 250 252 / 0.08);
+    color: #f8fafc;
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+  }
+
+  .osd-lightbox__btn:hover {
+    background: rgb(248 250 252 / 0.2);
+  }
+
+  .osd-lightbox__btn:focus-visible {
+    outline: 2px solid #f8fafc;        /* light ring - the dark scrim behind */
+    outline-offset: 2px;
+  }
+
+  .osd-lightbox__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 0;
+    margin: 0;
+    padding: 0 1rem;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+
+  .osd-lightbox__img {
+    display: block;
+    max-width: min(100%, 72rem);
+    max-height: calc(100vh - 10rem);
+    max-height: calc(100dvh - 10rem);
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .osd-lightbox__caption {
+    max-width: 65ch;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: center;
+    color: rgb(248 250 252 / 0.8);
+  }
+
+  /* Screen-reader announcements only; visually hidden. */
+  .osd-lightbox__status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* ==========================================================================
+   Site search - a custom UI built on the Pagefind JS API.
+   Uses the site's slate palette, inherits the body font, and mirrors the
+   card / radius / spacing language used elsewhere on the site.
+   ========================================================================== */
+
+/* Dialog shell */
+.osd-search-dialog {
+  width: min(40rem, calc(100vw - 1.5rem));
+  max-width: 40rem;
+  margin: 8vh auto auto;
+  padding: 0;
+  border: 1px solid #e2e8f0;            /* slate-200 */
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 24px 60px -20px rgba(15, 23, 42, 0.45);
+  overflow: hidden;
+}
+
+.osd-search-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.45);   /* slate-900 @ 45% */
+  backdrop-filter: blur(2px);
+}
+
+/* Component layout: fixed search bar + footer, scrollable results */
+.osd-search {
+  display: flex;
+  flex-direction: column;
+  max-height: min(72vh, 38rem);
+  font: inherit;
+  color: #0f172a;                       /* slate-900 */
+}
+
+/* --- Search bar --- */
+.osd-search__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.osd-search__bar-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  flex: none;
+  color: #94a3b8;                       /* slate-400 */
+}
+
+.osd-search__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #0f172a;
+  appearance: none;
+}
+
+.osd-search__field::placeholder { color: #94a3b8; }
+.osd-search__field:focus { outline: none; }
+.osd-search__field::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+
+.osd-search__close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  color: #64748b;                       /* slate-500 */
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.osd-search__close:hover { background: #f1f5f9; color: #0f172a; }
+.osd-search__close:focus-visible { outline: 2px solid #0f172a; outline-offset: 2px; }
+
+/* --- Results panel --- */
+.osd-search__panel {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.osd-search__status {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.osd-search__results {
+  list-style: none;
+  margin: 0;
+  padding: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+/* Hide the redundant status line once we have a results list */
+.osd-search__results:not(:empty) { padding-top: 0; }
+
+.osd-search__result { border-radius: 0.75rem; }
+.osd-search__result.is-active { background: #f1f5f9; }   /* slate-100 */
+
+.osd-search__result-main {
+  display: block;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.osd-search__result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.osd-search__result-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  color: #0f172a;
+}
+
+.osd-search__badge {
+  flex: none;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.osd-search__result.is-active .osd-search__badge { background: #ffffff; }
+
+.osd-search__result-excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #475569;                       /* slate-600 */
+}
+
+.osd-search__result-excerpt mark,
+.osd-search__sub mark {
+  padding: 0 0.1em;
+  border-radius: 2px;
+  background: rgba(15, 23, 42, 0.1);    /* subtle slate highlight, on-brand */
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* --- Sub-results (section jump links) --- */
+.osd-search__subs {
+  margin: 0.125rem 0.5rem 0.5rem 1.625rem;
+  padding-left: 0.625rem;
+  border-left: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.osd-search__sub {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  color: #475569;
+  text-decoration: none;
+}
+
+.osd-search__sub svg { height: 0.75rem; width: 0.75rem; flex: none; color: #94a3b8; }
+.osd-search__sub:hover { background: #f1f5f9; color: #0f172a; }
+.osd-search__sub:hover svg { color: #475569; }
+
+/* --- Footer --- */
+.osd-search__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.625rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.6875rem;
+  color: #94a3b8;
+}
+
+.osd-search__hint { display: inline-flex; align-items: center; gap: 0.25rem; }
+
+.osd-search__footer kbd {
+  font: inherit;
+  font-size: 0.6875rem;
+  min-width: 1.25rem;
+  padding: 0.0625rem 0.3125rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  border-bottom-width: 2px;
+  border-radius: 0.375rem;
+  background: #f8fafc;
+  color: #475569;
+}
+
+.osd-search__brand { margin-left: auto; }
+
+/* Hide the keyboard hints on very narrow screens, keep the credit */
+@media (max-width: 28rem) {
+  .osd-search__hint { display: none; }
+  .osd-search__brand { margin-left: 0; }
+}
+
+/* Entrance animation (disabled for reduced-motion users) */
+@media (prefers-reduced-motion: no-preference) {
+  .osd-search-dialog[open] { animation: osd-search-in 160ms ease-out; }
+  .osd-search-dialog[open]::backdrop { animation: osd-search-backdrop-in 160ms ease-out; }
+}
+
+@keyframes osd-search-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes osd-search-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dark .osd-search-dialog {
+  border-color: #334155;              /* slate-700 */
+  background: #0f172a;                /* slate-900 */
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.65);
+}
+
+.dark .osd-search {
+  color: #f1f5f9;                     /* slate-100 */
+}
+
+.dark .osd-search__bar {
+  border-bottom-color: #334155;
+}
+
+.dark .osd-search__bar-icon { color: #64748b; }
+
+.dark .osd-search__field { color: #f1f5f9; }
+.dark .osd-search__field::placeholder { color: #64748b; }
+
+.dark .osd-search__close { color: #94a3b8; }
+.dark .osd-search__close:hover { background: #1e293b; color: #f8fafc; }
+.dark .osd-search__close:focus-visible { outline-color: #f8fafc; }
+
+.dark .osd-search__status { color: #94a3b8; }
+
+.dark .osd-search__result.is-active { background: #1e293b; }
+
+.dark .osd-search__result-title { color: #f8fafc; }
+
+.dark .osd-search__badge {
+  border-color: #475569;
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.dark .osd-search__result.is-active .osd-search__badge { background: #0f172a; }
+
+.dark .osd-search__result-excerpt { color: #94a3b8; }
+
+.dark .osd-search__result-excerpt mark,
+.dark .osd-search__sub mark {
+  background: rgba(248, 250, 252, 0.15);
+  color: #f8fafc;
+}
+
+.dark .osd-search__subs { border-left-color: #334155; }
+
+.dark .osd-search__sub { color: #94a3b8; }
+.dark .osd-search__sub svg { color: #64748b; }
+.dark .osd-search__sub:hover { background: #1e293b; color: #f8fafc; }
+.dark .osd-search__sub:hover svg { color: #94a3b8; }
+
+.dark .osd-search__footer {
+  border-top-color: #334155;
+  color: #64748b;
+}
+
+.dark .osd-search__footer kbd {
+  border-color: #475569;
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+/* View Transitions API — cached via compiled.css instead of per-page inline styles */
+@view-transition {
+  navigation: auto;
+}
+
+body > header {
+  view-transition-name: site-header;
+}
+
+body > footer {
+  view-transition-name: site-footer;
+}
+
+body > main {
+  view-transition-name: main-content;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(main-content) {
+  animation: 250ms ease-out both osd-fade-out;
+}
+
+::view-transition-new(main-content) {
+  animation: 250ms ease-in both osd-fade-in;
+}
+
+@keyframes osd-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes osd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+}
+
+@supports not (view-transition-name: none) {
+  body > main {
+    transition: opacity 150ms ease;
+  }
+}
+
+/* Dark theme rules live in assets/css/dark-theme.css (always linked from baseof.html after Tailwind). */
+
+/* ==========================================================================
+   Automatic accessibility preferences
+   These honor the user's OS/browser settings directly - there are no manual
+   controls. High-contrast styling kicks in under prefers-contrast: more, and
+   reduced motion is handled by the prefers-reduced-motion block in @layer base
+   above. Rules here are intentionally unlayered so they win over Tailwind
+   utilities (unlayered styles outrank @layer styles) without !important.
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  /* OSD uses Tailwind slate utilities directly (no theme variables to remap),
+     so darken the muted text/icons and strengthen borders on light surfaces.
+     Descendants of dark (slate-800/900/950) backgrounds are excluded so their
+     light-on-dark text is left untouched. */
+  :is(.text-slate-400, .text-slate-500):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+    color: #1e293b;   /* slate-800 */
+  }
+  .text-slate-600:not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+    color: #0f172a;   /* slate-900 */
+  }
+  :is(.border-slate-100, .border-slate-200):not(:is(.bg-slate-800, .bg-slate-900, .bg-slate-950) *) {
+    border-color: #94a3b8;   /* slate-400 */
+  }
+  /* Rich content (Tailwind Typography) - remap its CSS variables for legibility. */
+  .prose {
+    --tw-prose-body: #0f172a;
+    --tw-prose-headings: #000000;
+    --tw-prose-links: #0f172a;
+    --tw-prose-bold: #000000;
+    --tw-prose-captions: #1e293b;
+    --tw-prose-quotes: #0f172a;
+  }
+  mark.pagefind-highlight {
+    outline: 2px solid #0f172a;
+  }
+}

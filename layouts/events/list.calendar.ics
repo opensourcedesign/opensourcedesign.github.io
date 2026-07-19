@@ -1,0 +1,49 @@
+{{- $events := where site.RegularPages "Section" "events" -}}
+{{- $upcoming := where $events "Params.status" "in" (slice "upcoming" "started") -}}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Open Source Design//Events Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Open Source Design Events
+X-WR-CALDESC:Meetups, online calls, conference tracks, and community gatherings from Open Source Design.
+{{- range $upcoming }}
+{{- $uid := printf "%s@opensourcedesign.net" .File.UniqueID }}
+{{- /* RFC 5545 TEXT escaping: decode HTML entities, then escape backslash,
+       semicolon, comma, and newline (backslash first so we don't double it). */ -}}
+{{- $title := .Title | plainify | htmlUnescape | replaceRE `\\` `\\` | replaceRE `;` `\;` | replaceRE `,` `\,` | replaceRE "\n" `\n` }}
+{{- $description := .Summary | plainify | htmlUnescape | replaceRE `\\` `\\` | replaceRE `;` `\;` | replaceRE `,` `\,` | replaceRE "\n" `\n` }}
+{{- $location := .Params.location | default "" | htmlUnescape | replaceRE `\\` `\\` | replaceRE `;` `\;` | replaceRE `,` `\,` | replaceRE "\n" `\n` }}
+{{- $url := .Permalink }}
+{{- /* Prefer an explicit machine-readable start (eventStart, ISO YYYY-MM-DD).
+       Fall back to eventDate when it is already ISO, then to the page date.
+       Never emit "now" - that misdates every human-worded eventDate. */ -}}
+{{- $eventDate := printf "%v" (.Params.eventDate | default "") -}}
+{{- $iso := "" -}}
+{{- with .Params.eventStart }}{{ $iso = printf "%v" . }}{{ end -}}
+{{- if not $iso }}{{ if findRE `^\d{4}-\d{2}-\d{2}$` $eventDate }}{{ $iso = $eventDate }}{{ end }}{{ end -}}
+{{- $dtstart := cond (ne $iso "") (replaceRE `-` "" $iso) (.Date.Format "20060102") -}}
+{{- /* All-day DTEND is exclusive, so add one day to cover the final date. */ -}}
+{{- $dtend := "" -}}
+{{- with .Params.endDate }}{{ $e := printf "%v" . }}{{ if findRE `^\d{4}-\d{2}-\d{2}$` $e }}{{ $dtend = ((time.AsTime $e).AddDate 0 0 1).Format "20060102" }}{{ end }}{{ end }}
+BEGIN:VEVENT
+UID:{{ $uid }}
+DTSTAMP:{{ now.Format "20060102T150405Z" }}
+DTSTART;VALUE=DATE:{{ $dtstart }}
+{{- if $dtend }}
+DTEND;VALUE=DATE:{{ $dtend }}
+{{- end }}
+{{- with .Params.recurrence }}
+RRULE:{{ . }}
+{{- end }}
+SUMMARY:{{ $title }}
+DESCRIPTION:{{ $description }}
+{{- if $location }}
+LOCATION:{{ $location }}
+{{- end }}
+URL:{{ $url }}
+STATUS:CONFIRMED
+END:VEVENT
+{{- end }}
+END:VCALENDAR
+

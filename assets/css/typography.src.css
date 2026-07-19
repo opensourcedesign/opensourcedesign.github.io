@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Source for assets/css/typography.css - DO NOT edit typography.css by hand.
+
+   The site compiles Tailwind at runtime via the Play CDN (@tailwindcss/browser),
+   which cannot load plugins. The @tailwindcss/typography `prose` classes (and
+   the prose-* variant utilities used in layouts/) are therefore pre-compiled
+   into a static stylesheet from this file. It also carries a copy of preflight
+   and the base theme, giving pages a readable baseline even before/without JS.
+
+   Regenerate after adding NEW prose-* classes to templates (standard utilities
+   never need this - the CDN compiles them in the browser). Use the Tailwind
+   STANDALONE CLI (a single binary, no Node/npm; it bundles the typography
+   plugin): download it from
+   https://github.com/tailwindlabs/tailwindcss/releases (e.g.
+   tailwindcss-windows-x64.exe / tailwindcss-linux-x64), then run:
+
+       tailwindcss -i assets/css/typography.src.css -o assets/css/typography.css --minify
+
+   `source(none)` disables template scanning: only the safelist below compiles.
+   The explicit @layer order must match the CDN's so both cascades line up.
+   ========================================================================== */
+
+@layer theme, base, components, utilities;
+@import "tailwindcss" source(none);
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Keep in sync with assets/css/main.css - makes the self-hosted Inter
+     variable font apply even before the Play CDN compiles (or without JS). */
+  --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* prose containers and modifiers used in layouts/ */
+@source inline("prose");
+@source inline("prose-{sm,slate,invert}");
+@source inline("dark:prose-invert");
+@source inline("not-prose");
+
+/* prose-* variant utilities used in layouts/ (plus close variations) */
+@source inline("prose-a:{underline,no-underline,underline-offset-2,underline-offset-4}");
+@source inline("prose-a:text-{slate-900,slate-950,white}");
+@source inline("dark:prose-a:text-{slate-100,white}");
+/* Per-link hover: `prose-a:hover:` targets a:hover. `hover:prose-a:` would
+   style ALL links whenever the container is hovered (v4 variants stack
+   left-to-right), which is broken; never safelist that order. */
+@source inline("prose-a:decoration-{slate-300,slate-600,slate-900,slate-950,white,white/50}");
+@source inline("dark:prose-a:decoration-{slate-600,white,white/50}");
+@source inline("prose-a:hover:decoration-{slate-300,slate-600,slate-900,slate-950,white,white/50}");
+@source inline("dark:prose-a:hover:decoration-{slate-100,white,white/50}");
+@source inline("prose-headings:{font-semibold,scroll-mt-20}");
+@source inline("prose-img:{cursor-zoom-in,rounded-lg,rounded-xl}");

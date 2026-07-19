@@ -1,0 +1,180 @@
+name: Email submitter when job or event is published
+
+# When a submission pull request (branch job/*, job-edit/*, event/* or
+# event-edit/*, opened by the job-submit Cloudflare Worker) is merged, look up
+# the submitter's private email - stored in Cloudflare KV by the Worker, keyed
+# by PR number - and notify them that their posting is live. The address is
+# never committed to the repo or shown in the PR; it is fetched at merge time
+# over an authenticated endpoint.
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: read
+  # Needed to list the merged PR's changed files when resolving the exact
+  # published URL for the email.
+  pull-requests: read
+
+jobs:
+  notify:
+    # Only fire on an actual merge of a submission branch.
+    if: >-
+      github.event.pull_request.merged == true &&
+      (startsWith(github.event.pull_request.head.ref, 'job/') ||
+       startsWith(github.event.pull_request.head.ref, 'job-edit/') ||
+       startsWith(github.event.pull_request.head.ref, 'event/') ||
+       startsWith(github.event.pull_request.head.ref, 'event-edit/') ||
+       startsWith(github.event.pull_request.head.ref, 'resource/'))
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned to a full commit SHA (supply-chain hardening); comment records the version.
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+
+      - name: Look up submitter email
+        id: lookup
+        env:
+          LOOKUP_URL: ${{ secrets.JOB_LOOKUP_URL }}
+          LOOKUP_SECRET: ${{ secrets.JOB_LOOKUP_SECRET }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          if [ -z "$LOOKUP_URL" ] || [ -z "$LOOKUP_SECRET" ]; then
+            echo "Lookup secrets not configured; skipping email."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          resp="$(curl -fsS -H "Authorization: Bearer ${LOOKUP_SECRET}" "${LOOKUP_URL}?pr=${PR_NUMBER}" || true)"
+          found="$(printf '%s' "$resp" | jq -r '.found // false')"
+          if [ "$found" != "true" ]; then
+            echo "No email on file for PR #${PR_NUMBER}; nothing to send."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Strip CR/LF so an attacker-influenced title/email cannot inject extra
+          # workflow outputs (GitHub Actions output-injection hardening).
+          email="$(printf '%s' "$resp" | jq -r '.email' | tr -d '\r\n')"
+          title="$(printf '%s' "$resp" | jq -r '.title // ""' | tr -d '\r\n')"
+          # HTML-escaped copy of the title for the html_body (the title is
+          # submitter-provided and must not inject markup into the email).
+          title_html="$(printf '%s' "$title" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g')"
+          # The branch prefix decides the wording (job posting vs. event).
+          case "$HEAD_REF" in
+            event-edit/*) kind="event update" ;;
+            event/*)      kind="event" ;;
+            job-edit/*)   kind="job posting update" ;;
+            resource/*)   kind="resource suggestion" ;;
+            *)            kind="job posting" ;;
+          esac
+          {
+            echo "found=true"
+            echo "email=${email}"
+            echo "title=${title}"
+            echo "title_html=${title_html}"
+            echo "kind=${kind}"
+          } >> "$GITHUB_OUTPUT"
+
+      # Link the email to the actual published page (job/event permalink or
+      # the resource's category anchor) instead of the generic section list.
+      # Falls back to the section URL inside the script on any error.
+      - name: Resolve published URL
+        id: resolve
+        if: steps.lookup.outputs.found == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        run: node .github/scripts/published-url.mjs
+
+      - name: Resolve approval email copy
+        id: copy
+        if: steps.lookup.outputs.found == 'true'
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: node .github/scripts/approval-email-meta.mjs
+
+      - name: Send notification email
+        if: steps.lookup.outputs.found == 'true'
+        # Pinned to a full commit SHA (supply-chain hardening); comment records the version.
+        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          # Set the SMTP_SECURE repo secret to "true" for implicit TLS (port 465).
+          # Leave unset for STARTTLS (port 587, the common default).
+          secure: ${{ secrets.SMTP_SECURE || 'false' }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          from: Open Source Design <${{ secrets.SMTP_FROM }}>
+          to: ${{ steps.lookup.outputs.email }}
+          subject: Your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} is now live on Open Source Design
+          # Plain-text part (multipart fallback for clients that block HTML).
+          body: |
+            Hi,
+
+            Good news - your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" has been
+            reviewed and is now published on Open Source Design:
+
+            ${{ steps.resolve.outputs.url }}
+
+            Thanks for supporting open source design!
+
+            - The Open Source Design community
+          html_body: |
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <style>
+                /* Same self-hosted Inter the site uses; clients that support
+                   web fonts (Apple Mail, Thunderbird, …) render it, the rest
+                   fall back to the system stack in the inline styles. */
+                @font-face {
+                  font-family: "InterVariable";
+                  font-style: normal;
+                  font-weight: 100 900;
+                  src: url("https://opensourcedesign.net/fonts/InterVariable.woff2") format("woff2");
+                }
+              </style>
+            </head>
+            <body style="margin:0;padding:0;background-color:#f1f5f9;">
+              <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} has been reviewed and published on Open Source Design.</div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f1f5f9;">
+                <tr><td align="center" style="padding:32px 16px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;">
+                    <tr>
+                      <td style="background-color:#0f172a;border-radius:12px 12px 0 0;padding:20px 32px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+                          <td><img src="https://opensourcedesign.net/images/email/osd-logo-white.png" width="32" height="32" alt="Open Source Design logo" style="display:block;border:0;" /></td>
+                          <td style="padding-left:12px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#ffffff;">Open Source Design</td>
+                        </tr></table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background-color:#ffffff;padding:36px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+                        <h1 style="margin:0 0 20px;font-size:22px;line-height:1.3;color:#0f172a;">Your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} is live</h1>
+                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Hi,</p>
+                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Good news - your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} <strong style="color:#0f172a;">&ldquo;${{ steps.lookup.outputs.title_html }}&rdquo;</strong> has been reviewed and is now published on Open Source Design.</p>
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0;"><tr>
+                          <td style="border-radius:8px;background-color:#0f172a;">
+                            <a href="${{ steps.resolve.outputs.url }}" style="display:inline-block;padding:13px 28px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;">${{ steps.copy.outputs.view_cta || 'View it on the site' }} &rarr;</a>
+                          </td>
+                        </tr></table>
+                        <p style="margin:0;font-size:13px;line-height:1.6;color:#64748b;">Or copy this link:<br /><a href="${{ steps.resolve.outputs.url }}" style="color:#0f766e;word-break:break-all;">${{ steps.resolve.outputs.url }}</a></p>
+                        <p style="margin:24px 0 0;font-size:15px;line-height:1.6;color:#334155;">Thanks for supporting open source design!</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background-color:#f8fafc;border-radius:0 0 12px 12px;border-top:1px solid #e2e8f0;padding:20px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.7;color:#64748b;">
+                        <strong style="color:#475569;">Open Source Design</strong> - a community of designers and developers improving the usability of open source software.<br />
+                        <a href="https://opensourcedesign.net" style="color:#64748b;">opensourcedesign.net</a> &nbsp;&middot;&nbsp; <a href="https://discourse.opensourcedesign.net" style="color:#64748b;">Forum</a> &nbsp;&middot;&nbsp; <a href="${{ steps.copy.outputs.board_url || 'https://opensourcedesign.net/jobs/' }}" style="color:#64748b;">${{ steps.copy.outputs.board_name || 'Job board' }}</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td></tr>
+              </table>
+            </body>
+            </html>

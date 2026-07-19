@@ -1,0 +1,58 @@
+# Lint job, event, and resource content changed by a pull request (submission PRs from
+# the Worker as well as manual ones). Validates front matter and catches the
+# Markdown pitfalls that render broken pages (4-space indents becoming code
+# blocks, `###Heading` without a space, pseudo-bullets). Errors fail the
+# check so moderators see problems before merging.
+name: Lint changed content
+
+on:
+  pull_request:
+    paths:
+      - "content/jobs/**.md"
+      - "content/events/**.md"
+      - "content/resources/**.md"
+      - "data/resources.yaml"
+      - "data/bibliography.yaml"
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Lint changed content files
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          files="$(git diff --diff-filter=AM --name-only "$BASE_SHA" "$HEAD_SHA" -- 'content/jobs/*.md' 'content/events/*.md' 'content/resources/*.md' 'content/resources/articles/*.md')"
+          if [ -n "$files" ]; then
+            # shellcheck disable=SC2086
+            node .github/scripts/lint-content.mjs $files
+          else
+            echo "No job/event/resource content changed."
+          fi
+          data_files="$(git diff --diff-filter=AM --name-only "$BASE_SHA" "$HEAD_SHA" -- 'data/resources.yaml' 'data/bibliography.yaml')"
+          if [ -n "$data_files" ]; then
+            npm install --no-save yaml@2
+            node .github/scripts/lint-data-yaml.mjs
+          fi
+
+      - name: Lint all job and event postings
+        if: github.event_name == 'push'
+        run: |
+          files="$(find content/jobs content/events -name '*.md' ! -name '_index.md' ! -name 'archive.md' ! -name 'how-to-post.md' ! -name 'job-form.md' ! -name 'event-form.md' ! -name 'suggest.md' ! -name 'links.md' ! -name 'bibliography.md' ! -name 'tools-and-code.md')"
+          # shellcheck disable=SC2086
+          node .github/scripts/lint-content.mjs $files
+          npm install --no-save yaml@2
+          node .github/scripts/lint-data-yaml.mjs

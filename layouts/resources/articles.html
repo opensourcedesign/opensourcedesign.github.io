@@ -1,0 +1,50 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20" data-pagefind-body>
+    <header>
+      {{ $crumbItems := slice }}
+      {{ with .Parent }}{{ $crumbItems = $crumbItems | append (dict "label" .Title "href" .RelPermalink) }}{{ end }}
+      {{ partial "breadcrumb.html" (dict "items" $crumbItems "current" .Title "pagefind_ignore" true) }}
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    {{ with .Content }}
+      <div class="prose prose-slate mt-8 max-w-none">{{ . }}</div>
+    {{ end }}
+
+    <ul class="mt-10 border-t border-slate-200" role="list">
+      {{ range .RegularPages.ByDate.Reverse }}
+        <li class="border-b border-slate-200">
+          <a class="group grid grid-cols-1 gap-1 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:grid-cols-[8rem_1fr] sm:gap-6" href="{{ .RelPermalink }}">
+            {{ with .Date }}
+              <time class="text-sm text-slate-500 sm:pt-0.5" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
+            {{ else }}
+              <span aria-hidden="true"></span>
+            {{ end }}
+            <span>
+              <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              {{ $byline := .Params.author }}
+              {{ if not $byline }}{{ with .Params.authors }}{{ $byline = delimit . ", " }}{{ end }}{{ end }}
+              {{/* Community articles without a named author are credited to
+                   the organization itself. */}}
+              {{ if not $byline }}{{ $byline = "Open Source Design" }}{{ end }}
+              {{ with $byline }}<span class="mt-0.5 block text-sm text-slate-500">By {{ . }}</span>{{ end }}
+              {{ with .Summary }}
+                <span class="mt-1.5 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 160 }}</span>
+              {{ end }}
+            </span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+
+    <div class="mt-12 border-t border-slate-200 pt-6" data-pagefind-ignore>
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ with .Parent }}{{ .RelPermalink }}{{ else }}{{ partial "site-path.html" "/resources/" }}{{ end }}">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Back to resources
+      </a>
+    </div>
+  </div>
+{{ end }}

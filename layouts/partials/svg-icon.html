@@ -1,0 +1,20 @@
+{{/*
+  SVG Icon Partial (sprite-backed)
+
+  Usage: {{ partial "svg-icon.html" (dict "name" "calendar" "class" "h-4 w-4") }}
+
+  Parameters:
+  - name: Icon name (required) — must match a symbol in svg-sprite.html
+  - class: CSS classes (default: "h-4 w-4")
+*/}}
+
+{{ $name := .name }}
+{{ $class := .class | default "h-4 w-4" }}
+{{ $id := printf "osd-icon-%s" $name }}
+{{ $filled := in (slice "github" "heart") $name }}
+
+{{ if $filled }}
+  <svg class="{{ $class }}" viewBox="{{ if eq $name "heart" }}0 0 20 20{{ else }}0 0 24 24{{ end }}" fill="currentColor" aria-hidden="true"><use href="#{{ $id }}"/></svg>
+{{ else }}
+  <svg class="{{ $class }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ if in (slice "plus" "arrow-right" "chevron-right" "search") $name }}2{{ else }}1.5{{ end }}" aria-hidden="true"><use href="#{{ $id }}"/></svg>
+{{ end }}

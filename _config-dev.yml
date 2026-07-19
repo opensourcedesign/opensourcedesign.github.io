@@ -1,8 +1,0 @@
-# Local Server
-local: true
-host: 0.0.0.0
-port: 4000
-url: "http://0.0.0.0:4000/"
-
-# Sub-Repos
-include: ["_jobs", "_organization", "_patterns", "_talks"]

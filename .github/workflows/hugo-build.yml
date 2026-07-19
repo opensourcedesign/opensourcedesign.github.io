@@ -1,0 +1,118 @@
+name: Build and Deploy Hugo
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: 0.164.0
+  # Keep in lockstep with the @tailwindcss/browser version pinned in
+  # layouts/_default/baseof.html (the local-dev Play CDN fallback).
+  TAILWIND_VERSION: 4.3.2
+  # Pagefind is a standalone Rust binary downloaded straight from GitHub
+  # releases - no npm involved. Update the version and checksum together
+  # (checksum from the .tar.gz.sha256 asset on the release page).
+  PAGEFIND_VERSION: 1.5.2
+  PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      # The trailing comment records the human-readable version.
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      # Cache Hugo's processed asset derivatives (resized images, AVIF/WebP
+      # encodes). This skips expensive re-encoding when the source images and
+      # image templates are unchanged, keeping builds fast.
+      - name: Cache Hugo resources
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
+          restore-keys: |
+            hugo-resources-
+
+      # Compile Tailwind to a small static stylesheet for production. Local
+      # contributors still need no build step (issue #556): when this file is
+      # absent, baseof.html falls back to the Tailwind Play CDN. The CLI scans
+      # layouts/, assets/ and content/ for utility classes automatically.
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Compile Tailwind CSS
+        run: |
+          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
+          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+
+      # The Pagefind search indexer is fetched as a prebuilt binary.
+      - name: Install Pagefind
+        run: |
+          curl -fsSL -o pagefind.tar.gz \
+            "https://github.com/Pagefind/pagefind/releases/download/v${PAGEFIND_VERSION}/pagefind-v${PAGEFIND_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+          echo "${PAGEFIND_SHA256}  pagefind.tar.gz" | sha256sum --check
+          tar -xzf pagefind.tar.gz
+          rm pagefind.tar.gz
+          chmod +x pagefind
+
+      - name: Build site
+        run: bash .github/scripts/build-hugo-site.sh production
+
+      # Mirror public/ to gh-pages root but keep pr-preview/ so production
+      # deploys do not wipe open PR previews (see pr-preview-action docs).
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          workdir="gh-pages-deploy"
+          preview_backup=""
+          rm -rf "$workdir"
+          if git clone --depth=1 --branch=gh-pages \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" \
+            "$workdir" 2>/dev/null; then
+            :
+          else
+            mkdir "$workdir"
+            git -C "$workdir" init
+            git -C "$workdir" checkout --orphan gh-pages
+            git -C "$workdir" remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+          fi
+          if [ -d "$workdir/pr-preview" ]; then
+            preview_backup=$(mktemp -d)
+            cp -a "$workdir/pr-preview" "$preview_backup/"
+          fi
+          find "$workdir" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -a public/. "$workdir/"
+          if [ -n "$preview_backup" ] && [ -d "$preview_backup/pr-preview" ]; then
+            cp -a "$preview_backup/pr-preview" "$workdir/"
+          fi
+          git -C "$workdir" add -A
+          if git -C "$workdir" diff --staged --quiet; then
+            echo "No gh-pages changes to deploy"
+            exit 0
+          fi
+          git -C "$workdir" commit -m "deploy: Hugo site from ${GITHUB_SHA}"
+          git -C "$workdir" push origin HEAD:gh-pages

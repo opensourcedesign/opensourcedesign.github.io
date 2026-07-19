@@ -1,0 +1,160 @@
+{{- /* Renders the curated resources directory from data/resources.yaml.
+     Place the `resources` shortcode in a page's markdown to transclude the
+     whole directory there (same opt-in pattern as the `bibliography`
+     shortcode). Editing happens in the YAML file only.
+
+     Adds a category filter (chips), a live text search, and URL state
+     (?cat=<id>&q=<query>) mirroring the jobs board interaction. `not-prose`
+     opts the section out of typography styling. */ -}}
+{{- $categories := hugo.Data.resources -}}
+{{- $total := 0 -}}
+{{- range $categories }}{{ $total = add $total (len .items) }}{{ end -}}
+{{ with $categories }}
+  <section class="not-prose my-10" aria-labelledby="resources-directory-heading">
+    <h2 class="sr-only" id="resources-directory-heading">Resources directory</h2>
+
+    {{/* Filters */}}
+    <div class="flex flex-col gap-4 border-t border-slate-200 pt-8" role="search" aria-label="Filter resources">
+      <div class="flex max-w-md gap-2">
+        <label class="sr-only" for="resources-q">Search resources by name or description</label>
+        <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="resources-q" type="search" placeholder="Search resources…" autocomplete="off" />
+        <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="resources-clear" aria-label="Clear search">Clear</button>
+      </div>
+      <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter by category">
+        <button class="osd-filter rounded-full border border-slate-900 bg-slate-900 px-3 py-1.5 text-[13px] font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-cat="all" aria-pressed="true">All <span class="opacity-60">{{ $total }}</span></button>
+        {{ range . }}
+          <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-cat="{{ .id }}" aria-pressed="false">{{ .title }} <span class="opacity-60">{{ len .items }}</span></button>
+        {{ end }}
+      </div>
+    </div>
+
+    <p class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true"><span id="resources-count">{{ $total }}</span> resources</p>
+    <p class="mt-6 hidden text-sm text-slate-600" id="resources-empty" role="status">No resources match your filters. Try a different category or search term.</p>
+
+    {{/* Directory: categories flow their items into responsive CSS columns so
+         the page stays short - items are compact “name - blurb” entries instead
+         of full-width bordered rows. */}}
+    <div id="resources-directory">
+      {{ range . }}
+        {{ $cat := . }}
+        <section class="resource-cat mt-10 scroll-mt-24" id="{{ .id }}" data-cat="{{ .id }}" aria-labelledby="cat-{{ .id }}">
+          <h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-{{ .id }}">{{ .title }} <span class="font-normal normal-case tracking-normal text-slate-500">{{ len .items }}</span></h3>
+          {{ with .note }}
+            <div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&_a]:font-medium [&_a]:text-slate-900 [&_a]:underline [&_a]:decoration-slate-300 [&_a]:underline-offset-4 hover:[&_a]:decoration-slate-900">{{ . | markdownify }}</div>
+          {{ end }}
+          <ul class="mt-2 gap-x-10 sm:columns-2" role="list">
+            {{ range .items }}
+              {{- $hay := printf "%s %s %s" $cat.title .name (.description | default "") -}}
+              {{- range .links }}{{ $hay = printf "%s %s" $hay .text }}{{ end -}}
+              <li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="{{ $hay | lower }}">
+                <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+                {{ with .description }}<span class="text-slate-600"> {{ . }}</span>{{ end }}
+                {{ with .links }}
+                  <span class="text-slate-500">
+                    {{ range $i, $l := . }}{{ if $i }} · {{ else }}·{{ end }} <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-900" href="{{ $l.url }}" target="_blank" rel="noopener noreferrer">{{ $l.text }}</a>{{ end }}
+                  </span>
+                {{ end }}
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var root = document.getElementById('resources-directory');
+      if (!root) return;
+
+      var cats = Array.prototype.slice.call(root.querySelectorAll('.resource-cat'));
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('.osd-filter[data-cat]'));
+      var input = document.getElementById('resources-q');
+      var clearBtn = document.getElementById('resources-clear');
+      var countEl = document.getElementById('resources-count');
+      var emptyEl = document.getElementById('resources-empty');
+
+      function setPressed(activeCat) {
+        buttons.forEach(function (btn) {
+          var on = btn.getAttribute('data-cat') === activeCat;
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          if (on) {
+            btn.classList.add('border-slate-900', 'bg-slate-900', 'text-white');
+            btn.classList.remove('border-slate-200', 'bg-white', 'text-slate-700', 'hover:border-slate-400');
+          } else {
+            btn.classList.remove('border-slate-900', 'bg-slate-900', 'text-white');
+            btn.classList.add('border-slate-200', 'bg-white', 'text-slate-700', 'hover:border-slate-400');
+          }
+        });
+      }
+
+      function getState() {
+        var params = new URLSearchParams(window.location.search);
+        return { cat: params.get('cat') || 'all', q: params.get('q') || '' };
+      }
+
+      function setState(next) {
+        var params = new URLSearchParams(window.location.search);
+        if (next.cat && next.cat !== 'all') params.set('cat', next.cat); else params.delete('cat');
+        if (next.q) params.set('q', next.q); else params.delete('q');
+        var qs = params.toString();
+        window.history.replaceState({}, '', window.location.pathname + (qs ? ('?' + qs) : ''));
+      }
+
+      function apply() {
+        var state = getState();
+        var q = (state.q || '').trim().toLowerCase();
+        setPressed(state.cat);
+        if (input && input.value !== state.q) input.value = state.q;
+
+        var shown = 0;
+        cats.forEach(function (cat) {
+          var okCat = state.cat === 'all' || cat.getAttribute('data-cat') === state.cat;
+          var visibleItems = 0;
+          Array.prototype.slice.call(cat.querySelectorAll('.resource-item')).forEach(function (li) {
+            var okQ = !q || (li.getAttribute('data-haystack') || '').indexOf(q) !== -1;
+            var show = okCat && okQ;
+            li.hidden = !show;
+            if (show) visibleItems++;
+          });
+          cat.hidden = visibleItems === 0;
+          shown += visibleItems;
+        });
+
+        if (countEl) countEl.textContent = String(shown);
+        if (emptyEl) emptyEl.classList.toggle('hidden', shown !== 0);
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var next = getState();
+          next.cat = btn.getAttribute('data-cat');
+          setState(next);
+          apply();
+        });
+      });
+
+      if (input) {
+        input.addEventListener('input', function () {
+          var next = getState();
+          next.q = input.value;
+          setState(next);
+          apply();
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          var next = getState();
+          next.q = '';
+          setState(next);
+          apply();
+          if (input) input.focus();
+        });
+      }
+
+      window.addEventListener('popstate', apply);
+      apply();
+    })();
+  </script>
+{{ end }}

@@ -1,3 +1,5 @@
-summit/2017.html
-layouts/jobs.html
-layouts/default.html
+# Generated artifacts and third-party output.
+public/
+static/pagefind/
+assets/css/compiled.css
+node_modules/

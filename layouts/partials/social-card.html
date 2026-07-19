@@ -1,0 +1,98 @@
+{{/*
+  Generates a 1200x630 Open Graph card for a job posting: light editorial
+  background (assets/images/og-card-base.png) with the horizontal brand logo,
+  title, organization, compensation, and deadline. Cached by Hugo's image cache.
+*/}}
+{{ $card := "" }}
+{{ $page := . }}
+{{ $base := resources.Get "images/og-card-base.png" }}
+{{ $bold := resources.Get "fonts/og/Inter-Bold.ttf" }}
+{{ $med := resources.Get "fonts/og/Inter-Medium.ttf" }}
+{{ if and $base $bold $med }}
+  {{ $margin := 80 }}
+  {{ $contentTop := 96 }}
+  {{ $metaTop := 492 }}
+
+  {{/* Word-wrap (~30 chars/line, max 4 lines) with a right margin. */}}
+  {{ $maxChars := 30 }}
+  {{ $lines := slice }}
+  {{ $cur := "" }}
+  {{ range split $page.Title " " }}
+    {{ if and $cur (gt (add (len $cur) (len .)) $maxChars) }}
+      {{ $lines = $lines | append $cur }}
+      {{ $cur = . }}
+    {{ else }}
+      {{ $cur = trim (printf "%s %s" $cur .) " " }}
+    {{ end }}
+  {{ end }}
+  {{ if $cur }}{{ $lines = $lines | append $cur }}{{ end }}
+  {{ if gt (len $lines) 4 }}
+    {{ $lines = first 4 $lines }}
+    {{ $lines = (first 3 $lines) | append (printf "%s…" (index $lines 3)) }}
+  {{ end }}
+  {{ $title := delimit $lines "\n" }}
+  {{ $titleLines := len $lines }}
+
+  {{ $titleSize := 56 }}
+  {{ $lineSpacing := 14 }}
+  {{ if eq $titleLines 2 }}
+    {{ $titleSize = 52 }}
+    {{ $lineSpacing = 14 }}
+  {{ else if eq $titleLines 3 }}
+    {{ $titleSize = 46 }}
+    {{ $lineSpacing = 12 }}
+  {{ else if ge $titleLines 4 }}
+    {{ $titleSize = 40 }}
+    {{ $lineSpacing = 10 }}
+  {{ end }}
+  {{ $lineStep := add $titleSize $lineSpacing }}
+  {{ $blockH := sub (mul $titleLines $lineStep) $lineSpacing }}
+  {{ $freeH := sub (sub $metaTop 16) $contentTop }}
+  {{ $titleY := add $contentTop (div (sub $freeH $blockH) 2) }}
+
+  {{ $org := "" }}
+  {{ with $page.Params.organization }}
+    {{ $org = printf "%v" . }}
+    {{ if gt (len $org) 44 }}{{ $org = printf "%s…" (substr $org 0 43) }}{{ end }}
+  {{ end }}
+
+  {{ $comp := (printf "%v" ($page.Params.compensation | default "")) | lower }}
+  {{ $isPaid := eq $comp "paid" }}
+  {{ $isVol := or (in $comp "gratis") (in $comp "volunteer") (eq $comp "free") }}
+  {{ $compLabel := "" }}
+  {{ $compColor := "#64748b" }}
+  {{ if $isPaid }}
+    {{ $compLabel = "● Paid" }}
+    {{ $compColor = "#059669" }}
+  {{ else if $isVol }}
+    {{ $compLabel = "● Volunteer" }}
+    {{ $compColor = "#7c3aed" }}
+  {{ end }}
+
+  {{ $deadline := "" }}
+  {{ with $page.Params.deadline }}
+    {{ $deadline = printf "Apply by %s" ((time.AsTime (printf "%v" .)).Format "2 Jan 2006") }}
+  {{ end }}
+
+  {{ $img := $base.Filter
+    (images.Text "JOBS" (dict "color" "#64748b" "size" 18 "x" 1070 "y" 32 "font" $med))
+    (images.Text $title (dict "color" "#0f172a" "size" $titleSize "linespacing" $lineSpacing "x" $margin "y" $titleY "font" $bold))
+  }}
+  {{ if $compLabel }}
+    {{ $img = $img.Filter (images.Text $compLabel (dict "color" $compColor "size" 24 "x" $margin "y" 488 "font" $med)) }}
+  {{ end }}
+  {{ $metaY := 520 }}
+  {{ if and (not $compLabel) $org }}{{ $metaY = 488 }}{{ end }}
+  {{ if $org }}
+    {{ $img = $img.Filter (images.Text $org (dict "color" "#475569" "size" 22 "x" $margin "y" $metaY "font" $med)) }}
+    {{ $metaY = add $metaY 32 }}
+  {{ end }}
+  {{ if $deadline }}
+    {{ $img = $img.Filter (images.Text $deadline (dict "color" "#475569" "size" 22 "x" $margin "y" $metaY "font" $med)) }}
+  {{ end }}
+  {{ $img = $img.Filter (images.Text "opensourcedesign.net/jobs" (dict "color" "#94a3b8" "size" 18 "x" $margin "y" 588 "font" $med)) }}
+
+  {{ $card = $img | resources.Copy (printf "og/jobs/%s.png" ($page.File.ContentBaseName | urlize)) }}
+{{ end }}
+{{ return $card }}
+

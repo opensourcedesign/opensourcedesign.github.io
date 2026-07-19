@@ -1,0 +1,176 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20">
+    <div>
+      <header>
+        {{ partial "breadcrumb.html" (dict
+          "items" (slice (dict "label" "Events" "href" (partial "site-path.html" "/events/")))
+          "current" "Submit an event"
+          "current_id" "osd-crumb"
+        ) }}
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl" id="osd-heading">Submit an Event</h1>
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600" id="osd-intro">Add a meetup, conference track, workshop, or community gathering related to open source design. Submissions are reviewed by our community moderators before they appear on the events page and calendar.</p>
+      </header>
+
+      {{/* Edit-mode banner (filled in by JS when ?edit=<file> is present) */}}
+      <p class="mt-6 flex items-start gap-2 rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-800 ring-1 ring-inset ring-sky-200" id="osd-edit-banner" hidden>
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
+        </svg>
+        <span id="osd-edit-banner-text"></span>
+      </p>
+
+      {{/* Guidelines */}}
+      <p class="mt-6 flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+        </svg>
+        <span>Please read our <a class="font-semibold underline decoration-amber-400 underline-offset-4 transition hover:decoration-amber-800" href="{{ partial "site-path.html" "/about-us/code-of-conduct/" }}">Code of Conduct</a> before submitting.</span>
+      </p>
+
+      {{/* The form is fully JS-driven; give no-JS visitors a working path. */}}
+      <noscript>
+        <p class="mt-10 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          This form needs JavaScript. Without it, you can still submit an event by
+          <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.repoURL }}/new/{{ .Site.Params.repoBranch | default "master" }}/content/events" rel="noopener noreferrer">adding a Markdown file to <code>content/events/</code> on GitHub</a>
+          (copy an existing event as a template)
+          or by asking for help on <a class="font-semibold underline underline-offset-4" href="{{ .Site.Params.forumURL }}" rel="noopener noreferrer">the forum</a>.
+        </p>
+      </noscript>
+
+      {{/* Form */}}
+      <form id="osd-event-form" class="mt-10 space-y-12 border-t border-slate-200 pt-10" novalidate>
+        {{/* Event Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">1 · About the event</legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="space-y-2 sm:col-span-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="title">Event name <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="title" name="title" placeholder="e.g., Open Source Design Devroom at FOSDEM 2027" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="website">Event website <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="website" name="website" type="url" inputmode="url" placeholder="https://..." />
+              <p class="text-xs text-slate-500">Registration page, program, or announcement.</p>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="location">Location <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="location" name="location" placeholder="e.g., Brussels, Belgium - or Online" required />
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Date & Time Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">2 · Date &amp; time</legend>
+
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="start_date">Start date <span class="text-red-500">*</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="start_date" name="start_date" type="date" required />
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="end_date">End date <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="end_date" name="end_date" type="date" />
+              <p class="text-xs text-slate-500">Leave empty for a one-day event.</p>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="time">Time <span class="text-slate-400">(optional)</span></label>
+              <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="time" name="time" placeholder="e.g., 18:00–19:00 CET" />
+              <p class="text-xs text-slate-500">Include the timezone.</p>
+            </div>
+          </div>
+
+          {{/* Status - only shown when editing an existing event */}}
+          <div class="space-y-3" id="statusWrap" hidden>
+            <div class="text-sm font-medium text-slate-700 dark:text-slate-300" id="status-label">Status</div>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2" role="radiogroup" aria-labelledby="status-label">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50/50 has-[:checked]:ring-1 has-[:checked]:ring-violet-500">
+                <input type="radio" name="status" value="upcoming" class="mt-1 h-4 w-4 text-violet-600 focus:ring-violet-500" checked />
+                <div>
+                  <div class="font-semibold text-slate-900">Happening</div>
+                  <div class="text-sm text-slate-500">The event takes place as planned</div>
+                </div>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 has-[:checked]:border-slate-500 has-[:checked]:bg-slate-50 has-[:checked]:ring-1 has-[:checked]:ring-slate-500">
+                <input type="radio" name="status" value="cancelled" class="mt-1 h-4 w-4 text-slate-600 focus:ring-slate-500" />
+                <div>
+                  <div class="font-semibold text-slate-900">Cancelled</div>
+                  <div class="text-sm text-slate-500">The event will not take place</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        {{/* Details & Contact Section */}}
+        <fieldset class="space-y-6">
+          <legend class="w-full border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">3 · Details &amp; contact</legend>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="description">Event description <span class="text-red-500">*</span></label>
+            <p class="text-xs text-slate-500">What is the event about? Who is it for? How can people join? Markdown is supported.</p>
+            <textarea class="min-h-48 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="description" name="description" placeholder="Join us for..." required></textarea>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="email">Your email <span class="text-slate-400">(for status updates, not published)</span></label>
+            <p class="text-xs text-slate-500">We'll email you here once your event is reviewed and published. This is kept private and never shown on the site.</p>
+            <input class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
+          </div>
+
+          {{ with site.Params.turnstileSiteKey }}
+            <div class="pt-2">
+              <div class="cf-turnstile" data-sitekey="{{ . }}"></div>
+            </div>
+          {{ end }}
+
+          {{/* Honeypot */}}
+          <div class="hidden" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+        </fieldset>
+
+        {{/* Submit */}}
+        <div class="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
+          <button class="osd-btn-primary text-sm" type="submit" id="osd-submit">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+            <span id="osd-submit-label">Submit event</span>
+          </button>
+          <button class="osd-btn-secondary" type="reset" id="osd-reset">Reset</button>
+          <span class="text-sm text-slate-600" id="osd-form-note" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+
+    {{/* Result panel */}}
+    <div class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6" id="osd-result" hidden>
+      <h2 class="flex items-center gap-2 text-sm font-semibold text-emerald-900" id="osd-result-title">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Submission result
+      </h2>
+      <div class="mt-3 text-sm text-emerald-800" id="osd-result-body"></div>
+      <div class="mt-4" id="osd-result-extra"></div>
+    </div>
+
+    {{ with site.Params.turnstileSiteKey }}
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    {{ end }}
+
+    {{ $formJs := resources.Get "js/event-form.js" | minify | fingerprint }}
+    <script type="module">
+      import({{ $formJs.RelPermalink | jsonify }}).then(function (m) {
+        if (m && m.init) m.init({
+          endpoint: {{ site.Params.eventSubmitEndpoint | default "" }},
+          repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" }},
+          repoBranch: {{ site.Params.repoBranch | default "master" }}
+        });
+      });
+    </script>
+  </div>
+{{ end }}

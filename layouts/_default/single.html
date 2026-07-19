@@ -1,0 +1,69 @@
+{{ define "main" }}
+  <article class="mx-auto max-w-4xl px-4 py-14 sm:py-20" itemscope itemtype="https://schema.org/Article" data-pagefind-body>
+    <header>
+      <h1 class="text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl dark:text-slate-50" itemprop="headline">{{ .Title }}</h1>
+      {{/* Byline: `author` scalar, `authors` list, or - for any page
+           without either - "Open Source Design" itself, so community-
+           maintained pages (about-us, guides, articles) always carry a
+           credit. */}}
+      {{ $author := .Params.author }}
+      {{ if not $author }}{{ with .Params.authors }}{{ $author = delimit . ", " }}{{ end }}{{ end }}
+      {{ $isOrg := false }}
+      {{ if not $author }}
+        {{ $author = "Open Source Design" }}
+        {{ $isOrg = true }}
+      {{ end }}
+      <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">
+        <span itemprop="author" itemscope itemtype="https://schema.org/{{ if $isOrg }}Organization{{ else }}Person{{ end }}"><span class="font-medium text-slate-700 dark:text-slate-300" itemprop="name">{{ $author }}</span></span>
+        {{ with .Date }}<span aria-hidden="true"> · </span><time datetime="{{ .Format "2006-01-02" }}" itemprop="datePublished">{{ .Format "January 2, 2006" }}</time>{{ end }}
+        {{ with .ReadingTime }}<span aria-hidden="true"> · </span><span>{{ . }} min read</span>{{ end }}
+      </p>
+    </header>
+
+    <div class="mt-10 border-t border-slate-200 pt-10 dark:border-slate-800">
+      {{/* Table of Contents for long articles */}}
+      {{ if gt .WordCount 500 }}
+        <div class="mb-10">
+          {{ partial "toc.html" . }}
+        </div>
+      {{ end }}
+
+      <div class="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:scroll-mt-20 prose-a:text-slate-900 prose-a:underline prose-a:decoration-slate-300 prose-a:underline-offset-4 prose-a:hover:decoration-slate-900 dark:prose-a:text-slate-100 dark:prose-a:decoration-slate-600 dark:prose-a:hover:decoration-slate-100 prose-img:rounded-lg" itemprop="articleBody">
+        {{ .Content }}
+      </div>
+    </div>
+
+    {{/* Tags */}}
+    {{ with .Params.tags }}
+      <div class="mt-12 flex flex-wrap items-baseline gap-x-4 gap-y-2 border-t border-slate-200 pt-6 text-sm dark:border-slate-800" role="list" aria-label="Tags">
+        <span class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Tags</span>
+        {{ range . }}
+          {{ $term := site.GetPage (printf "/tags/%s" (urlize .)) }}
+          {{ if $term }}
+            <a class="text-slate-600 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:text-slate-400 dark:decoration-slate-600 dark:hover:text-slate-100 dark:hover:decoration-slate-100 dark:focus-visible:ring-slate-100/30" role="listitem" href="{{ $term.RelPermalink }}">{{ . }}</a>
+          {{ else }}
+            <span class="text-slate-600" role="listitem">{{ . }}</span>
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{/* Share Buttons */}}
+    <div class="mt-6 border-t border-slate-200 pt-6 dark:border-slate-800" data-pagefind-ignore>
+      {{ partial "share.html" . }}
+    </div>
+
+    <footer class="mt-6 border-t border-slate-200 pt-6 dark:border-slate-800" data-pagefind-ignore>
+      {{ $back := "/" }}
+      {{ $backLabel := "Back" }}
+      {{ if .Parent }}
+        {{ $back = .Parent.RelPermalink }}
+        {{ with .Parent.Title }}{{ $backLabel = printf "Back to %s" (. | lower) }}{{ end }}
+      {{ end }}
+      <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 dark:text-slate-100 dark:decoration-slate-600 dark:hover:text-white dark:focus-visible:ring-slate-100/30" href="{{ $back }}">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        {{ $backLabel }}
+      </a>
+    </footer>
+  </article>
+{{ end }}

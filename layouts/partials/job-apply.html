@@ -1,0 +1,133 @@
+{{/*
+  Job "How to apply" renderer.
+
+  Usage: {{ partial "job-apply.html" . }}  (expects the job Page as context)
+
+  Normalises the `how_to_apply` front matter - which across the corpus is a
+  mix of:
+    - a list of one-per-line contact methods (email / URL / GitHub handle), and
+    - free-form prose blocks (legacy / imported jobs),
+    - "Name <email@example.com>" contact strings.
+
+  Each line is classified into a structured contact (rendered as a tappable
+  button) or kept as a prose note. Emails wrapped in angle brackets are parsed
+  into a real mailto link instead of being swallowed as an HTML tag.
+*/}}
+
+{{ $hta := .Params.how_to_apply }}
+{{ $entries := slice }}
+{{ if $hta }}
+  {{ if reflect.IsSlice $hta }}
+    {{ $entries = $hta }}
+  {{ else }}
+    {{ $entries = slice $hta }}
+  {{ end }}
+{{ end }}
+
+{{ $contacts := slice }}
+{{ $notes := slice }}
+
+{{ range $entries }}
+  {{ $item := printf "%v" . }}
+  {{ $item = replace $item "\r\n" "\n" }}
+  {{ $item = replace $item "\r" "\n" }}
+  {{ range split $item "\n" }}
+    {{ $line := trim . " \t" }}
+    {{ if $line }}
+      {{ $emails := findRE `[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}` $line 1 }}
+      {{ if $emails }}
+        {{ $email := index $emails 0 }}
+        {{ $label := trim (replaceRE `<[^>]*>` "" $line) " " }}
+        {{ $label = trim (replace $label $email "") " " }}
+        {{ $label = trim $label " :<>-()," }}
+        {{/* A long residue means the line is prose that merely contains an
+             email ("To apply, send your portfolio to x@y.z…"): keep the whole
+             line as a readable note and label the button with the address
+             itself, instead of cramming the prose into the button. */}}
+        {{ if gt (len $label) 48 }}
+          {{ $notes = $notes | append $line }}
+          {{ $label = "" }}
+        {{ end }}
+        {{ if not $label }}{{ $label = $email }}{{ end }}
+        {{ $sub := cond (eq $label $email) "Email" $email }}
+        {{ $contacts = $contacts | append (dict "type" "email" "href" (printf "mailto:%s" $email) "label" $label "sub" $sub) }}
+      {{ else if or (hasPrefix $line "http://") (hasPrefix $line "https://") (hasPrefix $line "www.") }}
+        {{/* A line may append a prose note after the URL ("https://… (see X)").
+             URLs contain no spaces, so the href is the first whitespace-delimited
+             token; trailing punctuation ("…/issues/454." or "…>.") belongs to
+             the sentence, not the URL. Keep the full line as the sub-label so
+             the note stays visible. Derive the host without urls.Parse, which
+             errors on malformed input. */}}
+        {{ $rawTok := replaceRE `\s.*$` "" $line }}
+        {{ $url := strings.TrimRight ").,;:!?>'\"" $rawTok }}
+        {{/* Re-attach one ")" when it was trimmed but balances a "(" inside
+             the URL, e.g. wikipedia.org/wiki/Forge_(software). */}}
+        {{ if and (hasPrefix (strings.TrimPrefix $url $rawTok) ")") (gt (strings.Count "(" $url) (strings.Count ")" $url)) }}{{ $url = printf "%s)" $url }}{{ end }}
+        {{ if hasPrefix $url "www." }}{{ $url = printf "https://%s" $url }}{{ end }}
+        {{ $host := replaceRE `^[a-zA-Z][a-zA-Z0-9+.-]*://` "" $url }}
+        {{ $host = replaceRE `[/?#].*$` "" $host }}
+        {{ $host = strings.TrimPrefix "www." $host }}
+        {{ if not $host }}{{ $host = $url }}{{ end }}
+        {{ $contacts = $contacts | append (dict "type" "url" "href" $url "label" $host "sub" $line) }}
+      {{ else if findRE `^@[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $line }}
+        {{ $handle := strings.TrimPrefix "@" $line }}
+        {{ $contacts = $contacts | append (dict "type" "github" "href" (printf "https://github.com/%s" $handle) "label" (printf "@%s" $handle) "sub" "GitHub") }}
+      {{ else if and (findRE `(?i)\bgithub\b` $line) (findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $line) (lt (len $line) 60) }}
+        {{/* Short "GitHub @handle" / "Username Github @handle" lines. */}}
+        {{ $handle := strings.TrimPrefix "@" (index (findRE `@[A-Za-z0-9][A-Za-z0-9-]{0,38}` $line 1) 0) }}
+        {{ $contacts = $contacts | append (dict "type" "github" "href" (printf "https://github.com/%s" $handle) "label" (printf "@%s" $handle) "sub" "GitHub") }}
+      {{ else }}
+        {{ $notes = $notes | append $line }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="osd-surface overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+  <div class="border-b border-slate-100 bg-slate-900 osd-dark-panel px-5 py-4">
+    <h2 class="flex items-center gap-2 text-base font-semibold text-white">
+      <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      How to apply
+    </h2>
+  </div>
+
+  <div class="p-5">
+    {{ if $contacts }}
+      <ul class="space-y-2.5" role="list">
+        {{ range $contacts }}
+          <li>
+            <a class="osd-apply-link group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3.5 py-3 transition hover:border-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+               href="{{ .href }}"{{ if ne .type "email" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-slate-900 group-hover:text-white">
+                {{ if eq .type "email" }}
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                {{ else }}
+                  {{/* Brand icon by host (GitHub, GitLab, Figma, F-Droid, …),
+                       falling back to a generic chain link. */}}
+                  {{ partial "apply-icon.html" (dict "href" .href) }}
+                {{ end }}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block break-words font-semibold text-slate-900 underline decoration-slate-300 decoration-1 underline-offset-2 group-hover:decoration-slate-900">{{ .label }}</span>
+                {{ with .sub }}<span class="mt-0.5 block break-all text-xs text-slate-500">{{ . }}</span>{{ end }}
+              </span>
+              <svg class="h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-900" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    {{ if $notes }}
+      <div class="{{ if $contacts }}mt-4 border-t border-slate-100 pt-4{{ end }} space-y-2 text-sm leading-relaxed text-slate-600">
+        {{ range $notes }}
+          <p>{{ partial "linkify" (dict "text" .) }}</p>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{ if and (not $contacts) (not $notes) }}
+      <p class="text-sm leading-relaxed text-slate-600">See the job description for instructions on how to apply.</p>
+    {{ end }}
+  </div>
+</div>

@@ -1,0 +1,30 @@
+# Repository hygiene checks (filenames, form modules, redirect aliases).
+name: Repository checks
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+
+      - name: Job filename and status conventions
+        run: node .github/scripts/normalize-jobs.mjs --check
+
+      - name: Form modules in sync with layouts
+        run: node .github/scripts/extract-form-js.mjs --check
+
+      - name: Job redirect aliases
+        run: node .github/scripts/job-redirect-aliases.mjs --check
+
+      - name: Data YAML schema
+        run: |
+          npm install --no-save yaml@2
+          node .github/scripts/lint-data-yaml.mjs

@@ -1,0 +1,47 @@
+{{ define "main" }}
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:py-20" data-pagefind-body>
+    <header>
+      <h1 class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="mt-3 max-w-prose text-lg leading-relaxed text-slate-600">{{ . }}</p>
+      {{ end }}
+      {{ with .Content }}
+        <div class="prose prose-slate dark:prose-invert mt-6 max-w-none">{{ . }}</div>
+      {{ end }}
+    </header>
+
+    {{ $pages := .RegularPagesRecursive }}
+    {{ if $pages }}
+      <p class="mt-12 border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500" aria-live="polite" data-pagefind-ignore>{{ len $pages }} {{ cond (eq (len $pages) 1) "entry" "entries" }}</p>
+
+      {{/* Only reserve the left date column when at least one page is dated;
+           sections like About Us have no dates and would show an empty gutter. */}}
+      {{ $hasDates := false }}
+      {{ range $pages }}
+        {{ if not .Date.IsZero }}{{ $hasDates = true }}{{ break }}{{ end }}
+      {{ end }}
+
+      <ul role="list" aria-label="Content list" data-pagefind-ignore>
+        {{ range $pages.ByDate.Reverse }}
+          <li class="border-b border-slate-200">
+            <a class="group grid grid-cols-1 gap-1 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20{{ if $hasDates }} sm:grid-cols-[8rem_1fr] sm:gap-6{{ end }}" href="{{ .RelPermalink }}">
+              {{ if $hasDates }}
+                {{ with .Date }}
+                  <time class="text-sm text-slate-500 sm:pt-0.5" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
+                {{ else }}
+                  <span aria-hidden="true"></span>
+                {{ end }}
+              {{ end }}
+              <span>
+                <span class="block font-semibold leading-snug text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+                {{ with .Summary }}
+                  <span class="mt-1.5 line-clamp-2 block max-w-prose text-sm leading-relaxed text-slate-600">{{ . | plainify | truncate 160 }}</span>
+                {{ end }}
+              </span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </div>
+{{ end }}

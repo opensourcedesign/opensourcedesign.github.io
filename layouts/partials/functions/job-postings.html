@@ -1,0 +1,5 @@
+{{/* Returns all job *postings*: the jobs section's regular pages minus the
+     utility pages that live in content/jobs/ but aren't listings (the form,
+     the archive, the how-to guide). Every template that counts or lists jobs
+     must use this so the exclusion set can't drift between callers. */}}
+{{ return (where (where site.RegularPages "Section" "jobs") "File.ContentBaseName" "not in" (slice "job-form" "archive" "how-to-post")) }}

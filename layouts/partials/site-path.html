@@ -1,0 +1,15 @@
+{{- /*
+  Root-safe relURL for internal paths and static assets.
+
+  Paths starting with "/" are treated as host-root by Hugo and break subdirectory
+  deployments such as PR previews (/pr-preview/pr-N/). Trim the slash first.
+*/ -}}
+{{- $path := printf "%v" . -}}
+{{- if eq $path "/" -}}
+{{- site.Home.RelPermalink -}}
+{{- else -}}
+{{- if hasPrefix $path "/" -}}
+{{- $path = strings.TrimPrefix "/" $path -}}
+{{- end -}}
+{{- $path | relURL -}}
+{{- end -}}

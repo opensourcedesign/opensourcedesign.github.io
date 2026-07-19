@@ -1,0 +1,201 @@
+# Reading & research bibliography for opensourcedesign.net/resources/
+# Fields: title, author, year, url, type (article/book/paper/talk/video), publication (optional)
+
+- title: "Unsustaining the Commodity-Machine – Commoning Practices in Postcapitalist Design"
+  author: "Selçuk Balamir"
+  year: 2021
+  url: "https://postcapitalist.design/"
+  type: article
+  publication: "Amsterdam School for Cultural Analysis"
+
+- title: "How Nextcloud simplified the signup process for decentralization"
+  author: "Jan C. Borchardt"
+  year: 2020
+  url: "https://opensource.com/article/20/9/decentralization-signup"
+  type: article
+  publication: "Opensource.com"
+
+- title: "Use your artistic skills to help open source"
+  author: "Jeff Macharyas"
+  year: 2020
+  url: "https://opensource.com/article/20/6/open-source-design"
+  type: article
+  publication: "Opensource.com"
+
+- title: "Open Design, Libre Graphics: Why terminology matters"
+  author: "Ana Isabel Carvalho, Ricardo Lafuente"
+  year: 2019
+  url: "https://www.youtube.com/watch?v=4OE6HNPf93c"
+  type: talk
+  publication: "Libre Graphics Meeting Saarbrücken"
+
+- title: "Designing with not for - an observational report on the Wikimedia Movement"
+  author: "Hanna Petruschat"
+  year: 2019
+  url: "https://ixdaberlin.de/#71"
+  type: talk
+  publication: "IxDA Berlin"
+
+- title: "Copy This Book. An Artist's Guide to Copyright"
+  author: "Eric Schrijver"
+  year: 2018
+  url: "https://copy-this-book.eu"
+  type: book
+
+- title: "Open-source identity design for Simple"
+  author: "Daniel Burka"
+  year: 2018
+  url: "https://medium.com/@dburka/open-source-identity-design-for-simple-4025c6d48acc"
+  type: article
+
+- title: "State of Open Source Design in 2018"
+  author: "Victoria Bondarchuk"
+  year: 2018
+  url: "https://www.youtube.com/watch?v=U5WAi933Q2k"
+  type: talk
+  publication: "FOSSASIA"
+
+- title: "A Beginner's Guide to Finding User Needs"
+  author: "Jan Dittrich"
+  year: 2018
+  url: "https://jdittrich.github.io/userNeedResearchBook/"
+  type: book
+
+- title: "The Least You Can Do About Usability in Open Source"
+  author: "Victoria Bondarchuk"
+  year: 2017
+  url: "https://2017.fossasia.org/tracks.html#2017-03-19-Design,_Art,_Community"
+  type: talk
+  publication: "FOSSASIA"
+
+- title: "Connecting design, culture, art, and technology across the archipelago"
+  author: "Kathleen Azali"
+  year: 2017
+  url: "https://www.youtube.com/watch?v=IJE4I467JCw"
+  type: talk
+  publication: "FOSSASIA"
+
+- title: "Expectations from Open Source Designers"
+  author: "Ecaterina Moraru"
+  year: 2017
+  url: "https://www.youtube.com/watch?v=3M9ptBxFyP4"
+  type: talk
+  publication: "FOSSASIA"
+
+- title: "Authorship alternatives, free / open source"
+  author: "Loraine Furter, Eric Schrijver"
+  year: 2016
+  url: "http://design-research.be/open-source/"
+  type: article
+
+- title: "Design, meet Open"
+  author: "Dan Makoski"
+  year: 2016
+  url: "https://medium.com/mobile-lifestyle/design-meet-open-a107c5eeeb7e"
+  type: article
+
+- title: "Everything is a Remix Remastered"
+  author: "Kirby Ferguson"
+  year: 2015
+  url: "https://vimeo.com/139094998"
+  type: video
+
+- title: "Non-response, Social Exclusion, and False Acceptance: Gatekeeping Tactics and Usability Work in Free-Libre Open Source Software Development"
+  author: "Mikko Rajanen, Netta Iivari, Arto Lanamäki"
+  year: 2015
+  url: "https://link.springer.com/chapter/10.1007/978-3-319-22698-9_2"
+  type: paper
+
+- title: "How to get designers involved in your software project"
+  author: "Nicole C. Baratta"
+  year: 2015
+  url: "https://opensource.com/life/15/7/get-designers-involved-software-project"
+  type: article
+  publication: "Opensource.com"
+
+- title: "A Designer's Guide for Transitioning to Open-Source Software"
+  author: "Ryan Gorley"
+  year: 2015
+  url: "https://blog.freehive.com/designers-guide-transitioning-open-source-software/"
+  type: article
+
+- title: "Why You Should Design for Open Source"
+  author: "Jina Anne"
+  year: 2014
+  url: "https://24ways.org/2014/why-you-should-design-for-open-source/"
+  type: article
+  publication: "24 ways"
+
+- title: "Open Source Design"
+  author: "Una Kravets"
+  year: 2014
+  url: "https://una.im/open-source-design/"
+  type: article
+
+- title: "No-one Starts From Scratch: Type Design and the Logic of the Fork"
+  author: "Eric Schrijver"
+  year: 2013
+  url: "https://i.liketightpants.net/and/no-one-starts-from-scratch-type-design-and-the-logic-of-the-fork"
+  type: article
+
+- title: "Designing In The Open"
+  author: "Brad Frost"
+  year: 2013
+  url: "https://bradfrost.com/blog/post/designing-in-the-open/"
+  type: article
+
+- title: "Open source graphic design"
+  author: "studio ponnuki"
+  year: 2011
+  url: "https://ponnuki.net/2011/07/open-source-graphic-design/"
+  type: article
+
+- title: "Usability in Free Software"
+  author: "Jan C. Borchardt"
+  year: 2011
+  url: "https://jancborchardt.net/usability-in-free-software"
+  type: paper
+
+- title: "Design in Open Source"
+  author: "Mark Boulton"
+  year: 2009
+  url: "https://markboulton.co.uk/journal/design-in-open-source/"
+  type: article
+
+- title: "The Public Domain: Enclosing the Commons of the Mind"
+  author: "James Boyle"
+  year: 2008
+  url: "https://www.thepublicdomain.org/download/"
+  type: book
+
+- title: "The problem with open source design"
+  author: "Chris Messina"
+  year: 2008
+  url: "https://factoryjoe.com/2008/01/03/the-problem-with-open-source-design/"
+  type: article
+
+- title: "Fundamental Issues with Open Source Software Development – User interface design"
+  author: "Michelle Levesque"
+  year: 2004
+  url: "https://firstmonday.org/ojs/index.php/fm/article/view/1484/1399#p2"
+  type: paper
+  publication: "First Monday"
+
+- title: "Free Culture: How Big Media Uses Technology and the Law to Lock Down Culture and Control Creativity"
+  author: "Lawrence Lessig"
+  year: 2004
+  url: "http://www.free-culture.cc/freecontent/"
+  type: book
+
+- title: "The Usability of Open Source Software"
+  author: "David M. Nichols, Michael B. Twidale"
+  year: 2003
+  url: "http://firstmonday.org/article/view/1018/939"
+  type: paper
+  publication: "First Monday"
+
+- title: "Choosing our Preferences"
+  author: "Havoc Pennington"
+  year: 2002
+  url: "https://ometer.com/preferences.html"
+  type: article

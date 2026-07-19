@@ -1,13 +1,51 @@
-_site
-.sass-cache
-.editorconfig
-.jekyll-metadata
-.bundle
-Gemfile.lock
-jobs/
-_organization/
-_patterns/
-_talks/
-vendor
-CNAME
-/**/*.DS_Store
+# Hugo build output
+public/
+# Hugo resource cache (root only; do NOT ignore content/resources or layouts/resources)
+/resources/_gen/
+/resources/
+
+# Dependencies (only workers/job-submit uses npm; the site itself is npm-free)
+node_modules/
+
+# NOTE: there is no CSS build step (issue #556). Tailwind utilities compile
+# in the browser via the Play CDN, and assets/css/typography.css (the prose
+# classes) is a checked-in, pre-compiled bundle - regenerate it with the
+# Tailwind standalone CLI only when typography.src.css changes (see the
+# header comment in assets/css/typography.src.css).
+
+# Downloaded standalone binaries (Pagefind, Tailwind CLI)
+pagefind
+pagefind.exe
+tailwindcss
+tailwindcss.exe
+
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Hugo
+.hugo_build.lock
+
+# Scratch build output (local verification builds)
+/tmp/
+/.verify-build/
+/.tmp-*
+.cache/
+
+# Local pa11y runs (CI regenerates .pa11yci.generated.json)
+.pa11yci.generated.json
+.pa11yci.json
+pa11y-results.txt
+pa11y-summary.json
+social-card-previews/
+
+# Compiled by the Tailwind CLI in the deploy workflows (see baseof.html);
+# local dev falls back to the Play CDN when this file is absent.
+/assets/css/compiled.css

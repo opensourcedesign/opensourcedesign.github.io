@@ -1,0 +1,67 @@
+# WCAG 2 AA checks on a curated set of representative pages (not the full sitemap).
+name: Accessibility
+
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HUGO_VERSION: 0.164.0
+  TAILWIND_VERSION: 4.3.2
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Cache Hugo resources
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
+          restore-keys: |
+            hugo-resources-
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Compile Tailwind CSS
+        run: |
+          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
+          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+
+      - name: Build site
+        run: hugo --minify --gc
+
+      - name: Generate pa11y URL list
+        run: node .github/scripts/generate-pa11yci-config.mjs
+
+      - name: Install pa11y
+        run: npm install --no-save pa11y@6 serve@14
+
+      - name: Run accessibility checks
+        run: |
+          npx serve public -l 4321 &
+          for i in $(seq 1 30); do
+            if curl -fsS "http://127.0.0.1:4321/" >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          node .github/scripts/run-pa11y-batch.mjs

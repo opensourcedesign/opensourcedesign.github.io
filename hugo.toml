@@ -1,0 +1,165 @@
+baseURL = "https://opensourcedesign.net/"
+locale = "en"
+title = "Open Source Design"
+
+enableRobotsTXT = true
+
+# Tags are authored lowercase ("ux", "web design") and shown that way in pills
+# across the site; don't title-case term page titles into "Ux" / "Web Design".
+capitalizeListTitles = false
+
+[pagination]
+  pagerSize = 20
+
+[services]
+  [services.rss]
+    limit = 50
+
+[mediaTypes]
+  [mediaTypes."application/rss+xml"]
+    suffixes = ["xml"]
+  [mediaTypes."text/calendar"]
+    suffixes = ["ics"]
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed"
+    isPlainText = false
+  # Filtered job feeds (enabled via `outputs` in content/jobs/_index.md).
+  [outputFormats.PaidRSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed-paid"
+    isPlainText = false
+    rel = "alternate"
+  [outputFormats.VolunteerRSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed-volunteer"
+    isPlainText = false
+    rel = "alternate"
+  [outputFormats.Calendar]
+    mediaType = "text/calendar"
+    baseName = "calendar"
+    isPlainText = true
+    rel = "alternate"
+
+[params]
+  description = "We are a community of designers and developers aiming to push more open design processes and improve the user experience and interface design of open source software."
+  # Serverless job submission endpoint (POST) handled by the Cloudflare Worker in
+  # workers/job-submit/. After `npx wrangler deploy`, set both to
+  # "<worker-url>/submit" (e.g. "https://osd-job-submit.<account>.workers.dev/submit").
+  # The Worker targets the `master` branch until the repo default is renamed.
+  # When empty, the site gracefully falls back to generating Markdown for manual PRs.
+  jobSubmitEndpoint = "https://osd-job-submit.anxhelo.workers.dev/submit"
+  # Same Worker, event submissions (the Worker branches on the "kind" field), so
+  # this is normally the same "<worker-url>/submit" URL as jobSubmitEndpoint.
+  # When empty, the event form falls back to generating Markdown for manual PRs.
+  eventSubmitEndpoint = "https://osd-job-submit.anxhelo.workers.dev/submit"
+  # Cloudflare Turnstile site key for spam protection (pairs with the Worker's
+  # TURNSTILE_SECRET). Leave empty to disable the captcha widget. See
+  # workers/job-submit/README.md for setup.
+  turnstileSiteKey = "0x4AAAAAADxRERYwNcCQJP4K"
+
+  # Repository and external links
+  repoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io"
+  # Default branch of repoURL; used by the job form's edit mode to fetch the
+  # current posting (raw.githubusercontent.com) and for GitHub fallback links.
+  repoBranch = "master"
+  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/master/content/jobs"
+  forumURL = "https://discourse.opensourcedesign.net"
+  calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
+  fossJobsURL = "https://www.fossjobs.net/"
+  openCollectiveURL = "https://opencollective.com/opensourcedesign"
+  jobGuidelinesURL = "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925"
+
+  [params.cards]
+    summaryMax = 120
+    maxTags = 3
+
+[frontmatter]
+  # Old job posts (2015–2017) predate the `date` field and only carry
+  # `date_posted`; fall back to it so .Date is set everywhere it matters
+  # (topic pages' date column, ByDate sorting, RSS timestamps).
+  date = ["date", "date_posted", ":default"]
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks]
+  # Clean job detail URLs: /jobs/<slug>/ (slug derived from the title, or an
+  # explicit `slug:`/`url:` in front matter). Section pages job-form and archive
+  # set their own `url` in front matter, so they are unaffected.
+  jobs = "/jobs/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[menu]
+  [[menu.main]]
+    name = "About Us"
+    pageRef = "/about-us"
+    weight = 10
+  [[menu.main]]
+    name = "Events"
+    pageRef = "/events"
+    weight = 20
+  [[menu.main]]
+    name = "Resources"
+    pageRef = "/resources"
+    weight = 30
+  [[menu.main]]
+    name = "Jobs"
+    pageRef = "/jobs"
+    weight = 40
+  [[menu.main]]
+    name = "Forum"
+    url = "https://discourse.opensourcedesign.net/"
+    weight = 50
+
+[[params.social]]
+  name = "GitHub"
+  url = "https://github.com/opensourcedesign"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Mastodon"
+  url = "https://mastodon.social/@opensourcedesign"
+  rel = "me noopener noreferrer"
+[[params.social]]
+  name = "Bluesky"
+  url = "https://bsky.app/profile/opensourcedesign.net"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Open Collective"
+  url = "https://opencollective.com/opensourcedesign"
+  rel = "noopener noreferrer"
+[[params.social]]
+  name = "Forum"
+  url = "https://discourse.opensourcedesign.net"
+  rel = "noopener noreferrer"
+
+[imaging]
+  # Resampling filter used when down-scaling content images.
+  resampleFilter = "Lanczos"
+  [imaging.avif]
+    compression = "lossy"
+    # 0 = slowest/smallest, 10 = fastest. Keep builds practical while still small.
+    encoderSpeed = 8
+    quality = 55
+  [imaging.webp]
+    quality = 80
+  [imaging.jpeg]
+    quality = 82
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      linkify = true
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false

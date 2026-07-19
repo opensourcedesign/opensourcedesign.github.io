@@ -1,0 +1,14 @@
+{
+  "name": "osd-workers",
+  "private": true,
+  "description": "Cloudflare Workers for opensourcedesign.net. npm install here installs job-submit dependencies.",
+  "workspaces": [
+    "job-submit"
+  ],
+  "scripts": {
+    "deploy": "npm run deploy --workspace=job-submit",
+    "dev": "npm run dev --workspace=job-submit",
+    "wrangler": "wrangler --config job-submit/wrangler.toml",
+    "secret": "wrangler secret --config job-submit/wrangler.toml"
+  }
+}

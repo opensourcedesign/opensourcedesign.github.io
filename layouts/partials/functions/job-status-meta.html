@@ -1,0 +1,15 @@
+{{/* Normalized job status for templates, SEO, and feeds.
+     Canonical values: searching | filled | closed | expired
+     Legacy solved/resolved/completed map to filled. */}}
+{{ $raw := lower (printf "%v" (.Params.status | default "")) }}
+{{ $status := $raw }}
+{{ if in (slice "solved" "resolved" "completed") $raw }}{{ $status = "filled" }}{{ end }}
+{{ $isOpen := eq $status "searching" }}
+{{ $deadlinePassed := false }}
+{{ with .Params.deadline }}
+  {{ $d := (time.AsTime (printf "%v" .)).Format "2006-01-02" }}
+  {{ if lt $d (now.Format "2006-01-02") }}{{ $deadlinePassed = true }}{{ end }}
+{{ end }}
+{{ $isExpired := or (eq $status "expired") (and $isOpen $deadlinePassed) }}
+{{ $noindex := or $isExpired (in (slice "filled" "closed" "expired") $status) }}
+{{ return (dict "raw" $raw "status" $status "open" $isOpen "expired" $isExpired "noindex" $noindex) }}

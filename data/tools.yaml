@@ -1,0 +1,28 @@
+# Open source design tools we recommend
+# Add/remove tools here - no need to edit HTML templates
+
+- name: Penpot
+  url: https://penpot.app
+  logo: /images/logos/penpot.svg
+  description: Design and prototyping platform
+
+- name: Inkscape
+  url: https://inkscape.org
+  logo: /images/logos/inkscape.svg
+  description: Vector graphics editor
+
+- name: GIMP
+  url: https://www.gimp.org
+  logo: /images/logos/gimp.svg
+  description: Image manipulation program
+
+- name: Blender
+  url: https://www.blender.org
+  logo: /images/logos/blender.svg
+  description: 3D creation suite
+
+- name: Krita
+  url: https://krita.org
+  logo: /images/logos/krita.svg
+  description: Digital painting application
+

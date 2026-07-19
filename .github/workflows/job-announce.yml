@@ -1,0 +1,82 @@
+# Announce new job postings on social media (Mastodon + Bluesky).
+#
+# Fires when a push to master adds files under content/jobs/ - which is what a
+# merged submission PR (job/* branch from the Cloudflare Worker) or a manually
+# authored posting lands as. The script only announces `status: searching`
+# postings dated within the last 14 days (bulk-import guard), caps posts per
+# run, and waits for the job page to be live before posting, since the Hugo
+# deploy triggered by the same push runs in parallel.
+#
+# Platforms are optional and independent: configure MASTODON_URL +
+# MASTODON_ACCESS_TOKEN and/or BLUESKY_IDENTIFIER + BLUESKY_APP_PASSWORD in
+# the repo secrets (see README "Social media announcements"). Missing secrets
+# just skip that platform.
+name: Announce new jobs on social media
+
+on:
+  push:
+    branches: [main, master]
+    paths: ["content/jobs/*.md"]
+  workflow_dispatch:
+    inputs:
+      files:
+        description: "Job files to announce (space-separated, e.g. content/jobs/2026-07-05-title.md)"
+        required: true
+        type: string
+      dry_run:
+        description: "Compose and print without posting"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: job-announce
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          # Full history so the push's `before` commit is always available to
+          # diff against (shallow clones may not contain it).
+          fetch-depth: 0
+
+      - name: Collect newly added job files
+        id: collect
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          INPUT_FILES: ${{ inputs.files }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            files="$INPUT_FILES"
+          elif printf '%s' "$BEFORE" | grep -q '^0*$'; then
+            # New branch or unknown base: nothing safe to diff against.
+            files=""
+          else
+            # Only files *added* by this push; edits and status flips never
+            # re-announce. Section pages (_index, job-form, …) don't match the
+            # date-prefixed pattern, and the script re-checks eligibility.
+            files="$(git diff --diff-filter=A --name-only "$BEFORE" "$AFTER" -- 'content/jobs/*.md' | tr '\n' ' ')"
+          fi
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "Added job files: ${files:-none}"
+
+      - name: Post to Mastodon and Bluesky
+        if: steps.collect.outputs.files != ''
+        env:
+          MASTODON_URL: ${{ secrets.MASTODON_URL }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          BLUESKY_IDENTIFIER: ${{ secrets.BLUESKY_IDENTIFIER }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          BLUESKY_SERVICE: ${{ secrets.BLUESKY_SERVICE }}
+          WAIT_FOR_URL: "1"
+          DRY_RUN: ${{ inputs.dry_run == true && '1' || '' }}
+        run: node .github/scripts/announce-jobs.mjs ${{ steps.collect.outputs.files }}

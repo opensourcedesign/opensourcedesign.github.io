@@ -1,0 +1,14 @@
+{
+  "name": "osd-job-submit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that turns Open Source Design 'Post a Job' submissions into moderated GitHub pull requests.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

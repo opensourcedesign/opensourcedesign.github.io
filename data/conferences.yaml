@@ -1,0 +1,23 @@
+# Conferences where Open Source Design organizes design tracks
+# Add/remove conferences here - no need to edit HTML templates
+
+- name: FOSDEM
+  url: https://fosdem.org
+  logo: /images/events/fosdem.svg
+  height: h-10
+
+- name: FOSSASIA
+  url: https://fossasia.org
+  logo: /images/events/fossasia.svg
+  height: h-10
+
+- name: ApacheCon Europe
+  url: https://www.apachecon.com
+  logo: /images/events/apachecon.svg
+  height: h-7
+
+- name: FOSS Backstage
+  url: https://foss-backstage.de
+  logo: /images/events/foss-backstage.png
+  height: h-12
+

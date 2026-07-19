@@ -1,0 +1,14 @@
+{{- /* Machine-readable job index at /jobs/index.json. Consumed by the
+     job-submit Worker for duplicate detection on new submissions. */ -}}
+{{- $items := slice -}}
+{{- range .RegularPages.ByDate.Reverse -}}
+  {{- $items = $items | append (dict
+        "title" .Title
+        "organization" (printf "%v" (.Params.organization | default ""))
+        "status" (printf "%v" (.Params.status | default ""))
+        "url" .Permalink
+        "date_posted" (.Date.Format "2006-01-02")
+        "file" .File.LogicalName
+      ) -}}
+{{- end -}}
+{{- dict "generated" (now.Format "2006-01-02T15:04:05Z07:00") "jobs" $items | jsonify (dict "indent" " ") -}}
