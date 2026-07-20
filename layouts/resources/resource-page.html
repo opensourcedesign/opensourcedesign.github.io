@@ -17,6 +17,12 @@
         <span class="font-medium text-slate-700">{{ $author }}</span>
         {{ with .Date }}<span aria-hidden="true"> · </span><time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
       </p>
+      {{ if and .File (eq .File.ContentBaseName "links") }}
+        <a class="osd-btn-primary mt-5 text-sm" href="{{ partial "site-path.html" "/resources/suggest/" }}">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          Suggest a resource
+        </a>
+      {{ end }}
     </header>
 
     {{/* Shared layout for resource sub-pages (Links, Bibliography, guides).
