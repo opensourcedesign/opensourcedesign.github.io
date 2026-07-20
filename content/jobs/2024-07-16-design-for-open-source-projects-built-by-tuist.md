@@ -1,6 +1,6 @@
 ---
 _id: 312237b0-4377-11ef-888f-db80b8b9a9fd
-status: searching
+status: expired
 date_posted: '2024-07-16'
 layout: jobs
 organization: Tuist

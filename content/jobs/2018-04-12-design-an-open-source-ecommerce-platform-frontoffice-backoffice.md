@@ -1,6 +1,6 @@
 ---
 _id: ee9df5a0-3e2d-11e8-80a2-d3e9603d7f5a
-status: searching
+status: expired
 date_posted: '2018-04-12'
 layout: post
 organization: ventas

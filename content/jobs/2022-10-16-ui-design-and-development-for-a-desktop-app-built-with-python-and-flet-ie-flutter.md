@@ -1,6 +1,6 @@
 ---
 _id: 3de8c0e0-4d5b-11ed-a428-3fa80bb2c03f
-status: searching
+status: expired
 date_posted: '2022-10-16'
 layout: jobs
 organization: Tuttle

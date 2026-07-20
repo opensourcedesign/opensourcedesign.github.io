@@ -1,6 +1,6 @@
 ---
 _id: 4763c200-6293-11f0-9366-0517828eb6e2
-status: searching
+status: expired
 date_posted: '2025-07-17'
 layout: jobs
 organization: VOID

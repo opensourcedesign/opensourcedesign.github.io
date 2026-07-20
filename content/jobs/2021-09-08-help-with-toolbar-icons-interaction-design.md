@@ -1,6 +1,6 @@
 ---
 _id: bc366da0-118c-11ec-901b-718b9f1fc3c1
-status: searching
+status: expired
 date_posted: '2021-09-08'
 layout: jobs
 organization: Avogadro

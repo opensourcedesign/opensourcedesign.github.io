@@ -1,6 +1,6 @@
 ---
 _id: 1ff72790-fa46-11ee-a25c-254aab96e8b7
-status: searching
+status: expired
 date_posted: '2024-04-14'
 layout: jobs
 organization: Hello HTTP

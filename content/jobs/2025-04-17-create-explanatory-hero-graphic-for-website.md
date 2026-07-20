@@ -1,6 +1,6 @@
 ---
 _id: 3b222200-1b7d-11f0-b847-09d1fdec46f3
-status: searching
+status: expired
 date_posted: '2025-04-17'
 layout: jobs
 organization: remoteStorage

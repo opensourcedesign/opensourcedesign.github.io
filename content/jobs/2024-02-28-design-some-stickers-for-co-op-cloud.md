@@ -1,6 +1,6 @@
 ---
 _id: 000fa4a0-d635-11ee-8863-e1ac93155d5c
-status: searching
+status: expired
 date_posted: '2024-02-28'
 layout: jobs
 organization: Stickers for Co-op Cloud

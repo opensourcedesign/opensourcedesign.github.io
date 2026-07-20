@@ -1,6 +1,6 @@
 ---
 _id: 8f498890-3ef6-11eb-847d-c553fe5cc0e0
-status: searching
+status: expired
 date_posted: '2020-12-15'
 layout: jobs
 organization: pip

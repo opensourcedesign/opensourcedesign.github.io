@@ -1,6 +1,6 @@
 ---
 _id: 34ec78e0-6fe5-11ed-adff-e11cd61c46bd
-status: searching
+status: expired
 date_posted: '2022-11-29'
 layout: jobs
 organization: >-

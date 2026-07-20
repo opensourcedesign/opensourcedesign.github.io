@@ -1,6 +1,6 @@
 ---
 _id: dba931d0-dc14-11ef-b5f5-e136915576ac
-status: searching
+status: expired
 date_posted: '2025-01-26'
 layout: jobs
 organization: PySeas

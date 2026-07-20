@@ -1,6 +1,6 @@
 ---
 _id: 30df6b40-013b-11ed-972a-d1ff9d7dd5dd
-status: searching
+status: expired
 date_posted: '2022-07-11'
 layout: jobs
 organization: Hedgehog

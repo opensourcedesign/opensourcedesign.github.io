@@ -1,6 +1,6 @@
 ---
 _id: 0678c9d0-86b3-11ec-adac-b9c99001ac43
-status: searching
+status: expired
 date_posted: '2022-02-05'
 layout: jobs
 organization: Gitea

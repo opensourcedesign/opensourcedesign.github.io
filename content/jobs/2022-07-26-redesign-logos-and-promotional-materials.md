@@ -1,6 +1,6 @@
 ---
 _id: 8a2182a0-0cd6-11ed-809d-4f71c76f2198
-status: searching
+status: expired
 date_posted: '2022-07-26'
 layout: jobs
 organization: The Fairfield Programming Association Inc.

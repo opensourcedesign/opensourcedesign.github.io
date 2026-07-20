@@ -1,6 +1,6 @@
 ---
 _id: 994d11f0-de59-11e7-82cc-c9d7a0230569
-status: searching
+status: expired
 date_posted: '2017-12-11'
 layout: jobs
 organization: Agorakit

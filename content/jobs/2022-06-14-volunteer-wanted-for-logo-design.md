@@ -1,6 +1,6 @@
 ---
 _id: 32d11920-ebf2-11ec-81c7-71e69ba5c4d4
-status: searching
+status: expired
 date_posted: '2022-06-14'
 layout: jobs
 organization: Open Source Gardens

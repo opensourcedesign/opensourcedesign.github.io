@@ -1,6 +1,6 @@
 ---
 _id: 5c96e940-fff0-11eb-9fac-cdc1ec613e01
-status: searching
+status: expired
 date_posted: '2021-08-18'
 layout: jobs
 organization: AuthPass - Password Manager

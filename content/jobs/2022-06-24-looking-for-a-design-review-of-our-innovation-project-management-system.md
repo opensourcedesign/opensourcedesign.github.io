@@ -1,6 +1,6 @@
 ---
 _id: a0cc3c20-f3cc-11ec-83ba-d5b4516a3fee
-status: searching
+status: expired
 date_posted: '2022-06-24'
 layout: jobs
 organization: Design Feedback for Innovation Management System

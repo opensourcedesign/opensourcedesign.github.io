@@ -1,6 +1,6 @@
 ---
 _id: fe4301f0-033f-11ec-8a38-f1760c7dca70
-status: searching
+status: expired
 date_posted: '2021-08-22'
 layout: jobs
 organization: Vasisualy

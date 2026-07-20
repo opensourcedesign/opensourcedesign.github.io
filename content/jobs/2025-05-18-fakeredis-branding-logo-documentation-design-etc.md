@@ -1,6 +1,6 @@
 ---
 _id: 7baae800-33e9-11f0-b4d6-29549a27daf4
-status: searching
+status: expired
 date_posted: '2025-05-18'
 layout: jobs
 organization: fakeredis

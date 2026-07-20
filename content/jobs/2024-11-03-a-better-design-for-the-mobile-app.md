@@ -1,6 +1,6 @@
 ---
 _id: f3270280-9978-11ef-9fcf-d9ae990fca3d
-status: searching
+status: expired
 date_posted: '2024-11-03'
 layout: jobs
 organization: ecmbReader

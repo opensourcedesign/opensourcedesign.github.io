@@ -1,6 +1,6 @@
 ---
 _id: d5c345d0-6b55-11ed-a68b-999a85f8c93f
-status: searching
+status: expired
 date_posted: '2022-11-23'
 layout: jobs
 organization: openW2G

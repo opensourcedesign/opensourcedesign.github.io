@@ -1,6 +1,6 @@
 ---
 _id: 8c710af0-4c2d-11eb-bf01-076522c98ca8
-status: searching
+status: expired
 date_posted: '2021-01-01'
 layout: jobs
 organization: Improve LibreLingo's design

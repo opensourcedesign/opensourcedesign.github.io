@@ -1,6 +1,6 @@
 ---
 _id: 041626f0-87f5-11eb-b0ed-9760c0d1e8ea
-status: searching
+status: expired
 date_posted: '2021-03-18'
 layout: jobs
 organization: Formorama

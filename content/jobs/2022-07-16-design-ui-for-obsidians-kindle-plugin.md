@@ -1,6 +1,6 @@
 ---
 _id: bbc9dd50-04f9-11ed-9c76-e996fc345020
-status: searching
+status: expired
 date_posted: '2022-07-16'
 layout: jobs
 organization: Obsidian Kindle Plugin

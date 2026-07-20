@@ -1,6 +1,6 @@
 ---
 _id: f4384280-a441-11ec-9a13-c9227490ee3d
-status: searching
+status: expired
 date_posted: '2022-03-15'
 layout: jobs
 organization: Alby

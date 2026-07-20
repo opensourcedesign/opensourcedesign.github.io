@@ -1,6 +1,6 @@
 ---
 _id: 0df1b470-6f6c-11ef-9de6-ad23b7b7b0f1
-status: searching
+status: expired
 date_posted: '2024-09-10'
 layout: jobs
 organization: Web app for "Daily Wellness Empowerment Program"

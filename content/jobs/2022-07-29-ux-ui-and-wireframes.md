@@ -1,6 +1,6 @@
 ---
 _id: ce7ede30-0f73-11ed-94d2-3d02de223b5c
-status: searching
+status: expired
 date_posted: '2022-07-29'
 layout: jobs
 organization: Leaderboards.gg

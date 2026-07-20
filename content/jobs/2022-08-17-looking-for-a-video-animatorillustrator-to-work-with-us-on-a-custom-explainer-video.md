@@ -1,6 +1,6 @@
 ---
 _id: 13e73190-1e7c-11ed-ad67-dbeb8d107812
-status: searching
+status: expired
 date_posted: '2022-08-17'
 layout: jobs
 organization: Animator for explainer video

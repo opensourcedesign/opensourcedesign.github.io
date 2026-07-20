@@ -1,6 +1,6 @@
 ---
 _id: ae62bd70-dcb5-11eb-a6dc-d5855c00822c
-status: searching
+status: expired
 date_posted: '2021-07-04'
 layout: jobs
 organization: Collabfinder

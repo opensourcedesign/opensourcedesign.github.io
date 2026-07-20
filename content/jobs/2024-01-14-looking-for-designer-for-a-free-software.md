@@ -1,6 +1,6 @@
 ---
 _id: 8ab3b180-b328-11ee-8efd-dd58e292c476
-status: searching
+status: expired
 date_posted: '2024-01-14'
 layout: jobs
 organization: KeyFortress

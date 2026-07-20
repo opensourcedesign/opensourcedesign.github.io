@@ -1,6 +1,6 @@
 ---
 _id: d6a4a1a0-c54a-11ef-87f7-93f6c6c19b7b
-status: searching
+status: expired
 date_posted: '2024-12-28'
 layout: jobs
 organization: Latte

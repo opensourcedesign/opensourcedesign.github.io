@@ -1,6 +1,6 @@
 ---
 _id: 89935330-2311-11e8-96fc-47cb7af51042
-status: searching
+status: expired
 date_posted: '2018-03-08'
 layout: post
 organization: Thunderbird Project

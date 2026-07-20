@@ -1,6 +1,6 @@
 ---
 _id: 256e9630-587f-11ef-8c7b-17182f40838a
-status: searching
+status: expired
 date_posted: '2024-08-12'
 layout: jobs
 organization: Glossia

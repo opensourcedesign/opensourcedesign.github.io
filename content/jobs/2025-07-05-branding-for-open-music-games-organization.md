@@ -1,6 +1,6 @@
 ---
 _id: 765068b0-59b1-11f0-af0f-592383009651
-status: searching
+status: expired
 date_posted: '2025-07-05'
 layout: jobs
 organization: Open Music Games Organization

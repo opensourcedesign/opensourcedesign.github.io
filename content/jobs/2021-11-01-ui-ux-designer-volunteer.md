@@ -1,6 +1,6 @@
 ---
 _id: a0da5160-3afa-11ec-bb94-e377abcb22f2
-status: searching
+status: expired
 date_posted: '2021-11-01'
 layout: jobs
 organization: ZAKKI

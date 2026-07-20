@@ -1,6 +1,6 @@
 ---
 _id: ef463050-4fa7-11ec-9941-05b7d001230e
-status: searching
+status: expired
 date_posted: '2021-11-27'
 layout: jobs
 organization: Dynastra Tabletop (FOSS but currently private)

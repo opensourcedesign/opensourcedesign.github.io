@@ -1,6 +1,6 @@
 ---
 _id: 361b7d30-3b4a-11e8-b042-4d6d56584300
-status: searching
+status: expired
 date_posted: '2018-04-08'
 layout: post
 organization: wemake.services meta

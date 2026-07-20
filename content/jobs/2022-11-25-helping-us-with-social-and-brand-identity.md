@@ -1,6 +1,6 @@
 ---
 _id: 64630f60-6cfe-11ed-87d7-af2b52d7b602
-status: searching
+status: expired
 date_posted: '2022-11-25'
 layout: jobs
 organization: Schrödinger Hat

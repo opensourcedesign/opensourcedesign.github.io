@@ -1,6 +1,6 @@
 ---
 _id: d216d2a0-c1b0-11ee-b45a-eff80ddb985d
-status: searching
+status: expired
 date_posted: '2024-02-02'
 layout: jobs
 organization: Nabu Casa / Home Assistant

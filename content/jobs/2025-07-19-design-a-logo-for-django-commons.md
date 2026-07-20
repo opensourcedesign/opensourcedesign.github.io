@@ -1,6 +1,6 @@
 ---
 _id: ba9bd950-64a6-11f0-9937-810b28c86d19
-status: searching
+status: expired
 date_posted: '2025-07-19'
 layout: jobs
 organization: django-commons

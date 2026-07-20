@@ -1,6 +1,6 @@
 ---
 _id: d6b20ee0-0f27-11f0-85e6-7516efda466f
-status: searching
+status: expired
 date_posted: '2025-04-01'
 layout: jobs
 organization: Forgejo

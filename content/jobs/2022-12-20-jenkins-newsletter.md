@@ -6,7 +6,7 @@ role: Artwork design for Jenkins newsletter
 organization: Jenkins CI
 contact: atong@cloudbees.com
 org_url: https://www.jenkins.io
-status: searching
+status: expired
 compensation: gratis
 how_to_apply:
     - "License: https://www.jenkins.io/license/"

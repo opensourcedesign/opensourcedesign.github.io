@@ -1,6 +1,6 @@
 ---
 _id: 49804900-bb3c-11ee-bbd3-639e07e8dbfe
-status: searching
+status: expired
 date_posted: '2024-01-25'
 layout: jobs
 organization: ApiOpenStudio

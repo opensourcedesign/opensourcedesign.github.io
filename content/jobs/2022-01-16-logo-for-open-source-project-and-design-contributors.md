@@ -1,6 +1,6 @@
 ---
 _id: 0fea57d0-76bf-11ec-b4de-132f6fc42c61
-status: searching
+status: expired
 date_posted: '2022-01-16'
 layout: jobs
 organization: Window.js

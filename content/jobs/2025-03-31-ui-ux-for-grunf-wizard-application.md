@@ -1,6 +1,6 @@
 ---
 _id: c423f7c0-0e41-11f0-a435-cbe286e07ff7
-status: searching
+status: expired
 date_posted: '2025-03-31'
 layout: jobs
 organization: grunf

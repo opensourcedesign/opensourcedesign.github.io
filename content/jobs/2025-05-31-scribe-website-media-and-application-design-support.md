@@ -1,6 +1,6 @@
 ---
 _id: 91a3f320-3e1d-11f0-8975-d91ce4d6dbd9
-status: searching
+status: expired
 date_posted: '2025-05-31'
 layout: jobs
 organization: Scribe

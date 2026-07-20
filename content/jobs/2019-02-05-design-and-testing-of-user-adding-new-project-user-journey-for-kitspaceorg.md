@@ -1,6 +1,6 @@
 ---
 _id: d463b1f0-291b-11e9-a443-f33ba63cc99e
-status: searching
+status: expired
 date_posted: '2019-02-05'
 layout: jobs
 organization: Kitspace

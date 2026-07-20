@@ -1,6 +1,6 @@
 ---
 _id: 343a5100-70c5-11ef-8944-4fd01fc8666d
-status: searching
+status: expired
 date_posted: '2024-09-12'
 layout: jobs
 organization: Mautic

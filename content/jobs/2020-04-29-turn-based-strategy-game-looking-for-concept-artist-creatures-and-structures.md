@@ -1,6 +1,6 @@
 ---
 _id: 573d03c0-89af-11ea-9fe5-1bc1e20fce0e
-status: searching
+status: expired
 date_posted: '2020-04-29'
 layout: jobs
 organization: Ancient Beast

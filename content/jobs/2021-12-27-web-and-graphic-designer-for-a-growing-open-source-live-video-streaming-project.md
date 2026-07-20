@@ -1,6 +1,6 @@
 ---
 _id: 04960960-67a1-11ec-b166-5fdb8d8e6e5d
-status: searching
+status: expired
 date_posted: '2021-12-27'
 layout: jobs
 organization: Owncast - The free and open source live streaming and chat server

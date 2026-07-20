@@ -1,6 +1,6 @@
 ---
 _id: 02cb5be0-297e-11e8-9355-9ff5c65d6e8d
-status: searching
+status: expired
 date_posted: '2018-03-16'
 layout: post
 organization: Expensa
