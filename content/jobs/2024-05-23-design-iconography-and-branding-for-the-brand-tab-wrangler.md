@@ -1,6 +1,6 @@
 ---
 _id: 82b3d180-1977-11ef-ada1-b790ace9f0b2
-status: expired
+status: closed
 date_posted: '2024-05-23'
 layout: jobs
 organization: Tab Wrangler - a browser extension - branding and icon design
