@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: opensourcedesign.net/pr-preview/pr-567/sitemap.xml
