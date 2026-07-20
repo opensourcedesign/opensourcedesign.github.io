@@ -126,6 +126,10 @@
   }
 
   /* Theme toggle: show only the icon for the active state (set by main.js). */
+  [data-theme-toggle][data-theme-pending] {
+    visibility: hidden;
+    pointer-events: none;
+  }
   [data-theme-toggle] :is(.osd-theme-icon-light, .osd-theme-icon-system, .osd-theme-icon-dark) {
     display: none;
   }

@@ -88,7 +88,7 @@
       var state = current();
       var next = ORDER[(ORDER.indexOf(state) + 1) % ORDER.length];
       cycleButtons.forEach(function (b) {
-        b.hidden = false;
+        b.removeAttribute('data-theme-pending');
         b.setAttribute('data-theme-state', state);
         b.setAttribute('aria-label', 'Colour theme: ' + LABELS[state] + '. Switch to ' + LABELS[next].toLowerCase() + '.');
         b.title = 'Theme: ' + LABELS[state];

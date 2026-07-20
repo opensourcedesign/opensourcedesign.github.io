@@ -66,6 +66,7 @@
         Submission result
       </h2>
       <div class="mt-2 text-sm leading-relaxed text-slate-700" id="osd-result-body"></div>
+      <div class="mt-4" id="osd-result-extra"></div>
     </div>
 
     <p class="mt-10 text-sm text-slate-500">
@@ -85,11 +86,44 @@
         var out = document.getElementById('osd-result');
         var outTitle = document.getElementById('osd-result-title');
         var outBody = document.getElementById('osd-result-body');
+        var outExtra = document.getElementById('osd-result-extra');
         var submitBtn = document.getElementById('osd-submit');
         if (!form) return;
 
         function escHTML(s) {
           return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function showResult(title, bodyHtml, extraHtml) {
+          if (outTitle) outTitle.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ' + title;
+          if (outBody) outBody.innerHTML = bodyHtml || '';
+          if (outExtra) outExtra.innerHTML = extraHtml || '';
+          if (out) {
+            out.hidden = false;
+            out.setAttribute('tabindex', '-1');
+            out.focus();
+          }
+          out.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        }
+
+        function showSubmissionSuccess(prUrl) {
+          var safePr = escHTML(String(prUrl || ''));
+          form.hidden = true;
+          if (note) note.textContent = '';
+          showResult(
+            'Thanks - suggestion received',
+            'Your suggestion is now in the moderation queue. Track progress in <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + safePr + '" target="_blank" rel="noopener noreferrer">this pull request</a>.',
+            '<div class="flex flex-wrap gap-3"><a class="osd-btn-primary text-sm" href="' + safePr + '" target="_blank" rel="noopener noreferrer">View pull request</a><button type="button" id="osd-resource-another" class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">Suggest another resource</button></div>'
+          );
+          var againBtn = document.getElementById('osd-resource-another');
+          if (!againBtn) return;
+          againBtn.addEventListener('click', function () {
+            form.hidden = false;
+            form.reset();
+            if (out) out.hidden = true;
+            var first = form.querySelector('#name');
+            if (first) first.focus();
+          });
         }
 
         form.addEventListener('submit', async function (e) {
@@ -141,11 +175,7 @@
             var json = await resp.json().catch(function () { return null; });
             if (resp.ok && json && json.ok && json.pr_url) {
               if (note) note.textContent = 'Submitted.';
-              if (outTitle) outTitle.textContent = 'Thanks - suggestion received';
-              if (outBody) outBody.innerHTML = 'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + escHTML(json.pr_url) + '" target="_blank" rel="noopener noreferrer">' + escHTML(json.pr_url) + '</a>';
-              if (out) out.hidden = false;
-              out.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              form.reset();
+              showSubmissionSuccess(json.pr_url);
               return;
             }
             if (note) note.textContent = (json && json.error) ? String(json.error) : 'Submission failed - please use the GitHub link below.';

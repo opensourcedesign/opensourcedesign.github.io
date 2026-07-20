@@ -50,6 +50,9 @@ case "$MODE" in
     [[ -n "$PREVIEW_NUM" ]] || usage
     PREVIEW_HOST="${PREVIEW_SITE_URL:-https://opensourcedesign.net}"
     PREVIEW_HOST="${PREVIEW_HOST%/}"
+    if [[ ! "$PREVIEW_HOST" =~ ^https?:// ]]; then
+      PREVIEW_HOST="https://${PREVIEW_HOST}"
+    fi
     BASE="${PREVIEW_HOST}/pr-preview/pr-${PREVIEW_NUM}/"
     hugo --minify --gc --baseURL "${BASE}"
     build_pagefind

@@ -62,8 +62,34 @@ var form = document.getElementById('osd-event-form');
           if (outTitle) outTitle.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ' + title;
           if (outBody) outBody.innerHTML = bodyHtml || '';
           if (outExtra) outExtra.innerHTML = extraHtml || '';
-          if (out) out.hidden = false;
+          if (out) {
+            out.hidden = false;
+            out.setAttribute('tabindex', '-1');
+            out.focus();
+          }
           out.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        }
+
+        function showSubmissionSuccess(prUrl, heading, againLabel) {
+          var safePr = escHTML(String(prUrl || ''));
+          form.hidden = true;
+          if (note) note.textContent = '';
+          out.classList.remove('border-slate-200', 'bg-white');
+          out.classList.add('border-emerald-200', 'bg-emerald-50');
+          showResult(
+            heading,
+            'Your event submission is in the moderation queue. Track progress in <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + safePr + '" target="_blank" rel="noopener noreferrer">this pull request</a>.',
+            '<div class="flex flex-wrap gap-3"><a class="osd-btn-primary text-sm" href="' + safePr + '" target="_blank" rel="noopener noreferrer">View pull request</a><button type="button" id="osd-submit-another" class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">' + escHTML(againLabel) + '</button></div>'
+          );
+          var againBtn = document.getElementById('osd-submit-another');
+          if (!againBtn) return;
+          againBtn.addEventListener('click', function () {
+            form.hidden = false;
+            form.reset();
+            if (out) out.hidden = true;
+            var first = form.querySelector('#title');
+            if (first) first.focus();
+          });
         }
 
         function getRadio(name) {
@@ -312,12 +338,15 @@ var form = document.getElementById('osd-event-form');
 
               if (resp.ok && json && json.ok && json.pr_url) {
                 if (note) note.textContent = 'Submitted.';
-                showResult(
-                  editFile ? 'Thanks - your changes were received' : 'Thanks - submission received',
-                  'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + escHTML(json.pr_url) + '" target="_blank" rel="noopener noreferrer">' + escHTML(json.pr_url) + '</a>',
-                  ''
-                );
-                if (!editFile) form.reset();
+                if (editFile) {
+                  showResult(
+                    'Thanks - your changes were received',
+                    'A pull request was created for moderation: <a class="font-medium underline underline-offset-4 hover:text-emerald-700" href="' + escHTML(json.pr_url) + '" target="_blank" rel="noopener noreferrer">' + escHTML(json.pr_url) + '</a>',
+                    ''
+                  );
+                  return;
+                }
+                showSubmissionSuccess(json.pr_url, 'Thanks - submission received', 'Add another event');
                 return;
               }
 

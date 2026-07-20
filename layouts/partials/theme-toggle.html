@@ -44,7 +44,7 @@
 {{ else }}
   <button type="button"
     class="inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus-visible:ring-slate-100/30 dark:focus-visible:ring-offset-slate-950"
-    data-theme-toggle hidden>
+    data-theme-toggle data-theme-pending>
     <span class="osd-theme-icon-light">{{ replace $iconLight "h-4 w-4" "h-5 w-5" | safeHTML }}</span>
     <span class="osd-theme-icon-system">{{ replace $iconSystem "h-4 w-4" "h-5 w-5" | safeHTML }}</span>
     <span class="osd-theme-icon-dark">{{ replace $iconDark "h-4 w-4" "h-5 w-5" | safeHTML }}</span>

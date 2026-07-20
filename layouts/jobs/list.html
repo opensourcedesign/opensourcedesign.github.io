@@ -3,6 +3,7 @@
   {{/* Deadline-aware: searching jobs whose application deadline passed are
        excluded here and surface on the archive page instead (issue #84). */}}
   {{ $jobs := partial "functions/open-jobs.html" $jobsAll }}
+  {{ $jobsArchivedCount := sub (len $jobsAll) (len $jobs) }}
   {{/* Robustly count compensation types (handles paid / gratis / volunteer / free / unspecified). */}}
   {{ $counts := newScratch }}
   {{ $counts.Set "paid" 0 }}
@@ -117,7 +118,7 @@
     </div>
 
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
-      <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">browse {{ len $jobsAll }}+ archived jobs</a>
+      <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">browse {{ $jobsArchivedCount }} archived jobs</a>
     </div>
     <p class="mt-2 text-xs text-slate-500">Postings are archived automatically once their application deadline passes, or after a year without updates.</p>
 
