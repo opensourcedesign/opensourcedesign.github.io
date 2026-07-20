@@ -346,6 +346,9 @@
     - name: Figma
       url: https://www.figma.com/
       description: UI design, wireframes, prototypes.
+    - name: 'Cloud'
+      url: 'https://example.com'
+      description: 'Testing resource submission'
 
 - id: color
   title: Color
