@@ -23,13 +23,16 @@ Finding better, more concrete labels for buttons, menus and input fields.
 
 ### How does it help?
 
-Labels shape expectations -- and these expectations should match what
+Labels shape expectations—and these expectations should match what
 the software actually will do.
 
-See this issue, changing labels from variable names of the
-implementation to common terms:
-[inkscape/inkscape!7048](https://gitlab.com/inkscape/inkscape/-/merge_requests/7048)
-(via [@ltlnx](https://g0v.social/@ltlnx/115883073086406019))
+### Example: Don’t use implementation langauge in labels
+In this [issue on the inkscape project](https://gitlab.com/inkscape/inkscape/-/merge_requests/7048) (via [@ltlnx](https://g0v.social/@ltlnx/115883073086406019))
+user Adam Belis suggests to replace lables like “Insert node at min X” with “Add node to Left”: 
+Instead of terms referring to variable names (min X) the new lables use everyday concepts (to Left).
+
+![a screenshot of a toolbar menu in inkscape, showing entries like "insert node at min X"](/images/resources/typicalTasks/InsertNodeInkscapeOld.png)
+
 
 ### When and why does it work?
 
@@ -38,13 +41,14 @@ separately from the code and changing the labels usually does not mean
 that code needs to be changed. There are two risks when changing labels:
 
 - Existing users are familiar with the old label and that the change
-  will be confusing to them
+  will be confusing to them.
 - The new label is longer than the available space, which is
-  particularly relevant in languages like German.
+  particularly relevant in languages like German, which typically have longer words than English.
 
 ### Resources
 
 - [The Grammar of Interactivity](https://www.theguardian.com/info/developer-blog/2013/jan/02/interactive-button-text-grammar)
+- [10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/), Match Between the System and the Real World.
 
 ## Improve Icons
 
@@ -81,11 +85,18 @@ changed. *Risks* of changing icons are:
 Redesigning layout and widget choice for existing dialogs.
 
 ### How does it help?
-
+  
 Choosing widgets that are more familiar and more appropriate to the task
 increases usability. A meaningful layout that matches the user's idea
 of the system and the user's tasks helps to understand what needs to be
 done.
+
+### Example: Use semantically correct widgets
+
+[”Interface standards violation, using checkboxes instead of radio
+  buttons”](https://github.com/penpot/penpot/issues/8083) points out that 
+  in a dialog in penpot, checkmarks are used for mutually exclusive options, 
+  which, following interface standards, is what radio buttons or dropdowns should be used for.
 
 ### When and why does it work?
 
@@ -100,18 +111,6 @@ Risks:
 - Not being familiar with the tasks users do might lead to suggestions
   that look visually more clean but do not match the user's needs.
 
-### Examples
-
-- [inkscape/ux#305](https://gitlab.com/inkscape/ux/-/issues/305)
-- Interface standards violation, using checkboxes instead of radio
-  buttons: [penpot/penpot#8083](https://github.com/penpot/penpot/issues/8083)
-
-*As with any design change or adaption, there are some people that may
-prefer aspects of an original design for either very good, evidence-able
-reasons or not great, non-evidence based reasons. Iterative and testable
-changes/improvements typically work well in FOSS to explore how a user
-might use a new layout or interface element which can be used to back up
-decisions.*
 
 ## Suggesting new features
 
@@ -123,6 +122,26 @@ Suggesting features based on user needs.
 
 Suggesting features that are based on actual user needs helps to make
 applications more useful.
+
+### Example: Trash in Penpot
+
+When one deleted a project in Penpot, one would get a warning, but upon
+confirmation the project would be gone. This is easy to habitually
+dismiss. A well-established mechanism that does not have the problem is
+implementing a trash-can, a temporary container from which deleted files
+can be retrieved again if one accidentally deleted them or changed one's
+mind about them. 
+
+This feature was suggested by a user in the [penpot community forum](https://community.penpot.app/t/feature-request-add-a-trash-can-for-deleted-files/5746),
+jan transferred it to a [github issue](https://github.com/penpot/penpot/issues/4775).
+One user commented "I've never needed this feature until today 😭",
+implying that they indeed accidentally deleted projects. The feature
+request was picked up at some point, so that penpot now has a trashcan
+for deleted files.
+
+The feature is relatively simple, since it uses an established metaphor
+and mechanism and was probably also not complex to implement, as it
+relies on similar components as other ways to organize projects.
 
 ### When and why does it work?
 
@@ -138,31 +157,14 @@ that usually lead to difficulties:
 
 - If the feature needs custom UI elements, it is usually harder to
   implement than a feature that can use existing widgets like input
-  fields, menus or toolbars
-- If the feature relies on complex, hard to define behavior: "If this
-  happens, it does... but if that happens...". Anything that "guesses"
+  fields, menus or toolbars.
+- If the feature relies on complex, hard to define behavior: “If this
+  happens, it does... but if that happens...”. Anything that “guesses”
   the wanted behavior is often impossible to get right.
 - If the feature needs a technology that is not part of the product at
   the moment. This is not easy to find out without knowing at least a
   bit about the code, but if developers mention that it would mean to
-  introduce "command-pattern", "real-time evaluation", or "caching", it
+  introduce “command-pattern”, “real-time evaluation”, or “caching”, it
   hints that this is possible, but difficult. It might be worth it, but
   it needs a dedicated developer.
 
-### Example: Trash in Penpot
-
-When one deleted a project in Penpot, one would get a warning, but upon
-confirmation the project would be gone. This is easy to habitually
-dismiss. A well-established mechanism that does not have the problem is
-implementing a trash-can, a temporary container from which deleted files
-can be retrieved again if one accidentally deleted them or changed one's
-mind about them. This feature was suggested by a user in the [penpot community forum](https://community.penpot.app/t/feature-request-add-a-trash-can-for-deleted-files/5746),
-jan transferred it to a [github issue](https://github.com/penpot/penpot/issues/4775).
-One user commented "I've never needed this feature until today 😭",
-implying that they indeed accidentally deleted projects. The feature
-request was picked up at some point, so that penpot now has a trashcan
-for deleted files.
-
-The feature is relatively simple, since it uses an established metaphor
-and mechanism and was probably also not complex to implement, as it
-relies on similar components as other ways to organize projects.
