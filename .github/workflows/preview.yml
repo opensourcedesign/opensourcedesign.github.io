@@ -15,11 +15,13 @@ concurrency:
 env:
   # Keep in lockstep with hugo-build.yml so previews match production output.
   HUGO_VERSION: 0.164.0
-  TAILWIND_VERSION: 4.3.2
+  TAILWIND_VERSION: 4.3.3
   PAGEFIND_VERSION: 1.5.2
   PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
-  # Public host for PR previews (must match hugo.toml baseURL and the Pages custom domain).
+  # Absolute origin used by Hugo when building preview URLs.
   PREVIEW_SITE_URL: https://opensourcedesign.net
+  # Hostname used by pr-preview-action when composing comment links.
+  PREVIEW_SITE_HOST: opensourcedesign.net
 
 jobs:
   build-preview:
@@ -76,7 +78,7 @@ jobs:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: ${{ env.PREVIEW_SITE_URL }}
+          pages-base-url: ${{ env.PREVIEW_SITE_HOST }}
           wait-for-pages-deployment: false
           action: deploy
 

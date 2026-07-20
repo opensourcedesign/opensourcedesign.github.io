@@ -16,7 +16,7 @@ env:
   HUGO_VERSION: 0.164.0
   # Keep in lockstep with the @tailwindcss/browser version pinned in
   # layouts/_default/baseof.html (the local-dev Play CDN fallback).
-  TAILWIND_VERSION: 4.3.2
+  TAILWIND_VERSION: 4.3.3
   # Pagefind is a standalone Rust binary downloaded straight from GitHub
   # releases - no npm involved. Update the version and checksum together
   # (checksum from the .tar.gz.sha256 asset on the release page).
