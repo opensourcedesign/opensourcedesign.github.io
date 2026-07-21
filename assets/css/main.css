@@ -138,6 +138,28 @@
   [data-theme-toggle][data-theme-state="dark"] .osd-theme-icon-dark {
     display: block;
   }
+
+  /* Long URLs and unbroken strings in rich text should wrap on narrow screens
+     instead of forcing horizontal scroll (events, articles, jobs, etc.). */
+  #main {
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  #main article {
+    min-width: 0;
+  }
+
+  .prose,
+  .osd-prose {
+    @apply min-w-0 break-words;
+  }
+
+  .prose :where(a, p, li, td, th, blockquote, figcaption),
+  .osd-prose :where(a, p, li, td, th, blockquote),
+  .max-w-prose :where(a, p, li) {
+    overflow-wrap: anywhere;
+  }
 }
 
 @media print {

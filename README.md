@@ -154,7 +154,7 @@ opensourcedesign.net/
 │   └── images/
 │       └── brand/    # Official logos and branding assets
 ├── hugo.toml         # Hugo configuration
-└── workers/          # Cloudflare Worker for the job & event submission forms (deployed separately)
+└── workers/          # Cloudflare Worker for the job, event & resource submission forms (deployed separately)
 ```
 
 ## Development Commands
@@ -188,7 +188,7 @@ All content lives as Markdown in `content/`. The site uses the following section
 | About Us | `content/about-us/` | About page, manifesto, governance, by-laws, code of conduct, how to join |
 | Events | `content/events/` | Event announcements and write-ups — or use the [event form](https://opensourcedesign.net/events/event-form/) |
 | Jobs | `content/jobs/` | Job listings — or use the [job form](https://opensourcedesign.net/jobs/job-form/) |
-| Resources | `content/resources/` | Hub page with sub-pages: the curated links directory at `/resources/links/`, the bibliography at `/resources/bibliography/` (`/resources/reading/` redirects there), and community articles at `/resources/articles/` (`/articles/` redirects there) |
+| Resources | `content/resources/` | Hub page with sub-pages: the curated links directory at `/resources/links/` (suggest new links via the [suggest form](https://opensourcedesign.net/resources/suggest/)), the bibliography at `/resources/bibliography/` (`/resources/reading/` redirects there), and community articles at `/resources/articles/` (`/articles/` redirects there) |
 | Standalone | `content/*.md` | `forum`, `imprint`, `brand`, and the homepage (`_index.md`) |
 
 ### Editing Process
@@ -234,7 +234,7 @@ Each platform is optional - configure its repo secrets to enable it:
 
 | Platform | Secrets | Where to get them |
 | -------- | ------- | ----------------- |
-| Mastodon | `MASTODON_URL`, `MASTODON_ACCESS_TOKEN` | On the account's instance: Preferences → Development → New application, scope `write:statuses`. `MASTODON_URL` is the instance base URL, e.g. `https://fosstodon.org`. |
+| Mastodon | `MASTODON_URL`, `MASTODON_ACCESS_TOKEN` | On the account's instance: Preferences → Development → New application, scope `write:statuses`. `MASTODON_URL` is the instance base URL, e.g. `https://mastodon.online`. |
 | Bluesky | `BLUESKY_IDENTIFIER`, `BLUESKY_APP_PASSWORD` (optional `BLUESKY_SERVICE`) | `BLUESKY_IDENTIFIER` is the handle (e.g. `opensourcedesign.net`); create the app password under Settings → Privacy and Security → App Passwords. Don't use the account password. |
 
 To announce a posting manually (retry, or one that predates the workflow), run *Announce new jobs on social media* from the Actions tab with the file path - there's also a dry-run option that composes the posts without publishing. Missed announcements never block a merge: the workflow only reads the repo and fails loudly in the Actions log.
@@ -244,7 +244,7 @@ To announce a posting manually (retry, or one that predates the workflow), run *
 1. Navigate to `content/events/`
 2. Create a new `.md` file (date-prefixed for announcements, or a short slug for write-ups, e.g. `fosdem-2026.md`)
 3. Fill in the front matter with event details (`title`, `eventDate`, `status`, location, etc.)
-4. Or use the online form at [opensourcedesign.net/events/event-form/](https://opensourcedesign.net/events/event-form/), which opens a moderated pull request for you (handled by the same Cloudflare Worker as the job form)
+4. Or use the online form at [opensourcedesign.net/events/event-form/](https://opensourcedesign.net/events/event-form/), which opens a moderated pull request for you (handled by the same Cloudflare Worker as the job and resource forms)
 
 To update an existing event (fix details, mark it as cancelled), use the "Edit this event" link at the bottom of the event's page - it opens the same form prefilled, and submits a moderated pull request that updates the file in place.
 
@@ -254,7 +254,7 @@ To update an existing event (fix details, mark it as cancelled), use the "Edit t
 
 ### Updating Resources
 
-1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` - each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format. Non-Git users can use the [suggest form](https://opensourcedesign.net/resources/suggest/) instead (linked from the `/resources/` hub) - it opens a moderated pull request that inserts the entry into the right category, via the same Cloudflare Worker as the job form.
+1. To add, change, or remove a curated tool or link, edit `data/resources.yaml` - each entry is a few YAML lines (`name`, `url`, optional `description` and extra `links`), grouped into categories. No HTML or template knowledge needed; the file's header comment documents the format. Non-Git users can use the [suggest form](https://opensourcedesign.net/resources/suggest/) instead (linked from `/resources/links/`) - it opens a moderated pull request that inserts the entry into the right category, via the same Cloudflare Worker as the job and event forms.
 2. To add a talk, article, paper, or book to the **Bibliography**, add an entry to `data/bibliography.yaml`.
 3. Both lists render wherever their shortcode is placed in a page's Markdown: `{{</* resources */>}}` for the filterable directory (in `content/resources/links.md`) and `{{</* bibliography */>}}` for the bibliography (in `content/resources/bibliography.md`, with `heading="false"` since the page provides its own title). Move or copy a shortcode to relocate its list.
 4. New resource sub-pages (e.g. the guide texts proposed in issue #554) are Markdown files in `content/resources/` with `layout: resource-page` and a `weight` that controls their order on the `/resources/` hub. Two of the four proposed guides are still draft placeholders - fill in the body and remove `draft: true` to publish.

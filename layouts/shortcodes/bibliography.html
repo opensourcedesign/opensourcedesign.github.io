@@ -17,7 +17,7 @@
       {{ range sort . "year" "desc" }}
         <li class="flex flex-col gap-1 border-b border-slate-100 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
           <div class="min-w-0">
-            <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+            <a class="break-words font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-900" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
             <div class="mt-0.5 text-sm text-slate-600">
               {{ with .author }}{{ . }}{{ end }}{{ with .publication }} &middot; {{ . }}{{ end }}
             </div>

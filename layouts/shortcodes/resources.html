@@ -40,18 +40,18 @@
         <section class="resource-cat mt-10 scroll-mt-24" id="{{ .id }}" data-cat="{{ .id }}" aria-labelledby="cat-{{ .id }}">
           <h3 class="flex items-baseline gap-2 border-b border-slate-200 pb-2 text-xs font-semibold uppercase tracking-widest text-slate-500" id="cat-{{ .id }}">{{ .title }} <span class="font-normal normal-case tracking-normal text-slate-500">{{ len .items }}</span></h3>
           {{ with .note }}
-            <div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 [&_a]:font-medium [&_a]:text-slate-900 [&_a]:underline [&_a]:decoration-slate-300 [&_a]:underline-offset-4 hover:[&_a]:decoration-slate-900">{{ . | markdownify }}</div>
+            <div class="mt-3 max-w-prose text-sm leading-relaxed text-slate-600 break-words [&_a]:font-medium [&_a]:text-slate-900 [&_a]:underline [&_a]:decoration-slate-300 [&_a]:underline-offset-4 hover:[&_a]:decoration-slate-900">{{ . | markdownify }}</div>
           {{ end }}
           <ul class="mt-2 gap-x-10 sm:columns-2" role="list">
             {{ range .items }}
               {{- $hay := printf "%s %s %s" $cat.title .name (.description | default "") -}}
               {{- range .links }}{{ $hay = printf "%s %s" $hay .text }}{{ end -}}
               <li class="resource-item break-inside-avoid py-1.5 text-sm leading-relaxed" data-haystack="{{ $hay | lower }}">
-                <a class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+                <a class="break-words font-medium text-slate-900 underline decoration-slate-300 underline-offset-4 transition hover:decoration-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
                 {{ with .description }}<span class="text-slate-600"> {{ . }}</span>{{ end }}
                 {{ with .links }}
                   <span class="text-slate-500">
-                    {{ range $i, $l := . }}{{ if $i }} · {{ else }}·{{ end }} <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-900" href="{{ $l.url }}" target="_blank" rel="noopener noreferrer">{{ $l.text }}</a>{{ end }}
+                    {{ range $i, $l := . }}{{ if $i }} · {{ else }}·{{ end }} <a class="break-words underline decoration-slate-300 underline-offset-4 transition hover:text-slate-900 hover:decoration-slate-900" href="{{ $l.url }}" target="_blank" rel="noopener noreferrer">{{ $l.text }}</a>{{ end }}
                   </span>
                 {{ end }}
               </li>

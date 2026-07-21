@@ -70,7 +70,7 @@ capitalizeListTitles = false
   calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
   fossJobsURL = "https://www.fossjobs.net/"
   openCollectiveURL = "https://opencollective.com/opensourcedesign"
-  jobGuidelinesURL = "https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925"
+  jobGuidelinesURL = "https://discourse.opensourcedesign.net/t/guidelines-on-posting-and-responding-to-jobs/3416"
 
   [params.cards]
     summaryMax = 120

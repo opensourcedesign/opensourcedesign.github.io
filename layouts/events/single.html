@@ -5,21 +5,21 @@
       {{ if or .Params.eventDate .Params.time .Params.location }}
         <dl class="mt-6 space-y-1.5 text-sm text-slate-600">
           {{ with .Params.eventDate }}
-            <div class="flex gap-3">
+            <div class="flex min-w-0 gap-3">
               <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Date</dt>
-              <dd class="text-slate-800">{{ . }}</dd>
+              <dd class="min-w-0 text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
           {{ with .Params.time }}
-            <div class="flex gap-3">
+            <div class="flex min-w-0 gap-3">
               <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Time</dt>
-              <dd class="text-slate-800">{{ . }}</dd>
+              <dd class="min-w-0 text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
           {{ with .Params.location }}
-            <div class="flex gap-3">
+            <div class="flex min-w-0 gap-3">
               <dt class="w-20 shrink-0 text-xs font-semibold uppercase tracking-widest text-slate-500">Where</dt>
-              <dd class="text-slate-800">{{ . }}</dd>
+              <dd class="min-w-0 text-slate-800">{{ . }}</dd>
             </div>
           {{ end }}
         </dl>
@@ -28,7 +28,7 @@
 
     {{ with .Content }}
       <div class="mt-10 border-t border-slate-200 pt-10">
-        <div class="prose prose-slate max-w-none">{{ . }}</div>
+        <div class="prose prose-slate max-w-none break-words dark:prose-invert">{{ . }}</div>
       </div>
     {{ end }}
 

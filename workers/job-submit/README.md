@@ -1,11 +1,16 @@
-# Submission Worker (jobs + events)
+# Submission Worker (jobs, events & resources)
 
 A free Cloudflare Worker that replaces the old Staticman/Heroku backend for the
-**Post a Job** and **Submit an Event** forms. It verifies a submission
-(Cloudflare Turnstile + honeypot), rebuilds the Markdown server-side, and opens
-a moderated pull request into `content/jobs/` (or `content/events/` when the
-payload carries `kind: "event"`). The submitter's email is kept private in
-Cloudflare KV (keyed by PR number) so the
+**Post a Job**, **Submit an Event**, and **Suggest a resource** forms. It verifies
+each submission (Cloudflare Turnstile + honeypot), rebuilds content server-side,
+and opens a moderated pull request into:
+
+- `content/jobs/` when `kind` is omitted or `"job"`
+- `content/events/` when `kind` is `"event"`
+- `data/resources.yaml` when `kind` is `"resource"` (entry appended to the chosen
+  category; the YAML is edited textually so comments and formatting survive)
+
+The submitter's email is kept private in Cloudflare KV (keyed by PR number) so the
 [`job-approved-email`](../../.github/workflows/job-approved-email.yml)
 workflow can notify them when the posting is merged and published.
 [`job-rejected-email`](../../.github/workflows/job-rejected-email.yml) emails
@@ -39,16 +44,12 @@ organization - the Worker answers `409` with the match, and the form asks the
 submitter to confirm (re-submitting with `force_duplicate: true`). The check
 fails open, so an unreachable site never blocks a legitimate posting.
 
-A third kind, `kind: "resource"`, powers the **Suggest a resource** form
-(`/resources/suggest/`): the Worker inserts the suggested entry (name, URL,
-optional description) at the end of the chosen category in
-`data/resources.yaml` - editing the YAML textually so comments and formatting
-survive - and opens a PR on a `resource/*` branch. Unknown categories are
-rejected. The same KV email flow applies (the approval workflow recognizes
-`resource/*` branches).
+Resource suggestions (`kind: "resource"`, from `/resources/suggest/`) open a PR on
+a `resource/*` branch. Unknown categories are rejected. The same KV email flow
+applies (the approval workflow recognizes `resource/*` branches).
 
 ```
-Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/ or content/events/
+Visitor → POST /submit → Worker → (Turnstile + honeypot) → GitHub PR into content/jobs/, content/events/, or data/resources.yaml
                                  → KV: pr:<n> = { email, title, kind }
 Maintainer merges PR → GitHub Action → GET /lookup?pr=<n> → email submitter via SMTP
 Maintainer closes PR  → GitHub Action → GET /lookup?pr=<n> → rejection email → POST /rejection-sent?pr=<n>
@@ -92,7 +93,7 @@ forum. The build-time list rendered by Hugo remains the no-JS fallback.
 2. A **GitHub fine-grained PAT** scoped to `opensourcedesign/opensourcedesign.net` with:
    - **Contents: Read and write**
    - **Pull requests: Read and write**
-   - *(optional)* **Issues: Read and write** - only needed if you want the Worker to add the `job-submission` label; labeling is best-effort and the email workflow does not depend on it.
+   - *(optional)* **Issues: Read and write** - only needed if you want the Worker to add the `job-submission`, `event-submission`, or `resource-suggestion` labels; labeling is best-effort and the email workflow does not depend on it.
 3. **Cloudflare Turnstile** site + secret keys ([dashboard](https://dash.cloudflare.com/?to=/:account/turnstile)).
 4. **SMTP** credentials (host, port, user, password, from address) for the approval and rejection emails.
 
@@ -135,17 +136,19 @@ simply skipped.
 
 ## Wire it into the site (`hugo.toml`)
 
-Set the params under `[params]`, then commit. Both forms talk to the same
-`/submit` route - the Worker tells them apart by the `kind` field:
+Set the params under `[params]`, then commit. All three forms talk to the same
+`/submit` route - the Worker tells them apart by the `kind` field. The resource
+form reads `jobSubmitEndpoint` (there is no separate param for it):
 
 ```toml
-jobSubmitEndpoint   = "https://osd-job-submit.<account>.workers.dev/submit"
+jobSubmitEndpoint   = "https://osd-job-submit.<account>.workers.dev/submit"  # jobs + resources
 eventSubmitEndpoint = "https://osd-job-submit.<account>.workers.dev/submit"
 turnstileSiteKey    = "<your-turnstile-site-key>"
 ```
 
 When an endpoint param is empty the corresponding form still works - it falls
-back to showing the generated Markdown for a manual PR.
+back to showing the generated Markdown (jobs/events) or a GitHub edit link
+(resources) for a manual PR.
 
 ## GitHub repo secrets (for submission emails)
 
@@ -164,7 +167,8 @@ In the site repo: **Settings → Secrets and variables → Actions → New repos
 
 The workflows trigger on merged or closed submission PRs whose branch starts
 with `job/`, `event/`, or `resource/` (which the Worker always uses), so the
-`job-submission` and `event-submission` labels are informational only.
+`job-submission`, `event-submission`, and `resource-suggestion` labels are
+informational only.
 
 ## Local development
 

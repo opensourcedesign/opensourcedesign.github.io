@@ -147,7 +147,7 @@ If the submission is salvageable, say what to change and point them back to the
 form; edits to their own open PR branch also work.
 
 For guidance posters can be sent, link the
-[guidelines for responding to jobs](https://discourse.opensourcedesign.net/t/guidelines-for-responding-to-jobs/1925)
+[guidelines on posting and responding to jobs](https://discourse.opensourcedesign.net/t/guidelines-on-posting-and-responding-to-jobs/3416)
 thread or the job form's own hints.
 
 ## Changing this process
