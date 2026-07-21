@@ -153,7 +153,7 @@ thread or the job form's own hints.
 ## Changing this process
 
 The review process itself is community-owned. Propose changes on
-[issue #550](https://github.com/opensourcedesign/opensourcedesign.github.io/issues/550)
+[issue #550](https://github.com/opensourcedesign/opensourcedesign.net/issues/550)
 or the forum before editing the automation. The relevant moving parts:
 
 - Worker validation and PR creation: `workers/job-submit/src/index.js`

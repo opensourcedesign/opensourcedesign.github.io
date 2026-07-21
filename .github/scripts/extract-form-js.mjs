@@ -60,7 +60,7 @@ function extractOne({ layout, module, endpoint }) {
       import { init } from {{ $formJs.RelPermalink | jsonify | safeJS }};
       init({
         endpoint: {{ site.Params.${endpoint} | default "" | jsonify | safeJS }},
-        repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" | jsonify | safeJS }},
+        repoURL: {{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" | jsonify | safeJS }},
         repoBranch: {{ site.Params.repoBranch | default "main" | jsonify | safeJS }}
       });
     </script>`;

@@ -15,7 +15,7 @@
  *
  * Environment:
  *   GITHUB_TOKEN    for the commits/pulls API lookups.
- *   REPO            owner/name (e.g. opensourcedesign/opensourcedesign.github.io).
+ *   REPO            owner/name (e.g. opensourcedesign/opensourcedesign.net).
  *   LOOKUP_URL      Worker /lookup endpoint.
  *   LOOKUP_SECRET   Bearer secret for the lookup endpoint.
  *
@@ -26,7 +26,7 @@
 import fs from 'node:fs';
 
 const SITE = 'https://opensourcedesign.net';
-const REPO = process.env.REPO || 'opensourcedesign/opensourcedesign.github.io';
+const REPO = process.env.REPO || 'opensourcedesign/opensourcedesign.net';
 const MIN_AGE = 42;
 const MAX_AGE = 49; // exclusive
 

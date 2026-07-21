@@ -5,7 +5,7 @@ Website of the Open Source Design community, built with [Hugo](https://gohugo.io
 [![Backers on Open Collective](https://opencollective.com/opensourcedesign/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/opensourcedesign/sponsors/badge.svg)](#sponsors) [![Follow on Mastodon](https://img.shields.io/badge/Mastodon-Follow-6364FF?logo=mastodon&logoColor=white)](https://mastodon.social/@opensourcedesign) [![Follow on Bluesky](https://img.shields.io/badge/bluesky-OpenSourceDesign-blue?logo=bluesky)](https://bsky.app/profile/opensourcedesign.net)
 
 - Read our [Contributor Code of Conduct](https://opensourcedesign.net/about-us/code-of-conduct/). By participating in this project online or at events you agree to abide by its terms.
-- Before submitting a pull request, it is best to [open an issue first](https://github.com/opensourcedesign/opensourcedesign.github.io/issues) to describe the suggestion and to get feedback (except it is a fix for obvious bugs or spelling mistakes).
+- Before submitting a pull request, it is best to [open an issue first](https://github.com/opensourcedesign/opensourcedesign.net/issues) to describe the suggestion and to get feedback (except it is a fix for obvious bugs or spelling mistakes).
 - Please do not submit AI-generated code changes, issues, documentation, or code reviews.
 - You can use & modify everything as long as you credit [Open Source Design](https://opensourcedesign.net) and use the same license for your resulting work.
   - Code: [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html)
@@ -19,7 +19,7 @@ There are several ways to edit content on [opensourcedesign.net](https://opensou
 
 2. **Using GitHub Codespaces** - A cloud development environment in your browser with Hugo preconfigured and a live preview. From the repo menu choose **Code → Codespaces → Create codespace**, or click:
 
-   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/opensourcedesign/opensourcedesign.github.io)
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/opensourcedesign/opensourcedesign.net)
 
 3. **Setting up locally** - For more extensive development work. See the instructions below.
 
@@ -81,8 +81,8 @@ For other platforms, download from the [Hugo releases page](https://github.com/g
 1. **Fork and clone the repository**
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/opensourcedesign.github.io.git
-   cd opensourcedesign.github.io
+   git clone https://github.com/YOUR-USERNAME/opensourcedesign.net.git
+   cd opensourcedesign.net
    ```
 
 2. **Start the development server**
@@ -127,7 +127,7 @@ The site's look-and-feel comes from Tailwind utility classes in the HTML templat
 ## Project Structure
 
 ```
-opensourcedesign.github.io/
+opensourcedesign.net/
 ├── .devcontainer/    # GitHub Codespaces config (Hugo + preview on port 1313)
 ├── .github/
 │   ├── scripts/      # announce-jobs.mjs - posts new jobs to Mastodon & Bluesky

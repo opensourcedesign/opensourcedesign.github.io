@@ -89,7 +89,7 @@ forum. The build-time list rendered by Hugo remains the no-JS fallback.
 ## Prerequisites (provided by the maintainer)
 
 1. A **Cloudflare account** (free) with [`wrangler`](https://developers.cloudflare.com/workers/wrangler/) installed/logged in.
-2. A **GitHub fine-grained PAT** scoped to `opensourcedesign/opensourcedesign.github.io` with:
+2. A **GitHub fine-grained PAT** scoped to `opensourcedesign/opensourcedesign.net` with:
    - **Contents: Read and write**
    - **Pull requests: Read and write**
    - *(optional)* **Issues: Read and write** - only needed if you want the Worker to add the `job-submission` label; labeling is best-effort and the email workflow does not depend on it.

@@ -7,7 +7,7 @@ workers_dev = true
 # Override any of these in the Cloudflare dashboard or here as needed.
 [vars]
 GITHUB_OWNER = "opensourcedesign"
-GITHUB_REPO = "opensourcedesign.github.io"
+GITHUB_REPO = "opensourcedesign.net"
 GITHUB_BRANCH = "main"
 CONTENT_DIR = "content/jobs"
 CONTENT_DIR_EVENTS = "content/events"

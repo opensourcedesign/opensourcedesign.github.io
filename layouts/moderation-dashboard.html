@@ -95,13 +95,13 @@
         Submission pull requests are opened by the job-submit Worker. Filter open PRs on GitHub:
       </p>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Ajob-submission">Job submissions</a></li>
-        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Aevent-submission">Event submissions</a></li>
-        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="https://github.com/opensourcedesign/opensourcedesign.github.io/pulls?q=is%3Aopen+label%3Aresource-suggestion">Resource suggestions</a></li>
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" }}/pulls?q=is%3Aopen+label%3Ajob-submission">Job submissions</a></li>
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" }}/pulls?q=is%3Aopen+label%3Aevent-submission">Event submissions</a></li>
+        <li><a class="font-medium text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950 dark:text-emerald-400 dark:hover:text-emerald-300" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" }}/pulls?q=is%3Aopen+label%3Aresource-suggestion">Resource suggestions</a></li>
       </ul>
       <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">
         Full moderation checklist:
-        <a class="font-medium underline decoration-slate-300 underline-offset-2 hover:text-slate-900 dark:hover:text-slate-50" href="https://github.com/opensourcedesign/opensourcedesign.github.io/blob/main/docs/moderation-guide.md">moderation guide (GitHub)</a>.
+        <a class="font-medium underline decoration-slate-300 underline-offset-2 hover:text-slate-900 dark:hover:text-slate-50" href="{{ site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" }}/blob/main/docs/moderation-guide.md">moderation guide (GitHub)</a>.
       </p>
     </section>
   </article>

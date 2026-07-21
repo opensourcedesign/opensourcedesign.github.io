@@ -14,7 +14,7 @@
 {{- if $workerOrigin -}}
   {{- $connectSrc = printf "%s %s" $connectSrc $workerOrigin -}}
 {{- end -}}
-{{- $repoURL := site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.github.io" -}}
+{{- $repoURL := site.Params.repoURL | default "https://github.com/opensourcedesign/opensourcedesign.net" -}}
 {{- if hasPrefix $repoURL "https://github.com/" -}}
   {{- $connectSrc = printf "%s https://raw.githubusercontent.com" $connectSrc -}}
 {{- end -}}

@@ -61,11 +61,11 @@ capitalizeListTitles = false
   turnstileSiteKey = "0x4AAAAAADxRERYwNcCQJP4K"
 
   # Repository and external links
-  repoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io"
+  repoURL = "https://github.com/opensourcedesign/opensourcedesign.net"
   # Default branch of repoURL; used by the job form's edit mode to fetch the
   # current posting (raw.githubusercontent.com) and for GitHub fallback links.
   repoBranch = "main"
-  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.github.io/tree/main/content/jobs"
+  jobsRepoURL = "https://github.com/opensourcedesign/opensourcedesign.net/tree/main/content/jobs"
   forumURL = "https://discourse.opensourcedesign.net"
   calendarURL = "https://cloud.opensourcedesign.net/apps/calendar/p/CqJYyXyYsFqfPsfr/dayGridMonth/now"
   fossJobsURL = "https://www.fossjobs.net/"
