@@ -154,8 +154,8 @@
                  no-JS baseline and instant first paint. */}}
             <script>
               (function () {
-                var endpoint = {{ . }}.replace(/\/submit\/?$/, '') + '/forum';
-                var forumBase = {{ $forumURL }};
+                var endpoint = {{ . | jsonify }}.replace(/\/submit\/?$/, '') + '/forum';
+                var forumBase = {{ $forumURL | jsonify }};
                 var TTL = 10 * 60 * 1000;
                 var list = document.getElementById('osd-forum-pulse');
                 var fallback = document.getElementById('osd-forum-fallback');

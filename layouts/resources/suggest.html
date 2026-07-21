@@ -80,7 +80,7 @@
     {{ end }}
     <script>
       (function () {
-        var endpoint = {{ site.Params.jobSubmitEndpoint | default "" }};
+        var endpoint = {{ site.Params.jobSubmitEndpoint | default "" | jsonify }};
         var form = document.getElementById('osd-resource-form');
         var note = document.getElementById('osd-form-note');
         var out = document.getElementById('osd-result');

@@ -154,6 +154,9 @@ async function handleSubmit(request, env) {
     if (!isHttpUrl(data.url)) {
       return json({ ok: false, error: 'The resource URL must be a valid http(s) URL.' }, 400);
     }
+    if (hasControlChars(data.name) || hasControlChars(data.url) || (data.description && hasControlChars(data.description))) {
+      return json({ ok: false, error: 'Fields cannot contain line breaks or control characters.' }, 400);
+    }
     if (!/^[a-z0-9-]{1,50}$/.test(String(data.category))) {
       return json({ ok: false, error: 'Invalid category.' }, 400);
     }
@@ -212,7 +215,7 @@ async function handleSubmit(request, env) {
     try {
       pr = await createResourcePullRequest(env, data);
     } catch (err) {
-      return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
+      return prFailResponse(err);
     }
     if (data.email && String(data.email).trim() && env.EMAILS) {
       const days = parseInt(env.EMAIL_TTL_DAYS || '90', 10) || 90;
@@ -295,7 +298,7 @@ async function handleSubmit(request, env) {
   try {
     pr = await createPullRequest(env, built, data, kind, edit);
   } catch (err) {
-    return json({ ok: false, error: 'Could not create pull request: ' + errMsg(err) }, 502);
+    return prFailResponse(err);
   }
 
   // Store the submitter email privately for the merge-time notification.
@@ -652,6 +655,19 @@ function yq(v) {
   return '"' + s + '"';
 }
 
+function yqSingleQuoted(v) {
+  const s = String(v == null ? '' : v)
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x1f\x7f]/g, ' ')
+    .replace(/'/g, "''");
+  return "'" + s + "'";
+}
+
+function hasControlChars(s) {
+  // eslint-disable-next-line no-control-regex
+  return /[\x00-\x1f\x7f]/.test(String(s));
+}
+
 // The site renders Markdown with goldmark's `unsafe` renderer, so raw HTML in
 // a submission would go live on merge. Escape tag-openers (<script, </div,
 // <!--, <?) while keeping Markdown autolinks (<https://…>, <mailto:…>) intact.
@@ -702,13 +718,12 @@ async function createResourcePullRequest(env, data) {
   const next = nextRe.exec(text);
   const insertAt = next ? next.index : text.length;
 
-  const yq1 = (v) => "'" + String(v).replace(/'/g, "''") + "'";
   const entryLines = [
-    '    - name: ' + yq1(String(data.name).trim()),
-    '      url: ' + yq1(String(data.url).trim()),
+    '    - name: ' + yqSingleQuoted(String(data.name).trim()),
+    '      url: ' + yqSingleQuoted(String(data.url).trim()),
   ];
   if (data.description && String(data.description).trim()) {
-    entryLines.push('      description: ' + yq1(String(data.description).trim().replace(/\s+/g, ' ')));
+    entryLines.push('      description: ' + yqSingleQuoted(String(data.description).trim().replace(/\s+/g, ' ')));
   }
 
   const head = text.slice(0, insertAt).replace(/\n+$/, '\n');
@@ -980,6 +995,14 @@ function isIsoDate(s) {
 
 function errMsg(err) {
   return err && err.message ? err.message : 'unknown error';
+}
+
+function prFailResponse(err) {
+  console.error('Pull request creation failed:', err);
+  return json({
+    ok: false,
+    error: 'Could not create pull request. Please try again later or open one manually on GitHub.',
+  }, 502);
 }
 
 /**

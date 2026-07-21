@@ -15,6 +15,9 @@ on:
       - 'hugo.toml'
       - 'CNAME'
       - '.github/scripts/build-hugo-site.sh'
+      - '.github/workflows/hugo-build.yml'
+      - '.github/workflows/preview.yml'
+      - '.github/workflows/a11y.yml'
   workflow_dispatch:
 
 permissions:

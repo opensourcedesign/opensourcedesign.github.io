@@ -1,3 +1,4 @@
+{{ define "robots" }}noindex, follow{{ end }}
 {{ define "main" }}
   {{ $all := partial "functions/job-postings.html" . }}
   {{ $open := partial "functions/open-jobs.html" $all }}

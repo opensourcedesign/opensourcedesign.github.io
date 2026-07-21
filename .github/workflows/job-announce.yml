@@ -79,4 +79,5 @@ jobs:
           BLUESKY_SERVICE: ${{ secrets.BLUESKY_SERVICE }}
           WAIT_FOR_URL: "1"
           DRY_RUN: ${{ inputs.dry_run == true && '1' || '' }}
-        run: node .github/scripts/announce-jobs.mjs ${{ steps.collect.outputs.files }}
+          ANNOUNCE_FILES: ${{ steps.collect.outputs.files }}
+        run: node .github/scripts/announce-jobs.mjs

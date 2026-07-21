@@ -248,10 +248,23 @@ async function waitForUrl(url, minutes = 12) {
 
 // ── Main ────────────────────────────────────────────────────────────────────
 
-const files = process.argv.slice(2).filter(Boolean);
+const JOB_FILE_RE = /^content\/jobs\/\d{4}-\d{2}-\d{2}-[a-z0-9._-]+\.md$/;
+
+const files = (process.argv.length > 2
+  ? process.argv.slice(2)
+  : String(process.env.ANNOUNCE_FILES || '').trim().split(/\s+/)
+).filter(Boolean);
+
 if (!files.length) {
   console.log('No job files to announce.');
   process.exit(0);
+}
+
+for (const file of files) {
+  if (!JOB_FILE_RE.test(file)) {
+    console.error('Invalid job file path: ' + file);
+    process.exit(1);
+  }
 }
 
 let failures = 0;

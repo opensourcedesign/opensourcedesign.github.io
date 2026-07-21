@@ -56,15 +56,22 @@ jobs:
 
       - name: Lint changed content files on push
         if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
         run: |
-          files="$(git diff --diff-filter=AM --name-only HEAD~1 HEAD -- 'content/jobs/*.md' 'content/events/*.md' 'content/resources/*.md' 'content/resources/articles/*.md')"
+          if printf '%s' "$BEFORE" | grep -q '^0*$'; then
+            echo "No safe base commit to diff against; skipping lint."
+            exit 0
+          fi
+          files="$(git diff --diff-filter=AM --name-only "$BEFORE" "$AFTER" -- 'content/jobs/*.md' 'content/events/*.md' 'content/resources/*.md' 'content/resources/articles/*.md')"
           if [ -n "$files" ]; then
             # shellcheck disable=SC2086
             node .github/scripts/lint-content.mjs $files
           else
             echo "No job/event/resource content changed in this push."
           fi
-          data_files="$(git diff --diff-filter=AM --name-only HEAD~1 HEAD -- 'data/resources.yaml' 'data/bibliography.yaml')"
+          data_files="$(git diff --diff-filter=AM --name-only "$BEFORE" "$AFTER" -- 'data/resources.yaml' 'data/bibliography.yaml')"
           if [ -n "$data_files" ]; then
             npm install --no-save yaml@2
             node .github/scripts/lint-data-yaml.mjs

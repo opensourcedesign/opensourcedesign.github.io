@@ -15,6 +15,9 @@ site:
   - 'hugo.toml'
   - 'CNAME'
   - '.github/scripts/build-hugo-site.sh'
+  - '.github/workflows/hugo-build.yml'
+  - '.github/workflows/preview.yml'
+  - '.github/workflows/a11y.yml'
 
 content:
   - 'content/jobs/**'
@@ -30,3 +33,18 @@ forms:
   - 'assets/js/job-form.js'
   - 'assets/js/event-form.js'
   - '.github/form-modules.sha256'
+
+checks:
+  - 'content/jobs/**'
+  - 'data/**'
+  - 'layouts/jobs/**'
+  - 'layouts/events/**'
+  - 'layouts/resources/suggest.html'
+  - 'assets/js/job-form.js'
+  - 'assets/js/event-form.js'
+  - '.github/scripts/normalize-jobs.mjs'
+  - '.github/scripts/extract-form-js.mjs'
+  - '.github/scripts/job-redirect-aliases.mjs'
+  - '.github/scripts/lint-data-yaml.mjs'
+  - '.github/form-modules.sha256'
+  - '.github/workflows/ci-checks.yml'
