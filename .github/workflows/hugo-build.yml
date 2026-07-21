@@ -1,8 +1,20 @@
 name: Build and Deploy Hugo
 
+# Production deploy runs only when site output can change. Path list mirrors
+# `.github/path-filters.yml` (`site`). Use workflow_dispatch to force a rebuild.
 on:
   push:
     branches: [main]
+    paths:
+      - 'content/**'
+      - 'data/**'
+      - 'layouts/**'
+      - 'assets/**'
+      - 'static/**'
+      - 'archetypes/**'
+      - 'hugo.toml'
+      - 'CNAME'
+      - '.github/scripts/build-hugo-site.sh'
   workflow_dispatch:
 
 permissions:
