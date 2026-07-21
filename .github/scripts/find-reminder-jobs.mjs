@@ -24,10 +24,9 @@
  */
 
 import fs from 'node:fs';
-
+import { gh, ghPaginated } from './github-api.mjs';
 const SITE = 'https://opensourcedesign.net';
 const REPO = process.env.REPO || 'opensourcedesign/opensourcedesign.net';
-const MIN_AGE = 42;
 const MAX_AGE = 49; // exclusive
 
 function scalar(fm, key) {
@@ -40,6 +39,8 @@ function scalar(fm, key) {
   return v.trim();
 }
 
+const MIN_AGE = 42;
+
 function slugify(str) {
   return String(str || '')
     .trim()
@@ -51,21 +52,9 @@ function slugify(str) {
     .replace(/-+/g, '-');
 }
 
-async function gh(path) {
-  const res = await fetch('https://api.github.com' + path, {
-    headers: {
-      Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  });
-  if (!res.ok) throw new Error('GitHub ' + path + ': HTTP ' + res.status);
-  return res.json();
-}
-
 async function prNumberForFile(file) {
   // Oldest commit touching the path is the one that introduced it.
-  const commits = await gh(`/repos/${REPO}/commits?path=${encodeURIComponent(file)}&per_page=100`);
+  const commits = await ghPaginated(`/repos/${REPO}/commits?path=${encodeURIComponent(file)}`);
   if (!commits.length) return null;
   const first = commits[commits.length - 1];
   const pulls = await gh(`/repos/${REPO}/commits/${first.sha}/pulls`);

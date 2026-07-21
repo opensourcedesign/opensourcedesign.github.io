@@ -14,6 +14,8 @@ export function init() {
 
     var MAX_RESULTS = 8;
     var MAX_SUBS = 3;
+    var MAX_RECENT = 5;
+    var RECENT_KEY = 'osd-search-recent';
     var pagefind = null;
     var importPromise = null;
     var activeIndex = -1;
@@ -67,6 +69,41 @@ export function init() {
 
     function setExpanded(on) {
       input.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+
+    function readRecent() {
+      try {
+        var list = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+        return Array.isArray(list) ? list.filter(Boolean).slice(0, MAX_RECENT) : [];
+      } catch (e) { return []; }
+    }
+
+    function writeRecent(query) {
+      var q = String(query || '').trim();
+      if (q.length < 2) return;
+      var list = readRecent().filter(function (x) { return x.toLowerCase() !== q.toLowerCase(); });
+      list.unshift(q);
+      try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, MAX_RECENT))); } catch (e) { /* quota */ }
+    }
+
+    function renderRecent() {
+      var recent = readRecent();
+      if (!recent.length) {
+        clearResults();
+        setStatus('Type to search events, resources, jobs, and pages.');
+        return;
+      }
+      resultsEl.innerHTML = recent.map(function (q, i) {
+        return '<li role="option" id="osd-sr-' + i + '" class="osd-search__result osd-search__result--recent' + (i === 0 ? ' is-active' : '') + '" aria-selected="' + (i === 0) + '" data-recent="' + escapeHTML(q) + '">'
+          + '<button type="button" class="osd-search__result-main w-full text-left" tabindex="-1">'
+          + '<span class="osd-search__result-head"><span class="osd-search__result-title">' + escapeHTML(q) + '</span>'
+          + '<span class="osd-search__badge">Recent</span></span></button></li>';
+      }).join('');
+      resultCount = recent.length;
+      activeIndex = 0;
+      setExpanded(true);
+      syncActiveDescendant();
+      setStatus('Recent searches — pick one or type a new query.');
     }
 
     function syncActiveDescendant() {
@@ -184,9 +221,17 @@ export function init() {
     function navigateActive() {
       var list = items();
       var el = list[activeIndex] || list[0];
-      if (el) {
-        var url = el.getAttribute('data-url');
-        if (url) window.location.assign(url);
+      if (!el) return;
+      var recent = el.getAttribute('data-recent');
+      if (recent) {
+        input.value = recent;
+        runSearch(recent);
+        return;
+      }
+      var url = el.getAttribute('data-url');
+      if (url) {
+        writeRecent(lastQuery);
+        window.location.assign(url);
       }
     }
 
@@ -202,7 +247,7 @@ export function init() {
         setStatus('Search isn\u2019t available yet - it is generated when the site is built.');
       });
       if (input.value.trim()) runSearch(input.value);
-      else setStatus('Type to search events, resources, jobs, and pages.');
+      else renderRecent();
       window.requestAnimationFrame(function () { input.focus(); input.select(); });
     }
 
@@ -248,7 +293,16 @@ export function init() {
 
     // Click on a result row (outside the inner links) still navigates.
     resultsEl.addEventListener('click', function (e) {
-      if (e.target.closest('a')) return;
+      var btn = e.target.closest('[data-recent]');
+      if (btn) {
+        var q = btn.getAttribute('data-recent');
+        if (q) { input.value = q; runSearch(q); }
+        return;
+      }
+      if (e.target.closest('a')) {
+        if (lastQuery) writeRecent(lastQuery);
+        return;
+      }
       var li = e.target.closest('.osd-search__result');
       if (!li) return;
       var url = li.getAttribute('data-url');

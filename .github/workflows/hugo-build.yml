@@ -1,23 +1,10 @@
 name: Build and Deploy Hugo
 
-# Production deploy runs only when site output can change. Path list mirrors
-# `.github/path-filters.yml` (`site`). Use workflow_dispatch to force a rebuild.
+# Production deploy runs only when site output can change. Path list lives in
+# `.github/path-filters.yml` (`site` filter). Use workflow_dispatch to force a rebuild.
 on:
   push:
     branches: [main]
-    paths:
-      - 'content/**'
-      - 'data/**'
-      - 'layouts/**'
-      - 'assets/**'
-      - 'static/**'
-      - 'archetypes/**'
-      - 'hugo.toml'
-      - 'CNAME'
-      - '.github/scripts/build-hugo-site.sh'
-      - '.github/workflows/hugo-build.yml'
-      - '.github/workflows/preview.yml'
-      - '.github/workflows/a11y.yml'
   workflow_dispatch:
 
 permissions:
@@ -39,7 +26,26 @@ env:
   PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
 
 jobs:
+  changes:
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      site: ${{ steps.filter.outputs.site }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 2
+
+      - name: Detect site-affecting changes
+        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4.0.2
+        id: filter
+        with:
+          filters: .github/path-filters.yml
+
   build-and-deploy:
+    needs: changes
+    if: github.event_name == 'workflow_dispatch' || needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
     steps:
       # Actions are pinned to full commit SHAs (supply-chain hardening).

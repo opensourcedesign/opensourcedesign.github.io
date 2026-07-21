@@ -40,9 +40,9 @@ id = "a1b92469f51c4677a252d77f58561109"
 # --- Per-IP rate limiting (recommended). Create the namespace, paste the id,
 # then uncomment:
 #   npx wrangler kv namespace create RATE_LIMIT
-# [[kv_namespaces]]
-# binding = "RATE_LIMIT"
-# id = "REPLACE_WITH_RATE_LIMIT_KV_NAMESPACE_ID"
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "2a7d511723254cbfb187db36a9bc90f9"
 
 # --- Secrets (NEVER commit; set via `npx wrangler secret put <NAME>`) -------
 #   GITHUB_TOKEN      Fine-grained PAT: Contents RW + Pull requests RW on the repo

@@ -1,6 +1,5 @@
 # Shared path filters for GitHub Actions (dorny/paths-filter).
-# Keep hugo-build.yml push.paths in sync with the `site` filter below.
-#
+# hugo-build.yml gates deploy on the `site` filter below (single source of truth).#
 # site    — files that change Hugo output (build, deploy, PR preview, a11y)
 # content — job/event/resource markdown and curated YAML lists
 # forms   — submission form layouts/modules checked by ci-checks.yml
@@ -18,6 +17,8 @@ site:
   - '.github/workflows/hugo-build.yml'
   - '.github/workflows/preview.yml'
   - '.github/workflows/a11y.yml'
+  - '.github/workflows/forum-pulse-cache.yml'
+  - '.github/scripts/generate-headers.mjs'
 
 content:
   - 'content/jobs/**'

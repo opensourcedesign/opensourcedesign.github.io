@@ -9,10 +9,7 @@
     {{ $heroJpg = ($b.Process "jpeg q68").RelPermalink }}
     {{ $heroWebp = ($b.Process "webp q60").RelPermalink }}
   {{ end }}
-  {{ $jobsAll := partial "functions/job-postings.html" . }}
-  {{ $openJobs := partial "functions/open-jobs.html" $jobsAll }}
-  {{ $jobsOpen := len $openJobs }}
-  {{ $jobsTotal := len $jobsAll }}
+  {{ $forumURL := site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}
   <section class="relative overflow-hidden bg-slate-950 text-white">
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" {{ if $heroJpg }}style="background-image: url('{{ $heroJpg }}'); background-image: image-set(url('{{ $heroWebp }}') type('image/webp'), url('{{ $heroJpg }}') type('image/jpeg'));"{{ else }}style="background-image: url('{{ partial "site-path.html" "/images/2017-fosdem-picture-compressed-blur30px.jpg" }}');"{{ end }}></div>
     {{/* Directional scrim keeps the left-set type legible over the photo. */}}
@@ -27,7 +24,7 @@
         <a class="osd-hero-cta rounded-lg px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">Join us</a>
         <a class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="{{ partial "site-path.html" "/resources/" }}">Resources</a>
       </div>
-      <p class="mt-8 text-sm text-slate-400">{{ $jobsOpen }} design jobs open right now, {{ $jobsTotal }}+ posted by open source projects over the years.</p>
+      <p class="mt-8 text-sm text-slate-400" id="osd-home-hero-stats">Loading open job count…</p>
     </div>
   </section>
 
@@ -46,7 +43,7 @@
 
   {{/* Around the community: events, jobs, forum. Unboxed columns divided by
        rules; typographic list rows instead of nested cards. */}}
-  <section class="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900" aria-label="Community activity">
+  <section class="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900" aria-label="Community activity" data-home-pulse>
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
       <div class="grid grid-cols-1 gap-0 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-slate-200 dark:lg:divide-slate-700">
         {{/* Events */}}
@@ -91,24 +88,12 @@
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Open jobs</h2>
             <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/" }}">All jobs →</a>
           </div>
-          {{ $jobs := $openJobs }}
-          <ul class="mt-5" role="list">
-            {{ range first 5 $jobs.ByDate.Reverse }}
-              {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
-              {{ $isPaid := eq $comp "paid" }}
-              <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
-                <a class="group flex items-baseline gap-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
-                  <span class="h-2 w-2 shrink-0 self-center rounded-full {{ cond $isPaid "bg-emerald-500" "bg-violet-500" }}" title="{{ cond $isPaid "Paid" "Volunteer" }}" aria-hidden="true"></span>
-                  <span class="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-slate-300 transition group-hover:text-slate-950 dark:group-hover:text-slate-100">{{ .Title }}</span>
-                </a>
-              </li>
-            {{ else }}
-              <li class="py-3 text-sm text-slate-500 dark:text-slate-400">No open jobs yet.</li>
-            {{ end }}
+          <ul class="mt-5" role="list" id="osd-home-jobs">
+            <li class="py-3 text-sm text-slate-500 dark:text-slate-400">Loading open jobs…</li>
           </ul>
           <div class="mt-5 space-y-2 text-sm">
             <a class="osd-btn-primary" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
-            <p><a class="text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/archive/" }}">Browse {{ $jobsTotal }}+ archived jobs →</a></p>
+            <p><a class="text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/jobs/archive/" }}" id="osd-home-jobs-stats">Browse archived jobs →</a></p>
           </div>
         </div>
 
@@ -118,22 +103,12 @@
             <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Forum</h2>
             <a class="text-sm font-medium text-slate-600 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}" target="_blank" rel="noopener noreferrer">Visit →</a>
           </div>
-          {{/* Forum pulse: recent topics fetched at build time from the
-               Discourse API (no client-side JS, no third-party requests for
-               visitors). try/getRemote fails soft so an unreachable forum
-               never breaks the build - the intro text is the fallback. */}}
+          {{/* Forum pulse: cached in data/forum-pulse.json (refreshed every 12h
+               by forum-pulse-cache.yml). Client-side refresh via the Worker
+               /forum proxy runs after first paint (home-pulse.js). */}}
           {{ $topics := slice }}
-          {{ $forumURL := site.Params.forumURL | default "https://discourse.opensourcedesign.net" }}
-          {{ with try (resources.GetRemote (printf "%s/latest.json" $forumURL)) }}
-            {{ with .Value }}
-              {{ with . | transform.Unmarshal }}
-                {{ range first 8 .topic_list.topics }}
-                  {{ if and (not .pinned) (lt (len $topics) 4) }}
-                    {{ $topics = $topics | append . }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
+          {{ with index hugo.Data "forum-pulse" }}
+            {{ with .topics }}{{ $topics = first 4 . }}{{ end }}
           {{ end }}
           <ul class="mt-5 space-y-3" id="osd-forum-pulse" {{ if not $topics }}hidden{{ end }}>
             {{ range $topics }}
@@ -146,59 +121,19 @@
             {{ end }}
           </ul>
           <p class="mt-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400" id="osd-forum-fallback" {{ if $topics }}hidden{{ end }}>Our Discourse forum is where design discussions, project feedback, and community conversations happen. Everyone is welcome to read along; joining takes a minute.</p>
+          {{ $forumEndpoint := "" }}
           {{ with site.Params.jobSubmitEndpoint }}
-            {{/* Client-side refresh on page load: the Worker proxies Discourse
-                 (which sends no CORS headers) at /forum with 10-minute edge +
-                 browser caching; sessionStorage avoids refetching while
-                 navigating around the site. The build-time list above is the
-                 no-JS baseline and instant first paint. */}}
-            <script>
-              (function () {
-                var endpoint = {{ . | jsonify }}.replace(/\/submit\/?$/, '') + '/forum';
-                var forumBase = {{ $forumURL | jsonify }};
-                var TTL = 10 * 60 * 1000;
-                var list = document.getElementById('osd-forum-pulse');
-                var fallback = document.getElementById('osd-forum-fallback');
-                if (!list) return;
-
-                function esc(s) {
-                  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-                }
-                function render(topics) {
-                  if (!topics || !topics.length) return;
-                  list.innerHTML = topics.slice(0, 4).map(function (t) {
-                    var replies = Math.max(0, (t.posts_count || 1) - 1);
-                    var when = t.last_posted_at
-                      ? ' · ' + new Date(t.last_posted_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
-                      : '';
-                    return '<li><a class="group block" href="' + forumBase + '/t/' + encodeURIComponent(t.slug) + '/' + t.id + '" target="_blank" rel="noopener noreferrer">'
-                      + '<span class="block text-sm font-medium leading-snug text-slate-900 dark:text-slate-100 transition group-hover:text-emerald-700">' + esc(t.title) + '</span>'
-                      + '<span class="mt-0.5 block text-xs text-slate-500 dark:text-slate-400">' + replies + (replies === 1 ? ' reply' : ' replies') + when + '</span>'
-                      + '</a></li>';
-                  }).join('');
-                  list.hidden = false;
-                  if (fallback) fallback.hidden = true;
-                }
-
-                try {
-                  var cached = JSON.parse(sessionStorage.getItem('osd-forum-pulse') || 'null');
-                  if (cached && Date.now() - cached.t < TTL) {
-                    render(cached.topics);
-                    return;
-                  }
-                } catch (e) { /* ignore bad cache */ }
-
-                fetch(endpoint, { mode: 'cors' })
-                  .then(function (r) { return r.ok ? r.json() : null; })
-                  .then(function (json) {
-                    if (!json || !json.ok || !json.topics) return;
-                    render(json.topics);
-                    try { sessionStorage.setItem('osd-forum-pulse', JSON.stringify({ t: Date.now(), topics: json.topics })); } catch (e) { /* quota */ }
-                  })
-                  .catch(function () { /* keep the build-time list */ });
-              })();
-            </script>
+            {{ $forumEndpoint = printf "%s/forum" (replaceRE "/submit/?$" "" .) }}
           {{ end }}
+          {{ $homePulseJs := resources.Get "js/home-pulse.js" | minify | fingerprint }}
+          <script type="module">
+            import { init } from {{ $homePulseJs.RelPermalink | jsonify | safeJS }};
+            init({
+              jobsUrl: {{ (partial "site-path.html" "/jobs/index.json") | jsonify | safeJS }},
+              forumEndpoint: {{ $forumEndpoint | jsonify | safeJS }},
+              forumBase: {{ $forumURL | jsonify | safeJS }}
+            });
+          </script>
           <div class="mt-5 space-y-2 text-sm">
             <a class="inline-flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 font-semibold text-slate-900 dark:text-slate-100 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" href="{{ $forumURL }}" target="_blank" rel="noopener noreferrer">Visit the forum</a>
             <p><a class="text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-100" href="{{ partial "site-path.html" "/resources/how-to-join/" }}">How to get involved →</a></p>

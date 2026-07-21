@@ -322,7 +322,7 @@ Custom component classes (prefixed with `osd-`) are defined in `main.css`:
 
 This project exists thanks to all the **people who contribute**.
 
-<a href="graphs/contributors"><img src="https://opencollective.com/opensourcedesign/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/opensourcedesign/opensourcedesign.net/graphs/contributors"><img src="https://contrib.rocks/image?repo=opensourcedesign/opensourcedesign.net" alt="Contributors to opensourcedesign.net" /></a>
 
 Thank you to **all our backers**! 🙏 ([Become a backer](https://opencollective.com/opensourcedesign#backer))
 

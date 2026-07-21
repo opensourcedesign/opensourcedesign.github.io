@@ -1,14 +1,28 @@
 {{- /* Machine-readable job index at /jobs/index.json. Consumed by the
-     job-submit Worker for duplicate detection on new submissions. */ -}}
+     job-submit Worker for duplicate detection and the homepage pulse. */ -}}
+{{- $all := partial "functions/job-postings.html" . -}}
+{{- $open := partial "functions/open-jobs.html" $all -}}
 {{- $items := slice -}}
 {{- range .RegularPages.ByDate.Reverse -}}
+  {{- $deadline := "" -}}
+  {{- with .Params.deadline -}}
+    {{- $deadline = (time.AsTime (printf "%v" .)).Format "2006-01-02" -}}
+  {{- end -}}
   {{- $items = $items | append (dict
         "title" .Title
         "organization" (printf "%v" (.Params.organization | default ""))
+        "role" (printf "%v" (.Params.role | default ""))
+        "compensation" (printf "%v" (.Params.compensation | default ""))
         "status" (printf "%v" (.Params.status | default ""))
-        "url" .Permalink
+        "url" .RelPermalink
         "date_posted" (.Date.Format "2006-01-02")
+        "deadline" $deadline
         "file" .File.LogicalName
       ) -}}
 {{- end -}}
-{{- dict "generated" (now.Format "2006-01-02T15:04:05Z07:00") "jobs" $items | jsonify (dict "indent" " ") -}}
+{{- dict
+      "generated" (now.Format "2006-01-02T15:04:05Z07:00")
+      "open_count" (len $open)
+      "total_count" (len $all)
+      "jobs" $items
+    | jsonify (dict "indent" " ") -}}

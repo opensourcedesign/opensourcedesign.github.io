@@ -16,9 +16,10 @@
  */
 
 import fs from 'node:fs';
+import { gh, ghPaginated } from './github-api.mjs';
 
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
-const { GITHUB_TOKEN, REPO, PR_NUMBER, HEAD_REF, MERGE_SHA } = process.env;
+const { REPO, PR_NUMBER, HEAD_REF, MERGE_SHA } = process.env;
 
 function fallbackUrl(ref) {
   if (ref.startsWith('event')) return `${SITE}/events/`;
@@ -26,24 +27,11 @@ function fallbackUrl(ref) {
   return `${SITE}/jobs/`;
 }
 
-async function api(path) {
-  const res = await fetch(`https://api.github.com${path}`, {
-    headers: {
-      accept: 'application/vnd.github+json',
-      authorization: `Bearer ${GITHUB_TOKEN}`,
-      'x-github-api-version': '2022-11-28',
-    },
-  });
-  if (!res.ok) throw new Error(`GitHub API ${path} -> ${res.status}`);
-  return res.json();
-}
-
 async function fileAt(path, ref) {
-  const data = await api(`/repos/${REPO}/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${ref}`);
+  const data = await gh(`/repos/${REPO}/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${ref}`);
   return Buffer.from(data.content, 'base64').toString('utf8');
 }
 
-// Minimal front matter reader; the corpus is too messy for a strict parser.
 function frontMatter(text) {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   return m ? m[1] : '';
@@ -118,7 +106,7 @@ async function resourceUrl(patch) {
 }
 
 async function resolve() {
-  const files = await api(`/repos/${REPO}/pulls/${PR_NUMBER}/files?per_page=100`);
+  const files = await ghPaginated(`/repos/${REPO}/pulls/${PR_NUMBER}/files`);
   if (HEAD_REF.startsWith('resource/')) {
     const yaml = files.find((f) => f.filename === 'data/resources.yaml');
     return resourceUrl(yaml && yaml.patch);

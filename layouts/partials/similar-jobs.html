@@ -12,6 +12,8 @@
 {{ $current := . }}
 {{ $currentTags := .Params.tags | default (slice) }}
 {{ $currentComp := (printf "%v" (.Params.compensation | default "")) | lower }}
+{{ $currentOrg := (printf "%v" (.Params.organization | default "")) | lower }}
+{{ $currentRole := (printf "%v" (.Params.role | default "")) | lower }}
 {{ $limit := 3 }}
 
 {{/* Get all jobs except current (exclude non-listing pages: form, archive, how-to) */}}
@@ -29,22 +31,42 @@
   {{ $score := 0 }}
   {{ $jobTags := .Params.tags | default (slice) }}
   {{ $jobComp := (printf "%v" (.Params.compensation | default "")) | lower }}
+  {{ $jobOrg := (printf "%v" (.Params.organization | default "")) | lower }}
+  {{ $jobRole := (printf "%v" (.Params.role | default "")) | lower }}
+  {{ $reasons := slice }}
   
-  {{/* Same compensation type = +5 points */}}
+  {{/* Same organization = +4 points */}}
+  {{ if and $currentOrg $jobOrg (eq $jobOrg $currentOrg) }}
+    {{ $score = add $score 4 }}
+    {{ $reasons = $reasons | append "same project" }}
+  {{ end }}
+
+  {{/* Same role = +3 points */}}
+  {{ if and $currentRole $jobRole (eq $jobRole $currentRole) }}
+    {{ $score = add $score 3 }}
+    {{ $reasons = $reasons | append "same role" }}
+  {{ end }}
+  
+  {{/* Same compensation type = +2 points */}}
   {{ if eq $jobComp $currentComp }}
-    {{ $score = add $score 5 }}
+    {{ $score = add $score 2 }}
   {{ end }}
   
   {{/* Matching tags = +2 points each */}}
+  {{ $matchedTags := 0 }}
   {{ if reflect.IsSlice $currentTags }}
     {{ if reflect.IsSlice $jobTags }}
       {{ range $currentTags }}
         {{ $tag := . }}
         {{ if in $jobTags $tag }}
           {{ $score = add $score 2 }}
+          {{ $matchedTags = add $matchedTags 1 }}
         {{ end }}
       {{ end }}
     {{ end }}
+  {{ end }}
+  {{ if gt $matchedTags 0 }}
+    {{ $reasons = $reasons | append (printf "%d shared tag%s" $matchedTags (cond (eq $matchedTags 1) "" "s")) }}
   {{ end }}
   
   {{/* Recent jobs get slight boost */}}
@@ -57,7 +79,7 @@
   {{ end }}
   
   {{ if gt $score 0 }}
-    {{ $scored = $scored | append (dict "page" . "score" $score) }}
+    {{ $scored = $scored | append (dict "page" . "score" $score "reasons" $reasons) }}
   {{ end }}
 {{ end }}
 
@@ -65,16 +87,19 @@
 {{ $sorted := sort $scored "score" "desc" }}
 {{ $similar := slice }}
 {{ range first $limit $sorted }}
-  {{ $similar = $similar | append .page }}
+  {{ $similar = $similar | append (dict "page" .page "reasons" .reasons) }}
 {{ end }}
 
 {{/* Fallback: if less than 3, add recent jobs */}}
 {{ if lt (len $similar) $limit }}
   {{ $needed := sub $limit (len $similar) }}
+  {{ $seen := slice $current.RelPermalink }}
+  {{ range $similar }}{{ $seen = $seen | append .page.RelPermalink }}{{ end }}
   {{ $recent := first (add $needed 5) (sort $openJobs ".Params.date_posted" "desc") }}
   {{ range $recent }}
-    {{ if and (lt (len $similar) $limit) (not (in $similar .)) }}
-      {{ $similar = $similar | append . }}
+    {{ if and (lt (len $similar) $limit) (not (in $seen .RelPermalink)) }}
+      {{ $similar = $similar | append (dict "page" . "reasons" (slice)) }}
+      {{ $seen = $seen | append .RelPermalink }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -84,12 +109,13 @@
     <h2 id="similar-jobs-heading" class="border-b border-slate-200 pb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">Similar jobs</h2>
     <ul role="list">
       {{ range $similar }}
-        {{ $comp := (printf "%v" (.Params.compensation | default "")) | lower }}
+        {{ $page := .page }}
+        {{ $comp := (printf "%v" ($page.Params.compensation | default "")) | lower }}
         {{ $isPaid := eq $comp "paid" }}
         <li class="border-b border-slate-200">
-          <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ .RelPermalink }}">
+          <a class="group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20" href="{{ $page.RelPermalink }}">
             <span class="flex items-start justify-between gap-3">
-              <span class="line-clamp-1 font-medium text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ .Title }}</span>
+              <span class="line-clamp-1 font-medium text-slate-900 decoration-slate-300 underline-offset-4 group-hover:underline">{{ $page.Title }}</span>
               {{ if $isPaid }}
                 <span class="shrink-0 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">Paid</span>
               {{ else if $comp }}
@@ -97,7 +123,8 @@
               {{ end }}
             </span>
             <span class="mt-1 block text-sm text-slate-500">
-              {{ with .Params.organization }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and .Params.organization .Params.date_posted }} · {{ end }}{{ with .Params.date_posted }}Posted {{ . }}{{ end }}
+              {{ with $page.Params.organization }}<span class="font-medium text-slate-700">{{ . }}</span>{{ end }}{{ if and $page.Params.organization $page.Params.date_posted }} · {{ end }}{{ with $page.Params.date_posted }}Posted {{ . }}{{ end }}
+              {{ with .reasons }}{{ if gt (len .) 0 }}<span class="text-slate-400"> · {{ delimit . ", " }}</span>{{ end }}{{ end }}
             </span>
           </a>
         </li>
