@@ -2,8 +2,8 @@ name: Link check
 
 on:
   schedule:
-    # Weekly, Monday 06:47 UTC (off the :00 rush).
-    - cron: "47 6 * * 1"
+    # Approximately every 14 days (1st and 15th of each month, 06:47 UTC).
+    - cron: "47 6 1,15 * *"
   workflow_dispatch:
 
 permissions:
@@ -46,14 +46,15 @@ jobs:
             --exclude "^https://(www\.)?(twitter|x)\.com"
             --exclude "^https://(www\.)?linkedin\.com"
             --exclude "^mailto:"
+            --format json
             public
           fail: false
-          output: lychee-report.md
+          output: lychee-results.json
 
-      - name: Open or update the broken-links issue
-        if: steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
-        with:
-          title: "Broken links found by the weekly link check"
-          content-filepath: lychee-report.md
-          labels: link-check, maintenance
+      - name: Update broken-links tracker issue
+        if: always() && steps.lychee.outcome == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          LYCHEE_JSON: lychee-results.json
+        run: node .github/scripts/link-check-issue.mjs

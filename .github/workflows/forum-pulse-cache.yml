@@ -1,5 +1,8 @@
 # Cache Discourse latest topics for Hugo builds (no build-time network call).
 # The homepage still refreshes via the Worker /forum proxy in the browser.
+#
+# main is branch-protected (PRs required), so this workflow does not push there.
+# When topics change it dispatches hugo-build, which refreshes the cache before deploy.
 name: Refresh forum pulse cache
 
 on:
@@ -8,7 +11,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  actions: write
 
 concurrency:
   group: forum-pulse-cache
@@ -27,11 +31,8 @@ jobs:
           FORUM_URL: https://discourse.opensourcedesign.net
         run: node .github/scripts/forum-pulse-cache.mjs
 
-      - name: Commit cache update
+      - name: Trigger site rebuild
         if: steps.fetch.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forum-pulse.json
-          git commit -m "Refresh forum pulse cache"
-          git push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run hugo-build.yml --ref main
