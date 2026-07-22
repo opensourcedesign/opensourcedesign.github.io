@@ -1,15 +1,18 @@
 name: PR Preview
 
+# pull_request_target runs in the base-repo context so GITHUB_TOKEN can push to
+# gh-pages for fork PRs. Untrusted PR code only runs in build-preview (read-only
+# token, no secrets); deploy-preview uploads the static artifact only.
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened, closed]
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  pull-requests: read
 
 concurrency:
-  group: preview-${{ github.ref }}
+  group: preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 env:
@@ -30,25 +33,28 @@ jobs:
     outputs:
       site: ${{ steps.filter.outputs.site }}
     steps:
-      - name: Checkout
+      - name: Checkout PR head
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
-          fetch-depth: 2
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Detect site-affecting changes
         uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4.0.2
         id: filter
         with:
           filters: .github/path-filters.yml
+          base: ${{ github.event.pull_request.base.sha }}
 
   build-preview:
     needs: changes
     if: github.event.action != 'closed' && needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout PR head
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -90,6 +96,26 @@ jobs:
       - name: Build site for preview
         run: bash .github/scripts/build-hugo-site.sh preview "${{ github.event.pull_request.number }}"
 
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: preview-site
+          path: public/
+          retention-days: 1
+
+  deploy-preview:
+    needs: build-preview
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Download preview artifact
+        uses: actions/download-artifact@d3f86b106f4b75ae2ded888a84fc4c37eaf69d7d # v4.3.0
+        with:
+          name: preview-site
+          path: public
+
       - name: Deploy PR preview
         uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
         with:
@@ -97,6 +123,7 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           pages-base-url: ${{ env.PREVIEW_SITE_HOST }}
+          pr-number: ${{ github.event.pull_request.number }}
           wait-for-pages-deployment: false
           action: deploy
 
@@ -117,6 +144,8 @@ jobs:
     needs: changes
     if: github.event.action != 'closed' && needs.changes.outputs.site != 'true'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Note skipped preview
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
@@ -157,13 +186,14 @@ jobs:
   cleanup-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-
       - name: Cleanup PR preview
         uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
         with:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
+          pr-number: ${{ github.event.pull_request.number }}
           action: remove
