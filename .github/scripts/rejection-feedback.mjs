@@ -25,14 +25,34 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
+function isAutomatedComment(comment) {
+  const user = comment.user || {};
+  if (user.type === 'Bot') return true;
+  const login = String(user.login || '').toLowerCase();
+  if (login.endsWith('[bot]') || login === 'github-actions') return true;
+  const body = String(comment.body || '');
+  if (!body.trim()) return true;
+  // PR preview, submission preview, and other workflow bot comments.
+  if (/<!--\s*(pr-preview|submission-preview|pr-preview-skipped)/i.test(body)) return true;
+  if (/^PR Preview Action\b/m.test(body)) return true;
+  if (/^ℹ️ \*\*PR preview skipped\*\*/m.test(body)) return true;
+  if (/^## Submission preview\b/m.test(body)) return true;
+  return false;
+}
+
 function plainFromMarkdown(body) {
   return String(body || '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<[^>]+>/g, '')
     .replace(/```[\s\S]*?```/g, '')
     .replace(/`([^`]+)`/g, '$1')
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/^\|.*\|$/gm, '')
+    .replace(/^\|?[\s:-]+\|?$/gm, '')
     .replace(/^#{1,6}\s+/gm, '')
     .replace(/[*_~]/g, '')
     .replace(/\r\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
 
@@ -79,7 +99,11 @@ async function main() {
     const author = (PR_AUTHOR || '').toLowerCase();
     const moderator = [...comments]
       .reverse()
-      .find((c) => c.user && c.user.login && c.user.login.toLowerCase() !== author && c.body && c.body.trim());
+      .find((c) => {
+        if (isAutomatedComment(c)) return false;
+        const login = (c.user && c.user.login ? c.user.login : '').toLowerCase();
+        return login && login !== author;
+      });
     if (moderator) feedback = plainFromMarkdown(moderator.body).slice(0, 2000);
   } catch (e) {
     // Non-fatal: email still sends without an excerpt.
