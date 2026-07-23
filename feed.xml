@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Open Source Design</title><link>https://opensourcedesign.net/</link><description>Connecting open source &amp; design.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Wed, 22 Jul 2026 11:55:58 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Open Source Design</title><link>https://opensourcedesign.net/</link><description>Connecting open source &amp; design.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Thu, 23 Jul 2026 08:30:41 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
 &lt;p&gt;Often, people who join the community are designers working on open source software, developers interested in design or people from other professional backgrounds.&lt;/p&gt;
 &lt;p&gt;There are no formal requirements to take part in the community other than following the code of conduct.&lt;/p&gt;
 &lt;h2 id="communicating-well"&gt;Communicating well&lt;/h2&gt;
@@ -1223,25 +1223,42 @@ terms, processes and practices.&lt;/p&gt;
 &lt;h3 id="what-is-this"&gt;What is this?&lt;/h3&gt;
 &lt;p&gt;Finding better, more concrete labels for buttons, menus and input fields.&lt;/p&gt;
 &lt;h3 id="how-does-it-help"&gt;How does it help?&lt;/h3&gt;
-&lt;p&gt;Labels shape expectations &amp;ndash; and these expectations should match what
+&lt;p&gt;Labels shape expectations—and these expectations should match what
 the software actually will do.&lt;/p&gt;
-&lt;p&gt;See this issue, changing labels from variable names of the
-implementation to common terms:
-&lt;a href="https://gitlab.com/inkscape/inkscape/-/merge_requests/7048"&gt;inkscape/inkscape!7048&lt;/a&gt;
-(via &lt;a href="https://g0v.social/@ltlnx/115883073086406019"&gt;@ltlnx&lt;/a&gt;)&lt;/p&gt;
+&lt;h3 id="example-dont-use-implementation-langauge-in-labels"&gt;Example: Don’t use implementation langauge in labels&lt;/h3&gt;
+&lt;p&gt;In this &lt;a href="https://gitlab.com/inkscape/inkscape/-/merge_requests/7048"&gt;issue on the inkscape project&lt;/a&gt; (via &lt;a href="https://g0v.social/@ltlnx/115883073086406019"&gt;@ltlnx&lt;/a&gt;)
+user Adam Belis suggests to replace lables like “Insert node at min X” with “Add node to Left”:
+Instead of terms referring to variable names (min X) the new lables use everyday concepts (to Left).&lt;/p&gt;
+&lt;p&gt;
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/typicalTasks/InsertNodeInkscapeOld_hu_cc3450684cab15ab.avif" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/typicalTasks/InsertNodeInkscapeOld_hu_8f051a87043bb150.webp" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/typicalTasks/InsertNodeInkscapeOld.png"
+alt="a screenshot of a toolbar menu in inkscape, showing entries like &amp;ldquo;insert node at min X&amp;rdquo;"
+loading="eager"
+fetchpriority="high"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="241"
+height="191"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
 &lt;h3 id="when-and-why-does-it-work"&gt;When and why does it work?&lt;/h3&gt;
 &lt;p&gt;Adjusting labels is often easy, since they are commonly stored
 separately from the code and changing the labels usually does not mean
 that code needs to be changed. There are two risks when changing labels:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Existing users are familiar with the old label and that the change
-will be confusing to them&lt;/li&gt;
+will be confusing to them.&lt;/li&gt;
 &lt;li&gt;The new label is longer than the available space, which is
-particularly relevant in languages like German.&lt;/li&gt;
+particularly relevant in languages like German, which typically have longer words than English.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="resources"&gt;Resources&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.theguardian.com/info/developer-blog/2013/jan/02/interactive-button-text-grammar"&gt;The Grammar of Interactivity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.nngroup.com/articles/ten-usability-heuristics/"&gt;10 Usability Heuristics&lt;/a&gt;, Match Between the System and the Real World.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="improve-icons"&gt;Improve Icons&lt;/h2&gt;
 &lt;h3 id="what-is-this-1"&gt;What is this?&lt;/h3&gt;
@@ -1273,6 +1290,11 @@ a label might be better.&lt;/li&gt;
 increases usability. A meaningful layout that matches the user&amp;rsquo;s idea
 of the system and the user&amp;rsquo;s tasks helps to understand what needs to be
 done.&lt;/p&gt;
+&lt;h3 id="example-use-semantically-correct-widgets"&gt;Example: Use semantically correct widgets&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/penpot/penpot/issues/8083"&gt;”Interface standards violation, using checkboxes instead of radio
+buttons”&lt;/a&gt; points out that
+in a dialog in penpot, checkmarks are used for mutually exclusive options,
+which, following interface standards, is what radio buttons or dropdowns should be used for.&lt;/p&gt;
 &lt;h3 id="when-and-why-does-it-work-2"&gt;When and why does it work?&lt;/h3&gt;
 &lt;p&gt;Improving the layout of existing dialogs is actionable, since the
 changes focus on the interface itself and thus do not cause ripple
@@ -1284,24 +1306,28 @@ knowledge of the available widgets and how they can be laid out.&lt;/p&gt;
 &lt;li&gt;Not being familiar with the tasks users do might lead to suggestions
 that look visually more clean but do not match the user&amp;rsquo;s needs.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="examples"&gt;Examples&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://gitlab.com/inkscape/ux/-/issues/305"&gt;inkscape/ux#305&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Interface standards violation, using checkboxes instead of radio
-buttons: &lt;a href="https://github.com/penpot/penpot/issues/8083"&gt;penpot/penpot#8083&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;As with any design change or adaption, there are some people that may
-prefer aspects of an original design for either very good, evidence-able
-reasons or not great, non-evidence based reasons. Iterative and testable
-changes/improvements typically work well in FOSS to explore how a user
-might use a new layout or interface element which can be used to back up
-decisions.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id="suggesting-new-features"&gt;Suggesting new features&lt;/h2&gt;
 &lt;h3 id="what-is-this-3"&gt;What is this?&lt;/h3&gt;
 &lt;p&gt;Suggesting features based on user needs.&lt;/p&gt;
 &lt;h3 id="how-does-it-help-3"&gt;How does it help?&lt;/h3&gt;
 &lt;p&gt;Suggesting features that are based on actual user needs helps to make
 applications more useful.&lt;/p&gt;
+&lt;h3 id="example-trash-in-penpot"&gt;Example: Trash in Penpot&lt;/h3&gt;
+&lt;p&gt;When one deleted a project in Penpot, one would get a warning, but upon
+confirmation the project would be gone. This is easy to habitually
+dismiss. A well-established mechanism that does not have the problem is
+implementing a trash-can, a temporary container from which deleted files
+can be retrieved again if one accidentally deleted them or changed one&amp;rsquo;s
+mind about them.&lt;/p&gt;
+&lt;p&gt;This feature was suggested by a user in the &lt;a href="https://community.penpot.app/t/feature-request-add-a-trash-can-for-deleted-files/5746"&gt;penpot community forum&lt;/a&gt;,
+jan transferred it to a &lt;a href="https://github.com/penpot/penpot/issues/4775"&gt;github issue&lt;/a&gt;.
+One user commented &amp;ldquo;I&amp;rsquo;ve never needed this feature until today 😭&amp;rdquo;,
+implying that they indeed accidentally deleted projects. The feature
+request was picked up at some point, so that penpot now has a trashcan
+for deleted files.&lt;/p&gt;
+&lt;p&gt;The feature is relatively simple, since it uses an established metaphor
+and mechanism and was probably also not complex to implement, as it
+relies on similar components as other ways to organize projects.&lt;/p&gt;
 &lt;h3 id="when-and-why-does-it-work-3"&gt;When and why does it work?&lt;/h3&gt;
 &lt;p&gt;The first question is: Is the feature actually useful?&lt;/p&gt;
 &lt;ul&gt;
@@ -1315,32 +1341,17 @@ that usually lead to difficulties:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;If the feature needs custom UI elements, it is usually harder to
 implement than a feature that can use existing widgets like input
-fields, menus or toolbars&lt;/li&gt;
-&lt;li&gt;If the feature relies on complex, hard to define behavior: &amp;ldquo;If this
-happens, it does&amp;hellip; but if that happens&amp;hellip;&amp;rdquo;. Anything that &amp;ldquo;guesses&amp;rdquo;
+fields, menus or toolbars.&lt;/li&gt;
+&lt;li&gt;If the feature relies on complex, hard to define behavior: “If this
+happens, it does&amp;hellip; but if that happens&amp;hellip;”. Anything that “guesses”
 the wanted behavior is often impossible to get right.&lt;/li&gt;
 &lt;li&gt;If the feature needs a technology that is not part of the product at
 the moment. This is not easy to find out without knowing at least a
 bit about the code, but if developers mention that it would mean to
-introduce &amp;ldquo;command-pattern&amp;rdquo;, &amp;ldquo;real-time evaluation&amp;rdquo;, or &amp;ldquo;caching&amp;rdquo;, it
+introduce “command-pattern”, “real-time evaluation”, or “caching”, it
 hints that this is possible, but difficult. It might be worth it, but
 it needs a dedicated developer.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="example-trash-in-penpot"&gt;Example: Trash in Penpot&lt;/h3&gt;
-&lt;p&gt;When one deleted a project in Penpot, one would get a warning, but upon
-confirmation the project would be gone. This is easy to habitually
-dismiss. A well-established mechanism that does not have the problem is
-implementing a trash-can, a temporary container from which deleted files
-can be retrieved again if one accidentally deleted them or changed one&amp;rsquo;s
-mind about them. This feature was suggested by a user in the &lt;a href="https://community.penpot.app/t/feature-request-add-a-trash-can-for-deleted-files/5746"&gt;penpot community forum&lt;/a&gt;,
-jan transferred it to a &lt;a href="https://github.com/penpot/penpot/issues/4775"&gt;github issue&lt;/a&gt;.
-One user commented &amp;ldquo;I&amp;rsquo;ve never needed this feature until today 😭&amp;rdquo;,
-implying that they indeed accidentally deleted projects. The feature
-request was picked up at some point, so that penpot now has a trashcan
-for deleted files.&lt;/p&gt;
-&lt;p&gt;The feature is relatively simple, since it uses an established metaphor
-and mechanism and was probably also not complex to implement, as it
-relies on similar components as other ways to organize projects.&lt;/p&gt;
 &lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/resources/scenarios-for-usability/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Resources</category></item><item><title>Tools and Code</title><link>https://opensourcedesign.net/resources/tools-and-code/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/tools-and-code/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>What Open Source projects use for work and coordination</description><content:encoded>&lt;p&gt;There are basic tools that most projects use. It is helpful to be
 familiar with them, since this is where most coordination and work is
 done.
