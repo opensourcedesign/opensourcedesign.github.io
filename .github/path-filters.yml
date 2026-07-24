@@ -34,6 +34,7 @@ forms:
   - 'assets/js/job-form.js'
   - 'assets/js/event-form.js'
   - 'assets/js/yaml-front-matter.js'
+  - 'workers/job-submit/src/yaml-front-matter.js'
   - '.github/form-modules.sha256'
 
 checks:
@@ -45,6 +46,7 @@ checks:
   - 'assets/js/job-form.js'
   - 'assets/js/event-form.js'
   - 'assets/js/yaml-front-matter.js'
+  - 'workers/job-submit/src/yaml-front-matter.js'
   - '.github/scripts/normalize-jobs.mjs'
   - '.github/scripts/extract-form-js.mjs'
   - '.github/scripts/yaml-front-matter.mjs'

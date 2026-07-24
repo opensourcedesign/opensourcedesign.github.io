@@ -28,7 +28,7 @@
  *   POST /rejection-sent?pr=<n> -> { ok, marked }  (Bearer LOOKUP_SECRET; idempotent)
  */
 
-import { parseFrontMatter } from '../../../../assets/js/yaml-front-matter.js';
+import { parseFrontMatter } from './yaml-front-matter.js';
 
 const GH_API = 'https://api.github.com';
 

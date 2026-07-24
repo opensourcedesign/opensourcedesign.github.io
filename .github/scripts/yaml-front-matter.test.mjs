@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -6,6 +7,20 @@ import { fileURLToPath } from 'node:url';
 import { hasYamlKey, parseFrontMatter, readYamlScalar } from './yaml-front-matter.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+
+function normalizeModule(content) {
+  return content.replace(/\r\n/g, '\n').replace(/^\/\*\*[\s\S]*?\*\/\s*/m, '');
+}
+
+function sha256(content) {
+  return createHash('sha256').update(content, 'utf8').digest('hex');
+}
+
+test('worker yaml-front-matter.js stays in sync with assets/js copy', () => {
+  const assets = fs.readFileSync(path.join(ROOT, 'assets/js/yaml-front-matter.js'), 'utf8');
+  const worker = fs.readFileSync(path.join(ROOT, 'workers/job-submit/src/yaml-front-matter.js'), 'utf8');
+  assert.equal(sha256(normalizeModule(assets)), sha256(normalizeModule(worker)));
+});
 
 test('readYamlScalar parses folded block scalars (title: >-)', () => {
   const fm = [
