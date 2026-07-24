@@ -16,6 +16,20 @@ export function hasYamlKey(fm, key) {
   return new RegExp('^' + key + ':', 'm').test(String(fm));
 }
 
+function readIndentedBlockLines(lines, startIdx) {
+  const parts = [];
+  for (let j = startIdx + 1; j < lines.length; j++) {
+    const line = lines[j];
+    if (line.trim() === '') {
+      parts.push('');
+      continue;
+    }
+    if (!/^[ \t]/.test(line)) break;
+    parts.push(line.replace(/^[ \t]+/, ''));
+  }
+  return parts;
+}
+
 export function readYamlScalar(fm, key) {
   const lines = String(fm).split(/\r?\n/);
   const keyRe = new RegExp('^' + key + ':(.*)$');
@@ -32,12 +46,7 @@ export function readYamlScalar(fm, key) {
   if (block) {
     const folded = block[1][0] === '>';
     const chomp = block[1].slice(-1) === '-';
-    const parts = [];
-    for (let j = idx + 1; j < lines.length; j++) {
-      const line = lines[j];
-      if (!/^[ \t]/.test(line)) break;
-      parts.push(line.replace(/^[ \t]+/, ''));
-    }
+    const parts = readIndentedBlockLines(lines, idx);
     let value = folded ? parts.join(' ').replace(/\s+/g, ' ').trim() : parts.join('\n');
     if (chomp) value = value.replace(/\n+$/, '');
     return value;
@@ -60,12 +69,22 @@ export function readYamlList(fm, key) {
 }
 
 export function readYamlBlock(fm, key) {
-  const mm = String(fm).match(new RegExp('^' + key + ':[ \\t]*\\|-?[ \\t]*\\r?\\n((?:[ \\t]+.*(?:\\r?\\n|$))+)', 'm'));
-  if (mm) {
-    return mm[1].split(/\r?\n/)
-      .map((l) => l.replace(/^[ \t]+/, ''))
-      .filter(Boolean)
-      .join('\n');
+  const lines = String(fm).split(/\r?\n/);
+  const keyRe = new RegExp('^' + key + ':(.*)$');
+  let idx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (keyRe.test(lines[i])) {
+      idx = i;
+      break;
+    }
+  }
+  if (idx === -1) return '';
+  const after = lines[idx].replace(new RegExp('^' + key + ':\\s*'), '');
+  if (/^\|[-+]?/.test(after)) {
+    const chomp = after.endsWith('-');
+    let value = readIndentedBlockLines(lines, idx).join('\n');
+    if (chomp) value = value.replace(/\n+$/, '');
+    return value;
   }
   return readYamlScalar(fm, key).replace(/\\r\\n/g, '\n');
 }

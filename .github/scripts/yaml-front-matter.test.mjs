@@ -52,3 +52,15 @@ test('hasYamlKey distinguishes missing keys from empty values', () => {
   assert.equal(hasYamlKey(fm, 'title'), true);
   assert.equal(hasYamlKey(fm, 'date_posted'), false);
 });
+
+test('readYamlBlock keeps literal blocks after blank lines', () => {
+  const file = path.join(
+    ROOT,
+    'content/jobs/2026-06-05-ui-ux-redesign-for-therapy-worker-cooperative-webpage.md',
+  );
+  const parsed = parseFrontMatter(fs.readFileSync(file, 'utf8'));
+  assert.ok(parsed);
+  const deliverables = parsed.block('deliverables');
+  assert.match(deliverables, /add profile cards/);
+  assert.match(deliverables, /fix the faulty logo/);
+});
