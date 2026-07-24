@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import { gh } from './github-api.mjs';
 import { submissionMeta } from './submission-meta.mjs';
+import { readYamlScalar } from './yaml-front-matter.mjs';
 
 const MARKER = '<!-- submission-preview -->';
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
@@ -14,16 +15,6 @@ const REPO = process.env.REPO;
 const PR_NUMBER = process.env.PR_NUMBER;
 const HEAD_REF = process.env.HEAD_REF || '';
 const PREVIEW_BASE = (process.env.PREVIEW_BASE || '').replace(/\/+$/, '');
-
-function scalar(fm, key) {
-  const m = fm.match(new RegExp('^' + key + ':\\s*(.*)$', 'm'));
-  if (!m) return '';
-  let v = m[1].trim();
-  if ((v.startsWith("'") && v.endsWith("'")) || (v.startsWith('"') && v.endsWith('"'))) {
-    v = v.slice(1, -1);
-  }
-  return v.trim();
-}
 
 function slugify(str) {
   return String(str || '')
@@ -43,11 +34,11 @@ function isSubmissionRef(ref) {
 function previewPath(file, fm, ref) {
   if (file === 'data/resources.yaml') return '/resources/links/';
   if (file.startsWith('content/jobs/')) {
-    const slug = scalar(fm, 'slug') || slugify(scalar(fm, 'title'));
+    const slug = readYamlScalar(fm, 'slug') || slugify(readYamlScalar(fm, 'title'));
     return slug ? '/jobs/' + slug + '/' : '/jobs/';
   }
   if (file.startsWith('content/events/')) {
-    const slug = scalar(fm, 'slug') || slugify(file.split('/').pop().replace(/\.md$/, ''));
+    const slug = readYamlScalar(fm, 'slug') || slugify(file.split('/').pop().replace(/\.md$/, ''));
     return slug ? '/events/' + slug + '/' : '/events/';
   }
   return '/';
@@ -57,15 +48,15 @@ function summarize(file, text, ref) {
   const fmMatch = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   const fm = fmMatch ? fmMatch[1] : '';
   const meta = submissionMeta(ref);
-  const title = scalar(fm, 'title') || scalar(fm, 'name') || file.split('/').pop();
+  const title = readYamlScalar(fm, 'title') || readYamlScalar(fm, 'name') || file.split('/').pop();
   const rows = [['Kind', meta.label]];
-  if (scalar(fm, 'organization')) rows.push(['Organization', scalar(fm, 'organization')]);
-  if (scalar(fm, 'role')) rows.push(['Role', scalar(fm, 'role')]);
-  if (scalar(fm, 'status')) rows.push(['Status', scalar(fm, 'status')]);
-  if (scalar(fm, 'start_date')) rows.push(['Start date', scalar(fm, 'start_date')]);
-  if (scalar(fm, 'deadline')) rows.push(['Apply by', scalar(fm, 'deadline')]);
-  if (scalar(fm, 'category')) rows.push(['Category', scalar(fm, 'category')]);
-  if (scalar(fm, 'url')) rows.push(['URL', scalar(fm, 'url')]);
+  if (readYamlScalar(fm, 'organization')) rows.push(['Organization', readYamlScalar(fm, 'organization')]);
+  if (readYamlScalar(fm, 'role')) rows.push(['Role', readYamlScalar(fm, 'role')]);
+  if (readYamlScalar(fm, 'status')) rows.push(['Status', readYamlScalar(fm, 'status')]);
+  if (readYamlScalar(fm, 'start_date')) rows.push(['Start date', readYamlScalar(fm, 'start_date')]);
+  if (readYamlScalar(fm, 'deadline')) rows.push(['Apply by', readYamlScalar(fm, 'deadline')]);
+  if (readYamlScalar(fm, 'category')) rows.push(['Category', readYamlScalar(fm, 'category')]);
+  if (readYamlScalar(fm, 'url')) rows.push(['URL', readYamlScalar(fm, 'url')]);
 
   const path = previewPath(file, fm, ref);
   const previewUrl = PREVIEW_BASE ? PREVIEW_BASE + path : '';

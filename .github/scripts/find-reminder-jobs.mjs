@@ -25,19 +25,10 @@
 
 import fs from 'node:fs';
 import { gh, ghPaginated } from './github-api.mjs';
+import { readYamlScalar } from './yaml-front-matter.mjs';
 const SITE = 'https://opensourcedesign.net';
 const REPO = process.env.REPO || 'opensourcedesign/opensourcedesign.net';
 const MAX_AGE = 49; // exclusive
-
-function scalar(fm, key) {
-  const m = fm.match(new RegExp('^' + key + ':\\s*(.*)$', 'm'));
-  if (!m) return '';
-  let v = m[1].trim();
-  if ((v.startsWith("'") && v.endsWith("'")) || (v.startsWith('"') && v.endsWith('"'))) {
-    v = v.slice(1, -1).replace(/''/g, "'");
-  }
-  return v.trim();
-}
 
 const MIN_AGE = 42;
 
@@ -81,13 +72,13 @@ for (const name of fs.readdirSync('content/jobs').filter((f) => f.endsWith('.md'
   if (!fmMatch) continue;
   const fm = fmMatch[1];
 
-  if (scalar(fm, 'status').toLowerCase() !== 'searching') continue;
-  const posted = scalar(fm, 'date_posted').match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  if (readYamlScalar(fm, 'status').toLowerCase() !== 'searching') continue;
+  const posted = readYamlScalar(fm, 'date_posted').match(/^\d{4}-\d{2}-\d{2}/)?.[0];
   if (!posted) continue;
   const age = (today - Date.parse(posted)) / 86400000;
   if (age < MIN_AGE || age >= MAX_AGE) continue;
 
-  const updated = scalar(fm, 'last_updated').match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  const updated = readYamlScalar(fm, 'last_updated').match(/^\d{4}-\d{2}-\d{2}/)?.[0];
   if (updated && (today - Date.parse(updated)) / 86400000 < 14) {
     console.log(`skip ${name}: edited recently (${updated})`);
     continue;
@@ -105,8 +96,8 @@ for (const name of fs.readdirSync('content/jobs').filter((f) => f.endsWith('.md'
       console.log(`  skip: ${skip}`);
       continue;
     }
-    const title = scalar(fm, 'title');
-    const slug = scalar(fm, 'slug') || slugify(title);
+    const title = readYamlScalar(fm, 'title');
+    const slug = readYamlScalar(fm, 'slug') || slugify(title);
     include.push({
       email,
       title,

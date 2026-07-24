@@ -38,58 +38,7 @@ jobs:
 
       - name: Expire postings past their deadline or older than a year
         id: expire
-        run: |
-          node <<'EOF'
-          const fs = require('fs');
-          const path = require('path');
-
-          const DIR = 'content/jobs';
-          const MAX_AGE_DAYS = 365;
-          const today = new Date().toISOString().slice(0, 10);
-          const cutoff = new Date(Date.now() - MAX_AGE_DAYS * 86400000)
-            .toISOString().slice(0, 10);
-
-          // Front matter scalar, tolerant of quotes: `key: 'value'` etc.
-          const scalar = (fm, key) => {
-            const m = fm.match(new RegExp('^' + key + ':\\s*[\'"]?([^\'"\\n]*)', 'm'));
-            return m ? m[1].trim() : '';
-          };
-          const isoDate = (s) => (/^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0, 10) : '');
-
-          const expired = [];
-          for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.md'))) {
-            const full = path.join(DIR, file);
-            const text = fs.readFileSync(full, 'utf8');
-            const fmMatch = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-            if (!fmMatch) continue;
-            const fm = fmMatch[1];
-
-            if (scalar(fm, 'status').toLowerCase() !== 'searching') continue;
-
-            const deadline = isoDate(scalar(fm, 'deadline'));
-            const posted = isoDate(scalar(fm, 'date_posted'));
-            const updated = isoDate(scalar(fm, 'last_updated'));
-            const freshest = updated > posted ? updated : posted;
-
-            let reason = '';
-            // The deadline day itself still counts as open.
-            if (deadline && deadline < today) reason = 'deadline ' + deadline + ' passed';
-            else if (freshest && freshest < cutoff) reason = 'no update since ' + freshest;
-            if (!reason) continue;
-
-            const next = text.replace(fmMatch[0], fmMatch[0].replace(
-              /^(status:\s*)(['"]?)searching\2\s*$/m, '$1expired'));
-            if (next === text) continue; // status line not in expected shape; skip
-            fs.writeFileSync(full, next);
-            expired.push(file + ' (' + reason + ')');
-          }
-
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            expired.length
-              ? '## Expired ' + expired.length + ' posting(s)\n\n' + expired.map((e) => '- ' + e).join('\n') + '\n'
-              : 'No postings to expire today.\n');
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'count=' + expired.length + '\n');
-          EOF
+        run: node .github/scripts/job-expire.mjs
 
       - name: Commit and push
         if: steps.expire.outputs.count != '0' && inputs.dry_run != true

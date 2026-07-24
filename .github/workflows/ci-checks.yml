@@ -40,6 +40,9 @@ jobs:
       - name: Form modules in sync with layouts
         run: node .github/scripts/extract-form-js.mjs --check
 
+      - name: YAML front matter parser
+        run: node --test .github/scripts/yaml-front-matter.test.mjs
+
       - name: Job redirect aliases
         run: node .github/scripts/job-redirect-aliases.mjs --check
 

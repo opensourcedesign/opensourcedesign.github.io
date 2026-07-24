@@ -17,6 +17,7 @@
 
 import fs from 'node:fs';
 import { gh, ghPaginated } from './github-api.mjs';
+import { readYamlScalar } from './yaml-front-matter.mjs';
 
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
 const { REPO, PR_NUMBER, HEAD_REF, MERGE_SHA } = process.env;
@@ -37,12 +38,6 @@ function frontMatter(text) {
   return m ? m[1] : '';
 }
 
-function scalar(fm, key) {
-  const m = fm.match(new RegExp(`^${key}:[ \\t]*(.*)$`, 'm'));
-  if (!m) return '';
-  return m[1].trim().replace(/^["']|["']$/g, '').trim();
-}
-
 // Mirrors the Worker's slugify (itself mirroring Hugo's :slug fallback).
 function slugify(str) {
   return String(str || '')
@@ -61,18 +56,18 @@ function sitePath(p) {
 
 async function jobUrl(file) {
   const fm = frontMatter(await fileAt(file, MERGE_SHA));
-  const explicit = scalar(fm, 'url') || scalar(fm, 'permalink');
+  const explicit = readYamlScalar(fm, 'url') || readYamlScalar(fm, 'permalink');
   if (explicit) return sitePath(explicit);
-  const slug = scalar(fm, 'slug') || slugify(scalar(fm, 'title'));
+  const slug = readYamlScalar(fm, 'slug') || slugify(readYamlScalar(fm, 'title'));
   if (!slug) throw new Error(`no slug or title in ${file}`);
   return `${SITE}/jobs/${slug}/`;
 }
 
 async function eventUrl(file) {
   const fm = frontMatter(await fileAt(file, MERGE_SHA));
-  const explicit = scalar(fm, 'url') || scalar(fm, 'permalink');
+  const explicit = readYamlScalar(fm, 'url') || readYamlScalar(fm, 'permalink');
   if (explicit) return sitePath(explicit);
-  const slug = scalar(fm, 'slug');
+  const slug = readYamlScalar(fm, 'slug');
   if (slug) return `${SITE}/events/${slug}/`;
   // Hugo's default URL for the page is the urlized filename.
   const base = file.split('/').pop().replace(/\.md$/, '');

@@ -17,6 +17,7 @@ const FORMS = [
   { layout: 'layouts/jobs/job-form.html', module: 'job-form', formId: 'osd-job-form', endpoint: 'jobSubmitEndpoint' },
   { layout: 'layouts/events/event-form.html', module: 'event-form', formId: 'osd-event-form', endpoint: 'eventSubmitEndpoint' },
 ];
+const SHARED_MODULES = ['assets/js/yaml-front-matter.js'];
 
 function sha256(file) {
   // Normalize CRLF → LF so manifest hashes match Linux CI checkouts.
@@ -42,10 +43,13 @@ function buildFromInline(layoutPath) {
 }
 
 function writeManifest() {
-  const lines = FORMS.map(({ module }) => {
-    const p = path.join(ROOT, `assets/js/${module}.js`);
-    return `${sha256(p)}  assets/js/${module}.js`;
-  });
+  const lines = [
+    ...FORMS.map(({ module }) => {
+      const p = path.join(ROOT, `assets/js/${module}.js`);
+      return `${sha256(p)}  assets/js/${module}.js`;
+    }),
+    ...SHARED_MODULES.map((rel) => `${sha256(path.join(ROOT, rel))}  ${rel}`),
+  ];
   fs.writeFileSync(MANIFEST, lines.join('\n') + '\n');
 }
 
@@ -110,10 +114,13 @@ if (checkOnly) {
   }
   if (ok && fs.existsSync(MANIFEST)) {
     const expected = fs.readFileSync(MANIFEST, 'utf8').trim();
-    const actual = FORMS.map(({ module }) => {
-      const p = path.join(ROOT, `assets/js/${module}.js`);
-      return `${sha256(p)}  assets/js/${module}.js`;
-    }).join('\n');
+    const actual = [
+      ...FORMS.map(({ module }) => {
+        const p = path.join(ROOT, `assets/js/${module}.js`);
+        return `${sha256(p)}  assets/js/${module}.js`;
+      }),
+      ...SHARED_MODULES.map((rel) => `${sha256(path.join(ROOT, rel))}  ${rel}`),
+    ].join('\n');
     if (expected !== actual) {
       console.error('extract-form-js: module hash drift — run node .github/scripts/extract-form-js.mjs and commit .github/form-modules.sha256');
       ok = false;

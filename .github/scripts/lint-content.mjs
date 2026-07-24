@@ -11,6 +11,7 @@
 
 import fs from 'node:fs';
 import { isBadJobFilename } from './job-filename-rules.mjs';
+import { hasYamlKey, readYamlScalar } from './yaml-front-matter.mjs';
 
 const JOB_STATUSES = ['searching', 'filled', 'closed', 'expired'];
 const JOB_STATUS_ALIASES = { solved: 'filled', resolved: 'filled', completed: 'filled', filled: 'filled' };
@@ -35,16 +36,6 @@ function contentKind(file) {
   if (p.includes('content/events/')) return 'event';
   if (p.includes('content/resources/')) return 'resource';
   return 'other';
-}
-
-function scalar(fm, key) {
-  const m = fm.match(new RegExp('^' + key + ':\\s*(.*)$', 'm'));
-  if (!m) return null;
-  let v = m[1].trim();
-  if ((v.startsWith("'") && v.endsWith("'")) || (v.startsWith('"') && v.endsWith('"'))) {
-    v = v.slice(1, -1);
-  }
-  return v.trim();
 }
 
 const isIsoDate = (s) => /^\d{4}-\d{2}-\d{2}/.test(s) && !isNaN(Date.parse(s.slice(0, 10)));
@@ -108,7 +99,7 @@ function lintFile(file) {
   const fm = fmMatch[1];
   const body = text.slice(fmMatch[0].length);
 
-  if (!scalar(fm, 'title')) errors.push('front matter: `title` is required');
+  if (!readYamlScalar(fm, 'title')) errors.push('front matter: `title` is required');
 
   if (isJob) {
     const base = file.replace(/\\/g, '/').split('/').pop();
@@ -118,7 +109,7 @@ function lintFile(file) {
   }
 
   if (isJob || isEvent) {
-    const status = (scalar(fm, 'status') || '').toLowerCase();
+    const status = (readYamlScalar(fm, 'status') || '').toLowerCase();
     const statuses = isJob ? JOB_STATUSES : EVENT_STATUSES;
     if (!status) {
       errors.push('front matter: `status` is required');
@@ -129,15 +120,15 @@ function lintFile(file) {
     }
 
     for (const key of isJob ? ['date_posted', 'last_updated', 'deadline'] : []) {
-      const v = scalar(fm, key);
-      if (v !== null && v !== '' && !isIsoDate(v)) {
+      const v = readYamlScalar(fm, key);
+      if (v && !isIsoDate(v)) {
         errors.push(`front matter: \`${key}: ${v}\` is not a valid YYYY-MM-DD date`);
       }
     }
-    if (isJob && scalar(fm, 'date_posted') === null) {
+    if (isJob && !hasYamlKey(fm, 'date_posted')) {
       errors.push('front matter: `date_posted` is required for jobs');
     }
-    if (isJob && scalar(fm, 'compensation') === null) {
+    if (isJob && !hasYamlKey(fm, 'compensation')) {
       warnings.push('front matter: no `compensation` (paid/gratis) - the posting will show "Unspecified"');
     }
     if (isJob && !/^how_to_apply:/m.test(fm)) {

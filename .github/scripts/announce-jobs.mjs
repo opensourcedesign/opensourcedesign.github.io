@@ -27,6 +27,7 @@
  */
 
 import fs from 'node:fs';
+import { readYamlScalar } from './yaml-front-matter.mjs';
 
 const SITE = (process.env.SITE_BASE_URL || 'https://opensourcedesign.net').replace(/\/+$/, '');
 const MAX_POSTS = parseInt(process.env.MAX_POSTS || '3', 10) || 3;
@@ -40,16 +41,6 @@ const HASHTAGS = ['OpenSourceDesign', 'jobs'];
 function frontMatter(text) {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   return m ? m[1] : '';
-}
-
-function scalar(fm, key) {
-  const m = fm.match(new RegExp('^' + key + ':\\s*(.*)$', 'm'));
-  if (!m) return '';
-  let v = m[1].trim();
-  if ((v.startsWith("'") && v.endsWith("'")) || (v.startsWith('"') && v.endsWith('"'))) {
-    v = v.slice(1, -1).replace(/''/g, "'").replace(/\\"/g, '"');
-  }
-  return v.trim();
 }
 
 // Mirrors the Worker's slugify (which itself mirrors Hugo's :slug fallback
@@ -68,26 +59,26 @@ function slugify(str) {
 function jobFromFile(file) {
   const fm = frontMatter(fs.readFileSync(file, 'utf8'));
   if (!fm) return null;
-  const title = scalar(fm, 'title');
+  const title = readYamlScalar(fm, 'title');
   if (!title) return null;
 
-  const explicitUrl = scalar(fm, 'url') || scalar(fm, 'permalink');
-  const slug = scalar(fm, 'slug') || slugify(title);
+  const explicitUrl = readYamlScalar(fm, 'url') || readYamlScalar(fm, 'permalink');
+  const slug = readYamlScalar(fm, 'slug') || slugify(title);
   const url = explicitUrl
     ? SITE + '/' + explicitUrl.replace(/^\/+/, '').replace(/\/*$/, '/')
     : SITE + '/jobs/' + slug + '/';
 
-  const comp = scalar(fm, 'compensation').toLowerCase();
+  const comp = readYamlScalar(fm, 'compensation').toLowerCase();
   return {
     file,
     title,
     url,
-    status: scalar(fm, 'status').toLowerCase(),
-    datePosted: (scalar(fm, 'date_posted').match(/^\d{4}-\d{2}-\d{2}/) || [''])[0],
-    organization: scalar(fm, 'organization'),
+    status: readYamlScalar(fm, 'status').toLowerCase(),
+    datePosted: (readYamlScalar(fm, 'date_posted').match(/^\d{4}-\d{2}-\d{2}/) || [''])[0],
+    organization: readYamlScalar(fm, 'organization'),
     paid: comp === 'paid' ? true : comp && comp !== 'paid' ? false : null,
-    deadline: (scalar(fm, 'deadline').match(/^\d{4}-\d{2}-\d{2}/) || [''])[0],
-    announceSocial: scalar(fm, 'announce_social').toLowerCase() !== 'false',
+    deadline: (readYamlScalar(fm, 'deadline').match(/^\d{4}-\d{2}-\d{2}/) || [''])[0],
+    announceSocial: readYamlScalar(fm, 'announce_social').toLowerCase() !== 'false',
   };
 }
 

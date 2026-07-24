@@ -28,6 +28,8 @@
  *   POST /rejection-sent?pr=<n> -> { ok, marked }  (Bearer LOOKUP_SECRET; idempotent)
  */
 
+import { parseFrontMatter } from '../../../../assets/js/yaml-front-matter.js';
+
 const GH_API = 'https://api.github.com';
 
 // Defensive input caps (the form validates too, but never trust the client).
@@ -498,64 +500,6 @@ function pushPreservedIdentity(fm, edit) {
   if (edit.author) fm.push('author: ' + yq(edit.author));
   if (edit.layout) fm.push('layout: ' + yq(edit.layout));
   if (edit.recurrence) fm.push('recurrence: ' + yq(edit.recurrence));
-}
-
-/* Minimal front-matter reader used to preserve identity fields on edits.
-   Only handles the simple scalar / block-list shapes our job files use. */
-function parseFrontMatter(text) {
-  const m = String(text).match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!m) return null;
-  const fm = m[1];
-  const unquote = (s) => {
-    s = String(s).trim();
-    if (/^'.*'$/.test(s)) return s.slice(1, -1).replace(/''/g, "'");
-    if (/^".*"$/.test(s)) {
-      try { return JSON.parse(s); } catch (e) { return s.slice(1, -1); }
-    }
-    return s;
-  };
-  const readScalar = (key) => {
-    const lines = fm.split(/\r?\n/);
-    const keyRe = new RegExp('^' + key + ':(.*)$');
-    let idx = -1;
-    for (let i = 0; i < lines.length; i++) {
-      if (keyRe.test(lines[i])) {
-        idx = i;
-        break;
-      }
-    }
-    if (idx === -1) return '';
-    const after = lines[idx].replace(new RegExp('^' + key + ':\\s*'), '');
-    const block = after.match(/^(>[+-]?|\|[+-]?)\s*$/);
-    if (block) {
-      const folded = block[1][0] === '>';
-      const chomp = block[1].endsWith('-');
-      const parts = [];
-      for (let j = idx + 1; j < lines.length; j++) {
-        const line = lines[j];
-        if (!/^[ \t]/.test(line)) break;
-        parts.push(line.replace(/^[ \t]+/, ''));
-      }
-      let value = folded ? parts.join(' ').replace(/\s+/g, ' ').trim() : parts.join('\n');
-      if (chomp) value = value.replace(/\n+$/, '');
-      return value;
-    }
-    return unquote(after);
-  };
-  return {
-    scalar(key) {
-      return readScalar(key);
-    },
-    list(key) {
-      const mm = fm.match(new RegExp('^' + key + ':[ \\t]*\\r?\\n((?:[ \\t]+-[ \\t]*.*(?:\\r?\\n|$))+)', 'm'));
-      if (!mm) return [];
-      return mm[1]
-        .split(/\r?\n/)
-        .map((l) => l.replace(/^[ \t]+-[ \t]*/, ''))
-        .map(unquote)
-        .filter(Boolean);
-    }
-  };
 }
 
 /* Mirrors generateMarkdown in event-form.html. */

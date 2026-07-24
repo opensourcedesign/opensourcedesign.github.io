@@ -1,4 +1,5 @@
 /** Generated from layouts/events/event-form.html — edit the layout or re-run extract-form-js.mjs. */
+import { parseFrontMatter } from './yaml-front-matter.js';
 export function init(cfg) {
   cfg = cfg || {};
   var endpoint = cfg.endpoint || '';
@@ -100,46 +101,7 @@ var form = document.getElementById('osd-event-form');
         // Minimal front-matter reader for prefilling the edit form. Handles the
         // scalar / block-list shapes used across content/events/.
         function parseEventFile(text) {
-          var m = String(text).match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
-          if (!m) return null;
-          var fm = m[1];
-          function unquote(s) {
-            s = String(s).trim();
-            if (/^'[\s\S]*'$/.test(s)) return s.slice(1, -1).replace(/''/g, "'");
-            if (/^"[\s\S]*"$/.test(s)) {
-              try { return JSON.parse(s); } catch (e) { return s.slice(1, -1); }
-            }
-            return s;
-          }
-          function scalar(key) {
-            var lines = fm.split(/\r?\n/);
-            var keyRe = new RegExp('^' + key + ':(.*)$');
-            var idx = -1;
-            for (var i = 0; i < lines.length; i++) {
-              if (keyRe.test(lines[i])) {
-                idx = i;
-                break;
-              }
-            }
-            if (idx === -1) return '';
-            var after = lines[idx].replace(new RegExp('^' + key + ':\\s*'), '');
-            var block = after.match(/^(>[+-]?|\|[+-]?)\s*$/);
-            if (block) {
-              var folded = block[1][0] === '>';
-              var chomp = block[1].slice(-1) === '-';
-              var parts = [];
-              for (var j = idx + 1; j < lines.length; j++) {
-                var line = lines[j];
-                if (!/^[ \t]/.test(line)) break;
-                parts.push(line.replace(/^[ \t]+/, ''));
-              }
-              var value = folded ? parts.join(' ').replace(/\s+/g, ' ').trim() : parts.join('\n');
-              if (chomp) value = value.replace(/\n+$/, '');
-              return value;
-            }
-            return unquote(after);
-          }
-          return { scalar: scalar, body: m[2].trim() };
+          return parseFrontMatter(text);
         }
 
         function setVal(name, v) {
@@ -214,12 +176,20 @@ var form = document.getElementById('osd-event-form');
               editMeta = {
                 date: parsed.scalar('date'),
                 status: parsed.scalar('status'),
-                // URL-critical legacy fields, kept in the manual-PR fallback
-                // markdown (the worker preserves these server-side anyway).
+                id: parsed.scalar('_id'),
+                slug: parsed.scalar('slug'),
+                layout: parsed.scalar('layout'),
                 url: parsed.scalar('url'),
                 permalink: parsed.scalar('permalink'),
-                categories: parsed.scalar('categories')
+                author: parsed.scalar('author'),
+                recurrence: parsed.scalar('recurrence'),
+                aliases: parsed.list('aliases'),
+                categories: parsed.list('categories')
               };
+              if (!editMeta.categories.length) {
+                var rawCats = parsed.scalar('categories');
+                if (rawCats) editMeta.categories = rawCats.split(/[,\s]+/).filter(Boolean);
+              }
               applyPrefill(parsed);
               if (note) note.textContent = '';
             })
@@ -235,14 +205,25 @@ var form = document.getElementById('osd-event-form');
 
           var fm = [];
           fm.push('---');
-          fm.push('layout: event');
+          fm.push('layout: ' + yq((editFile && editMeta && editMeta.layout) ? editMeta.layout : 'event'));
           fm.push('title: ' + yq(data.title));
           fm.push('status: ' + (editFile ? (data.status || (editMeta && editMeta.status) || 'upcoming') : 'upcoming'));
           fm.push('date: ' + yq(isoNow));
           if (editFile && editMeta) {
+            if (editMeta.id) fm.push('_id: ' + yq(editMeta.id));
+            if (editMeta.slug) fm.push('slug: ' + yq(editMeta.slug));
             if (editMeta.url) fm.push('url: ' + yq(editMeta.url));
             if (editMeta.permalink) fm.push('permalink: ' + yq(editMeta.permalink));
-            if (editMeta.categories) fm.push('categories: ' + editMeta.categories);
+            if (editMeta.author) fm.push('author: ' + yq(editMeta.author));
+            if (editMeta.recurrence) fm.push('recurrence: ' + yq(editMeta.recurrence));
+            if (editMeta.aliases && editMeta.aliases.length) {
+              fm.push('aliases:');
+              editMeta.aliases.forEach(function (a) { fm.push('  - ' + yq(a)); });
+            }
+            if (editMeta.categories && editMeta.categories.length) {
+              fm.push('categories:');
+              editMeta.categories.forEach(function (c) { fm.push('  - ' + yq(c)); });
+            }
           }
           fm.push('eventDate: ' + yq(formatEventDate(data.start_date, data.end_date)));
           fm.push('eventStart: ' + yq(data.start_date));
