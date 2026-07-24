@@ -277,6 +277,7 @@ async function handleSubmit(request, env) {
       if (rawCats) edit.categories = rawCats.split(/[,\s]+/).filter(Boolean);
     }
     edit.author = fm.scalar('author');
+    edit.layout = fm.scalar('layout');
     edit.recurrence = fm.scalar('recurrence'); // e.g. the monthly community call
     // The poster may change the status from the edit form (close a job,
     // cancel an event); anything not on the whitelist keeps the current value.
@@ -495,6 +496,7 @@ function pushPreservedIdentity(fm, edit) {
     edit.categories.forEach((c) => fm.push('  - ' + yq(c)));
   }
   if (edit.author) fm.push('author: ' + yq(edit.author));
+  if (edit.layout) fm.push('layout: ' + yq(edit.layout));
   if (edit.recurrence) fm.push('recurrence: ' + yq(edit.recurrence));
 }
 
@@ -512,10 +514,37 @@ function parseFrontMatter(text) {
     }
     return s;
   };
+  const readScalar = (key) => {
+    const lines = fm.split(/\r?\n/);
+    const keyRe = new RegExp('^' + key + ':(.*)$');
+    let idx = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (keyRe.test(lines[i])) {
+        idx = i;
+        break;
+      }
+    }
+    if (idx === -1) return '';
+    const after = lines[idx].replace(new RegExp('^' + key + ':\\s*'), '');
+    const block = after.match(/^(>[+-]?|\|[+-]?)\s*$/);
+    if (block) {
+      const folded = block[1][0] === '>';
+      const chomp = block[1].endsWith('-');
+      const parts = [];
+      for (let j = idx + 1; j < lines.length; j++) {
+        const line = lines[j];
+        if (!/^[ \t]/.test(line)) break;
+        parts.push(line.replace(/^[ \t]+/, ''));
+      }
+      let value = folded ? parts.join(' ').replace(/\s+/g, ' ').trim() : parts.join('\n');
+      if (chomp) value = value.replace(/\n+$/, '');
+      return value;
+    }
+    return unquote(after);
+  };
   return {
     scalar(key) {
-      const mm = fm.match(new RegExp('^' + key + ':[ \\t]*(.+)$', 'm'));
-      return mm ? unquote(mm[1]) : '';
+      return readScalar(key);
     },
     list(key) {
       const mm = fm.match(new RegExp('^' + key + ':[ \\t]*\\r?\\n((?:[ \\t]+-[ \\t]*.*(?:\\r?\\n|$))+)', 'm'));

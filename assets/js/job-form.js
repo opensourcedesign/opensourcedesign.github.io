@@ -159,8 +159,32 @@ var form = document.getElementById('osd-job-form');
             return s;
           }
           function scalar(key) {
-            var mm = fm.match(new RegExp('^' + key + ':[ \\t]*(.+)$', 'm'));
-            return mm ? unquote(mm[1]) : '';
+            var lines = fm.split(/\r?\n/);
+            var keyRe = new RegExp('^' + key + ':(.*)$');
+            var idx = -1;
+            for (var i = 0; i < lines.length; i++) {
+              if (keyRe.test(lines[i])) {
+                idx = i;
+                break;
+              }
+            }
+            if (idx === -1) return '';
+            var after = lines[idx].replace(new RegExp('^' + key + ':\\s*'), '');
+            var block = after.match(/^(>[+-]?|\|[+-]?)\s*$/);
+            if (block) {
+              var folded = block[1][0] === '>';
+              var chomp = block[1].slice(-1) === '-';
+              var parts = [];
+              for (var j = idx + 1; j < lines.length; j++) {
+                var line = lines[j];
+                if (!/^[ \t]/.test(line)) break;
+                parts.push(line.replace(/^[ \t]+/, ''));
+              }
+              var value = folded ? parts.join(' ').replace(/\s+/g, ' ').trim() : parts.join('\n');
+              if (chomp) value = value.replace(/\n+$/, '');
+              return value;
+            }
+            return unquote(after);
           }
           function list(key) {
             var mm = fm.match(new RegExp('^' + key + ':[ \\t]*\\r?\\n((?:[ \\t]+-[ \\t]*.*(?:\\r?\\n|$))+)', 'm'));
@@ -264,6 +288,7 @@ var form = document.getElementById('osd-job-form');
                 date: parsed.scalar('date'),
                 id: parsed.scalar('_id'),
                 slug: parsed.scalar('slug'),
+                layout: parsed.scalar('layout'),
                 aliases: parsed.list('aliases')
               };
               applyPrefill(parsed);
@@ -295,6 +320,7 @@ var form = document.getElementById('osd-job-form');
           if (editFile && editMeta) {
             if (editMeta.id) fm.push('_id: ' + yq(editMeta.id));
             if (editMeta.slug) fm.push('slug: ' + yq(editMeta.slug));
+            if (editMeta.layout) fm.push('layout: ' + yq(editMeta.layout));
             if (editMeta.aliases && editMeta.aliases.length) {
               fm.push('aliases:');
               editMeta.aliases.forEach(function (a) { fm.push('  - ' + yq(a)); });
