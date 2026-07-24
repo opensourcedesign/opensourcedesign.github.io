@@ -118,7 +118,7 @@ npx wrangler secret put GITHUB_TOKEN      # fine-grained PAT
 npx wrangler secret put TURNSTILE_SECRET  # Turnstile secret key
 npx wrangler secret put LOOKUP_SECRET     # any long random string
 
-# 4. Deploy.
+# 4. Deploy (syncs yaml-front-matter.js into src/ via predeploy).
 npx wrangler deploy
 ```
 

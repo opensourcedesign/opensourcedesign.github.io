@@ -2,7 +2,7 @@
  * Minimal front-matter reader for job/event Markdown files.
  * Handles quoted scalars and folded (>) / literal (|) block scalars used in content/.
  *
- * Keep in sync with assets/js/yaml-front-matter.js (CI enforces identical content).
+ * Keep in sync with assets/js/yaml-front-matter.js (sync-worker-yaml-front-matter.mjs).
  */
 
 export function unquoteYamlScalar(s) {

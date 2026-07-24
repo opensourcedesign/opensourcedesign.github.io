@@ -51,6 +51,7 @@ checks:
   - '.github/scripts/extract-form-js.mjs'
   - '.github/scripts/yaml-front-matter.mjs'
   - '.github/scripts/yaml-front-matter.test.mjs'
+  - '.github/scripts/sync-worker-yaml-front-matter.mjs'
   - '.github/scripts/job-redirect-aliases.mjs'
   - '.github/scripts/lint-data-yaml.mjs'
   - '.github/form-modules.sha256'

@@ -64,3 +64,15 @@ test('readYamlBlock keeps literal blocks after blank lines', () => {
   assert.match(deliverables, /add profile cards/);
   assert.match(deliverables, /fix the faulty logo/);
 });
+
+test('worker yaml-front-matter.js parses deliverables blocks', async () => {
+  const file = path.join(
+    ROOT,
+    'content/jobs/2026-06-05-ui-ux-redesign-for-therapy-worker-cooperative-webpage.md',
+  );
+  const { parseFrontMatter: workerParse } = await import(
+    '../../workers/job-submit/src/yaml-front-matter.js'
+  );
+  const deliverables = workerParse(fs.readFileSync(file, 'utf8')).block('deliverables');
+  assert.match(deliverables, /fix the faulty logo/);
+});
