@@ -1,9 +1,10 @@
 ---
 _id: 0a7f0ee0-6a6b-11f1-8f79-93448937d2ea
-status: searching
+status: closed
 date_posted: '2026-06-17'
 layout: jobs
 slug: ux-support-input-fastest-text-entry-system
+last_updated: '2026-07-24'
 organization: Dasher
 org_url: 'https://dasher.at'
 license: 'https://github.com/dasher-project/Dasher-Windows/blob/main/LICENSE'
@@ -15,7 +16,9 @@ compensation: gratis
 deliverables: ''
 how_to_apply:
   - Will Wade <willwade@gmail.com>
-  - "Current design guide which needs iteration = https://github.com/dasher-project/dasher-design-guide\r\nGovernance: https://github.com/dasher-project/governance\r\nDasher in use - https://www.youtube.com/watch?v=SvsSrClBwPM  \r\n"
+  - 'Current design guide which needs iteration = https://github.com/dasher-project/dasher-design-guide'
+  - 'Governance: https://github.com/dasher-project/governance'
+  - 'Dasher in use - https://www.youtube.com/watch?v=SvsSrClBwPM'
 github_handle: '@willwade'
 tags: [accessibility, text-input]
 date: '2026-06-17T16:38:59.730Z'
