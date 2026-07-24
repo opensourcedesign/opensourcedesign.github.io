@@ -439,7 +439,7 @@
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     {{ end }}
 
-    {{ $formJs := resources.Get "js/job-form.js" | minify | fingerprint }}
+    {{ $formJs := resources.Get "js/job-form.js" | js.Build (dict "minify" true "format" "esm") | fingerprint }}
     <script type="module">
       import { init } from {{ $formJs.RelPermalink | jsonify | safeJS }};
       init({
