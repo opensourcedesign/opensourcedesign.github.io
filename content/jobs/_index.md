@@ -1,7 +1,7 @@
 ---
 title: "Jobs"
-description: "Find open source design jobs and projects, free and paid."
+description: "Find and post open source design jobs, free and paid."
 outputs: ["html", "rss", "paidrss", "volunteerrss", "json"]
 ---
 
-Need a logo designed, a usability study, or an interface-facelift? Our diverse community and extended network have got you covered. [Post a job](/jobs/job-form/) to get started.
+Find and post open source design jobs, free and paid.
