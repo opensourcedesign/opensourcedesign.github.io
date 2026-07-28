@@ -59,27 +59,22 @@
       </div>
       <div class="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-3">
         <a class="osd-btn-primary text-sm" href="{{ partial "site-path.html" "/jobs/job-form/" }}">Post a job</a>
-        <span class="text-sm font-medium text-slate-600">
-          RSS:
-          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed.xml" }}" aria-label="Subscribe to all jobs via RSS">All</a>
-          ·
-          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-paid.xml" }}" aria-label="Subscribe to paid jobs via RSS">Paid</a>
-          ·
-          <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-volunteer.xml" }}" aria-label="Subscribe to volunteer jobs via RSS">Volunteer</a>
-        </span>
       </div>
     </header>
 
-    {{/* Response guidelines notice */}}
-    <aside class="mt-10 rounded-xl border border-amber-200 bg-amber-50 p-5" role="alert">
-      <p class="text-sm text-amber-900">
-        <span class="font-semibold">Before you reply:</span>
-        avoid generic copy-pasted responses. See our <a class="font-medium underline decoration-amber-400 underline-offset-2 transition hover:decoration-amber-700" href="{{ site.Params.jobGuidelinesURL | default "https://discourse.opensourcedesign.net/t/guidelines-on-posting-and-responding-to-jobs/3416" }}" target="_blank" rel="noopener noreferrer">guidelines on posting and responding to jobs</a> to avoid being banned from the community.
-      </p>
-    </aside>
-
+    {{/*RSS*/}}
+    <div class="mt-10">
+      <span class=" text-sm font-medium text-slate-600">
+            RSS:
+            <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed.xml" }}" aria-label="Subscribe to all jobs via RSS">All</a>
+            ·
+            <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-paid.xml" }}" aria-label="Subscribe to paid jobs via RSS">Paid</a>
+            ·
+            <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/feed-volunteer.xml" }}" aria-label="Subscribe to volunteer jobs via RSS">Volunteer</a>
+      </span>
+    </div>
     {{/* Filters */}}
-    <div class="mt-10 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
+    <div class="mt-2 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
       <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
         <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
           All ({{ len $jobs }})
@@ -97,6 +92,7 @@
           </span>
         </button>
       </div>
+      {{/* Search text input */}}
       <div class="flex gap-2">
         <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
         <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
@@ -118,9 +114,9 @@
     </div>
 
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
-      <span id="jobs-count">{{ len $jobs }}</span> results · <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">browse {{ $jobsArchivedCount }} archived jobs</a>
+      <span id="jobs-count">{{ len $jobs }}</span> results
     </div>
-    <p class="mt-2 text-xs text-slate-500">Postings are archived automatically once their application deadline passes, or after a year without updates.</p>
+    
 
     <p class="mt-6 hidden text-sm text-slate-600" id="jobs-empty" role="status">No jobs match your criteria. Try adjusting your filters or search terms.</p>
 
@@ -192,6 +188,11 @@
         </li>
       {{ end }}
     </ul>
+
+    <div>
+      <p class="mt-2 text-sm text-slate-500">Postings are archived automatically once their application deadline passes, or after a year without updates. <a class="underline decoration-slate-300 underline-offset-4 transition hover:text-slate-950 hover:decoration-slate-950" href="{{ partial "site-path.html" "/jobs/archive/" }}">browse {{ $jobsArchivedCount }} archived jobs</a></p>
+      
+    </div>
 
     {{/* Footer Links */}}
     {{ partial "section-footer.html" (dict "items" (slice
