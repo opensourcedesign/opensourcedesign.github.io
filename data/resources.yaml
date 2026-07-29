@@ -365,6 +365,9 @@
     - name: Color Hunt
       url: https://colorhunt.co/
       description: Color palettes for designers and artists.
+    - name: Nof
+      url: https://nofpg.netlify.app/
+      description: Complementary Color Palette Generator.
 
 - id: css
   title: CSS frameworks
