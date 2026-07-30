@@ -76,16 +76,16 @@
     {{/* Filters */}}
     <div class="mt-2 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
       <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
-        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
+        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
           All ({{ len $jobs }})
         </button>
-        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="paid" aria-pressed="false">
+        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="paid" aria-pressed="false">
           <span class="inline-flex items-center gap-1.5">
             <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
             Paid ({{ $paidCount }})
           </span>
         </button>
-        <button class="osd-filter rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="gratis" aria-pressed="false">
+        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="gratis" aria-pressed="false">
           <span class="inline-flex items-center gap-1.5">
             <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>
             Volunteer ({{ $gratisCount }})

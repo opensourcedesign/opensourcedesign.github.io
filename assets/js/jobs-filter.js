@@ -20,11 +20,11 @@
       var on = btn.getAttribute('data-comp') === activeComp;
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       if (on) {
-        btn.classList.add('bg-slate-900', 'text-white');
-        btn.classList.remove('bg-slate-100', 'text-slate-700');
+        btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
+        btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
       } else {
-        btn.classList.remove('bg-slate-900', 'text-white');
-        btn.classList.add('bg-slate-100', 'text-slate-700');
+        btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
+        btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
       }
     });
   }
