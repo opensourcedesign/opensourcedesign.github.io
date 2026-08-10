@@ -1,0 +1,14 @@
+# Dependabot watches workers/ (npm workspaces: job-submit + wrangler toolchain).
+# Hugo, Tailwind, and Pagefind are pinned in CI workflows, not package.json.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /workers
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      wrangler:
+        patterns:
+          - wrangler
