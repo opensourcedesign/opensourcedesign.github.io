@@ -7,6 +7,7 @@
  * Env: GITHUB_TOKEN, GITHUB_REPOSITORY, LYCHEE_JSON (default lychee-results.json)
  */
 import fs from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { gh, ghPaginated } from './github-api.mjs';
 
 const TRACKER = '<!-- link-check-tracker -->';
@@ -19,6 +20,64 @@ const CHECKBOX_RE =
 
 const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
 const jsonPath = process.env.LYCHEE_JSON || 'lychee-results.json';
+
+/** Parse Lychee JSON output; tolerates trailing content or JSONL fragments. */
+export function parseLycheeReportContent(raw) {
+  const text = (raw || '').trim();
+  if (!text) return {};
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    const lines = text.split('\n').map((line) => line.trim()).filter(Boolean);
+    if (lines.length > 1) {
+      const merged = { fail_map: {} };
+      let parsedAny = false;
+      for (const line of lines) {
+        if (!line.startsWith('{')) continue;
+        try {
+          const doc = JSON.parse(line);
+          parsedAny = true;
+          if (doc.fail_map) Object.assign(merged.fail_map, doc.fail_map);
+        } catch {
+          // ignore non-JSON lines
+        }
+      }
+      if (parsedAny) return merged;
+    }
+
+    const start = text.indexOf('{');
+    if (start === -1) throw new Error('Lychee report does not contain JSON');
+
+    let depth = 0;
+    let inString = false;
+    let escape = false;
+    for (let i = start; i < text.length; i++) {
+      const ch = text[i];
+      if (inString) {
+        if (escape) escape = false;
+        else if (ch === '\\') escape = true;
+        else if (ch === '"') inString = false;
+        continue;
+      }
+      if (ch === '"') {
+        inString = true;
+        continue;
+      }
+      if (ch === '{') depth++;
+      else if (ch === '}') {
+        depth--;
+        if (depth === 0) return JSON.parse(text.slice(start, i + 1));
+      }
+    }
+    throw new Error('Could not parse Lychee JSON report');
+  }
+}
+
+export function readLycheeReport(path) {
+  if (!fs.existsSync(path)) throw new Error('Missing Lychee report: ' + path);
+  return parseLycheeReportContent(fs.readFileSync(path, 'utf8'));
+}
 
 function linkKey(source, url) {
   return source + '\t' + url;
@@ -231,9 +290,8 @@ async function createIssue(body) {
 
 async function main() {
   if (!owner || !repo) throw new Error('GITHUB_REPOSITORY is required');
-  if (!fs.existsSync(jsonPath)) throw new Error('Missing Lychee report: ' + jsonPath);
 
-  const report = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const report = readLycheeReport(jsonPath);
   const current = parseFailMap(report);
   const existing = await findTrackerIssue();
   const checkedAt = new Date().toISOString().slice(0, 10);
@@ -308,7 +366,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err.message || err);
-  process.exit(1);
-});
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((err) => {
+    console.error(err.message || err);
+    process.exit(1);
+  });
+}

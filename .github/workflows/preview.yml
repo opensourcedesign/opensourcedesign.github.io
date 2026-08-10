@@ -118,8 +118,11 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Checkout
+      - name: Checkout base branch
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          # Deploy uses the artifact only; avoid fork PR checkout under pull_request_target.
+          ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Download preview artifact
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
@@ -207,8 +210,11 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Checkout
+      - name: Checkout base branch
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          # Cleanup only removes gh-pages preview; no fork PR code needed.
+          ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Prepare empty preview directory
         run: mkdir -p empty-preview

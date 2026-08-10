@@ -154,6 +154,89 @@ function composeBluesky(job) {
   return { text, facets };
 }
 
+// Bluesky link-preview cards are not inferred from URLs in API posts; attach
+// app.bsky.embed.external with OG metadata (and upload og:image as a blob).
+function resolveUrl(base, href) {
+  try {
+    return new URL(href, base).href;
+  } catch {
+    return href;
+  }
+}
+
+function parseOgMeta(html) {
+  const pick = (prop) => {
+    const re = new RegExp(
+      '<meta[^>]+(?:property|name)=["\']' + prop + '["\'][^>]+content=["\']([^"\']+)["\']|' +
+        '<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']' + prop + '["\']',
+      'i',
+    );
+    const m = html.match(re);
+    return m ? (m[1] || m[2] || '').trim() : '';
+  };
+  return {
+    title: pick('og:title'),
+    description: pick('og:description'),
+    image: pick('og:image') || pick('twitter:image'),
+  };
+}
+
+async function fetchLinkCard(url) {
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'OpenSourceDesignJobAnnounce/1.0 (+https://opensourcedesign.net)' },
+    redirect: 'follow',
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const og = parseOgMeta(await res.text());
+  return {
+    uri: url,
+    title: og.title,
+    description: og.description.slice(0, 300),
+    imageUrl: og.image ? resolveUrl(url, og.image) : '',
+  };
+}
+
+async function uploadImageBlob(service, token, imageUrl) {
+  const res = await fetch(imageUrl, { redirect: 'follow' });
+  if (!res.ok) return null;
+  const buf = Buffer.from(await res.arrayBuffer());
+  if (!buf.length || buf.length > 1_000_000) return null;
+  const mime = (res.headers.get('content-type') || 'image/png').split(';')[0].trim();
+  if (!mime.startsWith('image/')) return null;
+  const out = await expectOk(
+    await fetch(service + '/xrpc/com.atproto.repo.uploadBlob', {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': mime },
+      body: buf,
+    }),
+    'Bluesky blob upload',
+  );
+  return out.blob;
+}
+
+async function buildBlueskyEmbed(job, service, token) {
+  let card;
+  try {
+    card = await fetchLinkCard(job.url);
+  } catch {
+    card = { uri: job.url, title: '', description: '', imageUrl: '' };
+  }
+  const external = {
+    uri: job.url,
+    title: (card.title || job.title).slice(0, 300),
+    description: card.description || '',
+  };
+  if (token && card.imageUrl) {
+    try {
+      const thumb = await uploadImageBlob(service, token, card.imageUrl);
+      if (thumb) external.thumb = thumb;
+    } catch {
+      // Card still posts without a thumbnail.
+    }
+  }
+  return { $type: 'app.bsky.embed.external', external };
+}
+
 // ── Posting ─────────────────────────────────────────────────────────────────
 
 async function expectOk(res, what) {
@@ -188,17 +271,51 @@ async function postBluesky(job) {
   const identifier = process.env.BLUESKY_IDENTIFIER || '';
   const password = process.env.BLUESKY_APP_PASSWORD || '';
   const { text, facets } = composeBluesky(job);
-  if (DRY_RUN) return 'DRY RUN, would post:\n' + text + '\nfacets: ' + JSON.stringify(facets);
-  if (!identifier || !password) return 'skipped (BLUESKY_IDENTIFIER / BLUESKY_APP_PASSWORD not configured)';
+  if (!DRY_RUN && (!identifier || !password)) {
+    return 'skipped (BLUESKY_IDENTIFIER / BLUESKY_APP_PASSWORD not configured)';
+  }
 
-  const session = await expectOk(
-    await fetch(service + '/xrpc/com.atproto.server.createSession', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ identifier, password }),
-    }),
-    'Bluesky login',
-  );
+  let embed = null;
+  let session = null;
+  if (!DRY_RUN) {
+    session = await expectOk(
+      await fetch(service + '/xrpc/com.atproto.server.createSession', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ identifier, password }),
+      }),
+      'Bluesky login',
+    );
+    embed = await buildBlueskyEmbed(job, service, session.accessJwt);
+  } else {
+    try {
+      const preview = await fetchLinkCard(job.url);
+      embed = {
+        $type: 'app.bsky.embed.external',
+        external: {
+          uri: job.url,
+          title: preview.title || job.title,
+          description: preview.description,
+          thumb: preview.imageUrl || undefined,
+        },
+      };
+    } catch {
+      embed = { $type: 'app.bsky.embed.external', external: { uri: job.url, title: job.title, description: '' } };
+    }
+  }
+
+  if (DRY_RUN) {
+    return 'DRY RUN, would post:\n' + text + '\nfacets: ' + JSON.stringify(facets) + '\nembed: ' + JSON.stringify(embed);
+  }
+
+  const record = {
+    $type: 'app.bsky.feed.post',
+    text,
+    facets,
+    embed,
+    langs: ['en'],
+    createdAt: new Date().toISOString(),
+  };
   const out = await expectOk(
     await fetch(service + '/xrpc/com.atproto.repo.createRecord', {
       method: 'POST',
@@ -206,18 +323,12 @@ async function postBluesky(job) {
       body: JSON.stringify({
         repo: session.did,
         collection: 'app.bsky.feed.post',
-        record: {
-          $type: 'app.bsky.feed.post',
-          text,
-          facets,
-          langs: ['en'],
-          createdAt: new Date().toISOString(),
-        },
+        record,
       }),
     }),
     'Bluesky post',
   );
-  return 'posted ' + out.uri;
+  return 'posted ' + out.uri + ' (card: ' + (embed.external.title || job.title) + ')';
 }
 
 // The Hugo deploy triggered by the same push takes a few minutes; wait for the
@@ -285,6 +396,7 @@ for (const file of files) {
     }
   }
   posted++;
+  console.log('announcing: ' + job.title + ' → ' + job.url);
   for (const [name, fn] of [['Mastodon', postMastodon], ['Bluesky', postBluesky]]) {
     try {
       console.log(name + ': ' + (await fn(job)));

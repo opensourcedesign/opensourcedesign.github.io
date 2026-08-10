@@ -43,6 +43,9 @@ jobs:
       - name: YAML front matter parser
         run: node --test .github/scripts/yaml-front-matter.test.mjs
 
+      - name: Link check issue parser
+        run: node --test .github/scripts/link-check-issue.test.mjs
+
       - name: Worker YAML parser in sync
         run: node .github/scripts/sync-worker-yaml-front-matter.mjs --check
 

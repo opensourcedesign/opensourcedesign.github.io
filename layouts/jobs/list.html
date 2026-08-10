@@ -74,43 +74,49 @@
       </span>
     </div>
     {{/* Filters */}}
-    <div class="mt-2 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between" role="search" aria-label="Filter jobs">
-      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by compensation type">
-        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="all" aria-pressed="true">
-          All ({{ len $jobs }})
-        </button>
-        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="paid" aria-pressed="false">
-          <span class="inline-flex items-center gap-1.5">
-            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
-            Paid ({{ $paidCount }})
-          </span>
-        </button>
-        <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-comp="gratis" aria-pressed="false">
-          <span class="inline-flex items-center gap-1.5">
-            <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>
-            Volunteer ({{ $gratisCount }})
-          </span>
-        </button>
+    <div class="mt-2 flex flex-col gap-4 border-t border-slate-200 pt-8 dark:border-slate-700" role="search" aria-label="Filter jobs">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap items-baseline gap-x-2 gap-y-2">
+          <span class="w-full shrink-0 text-sm font-medium text-slate-700 dark:text-slate-300" id="jobs-filter-comp-label">Compensation</span>
+          <div class="contents" role="group" aria-labelledby="jobs-filter-comp-label">
+            <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-400" type="button" data-comp="all" aria-pressed="true">
+              All ({{ len $jobs }})
+            </button>
+            <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-400" type="button" data-comp="paid" aria-pressed="false">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+                Paid ({{ $paidCount }})
+              </span>
+            </button>
+            <button class="osd-filter rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-400" type="button" data-comp="gratis" aria-pressed="false">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>
+                Volunteer ({{ $gratisCount }})
+              </span>
+            </button>
+          </div>
+        </div>
+        {{/* Search text input */}}
+        <div class="flex gap-2">
+          <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
+          <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
+          <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
+        </div>
       </div>
-      {{/* Search text input */}}
-      <div class="flex gap-2">
-        <label class="sr-only" for="jobs-q">Search jobs by title, organization, or tags</label>
-        <input class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 sm:w-72" id="jobs-q" type="search" placeholder="Search jobs…" autocomplete="off" />
-        <button class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" id="jobs-clear" aria-label="Clear search">Clear</button>
-      </div>
-    </div>
 
-    {{/* Category chips (multi-select; a job matches if it's in any selected
-         category). Only categories with at least one open job are shown. */}}
-    <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter by design category">
-      {{ range $catDefs }}
-        {{ $n := $counts.Get (printf "cat-%s" .id) | default 0 }}
-        {{ if gt $n 0 }}
-          <button class="osd-cat rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" type="button" data-cat="{{ .id }}" aria-pressed="false">
-            {{ .label }} <span class="opacity-60">{{ $n }}</span>
-          </button>
-        {{ end }}
-      {{ end }}
+      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-2">
+        <span class="w-full shrink-0 text-sm font-medium text-slate-700 dark:text-slate-300" id="jobs-filter-type-label">Job type</span>
+        <div class="contents" role="group" aria-labelledby="jobs-filter-type-label">
+          {{ range $catDefs }}
+            {{ $n := $counts.Get (printf "cat-%s" .id) | default 0 }}
+            {{ if gt $n 0 }}
+              <button class="osd-cat rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 transition-colors hover:border-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-400" type="button" data-cat="{{ .id }}" aria-pressed="false">
+                {{ .label }} <span class="opacity-60">{{ $n }}</span>
+              </button>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
     </div>
 
     <div class="mt-4 text-sm text-slate-500" aria-live="polite" aria-atomic="true">
