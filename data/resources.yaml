@@ -140,6 +140,10 @@
         - text: Human Interface Guidelines
           url: https://develop.kde.org/hig
 
+    - name: Vibe Coding UI Specification
+      url: https://horizonx.so/resources/vibe-coding-ui-specification
+      description: Free, MIT-licensed interface-contract project for AI-assisted UI work, with reusable tokens, component states, responsive rules, accessibility requirements, motion constraints, and production review gates.
+
 - id: icons
   title: Icons
   items:
@@ -429,10 +433,6 @@
       description: Data trust by design, principles, patterns, and best practices.
     - name: "Inclusive Design: Cards for Humanity"
       url: https://cardsforhumanity.frog.co/
-
-    - name: Vibe Coding UI Specification
-      url: https://horizonx.so/resources/vibe-coding-ui-specification
-      description: Free, MIT-licensed UI contract covering tokens, component states, responsive behavior, accessibility, motion, and production review for AI-assisted interface projects.
 
 - id: osd-reads
   title: Open source design reads
