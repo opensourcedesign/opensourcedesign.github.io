@@ -430,6 +430,10 @@
     - name: "Inclusive Design: Cards for Humanity"
       url: https://cardsforhumanity.frog.co/
 
+    - name: Vibe Coding UI Specification
+      url: https://horizonx.so/resources/vibe-coding-ui-specification
+      description: Free, MIT-licensed UI contract covering tokens, component states, responsive behavior, accessibility, motion, and production review for AI-assisted interface projects.
+
 - id: osd-reads
   title: Open source design reads
   items:
