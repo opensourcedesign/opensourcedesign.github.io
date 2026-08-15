@@ -2,32 +2,19 @@
 title: "OSS Projects: Here's how to make a successful job post"
 date: 2024-05-09
 author: Aila Araghi
+url: /jobs/writing-job-posts/
+type: page
 ---
 
 ## Introduction
 
 Hello everyone! If you plan on publishing a job post on the OpenSource Design website, here are a few steps that can improve your post's coherence and visibility. An effective job post is not just about listing the requirements; it's about engaging with the community, being transparent about the role, and inviting potential collaborators to join your OSS journey.
 
-## Job Post Template
+## How to Submit Your Job Post
 
-When creating your job post, please use the following template to ensure all necessary information is included:
+The easiest and recommended way to publish a job is by using our [Online Job Form](/jobs/job-form/). The form will guide you through the necessary details, provide a live preview, and automatically create the GitHub Pull Request for you.
 
-- _id: [Unique Identifier]
-- layout: jobs
-- title: [Brief, Descriptive Job Title]
-- role: [Specific Job Role]
-- organisation: [Your Organization's Name]
-- github: [Your GitHub Username]
-- contact: [Your Contact Info – Email, GitHub, IRC, etc.]
-- contributing_md: [Optional Link to Contributing Guidelines]
-- contributors_md: [Optional List of Reachable Contributors]
-- org_url: [Your Organization's Website]
-- tags: [Relevant Tags like 'interface design', 'branding', 'logo']
-- status: [Searching or Hired]
-- compensation: [Compensation Info – Gratis, Paid, etc.]
-- date_posted: [Posting Date in yyyy-mm-dd Format]
-
-**Note:** Replace the bracketed content with your specific job details.
+To make sure your post is effective and welcoming, we've put together the following step-by-step guide on what to include in your job description.
 
 ## Step-by-Step Guide
 
