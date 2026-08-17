@@ -8,11 +8,7 @@ org_url: "https://floxford.org/"
 license: "https://creativecommons.org/licenses/by-sa/4.0/"
 role: "Logo Design, Branding"
 compensation: "paid"
-paid_details: "Overall, not per deliverable; freelance; email o@ogeer.org with your idea before working hard on design; payment to EU/UK/SEPA Region bank account or to any Paypal account"
-rate_min: 15
-rate_max: 25
-rate_currency: "GBP"
-rate_period: "project"
+paid_details: "Email o@ogeer.org with your idea and price range before working hard on design; payment to EU/UK/SEPA Region bank account or to any Paypal account"
 github_handle: "@WebCoder49"
 tags:
   - "logo"
@@ -49,6 +45,6 @@ We will assume your logo is [Creative Commons Zero](https://creativecommons.org/
 Your style guide document (and, if provided, the poster template), on the other hand, not extending to all designs we make using the style guide, can be licensed under any of the free culture licenses [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en), [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), or [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Payment
-Email me ([mailto:o@ogeer.org](o@ogeer.org)) with your ideas before commencing work. If I approve your ideas and your result is satisfactory (see the deliverables), I will pay you £15-25 after. This process, but not the price range, is negotiable. I can pay via a bank transfer to the Single Euro Payments Area (which includes the European Union, Switzerland, and the United Kingdom), or by a PayPal transfer to anywhere.
+Email me ([mailto:o@ogeer.org](o@ogeer.org)) with your ideas and the cost you are willing to work for before commencing work. I can pay via a bank transfer to the Single Euro Payments Area (which includes the European Union, Switzerland, and the United Kingdom), or by a PayPal transfer to anywhere.
 
 I won't pay for AI-generated logos; it feels unjust to pay someone for something that isn't their work.
