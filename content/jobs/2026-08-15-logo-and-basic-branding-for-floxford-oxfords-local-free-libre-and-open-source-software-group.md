@@ -45,6 +45,8 @@ We will assume your logo is [Creative Commons Zero](https://creativecommons.org/
 Your style guide document (and, if provided, the poster template), on the other hand, not extending to all designs we make using the style guide, can be licensed under any of the free culture licenses [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en), [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), or [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Payment
+We currently have no organisational funding except for our organisers' pockets. I'd love to #PayForFreeSoftware and support Open Source Design, but if you're unwilling to get paid less than or around £100, applying is probably a waste of time.
+
 Email me ([mailto:o@ogeer.org](o@ogeer.org)) with your ideas (as a few sentences; no visual design is needed in the first email since I might reject/suggest changes to your ideas) and the cost you are willing to work for before commencing work. I can pay via a bank transfer to the Single Euro Payments Area (which includes the European Union, Switzerland, and the United Kingdom), or by a PayPal transfer to anywhere.
 
 I won't pay for AI-generated logos; it feels unjust to pay someone for something that isn't their work.
