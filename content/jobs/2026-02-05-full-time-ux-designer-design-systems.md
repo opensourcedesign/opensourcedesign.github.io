@@ -1,23 +1,25 @@
 ---
-_id: eed6b4a0-029f-11f1-8a33-733de303306a
+title: "Full-time UX Designer - Design systems"
 status: searching
-date_posted: '2026-02-05'
-layout: jobs
-organization: Canonical design system
-org_url: 'https://vanillaframework.io/'
-license: 'https://github.com/canonical/vanilla-framework/blob/main/LICENSE'
-title: Full-time UX Designer - Design systems
-role: Design system
-compensation: paid
-deliverables: ''
+date_posted: "2026-02-05"
+date: "2026-02-05T14:35:35.613Z"
+_id: "eed6b4a0-029f-11f1-8a33-733de303306a"
+layout: "jobs"
+last_updated: "2026-08-25"
+organization: "Canonical design system"
+org_url: "https://vanillaframework.io/"
+license: "https://github.com/canonical/vanilla-framework/blob/main/LICENSE"
+role: "Design system"
+compensation: "paid"
+tags:
+  - "design system"
+  - "ubuntu"
 how_to_apply:
-  - hayden.chambers@canonical.com
-  - 'https://www.linkedin.com/jobs/view/4262272853/'
-github_handle: ''
-tags: [design system, ubuntu]
-date: '2026-02-05T14:35:35.613Z'
+  - "hayden.chambers@canonical.com"
+  - "https://grnh.se/iqyypnh31us"
 ---
-Please apply through: https://www.linkedin.com/jobs/view/4262272853/
+
+Please apply through: https://grnh.se/iqyypnh31us
 
 ### We are hiring a UX designer for our Design System Team. 
 You will play a key role making open source software available to the world. Our Design function ensures the experience of the software and infrastructure we build is true to our intentions, and delivers the tools our community and customers need. The Design System UX designer makes that possible by defining, evolving and advocating for a consistent use of design system that scales across our products.
