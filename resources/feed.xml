@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Resources | Open Source Design</title><link>https://opensourcedesign.net/resources/</link><description>Links, readings, and community-written guides for designers working in open source.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Wed, 26 Aug 2026 20:58:02 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/resources/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>Resources | Open Source Design</title><link>https://opensourcedesign.net/resources/</link><description>Links, readings, and community-written guides for designers working in open source.</description><language>en</language><copyright>© 2026 Open Source Design. Content licensed under CC BY-SA 4.0.</copyright><lastBuildDate>Wed, 26 Aug 2026 21:00:56 +0000</lastBuildDate><generator>Hugo 0.164.0</generator><docs>https://www.rssboard.org/rss-specification</docs><atom:link href="https://opensourcedesign.net/resources/feed.xml" rel="self" type="application/rss+xml"/><image><url>https://opensourcedesign.net/images/opensourcedesign-logo-icon.png</url><title>Open Source Design</title><link>https://opensourcedesign.net/</link><width>144</width><height>144</height></image><item><title>How to Join</title><link>https://opensourcedesign.net/resources/how-to-join/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/how-to-join/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>How to participate in the Open Source Design community - the forum, community calls, social media, and GitHub.</description><content:encoded>&lt;p&gt;Participating in the open source design community can mean engaging in discussions about design in open source, joining our community calls or organizing events.&lt;/p&gt;
 &lt;p&gt;Often, people who join the community are designers working on open source software, developers interested in design or people from other professional backgrounds.&lt;/p&gt;
 &lt;p&gt;There are no formal requirements to take part in the community other than following the code of conduct.&lt;/p&gt;
 &lt;h2 id="communicating-well"&gt;Communicating well&lt;/h2&gt;
@@ -1407,4 +1407,170 @@ many people receive it, making to good for group discussions. To read
 and to post you need to &amp;ldquo;subscribe&amp;rdquo; to the list. Before you post, read
 along for a bit to see if the mailinglist is right for you and to know
 what tone is common on it.&lt;/p&gt;
-&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/resources/tools-and-code/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Resources</category></item></channel></rss>
+&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/resources/tools-and-code/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Resources</category></item><item><title>You first contribution: Maintaining OSD job submissions</title><link>https://opensourcedesign.net/resources/maintaining-job-submissions/</link><guid isPermaLink="true">https://opensourcedesign.net/resources/maintaining-job-submissions/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><description>Looking to do your first contribution? Follow this guide to get started.</description><content:encoded>&lt;p&gt;Are you a designer looking to help out in the open source design community? A great way to get started is reviewing and approving pull requests submitted to post a job on the job board!&lt;/p&gt;
+&lt;h2 id="what-are-job-submissions"&gt;What are job submissions?&lt;/h2&gt;
+&lt;p&gt;Job submissions are the form people with open source projects fill out. Filling out the form creates a post on the website to let designers know their project needs assistance.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_8eb25a7ad8419ac1.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_f55ba8fd15986d7f.avif 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_bab6149a79c7dc32.avif 1528w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_e0258e598f3200c3.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_f298085480a029e7.webp 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob_hu_d3af52ac9f6cfd11.webp 1528w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/postajob.png"
+alt="screenshot of open source design job submission form"
+loading="eager"
+fetchpriority="high"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="1528"
+height="991"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;h2 id="where-do-i-find-the-job-submissions-to-reviewapprove"&gt;Where do I find the job submissions to review/approve?&lt;/h2&gt;
+&lt;p&gt;First, go to the &lt;a href="https://github.com/opensourcedesign/opensourcedesign.net/"&gt;open source design website repository&lt;/a&gt; on Github.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_a4889c6be01d36da.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_1a573c740221957e.avif 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_e23540ec45024031.avif 1521w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_b198bcd1ccdd4734.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_89f27710de916b93.webp 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo_hu_33901904e7a3c25b.webp 1521w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/osdrepo.png"
+alt="screenshot of open source design repo&amp;quot;"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="1521"
+height="958"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;p&gt;Second, click on the &lt;a href="https://github.com/opensourcedesign/opensourcedesign.net/pulls"&gt;pull requests&lt;/a&gt; tab.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/pullrequests_hu_3d90362bcb4bb324.avif" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/pullrequests_hu_72bce0bc291d8962.webp" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/pullrequests.png"
+alt="screenshot of pull requests tab on open source design repo"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="393"
+height="110"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pull requests are essentially someone asking, &amp;ldquo;Hey, can you add this to the website/make this change?&amp;rdquo; Our job is to say yes, no, or modify this before yes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Third, click on any pull request starting with &amp;ldquo;Job submission:&amp;rdquo; if there is none then there are no requests for approval at the moment. All job submissions are markdown files waiting to be approved so they can be added to the jobs section of the website.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_5550b1747a5c2d3f.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_23397a5c55e61b32.avif 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_582700c9480d41a2.avif 1524w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_c4c511477849c584.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_6b56f02c5e4f54a0.webp 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR_hu_690556b53dcbbdc7.webp 1524w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/jobsubmissioninPR.png"
+alt="screenshot of pull requests on the open source design repo"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="1524"
+height="435"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;h3 id="theres-a-submission"&gt;There&amp;rsquo;s a submission!&lt;/h3&gt;
+&lt;p&gt;Click on that job submission and navigate to &amp;ldquo;Files changed&amp;rdquo;.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/fileschangedtab_hu_18bebad70114ab1f.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/fileschangedtab_hu_e0f76ca278f2fa1b.avif 695w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/fileschangedtab_hu_161b570d45fb3058.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/fileschangedtab_hu_9aae197db833a81f.webp 695w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/fileschangedtab.png"
+alt="screenshot of conversation of pull request highlighting files changed tab"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="695"
+height="60"
+/&gt;
+&lt;/picture&gt;
+You&amp;rsquo;ll see something like this.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_85cb925b67c7b034.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_12d390bb9c69e584.avif 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_9b2b637a4ab08bb1.avif 1512w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_e13dbae79978e01e.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_5efea0b378fab02b.webp 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown_hu_44b46f180ac00a6a.webp 1512w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/markdown.png"
+alt="screenshot of example markdown file for job submission"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="1512"
+height="1064"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;h2 id="what-criteria-do-i-need-to-look-out-for-when-reviewing-the-pull-request"&gt;What criteria do I need to look out for when reviewing the pull request?&lt;/h2&gt;
+&lt;p&gt;This is where you will need to some investigation and clicking through their links:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Can the organization name be found in their repository/organization URL or does the organization name match their repository/organization URL?&lt;/li&gt;
+&lt;li&gt;They are not required to have an email attached but is there some form of contact information like Discord, Telegram, etc?&lt;/li&gt;
+&lt;li&gt;Look through their project repository, is there anything malicious that is against what open source design stands for? Examples are gambling, anything discriminatory or offensive, etc. Unsure? Take a look at our &lt;a href="https://opensourcedesign.net/about-us/code-of-conduct/"&gt;code of conduct&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Is their project under the approved &lt;a href="https://opensource.org/licenses"&gt;Open Source Initiative licenses&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;Does the deliverables and description make sense?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All projects must pass these criteria to be approved.
+If everything looks good, in the top right there is a &amp;ldquo;Submit comments&amp;rdquo; button.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewbutton_hu_ae0cb93210cd029c.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewbutton_hu_c7809fba75ab3a98.avif 670w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewbutton_hu_1daba3e8edbb3fc8.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewbutton_hu_7d07804531b77c25.webp 670w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewbutton.png"
+alt="screenshot of submit commments button"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="670"
+height="114"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;p&gt;You can either request changes, approve, or comment without explicit approval. If you approve, leave a comment letting us know it looks good.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewmenu_hu_7b5b1ab3608b49f.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewmenu_hu_f3d9965ee87f7d5c.avif 875w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewmenu_hu_756cbd386fda286c.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewmenu_hu_673cbc23baaeb746.webp 875w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/submitreviewmenu.png"
+alt="screenshot of submit comments dropdown and a comment saying looks good to me"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="875"
+height="594"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;p&gt;Click submit review and you&amp;rsquo;re done! Congrats on your first approval and contribution to open source design.&lt;/p&gt;
+&lt;h2 id="optional"&gt;Optional&lt;/h2&gt;
+&lt;h3 id="pull-request-preview"&gt;Pull request preview&lt;/h3&gt;
+&lt;p&gt;In the PR, you can preview the job post by the &amp;ldquo;Conversation&amp;rdquo; tab and scrolling down. You will see a link called &amp;ldquo;PR Preview&amp;rdquo; to see it on the actually website.
+&lt;picture&gt;
+&lt;source type="image/avif" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_18b4bf10c27f2e05.avif 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_131ca9740021594b.avif 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_98657eb55ce19bb0.avif 968w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;source type="image/webp" srcset="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_86e1403796cc8a03.webp 480w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_658108f267fa6d9.webp 960w, https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview_hu_a67b277097ffda04.webp 968w" sizes="(min-width: 56rem) 56rem, 100vw" /&gt;
+&lt;img
+src="https://opensourcedesign.net/images/resources/maintainingjobsubmissions/preview.png"
+alt="screenshot of PR prview under conversation tab"
+loading="lazy"
+decoding="async"
+class="mx-auto my-6 block rounded-lg shadow-sm"
+width="968"
+height="697"
+/&gt;
+&lt;/picture&gt;
+&lt;/p&gt;
+&lt;h3 id="improving-description-and-deliverables-of-job-submissions"&gt;Improving description and deliverables of job submissions&lt;/h3&gt;
+&lt;p&gt;Many projects struggle to know what they are looking for. If the deliverables or description are unclear and would benefit from more direction, feel free to leave a comment on their pull request.&lt;/p&gt;
+&lt;p&gt;Not limited to the below examples but these are good questions to ask yourself to understand if there are gaps for other designers looking at the job submissions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How might someone be a good fit for this role?&lt;/li&gt;
+&lt;li&gt;Looking at the deliverables, would you be able to get started as a designer?&lt;/li&gt;
+&lt;li&gt;What kind of background would you need about the organization to get started on their project?&lt;/li&gt;
+&lt;li&gt;What is their organizations mission?&lt;/li&gt;
+&lt;li&gt;If it&amp;rsquo;s help with their user experience, what are they expecting of users to do on their website, app, etc? What is the expected journey users will take?&lt;/li&gt;
+&lt;li&gt;If it&amp;rsquo;s a logo, icon, or branding, what visual style are they looking for?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="margin-top:2em;font-size:0.9em;color:#666;"&gt;&lt;a href="https://opensourcedesign.net/resources/maintaining-job-submissions/"&gt;Read more on opensourcedesign.net →&lt;/a&gt;&lt;/p&gt;</content:encoded><category>Resources</category></item></channel></rss>
