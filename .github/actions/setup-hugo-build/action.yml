@@ -13,7 +13,15 @@ runs:
   using: composite
   steps:
     - name: Load CI version pins
-      uses: ../load-ci-versions
+      shell: bash
+      run: |
+        set -euo pipefail
+        while IFS= read -r line || [ -n "$line" ]; do
+          case "$line" in
+            ''|\#*) continue ;;
+            *=*) echo "$line" >> "$GITHUB_ENV" ;;
+          esac
+        done < .github/versions.env
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
