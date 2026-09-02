@@ -9,22 +9,12 @@ import fs from 'node:fs';
 import { gh, ghPaginated } from './github-api.mjs';
 import { readYamlScalar } from './yaml-front-matter.mjs';
 import { sendMail } from './send-mail.mjs';
+import { jobPermalinkFromFields } from './hugo-job-slug.mjs';
 
 const SITE = 'https://opensourcedesign.net';
 const REPO = process.env.REPO || 'opensourcedesign/opensourcedesign.net';
 const MAX_AGE = 49;
 const MIN_AGE = 42;
-
-function slugify(str) {
-  return String(str || '')
-    .trim()
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
-}
 
 function escapeHtml(title) {
   return title
@@ -169,8 +159,15 @@ async function main() {
       }
 
       const title = readYamlScalar(fm, 'title');
-      const slug = readYamlScalar(fm, 'slug') || slugify(title);
-      const jobUrl = `${SITE}/jobs/${slug}/`;
+      const jobUrl = jobPermalinkFromFields(
+        {
+          title,
+          slug: readYamlScalar(fm, 'slug'),
+          url: readYamlScalar(fm, 'url'),
+          permalink: readYamlScalar(fm, 'permalink'),
+        },
+        SITE,
+      );
       const editUrl = `${SITE}/jobs/job-form/?edit=${encodeURIComponent(name)}`;
       const { text: body, html } = reminderBodies({
         title,

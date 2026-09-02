@@ -5,7 +5,7 @@
  *
  * Reads the PR's changed files via the GitHub API, fetches the merged content
  * file, and derives the permalink the same way Hugo does:
- *   - jobs:   /jobs/:slug/ (explicit url/permalink > slug > slugified title)
+ *   - jobs:   /jobs/:slug/ (explicit url/permalink > slug > Hugo title slug)
  *   - events: explicit url/permalink > slug > the filename
  *   - resources: /resources/links/#<category-id> (category found by locating
  *     the added line in data/resources.yaml)
@@ -18,6 +18,7 @@
 import fs from 'node:fs';
 import { gh, ghPaginated } from './github-api.mjs';
 import { readYamlScalar } from './yaml-front-matter.mjs';
+import { jobPermalinkFromFields } from './hugo-job-slug.mjs';
 
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
 const { REPO, PR_NUMBER, HEAD_REF, MERGE_SHA } = process.env;
@@ -56,11 +57,17 @@ function sitePath(p) {
 
 async function jobUrl(file) {
   const fm = frontMatter(await fileAt(file, MERGE_SHA));
-  const explicit = readYamlScalar(fm, 'url') || readYamlScalar(fm, 'permalink');
-  if (explicit) return sitePath(explicit);
-  const slug = readYamlScalar(fm, 'slug') || slugify(readYamlScalar(fm, 'title'));
-  if (!slug) throw new Error(`no slug or title in ${file}`);
-  return `${SITE}/jobs/${slug}/`;
+  const title = readYamlScalar(fm, 'title');
+  if (!title) throw new Error(`no title in ${file}`);
+  return jobPermalinkFromFields(
+    {
+      title,
+      slug: readYamlScalar(fm, 'slug'),
+      url: readYamlScalar(fm, 'url'),
+      permalink: readYamlScalar(fm, 'permalink'),
+    },
+    SITE,
+  );
 }
 
 async function eventUrl(file) {
