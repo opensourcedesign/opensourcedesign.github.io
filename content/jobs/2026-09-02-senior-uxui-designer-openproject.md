@@ -20,4 +20,4 @@ At OpenProject, we build open-source project management and collaboration softwa
 
 We are looking for a Senior UI/UX Designer to join our user-centric design team and help shape the future of OpenProject.
 
-Continue reading on Personio
+[Continue reading/applying on Personio](https://openproject-gmbh.jobs.personio.com/job/2567965?language=en)
