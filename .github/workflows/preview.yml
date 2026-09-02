@@ -16,11 +16,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Keep in lockstep with hugo-build.yml so previews match production output.
-  HUGO_VERSION: 0.164.0
-  TAILWIND_VERSION: 4.3.3
-  PAGEFIND_VERSION: 1.5.2
-  PAGEFIND_SHA256: afb824a9e7f64905a934900481cea5be679c03975e527329e0e5e6cc70f5feda
   # Absolute origin used by Hugo when building preview URLs.
   PREVIEW_SITE_URL: https://opensourcedesign.net
   # Hostname used when composing PR preview comment links.
@@ -65,41 +60,8 @@ jobs:
           # Required for fork PRs under pull_request_target; deploy uses artifact only.
           allow-unsafe-pr-checkout: true
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
-        with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
-
-      - name: Cache Hugo resources
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: resources/_gen
-          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
-          restore-keys: |
-            hugo-resources-
-
-      # Same Tailwind compile as hugo-build.yml so previews ship the static
-      # stylesheet exactly like production (baseof.html falls back to the
-      # Play CDN only when compiled.css is absent, i.e. for local dev).
-      - name: Setup Node
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: 22
-
-      - name: Compile Tailwind CSS
-        run: |
-          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
-          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
-
-      - name: Install Pagefind
-        run: |
-          curl -fsSL -o pagefind.tar.gz \
-            "https://github.com/Pagefind/pagefind/releases/download/v${PAGEFIND_VERSION}/pagefind-v${PAGEFIND_VERSION}-x86_64-unknown-linux-musl.tar.gz"
-          echo "${PAGEFIND_SHA256}  pagefind.tar.gz" | sha256sum --check
-          tar -xzf pagefind.tar.gz
-          rm pagefind.tar.gz
-          chmod +x pagefind
+      - name: Setup Hugo site build
+        uses: ./.github/actions/setup-hugo-build
 
       - name: Build site for preview
         run: bash .github/scripts/build-hugo-site.sh preview "${{ github.event.pull_request.number }}"

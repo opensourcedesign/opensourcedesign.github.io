@@ -10,10 +10,6 @@ on:
 permissions:
   contents: read
 
-env:
-  HUGO_VERSION: 0.164.0
-  TAILWIND_VERSION: 4.3.3
-
 jobs:
   changes:
     runs-on: ubuntu-latest
@@ -40,29 +36,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+      - name: Setup Hugo site build
+        uses: ./.github/actions/setup-hugo-build
         with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
-
-      - name: Cache Hugo resources
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: resources/_gen
-          key: hugo-resources-${{ hashFiles('assets/**', 'hugo.toml', 'layouts/partials/resolve-image.html', 'layouts/_default/_markup/render-image.html') }}
-          restore-keys: |
-            hugo-resources-
-
-      - name: Setup Node
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: 22
-
-      - name: Compile Tailwind CSS
-        run: |
-          npm install --no-save "tailwindcss@${TAILWIND_VERSION}" "@tailwindcss/cli@${TAILWIND_VERSION}"
-          npx @tailwindcss/cli -i assets/css/main.css -o assets/css/compiled.css --minify
+          install-pagefind: "false"
 
       - name: Build site
         run: hugo --minify --gc

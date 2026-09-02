@@ -59,7 +59,7 @@
     <meta name="generator" content="Hugo {{ hugo.Version }}" />
     
     {{/* Social verification links (single source: data/social.yaml) */}}
-    {{ range site.Data.social }}
+    {{ range hugo.Data.social }}
       {{ if in (split .rel " ") "me" }}
         <link rel="me" href="{{ .url }}" />
       {{ end }}
@@ -182,7 +182,7 @@
          double-encodes it (strings gain literal quotes; arrays collapse into a
          single string). One jsonify pass + safeJS is the correct, safe idiom. */}}
     {{ $socials := slice }}
-    {{ range site.Params.social }}{{ $socials = $socials | append .url }}{{ end }}
+    {{ range hugo.Data.social }}{{ $socials = $socials | append .url }}{{ end }}
     {{ $orgLogo := partial "site-abs-path.html" "/images/opensourcedesign-logo.svg" }}
     {{ $org := dict
       "@context" "https://schema.org"
@@ -305,6 +305,7 @@
       {{ $css := . | fingerprint }}
       <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
     {{ else }}
+      {{/* Keep @tailwindcss/browser in lockstep with TAILWIND_VERSION in .github/versions.env */}}
       <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js" integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
       {{ $tw := resources.Get "css/main.css" }}
       <style type="text/tailwindcss">{{ $tw.Content | safeCSS }}</style>
