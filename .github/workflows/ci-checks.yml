@@ -46,6 +46,12 @@ jobs:
       - name: Link check issue parser
         run: node --test .github/scripts/link-check-issue.test.mjs
 
+      - name: Send mail recipient parser
+        run: node --test .github/scripts/send-mail.test.mjs
+
+      - name: Hugo job slug helper
+        run: node --test .github/scripts/hugo-job-slug.test.mjs
+
       - name: Worker YAML parser in sync
         run: node .github/scripts/sync-worker-yaml-front-matter.mjs --check
 

@@ -178,6 +178,13 @@ async function handleSubmit(request, env) {
         return json({ ok: false, error: 'The application deadline cannot be in the past.' }, 400);
       }
     }
+    const compensation = String(data.compensation || 'gratis').toLowerCase();
+    if (!['paid', 'gratis'].includes(compensation)) {
+      return json({ ok: false, error: 'Compensation must be paid or volunteer (gratis).' }, 400);
+    }
+    if (data.github_handle && !isGitHubHandle(data.github_handle)) {
+      return json({ ok: false, error: 'GitHub handle is not valid.' }, 400);
+    }
     // Structured rate (optional): sane numbers plus whitelisted currency/period.
     if (data.rate_min) {
       const min = Number(data.rate_min);
@@ -198,17 +205,8 @@ async function handleSubmit(request, env) {
   }
 
   // Optional, best-effort per-IP daily cap (only if a RATE_LIMIT KV is bound).
-  if (env.RATE_LIMIT) {
-    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-    const day = new Date().toISOString().slice(0, 10);
-    const key = 'rl:' + day + ':' + ip;
-    const cur = parseInt((await env.RATE_LIMIT.get(key)) || '0', 10) || 0;
-    const max = parseInt(env.RATE_LIMIT_MAX || '5', 10) || 5;
-    if (cur >= max) {
-      return json({ ok: false, error: 'Too many submissions today. Please try again tomorrow.' }, 429);
-    }
-    await env.RATE_LIMIT.put(key, String(cur + 1), { expirationTtl: 86400 });
-  }
+  const rateSlot = await checkRateLimit(env, request);
+  if (rateSlot && rateSlot.response) return rateSlot.response;
 
   // Resource suggestions edit data/resources.yaml instead of adding a
   // content file; they take their own PR path.
@@ -231,6 +229,7 @@ async function handleSubmit(request, env) {
         // Non-fatal: the PR still exists, only the auto-email would be skipped.
       }
     }
+    await recordRateLimit(env, rateSlot);
     return json({ ok: true, pr_url: pr.html_url });
   }
 
@@ -318,6 +317,7 @@ async function handleSubmit(request, env) {
     }
   }
 
+  await recordRateLimit(env, rateSlot);
   return json({ ok: true, pr_url: pr.html_url });
 }
 
@@ -328,6 +328,7 @@ async function handleLookup(request, env, url) {
   }
   const pr = url.searchParams.get('pr');
   if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!isValidPrNumber(pr)) return json({ ok: false, error: 'Invalid pr parameter.' }, 400);
   if (!env.EMAILS) return json({ ok: true, found: false });
 
   const raw = await env.EMAILS.get('pr:' + pr);
@@ -347,6 +348,7 @@ async function handleForget(request, env, url) {
   }
   const pr = url.searchParams.get('pr');
   if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!isValidPrNumber(pr)) return json({ ok: false, error: 'Invalid pr parameter.' }, 400);
   if (!env.EMAILS) return json({ ok: true, deleted: false });
 
   await env.EMAILS.delete('pr:' + pr);
@@ -366,6 +368,7 @@ async function handleRejectionSentGet(request, env, url) {
   if (denied) return denied;
   const pr = url.searchParams.get('pr');
   if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!isValidPrNumber(pr)) return json({ ok: false, error: 'Invalid pr parameter.' }, 400);
   if (!env.EMAILS) return json({ ok: true, sent: false });
 
   const sent = !!(await env.EMAILS.get('rejected:' + pr));
@@ -377,6 +380,7 @@ async function handleRejectionSentMark(request, env, url) {
   if (denied) return denied;
   const pr = url.searchParams.get('pr');
   if (!pr) return json({ ok: false, error: 'Missing pr parameter.' }, 400);
+  if (!isValidPrNumber(pr)) return json({ ok: false, error: 'Invalid pr parameter.' }, 400);
   if (!env.EMAILS) return json({ ok: true, marked: false });
 
   const days = parseInt(env.EMAIL_TTL_DAYS || '90', 10) || 90;
@@ -957,6 +961,32 @@ function isHttpUrl(s) {
 
 function isEmail(s) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s).trim());
+}
+
+function isGitHubHandle(s) {
+  return /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/.test(String(s).trim());
+}
+
+function isValidPrNumber(s) {
+  return /^\d+$/.test(String(s));
+}
+
+async function checkRateLimit(env, request) {
+  if (!env.RATE_LIMIT) return null;
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const day = new Date().toISOString().slice(0, 10);
+  const key = 'rl:' + day + ':' + ip;
+  const cur = parseInt((await env.RATE_LIMIT.get(key)) || '0', 10) || 0;
+  const max = parseInt(env.RATE_LIMIT_MAX || '5', 10) || 5;
+  if (cur >= max) {
+    return { response: json({ ok: false, error: 'Too many submissions today. Please try again tomorrow.' }, 429) };
+  }
+  return { key, cur };
+}
+
+async function recordRateLimit(env, slot) {
+  if (!slot || !env.RATE_LIMIT || !slot.key) return;
+  await env.RATE_LIMIT.put(slot.key, String(slot.cur + 1), { expirationTtl: 86400 });
 }
 
 function isIsoDate(s) {

@@ -1,0 +1,15 @@
+name: Load CI version pins
+description: Export .github/versions.env into GITHUB_ENV for downstream steps.
+runs:
+  using: composite
+  steps:
+    - name: Load .github/versions.env
+      shell: bash
+      run: |
+        set -euo pipefail
+        while IFS= read -r line || [ -n "$line" ]; do
+          case "$line" in
+            ''|\#*) continue ;;
+            *=*) echo "$line" >> "$GITHUB_ENV" ;;
+          esac
+        done < .github/versions.env

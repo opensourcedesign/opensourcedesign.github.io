@@ -15,7 +15,10 @@ export async function gh(path, opts = {}) {
     ...opts,
     headers: { ...ghHeaders(), ...(opts.headers || {}) },
   });
-  if (!res.ok) throw new Error('GitHub ' + path + ': HTTP ' + res.status);
+  if (!res.ok) {
+    const detail = (await res.text()).trim().slice(0, 200);
+    throw new Error('GitHub ' + path + ': HTTP ' + res.status + (detail ? ' ' + detail : ''));
+  }
   return res.json();
 }
 

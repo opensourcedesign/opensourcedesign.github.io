@@ -28,6 +28,7 @@
 
 import fs from 'node:fs';
 import { readYamlScalar } from './yaml-front-matter.mjs';
+import { jobPermalinkFromFields } from './hugo-job-slug.mjs';
 
 const SITE = (process.env.SITE_BASE_URL || 'https://opensourcedesign.net').replace(/\/+$/, '');
 const MAX_POSTS = parseInt(process.env.MAX_POSTS || '3', 10) || 3;
@@ -43,30 +44,21 @@ function frontMatter(text) {
   return m ? m[1] : '';
 }
 
-// Mirrors the Worker's slugify (which itself mirrors Hugo's :slug fallback
-// for the /jobs/:slug/ permalink pattern).
-function slugify(str) {
-  return String(str || '')
-    .trim()
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
-}
-
 function jobFromFile(file) {
   const fm = frontMatter(fs.readFileSync(file, 'utf8'));
   if (!fm) return null;
   const title = readYamlScalar(fm, 'title');
   if (!title) return null;
 
-  const explicitUrl = readYamlScalar(fm, 'url') || readYamlScalar(fm, 'permalink');
-  const slug = readYamlScalar(fm, 'slug') || slugify(title);
-  const url = explicitUrl
-    ? SITE + '/' + explicitUrl.replace(/^\/+/, '').replace(/\/*$/, '/')
-    : SITE + '/jobs/' + slug + '/';
+  const url = jobPermalinkFromFields(
+    {
+      title,
+      slug: readYamlScalar(fm, 'slug'),
+      url: readYamlScalar(fm, 'url'),
+      permalink: readYamlScalar(fm, 'permalink'),
+    },
+    SITE,
+  );
 
   const comp = readYamlScalar(fm, 'compensation').toLowerCase();
   return {
@@ -239,6 +231,20 @@ async function buildBlueskyEmbed(job, service, token) {
 
 // ── Posting ─────────────────────────────────────────────────────────────────
 
+async function fetchWithRetry(url, options, what, retries = 3) {
+  let lastErr;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const res = await fetch(url, options);
+    if (res.ok) return res;
+    const retryable = res.status === 429 || res.status >= 500;
+    const body = (await res.text()).slice(0, 300);
+    lastErr = new Error(what + ' failed: HTTP ' + res.status + ' ' + body);
+    if (!retryable || attempt === retries) throw lastErr;
+    await new Promise((r) => setTimeout(r, attempt * 2000));
+  }
+  throw lastErr;
+}
+
 async function expectOk(res, what) {
   if (!res.ok) throw new Error(what + ' failed: HTTP ' + res.status + ' ' + (await res.text()).slice(0, 300));
   return res.json();
@@ -250,8 +256,9 @@ async function postMastodon(job) {
   const status = composeMastodon(job);
   if (DRY_RUN) return 'DRY RUN, would post:\n' + status;
   if (!base || !token) return 'skipped (MASTODON_URL / MASTODON_ACCESS_TOKEN not configured)';
-  const out = await expectOk(
-    await fetch(base + '/api/v1/statuses', {
+  const res = await fetchWithRetry(
+    base + '/api/v1/statuses',
+    {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + token,
@@ -260,9 +267,10 @@ async function postMastodon(job) {
         'Idempotency-Key': 'osd-job-' + job.file.replace(/[^a-z0-9.-]/gi, '_'),
       },
       body: JSON.stringify({ status, visibility: 'public', language: 'en' }),
-    }),
+    },
     'Mastodon post',
   );
+  const out = await res.json();
   return 'posted ' + (out.url || out.id);
 }
 

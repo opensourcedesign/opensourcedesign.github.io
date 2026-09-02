@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import { gh } from './github-api.mjs';
 import { submissionMeta } from './submission-meta.mjs';
 import { readYamlScalar } from './yaml-front-matter.mjs';
+import { hugoSlugFromTitle } from './hugo-job-slug.mjs';
 
 const MARKER = '<!-- submission-preview -->';
 const SITE = process.env.SITE || 'https://opensourcedesign.net';
@@ -16,7 +17,7 @@ const PR_NUMBER = process.env.PR_NUMBER;
 const HEAD_REF = process.env.HEAD_REF || '';
 const PREVIEW_BASE = (process.env.PREVIEW_BASE || '').replace(/\/+$/, '');
 
-function slugify(str) {
+function slugifyFilename(str) {
   return String(str || '')
     .trim()
     .toLowerCase()
@@ -34,11 +35,11 @@ function isSubmissionRef(ref) {
 function previewPath(file, fm, ref) {
   if (file === 'data/resources.yaml') return '/resources/links/';
   if (file.startsWith('content/jobs/')) {
-    const slug = readYamlScalar(fm, 'slug') || slugify(readYamlScalar(fm, 'title'));
+    const slug = readYamlScalar(fm, 'slug') || hugoSlugFromTitle(readYamlScalar(fm, 'title'));
     return slug ? '/jobs/' + slug + '/' : '/jobs/';
   }
   if (file.startsWith('content/events/')) {
-    const slug = readYamlScalar(fm, 'slug') || slugify(file.split('/').pop().replace(/\.md$/, ''));
+    const slug = readYamlScalar(fm, 'slug') || slugifyFilename(file.split('/').pop().replace(/\.md$/, ''));
     return slug ? '/events/' + slug + '/' : '/events/';
   }
   return '/';

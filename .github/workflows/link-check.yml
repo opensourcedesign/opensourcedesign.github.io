@@ -10,9 +10,6 @@ permissions:
   contents: read
   issues: write
 
-env:
-  HUGO_VERSION: 0.164.0
-
 jobs:
   linkcheck:
     runs-on: ubuntu-latest
@@ -21,14 +18,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
-        with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
+      - name: Setup Hugo site build
+        uses: ./.github/actions/setup-hugo-build
+
+      # Match hugo-build.yml so Lychee scans the same HTML as production.
+      - name: Refresh forum pulse cache
+        env:
+          FORUM_URL: https://discourse.opensourcedesign.net
+        run: node .github/scripts/forum-pulse-cache.mjs
 
       - name: Build site
-        run: hugo --minify --gc
+        run: bash .github/scripts/build-hugo-site.sh production
 
       # Internal links are checked offline against the built tree; external
       # links are limited so the run stays polite and flake-resistant.

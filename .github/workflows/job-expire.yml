@@ -6,8 +6,9 @@
 #      (most recent of `date_posted` / `last_updated`).
 #
 # Expired postings drop off /jobs/ and surface on /jobs/archive/ instead.
-# Pushes made with GITHUB_TOKEN don't trigger other workflows, so the site
-# rebuild is dispatched explicitly at the end.
+# `main` is protected (PRs required), so this workflow opens/updates a bot PR
+# instead of pushing directly. Merging triggers hugo-build via the normal
+# push-to-main hook.
 name: Expire stale job postings
 
 on:
@@ -22,7 +23,7 @@ on:
 
 permissions:
   contents: write
-  actions: write # to dispatch the Hugo build after pushing
+  pull-requests: write
 
 concurrency:
   group: job-expire
@@ -38,22 +39,38 @@ jobs:
 
       - name: Expire postings past their deadline or older than a year
         id: expire
+        env:
+          DRY_RUN: ${{ inputs.dry_run == true && '1' || '' }}
         run: node .github/scripts/job-expire.mjs
 
-      - name: Commit and push
-        if: steps.expire.outputs.count != '0' && inputs.dry_run != true
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/jobs
-          git commit -m "Auto-expire ${{ steps.expire.outputs.count }} job posting(s) past deadline or older than a year"
-          git push
-
-      # Pushes authenticated with GITHUB_TOKEN don't fire the `push` trigger,
-      # so kick the deploy workflow directly (workflow_dispatch is exempt
-      # from that restriction).
-      - name: Trigger site rebuild
+      - name: Open pull request
         if: steps.expire.outputs.count != '0' && inputs.dry_run != true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run hugo-build.yml --ref "${GITHUB_REF_NAME}"
+        run: |
+          set -euo pipefail
+          branch="bot/auto-expire-jobs"
+          count="${{ steps.expire.outputs.count }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add content/jobs
+          git commit -m "Auto-expire ${count} job posting(s) past deadline or older than a year"
+          git push --force-with-lease origin "$branch"
+          body="$(cat <<EOF
+          Scheduled [\`job-expire\`](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) flipped **${count}** posting(s) from \`searching\` to \`expired\`.
+
+          See the workflow summary for the file list. Merge when ready; \`main\` deploy runs automatically on merge.
+          EOF
+          )"
+          existing="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number' || true)"
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" \
+              --title "Auto-expire ${count} job posting(s)" \
+              --body "$body"
+            echo "Updated open PR #${existing}"
+          else
+            gh pr create --base main --head "$branch" \
+              --title "Auto-expire ${count} job posting(s)" \
+              --body "$body"
+          fi

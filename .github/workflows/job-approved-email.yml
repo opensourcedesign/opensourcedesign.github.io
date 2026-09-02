@@ -67,9 +67,15 @@ jobs:
             resource/*)   kind="resource suggestion" ;;
             *)            kind="job posting" ;;
           esac
+          # Never write the address to GITHUB_OUTPUT or logs; action-send-mail
+          # prints the `to:` field in public workflow logs.
+          recipient_file="${RUNNER_TEMP}/recipient-${PR_NUMBER}.txt"
+          printf '%s' "$email" > "$recipient_file"
+          chmod 600 "$recipient_file"
+          echo "::add-mask::${email}"
           {
             echo "found=true"
-            echo "email=${email}"
+            echo "recipient_file=${recipient_file}"
             echo "title=${title}"
             echo "title_html=${title_html}"
             echo "kind=${kind}"
@@ -96,23 +102,22 @@ jobs:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: node .github/scripts/approval-email-meta.mjs
 
+      - name: Install nodemailer
+        if: steps.lookup.outputs.found == 'true'
+        run: npm install --no-save nodemailer@6.10.1
+
       - name: Send notification email
         if: steps.lookup.outputs.found == 'true'
-        # Pinned to a full commit SHA (supply-chain hardening); comment records the version.
-        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
-        with:
-          server_address: ${{ secrets.SMTP_HOST }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          # Set the SMTP_SECURE repo secret to "true" for implicit TLS (port 465).
-          # Leave unset for STARTTLS (port 587, the common default).
-          secure: ${{ secrets.SMTP_SECURE || 'false' }}
-          username: ${{ secrets.SMTP_USER }}
-          password: ${{ secrets.SMTP_PASS }}
-          from: Open Source Design <${{ secrets.SMTP_FROM }}>
-          to: ${{ steps.lookup.outputs.email }}
-          subject: Your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} is now live on Open Source Design
-          # Plain-text part (multipart fallback for clients that block HTML).
-          body: |
+        env:
+          MAIL_TO_FILE: ${{ steps.lookup.outputs.recipient_file }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE || 'false' }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          MAIL_SUBJECT: Your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} is now live on Open Source Design
+          MAIL_BODY: |
             Hi,
 
             Good news - your ${{ steps.copy.outputs.submission_label || steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" has been
@@ -123,7 +128,7 @@ jobs:
             Thanks for supporting open source design!
 
             - The Open Source Design community
-          html_body: |
+          MAIL_HTML: |
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -178,3 +183,4 @@ jobs:
               </table>
             </body>
             </html>
+        run: node .github/scripts/send-mail.mjs

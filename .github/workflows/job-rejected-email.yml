@@ -74,9 +74,13 @@ jobs:
             resource/*)   subject_kind="resource suggestion" ;;
             *)            subject_kind="job posting" ;;
           esac
+          recipient_file="${RUNNER_TEMP}/recipient-${PR_NUMBER}.txt"
+          printf '%s' "$email" > "$recipient_file"
+          chmod 600 "$recipient_file"
+          echo "::add-mask::${email}"
           {
             echo "found=true"
-            echo "email=${email}"
+            echo "recipient_file=${recipient_file}"
             echo "title=${title}"
             echo "title_html=${title_html}"
             echo "kind=${kind}"
@@ -94,19 +98,22 @@ jobs:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: node .github/scripts/rejection-feedback.mjs
 
+      - name: Install nodemailer
+        if: steps.lookup.outputs.found == 'true'
+        run: npm install --no-save nodemailer@6.10.1
+
       - name: Send rejection email
         if: steps.lookup.outputs.found == 'true'
-        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
-        with:
-          server_address: ${{ secrets.SMTP_HOST }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          secure: ${{ secrets.SMTP_SECURE || 'false' }}
-          username: ${{ secrets.SMTP_USER }}
-          password: ${{ secrets.SMTP_PASS }}
-          from: Open Source Design <${{ secrets.SMTP_FROM }}>
-          to: ${{ steps.lookup.outputs.email }}
-          subject: Update on your Open Source Design ${{ steps.lookup.outputs.subject_kind || steps.feedback.outputs.submission_label || steps.lookup.outputs.kind }}
-          body: |
+        env:
+          MAIL_TO_FILE: ${{ steps.lookup.outputs.recipient_file }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE || 'false' }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          MAIL_SUBJECT: Update on your Open Source Design ${{ steps.lookup.outputs.subject_kind || steps.feedback.outputs.submission_label || steps.lookup.outputs.kind }}
+          MAIL_BODY: |
             Hi,
 
             Thanks for submitting your ${{ steps.feedback.outputs.submission_label || steps.lookup.outputs.kind }} "${{ steps.lookup.outputs.title }}" to Open Source Design.
@@ -123,7 +130,7 @@ jobs:
             Thanks for supporting open source design!
 
             - The Open Source Design community
-          html_body: |
+          MAIL_HTML: |
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -178,6 +185,7 @@ jobs:
               </table>
             </body>
             </html>
+        run: node .github/scripts/send-mail.mjs
 
       - name: Mark rejection email sent
         if: steps.lookup.outputs.found == 'true'

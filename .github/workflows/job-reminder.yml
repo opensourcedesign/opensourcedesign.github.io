@@ -1,5 +1,5 @@
 # Ask posters of ~45-day-old open job postings whether they're still
-# searching. Runs weekly; find-reminder-jobs.mjs selects `searching` postings
+# searching. Runs weekly; job-reminders.mjs selects `searching` postings
 # whose date_posted falls in the 42-48 day window (so each job is caught
 # exactly once), maps each file to its submission PR, and resolves the
 # submitter's email from Cloudflare KV via the Worker's authenticated lookup
@@ -18,121 +18,25 @@ permissions:
   pull-requests: read
 
 jobs:
-  find:
+  remind:
     runs-on: ubuntu-latest
-    outputs:
-      found: ${{ steps.scan.outputs.found }}
-      matrix: ${{ steps.scan.outputs.matrix }}
     steps:
-      # Actions are pinned to full commit SHAs (supply-chain hardening).
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
-      - name: Find jobs due a reminder
-        id: scan
+      - name: Install nodemailer
+        run: npm install --no-save nodemailer@6.10.1
+
+      - name: Send reminder emails
         env:
           GITHUB_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           LOOKUP_URL: ${{ secrets.JOB_LOOKUP_URL }}
           LOOKUP_SECRET: ${{ secrets.JOB_LOOKUP_SECRET }}
-        run: node .github/scripts/find-reminder-jobs.mjs
-
-  send:
-    needs: find
-    if: needs.find.outputs.found == 'true'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.find.outputs.matrix) }}
-      max-parallel: 1
-    steps:
-      - name: Send reminder email
-        # Pinned to a full commit SHA (supply-chain hardening); comment records the version.
-        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
-        with:
-          server_address: ${{ secrets.SMTP_HOST }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          secure: ${{ secrets.SMTP_SECURE || 'false' }}
-          username: ${{ secrets.SMTP_USER }}
-          password: ${{ secrets.SMTP_PASS }}
-          from: Open Source Design <${{ secrets.SMTP_FROM }}>
-          to: ${{ matrix.email }}
-          subject: Is your job posting "${{ matrix.title }}" still open?
-          # Plain-text part (multipart fallback for clients that block HTML).
-          body: |
-            Hi,
-
-            Your job posting "${{ matrix.title }}" has been live on Open Source Design
-            for about six weeks:
-
-            ${{ matrix.job_url }}
-
-            If the position has been filled or is no longer available, please close it
-            so applicants don't keep reaching out - open the edit form and set the
-            status to "filled" or "closed":
-
-            ${{ matrix.edit_url }}
-
-            If you're still searching, no action is needed. The posting stays open
-            until its application deadline passes or it reaches one year, at which
-            point it's archived automatically.
-
-            Thanks for posting with Open Source Design!
-
-            - The Open Source Design community
-          html_body: |
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-              <meta charset="utf-8" />
-              <style>
-                /* Same self-hosted Inter the site uses; clients that support
-                   web fonts (Apple Mail, Thunderbird, …) render it, the rest
-                   fall back to the system stack in the inline styles. */
-                @font-face {
-                  font-family: "InterVariable";
-                  font-style: normal;
-                  font-weight: 100 900;
-                  src: url("https://opensourcedesign.net/fonts/InterVariable.woff2") format("woff2");
-                }
-              </style>
-            </head>
-            <body style="margin:0;padding:0;background-color:#f1f5f9;">
-              <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your job posting has been live for six weeks - still searching, or can we close it?</div>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f1f5f9;">
-                <tr><td align="center" style="padding:32px 16px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;">
-                    <tr>
-                      <td style="background-color:#0f172a;border-radius:12px 12px 0 0;padding:20px 32px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-                          <td><img src="https://opensourcedesign.net/images/email/osd-logo-white.png" width="32" height="32" alt="Open Source Design logo" style="display:block;border:0;" /></td>
-                          <td style="padding-left:12px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#ffffff;">Open Source Design</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="background-color:#ffffff;padding:36px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-                        <h1 style="margin:0 0 20px;font-size:22px;line-height:1.3;color:#0f172a;">Is your job posting still open?</h1>
-                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Hi,</p>
-                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">Your job posting <a href="${{ matrix.job_url }}" style="color:#0f172a;font-weight:600;">&ldquo;${{ matrix.title_html }}&rdquo;</a> has been live on Open Source Design for about six weeks.</p>
-                        <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155;">If the position has been filled or is no longer available, please close it so applicants don&rsquo;t keep reaching out - open the edit form and set the status to &ldquo;filled&rdquo; or &ldquo;closed&rdquo;.</p>
-                        <table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0;"><tr>
-                          <td style="border-radius:8px;background-color:#0f172a;">
-                            <a href="${{ matrix.edit_url }}" style="display:inline-block;padding:13px 28px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;">Update your posting &rarr;</a>
-                          </td>
-                        </tr></table>
-                        <p style="margin:0 0 12px;font-size:13px;line-height:1.6;color:#64748b;">Or copy this link:<br /><a href="${{ matrix.edit_url }}" style="color:#0f766e;word-break:break-all;">${{ matrix.edit_url }}</a></p>
-                        <p style="margin:24px 0 0;font-size:14px;line-height:1.6;color:#64748b;">If you&rsquo;re still searching, no action is needed. The posting stays open until its application deadline passes or it reaches one year, at which point it&rsquo;s archived automatically.</p>
-                        <p style="margin:24px 0 0;font-size:15px;line-height:1.6;color:#334155;">Thanks for posting with Open Source Design!</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="background-color:#f8fafc;border-radius:0 0 12px 12px;border-top:1px solid #e2e8f0;padding:20px 32px;font-family:'InterVariable',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.7;color:#64748b;">
-                        <strong style="color:#475569;">Open Source Design</strong> - a community of designers and developers improving the usability of open source software.<br />
-                        <a href="https://opensourcedesign.net" style="color:#64748b;">opensourcedesign.net</a> &nbsp;&middot;&nbsp; <a href="https://discourse.opensourcedesign.net" style="color:#64748b;">Forum</a> &nbsp;&middot;&nbsp; <a href="https://opensourcedesign.net/jobs/" style="color:#64748b;">Job board</a>
-                      </td>
-                    </tr>
-                  </table>
-                </td></tr>
-              </table>
-            </body>
-            </html>
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE || 'false' }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node .github/scripts/job-reminders.mjs

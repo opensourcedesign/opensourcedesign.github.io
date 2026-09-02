@@ -70,7 +70,7 @@ These tasks clean up known issues and prepare content before touching the site s
 
 ### Task 0.4 - Remove Twitter links `[dev]`
 - **Files:** `404.html`, `_includes/head.html`, `code-of-conduct.md` (issue #3)
-- **Fix:** Replace `twitter.com/opensrcdesign` links with Mastodon profile (`fosstodon.org/@opensourcedesign`); update surrounding text. Twitter card `<meta>` tags in `head.html` can remain (degrade gracefully).
+- **Fix:** Replace `twitter.com/opensrcdesign` links with Mastodon profile (`https://mastodon.social/@opensourcedesign`); update surrounding text. Twitter card `<meta>` tags in `head.html` can remain (degrade gracefully).
 - **Acceptance criteria:** No Twitter/X links visible to site visitors.
 - **Notes:** `code-of-conduct.md` will be moved in Phase 1 - apply this fix to the new file at `about-us/code-of-conduct.md` instead, not the old location.
 
@@ -204,14 +204,14 @@ Update header and footer once the new pages from Phase 1 are live and verified.
 ### Task 2.2 - Update footer `[dev]`
 - **File:** `_includes/footer.html`
 - **Remove:** "Edit this page" link, "View source code" link, Twitter link, Code of Conduct link
-- **Fix:** Mastodon URL from `mastodon.social/@opensourcedesign` → `fosstodon.org/@opensourcedesign` (issue #11)
+- **Fix:** Mastodon URL should be `https://mastodon.social/@opensourcedesign` (live account; issue #11’s Fosstodon note was incorrect).
 - **Add:** Imprint link to `/imprint/`
 - **Acceptance criteria:** Footer contains exactly the five links below; no Twitter or CoC link visible.
 
 | Label | URL |
 |-------|-----|
 | GitHub | https://github.com/opensourcedesign |
-| Mastodon | https://fosstodon.org/@opensourcedesign |
+| Mastodon | https://mastodon.social/@opensourcedesign |
 | Open Collective | https://opencollective.com/opensourcedesign |
 | Forum | https://discourse.opensourcedesign.net |
 | Imprint | /imprint/ |
@@ -327,7 +327,7 @@ Template and layout changes. These should happen after content structure is stab
 - [ ] Footer matches proposed design
 - [ ] Header matches proposed navigation
 - [ ] No Twitter links visible to visitors
-- [ ] Mastodon footer link points to `fosstodon.org`
+- [ ] Mastodon footer link points to `https://mastodon.social/@opensourcedesign`
 
 ### Task 5.3 - Update documentation `[dev]`
 - Archive `docs/sitemap-current.md` as `docs/sitemap-pre-2026-02.md`

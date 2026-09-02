@@ -428,7 +428,7 @@ npx broken-link-checker http://localhost:1313
 - [ ] Header matches proposed navigation (5 items: About Us, Events,
       Resources, Jobs, Forum)
 - [ ] No Twitter links visible to visitors
-- [ ] Mastodon footer link points to `fosstodon.org/@opensourcedesign`
+- [ ] Mastodon footer link points to `https://mastodon.social/@opensourcedesign`
 - [ ] `/people/` returns 404
 - [ ] `/archive/` returns 404
 

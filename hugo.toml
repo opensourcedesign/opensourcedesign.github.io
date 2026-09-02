@@ -119,27 +119,6 @@ capitalizeListTitles = false
     url = "https://discourse.opensourcedesign.net/"
     weight = 50
 
-[[params.social]]
-  name = "GitHub"
-  url = "https://github.com/opensourcedesign"
-  rel = "noopener noreferrer"
-[[params.social]]
-  name = "Mastodon"
-  url = "https://mastodon.social/@opensourcedesign"
-  rel = "me noopener noreferrer"
-[[params.social]]
-  name = "Bluesky"
-  url = "https://bsky.app/profile/opensourcedesign.net"
-  rel = "noopener noreferrer"
-[[params.social]]
-  name = "Open Collective"
-  url = "https://opencollective.com/opensourcedesign"
-  rel = "noopener noreferrer"
-[[params.social]]
-  name = "Forum"
-  url = "https://discourse.opensourcedesign.net"
-  rel = "noopener noreferrer"
-
 [imaging]
   # Resampling filter used when down-scaling content images.
   resampleFilter = "Lanczos"
