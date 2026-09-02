@@ -27,6 +27,9 @@ The submitter's email address is **not** in the PR (kept out of the public
 repo). The worker stores it in KV, and the approval/reminder emails look it
 up by file path. Don't ask posters to put an email in the front matter.
 
+Workflows write the address to a temporary file on the runner (never to
+`GITHUB_OUTPUT` or public logs) before sending via SMTP.
+
 ## What automation already checks
 
 Before the PR reaches you:
@@ -131,7 +134,8 @@ And later, on schedules:
   open jobs get an email with one-click close/edit links.
 - **Expiry** (`job-expire.yml`, daily 04:15 UTC) - jobs whose deadline passed
   are marked expired; postings untouched for over a year are closed
-  automatically. No moderator action needed.
+  automatically. Opens a `bot/auto-expire-jobs` PR for review (protected
+  `main` does not allow direct bot pushes).
 
 ## Rejecting a submission
 
