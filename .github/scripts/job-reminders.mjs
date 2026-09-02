@@ -180,6 +180,7 @@ async function main() {
 
       const recipientFile = `${process.env.RUNNER_TEMP || '/tmp'}/reminder-${pr}.txt`;
       fs.writeFileSync(recipientFile, email, { mode: 0o600 });
+      console.log(`::add-mask::${email}`);
 
       await sendMail({
         toFile: recipientFile,

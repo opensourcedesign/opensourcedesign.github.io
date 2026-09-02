@@ -63,6 +63,9 @@ jobs:
           )"
           existing="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number' || true)"
           if [ -n "$existing" ]; then
+            gh pr edit "$existing" \
+              --title "Auto-expire ${count} job posting(s)" \
+              --body "$body"
             echo "Updated open PR #${existing}"
           else
             gh pr create --base main --head "$branch" \

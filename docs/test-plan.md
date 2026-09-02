@@ -284,7 +284,7 @@ Run these by hand in a browser or with `hugo server`.
 
 ### Footer
 - [ ] Social icons: GitHub, Mastodon, Open Collective, Forum - **no Twitter**
-- [ ] Mastodon links to `https://fosstodon.org/@opensourcedesign` (not `mastodon.social`)
+- [ ] Mastodon links to `https://mastodon.social/@opensourcedesign`
 - [ ] Imprint link present and resolves
 - [ ] "Brand Assets" link present and resolves to `/brand/`
 - [ ] No "Edit this page" or "View source code" links

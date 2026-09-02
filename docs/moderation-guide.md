@@ -44,8 +44,9 @@ Before the PR reaches you:
 - **Content lint** (`content-lint.yml`) - front matter validity plus the
   Markdown pitfalls that break rendering (4-space indents, `###Heading`
   without a space, pseudo-bullets). A red check means the page will render
-  broken: fix or ask the poster to resubmit. On the default branch this runs
-  on **every push** (full job/event corpus), not only changed files.
+  broken: fix or ask the poster to resubmit. On pull requests it lints only
+  changed files; on pushes to `main` it lints the full job/event/resource
+  corpus when those paths change.
 - **Repository checks** (`ci-checks.yml`) - canonical job filenames and
   statuses, form-module hashes, redirect aliases, and data YAML schema.
 - **Accessibility** (`a11y.yml`) - pa11y WCAG 2 AA on a curated sample of pages
@@ -64,8 +65,8 @@ Before the PR reaches you:
   (site root) and preserve the `pr-preview/` folder.
 
 Repo admins: enable branch protection on `main` with required status
-checks **Content lint**, **Repository checks**, **Accessibility**, and
-**Hugo build** (or your fork’s equivalents) so these cannot be skipped.
+checks **Lint changed content**, **Repository checks**, **Accessibility**, and
+**Build and Deploy Hugo** (or your fork’s equivalents) so these cannot be skipped.
 
 ## What a human must still judge
 

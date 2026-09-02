@@ -81,7 +81,7 @@ The footer has two distinct zones. Links are hardcoded in `_includes/footer.html
 | Label | URL | Type | Note |
 |-------|-----|------|------|
 | opensourcedesign (GitHub) | https://github.com/opensourcedesign | External | Value from `site.github_username` |
-| @opensourcedesign (Mastodon) | https://mastodon.social/@opensourcedesign | External | Bug: template uses `mastodon.social` but account is on `fosstodon.org` |
+| @opensourcedesign (Mastodon) | https://mastodon.social/@opensourcedesign | External | Live account on mastodon.social (`data/social.yaml`) |
 | Open Collective | https://opencollective.com/opensourcedesign | External | Hardcoded URL |
 | Join our forum | https://discourse.opensourcedesign.net | External | Hardcoded URL |
 | Code of Conduct | /code-of-conduct/ | Internal | Uses `site.url` variable |
@@ -132,7 +132,7 @@ The footer has two distinct zones. Links are hardcoded in `_includes/footer.html
 | Open Collective                   | https://opencollective.com/opensourcedesign |
 | Calendar                          | https://cloud.opensourcedesign.net       |
 | GitHub org                        | https://github.com/opensourcedesign      |
-| Mastodon                          | https://fosstodon.org/@opensourcedesign  |
+| Mastodon                          | https://mastodon.social/@opensourcedesign |
 
 ---
 
@@ -143,7 +143,7 @@ The footer has two distinct zones. Links are hardcoded in `_includes/footer.html
 | 1 | YAML syntax error | `_data/jobs.yml` line 63 | Medium |
 | 2 | Staticman v2 API decommissioned; form submissions fail | `people-form.md` | High |
 | 3 | Twitter links remain after move to Mastodon | `404.html`, `head.html`, `code-of-conduct.md` | Low |
-| 11 | Footer Mastodon link points to `mastodon.social/@opensourcedesign` but account is on `fosstodon.org` | `_includes/footer.html` | Low |
+| 11 | ~~Footer Mastodon link~~ (resolved: account is on `mastodon.social`, not Fosstodon) | `data/social.yaml` | — |
 | 4 | Two overlapping contribution pages | `/contribute/` and `/contributing/` | Low |
 | 5 | `people-form.md` title reads "Submit a Job" | `people-form.md` | Low |
 | 6 | `_resources` collection defined in config but empty | `_config.yml` | Low |

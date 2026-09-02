@@ -82,7 +82,7 @@ For every page in the current or proposed site, record its disposition.
 | Label | URL | Type | Notes |
 |-------|-----|------|-------|
 | GitHub | https://github.com/opensourcedesign | External | |
-| Mastodon | https://fosstodon.org/@opensourcedesign | External | Fix: current footer points to wrong instance (issue #11) |
+| Mastodon | https://mastodon.social/@opensourcedesign | External | Live account (`data/social.yaml`) |
 | Open Collective | https://opencollective.com/opensourcedesign | External | |
 | Forum | https://discourse.opensourcedesign.net | External | |
 | Imprint | /imprint/ | Internal | New page; references Open Collective as fiscal sponsor |

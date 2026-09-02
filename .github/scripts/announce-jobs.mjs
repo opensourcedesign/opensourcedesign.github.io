@@ -239,6 +239,20 @@ async function buildBlueskyEmbed(job, service, token) {
 
 // ── Posting ─────────────────────────────────────────────────────────────────
 
+async function fetchWithRetry(url, options, what, retries = 3) {
+  let lastErr;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const res = await fetch(url, options);
+    if (res.ok) return res;
+    const retryable = res.status === 429 || res.status >= 500;
+    const body = (await res.text()).slice(0, 300);
+    lastErr = new Error(what + ' failed: HTTP ' + res.status + ' ' + body);
+    if (!retryable || attempt === retries) throw lastErr;
+    await new Promise((r) => setTimeout(r, attempt * 2000));
+  }
+  throw lastErr;
+}
+
 async function expectOk(res, what) {
   if (!res.ok) throw new Error(what + ' failed: HTTP ' + res.status + ' ' + (await res.text()).slice(0, 300));
   return res.json();
@@ -250,8 +264,9 @@ async function postMastodon(job) {
   const status = composeMastodon(job);
   if (DRY_RUN) return 'DRY RUN, would post:\n' + status;
   if (!base || !token) return 'skipped (MASTODON_URL / MASTODON_ACCESS_TOKEN not configured)';
-  const out = await expectOk(
-    await fetch(base + '/api/v1/statuses', {
+  const res = await fetchWithRetry(
+    base + '/api/v1/statuses',
+    {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + token,
@@ -260,9 +275,10 @@ async function postMastodon(job) {
         'Idempotency-Key': 'osd-job-' + job.file.replace(/[^a-z0-9.-]/gi, '_'),
       },
       body: JSON.stringify({ status, visibility: 'public', language: 'en' }),
-    }),
+    },
     'Mastodon post',
   );
+  const out = await res.json();
   return 'posted ' + (out.url || out.id);
 }
 
