@@ -39,6 +39,8 @@ jobs:
 
       - name: Expire postings past their deadline or older than a year
         id: expire
+        env:
+          DRY_RUN: ${{ inputs.dry_run == true && '1' || '' }}
         run: node .github/scripts/job-expire.mjs
 
       - name: Open pull request

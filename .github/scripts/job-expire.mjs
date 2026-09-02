@@ -10,6 +10,7 @@ import { readYamlScalar } from './yaml-front-matter.mjs';
 
 const DIR = 'content/jobs';
 const MAX_AGE_DAYS = 365;
+const DRY_RUN = process.env.DRY_RUN === '1';
 const today = new Date().toISOString().slice(0, 10);
 const cutoff = new Date(Date.now() - MAX_AGE_DAYS * 86400000).toISOString().slice(0, 10);
 const isoDate = (s) => (/^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0, 10) : '');
@@ -37,12 +38,12 @@ for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.md'))) {
   const next = text.replace(fmMatch[0], fmMatch[0].replace(
     /^(status:\s*)(['"]?)searching\2\s*$/m, '$1expired'));
   if (next === text) continue;
-  fs.writeFileSync(full, next);
+  if (!DRY_RUN) fs.writeFileSync(full, next);
   expired.push(file + ' (' + reason + ')');
 }
 
 const summary = expired.length
-  ? '## Expired ' + expired.length + ' posting(s)\n\n' + expired.map((e) => '- ' + e).join('\n') + '\n'
+  ? (DRY_RUN ? '## Would expire ' : '## Expired ') + expired.length + ' posting(s)\n\n' + expired.map((e) => '- ' + e).join('\n') + '\n'
   : 'No postings to expire today.\n';
 
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);

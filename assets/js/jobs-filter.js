@@ -15,16 +15,19 @@
   var catButtons = Array.prototype.slice.call(document.querySelectorAll('.osd-cat'));
   var hasCats = catButtons.length > 0;
 
+  var activeClasses = ['bg-slate-900', 'text-white', 'border-slate-900', 'dark:bg-slate-100', 'dark:text-slate-900', 'dark:border-slate-100'];
+  var inactiveClasses = ['bg-white', 'text-slate-700', 'border-slate-200', 'dark:bg-slate-900', 'dark:text-slate-200', 'dark:border-slate-600'];
+
   function setPressed(activeComp) {
     buttons.forEach(function (btn) {
       var on = btn.getAttribute('data-comp') === activeComp;
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       if (on) {
-        btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
-        btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+        activeClasses.forEach(function (c) { btn.classList.add(c); });
+        inactiveClasses.forEach(function (c) { btn.classList.remove(c); });
       } else {
-        btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
-        btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+        activeClasses.forEach(function (c) { btn.classList.remove(c); });
+        inactiveClasses.forEach(function (c) { btn.classList.add(c); });
       }
     });
   }
@@ -34,11 +37,11 @@
       var on = activeCats.indexOf(btn.getAttribute('data-cat')) !== -1;
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       if (on) {
-        btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
-        btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+        activeClasses.forEach(function (c) { btn.classList.add(c); });
+        inactiveClasses.forEach(function (c) { btn.classList.remove(c); });
       } else {
-        btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
-        btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+        activeClasses.forEach(function (c) { btn.classList.remove(c); });
+        inactiveClasses.forEach(function (c) { btn.classList.add(c); });
       }
     });
   }

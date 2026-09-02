@@ -58,9 +58,9 @@
     <meta name="author" content="{{ .Params.author | default site.Title }}" />
     <meta name="generator" content="Hugo {{ hugo.Version }}" />
     
-    {{/* Social verification links */}}
-    {{ range site.Params.social }}
-      {{ if eq .name "Mastodon" }}
+    {{/* Social verification links (single source: data/social.yaml) */}}
+    {{ range site.Data.social }}
+      {{ if in (split .rel " ") "me" }}
         <link rel="me" href="{{ .url }}" />
       {{ end }}
     {{ end }}

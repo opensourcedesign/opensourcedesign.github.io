@@ -134,6 +134,7 @@ Thanks for posting with Open Source Design!
 async function main() {
   const today = Date.now();
   let sent = 0;
+  let failed = 0;
 
   for (const name of fs.readdirSync('content/jobs').filter((f) => f.endsWith('.md'))) {
     const file = 'content/jobs/' + name;
@@ -192,11 +193,13 @@ async function main() {
       sent++;
       console.log(`  reminder sent (PR #${pr})`);
     } catch (err) {
+      failed++;
       console.error(`  ERROR: ${err.message}`);
     }
   }
 
   console.log(`\n${sent} reminder(s) sent.`);
+  if (failed) process.exit(1);
 }
 
 main().catch((err) => {
