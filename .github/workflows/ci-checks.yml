@@ -40,7 +40,7 @@ jobs:
       - name: Form modules in sync with layouts
         run: node .github/scripts/extract-form-js.mjs --check
 
-      - name: Job form copy
+      - name: Job Markdown sanitization
         run: node --test .github/scripts/job-form.test.mjs
 
       - name: YAML front matter parser

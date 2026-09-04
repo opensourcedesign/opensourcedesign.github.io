@@ -1,18 +1,22 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import path from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
+import { buildMarkdown } from '../../workers/job-submit/src/index.js';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const form = fs.readFileSync(path.join(ROOT, 'layouts/jobs/job-form.html'), 'utf8');
+const submission = {
+  title: 'Markdown test',
+  organization: 'Open Source Design',
+  org_url: 'https://opensourcedesign.net',
+  license: 'CC BY-SA 4.0',
+  role: 'Designer',
+  description: '**Bold** <script>alert(1)</script> <https://example.com>',
+  deliverables: '**Brief** <script>alert(1)</script>',
+  how_to_apply: 'https://example.com/apply',
+};
 
-function fieldHelp(name) {
-  const match = form.match(new RegExp(`<label[^>]+for="${name}"[\\s\\S]*?<textarea[^>]+name="${name}"`));
-  return match ? match[0] : '';
-}
+test('submission serialization preserves Markdown but escapes raw HTML', () => {
+  const { markdown } = buildMarkdown(submission, {});
 
-test('job description and deliverables state their Markdown support', () => {
-  assert.match(fieldHelp('description'), /Markdown is supported\./);
-  assert.match(fieldHelp('deliverables'), /Markdown is supported\./);
+  assert.match(markdown, /how_to_apply:\n  - "https:\/\/example\.com\/apply"/);
+  assert.match(markdown, /deliverables: \|-\n  \*\*Brief\*\* &lt;script>alert\(1\)&lt;\/script>/);
+  assert.match(markdown, /\*\*Bold\*\* &lt;script>alert\(1\)&lt;\/script> <https:\/\/example\.com>/);
 });
